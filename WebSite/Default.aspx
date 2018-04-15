@@ -14,7 +14,7 @@
             <p>
                 Descrito en forma general, un proyecto es la búsqueda de una solución in teligente al planteamiento de un problema tendente a resolver, en tre muchas, una necesidad humana.</p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Aprende mas»</a>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Aprende mas »</a>
             </p>
         </div>
         <div class="col-md-4">
@@ -22,7 +22,7 @@
             <p>
                 Día a día y en cualquier sitio donde nos encontremos, siempre hay a la mano una serie de productos o servicios proporciona dos por el hombre mismo.</p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Aprende mas &raquo;</a>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Aprende mas »</a>
             </p>
         </div>
         <div class="col-md-4">
@@ -31,7 +31,7 @@
                 Para tomar una decisión sobre un proyecto es necesario que éste sea sometido al análisis multidisciplinario de diferentes especia listas.
             </p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Aprende mas &raquo;</a>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Aprende mas »</a>
             </p>
         </div>
     </div>

@@ -64,7 +64,7 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/User/Index">Inicio</a></li>
+                                <li><a runat="server" href="~/User/Default">Inicio</a></li>
                                 <li><a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta">Bienvenido: <%: Context.User.Identity.GetUserName()  %>!</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar Sesion" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />

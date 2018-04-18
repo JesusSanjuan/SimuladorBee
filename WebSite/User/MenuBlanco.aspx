@@ -128,18 +128,18 @@
   </nav>
 
 
-  <div class="content-wrapper">      
+  <div class="content-wrapper">       
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
-    </a>     
+    </a>    
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/startbootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="../Scripts/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="../Scripts/startbootstrap/js/sb-admin.min.js"></script>
   </div>
 </body>
 

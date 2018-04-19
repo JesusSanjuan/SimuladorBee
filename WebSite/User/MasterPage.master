@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="User_MasterPage" %>
 
 <!DOCTYPE html>
 
-<head>
-  <meta charset="utf-8">
+<html>
+<head runat="server">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -16,9 +17,45 @@
   <link href="../Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">
-</head>
 
+
+    
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    
+
+
+</head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+     <form runat="server">
+
+
+
+         <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="../">Evaluacion de proyectos</a>
@@ -27,84 +64,84 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tablero">
+          <a class="nav-link" href="Index.aspx">
             <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
+            <span class="nav-link-text">Tablero</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Graficos">
+          <a class="nav-link" href="Index.aspx">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
+            <span class="nav-link-text">Graficos</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tablas">
+          <a class="nav-link" href="Index.aspx">
             <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
+            <span class="nav-link-text">Tablas</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Componentes">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <span class="nav-link-text">Componentes</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">Navbar</a>
+              <a href="Index.aspx">Opcion 1</a>
             </li>
             <li>
-              <a href="cards.html">Cards</a>
+              <a href="Index.aspx">Opcion 2</a>
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Paginas de ejemplo">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
+            <span class="nav-link-text">Paginas de ejemplo</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">Login Page</a>
+              <a href="Index.aspx">Opcion 1</a>
             </li>
             <li>
-              <a href="register.html">Registration Page</a>
+              <a href="Index.aspx">Opcion 2</a>
             </li>
             <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
+              <a href="Index.aspx">Opcion 3</a>
             </li>
             <li>
-              <a href="blank.html">Blank Page</a>
+              <a href="Index.aspx">Opcion 4</a>
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Nivel de menus">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
+            <span class="nav-link-text">Nivel de menus</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti">
             <li>
-              <a href="#">Second Level Item</a>
+              <a href="#">Opcion de segundo nivel</a>
             </li>
             <li>
-              <a href="#">Second Level Item</a>
+              <a href="#">Opcion de segundo nivel</a>
             </li>
             <li>
-              <a href="#">Second Level Item</a>
+              <a href="#">Opcion de segundo nivel</a>
             </li>
             <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Tercer Nivel</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="#">Opcion de tercer nivel</a>
                 </li>
                 <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="#">Opcion de tercer nivel</a>
                 </li>
                 <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="#">Opcion de tercer nivel</a>
                 </li>
               </ul>
             </li>
@@ -216,7 +253,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <i class="fa fa-fw fa-sign-out"></i>
+
+              Cerrar Sesion
+             
+                 
+          </a>
         </li>
       </ul>
     </div>
@@ -226,14 +268,32 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="../">Regresar..</a>
+          <a href="Index.aspx">Regresar..</a>
         </li>
         <li class="breadcrumb-item active">Pagina en blanco</li>
       </ol>
       <div class="row">
         <div class="col-12">
-          <h1>Blank</h1>
-          <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
+
+
+
+           
+            <div>
+                <asp:ContentPlaceHolder id="MainContent" runat="server">
+                     
+
+
+
+
+
+
+
+
+                </asp:ContentPlaceHolder>
+            </div>
+          
+
+         
         </div>
       </div>
     </div>
@@ -242,7 +302,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2018</small>
+          <small>Copyright © <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</small>
         </div>
       </div>
     </footer>
@@ -256,14 +316,24 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            
+               <asp:LoginView runat="server" ViewStateMode="Disabled">
+                          <LoggedInTemplate>
+
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  class="btn btn-primary" />
+
+                          </LoggedInTemplate>
+             </asp:LoginView>
+
+
+            
           </div>
         </div>
       </div>
@@ -276,6 +346,7 @@
     <!-- Custom scripts for all pages-->
     <script src="../Scripts/startbootstrap/js/sb-admin.min.js"></script>
   </div>
+          </form>
 </body>
-
+   
 </html>

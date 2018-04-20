@@ -2,6 +2,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <h1>Hoja en blanco</h1>
-    <p>Esta es una pagina en blanco que ocupa la master pagina 2. Modificacado R</p>
+    <p>Esta es una pagina en blanco que ocupa la master pagina 2.</p>
 </asp:Content>
 

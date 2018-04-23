@@ -20,6 +20,8 @@
   <!-- Custom styles for this template-->
   <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">
    <!-- -->
+   <link href="../Scripts/startbootstrap/css/sb-admin-config.css" rel="stylesheet">
+   <!-- -->
   <link href="../Scripts/startbootstrap/vendor/bootstrap/js/bootstrap.min.js" rel="stylesheet">
 
     
@@ -107,10 +109,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents2">
             <li>
-              <a href="Index.aspx">Opcion 1</a>
+              <a class="nav-link" href="Index.aspx">Opcion 1</a>
             </li>
             <li>
-              <a href="Index.aspx">Opcion 2</a>
+              <a class="nav-link" href="Index.aspx">Opcion 2</a>
             </li>
           </ul>
         </li>
@@ -121,16 +123,16 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="Index.aspx">Opcion 1</a>
+              <a class="nav-link" href="Index.aspx">Opcion 1</a>
             </li>
             <li>
-              <a href="Index.aspx">Opcion 2</a>
+              <a class="nav-link" href="Index.aspx">Opcion 2</a>
             </li>
             <li>
-              <a href="Index.aspx">Opcion 3</a>
+              <a class="nav-link" href="Index.aspx">Opcion 3</a>
             </li>
             <li>
-              <a href="Index.aspx">Opcion 4</a>
+              <a class="nav-link" href="Index.aspx">Opcion 4</a>
             </li>
           </ul>
         </li>
@@ -141,25 +143,25 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti">
             <li>
-              <a href="#">Opcion de segundo nivel</a>
+              <a class="nav-link" href="#">Opcion de segundo nivel</a>
             </li>
             <li>
-              <a href="#">Opcion de segundo nivel</a>
+              <a class="nav-link" href="#">Opcion de segundo nivel</a>
             </li>
             <li>
-              <a href="#">Opcion de segundo nivel</a>
+              <a class="nav-link" href="#">Opcion de segundo nivel</a>
             </li>
             <li>
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Tercer Nivel</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li>
-                  <a href="#">Opcion de tercer nivel</a>
+                  <a class="nav-link" href="#">Opcion de tercer nivel</a>
                 </li>
                 <li>
-                  <a href="#">Opcion de tercer nivel</a>
+                  <a class="nav-link" href="#">Opcion de tercer nivel</a>
                 </li>
                 <li>
-                  <a href="#">Opcion de tercer nivel</a>
+                  <a class="nav-link" href="#">Opcion de tercer nivel</a>
                 </li>
               </ul>
             </li>

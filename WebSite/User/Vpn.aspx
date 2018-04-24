@@ -22,7 +22,7 @@
                       <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <input type="text" class="form-control" id="Inversion" placeholder="Ingrese la inversion" aria-describedby="inputGroupPrepend" required>
+                    <asp:TextBox type="text" CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion" aria-describedby="inputGroupPrepend" runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese la inversion.
                     </div>
@@ -39,7 +39,7 @@
                       <span class="input-group-text" id="inputGroupPrepend1">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <input type="text" class="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo" aria-describedby="inputGroupPrepend" required>
+                    <asp:TextBox type="text" CssClass="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo" aria-describedby="inputGroupPrepend" runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el FNE.
                     </div>
@@ -56,7 +56,7 @@
                       <span class="input-group-text" id="inputGroupPrepend2">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <input type="text" class="form-control" id="VdS" placeholder="Ingrese el valor de salvamento" aria-describedby="inputGroupPrepend" required>
+                    <asp:TextBox type="text" CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento" aria-describedby="inputGroupPrepend" runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de salvamento
                     </div>
@@ -68,7 +68,7 @@
       <div class="col-md-3 mb-4">
       <label for="validationCustom01">i</label>
               <div class="input-group">                    
-                    <input type="text" class="form-control" id="i" placeholder="Ingrese el valor de i" aria-describedby="inputGroupPrepend" required>
+                    <asp:TextBox type="text" CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR" aria-describedby="inputGroupPrepend" runat="server" />
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend3">%</span>
                     </div>
@@ -87,7 +87,7 @@
      <div class="col-md-3 mb-4">
       <label for="validationCustom02">n</label>
              <div class="input-group">
-                    <input type="text" class="form-control" id="n" placeholder="Ingrese el valor de n" aria-describedby="inputGroupPrepend" required>
+                    <asp:TextBox type="text" CssClass="form-control" id="n" placeholder="Ingrese el valor de n" aria-describedby="inputGroupPrepend" runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de n.
                     </div>
@@ -100,7 +100,7 @@
     <div class="col-md-3 mb-4">
       <label for="validationCustomUsername">P</label>
               <div class="input-group">                   
-                    <input type="text" class="form-control" id="P" placeholder="Ingrese el valor de P" aria-describedby="inputGroupPrepend" required>
+                    <asp:TextBox type="text" CssClass="form-control" id="VPN" placeholder="Ingrese el valor de P" aria-describedby="inputGroupPrepend" runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de P
                     </div>
@@ -113,7 +113,7 @@
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" >
       <label class="form-check-label" for="invalidCheck">
         Acepta los terminos y condiciones
       </label>

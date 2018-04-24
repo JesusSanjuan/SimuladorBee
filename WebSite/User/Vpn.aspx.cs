@@ -15,10 +15,30 @@ public partial class User_Default : System.Web.UI.Page
 
     }
 
+
+
+
     void GreetingBtn_Click(Object sender, EventArgs e)
     {
-        theDiv.Visible = true;
+        
+        double P = Convert.ToSingle(Inversion.Text);
+        double fFNE = Convert.ToSingle(FNE.Text);
+        double fVS = Convert.ToSingle(VdS.Text);
+        double fTMAR = Convert.ToSingle(TMAR.Text);
+        double FNEAcumulado, fVPN;
+        int Periodo= Convert.ToInt32(n.Text);
+        int i, j;
 
+        FNEAcumulado = 0;
+        for (j = 1; j < Periodo; j++)
+        {
+            FNEAcumulado = FNEAcumulado + (fFNE / Math.Pow((1 + FNEAcumulado), j));
+        }
+        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Math.Pow((1 + FNEAcumulado), j));
+        fVPN = FNEAcumulado - P;
+        VPN.Text = Convert.ToString(fVPN);
+
+        theDiv.Visible = true;
         //Button clickedButton = (Button)sender;
         //  clickedButton.Text = "...button clicked...";
         // clickedButton.Enabled = false;

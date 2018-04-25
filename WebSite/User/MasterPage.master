@@ -33,7 +33,7 @@
 
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-     <form runat="server">
+     <form runat="server" class="needs-validation" novalidate>
 
 
 

@@ -18,15 +18,16 @@
     <div class="col-md-3 mb-4">
       <label for="validationCustom01">Inversion</label>
               <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend0">$</span>
+                    <div class="input-group-append">
+                         <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" /> <div class="invalid-feedback">
+                        <asp:TextBox CssClass="form-control" id="Inversion" AssociatedControlID="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" required />
+                    <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
                     <div class="valid-feedback">
-                       Correcto
+                      
                     </div>
               </div>           
     </div>
@@ -38,77 +39,68 @@
                       <span class="input-group-text" id="inputGroupPrepend1">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo"  runat="server" />
+                    <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo"  runat="server" required/>
                     <div class="invalid-feedback">
                       Por favor ingrese el FNE.
                     </div>
                     <div class="valid-feedback">
-                       Correcto
+                       
                     </div>
               </div>       
     </div>
 
     <div class="col-md-3 mb-4">
-      <label for="validationCustomUsername">Valor de Salvamento</label>
+      <label for="validationCustom03">Valor de Salvamento</label>
               <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend2">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server" />
+                    <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"  required/>
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de salvamento
                     </div>
                     <div class="valid-feedback">
-                       Correcto
+                       
                     </div>
               </div>
     </div>
       <div class="col-md-3 mb-4">
-      <label for="validationCustom01">TMAR</label>
+      <label for="validationCustom04">TMAR</label>
               <div class="input-group">                    
-                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server" />
+                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server" required/>
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend3">%</span>
                     </div>
                     <div class="invalid-feedback">
-                      Por favor ingrese el valor de i.
+                      Por favor ingrese el valor de TMAR.
                     </div>
                     <div class="valid-feedback">
-                       Correcto
+                       
                     </div>
               </div>           
     </div>
      
 
   </div>
-  <div class="form-row"> 
-     <div class="col-md-3 mb-4">
-      <label for="validationCustom02">Plazo (n)</label>
-             <div class="input-group">
-                    <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el valor de n"  runat="server" />
-                    <div class="invalid-feedback">
-                      Por favor ingrese el valor de n.
-                    </div>
-                    <div class="valid-feedback">
-                       Correcto
-                    </div>
-              </div>       
-    </div>
+  <div class="form-row">      
 
-    <div class="col-md-3 mb-4">
-      <label for="validationCustomUsername">Plazo</label>
+    <div class="col-md-3 mb-5">
+      <label for="validationCustom06">Plazo (n)</label>
               <div class="input-group">                   
-                    <select class="custom-select" id="TipodePlazo">
-                      <option value="">Seleccione...</option>
-                      <option value="1">Meses</option>
-                      <option value="2">Años</option>
-                  </select>
+                   <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el valor de n"  runat="server" required/> 
+                              <div class="input-group-append">
+                                  <select  class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
+                                                  <option value="" class="dropdown-item">Seleccione</option>
+                                                  <option value="1" class="dropdown-item">Mes</option>
+                                                  <option value="2" class="dropdown-item">Ano</option>
+                                   </select>
+                             </div>
                     <div class="invalid-feedback">
-                      Por favor ingrese el valor 
+                      Por favor seleccione 
                     </div>
                     <div class="valid-feedback">
-                       Correcto
+                     
                     </div>
               </div>
     </div>
@@ -116,7 +108,7 @@
   </div>
   <div class="form-group">
     <div class="form-check">
-        <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server" />
+        <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server" required/>
       <label class="form-check-label" for="invalidCheck">
         Acepta los terminos y condiciones
       </label>
@@ -126,7 +118,7 @@
     </div>
   </div>  
     
-  <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"    runat="server"/>
+  <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"  type="submit"  runat="server"/>
 
     <div class="align-middle" id="theDiv" runat="server" >
         <div class="card-header">
@@ -139,8 +131,13 @@
    
 
 <script>
- /*  
+   
 // Example starter JavaScript for disabling form submissions if there are invalid fields
+
+    /* <div class="input-group-append"> 
+                       <asp:RequiredFieldValidator runat="server" ControlToValidate="Inversion" CssClass="text-danger" ErrorMessage="El campo  es obligatorio." Display="Dynamic"  />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{2})?" Display="Dynamic"></asp:RegularExpressionValidator>
+                  </div> */
        (function() {
           'use strict';
           window.addEventListener('load', function() {
@@ -153,11 +150,12 @@
                   event.preventDefault();
                   event.stopPropagation();
                 }
-                form.classList.add('was-validated');
+                  form.classList.add('was-validated');
+                  form.classList.add('was-feedback');
               }, false);
             });
           }, false);  
-        })();*/
+        })();
 </script>
 </asp:Content>
 

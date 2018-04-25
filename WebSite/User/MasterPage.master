@@ -348,7 +348,7 @@
                <asp:LoginView runat="server" ViewStateMode="Disabled">
                           <LoggedInTemplate>
 
-                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  class="btn btn-primary" />
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  Cssclass="btn btn-primary" />
 
                           </LoggedInTemplate>
              </asp:LoginView>

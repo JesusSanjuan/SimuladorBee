@@ -22,8 +22,7 @@
                       <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <asp:TextBox type="text" CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion" aria-describedby="inputGroupPrepend" runat="server" />
-                    <div class="invalid-feedback">
+                    <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" /> <div class="invalid-feedback">
                       Por favor ingrese la inversion.
                     </div>
                     <div class="valid-feedback">
@@ -39,7 +38,7 @@
                       <span class="input-group-text" id="inputGroupPrepend1">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <asp:TextBox type="text" CssClass="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo" aria-describedby="inputGroupPrepend" runat="server" />
+                    <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo"  runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el FNE.
                     </div>
@@ -56,7 +55,7 @@
                       <span class="input-group-text" id="inputGroupPrepend2">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                    <asp:TextBox type="text" CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento" aria-describedby="inputGroupPrepend" runat="server" />
+                    <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de salvamento
                     </div>
@@ -66,9 +65,9 @@
               </div>
     </div>
       <div class="col-md-3 mb-4">
-      <label for="validationCustom01">i</label>
+      <label for="validationCustom01">TMAR</label>
               <div class="input-group">                    
-                    <asp:TextBox type="text" CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR" aria-describedby="inputGroupPrepend" runat="server" />
+                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server" />
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend3">%</span>
                     </div>
@@ -80,14 +79,14 @@
                     </div>
               </div>           
     </div>
-
+     
 
   </div>
   <div class="form-row"> 
      <div class="col-md-3 mb-4">
-      <label for="validationCustom02">n</label>
+      <label for="validationCustom02">Plazo (n)</label>
              <div class="input-group">
-                    <asp:TextBox type="text" CssClass="form-control" id="n" placeholder="Ingrese el valor de n" aria-describedby="inputGroupPrepend" runat="server" />
+                    <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el valor de n"  runat="server" />
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de n.
                     </div>
@@ -98,11 +97,15 @@
     </div>
 
     <div class="col-md-3 mb-4">
-      <label for="validationCustomUsername">P</label>
+      <label for="validationCustomUsername">Plazo</label>
               <div class="input-group">                   
-                    <asp:TextBox type="text" CssClass="form-control" id="VPN" placeholder="Ingrese el valor de P" aria-describedby="inputGroupPrepend" runat="server" />
+                    <select class="custom-select" id="TipodePlazo">
+                      <option value="">Seleccione...</option>
+                      <option value="1">Meses</option>
+                      <option value="2">Años</option>
+                  </select>
                     <div class="invalid-feedback">
-                      Por favor ingrese el valor de P
+                      Por favor ingrese el valor 
                     </div>
                     <div class="valid-feedback">
                        Correcto
@@ -113,7 +116,7 @@
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" >
+        <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server" />
       <label class="form-check-label" for="invalidCheck">
         Acepta los terminos y condiciones
       </label>
@@ -123,9 +126,7 @@
     </div>
   </div>  
     
-  <asp:Button id="Button1" 	CssClass="btn btn-primary" ButtonType="submit" Text="Calcular"    runat="server"/>
-
-
+  <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"    runat="server"/>
 
     <div class="align-middle" id="theDiv" runat="server" >
         <div class="card-header">
@@ -135,15 +136,12 @@
         </div>
         <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>
       </div>
-
+   
 
 <script>
-   
+ /*  
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-   /*     
-    *     Esto se desactivo por el form checar que vuelva a funciona, son para validacion de datos en los campos
-    *     
-    *     (function() {
+       (function() {
           'use strict';
           window.addEventListener('load', function() {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to

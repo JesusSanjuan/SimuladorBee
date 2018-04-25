@@ -27,7 +27,7 @@ public partial class User_Default : System.Web.UI.Page
         double fTMAR = Convert.ToSingle(TMAR.Text);
         double FNEAcumulado, fVPN;
         int Periodo= Convert.ToInt32(n.Text);
-        int i, j;
+        int  j;
 
         FNEAcumulado = 0;
         for (j = 1; j < Periodo; j++)
@@ -36,8 +36,8 @@ public partial class User_Default : System.Web.UI.Page
         }
         FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Math.Pow((1 + FNEAcumulado), j));
         fVPN = FNEAcumulado - P;
-        VPN.Text = Convert.ToString(fVPN);
-
+       // VPN.Text = Convert.ToString(fVPN);
+        Console.WriteLine("You click me ...................");
         theDiv.Visible = true;
         //Button clickedButton = (Button)sender;
         //  clickedButton.Text = "...button clicked...";

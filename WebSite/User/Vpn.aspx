@@ -22,8 +22,9 @@
                          <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox CssClass="form-control" id="Inversion" AssociatedControlID="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" required />
-                    <div class="invalid-feedback">                       
+                        <asp:TextBox CssClass="form-control" id="Inversion" AssociatedControlID="Inversion"  placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" required />
+                       <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{2})?" Display="Dynamic" class="invalid-feedback"></asp:RegularExpressionValidator>
+                <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
                     <div class="valid-feedback">

@@ -13,6 +13,7 @@ public partial class User_Default : System.Web.UI.Page
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         theDiv.Visible = false;
 
+      //  Inversion.Attributes.Add("Type", "number");
     }
 
 
@@ -45,4 +46,16 @@ public partial class User_Default : System.Web.UI.Page
 
     }
 
+
+
+    public class HTML5TextBox : TextBox
+    {
+
+            protected override void Render(HtmlTextWriter writer)
+            {
+            //Sth like the code below, you need do some research though
+                 writer.AddAttribute(HtmlTextWriterAttribute.Type, "Number");
+            }
+
+     }
 }

@@ -94,7 +94,7 @@
                                   <select  class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
                                                   <option value="" class="dropdown-item">Seleccione</option>
                                                   <option value="1" class="dropdown-item">Mes</option>
-                                                  <option value="2" class="dropdown-item">Ano</option>
+                                                  <option value="2" class="dropdown-item">Año</option>
                                    </select>
                              </div>
                     <div class="invalid-feedback">
@@ -114,7 +114,6 @@
                   <div class="input-group">
                         <div class="input-group-append">
                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
-                             <span class="input-group-text">0.00</span>
                         </div>
                             <asp:TextBox CssClass="form-control" id="VPN" AssociatedControlID="VPN"  placeholder="Valor Presente Neto"  runat="server"  ToolTip="Ingrese valor ejemplo" />
                            

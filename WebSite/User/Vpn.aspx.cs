@@ -43,11 +43,11 @@ public partial class User_Default : System.Web.UI.Page
         double fTMAR = Convert.ToSingle(TMAR.Text);
         int Periodo= Convert.ToInt32(n.Text);
         int i;
-        double[] X = new double[1000];
-        double[] Y = new double[1000];
+        double[] X = new double[1001];
+        double[] Y = new double[1001];
 
         ResultadoVPN = CalcularVPN(fTMAR/100);
-        VPN.Text = Convert.ToString(ResultadoVPN);
+        VPN.Text = Convert.ToString(Math.Round(ResultadoVPN,2));
 
         /*
         Codigo para generar arreglos con valores para X y Y
@@ -56,11 +56,11 @@ public partial class User_Default : System.Web.UI.Page
         */
         fTMAR = 0;
 
-        for (i = 0; i < 1000; i++)
+        for (i = 0; i <= 1000; i++)
         {
             X[i] = fTMAR;
             Y[i] = CalcularVPN(fTMAR);
-            fTMAR += 0.001;
+            fTMAR = Math.Round(fTMAR+0.001, 5);
         }
 
         /***************************************************************/

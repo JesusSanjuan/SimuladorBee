@@ -107,6 +107,28 @@
     </div>
       
   </div>
+
+    
+        <div class="col-md-3 mb-4">
+          <label for="validationCustom01">Valor Presente Neto</label>
+                  <div class="input-group">
+                        <div class="input-group-append">
+                             <span class="input-group-text" id="inputGroupPrepend0">$</span>
+                             <span class="input-group-text">0.00</span>
+                        </div>
+                            <asp:TextBox CssClass="form-control" id="VPN" AssociatedControlID="VPN"  placeholder="Valor Presente Neto"  runat="server"  ToolTip="Ingrese valor ejemplo" />
+                           
+                    <div class="invalid-feedback">                       
+                          Por favor ingrese la inversion.
+                        </div>
+                        <div class="valid-feedback">
+                      
+                        </div>
+                  </div>           
+        </div>
+    
+
+
   <div class="form-group">
     <div class="form-check">
         <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server" required/>

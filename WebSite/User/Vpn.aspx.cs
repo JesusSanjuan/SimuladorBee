@@ -13,8 +13,29 @@ public partial class User_Default : System.Web.UI.Page
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         theDiv.Visible = false;
 
+      //  Inversion.Attributes.Add("Type", "number");
     }
-   
+
+    double CalcularVPN(double fTMAR)
+    {
+        double P = Convert.ToSingle(Inversion.Text);
+        double fFNE = Convert.ToSingle(FNE.Text);
+        double fVS = Convert.ToSingle(VdS.Text);
+        double FNEAcumulado, fVPN;
+        int Periodo = Convert.ToInt32(n.Text);
+        int i;
+
+        FNEAcumulado = 0;
+        double DivTMAR = 1 + fTMAR;
+        for (i = 1; i < Periodo; i++)
+        {
+            FNEAcumulado = FNEAcumulado + (fFNE / Math.Pow(DivTMAR, i));
+        }
+        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Math.Pow(DivTMAR, i));
+        fVPN = FNEAcumulado - P;
+        
+        return fVPN;
+    }
 
     void GreetingBtn_Click(Object sender, EventArgs e)
     {
@@ -42,34 +63,26 @@ public partial class User_Default : System.Web.UI.Page
             fTMAR = Math.Round(fTMAR+0.001, 5);
         }
 
+        /***************************************************************/
+
+        Console.WriteLine("You click me ...................");
         theDiv.Visible = true;
        
+        //Button clickedButton = (Button)sender;
+        //  clickedButton.Text = "...button clicked...";
+        // clickedButton.Enabled = false;
     }
-    
-   
 
-    double CalcularVPN(double fTMAR)
+
+
+    public class HTML5TextBox : TextBox
     {
-        double P = Convert.ToSingle(Inversion.Text);
-        double fFNE = Convert.ToSingle(FNE.Text);
-        double fVS = Convert.ToSingle(VdS.Text);
-        double FNEAcumulado, fVPN;
-        int Periodo = Convert.ToInt32(n.Text);
-        int i;
 
-        FNEAcumulado = 0;
-        double DivTMAR = 1 + fTMAR;
-        for (i = 1; i < Periodo; i++)
-        {
-            FNEAcumulado = FNEAcumulado + (fFNE / Math.Pow(DivTMAR, i));
-        }
-        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Math.Pow(DivTMAR, i));
-        fVPN = FNEAcumulado - P;
+            protected override void Render(HtmlTextWriter writer)
+            {
+            //Sth like the code below, you need do some research though
+                 writer.AddAttribute(HtmlTextWriterAttribute.Type, "Number");
+            }
 
-        return fVPN;
-    }
-
-
-
-
+     }
 }

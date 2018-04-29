@@ -374,7 +374,7 @@
     <script src="../Scripts/startbootstrap/js/sb-admin.min.js"></script>
      <!-- Contiene datos temporales de graficas, borrar los min.js cuando ya ocupen datos reales o en su caso toda la carpeta js-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.min.js"></script>
-        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
+        <script src="../Scripts/startbootstrap/js/sb-admin-charts.min.js"></script>      
       <!-- Contiene datos temporales de graficas, borrar los min.js cuando ya ocupen datos reales o en su caso toda la carpeta js-->    
   </div>
 </form>

@@ -367,14 +367,14 @@
     <!-- Core plugin JavaScript-->
     <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
      <!-- Page level plugin JavaScript-->
-    <script src="../Scripts/startbootstrap/vendor/chart.js/Chart.min.js"></script>
+    <script src="../Scripts/startbootstrap/vendor/chart.js/Chart.js"></script>
     <script src="../Scripts/startbootstrap/vendor/datatables/jquery.dataTables.js"></script>
     <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="../Scripts/startbootstrap/js/sb-admin.min.js"></script>
      <!-- Contiene datos temporales de graficas, borrar los min.js cuando ya ocupen datos reales o en su caso toda la carpeta js-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.min.js"></script>
-        <script src="../Scripts/startbootstrap/js/sb-admin-charts.min.js"></script>      
+        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
       <!-- Contiene datos temporales de graficas, borrar los min.js cuando ya ocupen datos reales o en su caso toda la carpeta js-->    
   </div>
 </form>

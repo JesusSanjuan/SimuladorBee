@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Vpn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb">
@@ -13,7 +13,6 @@
 
 <h1>Calculo de Valor Presente Neto (VPN)</h1>
 <p> A continuacion usted podra calcular el valor presente neto (VPN)</p>
-
   <div class="form-row">
     <div class="col-md-3 mb-4">
       <label for="validationCustom01">Inversion</label>
@@ -22,33 +21,34 @@
                          <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox CssClass="form-control" id="Inversion" AssociatedControlID="Inversion"  placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" required />
-                       <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" class="invalid-feedback"></asp:RegularExpressionValidator>
-                <div class="invalid-feedback">                       
+                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" required  />
+                    <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
                     <div class="valid-feedback">
                       
-                    </div>
-              </div>           
-    </div>
+                    </div>                   
+              </div>   
+            <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+   </div>
 
     <div class="col-md-3 mb-4">
-      <label for="validationCustom02">Flujos Netos de Efectivo</label>
+      <label for="validationCustom02">Flujo Neto de Efectivo</label>
              <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend1">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                         <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese los Flujos Netos de Efectivo"  runat="server" required/>
-                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="FNE" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" class="invalid-feedback"></asp:RegularExpressionValidator>
+                         <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo"  runat="server" required/>
                     <div class="invalid-feedback">
                       Por favor ingrese el FNE.
                     </div>
                     <div class="valid-feedback">
                        
                     </div>
-              </div>       
+              </div>  
+             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="FNE" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                   
     </div>
 
     <div class="col-md-3 mb-4">
@@ -59,8 +59,6 @@
                          <span class="input-group-text">0.00</span>
                     </div>
                         <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"  required/>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Vds" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" class="invalid-feedback"></asp:RegularExpressionValidator>
-                   
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de salvamento
                     </div>
@@ -68,7 +66,8 @@
                        
                     </div>
               </div>
-    </div>
+             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Vds" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+     </div>
       <div class="col-md-3 mb-4">
       <label for="validationCustom04">TMAR</label>
               <div class="input-group">                    
@@ -82,27 +81,32 @@
                     <div class="valid-feedback">
                        
                     </div>
-              </div>           
+              </div> 
+             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="([0-9]*)?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                   
     </div> 
   </div>
   <div class="form-row">     
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-2">
       <label for="validationCustom06">Plazo (n)</label>
               <div class="input-group">                   
-                   <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el valor de n"  runat="server" required/> 
+                   <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" required/> 
+                   
                               <div class="input-group-append">
-                                  <select  class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
+                                  <select  class="btn btn-outline-secondary "  runat="server" required>
                                                   <option value="" class="dropdown-item">Seleccione</option>
                                                   <option value="1" class="dropdown-item">Mes</option>
                                                   <option value="2" class="dropdown-item">Año</option>
                                    </select>
                              </div>
                     <div class="invalid-feedback">
-                      Por favor seleccione 
+                      Por favor seleccione
                     </div>
                     <div class="valid-feedback">
                     </div>
               </div>
+              <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="n" ValidationExpression="([0-9]*)?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                   
     </div>      
   </div>
 
@@ -119,7 +123,7 @@
 
     <div class="form-row">   
             <div class="col-md-3 mb-3">
-                  <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"  type="submit"  runat="server"/>
+                  <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"   runat="server"/>
             </div>
     </div>
 
@@ -146,19 +150,22 @@
                 </li>
               </ul>
             </div>
-            <div id="Resultado" class="container-fluid bg-success" style="padding-top:15px;padding-bottom:15px">
-              <h5>Resultado VPN</h5>
-              <div class="breadcrumb">
+            <div id="Resultado" class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                <div class="card-header">
+                        <h5><i class="fa fa-dollar"></i>  Resultado VPN</h5>
+                </div>
+                <div class="breadcrumb">
                     <div class="card-body text-info">
-                        <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label>
+                    <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                     </div>
                </div>
             </div>
-            <div id="Tabla" class="container-fluid bg-warning card-body" style="padding-top:15px;padding-bottom:15px">
-              <h5>Tabla</h5>
-              
-                                                   <div class="table-responsive">
-                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
+             <div class="card-header">
+                <h5><i class="fa fa-table"></i>  Tabla</h5>
+             </div>
+                                                   <div class="table-responsive breadcrumb">
+                                                <Table class="table table-bordered" id="dataTable"  Width="100%" CellSpacing="0" >
                                                   <thead>
                                                     <tr>
                                                       <th>Name</th>
@@ -637,51 +644,31 @@
                                                       <td>$112,000</td>
                                                     </tr>
                                                   </tbody>
-                                                </table>
+                                                </Table>
                                               </div>
              
             </div>
-            <div id="Grafica" class="container-fluid bg-secondary" style="padding-top:15px;padding-bottom:15px">
-              <h5>Grafica</h5>
-                <div class="card-body">
+            <div id="Grafica" class="container-fluid " style="padding-top:15px;padding-bottom:15px">
+                <div class="card-header">
+                    <h5><i class="fa fa-bar-chart"></i>  Grafica</h5>
+                </div>
+                <div class="card-body breadcrumb">
                   <canvas id="myAreaChart" width="100" height="30"></canvas>
                 </div>
             </div>
-            <div id="Descargas" class="container-fluid bg-danger" style="padding-top:15px;padding-bottom:15px">
-              <h5>Descargas</h5>
-              <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-              <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+            <div id="Descargas" class="container-fluid " style="padding-top:15px;padding-bottom:15px">
+              <div class="card-header">
+                <h5><i class="fa fa-cloud-download"></i>  Descargas</h5>
+              </div>
+                <div class="breadcrumb">
+                  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+                  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+                </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         
-       
         <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>
-               </div>
+      </div>
    
-        </div>
+</div>
  
 
 <script>
@@ -720,7 +707,7 @@
 
 	// Speed & Easing
 	speed: 1500, // Integer. How fast to complete the scroll in milliseconds
-	offset: 56, // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
+	offset: 41, // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
 	easing: 'easeInOutCubic', // Easing pattern to use
 	customEasing: function (time) {
 

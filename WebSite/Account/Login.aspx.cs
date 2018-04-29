@@ -22,7 +22,7 @@ public partial class Account_Login : Page
         {
             if (IsValid)
             {
-                // Validate the user password
+                // Validacion del usario
                 var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
                 if (user != null)
@@ -32,7 +32,7 @@ public partial class Account_Login : Page
                 }
                 else
                 {
-                    FailureText.Text = "Usuario  invalido o contrasena incorrecta.";
+                    FailureText.Text = "Usuario  invalido o contraseña incorrecta.";
                     ErrorMessage.Visible = true;
                 }
             }

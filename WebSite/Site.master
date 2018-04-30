@@ -39,50 +39,59 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Evaluacion de proyectos</a>
-                </div>
+                <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse">&#x2630;</button> 
+                <a class="navbar-brand" runat="server" href="~/">Evaluacion de proyectos</a>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact">Contacto</a></li>
+                        <li class="nav-item"><a runat="server" href="~/About" class="nav-link">Acerca de</a>
+                        </li>
+                        <li class="nav-item"><a runat="server" href="~/Contact" class="nav-link">Contacto</a>
+                        </li>
                     </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Registrarse</a></li>
-                                <li><a runat="server" href="~/Account/Login">Iniciar sesión</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/User/Index.aspx">Inicio</a></li>
-                                <li><a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta">Bienvenido: <%: Context.User.Identity.GetUserName()  %>!</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar Sesion" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                    <asp:loginview runat="server" viewstatemode="Disabled">
+                        <anonymoustemplate>
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item"><a runat="server" href="~/Account/Register" class="nav-link">Registrarse</a>
+                                </li>
+                                <li class="nav-item"><a runat="server" href="~/Account/Login" class="nav-link">Iniciar sesion</a>
                                 </li>
                             </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+                        </anonymoustemplate>
+                        <loggedintemplate>
+                            <ul class="nav navbar-nav ml-auto">
+								        <li class="nav-item">
+                                            <a runat="server" href="~/User/Index.aspx"  class="nav-link">Inicio</a>
+								        </li>
+                                        <li class="nav-item">
+                                            <a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta" class="nav-link">Bienvenido: <%: Context.User.Identity.GetUserName()  %> !
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <asp:LoginStatus   Cssclass="nav-link" runat="server"  LogoutAction="Redirect" LogoutText="Cerrar Sesion" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                        </li> 
+                                				
+					        </ul>
+                        </loggedintemplate>
+                    </asp:loginview>
                 </div>
-            </div>
-        </div>
+          </div>
+    </div>
+       
+
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>Copyright © <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
-            </footer>
+            <asp:contentplaceholder id="MainContent" runat="server">
+
+
+            </asp:contentplaceholder>
+            <hr>
+            <footer><p>Copyright © <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p></footer>
         </div>
+
+
+
+
     </form>
 </body>
 </html>

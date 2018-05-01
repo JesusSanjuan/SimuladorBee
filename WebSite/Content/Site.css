@@ -27,3 +27,38 @@ textarea {
         padding: 0;
     }
 }
+
+
+/* Pie de pagina de la pagina maestra Siste.master */
+body.sticky-footer {
+    margin-bottom: 56px;
+}
+
+body.sticky-footer .content-wrapper {
+    min-height: calc(100vh - 56px - 56px);
+}
+
+footer.sticky-footer {
+    position:absolute;/*Error para dejar bien el pie de pagina en el fondo*/
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #e9ecef;
+    line-height: 55px;
+
+}
+
+@media (min-width: 992px) {
+    footer.sticky-footer {
+        width: calc(100%);
+    }
+}
+
+@media (min-width: 992px) {
+    body.sidenav-toggled footer.sticky-footer {
+        width: calc(100% - 55px);
+    }
+}
+/* Pie de pagina de la pagina maestra Siste.master */
+

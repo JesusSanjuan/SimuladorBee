@@ -700,7 +700,7 @@
    
 <script src="../Scripts/startbootstrap/vendor/smooth-scroll/smooth-scroll.js"></script>
 <script >
-    var scroll = new SmoothScroll('a[href*="#"]', {
+    var scroll = new SmoothScroll('a[href*=""]', {
 	// Selectors
 	ignore: '[data-scroll-ignore]', // Selector for links to ignore (must be a valid CSS selector)
 	header: null, // Selector for fixed headers (must be a valid CSS selector)

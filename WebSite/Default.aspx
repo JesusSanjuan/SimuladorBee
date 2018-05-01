@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <h1>Evaluacion de proyectos</h1>
-        <p class="lead">Sistema de evaluación de proyectos en centros en sistema de computo</p>
+        <p class="lead">Sistema de evaluación de proyectos mediante la aplicacion de sistemas de computo</p>
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Aprende mas &raquo;</a></p>
     </div>
 

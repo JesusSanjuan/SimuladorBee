@@ -17,7 +17,7 @@ function Graficar(x,y) {
         data: {
             labels: time,
             datasets: [{
-                lineTension: 0.1,
+                lineTension: 0.2,
                 backgroundColor: "rgba(2,117,216,0.2)",
                 borderColor: "rgba(2,117,216,1)",
                 pointRadius: 1,

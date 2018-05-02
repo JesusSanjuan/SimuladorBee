@@ -26,9 +26,9 @@ public partial class User_Vpn : System.Web.UI.Page
         double ResultadoVPN;
         double fTMAR = Convert.ToSingle(TMAR.Text);
         int Periodo = Convert.ToInt32(n.Text);
-        int i;
-        double[] X = new double[1001];
-        double[] Y = new double[1001];
+        int i; int cantidad_datos = 100;
+        double[] X = new double[cantidad_datos + 1];
+        double[] Y = new double[cantidad_datos + 1];
 
         string timeC;
         string repArrayC;
@@ -43,11 +43,11 @@ public partial class User_Vpn : System.Web.UI.Page
         */
         fTMAR = 0;
 
-        for (i = 0; i <= 1000; i++)
+        for (i = 0; i <= cantidad_datos; i++)
         {
             X[i] = fTMAR;
-            Y[i] = CalcularVPN(fTMAR);
-            fTMAR = Math.Round(fTMAR + 0.001, 5);
+            Y[i] = Math.Round(CalcularVPN(fTMAR), 2);
+            fTMAR = Math.Round(fTMAR + 0.01, 4);
         }
         // pasamos las variabes en formato array json
         timeC     = JsonConvert.SerializeObject(X);

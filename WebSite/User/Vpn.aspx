@@ -129,7 +129,7 @@
 
 
     
-    <div class="align-middle" id="theDiv" runat="server" >
+  <div class="align-middle" id="theDiv" runat="server" >
         <div class="card mb-1">      
         <div class="card-header">
           <h4> <i class="fa fa-line-chart"></i> Resultados del calculo del Valor Presente Neto (VPN)</h4>
@@ -145,20 +145,22 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#Grafica">Grafica</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item">
                   <a class="nav-link" href="#Descargas">Descargas</a>
                 </li>
               </ul>
             </div>
-            <div id="Resultado" class="container-fluid" style="padding-top:15px;padding-bottom:15px">
-                <div class="card-header">
-                        <h5><i class="fa fa-dollar"></i>  Resultado VPN</h5>
+            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                <div id="Resultado">
+                        <div class="card-header" >
+                                <h5><i class="fa fa-dollar"></i>  Resultado VPN</h5>
+                        </div>
+                        <div class="breadcrumb">
+                            <div class="card-body text-info">
+                            <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                            </div>
+                        </div>
                 </div>
-                <div class="breadcrumb">
-                    <div class="card-body text-info">
-                    <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
-                    </div>
-               </div>
             </div>
             <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
              <div class="card-header">
@@ -666,8 +668,7 @@
                 </div>
             </div>
         <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>
-      </div>
-   
+      </div>   
 </div>
  
 

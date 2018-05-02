@@ -20,55 +20,25 @@
    <!-- Page level plugin CSS-->
         <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!---->
-
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <!-- se cambia en el head para que se pueda llamar a la funcion Graficar-->    
-    <script src="../Scripts/Chart.js"></script>
-    <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
+        <script src="../Scripts/Chart.js"></script>
+        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
     
  
   
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" >
      <form runat="server" class="needs-validation" novalidate>
-
-
-
-         <asp:ScriptManager runat="server">
-            <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
-
-                <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="bootstrap" />
-                <asp:ScriptReference Name="respond" />
-                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
-            </Scripts>
-        </asp:ScriptManager>
+         
        <!-- Navigation-->
        <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" id="mainNav">                                 
 
                                   <a class="navbar-brand" runat="server" href="../">Evaluacion de proyectos</a>
                                    <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></button> 
-                                            <!--No funciona bien el boton al ocultarse  arriba otra opcion de boton el mismo problema
-                                                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                                <span class="navbar-toggler-icon"></span>
-                                            </button>--> 
-                                  
                                    <div class="collapse navbar-collapse" id="navbarResponsive">
                                       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Inicio">
@@ -338,7 +308,7 @@
       </div>
     </footer>
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    <a class="scroll-to-top " href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
@@ -377,8 +347,8 @@
         <script src="../Scripts/popper.js"></script>-->
     <!-- jquery-->  
         <script src="../Scripts/jquery-3.3.1.js"></script>
-    <!-- Bootstrap core JavaScript
-    <script src="../Scripts/bootstrap.bundle.min.js"></script>-->
+    <!-- Bootstrap core JavaScript-->
+        <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
         <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->

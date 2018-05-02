@@ -9,13 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>  
     
+ 
+
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />   
 
 </head>
-<body>
+<body >
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -68,9 +70,12 @@
                                             <a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta" class="nav-link">Bienvenido: <%: Context.User.Identity.GetUserName()  %> !
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <asp:LoginStatus   Cssclass="nav-link" runat="server"  LogoutAction="Redirect" LogoutText="Cerrar Sesion" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                        </li> 
+                                         <li class="nav-item">
+                                          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-fw fa-sign-out"></i>
+                                              Cerrar Sesion             
+                                          </a>
+                                        </li>
                                 				
 					        </ul>
                         </loggedintemplate>
@@ -78,18 +83,59 @@
                 </div>
           </div>
     </div>
-       
+     <div class="content-wrapper">  
 
         <div class="container body-content">
             <asp:contentplaceholder id="MainContent" runat="server">
 
 
             </asp:contentplaceholder>
-            <hr>
-            <footer><p>Copyright © <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p></footer>
-        </div>
 
 
+         </div>
+
+
+                        <!-- Logout Modal-->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Te vas tan rapido?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</div>
+                              <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            
+                                   <asp:LoginView runat="server" ViewStateMode="Disabled">
+                                              <LoggedInTemplate>
+
+                                                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  Cssclass="btn btn-primary" />
+
+                                              </LoggedInTemplate>
+                                 </asp:LoginView>
+
+
+            
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                         <!-- Logout Modal-->
+
+         <footer class="sticky-footer">
+              <div class="container">
+                <div class="text-center">
+                  <small>Copyright © <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</small>
+                </div>
+              </div>
+            </footer>
+       
+
+         </div>
 
 
     </form>

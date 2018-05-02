@@ -20,9 +20,18 @@
    <!-- Page level plugin CSS-->
         <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
+    <!---->
+
+
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+    <!-- se cambia en el head para que se pueda llamar a la funcion Graficar-->    
+    <script src="../Scripts/Chart.js"></script>
+    <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
+    
+ 
+  
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" >
      <form runat="server" class="needs-validation" novalidate>
@@ -373,16 +382,17 @@
     <!-- Core plugin JavaScript-->
         <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-        <script src="../Scripts/Chart.js"></script>
+        <!--<script src="../Scripts/Chart.js"></script>-->
         <script src="../Scripts/startbootstrap/vendor/datatables/jquery.dataTables.js"></script>
         <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Scripts personalizados para todas las páginas-->
         <script src="../Scripts/startbootstrap/js/sb-admin.min.js"></script>
     <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.min.js"></script>
-        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
     <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->    
   
+
+   
 
 </body>
    

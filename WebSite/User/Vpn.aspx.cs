@@ -4,15 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 
 public partial class User_Vpn : System.Web.UI.Page
 {
-    
+
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
+
         theDiv.Visible = false;
+
 
 
     }
@@ -25,6 +29,9 @@ public partial class User_Vpn : System.Web.UI.Page
         int i;
         double[] X = new double[1001];
         double[] Y = new double[1001];
+
+        string timeC;
+        string repArrayC;
 
         ResultadoVPN = CalcularVPN(fTMAR / 100);
         VPN.Text = Convert.ToString(Math.Round(ResultadoVPN, 2));
@@ -42,10 +49,16 @@ public partial class User_Vpn : System.Web.UI.Page
             Y[i] = CalcularVPN(fTMAR);
             fTMAR = Math.Round(fTMAR + 0.001, 5);
         }
+        // pasamos las variabes en formato array json
+        timeC     = JsonConvert.SerializeObject(X);
+        repArrayC = JsonConvert.SerializeObject(Y);
+
         var x1 = X;
         var y1 = Y;
+        //llamamos la función pasaando los parametros
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + ");", true);
 
-      theDiv.Visible = true;
+        theDiv.Visible = true;
 
     }
 

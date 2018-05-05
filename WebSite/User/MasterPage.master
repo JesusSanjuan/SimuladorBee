@@ -39,7 +39,7 @@
 
                                   <a class="navbar-brand" runat="server" href="../">Evaluacion de proyectos</a>
                                    <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></button> 
-                                   <div class="collapse navbar-collapse" id="navbarResponsive">
+                                   <div class="collapse navbar-collapse anyClass" id="navbarResponsive">
                                       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Inicio">
                                           <a class="nav-link" href="Index.aspx">
@@ -48,21 +48,38 @@
                                           </a>
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Simulador">
-                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Simulador</span>
+                                            <span class="nav-link-text">Valor Presente Neto</span>
                                           </a>
-                                            <ul class="sidenav-second-level collapse" id="collapseComponents">
+                                            <ul class="sidenav-second-level collapse" id="cb1">
                                                 <li>
-                                                      <a class="nav-link" href="Vpn.aspx">
-                                                        <i class="fa fa-bar-chart-o"></i>
-                                                        <span class="nav-link-text">Valor Presente Neto</span>
-                                                      </a>
-                                                </li>
+                                                  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#cb22">
+                                                     <i class="fa fa-bar-chart-o"></i>
+                                                     <span class="nav-link-text">Calculos previos</span>
+                                                  </a>
+                                                  <ul class="sidenav-third-level collapse" id="cb22">
+                                                    <li>
+                                                      <a class="nav-link" href="#">Costos</a>
+                                                    </li>
+                                                    <li>
+                                                      <a class="nav-link" href="#">Impuestos</a>
+                                                    </li>
+                                                    <li>
+                                                      <a class="nav-link" href="#">Amortizacion</a>
+                                                    </li>
+                                                  </ul>
+                                                </li>                                                
                                                 <li>
                                                        <a class="nav-link" href="Index.aspx">
                                                           <i class="fa fa-bar-chart-o"></i>
-                                                          <span class="nav-link-text">Opcion 2</span>
+                                                          <span class="nav-link-text">VAN</span>
+                                                      </a>
+                                                </li>
+                                                <li>
+                                                      <a class="nav-link" href="Vpn.aspx">
+                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <span class="nav-link-text">Simulacion VPN</span>
                                                       </a>
                                                 </li>
                                             </ul>

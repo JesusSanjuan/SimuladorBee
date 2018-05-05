@@ -64,7 +64,7 @@
                         <loggedintemplate>
                             <ul class="nav navbar-nav ml-auto">
 								        <li class="nav-item">
-                                            <a runat="server" href="~/User/Index.aspx"  class="nav-link">Inicio</a>
+                                            <a runat="server" href="~/User/Index.aspx"  class="nav-link">Simulador</a>
 								        </li>
                                         <li class="nav-item">
                                             <a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta" class="nav-link">Bienvenido: <%: Context.User.Identity.GetUserName()  %> !

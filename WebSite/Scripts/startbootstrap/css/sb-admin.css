@@ -151,15 +151,17 @@ body.fixed-nav {
     overflow: visible;
     max-height: none;
   }
-  #mainNav .navbar-collapse .navbar-sidenav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    margin-top: 56px;
-  }
+    #mainNav .navbar-collapse .navbar-sidenav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-top: 56px;
+        overflow: auto;
+        box-sizing: border-box;
+    }
   #mainNav .navbar-collapse .navbar-sidenav > .nav-item {
     width: 250px;
     padding: 0;

@@ -17,7 +17,8 @@ function Graficar(x,y) {
         data: {
             labels: time,
             datasets: [{
-                lineTension: 0.2,
+                label: "Mi VPN",
+                lineTension: 0.1,                
                 backgroundColor: "rgba(2,117,216,0.2)",
                 borderColor: "rgba(2,117,216,1)",
                 pointRadius: 1,
@@ -32,31 +33,44 @@ function Graficar(x,y) {
             }],
         },
         options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: "Calculo del VPN"
+            },
             scales: {
                 xAxes: [{
                     time: {
                         unit: 'date'
                     },
                     gridLines: {
-                        display: false
+                        display: true
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Datos'
                     },
                     ticks: {
                         maxTicksLimit: 8
                     }
                 }],
                 yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'VPN'
+                    },
                     ticks: {
                         //min: 0,
                        // max: 40000,
                         maxTicksLimit: 8
                     },
                     gridLines: {
-                        display: false
+                        display: true
                     }
                 }],
             },
             legend: {
-                display: false
+                display: true
             }
         }
     });

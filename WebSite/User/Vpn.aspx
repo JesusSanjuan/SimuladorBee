@@ -21,7 +21,7 @@
                          <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" required  />
+                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo"  required  />
                     <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
@@ -39,7 +39,7 @@
                       <span class="input-group-text" id="inputGroupPrepend1">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                         <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo"  runat="server" required/>
+                         <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo"  runat="server"  required/>
                     <div class="invalid-feedback">
                       Por favor ingrese el FNE.
                     </div>
@@ -58,7 +58,7 @@
                       <span class="input-group-text" id="inputGroupPrepend2">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"  required/>
+                        <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required/>
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de salvamento
                     </div>
@@ -71,7 +71,7 @@
       <div class="col-md-3 mb-4">
       <label for="validationCustom04">TMAR</label>
               <div class="input-group">                    
-                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server" required/>
+                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required/>
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend3">%</span>
                     </div>
@@ -82,7 +82,7 @@
                        
                     </div>
               </div> 
-             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="([0-9]*)?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                    
     </div> 
   </div>
@@ -93,7 +93,7 @@
                    <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" required/> 
                    
                               <div class="input-group-append">
-                                  <select  class="btn btn-outline-secondary "  runat="server" required>
+                                  <select  class="btn btn-outline-secondary " id="Select" runat="server" required>
                                                   <option value="" class="dropdown-item">Seleccione</option>
                                                   <option value="1" class="dropdown-item">Mes</option>
                                                   <option value="2" class="dropdown-item">Año</option>
@@ -106,8 +106,8 @@
                     </div>
               </div>
               <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="n" ValidationExpression="([0-9]*)?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
-                   
-    </div>      
+    </div>  
+              
   </div>
 
          <div class="form-row">  

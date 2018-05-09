@@ -21,7 +21,7 @@
                          <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo"  required  />
+                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" onblur="formatoMoneda(this.value)" value="" required  />
                     <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
@@ -726,6 +726,45 @@
 	before: function (anchor, toggle) {}, // Callback to run before scroll
 	after: function (anchor, toggle) {} // Callback to run after scroll
     });
+
+
+
+
+    function formatoMoneda(number) {
+       
+    var number1 = number.toString(), result = '', estado = true;
+    if (parseInt(number1) < 0) {
+        estado = false;
+        number1 = parseInt(number1) * -1;
+        number1 = number1.toString();
+    }
+    if (number1.indexOf(',') == -1) {
+        while (number1.length > 3) {
+            result = '.' + '' + number1.substr(number1.length - 3) + '' + result;
+            number1 = number1.substring(0, number1.length - 3);
+        }
+        result = number1 + result;
+        if (estado == false) {
+            result = '-' + result;
+        }
+    }
+    else {
+        var pos = number1.indexOf(',');
+        var numberInt = number1.substring(0, pos);
+        var numberDec = number1.substring(pos, number1.length);
+        while (numberInt.length > 3) {
+            result = '.' + '' + numberInt.substr(numberInt.length - 3) + '' + result;
+            numberInt = numberInt.substring(0, numberInt.length - 3);
+        }
+        result = numberInt + result + numberDec;
+        if (estado == false) {
+            result = '-' + result;
+        }
+        }
+        alert(result);
+    return result;
+}
+
 </script>
 </asp:Content>
 

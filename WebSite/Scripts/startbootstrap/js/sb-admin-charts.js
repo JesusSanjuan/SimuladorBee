@@ -49,7 +49,7 @@ function Graficar(x,y,Periodo) {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: PeriodoSelect
+                        labelString: "TMAR en ".concat(PeriodoSelect)
                     },
                     ticks: {
                         maxTicksLimit: 8

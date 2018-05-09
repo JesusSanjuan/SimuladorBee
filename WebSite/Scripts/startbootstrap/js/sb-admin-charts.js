@@ -1,4 +1,4 @@
-function Graficar(x,y) {
+function Graficar(x,y,Periodo) {
 
     // Chart.js scripts
     // -- Set new default font family and font color to mimic Bootstrap's default styling
@@ -10,6 +10,7 @@ function Graficar(x,y) {
 
     var time = JSON.parse(JSON.stringify(x));
     var repArray = JSON.parse(JSON.stringify(y));
+    var PeriodoSelect = JSON.parse(JSON.stringify(Periodo));
 
     var ctx = document.getElementById("myAreaChart");
     var myLineChart = new Chart(ctx, {
@@ -48,7 +49,7 @@ function Graficar(x,y) {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Datos'
+                        labelString: PeriodoSelect
                     },
                     ticks: {
                         maxTicksLimit: 8

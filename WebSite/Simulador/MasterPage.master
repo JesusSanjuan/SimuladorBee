@@ -50,46 +50,77 @@
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Simulador">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Valor Presente Neto</span>
+                                            <span class="nav-link-text">Estudio de Mercado</span>
                                           </a>
-                                            <ul class="sidenav-second-level collapse" id="cb1">
+                                            <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
-                                                  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#cb22">
-                                                     <i class="fa fa-bar-chart-o"></i>
-                                                     <span class="nav-link-text">Calculos previos</span>
-                                                  </a>
-                                                  <ul class="sidenav-third-level collapse" id="cb22">
-                                                    <li>
-                                                      <a class="nav-link" href="#">Costos</a>
-                                                    </li>
-                                                    <li>
-                                                      <a class="nav-link" href="#">Impuestos</a>
-                                                    </li>
-                                                    <li>
-                                                      <a class="nav-link" href="#">Amortizacion</a>
-                                                    </li>
-                                                  </ul>
-                                                </li>                                                
-                                                <li>
-                                                       <a class="nav-link" href="Index.aspx">
-                                                          <i class="fa fa-bar-chart-o"></i>
-                                                          <span class="nav-link-text">VAN</span>
+                                                      <a class="nav-link" href="#">
+                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <span class="nav-link-text">Amortizacion</span>
                                                       </a>
                                                 </li>
                                                 <li>
-                                                      <a class="nav-link" href="Vpn.aspx">
+                                                       <a class="nav-link" href="#">
+                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <span class="nav-link-text">Costos</span>
+                                                      </a>
+                                                </li>
+                                                <li>
+                                                      <a class="nav-link" href="#">
                                                         <i class="fa fa-bar-chart-o"></i>
-                                                        <span class="nav-link-text">Simulacion VPN</span>
+                                                        <span class="nav-link-text">Impuestos</span>
+                                                      </a>
+                                                </li>
+                                                <li>
+                                                      <a class="nav-link" href="#">
+                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <span class="nav-link-text">Perdidas</span>
+                                                      </a>
+                                                </li>
+                                                <li>
+                                                      <a class="nav-link" href="#">
+                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <span class="nav-link-text">Gastos</span>
                                                       </a>
                                                 </li>
                                             </ul>
 
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tablas">
-                                          <a class="nav-link" href="Index.aspx">
-                                            <i class="fa fa-fw fa-table"></i>
-                                            <span class="nav-link-text">Tablas</span>
+                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb2" data-parent="#exampleAccordion">
+                                            <i class="fa fa-fw fa-area-chart"></i>
+                                            <span class="nav-link-text">Estudio Financiero</span>
                                           </a>
+
+                                            <ul class="sidenav-second-level collapse" id="cb2">                                                                                               
+                                               <li>
+                                                       <a class="nav-link" href="#">
+                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <span class="nav-link-text">VAN</span>
+                                                      </a>
+                                                </li> 
+                                                <li>
+                                                      <a class="nav-link" href="Vpn.aspx">
+                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <span class="nav-link-text">VPN</span>
+                                                      </a>
+                                                </li>
+                                                 <li>
+                                                       <a class="nav-link" href="#">
+                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <span class="nav-link-text">TMAR</span>
+                                                      </a>
+                                                </li> 
+                                                <li>
+                                                       <a class="nav-link" href="#">
+                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <span class="nav-link-text">Punto de Equilibrio</span>
+                                                      </a>
+                                                </li> 
+                                                
+                                            </ul>
+
+
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Componentes">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents2" data-parent="#exampleAccordion">

@@ -16,22 +16,23 @@ public partial class User_Vpn : System.Web.UI.Page
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
 
         theDiv.Visible = false;
-
-
-
     }
 
     public void GreetingBtn_Click(Object sender, EventArgs e)
     {
         double ResultadoVPN;
+        String timeC;
+        String repArrayC;
+        String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
+        /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
         double fTMAR = Convert.ToSingle(TMAR.Text);
         int Periodo = Convert.ToInt32(n.Text);
         int i, negativos, cantidad_datos = 50;
         double[] X = new double[cantidad_datos + 1];
         double[] Y = new double[cantidad_datos + 1];
 
-        string timeC;
-        string repArrayC;
+        
+
 
         ResultadoVPN = CalcularVPN(fTMAR / 100);
         VPN.Text = Convert.ToString(Math.Round(ResultadoVPN, 2));
@@ -55,11 +56,8 @@ public partial class User_Vpn : System.Web.UI.Page
         timeC     = JsonConvert.SerializeObject(X);
         repArrayC = JsonConvert.SerializeObject(Y);
 
-        var x1 = X;
-        var y1 = Y;
         //llamamos la función pasaando los parametros
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + ");", true);
-
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + ","+ PeriodoSelect + ");", true);
         theDiv.Visible = true;
 
     }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Vpn" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Vpn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb">
@@ -95,8 +95,8 @@
                               <div class="input-group-append">
                                   <select  class="btn btn-outline-secondary " id="Select" runat="server" required>
                                                   <option value="" class="dropdown-item">Seleccione</option>
-                                                  <option value="1" class="dropdown-item">Mes</option>
-                                                  <option value="2" class="dropdown-item">Año</option>
+                                                  <option value="Mes" class="dropdown-item">Mes</option>
+                                                  <option value="Año" class="dropdown-item">Año</option>
                                    </select>
                              </div>
                     <div class="invalid-feedback">
@@ -134,7 +134,7 @@
         <div class="card-header">
           <h4> <i class="fa fa-line-chart"></i> Resultados del calculo del Valor Presente Neto (VPN)</h4>
         </div>
-             <div class=" navbar-expand-sm bg-dark navbar-dark">  
+             <div class="navbar-expand-sm bg-dark navbar-dark">  
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link " href="#Resultado">Resultado</a>

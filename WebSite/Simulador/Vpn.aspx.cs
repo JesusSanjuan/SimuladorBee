@@ -14,7 +14,6 @@ public partial class User_Vpn : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
-
         theDiv.Visible = false;
     }
 

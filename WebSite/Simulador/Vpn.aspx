@@ -21,7 +21,7 @@
                          <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" onblur="formatoMoneda(this.value)" value="" required  />
+                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" onkeypress="formatoMoneda(this.value)" value="" required  />
                     <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
@@ -120,12 +120,26 @@
                     </div>
                 </div>
         </div>
-
-    <div class="form-row">   
-            <div class="col-md-3 mb-3">
-                  <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"   runat="server"/>
+    
+    <div class="form-row">
+        <div class="col-md-1 mb-3">
+            <div class="form-row">   
+                    <div class="col-md-3 mb-3">
+                          <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"   runat="server"/>
+                    </div>
             </div>
+         </div>
+        <div class="col-md-4 mb-4">
+              <div id="preloader_4">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+            </div>
+       </div>
     </div>
+   
 
 
     
@@ -761,7 +775,6 @@
             result = '-' + result;
         }
         }
-        alert(result);
     return result;
 }
 

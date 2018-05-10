@@ -26,14 +26,10 @@
     </asp:PlaceHolder>
     <!-- se cambia en el head para que se pueda llamar a la funcion Graficar-->    
         <script src="../Scripts/Chart.js"></script>
-        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>      
-    
- 
-  
+        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>  
 </head>
-<body class="fixed-nav sticky-footer bg-dark" id="page-top" >
-     <form runat="server" class="needs-validation" novalidate>
-         
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" >  
+     <form runat="server" class="needs-validation" novalidate> 
        <!-- Navigation-->
        <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" id="mainNav">                                 
 
@@ -321,6 +317,8 @@
                 </li>
               </ol>
          </nav>-->
+
+
       <div class="row">
         <div class="col-12">
 
@@ -388,6 +386,8 @@
       </div>
     </div>
 </div>
+
+
 </form>
 
     
@@ -407,11 +407,8 @@
         <script src="../Scripts/startbootstrap/js/sb-admin.min.js"></script>
     <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.min.js"></script>
-    <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->    
-  
-
-   
-
+    <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->  
 </body>
+   
    
 </html>

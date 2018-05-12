@@ -12,12 +12,31 @@ public partial class User_Vpn : System.Web.UI.Page
 
 
     protected void Page_Load(object sender, EventArgs e)
-    {
+    {       
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         theDiv.Visible = false;
     }
 
-    public void GreetingBtn_Click(Object sender, EventArgs e)
+    public  async void GreetingBtn_Click(Object sender, EventArgs e)
+    {
+         // System.Threading.Thread.Sleep(10000);
+        await ProcesoAsincrono();
+         theDiv.Visible = true;
+        
+
+    }
+
+    async System.Threading.Tasks.Task ProcesoAsincrono ()
+    {
+        await System.Threading.Tasks.Task.Run(() =>
+                {
+                    CalculoVPN();
+                }            
+            );
+
+    }
+
+    public void CalculoVPN()
     {
         double ResultadoVPN;
         String timeC;
@@ -29,8 +48,6 @@ public partial class User_Vpn : System.Web.UI.Page
         int i, negativos, cantidad_datos = 50;
         double[] X = new double[cantidad_datos + 1];
         double[] Y = new double[cantidad_datos + 1];
-
-        
 
 
         ResultadoVPN = CalcularVPN(fTMAR / 100);
@@ -45,23 +62,20 @@ public partial class User_Vpn : System.Web.UI.Page
         negativos = 0;
         for (i = 0; i <= cantidad_datos; i++)
         {
-            X[i] = Math.Round(fTMAR *100,2);
+            X[i] = Math.Round(fTMAR * 100, 2);
             Y[i] = Math.Round(CalcularVPN(fTMAR), 2);
             if (Y[i] < 0) negativos++;
             if (negativos == 10) break;
             fTMAR = Math.Round(fTMAR + 0.02, 4);
         }
         // pasamos las variabes en formato array json
-        timeC     = JsonConvert.SerializeObject(X);
+        timeC = JsonConvert.SerializeObject(X);
         repArrayC = JsonConvert.SerializeObject(Y);
 
         //llamamos la función pasaando los parametros
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + ","+ PeriodoSelect + ");", true);
-        theDiv.Visible = true;
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
 
     }
-
-    
 
     double CalcularVPN(double fTMAR)
     {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Vpn" %>
+﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Vpn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb">
@@ -122,7 +122,7 @@
         </div>
     
     <div class="form-row">
-        <div class="col-md-1 mb-3">
+        <div class="col-md-2 mb-3">
             <div class="form-row">   
                     <div class="col-md-3 mb-3">
                           <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"   runat="server"/>
@@ -130,13 +130,15 @@
             </div>
          </div>
         <div class="col-md-4 mb-4">
-              <div id="preloader_4">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            
+            <div id="preloader_1">
+              <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+
        </div>
     </div>
    

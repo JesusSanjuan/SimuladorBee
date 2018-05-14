@@ -8,6 +8,7 @@
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Aprende mas &raquo;</a></p>
     </div>
 
+
     <div class="row">
         <div class="col-md-4">
             <h2>Que es un proyecto?</h2>

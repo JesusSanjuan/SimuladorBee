@@ -14,29 +14,50 @@ public partial class User_Vpn : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {       
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
+        Inversion.TextChanged += new EventHandler(this.EventoInversion);
         theDiv.Visible = false;
+        efecto.Visible = false;
     }
 
-    public  async void GreetingBtn_Click(Object sender, EventArgs e)
+    private async void GreetingBtn_Click(Object sender, EventArgs e)
     {
-         // System.Threading.Thread.Sleep(10000);
-        await ProcesoAsincrono();
-         theDiv.Visible = true;
         
-
+              await ProcesoAsincrono0();
+        int x=await ProcesoAsincrono();
+                          
+        
+       //System.Diagnostics.Debug.WriteLine("Valor de x:  "+x);  //System.Threading.Thread.Sleep(10000);
+       
     }
 
-    async System.Threading.Tasks.Task ProcesoAsincrono ()
+     async System.Threading.Tasks.Task<int> ProcesoAsincrono ()
     {
+        int retorno = 0;
         await System.Threading.Tasks.Task.Run(() =>
                 {
-                    CalculoVPN();
+                    retorno =  CalculoVPN();
+                    System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 2");
                 }            
             );
+        return retorno;
 
     }
 
-    public void CalculoVPN()
+
+    async System.Threading.Tasks.Task ProcesoAsincrono0()
+    {
+       
+        await System.Threading.Tasks.Task.Run(() =>
+        {
+            theDiv.Visible = true;
+            efecto.Visible = true;
+            System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 1");
+        }
+        );
+
+    }
+
+    public int CalculoVPN()
     {
         double ResultadoVPN;
         String timeC;
@@ -75,6 +96,8 @@ public partial class User_Vpn : System.Web.UI.Page
         //llamamos la función pasaando los parametros
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
 
+        return 1;
+
     }
 
     double CalcularVPN(double fTMAR)
@@ -97,6 +120,13 @@ public partial class User_Vpn : System.Web.UI.Page
 
         return fVPN;
     }
-    
+
+    private void EventoInversion(Object sender, EventArgs e)
+    {
+         System.Diagnostics.Debug.WriteLine("ALGO PASA ");
+
+
+    }
+
 }
 

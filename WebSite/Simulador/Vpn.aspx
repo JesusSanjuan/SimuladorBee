@@ -21,7 +21,7 @@
                          <span class="input-group-text" id="inputGroupPrepend0">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox CssClass="form-control" id="Inversion" placeholder="Ingrese la inversion"  runat="server"  ToolTip="Ingrese valor ejemplo" onkeypress="formatoMoneda(this.value)" value="" required  />
+                        <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion"  runat="server" ToolTip="Ingrese valor ejemplo" onkeypress="formatoMoneda(this.value)" required="required" />
                     <div class="invalid-feedback">                       
                       Por favor ingrese la inversion.
                     </div>
@@ -29,7 +29,7 @@
                       
                     </div>                   
               </div>   
-            <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" CssClass="invalid-feedback"></asp:RegularExpressionValidator>
    </div>
 
     <div class="col-md-3 mb-4">
@@ -39,7 +39,7 @@
                       <span class="input-group-text" id="inputGroupPrepend1">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                         <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo"  runat="server"  required/>
+                         <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo"  runat="server"  required="required"/>
                     <div class="invalid-feedback">
                       Por favor ingrese el FNE.
                     </div>
@@ -58,7 +58,7 @@
                       <span class="input-group-text" id="inputGroupPrepend2">$</span>
                          <span class="input-group-text">0.00</span>
                     </div>
-                        <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required/>
+                        <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
                     <div class="invalid-feedback">
                       Por favor ingrese el valor de salvamento
                     </div>
@@ -71,7 +71,7 @@
       <div class="col-md-3 mb-4">
       <label for="validationCustom04">TMAR</label>
               <div class="input-group">                    
-                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required/>
+                    <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required="required"/>
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend3">%</span>
                     </div>
@@ -90,10 +90,10 @@
     <div class="col-md-4 mb-2">
       <label for="validationCustom06">Plazo (n)</label>
               <div class="input-group">                   
-                   <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" required/> 
+                   <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" required="required"/> 
                    
                               <div class="input-group-append">
-                                  <select  class="btn btn-outline-secondary " id="Select" runat="server" required>
+                                  <select  class="btn btn-outline-secondary " id="Select" runat="server" required="required">
                                                   <option value="" class="dropdown-item">Seleccione</option>
                                                   <option value="Mes" class="dropdown-item">Mes</option>
                                                   <option value="Año" class="dropdown-item">Año</option>
@@ -113,7 +113,7 @@
          <div class="form-row">  
                 <div class="col-md-5 mb-5">
                     <div class="form-check">
-                        <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server"   Text="   Acepta los terminos y condiciones" required />
+                        <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server"   Text="   Acepta los terminos y condiciones" required="required" />
                       <div class="invalid-feedback">
                              Debe aceptar los terminos y condiciones antes de calcular.
                       </div>
@@ -130,14 +130,20 @@
             </div>
          </div>
         <div class="col-md-4 mb-4">
-            
-            <div id="preloader_1">
-              <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+           
+          <!--    <div class="modal fade" id="preloader"  runat="server"    Posifle efecto visual>
+                          <div class="modal-dialog" role="document">-->
+                           <div runat="server" id="efecto">   
+                               <div id="preloader_1">
+                                  <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                        </div> 
+             <!--            </div>
+                </div>-->
 
        </div>
     </div>
@@ -183,7 +189,7 @@
                 <h5><i class="fa fa-table"></i>  Tabla</h5>
              </div>
                                                    <div class="table-responsive breadcrumb">
-                                                <Table class="table table-bordered" id="dataTable"  Width="100%" CellSpacing="0" >
+                                                <Table class="table table-bordered" id="dataTable"   >
                                                   <thead>
                                                     <tr>
                                                       <th>Name</th>

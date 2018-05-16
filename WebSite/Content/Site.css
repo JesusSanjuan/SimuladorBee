@@ -18,6 +18,20 @@ textarea {
     max-width: 280px;
 }
 
+/*cambios de colores*/
+.bg-dark {
+    background-color: #222222 !important;
+    border-color: #080808 !important;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-collapse .navbar-sidenav > .nav-item:hover,
+.sidenav-second-level in collapse show > li > a:hover,
+.navbar-dark .navbar-brand:hover {
+    color: white !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #999999 !important;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
@@ -41,23 +55,29 @@ body.sticky-footer .content-wrapper {
 footer.sticky-footer {
     position:absolute;/*Error para dejar bien el pie de pagina en el fondo*/
     right: 0;
-    bottom: 0;
+    /*bottom: 0;*/
     width: 100%;
     height: 56px;
     background-color: #e9ecef;
     line-height: 55px;
 
 }
+#sitemaster footer.sticky-footer {
+    bottom: 0 !important;
+}
 
 @media (min-width: 992px) {
     footer.sticky-footer {
         width: calc(100%);
+       
+        
     }
 }
 
 @media (min-width: 992px) {
     body.sidenav-toggled footer.sticky-footer {
         width: calc(100% - 55px);
+        bottom: 0;
     }
 }
 /* Pie de pagina de la pagina maestra Siste.master */

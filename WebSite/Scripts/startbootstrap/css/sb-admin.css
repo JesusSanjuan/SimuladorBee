@@ -356,7 +356,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link:after {
-  color: #adb5bd;
+  /*color: #adb5bd;*/
 }
 
 @media (min-width: 992px) {
@@ -499,7 +499,7 @@ footer.sticky-footer {
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-collapse .navbar-sidenav > .nav-item:hover,
 .sidenav-second-level in collapse show > li > a:hover,
-.navbar-dark .navbar-brand:hover {
+.navbar-dark .navbar-brand:hover, .nav-item dropdown:hover {
     color: white !important;
 }
 

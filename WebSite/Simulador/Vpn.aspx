@@ -184,7 +184,7 @@
                         </div>
                 </div>
             </div>
-            <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
+         <!---   <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
              <div class="card-header">
                 <h5><i class="fa fa-table"></i>  Tabla</h5>
              </div>
@@ -671,7 +671,7 @@
                                                 </Table>
                                               </div>
              
-            </div>
+            </div>-->
             <div id="Grafica" class="container-fluid " style="padding-top:15px;padding-bottom:15px">
                 <div class="card-header">
                     <h5><i class="fa fa-bar-chart"></i>  Grafica</h5>

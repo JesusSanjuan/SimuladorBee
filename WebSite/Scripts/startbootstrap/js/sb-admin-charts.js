@@ -19,7 +19,7 @@ function Graficar(x,y,Periodo) {
             labels: time,
             datasets: [{
                 label: "Mi VPN",
-                lineTension: 0.1,                
+                lineTension: 0.2,                
                 backgroundColor: "rgba(2,117,216,0.2)",
                 borderColor: "rgba(2,117,216,1)",
                 pointRadius: 1,
@@ -27,8 +27,8 @@ function Graficar(x,y,Periodo) {
                 pointBorderColor: "rgba(255,255,255,0.8)",
                 pointHoverRadius: 3,
                 pointHoverBackgroundColor: "rgba(2,117,216,1)",
-                pointHitRadius: 5,
-                pointBorderWidth: 1,
+                pointHitRadius: 7,
+                pointBorderWidth: 2,
                 data: repArray
              
             }],
@@ -52,7 +52,7 @@ function Graficar(x,y,Periodo) {
                         labelString: "TMAR en ".concat(PeriodoSelect)
                     },
                     ticks: {
-                        maxTicksLimit: 8
+                        maxTicksLimit: 20
                     }
                 }],
                 yAxes: [{
@@ -63,7 +63,7 @@ function Graficar(x,y,Periodo) {
                     ticks: {
                         //min: 0,
                        // max: 40000,
-                        maxTicksLimit: 8
+                        maxTicksLimit: 20
                     },
                     gridLines: {
                         display: true

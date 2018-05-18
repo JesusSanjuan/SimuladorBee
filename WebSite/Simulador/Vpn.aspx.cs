@@ -59,39 +59,51 @@ public partial class User_Vpn : System.Web.UI.Page
 
     public int CalculoVPN()
     {
-        double ResultadoVPN;
+        Single ResultadoVPN;
         String timeC;
         String repArrayC;
         String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
-        double fTMAR = Convert.ToSingle(TMAR.Text);
+        Single fTMAR = Convert.ToSingle(TMAR.Text);
         int Periodo = Convert.ToInt32(n.Text);
         int negativos;
-        double num;
+        Single num;
 
         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
 
         ResultadoVPN = CalcularVPN(fTMAR / 100);
-        VPN.Text = Convert.ToString(Math.Round(ResultadoVPN, 2));
-                
+
+        if (ResultadoVPN > 0)
+        {
+            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2)) + "   Se recomienda aceptar la inversión";
+
+            /* Calculo de la TIR */
+            TIR.Text = Convert.ToString((CalcularTIR(fTMAR / 100)) * 100) + " %";
+        }
+        else
+        {
+            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2)) + "   Se recomienda rechazar la inversión";
+            TIR.Text = "No aplicable";
+        }
+
         fTMAR = 0;
-        
+
         do
         {
             ListaX.Add(Math.Round(fTMAR * 100, 2));
             ListaY.Add(Math.Round(CalcularVPN(fTMAR), 2));
             negativos = 0;
             foreach (var item in ListaY)
+            {
+                num = Convert.ToSingle(item);
+                if (num < 0)
                 {
-                  num= Convert.ToDouble(item);
-                    if ( num< 0)
-                    {
-                        negativos++;
-                    }
+                    negativos++;
                 }
-            fTMAR = Math.Round(fTMAR + 0.02, 4);
-            
+            }
+            fTMAR = Convert.ToSingle(Math.Round(fTMAR + 0.02, 4));
+
         } while (negativos < 10);
         // pasamos las variabes en formato array json
         timeC = JsonConvert.SerializeObject(ListaX);
@@ -103,25 +115,51 @@ public partial class User_Vpn : System.Web.UI.Page
         return 1;
     }
 
-    double CalcularVPN(double fTMAR)
+    Single CalcularVPN(Single fTMAR)
     {
-        double P = Convert.ToSingle(Inversion.Text);
-        double fFNE = Convert.ToSingle(FNE.Text);
-        double fVS = Convert.ToSingle(VdS.Text);
-        double FNEAcumulado, fVPN;
+        Single P = Convert.ToSingle(Inversion.Text);
+        Single fFNE = Convert.ToSingle(FNE.Text);
+        Single fVS = Convert.ToSingle(VdS.Text);
+        Single FNEAcumulado, fVPN;
         int Periodo = Convert.ToInt32(n.Text);
         int i;
 
         FNEAcumulado = 0;
-        double DivTMAR = 1 + fTMAR;
+        Single DivTMAR = 1 + fTMAR;
         for (i = 1; i < Periodo; i++)
         {
-            FNEAcumulado = FNEAcumulado + (fFNE / Math.Pow(DivTMAR, i));
+            FNEAcumulado = FNEAcumulado + (fFNE / Convert.ToSingle(Math.Pow(DivTMAR, i)));
         }
-        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Math.Pow(DivTMAR, i));
+        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Convert.ToSingle(Math.Pow(DivTMAR, i)));
         fVPN = FNEAcumulado - P;
 
         return fVPN;
+    }
+
+    Single CalcularTIR(Single ValorTIR)
+    {
+        Single TasaIncDec;
+        Single Resultado;
+        Boolean MenosCero = false;
+        TasaIncDec = 0.01F;
+        ValorTIR = ValorTIR + TasaIncDec;
+
+        do
+        {
+            Resultado = CalcularVPN(ValorTIR);
+
+            if (MenosCero == true)
+                TasaIncDec = TasaIncDec / 2;
+            if (Resultado > 0)
+                ValorTIR = ValorTIR + TasaIncDec;
+            else
+            {
+                ValorTIR = ValorTIR - TasaIncDec;
+                MenosCero = true;
+            }
+        } while (Math.Abs(Resultado) >= 0.01);
+
+        return ValorTIR;
     }
 
     private void EventoInversion(Object sender, EventArgs e)

@@ -162,8 +162,11 @@
                   <a class="nav-link " href="#Resultado">Resultado</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#Tabla">Tabla</a>
+                    <a class="nav-link" href="#TIR">TIR</a>
                 </li>
+                <!--<li class="nav-item">
+                      <a class="nav-link" href="#Tabla">Tabla</a>
+                </li>-->
                 <li class="nav-item">
                   <a class="nav-link" href="#Grafica">Grafica</a>
                 </li>
@@ -180,6 +183,18 @@
                         <div class="breadcrumb">
                             <div class="card-body text-info">
                             <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                <div id="Tasa Interna de Rendimiento">
+                        <div class="card-header" >
+                                <h5> % Tasa Interna de Rendimiento</h5>
+                        </div>
+                        <div class="breadcrumb">
+                            <div class="card-body text-info">
+                            <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                             </div>
                         </div>
                 </div>

@@ -162,7 +162,7 @@
                   <a class="nav-link " href="#Resultado">Resultado</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#TIR">TIR</a>
+                    <a class="nav-link" href="#Resultado2">TIR</a>
                 </li>
                 <!--<li class="nav-item">
                       <a class="nav-link" href="#Tabla">Tabla</a>
@@ -188,7 +188,7 @@
                 </div>
             </div>
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
-                <div id="Tasa Interna de Rendimiento">
+                <div id="Resultado2">
                         <div class="card-header" >
                                 <h5> % Tasa Interna de Rendimiento</h5>
                         </div>
@@ -199,7 +199,7 @@
                         </div>
                 </div>
             </div>
-         <!---   <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
+            <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
              <div class="card-header">
                 <h5><i class="fa fa-table"></i>  Tabla</h5>
              </div>
@@ -686,7 +686,7 @@
                                                 </Table>
                                               </div>
              
-            </div>-->
+            </div>
             <div id="Grafica" class="container-fluid " style="padding-top:15px;padding-bottom:15px">
                 <div class="card-header">
                     <h5><i class="fa fa-bar-chart"></i>  Grafica</h5>

@@ -17,17 +17,18 @@
         <link href="../Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  
    <!-- Estilos personalizados para esta plantilla-->
         <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">
-   <!-- Estilo visual para tablas-->
-        <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
-    <!-- se cambia en el head para que se pueda llamar a la funcion Graficar-->    
+    <!--Estilos de tabla-->
+         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+    <!--Experimentando con tabla dinamica en impuestos.aspx-->   
+        <link href="../Scripts/DataTables/css/generator-base.css" rel="stylesheet" />     
+        <link href="../Scripts/DataTables/css/editor.bootstrap4.min.css" rel="stylesheet" />	     
+    <!--Experimentando con tabla dinamica en impuestos.aspx -->
+    <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script>  
 </head>
+
+
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" >  
      <form runat="server" class="needs-validation" novalidate> 
        <!-- Navigation-->
@@ -391,25 +392,26 @@
 </form>
 
     
-    <!-- pooper para efecto visual 
-        <script src="../Scripts/popper.js"></script>-->
+  
     <!-- jquery-->  
         <script src="../Scripts/jquery-3.3.1.js"></script>
     <!-- Bootstrap core JavaScript-->
         <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-        <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Scrip para tablas-->
-        <!--<script src="../Scripts/Chart.js"></script>-->
-        <script src="../Scripts/DataTables/jquery.dataTables.js"></script>
-        <script src="../Scripts/DataTables/dataTables.bootstrap4.js"></script>   
-        <script src="../Scripts/DataTables/dataTables.buttons.js"></script>
-        <script src="../Scripts/DataTables/dataTables.select.js"></script>
-        <script src="../Scripts/DataTables/DataTablesEditor/js/dataTables.editor.min.js"></script>
-    <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->
-        <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>
-    <!-- Contiene datos temporales de graficas, borrar los min.js necesarios cuando ya ocupen datos reales o en su caso toda la carpeta en starboostrap/js-->  
+        <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
+    <!-- Manejo de funcion de tabla en VPN-->
+        <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script> 
+        <script src="../Scripts/DataTables/datatables.min.js"></script> <!-- este parte no deja funcionar el menu bien-->
+    <!-- Manejo de funcion de tabla en VPN-->  
+    <!-- pooper para efecto visual -->
+        <script src="../Scripts/umd/popper.js"></script>   
+    <!--Experimentando con tabla dinamica en impuestos.aspx -->
+        <script src="../Scripts/DataTables/js/dataTables.editor.min.js"></script>        
+        <script src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
+        <script src="../Scripts/DataTables/js/table.Impuestos.js"></script>
+    <!--Experimentando con tabla dinamica en impuestos.aspx -->
+   
 </body>
    
-   
+
 </html>

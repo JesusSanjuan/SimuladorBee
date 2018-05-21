@@ -11,6 +11,10 @@
      </nav>
     
 
+
+
+
+
 <h1>Calculo de Valor Presente Neto (VPN)</h1>
 <p> A continuacion usted podra calcular el valor presente neto (VPN)</p>
   <div class="form-row">
@@ -125,12 +129,11 @@
         <div class="col-md-2 mb-3">
             <div class="form-row">   
                     <div class="col-md-3 mb-3">
-                          <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"   runat="server"/>
+                          <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"  runat="server"/>
                     </div>
             </div>
          </div>
         <div class="col-md-4 mb-4">
-           
           <!--    <div class="modal fade" id="preloader"  runat="server"    Posifle efecto visual>
                           <div class="modal-dialog" role="document">-->
                            <div runat="server" id="efecto">   
@@ -141,14 +144,35 @@
                                     <span></span>
                                     <span></span>
                                 </div>
-                        </div> 
+                          </div> 
              <!--            </div>
                 </div>-->
-
        </div>
     </div>
+    
    
-
+    <!-- The Modal -->
+              <div class="modal fade" id="myModal" >
+                <div class="modal-dialog">
+                  <div class="modal-content">      
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Veredicto de Inverio</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+        
+                    <!-- Modal body -->
+                    <div class="modal-body" id="modal-text-body">
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+        
+                  </div>
+                </div>
+              </div>  
+ <!-- The Modal -->
 
     
   <div class="align-middle" id="theDiv" runat="server" >

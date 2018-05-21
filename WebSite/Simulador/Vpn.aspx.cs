@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 public partial class User_Vpn : System.Web.UI.Page
 {
 
-    int finasincrono=0;
+    Single ResultadoVPN;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -17,24 +17,40 @@ public partial class User_Vpn : System.Web.UI.Page
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         Inversion.TextChanged += new EventHandler(this.EventoInversion); //
         theDiv.Visible = false;
-        efecto.Visible = false;        
+        efecto.Visible = false;
     }
 
     private async void GreetingBtn_Click(Object sender, EventArgs e)
     {
         
                        await ProcesoAsincrono0(); //Tratando de mostrar efecto visual
-        finasincrono = await ProcesoAsincrono();
-        if (finasincrono==1) // Ocualtar efecto visual "Desactivado"
+        ResultadoVPN = await ProcesoAsincrono();
+        if (ResultadoVPN != 0) // Ocualtar efecto visual "Desactivado"
         {
            // efecto.Visible = false;
-        }        
-       //System.Diagnostics.Debug.WriteLine("Valor de x:  "+x);  //System.Threading.Thread.Sleep(10000);       
+        }
+
+        var Texto="";
+        if (ResultadoVPN > 0)
+        {
+            Texto="Se recomienda aceptar la inversión";
+
+        }
+        else
+        {
+            Texto = " Se recomienda rechazar la inversión";           
+        }
+        string script = @"<script type='text/javascript'>
+                                 $(document).ready(function () {
+                                 $('#modal-text-body').text('" + Texto + "');" +
+                                "$('#myModal').modal({ show: true }); }); " +
+                         "</script>";
+        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);     
     }
 
-     async System.Threading.Tasks.Task<int> ProcesoAsincrono ()
+     async System.Threading.Tasks.Task<Single> ProcesoAsincrono ()
     {
-        int retorno = 0;
+        Single retorno = 0;
         await System.Threading.Tasks.Task.Run(() =>
                 {
                     retorno =  CalculoVPN();
@@ -57,9 +73,9 @@ public partial class User_Vpn : System.Web.UI.Page
         );
     }
 
-    public int CalculoVPN()
+    public Single CalculoVPN()
     {
-        Single ResultadoVPN;
+        
         String timeC;
         String repArrayC;
         String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
@@ -76,14 +92,13 @@ public partial class User_Vpn : System.Web.UI.Page
 
         if (ResultadoVPN > 0)
         {
-            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2)) + "   Se recomienda aceptar la inversión";
-
+            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
             /* Calculo de la TIR */
             TIR.Text = Convert.ToString((CalcularTIR(fTMAR / 100)) * 100) + " %";
         }
         else
         {
-            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2)) + "   Se recomienda rechazar la inversión";
+            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
             TIR.Text = "No aplicable";
         }
 
@@ -112,7 +127,7 @@ public partial class User_Vpn : System.Web.UI.Page
         //llamamos la función pasaando los parametros
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
 
-        return 1;
+        return ResultadoVPN;
     }
 
     Single CalcularVPN(Single fTMAR)

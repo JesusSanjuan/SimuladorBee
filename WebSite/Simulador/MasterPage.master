@@ -18,17 +18,16 @@
    <!-- Estilos personalizados para esta plantilla-->
         <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
 
-     <!-- Estilo para TABLA en VPN-->
-        <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+     <!-- Estilo para TABLA en VPN
+        <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
      <!-- Estilo para TABLA en VPN-->
 
 
 
     <!--Experimentando con tabla dinamica en impuestos.aspx--> 
+        <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
         <link href="../Scripts/DataTables/css/generator-base.css" rel="stylesheet" />     
-        <link href="../Scripts/DataTables/css/editor.bootstrap4.min.css" rel="stylesheet" />  	
-    <!--Estilos de tablas
-         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />-->
+        <link href="../Scripts/DataTables/css/editor.bootstrap4.min.css" rel="stylesheet" />  
     <!--Experimentando con tabla dinamica en impuestos.aspx -->
 
 
@@ -411,22 +410,22 @@
   
     <!-- jquery-->  
         <script src="../Scripts/jquery-3.3.1.js"></script>
-    <!-- Bootstrap core JavaScript-->
-        <script src="../Scripts/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-        <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
+    <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js
+        <script src="../Scripts/bootstrap.bundle.js"></script>-->
+    <!-- Core plugin JavaScript
+        <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  -->
     <!-- Manejo de funcion de tabla en VPN-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>      
     <!-- pooper para efecto visual -->
         <script src="../Scripts/umd/popper.js"></script> 
-    <!-- Scrip para TABLA de VPN-->
+    <!-- Scrip para TABLA de VPN
         <script src="../Scripts/startbootstrap/vendor/datatables/jquery.dataTables.js"></script>
-        <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>-->
     <!-- Scrip para TABLA de VPN-->
 
 
      <!--Experimentando con tabla dinamica en impuestos.aspx -->
-        <script src="../Scripts/DataTables/datatables.min.js"></script> <!-- este parte no deja funcionar el menu bien-->
+        <script src="../Scripts/DataTables/datatables.min.js"></script>
         <script src="../Scripts/DataTables/js/dataTables.editor.min.js"></script>        
         <script src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
         <script src="../Scripts/DataTables/js/table.Impuestos.js"></script>

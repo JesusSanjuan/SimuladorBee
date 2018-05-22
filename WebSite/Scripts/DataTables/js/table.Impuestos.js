@@ -8,6 +8,7 @@
 
 $(document).ready(function() {
 	var editor = new $.fn.dataTable.Editor( {
+		//ajax: '/api/Impuestos',
 		table: '#Impuestos',
 		fields: [
 			{
@@ -15,19 +16,20 @@ $(document).ready(function() {
 				"name": "concepto"
 			},
 			{
-				"label": "Costo:",
-				"name": "costo"
+				"label": "Costos:",
+				"name": "costos"
 			}
 		]
 	} );
 
 	var table = $('#Impuestos').DataTable( {
+		//ajax: '/api/Impuestos',
 		columns: [
 			{
 				"data": "concepto"
 			},
 			{
-				"data": "costo"
+				"data": "costos"
 			}
 		],
 		select: true,

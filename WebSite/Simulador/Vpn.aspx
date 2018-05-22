@@ -151,7 +151,7 @@
                   <div class="modal-content">      
                         <!-- Modal Header -->
                         <div class="modal-header">
-                         <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Veredicto de Inverio</h4>
+                         <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Veredicto de Inversion</h4>
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
         
@@ -194,7 +194,9 @@
         <div class="card-header">
           <h4> <i class="fa fa-line-chart"></i> Resultados del calculo del Valor Presente Neto (VPN)</h4>
         </div>
-             <div class="navbar-expand-sm bg-dark navbar-dark">  
+
+
+           <!--   <div class="navbar-expand-sm bg-dark navbar-dark">  
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link " href="#Resultado">Resultado</a>
@@ -202,9 +204,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#Resultado2">TIR</a>
                 </li>
-                <!--<li class="nav-item">
+               <li class="nav-item">
                       <a class="nav-link" href="#Tabla">Tabla</a>
-                </li>-->
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#Grafica">Grafica</a>
                 </li>
@@ -212,30 +214,52 @@
                   <a class="nav-link" href="#Descargas">Descargas</a>
                 </li>
               </ul>
+            </div>-->
+
+            <ul class="nav nav-tabs">
+        		<li class="nav-item">
+        			<a href="#Resultado" class="nav-link active" role="tab" data-toggle="tab">VPN</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#Resultado2" class="nav-link" role="tab" data-toggle="tab">TIR</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#Tabla" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#Grafica" class="nav-link" role="tab" data-toggle="tab">Grafica</a>
+        		</li>
+				<li class="nav-item">
+        			<a href="#Descargas" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
+        		</li>
+        	</ul>
+            <div role="tabpanel" class="tab-pane fade in active" id="Resultado">
+                    <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                                <div class="card-header" >
+                                        <h5><i class="fa fa-dollar"></i>  Resultado VPN</h5>
+                                </div>
+                                <div class="breadcrumb">
+                                    <div class="card-body text-info">
+                                    <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                    </div>
+                                </div>
+                    </div>
             </div>
-            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
-                <div id="Resultado">
-                        <div class="card-header" >
-                                <h5><i class="fa fa-dollar"></i>  Resultado VPN</h5>
-                        </div>
-                        <div class="breadcrumb">
-                            <div class="card-body text-info">
-                            <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
-                <div id="Resultado2">
-                        <div class="card-header" >
-                                <h5> % Tasa Interna de Rendimiento</h5>
-                        </div>
-                        <div class="breadcrumb">
-                            <div class="card-body text-info">
-                            <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
-                            </div>
-                        </div>
-                </div>
+            <div role="tabpanel" class="tab-pane fade" id="Resultado2">
+                    <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                       
+                                <div class="card-header" >
+                                        <h5> % Tasa Interna de Rendimiento</h5>
+                                </div>
+                                <div class="breadcrumb">
+                                    <div class="card-body text-info">
+                                    <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                    </div>
+                                </div>
+                    </div>
             </div>
             <div id="Tabla" class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
              <div class="card-header">

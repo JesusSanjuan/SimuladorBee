@@ -17,7 +17,6 @@ public partial class User_Vpn : System.Web.UI.Page
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         Inversion.TextChanged += new EventHandler(this.EventoInversion); //
         theDiv.Visible = false;
-        efecto.Visible = false;
     }
 
     private async void GreetingBtn_Click(Object sender, EventArgs e)
@@ -42,9 +41,10 @@ public partial class User_Vpn : System.Web.UI.Page
         }
         string script = @"<script type='text/javascript'>
                                  $(document).ready(function () {
-                                 $('#modal-text-body').text('" + Texto + "');" +
-                                "$('#myModal').modal({ show: true }); }); " +
-                         "</script>";
+                                 $('#myModal2').modal({ show: false }); 
+                                 $('#modal-text-body').text('" + Texto + "');" +                                 
+                                "$('#myModal').modal({ show: true }); }); " +                               
+        "</script>";
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);     
     }
 
@@ -66,8 +66,12 @@ public partial class User_Vpn : System.Web.UI.Page
        
         await System.Threading.Tasks.Task.Run(() =>
         {
+            string script = @"<script type='text/javascript'>
+                                 $(document).ready(function () {
+                                 $('#myModal2').modal({ show: false }); });
+                            </script>";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
             theDiv.Visible = true;
-            efecto.Visible = true;
             System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 1");
         }
         );

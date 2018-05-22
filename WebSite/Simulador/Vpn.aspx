@@ -136,14 +136,8 @@
         <div class="col-md-4 mb-4">
           <!--    <div class="modal fade" id="preloader"  runat="server"    Posifle efecto visual>
                           <div class="modal-dialog" role="document">-->
-                           <div runat="server" id="efecto">   
-                               <div id="preloader_1">
-                                  <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                           <div runat="server" id="efecto2">   
+                               
                           </div> 
              <!--            </div>
                 </div>-->
@@ -155,24 +149,44 @@
               <div class="modal fade" id="myModal" >
                 <div class="modal-dialog">
                   <div class="modal-content">      
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                      <h4 class="modal-title">Veredicto de Inverio</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                         <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Veredicto de Inverio</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
         
-                    <!-- Modal body -->
-                    <div class="modal-body" id="modal-text-body">
+                        <!-- Modal body -->
+                        <div class="modal-body" id="modal-text-body">
+                        
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        </div>
                     </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                    </div>
-        
                   </div>
-                </div>
-              </div>  
+                </div> 
  <!-- The Modal -->
+
+
+
+     <!-- The Modal Efecto -->
+              <div class="modal fade" id="myModal2" >
+                <div class="modal-dialog">
+                  <div class="modal-content"> 
+                      <div class="container">
+                            <div id="preloader_1">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div> 
+ <!-- The Modal Efecto-->
 
     
   <div class="align-middle" id="theDiv" runat="server" >

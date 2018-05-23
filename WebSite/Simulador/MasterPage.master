@@ -20,9 +20,9 @@
                 <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
 
-     <!-- Estilo para TABLA en VAN
+     <!-- Estilo para TABLA en VPN
         <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
-     <!-- Estilo para TABLA en VAN-->
+     <!-- Estilo para TABLA en VPN-->
 
 
 
@@ -395,17 +395,21 @@
             <!-- jquery-->  
                 <script src="../Scripts/jquery-3.3.1.js"></script>
             <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js-->
-                 <script src="../Scripts/bootstrap.bundle.js"></script> <!--Problemas con con este .js -->
-                 <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
+                 <script src="../Scripts/bootstrap.bundle.min.js"></script> <!--Problemas con con este .js -->
             <!-- Core plugin JavaScript-->
                 <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
-    <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->          
+            <!-- Custom scripts for all pages-->
+                 <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
+            
+    <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR--> 
+    <!-- Manejo de funcion de tabla en VPN-->
+        <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>      
     <!-- pooper para efecto visual 
         <script src="../Scripts/umd/popper.js"></script> -->
-    <!-- Scrip para TABLA de VAN
+    <!-- Scrip para TABLA de VPN
         <script src="../Scripts/startbootstrap/vendor/datatables/jquery.dataTables.js"></script>
         <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Scrip para TABLA de VAN-->
+    <!-- Scrip para TABLA de VPN-->
 
 
      <!--Experimentando con tabla dinamica en impuestos.aspx -->

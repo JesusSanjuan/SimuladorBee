@@ -15,10 +15,10 @@ public partial class Simulador_costos : System.Web.UI.Page
     public void Continuar_Click(Object sender, EventArgs e)
     {
         System.Diagnostics.Debug.WriteLine("Prueba");
-        string scrip = @"<script type='text/javascript'>
+        /*string scrip = @"<script type='text/javascript'>
                                  $(document).ready(function () {
                                  $('#Continuacioncostos').modal({ show: true }); });
                             </script>";
-        ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "script", scrip, false);
+        ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "script", scrip, false);*/
     }
 }

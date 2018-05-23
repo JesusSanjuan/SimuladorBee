@@ -575,3 +575,13 @@ footer.sticky-footer {
 }
 
 /* Precarga*/
+
+/* tabla editable*/
+#costTable {
+    width: 100%
+}
+
+    #costTable > thead > tr > th {
+        width: 45%;
+        
+    }

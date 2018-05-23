@@ -24,6 +24,7 @@ $(document).ready(function() {
 
 	var table = $('#Impuestos').DataTable( {
 		//ajax: '/api/Impuestos',
+        dom: 'Bfrtip',
 		columns: [
 			{
 				"data": "concepto"

@@ -430,6 +430,14 @@
         <script src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
         <script src="../Scripts/DataTables/js/table.Impuestos.js"></script>
     <!--Experimentando con tabla dinamica en impuestos.aspx -->
+
+    <!-- plugin editable-->
+
+        <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
+        <script src="../Scripts/editable-table/numeric-input-example.js"></script>
+        <script src="../Scripts/editable-table/edittable.js"></script> 
+
+
    
 </body>
    

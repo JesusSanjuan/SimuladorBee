@@ -64,7 +64,7 @@
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Simulador">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Estudio de Mercado</span>
+                                            <span class="nav-link-text">Estudio de Finaciero</span>
                                           </a>
                                             <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
@@ -97,28 +97,12 @@
                                                         <span class="nav-link-text">Gastos</span>
                                                       </a>
                                                 </li>
-                                            </ul>
-
-                                        </li>
-                                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tablas">
-                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb2" data-parent="#exampleAccordion">
-                                            <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Estudio Financiero</span>
-                                          </a>
-
-                                            <ul class="sidenav-second-level collapse" id="cb2">                                                                                               
-                                               <li>
-                                                       <a class="nav-link" href="#">
+                                                 <li>
+                                                       <a class="nav-link" href="van.aspx">
                                                           <i class="fa fa-bar-chart-o"></i>
                                                           <span class="nav-link-text">VAN</span>
                                                       </a>
                                                 </li> 
-                                                <li>
-                                                      <a class="nav-link" href="Vpn.aspx">
-                                                        <i class="fa fa-bar-chart-o"></i>
-                                                        <span class="nav-link-text">VPN</span>
-                                                      </a>
-                                                </li>
                                                  <li>
                                                        <a class="nav-link" href="#">
                                                           <i class="fa fa-bar-chart-o"></i>
@@ -131,11 +115,9 @@
                                                           <span class="nav-link-text">Punto de Equilibrio</span>
                                                       </a>
                                                 </li> 
-                                                
                                             </ul>
 
-
-                                        </li>
+                                        </li>                                        
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Componentes">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents2" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-wrench"></i>
@@ -413,7 +395,7 @@
             <!-- jquery-->  
                 <script src="../Scripts/jquery-3.3.1.js"></script>
             <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js-->
-                 <script src="../Scripts/bootstrap.bundle.js"></script>
+                 <script src="../Scripts/bootstrap.bundle.js"></script> <!--Problemas con con este .js -->
                  <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
             <!-- Core plugin JavaScript-->
                 <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  

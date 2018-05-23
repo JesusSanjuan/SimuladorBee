@@ -1,4 +1,4 @@
-﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Vpn.aspx.cs" Inherits="User_Vpn" %>
+﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb">
@@ -6,17 +6,17 @@
                 <li class="breadcrumb-item">  
                     <a href="Index.aspx">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Valor Presente Neto</li>
+                <li class="breadcrumb-item active">Valor Actual Neto</li>
               </ol>
      </nav>   
 
   <div class="card align-middle">  
       <div class="card-header">
-            <h1><i class="fa fa-line-chart"></i>  Calculo de Valor Presente Neto (VPN)</h1>
+            <h1><i class="fa fa-line-chart"></i>  Calculo de Valor Actual Neto (VAN)</h1>
       </div>
   </div>
   <div class="card-body">
-            <p> A continuacion usted podra calcular el valor presente neto (VPN)</p>
+            <p> A continuacion usted podra calcular el Valor Actual Neto (VAN)</p>
               <div class="form-row">
                             <div class="col-md-3 mb-4">
                               <label for="validationCustom01">Inversion</label>
@@ -140,7 +140,7 @@
                   <div class="modal-content">      
                         <!-- Modal Header -->
                         <div class="modal-header">
-                             <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Veredicto de Inversion</h4>
+                             <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Diagnostico de Inversion</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->
@@ -174,13 +174,13 @@
 <!-- The Modal Efecto-->
 
     
-  <div class="card align-middle" id="ResultadosVPN" runat="server" >    
+  <div class="card align-middle" id="ResultadosVAN" runat="server" >    
         <div class="card-header">
-          <h4> <i class="fa fa-line-chart"></i> Resultados del calculo del Valor Presente Neto (VPN)</h4>
+          <h4> <i class="fa fa-line-chart"></i> Resultados del calculo del Valor Actual Neto (VAN)</h4>
         </div>
             <ul class="nav nav-tabs">
         		<li class="nav-item">
-        			<a href="#Resultado" class="nav-link active" role="tab" data-toggle="tab">VPN</a>
+        			<a href="#Resultado" class="nav-link active" role="tab" data-toggle="tab">VAN</a>
         		</li>
 
         		<li class="nav-item">
@@ -202,11 +202,11 @@
                     <div role="tabpanel" class="tab-pane fade show active" id="Resultado">
                             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
                                         <div class="card-header" >
-                                                <h5><i class="fa fa-dollar"></i>  Resultado VPN</h5>
+                                                <h5><i class="fa fa-dollar"></i>  Resultado VAN</h5>
                                         </div>
                                         <div class="breadcrumb">
                                             <div class="card-body text-info">
-                                            <h3>    <asp:Label id="VPN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                            <h3>    <asp:Label id="VAN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                             </div>
                                         </div>
                             </div>

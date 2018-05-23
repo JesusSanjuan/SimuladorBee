@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 
-public partial class User_Vpn : System.Web.UI.Page
+public partial class User_van : System.Web.UI.Page
 {
 
     Single ResultadoVPN;
@@ -16,7 +16,7 @@ public partial class User_Vpn : System.Web.UI.Page
         
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         Inversion.TextChanged += new EventHandler(this.EventoInversion); //
-        ResultadosVPN.Visible = false;
+        ResultadosVAN.Visible = false;
     }
 
     private async void GreetingBtn_Click(Object sender, EventArgs e)
@@ -71,7 +71,7 @@ public partial class User_Vpn : System.Web.UI.Page
                                  $('#myModal2').modal({ show: false }); });
                             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
-            ResultadosVPN.Visible = true;
+            ResultadosVAN.Visible = true;
             System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 1");
         }
         );
@@ -96,13 +96,13 @@ public partial class User_Vpn : System.Web.UI.Page
 
         if (ResultadoVPN > 0)
         {
-            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
+            VAN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
             /* Calculo de la TIR */
             TIR.Text = Convert.ToString((CalcularTIR(fTMAR / 100)) * 100) + " %";
         }
         else
         {
-            VPN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
+            VAN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
             TIR.Text = "No aplicable";
         }
 

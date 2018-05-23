@@ -20,9 +20,9 @@
                 <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
 
-     <!-- Estilo para TABLA en VPN
+     <!-- Estilo para TABLA en VAN
         <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
-     <!-- Estilo para TABLA en VPN-->
+     <!-- Estilo para TABLA en VAN-->
 
 
 
@@ -399,15 +399,13 @@
                  <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
             <!-- Core plugin JavaScript-->
                 <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
-    <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR--> 
-    <!-- Manejo de funcion de tabla en VPN-->
-        <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>      
+    <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->          
     <!-- pooper para efecto visual 
         <script src="../Scripts/umd/popper.js"></script> -->
-    <!-- Scrip para TABLA de VPN
+    <!-- Scrip para TABLA de VAN
         <script src="../Scripts/startbootstrap/vendor/datatables/jquery.dataTables.js"></script>
         <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Scrip para TABLA de VPN-->
+    <!-- Scrip para TABLA de VAN-->
 
 
      <!--Experimentando con tabla dinamica en impuestos.aspx -->

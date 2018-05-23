@@ -1,9 +1,6 @@
-// Call the dataTables jQuery plugin
-var editor;
 
-$(document).ready(function () {  
-   
-    /*$('#dataTable').DataTable({
+$(document).ready(function () {    
+    $('#dataTableVAN').DataTable({        
         language: {
             processing: "Obteniendo resultados...",
             search: "Buscar en la tabla:",
@@ -14,7 +11,7 @@ $(document).ready(function () {
             infoPostFix: "",
             loadingRecords: "Cargando...",
             zeroRecords: "Cero registros",
-            emptyTable: "last",
+            emptyTable: "Ultimo",
             paginate: {
                 first: "Primera",
                 previous: "Pagina Anterior",
@@ -26,10 +23,8 @@ $(document).ready(function () {
                 sortDescending: ": Activar para ordenar la columna en orden descendente"
             }
         }
-    });*/
-
+    });
 });
-
 
 
 

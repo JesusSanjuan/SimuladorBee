@@ -229,7 +229,7 @@
                                     <h5><i class="fa fa-table"></i>  Tabla</h5>
                                  </div>
                                                                    <div class="table-responsive breadcrumb">
-                                                                         <Table class="table table-bordered" id="dataTable"   >
+                                                                         <Table class="table table-bordered" id="dataTableVAN"   >
                                                                           <thead>
                                                                             <tr>
                                                                               <th>Name</th>
@@ -346,62 +346,6 @@
                                                                               <td>22</td>
                                                                               <td>2013/03/03</td>
                                                                               <td>$342,000</td>
-                                                                            </tr>                                                    
-                                                                            <tr>
-                                                                              <td>Bradley Greer</td>
-                                                                              <td>Software Engineer</td>
-                                                                              <td>London</td>
-                                                                              <td>41</td>
-                                                                              <td>2012/10/13</td>
-                                                                              <td>$132,000</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Dai Rios</td>
-                                                                              <td>Personnel Lead</td>
-                                                                              <td>Edinburgh</td>
-                                                                              <td>35</td>
-                                                                              <td>2012/09/26</td>
-                                                                              <td>$217,500</td>
-                                                                            </tr> 
-                                                                              <tr>
-                                                                              <td>Sonya Frost</td>
-                                                                              <td>Software Engineer</td>
-                                                                              <td>Edinburgh</td>
-                                                                              <td>23</td>
-                                                                              <td>2008/12/13</td>
-                                                                              <td>$103,600</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Jena Gaines</td>
-                                                                              <td>Office Manager</td>
-                                                                              <td>London</td>
-                                                                              <td>30</td>
-                                                                              <td>2008/12/19</td>
-                                                                              <td>$90,560</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Quinn Flynn</td>
-                                                                              <td>Support Lead</td>
-                                                                              <td>Edinburgh</td>
-                                                                              <td>22</td>
-                                                                              <td>2013/03/03</td>
-                                                                              <td>$342,000</td>
-                                                                            </tr>                                                    
-                                                                            <tr>
-                                                                              <td>Bradley Greer</td>
-                                                                              <td>Software Engineer</td>
-                                                                              <td>London</td>
-                                                                              <td>41</td>
-                                                                              <td>2012/10/13</td>
-                                                                              <td>$132,000</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Dai Rios</td>
-                                                                              <td>Personnel Lead</td>
-                                                                              <td>Edinburgh</td>
-                                                                              <td>35</td>
-                                                                              <td>2012/09/26</td>
-                                                                              <td>$217,500</td>
                                                                             </tr> 
                                                                           </tbody>
                                                                     </Table>
@@ -434,63 +378,68 @@
         <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>   
 </div>
  
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-       (function() {
-          'use strict';
-          window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-              form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                  form.classList.add('was-validated');
-                  form.classList.add('was-feedback');
-              }, false);
-            });
-          }, false);  
-        })();
-</script>
-<script >
-    function formatoMoneda(number) {
+<!-- Manejo de funcion de tabla en VAN-->
+        <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script> 
+<!-- Manejo de funcion de tabla en VAN-->
+<!-- Para validacion de campos-->
+        <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+               (function() {
+                  'use strict';
+                  window.addEventListener('load', function() {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function(form) {
+                      form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                        }
+                          form.classList.add('was-validated');
+                          form.classList.add('was-feedback');
+                      }, false);
+                    });
+                  }, false);  
+                })();
+        </script>
+<!-- Para validacion de campos-->
+<!-- Probando para poner formato moneda-->
+        <script >
+                function formatoMoneda(number) {
        
-    var number1 = number.toString(), result = '', estado = true;
-    if (parseInt(number1) < 0) {
-        estado = false;
-        number1 = parseInt(number1) * -1;
-        number1 = number1.toString();
-    }
-    if (number1.indexOf(',') == -1) {
-        while (number1.length > 3) {
-            result = '.' + '' + number1.substr(number1.length - 3) + '' + result;
-            number1 = number1.substring(0, number1.length - 3);
-        }
-        result = number1 + result;
-        if (estado == false) {
-            result = '-' + result;
-        }
-    }
-    else {
-        var pos = number1.indexOf(',');
-        var numberInt = number1.substring(0, pos);
-        var numberDec = number1.substring(pos, number1.length);
-        while (numberInt.length > 3) {
-            result = '.' + '' + numberInt.substr(numberInt.length - 3) + '' + result;
-            numberInt = numberInt.substring(0, numberInt.length - 3);
-        }
-        result = numberInt + result + numberDec;
-        if (estado == false) {
-            result = '-' + result;
-        }
-        }
-    return result;
-}
-
-</script>
+                var number1 = number.toString(), result = '', estado = true;
+                if (parseInt(number1) < 0) {
+                    estado = false;
+                    number1 = parseInt(number1) * -1;
+                    number1 = number1.toString();
+                }
+                if (number1.indexOf(',') == -1) {
+                    while (number1.length > 3) {
+                        result = '.' + '' + number1.substr(number1.length - 3) + '' + result;
+                        number1 = number1.substring(0, number1.length - 3);
+                    }
+                    result = number1 + result;
+                    if (estado == false) {
+                        result = '-' + result;
+                    }
+                }
+                else {
+                    var pos = number1.indexOf(',');
+                    var numberInt = number1.substring(0, pos);
+                    var numberDec = number1.substring(pos, number1.length);
+                    while (numberInt.length > 3) {
+                        result = '.' + '' + numberInt.substr(numberInt.length - 3) + '' + result;
+                        numberInt = numberInt.substring(0, numberInt.length - 3);
+                    }
+                    result = numberInt + result + numberDec;
+                    if (estado == false) {
+                        result = '-' + result;
+                    }
+                    }
+                return result;
+            }
+        </script>
+<!-- Probando para poner formato moneda-->
 </asp:Content>
 

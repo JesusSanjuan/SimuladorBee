@@ -513,7 +513,7 @@ footer.sticky-footer {
 
 
 
-/* Precarga efecto visual*/
+/* Precarga efecto visual en VAN*/
 #preloader_1 {
     position: relative;
 }
@@ -574,14 +574,14 @@ footer.sticky-footer {
     }
 }
 
-/* Precarga*/
+/* Precarga efecto visual en VAN*/
 
-/* tabla editable*/
+/* Tabla Editable de Costos*/
 #costTable {
     width: 100%
 }
 
-    #costTable > thead > tr > th {
-        width: 45%;
+#costTable > thead > tr > th {
+    width: 45%;
         
-    }
+}

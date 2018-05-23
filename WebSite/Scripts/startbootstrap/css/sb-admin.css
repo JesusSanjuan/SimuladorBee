@@ -159,7 +159,8 @@ body.fixed-nav {
         -ms-flex-direction: column;
         flex-direction: column;
         margin-top: 56px;
-        overflow: auto;
+        /*overflow: auto;*/
+        overflow: hidden;
         box-sizing: border-box;
     }
   #mainNav .navbar-collapse .navbar-sidenav > .nav-item {

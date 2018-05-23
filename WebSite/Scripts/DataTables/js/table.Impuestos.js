@@ -34,14 +34,19 @@ $(document).ready(function() {
 			}
 		],
 		select: true,
-		lengthChange: false
+        lengthChange: false,
+        buttons: [
+            { extend: "create", editor: editor },
+            { extend: "edit", editor: editor },
+            { extend: "remove", editor: editor }
+        ]
 	} );
 
-	new $.fn.dataTable.Buttons( table, [
+    /*new $.fn.dataTable.Buttons(table, [
 		{ extend: "create", editor: editor },
 		{ extend: "edit",   editor: editor },
 		{ extend: "remove", editor: editor }
-	] );
+	] );*/
 
 	table.buttons().container()
 		.appendTo( $('.col-md-6:eq(0)', table.table().container() ) );

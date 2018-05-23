@@ -11,12 +11,14 @@
   <meta name="author" content="">
   <title>Simulador</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-   <!-- Bootstrap core CSS-->
-         <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-   <!-- Fuentes personalizadas para esta plantilla Iconos-->
-        <link href="../Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  
-   <!-- Estilos personalizados para esta plantilla-->
-        <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
+   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
+           <!-- Bootstrap core CSS-->
+                 <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+           <!-- Fuentes personalizadas para esta plantilla Iconos-->
+                <link href="../Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  
+           <!-- Estilos personalizados para esta plantilla-->
+                <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
+   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
 
      <!-- Estilo para TABLA en VPN
         <link href="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
@@ -62,7 +64,7 @@
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Simulador">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Estudio de Mercado</span>
+                                            <span class="nav-link-text">Estudio de Finaciero</span>
                                           </a>
                                             <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
@@ -95,28 +97,12 @@
                                                         <span class="nav-link-text">Gastos</span>
                                                       </a>
                                                 </li>
-                                            </ul>
-
-                                        </li>
-                                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tablas">
-                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb2" data-parent="#exampleAccordion">
-                                            <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Estudio Financiero</span>
-                                          </a>
-
-                                            <ul class="sidenav-second-level collapse" id="cb2">                                                                                               
-                                               <li>
-                                                       <a class="nav-link" href="#">
+                                                 <li>
+                                                       <a class="nav-link" href="van.aspx">
                                                           <i class="fa fa-bar-chart-o"></i>
                                                           <span class="nav-link-text">VAN</span>
                                                       </a>
                                                 </li> 
-                                                <li>
-                                                      <a class="nav-link" href="Vpn.aspx">
-                                                        <i class="fa fa-bar-chart-o"></i>
-                                                        <span class="nav-link-text">VPN</span>
-                                                      </a>
-                                                </li>
                                                  <li>
                                                        <a class="nav-link" href="#">
                                                           <i class="fa fa-bar-chart-o"></i>
@@ -129,11 +115,9 @@
                                                           <span class="nav-link-text">Punto de Equilibrio</span>
                                                       </a>
                                                 </li> 
-                                                
                                             </ul>
 
-
-                                        </li>
+                                        </li>                                        
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Componentes">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents2" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-wrench"></i>
@@ -407,14 +391,15 @@
 </form>
 
   
-    
-    <!-- jquery-->  
-        <script src="../Scripts/jquery-3.3.1.js"></script>
-    <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js-->
-         <script src="../Scripts/bootstrap.bundle.js"></script>
-        <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
-    <!-- Core plugin JavaScript-->
-        <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
+    <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR--> 
+            <!-- jquery-->  
+                <script src="../Scripts/jquery-3.3.1.js"></script>
+            <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js-->
+                 <script src="../Scripts/bootstrap.bundle.js"></script> <!--Problemas con con este .js -->
+                 <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
+            <!-- Core plugin JavaScript-->
+                <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
+    <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR--> 
     <!-- Manejo de funcion de tabla en VPN-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>      
     <!-- pooper para efecto visual 

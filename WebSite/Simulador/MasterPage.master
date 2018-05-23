@@ -370,7 +370,7 @@
       </div>
     </footer>
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top " href="#page-top">
+    <a class="scroll-to-top" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
@@ -406,12 +406,13 @@
 
 </form>
 
-    
   
+    
     <!-- jquery-->  
         <script src="../Scripts/jquery-3.3.1.js"></script>
     <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js
-        <script src="../Scripts/bootstrap.bundle.js"></script>-->
+         <script src="../Scripts/bootstrap.bundle.js"></script>-->
+        <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
     <!-- Core plugin JavaScript
         <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  -->
     <!-- Manejo de funcion de tabla en VPN-->

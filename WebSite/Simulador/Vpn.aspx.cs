@@ -16,7 +16,7 @@ public partial class User_Vpn : System.Web.UI.Page
         
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
         Inversion.TextChanged += new EventHandler(this.EventoInversion); //
-        theDiv.Visible = false;
+        ResultadosVPN.Visible = false;
     }
 
     private async void GreetingBtn_Click(Object sender, EventArgs e)
@@ -71,7 +71,7 @@ public partial class User_Vpn : System.Web.UI.Page
                                  $('#myModal2').modal({ show: false }); });
                             </script>";
             ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
-            theDiv.Visible = true;
+            ResultadosVPN.Visible = true;
             System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 1");
         }
         );

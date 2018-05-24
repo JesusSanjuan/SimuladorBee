@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<form>
 <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item">  
@@ -69,11 +70,10 @@
                                                 <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"   runat="server" OnClientClick="return false;"/>
                                           </div>
                                           <div class="col">
-                                               <asp:Button id="Continuar" 	CssClass="btn btn-primary"  Text="Continuar"   runat="server"/> <i class="fa fa-angle-right"></i>
+                                               <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Siguiente"  runat="server"/>
+                                               
                                           </div>
                                         </div>
-                                
-                    
                      
                  </div>  
           </div>
@@ -110,7 +110,7 @@
                 </div>
             </div> 
 <!-- The Modal -->
-
+</form>
 
 </asp:Content>
 

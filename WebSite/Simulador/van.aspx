@@ -15,7 +15,6 @@
             <h1><i class="fa fa-line-chart"></i>  Calculo de Valor Actual Neto (VAN)</h1>
       </div>
   </div>
-  <div class="card-body">
             <p> A continuacion usted podra calcular el Valor Actual Neto (VAN)</p>
               <div class="form-row">
                             <div class="col-md-3 mb-4">
@@ -24,6 +23,7 @@
                                             <div class="input-group-append">
                                                  <span class="input-group-text" id="inputGroupPrepend0">$</span>
                                                  <span class="input-group-text">0.00</span>
+                                                
                                             </div>
                                                 <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion"  runat="server" ToolTip="Ingrese valor ejemplo" onkeypress="formatoMoneda(this.value)" required="required" />
                                             <div class="invalid-feedback">                       
@@ -92,7 +92,7 @@
               </div>
               <div class="form-row">     
                             <div class="col-md-4 mb-2">
-                              <label for="validationCustom06">Plazo (n)</label>
+                              <label for="validationCustom05">Plazo (n)</label>
                                       <div class="input-group">                   
                                            <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" required="required"/> 
                    
@@ -133,7 +133,7 @@
                     </div>
                     </div>
             </div>
-   </div>  
+    
 <!-- The Modal -->
               <div class="modal fade" id="myModal" >
                 <div class="modal-dialog">

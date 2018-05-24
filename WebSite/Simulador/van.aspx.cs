@@ -15,7 +15,7 @@ public partial class User_van : System.Web.UI.Page
     {
         
         Button1.Click += new EventHandler(this.GreetingBtn_Click);
-        Inversion.TextChanged += new EventHandler(this.EventoInversion); //
+       // Inversion.TextChanged += new EventHandler(this.EventoInversion); 
         ResultadosVAN.Visible = false;
     }
 
@@ -98,7 +98,7 @@ public partial class User_van : System.Web.UI.Page
         {
             VAN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
             /* Calculo de la TIR */
-            TIR.Text = Convert.ToString((CalcularTIR(fTMAR / 100)) * 100) + " %";
+            TIR.Text = Convert.ToString((Math.Round(CalcularTIR(fTMAR / 100),6)) * 100) + " %";
         }
         else
         {
@@ -181,11 +181,11 @@ public partial class User_van : System.Web.UI.Page
         return ValorTIR;
     }
 
-    private void EventoInversion(Object sender, EventArgs e)
+   /* private void EventoInversion(Object sender, EventArgs e)
     {
          System.Diagnostics.Debug.WriteLine("ALGO PASA ");
 
-    }
+    }*/
 
     
 

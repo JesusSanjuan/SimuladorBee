@@ -399,8 +399,7 @@
             <!-- Core plugin JavaScript-->
                 <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
             <!-- Custom scripts for all pages-->
-                 <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>
-            
+                 <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>            
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR--> 
     <!-- Manejo de funcion de tabla en VPN-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>      
@@ -420,7 +419,6 @@
     <!--Experimentando con tabla dinamica en impuestos.aspx -->
 
     <!-- plugin editable-->
-
         <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>
         <script src="../Scripts/editable-table/edittable.js"></script> 

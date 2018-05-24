@@ -1,6 +1,7 @@
 
 $(document).ready(function () {    
-    $('#dataTableVAN').DataTable({        
+    var table = $('#dataTableVAN').DataTable({ 
+        destroy: true,// Muestra error
         language: {
             processing: "Obteniendo resultados...",
             search: "Buscar en la tabla:",

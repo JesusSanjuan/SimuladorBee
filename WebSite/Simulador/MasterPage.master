@@ -68,7 +68,7 @@
                                           </a>
                                             <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
-                                                      <a class="nav-link" href="#">
+                                                      <a class="nav-link" href="amortizacion.aspx">
                                                         <i class="fa fa-bar-chart-o"></i>
                                                         <span class="nav-link-text">Amortizacion</span>
                                                       </a>
@@ -412,11 +412,12 @@
 
 
      <!--Experimentando con tabla dinamica en impuestos.aspx -->
-        <script src="../Scripts/DataTables/datatables.min.js"></script>
-        <script src="../Scripts/DataTables/js/dataTables.editor.min.js"></script>        
-        <script src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
-        <script src="../Scripts/DataTables/js/table.Impuestos.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/datatables.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.editor.min.js"></script>        
+        <script type="text/javascript" src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/table.Impuestos.js"></script>
     <!--Experimentando con tabla dinamica en impuestos.aspx -->
+
 
     <!-- plugin editable-->
         <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>

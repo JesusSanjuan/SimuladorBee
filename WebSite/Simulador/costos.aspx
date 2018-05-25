@@ -14,24 +14,24 @@
       <div class="card-header">
             <h1><i class="fa fa-money"></i>  Calculos de costos</h1>
       </div>
-                 <ul class="nav nav-tabs">
+                 <ul class="nav nav-tabs" id="myTab" role="tablist">
         		            <li class="nav-item">
-        			            <a href="#Costos1" class="nav-link active" role="tab" data-toggle="tab"> Costos 1</a>
+        			            <a href="#Costos1" id="NCostos1" class="nav-link active" role="tab" data-toggle="tab"> Costos 1</a>
         		            </li>
 
         		            <li class="nav-item">
-        			            <a href="#Costos2" class="nav-link" role="tab" data-toggle="tab">Costos 2</a>
+        			            <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos 2</a>
         		            </li>
 
         		            <li class="nav-item">
-        			            <a href="#Costos3" class="nav-link" role="tab" data-toggle="tab">Costos 3</a>
+        			            <a href="#Costos3" id="NCostos3"  class="nav-link" role="tab" data-toggle="tab">Costos 3</a>
         		            </li>
 
         		            <li class="nav-item">
-        			            <a href="#Costos4" class="nav-link" role="tab" data-toggle="tab">Costos 4</a>
+        			            <a href="#Costos4" id="NCostos4" class="nav-link" role="tab" data-toggle="tab">Costos 4</a>
         		            </li>
 				            <li class="nav-item">
-        			            <a href="#Costos5" class="nav-link" role="tab" data-toggle="tab">Costos 5</a>
+        			            <a href="#Costos5"id="NCostos5"  class="nav-link" role="tab" data-toggle="tab">Costos 5</a>
         		            </li>
                   </ul>
             
@@ -64,9 +64,26 @@
                                                 </tfoot>
                                             </table>
                                         </div>
+
+                 
+                          <div class="row">
+                            <div class="col">
+                                <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
+                            </div>
+
+
+                               <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                     <ContentTemplate>
+                                                    <div class="col">
+                                                        <asp:Button id="Continuar"  CssClass="btn btn-primary" onclick="Continuar_Click" Text="Siguiente"  runat="server"/>                                               
+                                                    </div>
+                                         </ContentTemplate>
+                                    </asp:UpdatePanel>
+                        </div>
                  </div>  
-          </div>
-          <div role="tabpanel" class="tab-pane fade" id="Costos2">2
+          </div> 
+          <div role="tabpanel" class="nav-link fade" id="Costos2">2
           </div>
           <div role="tabpanel" class="tab-pane fade" id="Costos3">3
           </div>
@@ -74,18 +91,6 @@
           </div>
           <div role="tabpanel" class="tab-pane fade" id="Costos5">5
           </div>
-
-
-                                         <div class="row">
-                                          <div class="col">
-                                                <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"   runat="server" OnClientClick="return false;"/>
-                                          </div>
-                                          <div class="col">
-                                               <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Siguiente"  runat="server"/>
-                                               
-                                          </div>
-                                        </div>
-
     </div>
 
                                      
@@ -93,26 +98,28 @@
 
 <!-- The Modal -->
             <div class="modal fade" id="Continuacioncostos" >
-            <div class="modal-dialog">
-                <div class="modal-content">      
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                            <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Continuar</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>        
-                    <!-- Modal body -->
-                    <div class="modal-body" id="modal-text-body">
-                        Desea realmente continuar con el ingreso de costos?
+                <div class="modal-dialog">
+                    <div class="modal-content">      
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                                <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Continuar</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>        
+                        <!-- Modal body -->
+                        <div class="modal-body" id="modal-text-body">
+                            Desea realmente continuar con el ingreso de costos?
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button  id="costo_cancel" type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                            <button  id="costo_continuar" type="button" class="btn btn-danger" data-dismiss="modal">Continuar</button>
+                        </div>
                     </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-                </div>
+                 </div>
             </div> 
 <!-- The Modal -->
+  
+                
 
 </asp:Content>
 

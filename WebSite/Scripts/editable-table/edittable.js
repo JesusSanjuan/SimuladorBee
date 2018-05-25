@@ -7,7 +7,7 @@ $(document).ready(function () {
         $('#costTable').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();       
         $("#na").html("");
     });
-
+    
     $("body").on("click", ".remove", function () {
         $(this).closest("tr").remove();
     });

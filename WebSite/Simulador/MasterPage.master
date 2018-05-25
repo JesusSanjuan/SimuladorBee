@@ -414,11 +414,25 @@
 
 
      <!--Experimentando con tabla dinamica en impuestos.aspx -->
-        <script type="text/javascript" src="../Scripts/DataTables/datatables.min.js"></script>
+        <!--<script type="text/javascript" src="../Scripts/DataTables/datatables.min.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.editor.min.js"></script>        
         <script type="text/javascript" src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
-        <script type="text/javascript" src="../Scripts/DataTables/js/table.Impuestos.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/table.Impuestos.js"></script>-->
     <!--Experimentando con tabla dinamica en impuestos.aspx -->
+
+
+    <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/buttons.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.editor.min.js"></script>  
+    <script type="text/javascript" src="../Scripts/DataTables/js/editor.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/table.Impuestos.js"></script>
+
+    
+
+
 
 
     <!-- plugin editable-->

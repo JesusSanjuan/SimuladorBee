@@ -25,6 +25,18 @@
                 }
             }
         });
+
+
+        /*$("body").on("click", "#MainContent_guardar", function () {
+            var table = $('#costTable').DataTable();
+
+            var plainArray = table
+                .column(0)
+                .data()
+                .toArray();
+
+            alert('The table  ' + plainArray + ' records');
+        });*/
 });
 
 

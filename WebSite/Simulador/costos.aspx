@@ -70,16 +70,23 @@
                             <div class="col">
                                 <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                             </div>
+                            
 
 
                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                      <ContentTemplate>
-                                                    <div class="col">
-                                                        <asp:Button id="Continuar"  CssClass="btn btn-primary" onclick="Continuar_Click" Text="Siguiente"  runat="server"/>                                               
-                                                    </div>
-                                         </ContentTemplate>
-                                    </asp:UpdatePanel>
+                                        <div class="col">
+                                            <asp:LinkButton runat="server" ID="guardar" onclick="setDataTable" CssClass="btn btn-primary">
+                                                <i class='fa fa-save'></i> Guardar
+                                            </asp:LinkButton>
+                                               
+                                        </div>
+                                        <div class="col">
+                                            <asp:Button id="Continuar"  CssClass="btn btn-primary" onclick="Continuar_Click" Text="Siguiente"  runat="server"/>                                               
+                                        </div>
+                                      </ContentTemplate>
+                                </asp:UpdatePanel>
                         </div>
                  </div>  
           </div> 

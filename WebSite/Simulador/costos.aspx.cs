@@ -10,7 +10,7 @@ public partial class Simulador_costos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+      
     }
 
     protected void Continuar_Click(Object sender, EventArgs e)
@@ -26,8 +26,16 @@ public partial class Simulador_costos : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
     }
 
-   /* protected void add_row_Click(Object sender, EventArgs e)
+
+    protected void setDataTable(Object sender, EventArgs e)
     {
-       
-    }*/
+
+        System.Diagnostics.Debug.WriteLine("SomeText");
+
+    }
+
+    /* protected void add_row_Click(Object sender, EventArgs e)
+     {
+
+     }*/
 }

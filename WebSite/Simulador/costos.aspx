@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-<form>
+
 <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item">  
@@ -64,17 +64,6 @@
                                                 </tfoot>
                                             </table>
                                         </div>
-                           
-                                        <div class="row">
-                                          <div class="col">
-                                                <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"   runat="server" OnClientClick="return false;"/>
-                                          </div>
-                                          <div class="col">
-                                               <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Siguiente"  runat="server"/>
-                                               
-                                          </div>
-                                        </div>
-                     
                  </div>  
           </div>
           <div role="tabpanel" class="tab-pane fade" id="Costos2">2
@@ -85,7 +74,21 @@
           </div>
           <div role="tabpanel" class="tab-pane fade" id="Costos5">5
           </div>
+
+
+                                         <div class="row">
+                                          <div class="col">
+                                                <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"   runat="server" OnClientClick="return false;"/>
+                                          </div>
+                                          <div class="col">
+                                               <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Siguiente"  runat="server"/>
+                                               
+                                          </div>
+                                        </div>
+
     </div>
+
+                                     
 </div>
 
 <!-- The Modal -->
@@ -110,7 +113,6 @@
                 </div>
             </div> 
 <!-- The Modal -->
-</form>
 
 </asp:Content>
 

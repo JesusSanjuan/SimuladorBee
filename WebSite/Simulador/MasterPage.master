@@ -403,8 +403,8 @@
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR--> 
     <!-- Manejo de funcion de tabla en VPN-->
         <script src="../Scripts/startbootstrap/js/sb-admin-datatables.js"></script>      
-    <!-- pooper para efecto visual 
-        <script src="../Scripts/umd/popper.js"></script> -->
+    <!-- pooper para efecto de ayuda -->
+        <script src="../Scripts/umd/popper.js"></script> 
     <!-- Scrip para TABLA de VPN
         <script src="../Scripts/startbootstrap/vendor/datatables/jquery.dataTables.js"></script>
         <script src="../Scripts/startbootstrap/vendor/datatables/dataTables.bootstrap4.js"></script>

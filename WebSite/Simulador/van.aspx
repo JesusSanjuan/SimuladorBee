@@ -7,15 +7,21 @@
                     <a href="Index.aspx">Inicio</a>
                 </li>
                 <li class="breadcrumb-item active">Valor Actual Neto</li>
-              </ol>
-     </nav>   
-
+              </ol>            
+     </nav>  
   <div class="card align-middle">  
       <div class="card-header">
             <h1><i class="fa fa-line-chart"></i>  Calculo de Valor Actual Neto (VAN)</h1>
       </div>
   </div>
-            <p> A continuacion usted podra calcular el Valor Actual Neto (VAN)</p>
+
+     <div class="row">
+            <div class="col-10 "> <p> A continuacion usted podra calcular el Valor Actual Neto (VAN)</p></div>
+            <div class="col-2 " >
+                <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="Necesitas ayuda?" data-content="Y aquí hay un contenido increíble. Es muy atractivo. "><i class="fa fa-ellipsis-v"></i></a>
+            </div>
+    </div>
+           
               <div class="form-row">
                             <div class="col-md-3 mb-4">
                               <label for="validationCustom01">Inversion</label>
@@ -115,12 +121,17 @@
 
               <div class="form-row">  
                     <div class="col-md-5 mb-5">
-                        <div class="form-check">
-                            <asp:CheckBox Cssclass="form-check-input"  id="invalidCheck" runat="server"   Text="   Acepta los terminos y condiciones" required="required" />
-                            <div class="invalid-feedback">
-                                    Debe aceptar los terminos y condiciones antes de calcular.
+                        <div class="form-group">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                              <label class="form-check-label" for="invalidCheck">
+                                    Acepta los términos y condiciones
+                              </label>
+                              <div class="invalid-feedback">
+                                 Debe aceptar los terminos antes de enviar
+                              </div>
                             </div>
-                        </div>
+                          </div>        
                     </div>
               </div>
     
@@ -129,11 +140,10 @@
                     <div class="form-row">   
                             <div class="col-md-3 mb-3">
                                     <asp:Button id="Button1" 	CssClass="btn btn-primary"  Text="Calcular"  runat="server"/>
-                            </div>
+                            </div>                            
                     </div>
                     </div>
-            </div>
-    
+            </div>    
 <!-- The Modal -->
               <div class="modal fade" id="myModal" >
                 <div class="modal-dialog">
@@ -397,7 +407,7 @@
                           event.stopPropagation();
                         }
                           form.classList.add('was-validated');
-                          form.classList.add('was-feedback');
+                          //form.classList.add('was-feedback');
                       }, false);
                     });
                   }, false);  
@@ -439,6 +449,16 @@
                     }
                 return result;
             }
+
+
+$(function () {
+    $('[data-toggle="popover"]').popover()
+
+    $('.example-popover').popover({
+    container: 'body'
+  })
+
+})
         </script>
 <!-- Probando para poner formato moneda-->
 </asp:Content>

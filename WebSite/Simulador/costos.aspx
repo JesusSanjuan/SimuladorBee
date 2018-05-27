@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
-
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-
 <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item">  
@@ -128,5 +128,12 @@
   
                 
 
+</asp:Content>
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+     <!-- plugin editable-->
+        <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
+        <script src="../Scripts/editable-table/numeric-input-example.js"></script>
+        <script src="../Scripts/editable-table/edittable.js"></script> 
+    <!-- plugin editable-->
 </asp:Content>
 

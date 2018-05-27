@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="amortizacion.aspx.cs" Inherits="Simulador_Default" %>
-
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <nav aria-label="breadcrumb">
@@ -110,10 +111,13 @@
             </div>
 
         </div>
-
-
-
     </div>
-
+</asp:Content>
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+     <!-- plugin editable-->
+        <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
+        <script src="../Scripts/editable-table/numeric-input-example.js"></script>
+        <script src="../Scripts/editable-table/edittable.js"></script> 
+    <!-- plugin editable-->
 </asp:Content>
 

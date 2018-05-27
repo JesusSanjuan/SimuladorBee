@@ -9,25 +9,20 @@ using Newtonsoft.Json;
 public partial class User_van : System.Web.UI.Page
 {
 
-    Single ResultadoVPN;
+   
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        Button1.Click += new EventHandler(this.GreetingBtn_Click);
-       // Inversion.TextChanged += new EventHandler(this.EventoInversion); 
         ResultadosVAN.Visible = false;
     }
 
-    private async void GreetingBtn_Click(Object sender, EventArgs e)
+    protected  void GreetingBtn_Click(Object sender, EventArgs e)
     {
+        Single ResultadoVPN;
+        //System.Threading.Thread.Sleep(Convert.ToInt32(2000));
         
-                       await ProcesoAsincrono0(); //Tratando de mostrar efecto visual
-        ResultadoVPN = await ProcesoAsincrono();
-        if (ResultadoVPN != 0) // Ocualtar efecto visual "Desactivado"
-        {
-           // efecto.Visible = false;
-        }
+        ResultadoVPN = CalculoVPN();
+        ResultadosVAN.Visible = true;
 
         var Texto="";
         if (ResultadoVPN > 0)
@@ -39,47 +34,17 @@ public partial class User_van : System.Web.UI.Page
         {
             Texto = " Se recomienda rechazar la inversión";           
         }
-        string script = @"<script type='text/javascript'>
+        string script2 = @"<script type='text/javascript'>
                                  $(document).ready(function () {
                                  $('#myModal2').modal({ show: false }); 
                                  $('#modal-text-body').text('" + Texto + "');" +                                 
                                 "$('#myModal').modal({ show: true }); }); " +                               
         "</script>";
-        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);     
-    }
-
-     async System.Threading.Tasks.Task<Single> ProcesoAsincrono ()
-    {
-        Single retorno = 0;
-        await System.Threading.Tasks.Task.Run(() =>
-                {
-                    retorno =  CalculoVPN();
-                    System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 2");
-                }            
-            );
-        return retorno;
-    }
-
-
-    async System.Threading.Tasks.Task ProcesoAsincrono0()
-    {
-       
-        await System.Threading.Tasks.Task.Run(() =>
-        {
-            string script = @"<script type='text/javascript'>
-                                 $(document).ready(function () {
-                                 $('#myModal2').modal({ show: false }); });
-                            </script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
-            ResultadosVAN.Visible = true;
-            System.Diagnostics.Debug.WriteLine("EJECUTANDO PROCESO ASINCRONO 1");
-        }
-        );
+        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script2, false);     
     }
 
     public Single CalculoVPN()
-    {
-        
+    {        
         String timeC;
         String repArrayC;
         String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
@@ -87,7 +52,7 @@ public partial class User_van : System.Web.UI.Page
         Single fTMAR = Convert.ToSingle(TMAR.Text);
         int Periodo = Convert.ToInt32(n.Text);
         int negativos;
-        Single num;
+        Single num, ResultadoVPN;
 
         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
@@ -134,7 +99,7 @@ public partial class User_van : System.Web.UI.Page
         return ResultadoVPN;
     }
 
-    Single CalcularVPN(Single fTMAR)
+    public Single CalcularVPN(Single fTMAR)
     {
         Single P = Convert.ToSingle(Inversion.Text);
         Single fFNE = Convert.ToSingle(FNE.Text);
@@ -155,7 +120,7 @@ public partial class User_van : System.Web.UI.Page
         return fVPN;
     }
 
-    Single CalcularTIR(Single ValorTIR)
+    public Single CalcularTIR(Single ValorTIR)
     {
         Single TasaIncDec;
         Single Resultado;
@@ -180,12 +145,6 @@ public partial class User_van : System.Web.UI.Page
 
         return ValorTIR;
     }
-
-   /* private void EventoInversion(Object sender, EventArgs e)
-    {
-         System.Diagnostics.Debug.WriteLine("ALGO PASA ");
-
-    }*/
 
     
 

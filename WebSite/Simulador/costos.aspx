@@ -2,106 +2,201 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-<nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
             <li class="breadcrumb-item">  
                 <a href="Index.aspx">Inicio</a>
             </li>
             <li class="breadcrumb-item active">Costos</li>
-            </ol>
-</nav>  
-<div class="card align-middle">  
-      <div class="card-header">
+        </ol>
+    </nav> 
+    <div class="card align-middle">  
+        <div class="card-header">
             <h1><i class="fa fa-money"></i>  Calculos de costos</h1>
-      </div>
-                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-        		            <li class="nav-item">
-        			            <a href="#Costos1" id="NCostos1" class="nav-link active" role="tab" data-toggle="tab"> Costos 1</a>
-        		            </li>
-
-        		            <li class="nav-item">
-        			            <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos 2</a>
-        		            </li>
-
-        		            <li class="nav-item">
-        			            <a href="#Costos3" id="NCostos3"  class="nav-link" role="tab" data-toggle="tab">Costos 3</a>
-        		            </li>
-
-        		            <li class="nav-item">
-        			            <a href="#Costos4" id="NCostos4" class="nav-link" role="tab" data-toggle="tab">Costos 4</a>
-        		            </li>
-				            <li class="nav-item">
-        			            <a href="#Costos5"id="NCostos5"  class="nav-link" role="tab" data-toggle="tab">Costos 5</a>
-        		            </li>
-                  </ul>
-            
-  
-    <div class="tab-content">
-           <div role="tabpanel" class="tab-pane fade show active" id="Costos1">  
-              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
-                                      
-                    <div class="card-header">
-                        <h5><i class="fa fa-table"></i>  Tabla</h5>
-                    </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="costTable" >
-                                                <thead>
-                                                    <tr>
-                                                        <th >Concepto</th>
-                                                        <th >$ Costo</th>
-                                                        <th ></th>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <!--<a class="nav-link active" id="home-tab" data-toggle="tab" href="#Costos1" role="tab" aria-controls="home" aria-selected="true">Home</a>-->
+                <a href="#Costos1" id="NCostos1" class="nav-link active" role="tab" data-toggle="tab"> Costos de Producción</a>
+            </li>
+            <li class="nav-item">
+                <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos de Distribución</a>
+            </li>
+            <li class="nav-item">
+                <a href="#Costos3" id="NCostos3"  class="nav-link" role="tab" data-toggle="tab">Costos de Administración</a>
+            </li>
+            <li class="nav-item">
+                <a href="#Costos4" id="NCostos4"  class="nav-link" role="tab" data-toggle="tab">Costos de financiamiento </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="Costos1" role="tabpanel" aria-labelledby="producción">
+              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+                <div class="card-header">
+                    <h5><i class="fa fa-table"></i>  Costos de Producción</h5><!-- son los costos que se generan en el proceso de transformar la materia prima en productos terminados-->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="costTable" >
+                        <thead>
+                            <tr>
+                                <th >Concepto</th>
+                                <th >$ Costo</th>
+                                <th ></th>
                 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th><strong>TOTAL</strong></th>
-                                                        <th></th>
-                                                        <th id="na"></th>
-                                                    </tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-
-                 
-                          <div class="row">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th><strong>TOTAL</strong></th>
+                                <th></th>
+                                <th class="na"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <asp:Button id="add_row" 	CssClass="btn btn-primary add_row "  Text="Agregar"  OnClientClick="return false;" runat="server"/>
+                    </div>
+                    <div class="col">
+                        <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                            <i class='fa fa-save'></i> Guardar
+                        </asp:LinkButton>
+                    </div>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
                             <div class="col">
-                                <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
+                                <asp:Button id="Continuar"  CssClass="btn btn-primary" onclick="Continuar_Click" Text="Siguiente"  runat="server"/>                                               
                             </div>
-                            
-
-
-                               <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                     <ContentTemplate>
-                                        <div class="col">
-                                            <asp:LinkButton runat="server" ID="guardar" onclick="setDataTable" CssClass="btn btn-primary">
-                                                <i class='fa fa-save'></i> Guardar
-                                            </asp:LinkButton>
-                                               
-                                        </div>
-                                        <div class="col">
-                                            <asp:Button id="Continuar"  CssClass="btn btn-primary" onclick="Continuar_Click" Text="Siguiente"  runat="server"/>                                               
-                                        </div>
-                                      </ContentTemplate>
-                                </asp:UpdatePanel>
+                            </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="Costos2" role="tabpanel" aria-labelledby="Distribución">
+              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+                    <div class="card-header">
+                        <h5><i class="fa fa-table"></i> Costos de Distribución</h5><!-- son los que se generan por llevar el producto o servicio hasta el consumidor final-->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="costTable2" >
+                            <thead>
+                                <tr>
+                                    <th >Concepto</th>
+                                    <th >$ Costo</th>
+                                    <th ></th>
+                
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL</strong></th>
+                                    <th></th>
+                                    <th class="na"></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <asp:Button id="Button1" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
-                 </div>  
-          </div> 
-          <div role="tabpanel" class="nav-link fade" id="Costos2">2
+                        <div class="col">
+                            <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                                <i class='fa fa-save'></i> Guardar
+                            </asp:LinkButton>
+                        </div>
+                        <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
+                    </div>
+                </div>
           </div>
-          <div role="tabpanel" class="tab-pane fade" id="Costos3">3
+          <div class="tab-pane fade" id="Costos3" role="tabpanel" aria-labelledby="Administración">
+              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+                    <div class="card-header">
+                        <h5><i class="fa fa-table"></i> Costos de Administración: </h5><!-- son los generados en las áreas administrativas de la empresa. Se denominan gastos-->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="costTable3" >
+                            <thead>
+                                <tr>
+                                    <th >Concepto</th>
+                                    <th >$ Costo</th>
+                                    <th ></th>
+                
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL</strong></th>
+                                    <th></th>
+                                    <th class="na"></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <asp:Button id="Button2" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
+                        </div>
+                        <div class="col">
+                            <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                                <i class='fa fa-save'></i> Guardar
+                            </asp:LinkButton>
+                        </div>
+                        <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
+                    </div>
+                </div>
           </div>
-          <div role="tabpanel" class="tab-pane fade" id="Costos4">4
+          <div class="tab-pane fade" id="Costos4" role="tabpanel" aria-labelledby="financiamiento: ">
+              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+                    <div class="card-header">
+                        <h5><i class="fa fa-table"></i> Costos de Financiamiento </h5><!-- son los que se generan por el uso de recursos de capital.-->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="costTable4" >
+                            <thead>
+                                <tr>
+                                    <th >Concepto</th>
+                                    <th >$ Costo</th>
+                                    <th ></th>
+                
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL</strong></th>
+                                    <th></th>
+                                    <th class="na"></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <asp:Button id="Button3" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
+                        </div>
+                        <div class="col">
+                            <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                                <i class='fa fa-save'></i> Guardar
+                            </asp:LinkButton>
+                        </div>
+                        <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
+                    </div>
+                </div>
           </div>
-          <div role="tabpanel" class="tab-pane fade" id="Costos5">5
-          </div>
-    </div>
+        </div>
 
-                                     
-</div>
+    </div>
+    
 
 <!-- The Modal -->
             <div class="modal fade" id="Continuacioncostos" >

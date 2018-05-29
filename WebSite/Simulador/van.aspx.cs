@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,42 +10,58 @@ using Newtonsoft.Json;
 public partial class User_van : System.Web.UI.Page
 {
 
-   
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
         ResultadosVAN.Visible = false;
+
+        /*  if (!this.IsPostBack)  
+          {  
+              DataTable dt = new DataTable();  
+              dt.Columns.AddRange(new DataColumn[3] { new DataColumn("Id", typeof(int)),  
+                                  new DataColumn("Name", typeof(string)),  
+                                  new DataColumn("Country",typeof(string)) });  
+              dt.Rows.Add(1, "Jonathan Orozco", "Monterrey");  
+              dt.Rows.Add(2, "Jesus Corona", "México");  
+              dt.Rows.Add(3, "Cirilo Zaucedo", "Tijuana");  
+              dt.Rows.Add(4, "Humberto Suazo", "Chile");
+              myTable.DataSource = dt;
+              myTable.DataBind();  
+              Tabla con boostrapo contrtolada desde c# pero no se logra ponerle la libreria DataTable
+          }  */
+
     }
 
-    protected  void GreetingBtn_Click(Object sender, EventArgs e)
+    protected void GreetingBtn_Click(Object sender, EventArgs e)
     {
         Single ResultadoVPN;
         //System.Threading.Thread.Sleep(Convert.ToInt32(2000));
-        
+        CreacionTabla();
         ResultadoVPN = CalculoVPN();
         ResultadosVAN.Visible = true;
 
-        var Texto="";
+        var Texto = "";
         if (ResultadoVPN > 0)
         {
-            Texto="Se recomienda aceptar la inversión";
+            Texto = "Se recomienda aceptar la inversión";
 
         }
         else
         {
-            Texto = " Se recomienda rechazar la inversión";           
+            Texto = " Se recomienda rechazar la inversión";
         }
         string script2 = @"<script type='text/javascript'>
                                  $(document).ready(function () {
                                  $('#myModal2').modal({ show: false }); 
-                                 $('#modal-text-body').text('" + Texto + "');" +                                 
-                                "$('#myModal').modal({ show: true }); }); " +                               
+                                 $('#modal-text-body').text('" + Texto + "');" +
+                                "$('#myModal').modal({ show: true }); }); " +
         "</script>";
-        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script2, false);     
+        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script2, false);
     }
 
     public Single CalculoVPN()
-    {        
+    {
         String timeC;
         String repArrayC;
         String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
@@ -63,7 +80,7 @@ public partial class User_van : System.Web.UI.Page
         {
             VAN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
             /* Calculo de la TIR */
-            TIR.Text = Convert.ToString((Math.Round(CalcularTIR(fTMAR / 100),6)) * 100) + " %";
+            TIR.Text = Convert.ToString((Math.Round(CalcularTIR(fTMAR / 100), 6)) * 100) + " %";
         }
         else
         {
@@ -146,7 +163,30 @@ public partial class User_van : System.Web.UI.Page
         return ValorTIR;
     }
 
-    
+    public void CreacionTabla()
+    {
+        Random r = new Random();
+        int aleatorio = r.Next(200000, 2500000);
 
+        Random r2 = new Random();
+        int aleatorio2 = r2.Next(200000, 2500000);
+
+        int Periodo = Convert.ToInt32(n.Text);
+        String[,] ArregloDatos = new String[Periodo+1, 7];
+        ArregloDatos[0,0] = "Año 0";
+
+        /*Cambiar cuado aya valores verdaderos de costos*/
+             ArregloDatos[0,1] = Convert.ToString(aleatorio);
+        /*Cambiar cuado aya valores verdaderos de costos*/
+        for (int i = 1; i <= Periodo; i++)
+        {
+            for (int j = 1; j <= Periodo; j++)
+            {
+                ArregloDatos[j, i-1] = "Año " + Convert.ToString(j);
+            }
+        }
+        
+
+    }
 }
 

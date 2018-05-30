@@ -1,8 +1,8 @@
 
-$(document).ready(function () {
-
-  
-        var table = $('#dataTableVAN').DataTable({
+    function Ingreso_datos(ArregloDatos) {
+        alert(ArregloDatos);
+        var data = JSON.parse(JSON.stringify(ArregloDatos));
+        var table = document.getElementById('dataTableVAN').DataTable({
             language: {
                 processing: "Obteniendo resultados...",
                 search: "Buscar en la tabla:",
@@ -25,17 +25,19 @@ $(document).ready(function () {
                     sortDescending: ": Activar para ordenar la columna en orden descendente"
                 }
             }
-    });
-
-    
-   /* function Ingreso_datos(ArregloDatos) {
-        var data = JSON.parse(JSON.stringify(ArregloDatos));
-        $('##dataTableVAN').DataTable({
-            data: data
         });
-    }*/
-});
 
+    }
+    
+
+
+/*function Ingreso_datos(ArregloDatos) {
+    alert(ArregloDatos);
+    var data = JSON.parse(JSON.stringify(ArregloDatos));
+    $('##dataTableVAN').DataTable({
+        data: data
+    });
+}*/
 
 function formatoMoneda(number) {
 
@@ -99,7 +101,6 @@ $(function () {
             });
         }, false);
     });*/
-
 
 
 

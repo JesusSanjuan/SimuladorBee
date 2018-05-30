@@ -166,26 +166,57 @@ public partial class User_van : System.Web.UI.Page
     public void CreacionTabla()
     {
         Random r = new Random();
-        int aleatorio = r.Next(200000, 2500000);
+        int Costos = r.Next(200000, 2500000);
 
         Random r2 = new Random();
-        int aleatorio2 = r2.Next(200000, 2500000);
+        int Ingresos = r2.Next(500000, 2500000);
 
         int Periodo = Convert.ToInt32(n.Text);
-        String[,] ArregloDatos = new String[Periodo+1, 7];
+        String[,] ArregloDatos = new String[Periodo+1, 6];
         ArregloDatos[0,0] = "Año 0";
 
         /*Cambiar cuado aya valores verdaderos de costos*/
-             ArregloDatos[0,1] = Convert.ToString(aleatorio);
+             ArregloDatos[0,1] = "$ " + Inversion.Text;
         /*Cambiar cuado aya valores verdaderos de costos*/
-        for (int i = 1; i <= Periodo; i++)
-        {
+
             for (int j = 1; j <= Periodo; j++)
             {
-                ArregloDatos[j, i-1] = "Año " + Convert.ToString(j);
+                ArregloDatos[j,0] = "Año " + Convert.ToString(j);
             }
-        }
-        
+            for (int j = 1; j <= Periodo; j++)
+            {
+                ArregloDatos[j,1] = "$ " + Convert.ToString(Costos);
+            }
+            for (int j = 1; j <= Periodo; j++)
+            {
+                ArregloDatos[j, 2] = "$ " + Convert.ToSingle(Ingresos);
+            }
+            for (int j = 1; j <= Periodo; j++)
+            {
+                ArregloDatos[j, 3] = "$ " + Convert.ToSingle(FNE.Text);
+            }
+            for (int j = 1; j <= Periodo; j++)
+            {
+                for (int i = 1; i <= Periodo; i++)
+                {
+                    Single IngresoActual = (Convert.ToSingle(ArregloDatos[i, 2].Trim(new Char[] { '$', ' ' }))) / Convert.ToSingle(Math.Pow(1 + .1, i));
+                    ArregloDatos[j, 4] = "$ " + Convert.ToString(IngresoActual);
+                }
+            }
+
+
+
+            for (int j = 1; j <= Periodo; j++)
+            {
+                ArregloDatos[0, 5] = "-" + ArregloDatos[0, 1];
+                Single x = -1 * Convert.ToSingle(ArregloDatos[j - 1, 5].Trim(new Char[] { '$', ' ','-' }));
+                for (int i = 1; i <= Periodo; i++)
+                {
+                        Single Flujoneto = Convert.ToSingle(ArregloDatos[i, 3].Trim(new Char[] { '$', ' ' }));
+                        ArregloDatos[i,5]="$ "+Convert.ToString(x + Flujoneto);
+                 }
+            }
+
 
     }
 }

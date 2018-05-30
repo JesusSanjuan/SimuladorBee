@@ -28,12 +28,12 @@ $(document).ready(function () {
     });
 
     
-    function Ingreso_datos(ArregloDatos) {
+   /* function Ingreso_datos(ArregloDatos) {
         var data = JSON.parse(JSON.stringify(ArregloDatos));
         $('##dataTableVAN').DataTable({
             data: data
         });
-    }
+    }*/
 });
 
 

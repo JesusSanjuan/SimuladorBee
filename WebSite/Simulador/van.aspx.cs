@@ -212,8 +212,8 @@ public partial class User_van : System.Web.UI.Page
                     ArregloDatos[i,5]=Convert.ToString(x + Flujoneto);
             }
             String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
-            String comando = "Ingreso_datos("+ MatrizFinal + ")";
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
+           /* String comando = "Ingreso_datos("+ MatrizFinal + ")";
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);*/
     }
 }
 

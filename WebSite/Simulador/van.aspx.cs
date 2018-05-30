@@ -174,9 +174,9 @@ public partial class User_van : System.Web.UI.Page
         int Periodo = Convert.ToInt32(n.Text);
         String[,] ArregloDatos = new String[Periodo+1, 6];
         ArregloDatos[0,0] = "Año 0";
-
+        ArregloDatos[0, 2] = ArregloDatos[0, 3] = ArregloDatos[0, 4] = "";
         /*Cambiar cuado aya valores verdaderos de costos*/
-             ArregloDatos[0,1] = "$ " + Inversion.Text;
+        ArregloDatos[0,1] = "-" + Inversion.Text;
         /*Cambiar cuado aya valores verdaderos de costos*/
 
             for (int j = 1; j <= Periodo; j++)
@@ -185,39 +185,33 @@ public partial class User_van : System.Web.UI.Page
             }
             for (int j = 1; j <= Periodo; j++)
             {
-                ArregloDatos[j,1] = "$ " + Convert.ToString(Costos);
+                ArregloDatos[j,1] = Convert.ToString(Costos);
             }
             for (int j = 1; j <= Periodo; j++)
             {
-                ArregloDatos[j, 2] = "$ " + Convert.ToSingle(Ingresos);
+                ArregloDatos[j, 2] = Convert.ToString(Ingresos);
             }
             for (int j = 1; j <= Periodo; j++)
             {
-                ArregloDatos[j, 3] = "$ " + Convert.ToSingle(FNE.Text);
+                ArregloDatos[j, 3] = FNE.Text;
             }
             for (int j = 1; j <= Periodo; j++)
             {
                 for (int i = 1; i <= Periodo; i++)
                 {
                     Single IngresoActual = (Convert.ToSingle(ArregloDatos[i, 2].Trim(new Char[] { '$', ' ' }))) / Convert.ToSingle(Math.Pow(1 + .1, i));
-                    ArregloDatos[j, 4] = "$ " + Convert.ToString(IngresoActual);
+                    ArregloDatos[j, 4] = Convert.ToString(IngresoActual);
                 }
             }
 
-
-
-            for (int j = 1; j <= Periodo; j++)
+            ArregloDatos[0, 5] = ArregloDatos[0, 1];
+            for (int i = 1; i <= Periodo; i++)
             {
-                ArregloDatos[0, 5] = "-" + ArregloDatos[0, 1];
-                Single x = -1 * Convert.ToSingle(ArregloDatos[j - 1, 5].Trim(new Char[] { '$', ' ','-' }));
-                for (int i = 1; i <= Periodo; i++)
-                {
-                        Single Flujoneto = Convert.ToSingle(ArregloDatos[i, 3].Trim(new Char[] { '$', ' ' }));
-                        ArregloDatos[i,5]="$ "+Convert.ToString(x + Flujoneto);
-                 }
-            }
-
-
+                    Single x = Convert.ToSingle(ArregloDatos[i - 1, 5]);
+                    Single Flujoneto = Convert.ToSingle(ArregloDatos[i, 3]);
+                    ArregloDatos[i,5]=Convert.ToString(x + Flujoneto);
+             }
+            String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
     }
 }
 

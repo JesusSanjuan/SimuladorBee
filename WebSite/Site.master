@@ -7,12 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> </title>  
+    <title><%: Page.Title %> </title>    
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />   
-
+    <webopt:bundlereference runat="server" path="~/Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" />   
+    
 </head>
 <body >
     <form runat="server">
@@ -54,19 +55,19 @@
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item"><a runat="server" href="~/Account/Register" class="nav-link">Registrarse</a>
                                 </li>
-                                <li class="nav-item"><a runat="server" href="~/Account/Login" class="nav-link">Iniciar sesion</a>
+                                <li class="nav-item"><a runat="server" href="~/Account/Login" class="nav-link"><i class="fa fa-fw fa-calculator"></i> Simulador</a>
                                 </li>
                             </ul>
                         </anonymoustemplate>
                         <loggedintemplate>
                             <ul class="nav navbar-nav ml-auto">
-								        <li class="nav-item">
-                                            <a runat="server" href="~/Simulador/Index.aspx"  class="nav-link">Simulador</a>
-								        </li>
                                         <li class="nav-item">
-                                            <a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta" class="nav-link">Bienvenido: <%: Context.User.Identity.GetUserName()  %> !
+                                            <a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta" class="nav-link"><i class="fa fa-fw fa-exclamation"></i> Bienvenido: <%: Context.User.Identity.GetUserName()  %> 
                                             </a>
                                         </li>
+								        <li class="nav-item">
+                                            <a runat="server" href="~/Simulador/Index.aspx"  class="nav-link"><i class="fa fa-fw fa-calculator"></i> Simulador</a>
+								        </li>   
                                          <li class="nav-item">
                                           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                                             <i class="fa fa-fw fa-sign-out"></i>

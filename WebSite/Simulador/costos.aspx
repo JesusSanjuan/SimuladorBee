@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb">
@@ -61,7 +62,7 @@
                         <asp:Button id="add_row" 	CssClass="btn btn-primary add_row "  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                     </div>
                     <div class="col">
-                        <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                        <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
                             <i class='fa fa-save'></i> Guardar
                         </asp:LinkButton>
                     </div>
@@ -107,7 +108,7 @@
                             <asp:Button id="Button1" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
                         <div class="col">
-                            <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                            <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
                                 <i class='fa fa-save'></i> Guardar
                             </asp:LinkButton>
                         </div>
@@ -146,7 +147,7 @@
                             <asp:Button id="Button2" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
                         <div class="col">
-                            <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                            <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
                                 <i class='fa fa-save'></i> Guardar
                             </asp:LinkButton>
                         </div>
@@ -185,7 +186,7 @@
                             <asp:Button id="Button3" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
                         <div class="col">
-                            <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                            <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary  save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
                                 <i class='fa fa-save'></i> Guardar
                             </asp:LinkButton>
                         </div>
@@ -230,5 +231,8 @@
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>
         <script src="../Scripts/editable-table/edittable.js"></script> 
     <!-- plugin editable-->
+
+    <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
 </asp:Content>
 

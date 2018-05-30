@@ -210,8 +210,10 @@ public partial class User_van : System.Web.UI.Page
                     Single x = Convert.ToSingle(ArregloDatos[i - 1, 5]);
                     Single Flujoneto = Convert.ToSingle(ArregloDatos[i, 3]);
                     ArregloDatos[i,5]=Convert.ToString(x + Flujoneto);
-             }
+            }
             String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
+            String comando = "Ingreso_datos("+ MatrizFinal + ")";
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
     }
 }
 

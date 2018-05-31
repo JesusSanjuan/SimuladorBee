@@ -213,7 +213,7 @@ public partial class User_van : System.Web.UI.Page
             }
             String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
             String comando = "Ingreso_datos("+ MatrizFinal + ")";
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
+           // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
     }
 }
 

@@ -1,10 +1,13 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+
+
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 
  <!-- Scrip para graficas debe estar en Head-->    
+        
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">    
@@ -27,7 +30,7 @@
                  <div class="row">
                         <div class="col-10 "> <p> A continuacion usted podra calcular el Valor Actual Neto (VAN)</p></div>
                         <div class="col-2 " >
-                            <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="Necesitas ayuda?" data-content="Y aquí hay un contenido increíble. Es muy atractivo. "><i class="fa fa-ellipsis-v"></i></a>
+                            <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="Necesitas ayuda?" data-content="Y aquí hay un contenido increíble. Es muy atractivo. "><i class="fa fa-question-circle"></i></a>
                         </div>
                 </div>
            
@@ -40,7 +43,7 @@
                                                              <span class="input-group-text">0.00</span>
                                                             
                                                         </div>
-                                                            <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo" onkeypress="formatoMoneda(this.value)" required="required" />
+                                                            <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo"  required="required" />
                                                         <div class="invalid-feedback">                       
                                                           Por favor ingrese la inversion.
                                                         </div>
@@ -390,7 +393,7 @@
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
  <!-- Manejo de funcion de tabla en VAN-->
-        <script src="../Scripts/startbootstrap/js/sb-admin-datatables-van.js"></script> 
+         <script src="../Scripts/startbootstrap/js/sb-admin-datatables-van.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
 <!-- Manejo de funcion de tabla en VAN-->

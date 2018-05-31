@@ -41,5 +41,12 @@
       scrollTop: ($($anchor.attr('href')).offset().top)
     }, 1000, 'easeInOutExpo');
     event.preventDefault();
-  });
+  });  
+  //Mensaje de ayuda en pagina de Van
+	$('[data-toggle="popover"]').popover()
+    $('.example-popover').popover({
+        container: 'body'
+    })
+  
 })(jQuery); // End of use strict
+

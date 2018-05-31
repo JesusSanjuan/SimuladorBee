@@ -106,10 +106,10 @@
                                           </a>
                                           <ul class="sidenav-second-level collapse" id="collapseComponents2">
                                             <li>
-                                              <a class="nav-link" href="Index.aspx">Opcion 1</a>
+                                              <a class="nav-link" href="Construccion.aspx">Opcion 1</a>
                                             </li>
                                             <li>
-                                              <a class="nav-link" href="Index.aspx">Opcion 2</a>
+                                              <a class="nav-link" href="Construccion.aspx">Opcion 2</a>
                                             </li>
                                           </ul>
                                         </li>

@@ -32,7 +32,7 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="Costos1" role="tabpanel" aria-labelledby="producción">
-              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                 <div class="card-header">
                     <h5><i class="fa fa-table"></i>  Costos de Producción</h5><!-- son los costos que se generan en el proceso de transformar la materia prima en productos terminados-->
                 </div>
@@ -78,7 +78,7 @@
             </div>
           </div>
           <div class="tab-pane fade" id="Costos2" role="tabpanel" aria-labelledby="Distribución">
-              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                     <div class="card-header">
                         <h5><i class="fa fa-table"></i> Costos de Distribución</h5><!-- son los que se generan por llevar el producto o servicio hasta el consumidor final-->
                     </div>
@@ -117,7 +117,7 @@
                 </div>
           </div>
           <div class="tab-pane fade" id="Costos3" role="tabpanel" aria-labelledby="Administración">
-              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                     <div class="card-header">
                         <h5><i class="fa fa-table"></i> Costos de Administración: </h5><!-- son los generados en las áreas administrativas de la empresa. Se denominan gastos-->
                     </div>
@@ -156,7 +156,7 @@
                 </div>
           </div>
           <div class="tab-pane fade" id="Costos4" role="tabpanel" aria-labelledby="financiamiento: ">
-              <div class="container" style="padding-top:15px;padding-bottom:15px">                
+              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                     <div class="card-header">
                         <h5><i class="fa fa-table"></i> Costos de Financiamiento </h5><!-- son los que se generan por el uso de recursos de capital.-->
                     </div>
@@ -234,5 +234,7 @@
 
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
+
+    <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
 </asp:Content>
 

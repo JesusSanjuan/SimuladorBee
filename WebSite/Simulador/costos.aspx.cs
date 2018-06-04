@@ -27,11 +27,15 @@ public partial class Simulador_costos : System.Web.UI.Page
     }
 
 
-    protected void setDataTable(Object sender, EventArgs e)
+
+
+    [System.Web.Services.WebMethod]
+
+    public static string getTable(string dataTable)
     {
-
-        System.Diagnostics.Debug.WriteLine("SomeText");
-
+        System.Diagnostics.Debug.WriteLine("datos-->" + dataTable);
+        return "datos " + dataTable;
+        
     }
 
     /* protected void add_row_Click(Object sender, EventArgs e)

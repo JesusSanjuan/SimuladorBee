@@ -19,7 +19,7 @@
         <div class="tab-content" id="amort">
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">          
                     <div class="card-header">
-                        <h5><i class="fa fa-table"></i>  Amortizacion</h5>
+                        <h5><i class="fa fa-table"></i>  Amortización</h5>
                     </div>      
                     <div class="table-responsive">
                         <table class="table table-bordered" id="amortTable" >

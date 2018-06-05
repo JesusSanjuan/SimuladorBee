@@ -167,7 +167,7 @@
 
               <div class="card align-middle" id="ResultadosVAN" runat="server" >    
                     <div class="card-header">
-                      <h4> <i class="fa fa-line-chart"></i> Resultados </h4>
+                      <h4> <i class="fa fa-line-chart"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
                     </div>
                         <ul class="nav nav-tabs">
         		            <li class="nav-item">
@@ -186,7 +186,7 @@
         			            <a href="#Tabla" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
         		            </li>
         		            <li class="nav-item">
-        			            <a href="#Grafica" class="nav-link" role="tab" data-toggle="tab">Grafica</a>
+        			            <a href="#Grafica" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
         		            </li>
 				            <li class="nav-item">
         			            <a href="#Descargas" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
@@ -344,7 +344,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="Grafica">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
                                             <div class="card-header">
-                                                <h5><i class="fa fa-bar-chart"></i>  Grafica</h5>
+                                                <h5><i class="fa fa-bar-chart"></i>  Gráfica</h5>
                                             </div>
                                             <div class="card-body breadcrumb">
                                               <canvas id="myAreaChart" width="100" height="30"></canvas>

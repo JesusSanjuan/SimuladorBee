@@ -23,12 +23,12 @@
                  </nav>  
               <div class="card align-middle">  
                   <div class="card-header">
-                        <h1><i class="fa fa-line-chart"></i>  Calculo de Valor Actual Neto (VAN)</h1>
+                        <h1><i class="fa fa-line-chart"></i> Valor Actual Neto (VAN)</h1>
                   </div>
               </div>
 
                  <div class="row">
-                        <div class="col-10 "> <p> A continuacion usted podra calcular el Valor Actual Neto (VAN)</p></div>
+                        <div class="col-10 "> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
                         <div class="col-2 " >
                             <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="Necesitas ayuda?" data-content="Y aquí hay un contenido increíble. Es muy atractivo. "><i class="fa fa-question-circle"></i></a>
                         </div>
@@ -36,7 +36,7 @@
            
                           <div class="form-row">
                                         <div class="col-md-3 mb-4">
-                                          <label for="validationCustom01">Inversion</label>
+                                          <label for="validationCustom01">Inversión</label>
                                                   <div class="input-group">
                                                         <div class="input-group-append">
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
@@ -167,7 +167,7 @@
 
               <div class="card align-middle" id="ResultadosVAN" runat="server" >    
                     <div class="card-header">
-                      <h4> <i class="fa fa-line-chart"></i> Resultados del calculo del Valor Actual Neto (VAN)</h4>
+                      <h4> <i class="fa fa-line-chart"></i> Resultados </h4>
                     </div>
                         <ul class="nav nav-tabs">
         		            <li class="nav-item">
@@ -177,7 +177,7 @@
         			            <a href="#Resultado2" class="nav-link" role="tab" data-toggle="tab">TIR</a>
         		            </li>
                             <li class="nav-item">
-        			            <a href="#Resultado3" class="nav-link" role="tab" data-toggle="tab">Periodo de recuperacion</a>
+        			            <a href="#Resultado3" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
         		            </li>
                             <li class="nav-item">
         			            <a href="#Resultado4" class="nav-link" role="tab" data-toggle="tab">Beneficio/Costo</a>
@@ -220,7 +220,7 @@
                                <div role="tabpanel" class="tab-pane fade" id="Resultado3">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
                                                     <div class="card-header" >
-                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperacion</h5>
+                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperación</h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
@@ -230,7 +230,7 @@
                                         </div>
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
                                                     <div class="card-header" >
-                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperacion en funcion del ingreso actualizado </h5>
+                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
@@ -265,7 +265,7 @@
                                                                                           <th>Ingresos</th>
                                                                                           <th>Flujo Neto de Efectivo</th>
                                                                                           <th>Ingreso Actualizado</th>
-                                                                                          <th>Periodo de Recuperacion</th>
+                                                                                          <th>Periodo de Recuperación</th>
                                                                                         </tr>
                                                                                       </thead>
                                                                                       <tfoot>
@@ -275,7 +275,7 @@
                                                                                           <th>Ingresos</th>
                                                                                           <th>Flujo Neto de Efectivo</th>
                                                                                           <th>Ingreso Actualizado</th>
-                                                                                          <th>Periodo de Recuperacion</th>
+                                                                                          <th>Periodo de Recuperación</th>
                                                                                         </tr>
                                                                                       </tfoot>
                                                                                       <tbody>
@@ -374,7 +374,7 @@
                   <div class="modal-content">      
                         <!-- Modal Header -->
                         <div class="modal-header">
-                             <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Diagnostico de Inversion</h4>
+                             <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->

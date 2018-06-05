@@ -27,7 +27,7 @@
                 <a href="#Costos3" id="NCostos3"  class="nav-link" role="tab" data-toggle="tab">Costos de Administración</a>
             </li>
             <li class="nav-item">
-                <a href="#Costos4" id="NCostos4"  class="nav-link" role="tab" data-toggle="tab">Costos de financiamiento </a>
+                <a href="#Costos4" id="NCostos4"  class="nav-link" role="tab" data-toggle="tab">Costos de Financiamiento </a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">

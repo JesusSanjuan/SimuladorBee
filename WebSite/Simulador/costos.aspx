@@ -13,7 +13,7 @@
     </nav> 
     <div class="card align-middle">  
         <div class="card-header">
-            <h1><i class="fa fa-money"></i>  Calculos de costos</h1>
+            <h1><i class="fa fa-money"></i>  Evaluación de costos</h1>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">

@@ -45,13 +45,13 @@
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Simulador">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-area-chart"></i>
-                                            <span class="nav-link-text">Estudio de Finaciero</span>
+                                            <span class="nav-link-text">Estudio Financiero</span>
                                           </a>
                                             <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
                                                       <a class="nav-link" href="amortizacion.aspx">
                                                         <i class="fa fa-bar-chart-o"></i>
-                                                        <span class="nav-link-text">Amortizacion</span>
+                                                        <span class="nav-link-text">Amortización</span>
                                                       </a>
                                                 </li>
                                                 <li>

@@ -35,7 +35,7 @@ public partial class User_van : System.Web.UI.Page
 
     protected void GreetingBtn_Click(Object sender, EventArgs e)
     {
-        Single ResultadoVPN;
+        double ResultadoVPN;
         //System.Threading.Thread.Sleep(Convert.ToInt32(2000));
         CreacionTabla();
         ResultadoVPN = CalculoVPN();
@@ -60,16 +60,16 @@ public partial class User_van : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script2, false);
     }
 
-    public Single CalculoVPN()
+    public double CalculoVPN()
     {
         String timeC;
         String repArrayC;
         String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
-        Single fTMAR = Convert.ToSingle(TMAR.Text);
+        double fTMAR = Convert.ToDouble(TMAR.Text);
         int Periodo = Convert.ToInt32(n.Text);
         int negativos;
-        Single num, ResultadoVPN;
+        double num, ResultadoVPN;
 
         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
@@ -97,13 +97,13 @@ public partial class User_van : System.Web.UI.Page
             negativos = 0;
             foreach (var item in ListaY)
             {
-                num = Convert.ToSingle(item);
+                num = Convert.ToDouble(item);
                 if (num < 0)
                 {
                     negativos++;
                 }
             }
-            fTMAR = Convert.ToSingle(Math.Round(fTMAR + 0.02, 4));
+            fTMAR = Convert.ToDouble(Math.Round(fTMAR + 0.02, 4));
 
         } while (negativos < 10);
         // pasamos las variabes en formato array json
@@ -116,31 +116,31 @@ public partial class User_van : System.Web.UI.Page
         return ResultadoVPN;
     }
 
-    public Single CalcularVPN(Single fTMAR)
+    public double CalcularVPN(double fTMAR)
     {
-        Single P = Convert.ToSingle(Inversion.Text);
-        Single fFNE = Convert.ToSingle(FNE.Text);
-        Single fVS = Convert.ToSingle(VdS.Text);
-        Single FNEAcumulado, fVPN;
+        double P = Convert.ToDouble(Inversion.Text);
+        double fFNE = Convert.ToDouble(FNE.Text);
+        double fVS = Convert.ToDouble(VdS.Text);
+        double FNEAcumulado, fVPN;
         int Periodo = Convert.ToInt32(n.Text);
         int i;
 
         FNEAcumulado = 0;
-        Single DivTMAR = 1 + fTMAR;
+        double DivTMAR = 1 + fTMAR;
         for (i = 1; i < Periodo; i++)
         {
-            FNEAcumulado = FNEAcumulado + (fFNE / Convert.ToSingle(Math.Pow(DivTMAR, i)));
+            FNEAcumulado = FNEAcumulado + (fFNE / Convert.ToDouble(Math.Pow(DivTMAR, i)));
         }
-        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Convert.ToSingle(Math.Pow(DivTMAR, i)));
+        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Convert.ToDouble(Math.Pow(DivTMAR, i)));
         fVPN = FNEAcumulado - P;
 
         return fVPN;
     }
 
-    public Single CalcularTIR(Single ValorTIR)
+    public double CalcularTIR(double ValorTIR)
     {
-        Single TasaIncDec;
-        Single Resultado;
+        double TasaIncDec;
+        double Resultado;
         Boolean MenosCero = false;
         TasaIncDec = 0.01F;
         ValorTIR = ValorTIR + TasaIncDec;
@@ -199,7 +199,7 @@ public partial class User_van : System.Web.UI.Page
             {
                 for (int i = 1; i <= Periodo; i++)
                 {
-                    Single IngresoActual = (Convert.ToSingle(ArregloDatos[i, 2].Trim(new Char[] { '$', ' ' }))) / Convert.ToSingle(Math.Pow(1 + .1, i));
+                    double IngresoActual = (Convert.ToDouble(ArregloDatos[i, 2].Trim(new Char[] { '$', ' ' }))) / Convert.ToDouble(Math.Pow(1 + .1, i));
                     ArregloDatos[j, 4] = Convert.ToString(IngresoActual);
                 }
             }
@@ -207,8 +207,8 @@ public partial class User_van : System.Web.UI.Page
             ArregloDatos[0, 5] = ArregloDatos[0, 1];
             for (int i = 1; i <= Periodo; i++)
             {
-                    Single x = Convert.ToSingle(ArregloDatos[i - 1, 5]);
-                    Single Flujoneto = Convert.ToSingle(ArregloDatos[i, 3]);
+                    double x = Convert.ToDouble(ArregloDatos[i - 1, 5]);
+                    double Flujoneto = Convert.ToDouble(ArregloDatos[i, 3]);
                     ArregloDatos[i,5]=Convert.ToString(x + Flujoneto);
             }
             String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);

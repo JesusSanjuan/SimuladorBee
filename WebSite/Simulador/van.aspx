@@ -7,7 +7,6 @@
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 
  <!-- Scrip para graficas debe estar en Head-->    
-        
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">    
@@ -156,7 +155,7 @@
                             <div class="col-md-2 mb-3">
                                 <div class="form-row">   
                                         <div class="col-md-3 mb-3">
-                                                <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  v Text="Calcular"  runat="server"/>
+                                                <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  Text="Calcular"  runat="server"/>
                                         </div>                            
                                 </div>
                                 </div>
@@ -251,6 +250,8 @@
                                                     </div>
                                         </div>
                                 </div>
+                            <input type="hidden" name="reference" id="reference" runat="server" />
+
                                 <div role="tabpanel" class="tab-pane fade" id="Tabla">
                                         <div  class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
                                              <div class="card-header">
@@ -383,7 +384,7 @@
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                   </div>
@@ -392,12 +393,13 @@
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
- <!-- Manejo de funcion de tabla en VAN-->
-         <script src="../Scripts/startbootstrap/js/sb-admin-datatables-van.js"></script>
-        <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
-<!-- Manejo de funcion de tabla en VAN-->
 
+ <!-- Manejo de funcion de tabla en VAN-->
+        <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
+        <script src="../Scripts/startbootstrap/js/sb-admin-datatables-van.js"></script>
+<!-- Manejo de funcion de tabla en VAN-->
+    
 <!-- Para validacion de campos-->
         <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields

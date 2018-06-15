@@ -4,7 +4,7 @@ var ctx = document.getElementById("dataTableVAN");
 
 $(document).ready(function ($) {
 
-
+    
     var data = [
         [
             "Tiger Nixon",
@@ -52,6 +52,8 @@ $(document).ready(function ($) {
     
 
 });
+
+
     
 
 

@@ -53,9 +53,11 @@ public partial class User_van : System.Web.UI.Page
         }
         string script2 = @"<script type='text/javascript'>
                                  $(document).ready(function () {
-                                 $('#myModal2').modal({ show: false }); 
                                  $('#modal-text-body').text('" + Texto + "');" +
-                                "$('#myModal').modal({ show: true }); }); " +
+                                "$('#myModal').modal({ show: true });" +
+                                "$('#cerrar').click(function(){" +
+                                "    " +
+                                " }); }); " +
         "</script>";
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script2, false);
     }
@@ -165,6 +167,8 @@ public partial class User_van : System.Web.UI.Page
 
     public void CreacionTabla()
     {
+
+
         Random r = new Random();
         int Costos = r.Next(200000, 2500000);
 
@@ -172,48 +176,84 @@ public partial class User_van : System.Web.UI.Page
         int Ingresos = r2.Next(500000, 2500000);
 
         int Periodo = Convert.ToInt32(n.Text);
-        String[,] ArregloDatos = new String[Periodo+1, 6];
-        ArregloDatos[0,0] = "Año 0";
-        ArregloDatos[0, 2] = ArregloDatos[0, 3] = ArregloDatos[0, 4] = "";
+        String[,] ArregloDatos = new String[Periodo + 1, 7];
+        ArregloDatos[0, 1] = "Año 0";
+        ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
         /*Cambiar cuado aya valores verdaderos de costos*/
-        ArregloDatos[0,1] = "-" + Inversion.Text;
+        ArregloDatos[0, 2] = "-" + Inversion.Text;
         /*Cambiar cuado aya valores verdaderos de costos*/
+        for (int j = 0; j <= Periodo; j++)
+        {
+            ArregloDatos[j, 0] = Convert.ToString(j + 1);
+        }
+        for (int j = 1; j <= Periodo; j++)
+        {
+            ArregloDatos[j, 1] = "Año " + Convert.ToString(j);
+        }
+        for (int j = 1; j <= Periodo; j++)
+        {
+            ArregloDatos[j, 2] = Convert.ToString(Costos);
+        }
+        for (int j = 1; j <= Periodo; j++)
+        {
+            ArregloDatos[j, 3] = Convert.ToString(Ingresos);
+        }
+        for (int j = 1; j <= Periodo; j++)
+        {
+            ArregloDatos[j, 4] = FNE.Text;
+        }
+        for (int j = 1; j <= Periodo; j++)
+        {
+            for (int i = 1; i <= Periodo; i++)
+            {
+                double IngresoActual = (Convert.ToDouble(ArregloDatos[i, 3].Trim(new Char[] { '$', ' ' }))) / Convert.ToDouble(Math.Pow(1 + .1, i));
+                ArregloDatos[j, 5] = Convert.ToString(IngresoActual);
+            }
+        }
 
-            for (int j = 1; j <= Periodo; j++)
+        ArregloDatos[0, 6] = ArregloDatos[0, 2];
+        for (int i = 1; i <= Periodo; i++)
+        {
+            double x = Convert.ToDouble(ArregloDatos[i - 1, 6]);
+            double Flujoneto = Convert.ToDouble(ArregloDatos[i, 4]);
+            ArregloDatos[i, 6] = Convert.ToString(x + Flujoneto);
+        }
+        String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
+        String comando = "RellenarTabla(" + MatrizFinal + ")";
+        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "clave", comando, true);
+        //       ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
+
+        double P = Convert.ToDouble(Inversion.Text);
+        for (int i = 1; i <= Periodo; i++)
+        {
+            double x1 = Convert.ToDouble(ArregloDatos[i, 6]);
+            if (x1 > 0)
             {
-                ArregloDatos[j,0] = "Año " + Convert.ToString(j);
-            }
-            for (int j = 1; j <= Periodo; j++)
-            {
-                ArregloDatos[j,1] = Convert.ToString(Costos);
-            }
-            for (int j = 1; j <= Periodo; j++)
-            {
-                ArregloDatos[j, 2] = Convert.ToString(Ingresos);
-            }
-            for (int j = 1; j <= Periodo; j++)
-            {
-                ArregloDatos[j, 3] = FNE.Text;
-            }
-            for (int j = 1; j <= Periodo; j++)
-            {
-                for (int i = 1; i <= Periodo; i++)
+                double x2 = Convert.ToDouble(ArregloDatos[i - 1, 6]);
+                if (x2 < 0)
                 {
-                    double IngresoActual = (Convert.ToDouble(ArregloDatos[i, 2].Trim(new Char[] { '$', ' ' }))) / Convert.ToDouble(Math.Pow(1 + .1, i));
-                    ArregloDatos[j, 4] = Convert.ToString(IngresoActual);
+                    PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + 1), 3)) + " Años";
+                    break;
                 }
             }
 
-            ArregloDatos[0, 5] = ArregloDatos[0, 1];
-            for (int i = 1; i <= Periodo; i++)
-            {
-                    double x = Convert.ToDouble(ArregloDatos[i - 1, 5]);
-                    double Flujoneto = Convert.ToDouble(ArregloDatos[i, 3]);
-                    ArregloDatos[i,5]=Convert.ToString(x + Flujoneto);
-            }
-            String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
-           // String comando = "Ingreso_datos("+ MatrizFinal + ")";
-          //  ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
-    }
-}
+        }
 
+        double SumIngresos_actualizados = 0;
+        for (int i = 1; i <= Periodo; i++)
+        {
+            SumIngresos_actualizados = SumIngresos_actualizados + Convert.ToDouble(ArregloDatos[i, 4]);
+        }
+
+        double Sum_costos = 0;
+        for (int i = 1; i <= Periodo; i++)
+        {
+            Sum_costos = Sum_costos + Convert.ToDouble(ArregloDatos[i, 5]);
+        }
+
+        double CRBC = SumIngresos_actualizados / Sum_costos;
+        BenCosto.Text = Convert.ToString(Math.Round(CRBC, 3));
+    }
+
+
+}

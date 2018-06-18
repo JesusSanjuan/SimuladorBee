@@ -6,8 +6,9 @@
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 
- <!-- Scrip para graficas debe estar en Head-->    
-        
+        <script src="../Scripts/jquery-3.3.1.js"></script>
+        <script src="../Scripts/startbootstrap/js/datatables-van.js"></script>
+ <!-- Scrip para graficas debe estar en Head-->         
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">    
@@ -156,7 +157,7 @@
                             <div class="col-md-2 mb-3">
                                 <div class="form-row">   
                                         <div class="col-md-3 mb-3">
-                                                <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  v Text="Calcular"  runat="server"/>
+                                                <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  Text="Calcular"  runat="server"/>
                                         </div>                            
                                 </div>
                                 </div>
@@ -251,15 +252,18 @@
                                                     </div>
                                         </div>
                                 </div>
+                            <input type="hidden" name="reference" id="reference" runat="server" />
+
                                 <div role="tabpanel" class="tab-pane fade" id="Tabla">
                                         <div  class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
                                              <div class="card-header">
                                                 <h5><i class="fa fa-table"></i>  Tabla</h5>
                                              </div>
                                                                                <div class="table-responsive breadcrumb">
-                                                                                     <Table class="table table-bordered" id="dataTableVAN"   >
+                                                                                     <Table class="table table-bordered"  id="dataTableVAN"  >
                                                                                       <thead>
                                                                                         <tr>
+                                                                                          <th></th>
                                                                                           <th>Año/Mes</th>
                                                                                           <th>Costos</th>                                                                                            
                                                                                           <th>Ingresos</th>
@@ -270,6 +274,7 @@
                                                                                       </thead>
                                                                                       <tfoot>
                                                                                         <tr>
+                                                                                          <th></th>
                                                                                           <th>Año/Mes</th>
                                                                                           <th>Costos</th>                                                                                            
                                                                                           <th>Ingresos</th>
@@ -278,63 +283,7 @@
                                                                                           <th>Periodo de Recuperación</th>
                                                                                         </tr>
                                                                                       </tfoot>
-                                                                                      <tbody>
-                                                                                        <tr>
-                                                                                          <td>Año 0</td>
-                                                                                          <td>$260,000</td>
-                                                                                          <td></td>
-                                                                                          <td></td>
-                                                                                          <td></td>
-                                                                                          <td></td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                          <td>Año 1</td>
-                                                                                          <td>$260,000</td>
-                                                                                          <td>$650,000</td>
-                                                                                          <td>$350,000</td>
-                                                                                          <td>$590,909.35</td>
-                                                                                          <td>$-391,000</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                          <td>Año 2</td>
-                                                                                          <td>$260,000</td>
-                                                                                          <td>$650,000</td>
-                                                                                          <td>$350,000</td>
-                                                                                          <td>$537,190.08</td>
-                                                                                          <td>$-41,000</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                          <td>Año 3</td>
-                                                                                          <td>$260,000</td>
-                                                                                          <td>$650,000</td>
-                                                                                          <td>$350,000</td>
-                                                                                          <td>$488,354.62</td>
-                                                                                          <td>$309,000</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                           <td>Año 4</td>
-                                                                                          <td>$260,000</td>
-                                                                                          <td>$650,000</td>
-                                                                                          <td>$350,000</td>
-                                                                                          <td>$443,958.75</td>
-                                                                                          <td>$403,598</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                          <td>Año 5</td>
-                                                                                          <td>$260,000</td>
-                                                                                          <td>$650,000</td>
-                                                                                          <td>$350,000</td>
-                                                                                          <td>$403,598</td>
-                                                                                          <td>$1,009,000</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                         <td>Año 6</td>
-                                                                                          <td></td>
-                                                                                          <td></td>
-                                                                                          <td></td>
-                                                                                          <td></td>
-                                                                                          <td>$1,404,000</td>
-                                                                                        </tr>                                                                                        
+                                                                                      <tbody  id="dataTableVANBody">                                                                                                                                                                           
                                                                                       </tbody>
                                                                                 </Table>
                                                                          </div>
@@ -383,7 +332,7 @@
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                   </div>
@@ -392,12 +341,12 @@
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
- <!-- Manejo de funcion de tabla en VAN-->
-         <script src="../Scripts/startbootstrap/js/sb-admin-datatables-van.js"></script>
-        <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
-<!-- Manejo de funcion de tabla en VAN-->
 
+ <!-- Manejo de funcion de tabla en VAN-->
+        <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
+ <!-- Manejo de funcion de tabla en VAN-->
+    
 <!-- Para validacion de campos-->
         <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields

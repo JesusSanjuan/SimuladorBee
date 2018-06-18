@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="amortizacion.aspx.cs" Inherits="Simulador_Default" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -16,7 +17,7 @@
             <h1><i class="fa fa-money"></i>  Amortización</h1>
         </div>
 
-        <div class="tab-content" id="amort">
+        <div class="tab-content  tab-pane" id="myTabContent2">
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">          
                     <div class="card-header">
                         <h5><i class="fa fa-table"></i>  Amortización</h5>
@@ -27,58 +28,58 @@
                                 <tr>
                                     <th >Concepto</th>
                                     <th >$ Costo</th>
-                                    <th >%</th>
+                                    <th class="porcentaje">%</th>
                                     <th >Total</th>
-                                    <th ></th>
+                                    <th class="elim"></th>
                 
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="previous">Terrenos</td>
-                                    <td>0</td>
-                                    <td>20</td>
-                                    <td data-editable="false"></td>
+                                    <td class="costo">0</td>
+                                    <td class="porct">20</td>
+                                    <td data-editable="false">0</td>
                                     <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
                                 </tr>
                                 <tr>
                                     <td class="previous">Edificios</td>
-                                    <td>0</td>
-                                    <td>5</td>
-                                    <td data-editable="false"></td>
+                                    <td class="costo">0</td>
+                                    <td class="porct">5</td>
+                                    <td data-editable="false">0</td>
                                     <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
                                 </tr>
                                 <tr>
                                     <td class="previous">Transporte</td>
-                                    <td>0</td>
-                                    <td>25</td>
-                                    <td data-editable="false"></td>
+                                    <td class="costo">0</td>
+                                    <td class="porct">25</td>
+                                    <td data-editable="false">0</td>
                                     <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
                                 </tr>
                                 <tr>
                                     <td class="previous">Cómputo</td>
-                                    <td>0</td>
-                                    <td>30</td>
-                                    <td data-editable="false"></td>
+                                    <td class="costo">0</td>
+                                    <td class="porct">30</td>
+                                    <td data-editable="false">0</td>
                                     <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
                                 </tr>
                                  <tr>
                                     <td class="previous">Mobiliario</td>
-                                    <td>0</td>
-                                    <td>10</td>
-                                     <td data-editable="false"></td>
+                                    <td class="costo">0</td>
+                                    <td class="porct">10</td>
+                                    <td data-editable="false">0</td>
                                     <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
                                 </tr>
                                  <tr>
                                     <td class="previous">Equipo de Oficina</td>
-                                    <td>0</td>
-                                    <td>10</td>
-                                    <td data-editable="false"></td>
+                                    <td class="costo">0</td>
+                                    <td class="porct">10</td>
+                                    <td data-editable="false">0</td>
                                     <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
                                 </tr>
@@ -88,7 +89,7 @@
                                     <th><strong>TOTAL</strong></th>
                                     <th></th>
                                     <th class="na"></th>
-                                    <th class="na"></th>
+                                    <th id="total"></th>
                                     <th class="na"></th>
                                 </tr>
                             </tfoot>
@@ -103,7 +104,7 @@
                 <div class="col">
                   
 
-                    <asp:LinkButton runat="server" ID="guardar" OnClientClick="return false;" CssClass="btn btn-primary">
+                    <asp:LinkButton runat="server" ID="guardar_amort" OnClientClick="return false;" CssClass="btn btn-primary">
                         <i class='fa fa-save'></i> Guardar
                     </asp:LinkButton>
                                                
@@ -119,5 +120,9 @@
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>
         <script src="../Scripts/editable-table/edittable.js"></script> 
     <!-- plugin editable-->
+    <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
+
 </asp:Content>
 

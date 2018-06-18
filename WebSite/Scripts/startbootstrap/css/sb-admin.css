@@ -780,6 +780,16 @@ footer.sticky-footer {
     width: 100%
 }
 
-#myTabContent table > thead > tr > th {
+#myTabContent costTable > thead > tr > th {
     width: 45% !important;
 }
+
+
+#amortTable > thead > tr > th {
+    width: 30% !important;
+}
+
+#amortTable > thead > tr > .porcentaje, #amortTable > thead > tr > .elim {
+    width: 8% !important;
+}
+

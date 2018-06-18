@@ -234,7 +234,6 @@
 
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
-
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
 </asp:Content>
 

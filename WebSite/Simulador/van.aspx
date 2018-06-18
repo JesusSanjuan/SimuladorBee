@@ -117,9 +117,9 @@
                    
                                                                   <div class="input-group-append">
                                                                       <select  class="btn btn-outline-secondary " id="Select" runat="server" required="required">
-                                                                                      <option value="" class="dropdown-item">Seleccione</option>
-                                                                                      <option value="Mes" class="dropdown-item">Mes</option>
-                                                                                      <option value="Año" class="dropdown-item">Año</option>
+                                                                                      <option value='' class="dropdown-item">Seleccione</option>
+                                                                                      <option value='Mes' class="dropdown-item">Mes</option>
+                                                                                      <option value='Año' class="dropdown-item">Año</option>
                                                                        </select>
                                                                  </div>
                                                         <div class="invalid-feedback">
@@ -178,13 +178,13 @@
         			            <a href="#Resultado2" class="nav-link" role="tab" data-toggle="tab">TIR</a>
         		            </li>
                             <li class="nav-item">
-        			            <a href="#Resultado3" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
+        			            <a href="#Resultado3" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
         		            </li>
                             <li class="nav-item">
         			            <a href="#Resultado4" class="nav-link" role="tab" data-toggle="tab">Beneficio/Costo</a>
         		            </li>
         		            <li class="nav-item">
-        			            <a href="#Tabla" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
+        			            <a href="#Tabla"  onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
         		            </li>
         		            <li class="nav-item">
         			            <a href="#Grafica" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
@@ -193,7 +193,7 @@
         			            <a href="#Descargas" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
         		            </li>
         	            </ul>
-                        <div class="tab-content">
+                        <div class="tab-content" id="ResultadosFinales">
                                 <div role="tabpanel" class="tab-pane fade show active" id="Resultado">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
                                                     <div class="card-header" >
@@ -219,7 +219,7 @@
                                         </div>
                                 </div>
                                <div role="tabpanel" class="tab-pane fade" id="Resultado3">
-                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px" id="Resultado3a">                        
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Periodo de Recuperación</h5>
                                                     </div>
@@ -229,7 +229,7 @@
                                                         </div>
                                                     </div>
                                         </div>
-                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px" id="Resultado3b">                       
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
                                                     </div>
@@ -252,7 +252,6 @@
                                                     </div>
                                         </div>
                                 </div>
-                            <input type="hidden" name="reference" id="reference" runat="server" />
 
                                 <div role="tabpanel" class="tab-pane fade" id="Tabla">
                                         <div  class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
@@ -332,7 +331,7 @@
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Continuar</button>
                         </div>
                     </div>
                   </div>
@@ -367,7 +366,7 @@
                 }, false);
             });
         }, false);
-    })();
+            })();
         </script>
 <!-- Para validacion de campos-->
 

@@ -15,22 +15,6 @@ public partial class User_van : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ResultadosVAN.Visible = false;
-
-        /*  if (!this.IsPostBack)  
-          {  
-              DataTable dt = new DataTable();  
-              dt.Columns.AddRange(new DataColumn[3] { new DataColumn("Id", typeof(int)),  
-                                  new DataColumn("Name", typeof(string)),  
-                                  new DataColumn("Country",typeof(string)) });  
-              dt.Rows.Add(1, "Jonathan Orozco", "Monterrey");  
-              dt.Rows.Add(2, "Jesus Corona", "México");  
-              dt.Rows.Add(3, "Cirilo Zaucedo", "Tijuana");  
-              dt.Rows.Add(4, "Humberto Suazo", "Chile");
-              myTable.DataSource = dt;
-              myTable.DataBind();  
-              Tabla con boostrapo contrtolada desde c# pero no se logra ponerle la libreria DataTable
-          }  */
-
     }
 
     protected void GreetingBtn_Click(Object sender, EventArgs e)
@@ -41,7 +25,7 @@ public partial class User_van : System.Web.UI.Page
         ResultadoVPN = CalculoVPN();
         ResultadosVAN.Visible = true;
 
-        var Texto = "";
+        String Texto = "";
         if (ResultadoVPN > 0)
         {
             Texto = "Se recomienda aceptar la inversión";
@@ -51,15 +35,10 @@ public partial class User_van : System.Web.UI.Page
         {
             Texto = " Se recomienda rechazar la inversión";
         }
-        string script2 = @"<script type='text/javascript'>
-                                 $(document).ready(function () {
-                                 $('#modal-text-body').text('" + Texto + "');" +
-                                "$('#myModal').modal({ show: true });" +
-                                "$('#cerrar').click(function(){" +
-                                "    " +
-                                " }); }); " +
-        "</script>";
-        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script2, false);
+        String TextoEn = JsonConvert.SerializeObject(Texto);
+        string script3 = "Modal(" + TextoEn + ");";
+
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
     }
 
     public double CalculoVPN()
@@ -167,7 +146,7 @@ public partial class User_van : System.Web.UI.Page
 
     public void CreacionTabla()
     {
-
+        String PeriodoSelect = Select.Value;
 
         Random r = new Random();
         int Costos = r.Next(200000, 2500000);
@@ -177,7 +156,7 @@ public partial class User_van : System.Web.UI.Page
 
         int Periodo = Convert.ToInt32(n.Text);
         String[,] ArregloDatos = new String[Periodo + 1, 7];
-        ArregloDatos[0, 1] = "Año 0";
+        ArregloDatos[0, 1] = PeriodoSelect + " 0";
         ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
         /*Cambiar cuado aya valores verdaderos de costos*/
         ArregloDatos[0, 2] = "-" + Inversion.Text;
@@ -188,7 +167,7 @@ public partial class User_van : System.Web.UI.Page
         }
         for (int j = 1; j <= Periodo; j++)
         {
-            ArregloDatos[j, 1] = "Año " + Convert.ToString(j);
+            ArregloDatos[j, 1] = PeriodoSelect+ " "+ Convert.ToString(j);
         }
         for (int j = 1; j <= Periodo; j++)
         {
@@ -207,7 +186,7 @@ public partial class User_van : System.Web.UI.Page
             for (int i = 1; i <= Periodo; i++)
             {
                 double IngresoActual = (Convert.ToDouble(ArregloDatos[i, 3].Trim(new Char[] { '$', ' ' }))) / Convert.ToDouble(Math.Pow(1 + .1, i));
-                ArregloDatos[j, 5] = Convert.ToString(IngresoActual);
+                ArregloDatos[j, 5] = Convert.ToString(Math.Round(IngresoActual,3));
             }
         }
 
@@ -221,7 +200,7 @@ public partial class User_van : System.Web.UI.Page
         String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
         String comando = "RellenarTabla(" + MatrizFinal + ")";
         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "clave", comando, true);
-        //       ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
+        // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
 
         double P = Convert.ToDouble(Inversion.Text);
         for (int i = 1; i <= Periodo; i++)
@@ -232,9 +211,21 @@ public partial class User_van : System.Web.UI.Page
                 double x2 = Convert.ToDouble(ArregloDatos[i - 1, 6]);
                 if (x2 < 0)
                 {
-                    PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + 1), 3)) + " Años";
+                    if(PeriodoSelect=="Mes")
+                    {
+                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + 1), 3)) + " " + PeriodoSelect + "es";
+                    }
+                    else
+                    {
+                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + 1), 3)) + " " + PeriodoSelect ;
+                    }
+                   
                     break;
                 }
+            }
+            else
+            {
+                PeridoRec.Text = "No es posible calcular. Plazo demasiado corto.";
             }
 
         }

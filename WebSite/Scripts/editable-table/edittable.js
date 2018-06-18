@@ -39,27 +39,35 @@ $(document).ready(function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         var data = $('#' + selector).find('table').tableToJSON();
         var myJsonString = JSON.stringify(data);
-
-       /* OBTENIENDO DATOS DE LAS FUNCIONES DATATABLE
-        var table = $('#' + selector).find('table').DataTable();
-        var data = table
-            .rows()
-            .data().toArray();
-        var myJsonString = JSON.stringify(data);*/
-
         console.log(myJsonString);
 
-       /* $.ajax({
+        /*$.ajax({
             error: function (data) {
                 console.log('error  ' + data);
             },
             type: "POST",
-            url: "../../Simulador/costos.aspx/getTable",
+            url: "../../Simulador/costos.aspx.cs/sendTable",
             data: myJsonString,
             dataType: "json",
             contentType: 'application/json; charset=utf-8',
             success: function (Datos) {
                 console.log('sucess  ');
+            }
+        });*/
+
+        /*$.ajax({
+            type: "POST",
+            url: "jquery-ajax.aspx/Subscribe",
+            contentType: "application/json; charset=utf-8",
+            data: '{"name":"Jose","email":"' + $("#emailInput").val() + '"}',
+            dataType: "json",
+            success: function (msg) {
+                if (msg.d) {
+                    $("#errorDiv").html(msg.d);
+                }
+            },
+            error: function (req, status, error) {
+                alert("Error try again");
             }
         });*/
 

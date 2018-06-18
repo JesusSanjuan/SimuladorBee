@@ -78,3 +78,8 @@ function Graficar(x,y,Periodo) {
    
 }
 
+
+
+
+
+

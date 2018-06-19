@@ -15,6 +15,7 @@
     <div class="card align-middle">
         <div class="card-header">
             <h1><i class="fa fa-money"></i>  Amortización</h1>
+             <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="Necesitas ayuda?" data-content="Y aquí hay un contenido increíble. Es muy atractivo. "><i class="fa fa-question-circle"></i></a>
         </div>
 
         <div class="tab-content  tab-pane" id="myTabContent2">

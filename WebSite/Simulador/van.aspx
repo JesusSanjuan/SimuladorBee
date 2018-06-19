@@ -221,7 +221,7 @@
                                <div role="tabpanel" class="tab-pane fade" id="Resultado3">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px" id="Resultado3a">                        
                                                     <div class="card-header" >
-                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperación</h5>
+                                                            <h5> <i class="fa fa-balance-scale"></i> Periodo de Recuperación</h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
@@ -231,7 +231,7 @@
                                         </div>
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px" id="Resultado3b">                       
                                                     <div class="card-header" >
-                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
+                                                            <h5> <i class="fa fa-balance-scale"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
@@ -243,7 +243,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="Resultado4">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
                                                     <div class="card-header" >
-                                                            <h5> <i class="fa fa-percent"></i> Beneficio/Costo </h5>
+                                                            <h5> <i class="fa fa-signal"></i> Beneficio/Costo </h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
@@ -258,8 +258,8 @@
                                              <div class="card-header">
                                                 <h5><i class="fa fa-table"></i>  Tabla</h5>
                                              </div>
-                                                                               <div class="table-responsive breadcrumb">
-                                                                                     <Table class="table table-bordered"  id="dataTableVAN"  >
+                                                                               <div class="table-responsive">
+                                                                                     <Table class="table table-striped table-bordered"  id="dataTableVAN"  >
                                                                                       <thead>
                                                                                         <tr>
                                                                                           <th></th>
@@ -292,7 +292,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="Grafica">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
                                             <div class="card-header">
-                                                <h5><i class="fa fa-bar-chart"></i>  Gráfica</h5>
+                                                <h5><i class="fa fa-area-chart"></i>  Gráfica</h5>
                                             </div>
                                             <div class="card-body breadcrumb">
                                               <canvas id="myAreaChart" width="100" height="30"></canvas>

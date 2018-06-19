@@ -41,35 +41,56 @@ $(document).ready(function () {
         var myJsonString = JSON.stringify(data);
         console.log(myJsonString);
 
-        /*$.ajax({
+        
+
+       /* $.ajax({
             error: function (data) {
                 console.log('error  ' + data);
             },
             type: "POST",
-            url: "../../Simulador/costos.aspx.cs/sendTable",
+            url: "costos.aspx/sendTable",
             data: myJsonString,
             dataType: "json",
             contentType: 'application/json; charset=utf-8',
             success: function (Datos) {
-                console.log('sucess  ');
+                console.log('sucess  ' + Datos);
             }
         });*/
 
-        /*$.ajax({
+       /* var data = {};
+        data.strUserName = "ali";
+
+        $.ajax({
+            url: 'costos.aspx/IsValidUser',
+            type: 'POST',
+            data: JSON.stringify({name:textUserName}),
+            contentType: 'application/json;utf-8',
+            datatype: 'json'
+        }).done(function (data) {
+            console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });*/
+
+        var textUserName = "Jose";
+        $.ajax({
             type: "POST",
-            url: "jquery-ajax.aspx/Subscribe",
+            url: "costos.aspx/getUserName",
+            data: myJsonString,
             contentType: "application/json; charset=utf-8",
-            data: '{"name":"Jose","email":"' + $("#emailInput").val() + '"}',
             dataType: "json",
             success: function (msg) {
-                if (msg.d) {
-                    $("#errorDiv").html(msg.d);
-                }
+
+                //console.log(msg);
             },
-            error: function (req, status, error) {
-                alert("Error try again");
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError);
             }
-        });*/
+        }).done(function (data) {
+            console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
 
        
     });

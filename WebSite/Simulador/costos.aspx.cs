@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -29,42 +30,15 @@ public partial class Simulador_costos : System.Web.UI.Page
 
 
 
-
-    //[System.Web.Services.WebMethod]
-
-    /*public static string sendTable2(string dataTable)
+    public static string userName = "";
+    [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+    public static string getUserName(string concepto)
     {
-        System.Diagnostics.Debug.WriteLine("datos-->" + dataTable);
-        return "datos " + dataTable;
-        
-    }*/
+        //userName = "Welcome, " + name;
+        Console.WriteLine("parameter", concepto);
+        return concepto;
 
-    /*[System.Web.Services.WebMethod]
-    public void sendTable(string[] ids)
-    {
-        String[] a = ids;
-        System.Diagnostics.Debug.WriteLine("datos-->" + a);
 
-        Response.Write("<script>alert('"++"');</script>");
-        // Do whatever processing you want
-        // However, you cannot access server controls
-        // in a static web method.
-    }*/
-
-    /* [WebMethod]
-     public  void sendTable(string[] ids)
-     {
-
-         System.Diagnostics.Debug.WriteLine("datos-->" + ids);
-
-         Response.Write("<script>alert('"+ ids + "');</script>");
-     }*/
-
-    [WebMethod]
-    public static string Subscribe(string name, string email)
-    {
-        //Insert it to our database
-        return "thanks " + name + ", your email " + email + " is subscribed to our newsletter.";
     }
 
 

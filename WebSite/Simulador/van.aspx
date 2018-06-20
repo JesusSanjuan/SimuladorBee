@@ -25,20 +25,22 @@
               <div class="card align-middle">  
                   <div class="card-header">
                         <h1><i class="fa fa-line-chart"></i> Valor Actual Neto (VAN)</h1>
+                  <p>    Es el valor monetario que resulta de restar la suma de los ﬂujos descontados a la inversión inicial.</p>
+         
                   </div>
               </div>
 
                  <div class="row">
                         <div class="col-10 "> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
                         <div class="col-2 " >
-                            <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="Necesitas ayuda?" data-content="Y aquí hay un contenido increíble. Es muy atractivo. "><i class="fa fa-question-circle"></i></a>
                         </div>
                 </div>
            
                           <div class="form-row">
                                         <div class="col-md-3 mb-4">
                                           <label for="validationCustom01">Inversión</label>
-                                                  <div class="input-group">
+                                             <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. "><i class="fa fa-question-circle"></i></a>    
+                                                <div class="input-group">
                                                         <div class="input-group-append">
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
                                                              <span class="input-group-text">0.00</span>
@@ -56,7 +58,8 @@
                                         </div>
 
                                         <div class="col-md-3 mb-4">
-                                          <label for="validationCustom02">Flujo Neto de Efectivo</label>
+                                          <label for="validationCustom02">Flujo Neto de Efectivo</label>  
+                                            <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado."><i class="fa fa-question-circle"></i></a>                                             
                                                  <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend1">$</span>
@@ -76,6 +79,7 @@
 
                                         <div class="col-md-3 mb-4">
                                           <label for="validationCustom03">Valor de Salvamento</label>
+                                              <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. "><i class="fa fa-question-circle"></i></a>                                               
                                                   <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend2">$</span>
@@ -93,6 +97,7 @@
                                          </div>
                                           <div class="col-md-3 mb-4">
                                           <label for="validationCustom04">TMAR</label>
+                                                <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa "><i class="fa fa-question-circle"></i></a>                                                
                                                   <div class="input-group">                    
                                                         <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required="required"/>
                                                         <div class="input-group-prepend">

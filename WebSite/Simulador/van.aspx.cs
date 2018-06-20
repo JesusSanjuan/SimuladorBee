@@ -211,13 +211,14 @@ public partial class User_van : System.Web.UI.Page
                 double x2 = Convert.ToDouble(ArregloDatos[i - 1, 6]);
                 if (x2 < 0)
                 {
-                    if(PeriodoSelect=="Mes")
+                    double Anio = Convert.ToDouble(ArregloDatos[i - 1, 0]);
+                    if (PeriodoSelect=="Mes")
                     {
-                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + 1), 3)) + " " + PeriodoSelect + "es";
+                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + Anio-1), 3)) + " " + PeriodoSelect + "es";
                     }
                     else
                     {
-                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + 1), 3)) + " " + PeriodoSelect ;
+                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + Anio-1), 3)) + " " + PeriodoSelect ;
                     }
                    
                     break;
@@ -243,7 +244,7 @@ public partial class User_van : System.Web.UI.Page
         }
 
         double CRBC = SumIngresos_actualizados / Sum_costos;
-        BenCosto.Text = Convert.ToString(Math.Round(CRBC, 3));
+        BenCosto.Text = "Por cada peso invertido usted obtendra una ganancia de: $"+Convert.ToString(Math.Round(CRBC, 3));
     }
 
 

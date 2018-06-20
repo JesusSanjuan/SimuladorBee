@@ -3,8 +3,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>Evaluacion de proyectos</h1>
-        <p class="lead">Objetivo: Ser una herramienta que ayude a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar dicha inversión.</p>
+        <h1>Simulador de Negocios</h1>
+        <p class="lead">Objetivo: Reproducir el comportamiento de una realidad o proceso que ayuda a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar una inversión.</p>
         <p><a href="Simulador/Index.aspx" class="btn btn-primary btn-lg"><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="col-md-4">
             <h2>¿Por qué se invierte y por qué son necesarios los proyectos?</h2>
             <p>
-                Una inversión inteligente requiere una base que la justiﬁque. Es precisamente un proyecto bien estructurado y evaluado que indique la pauta que debe seguirse. De ahí se deriva la necesidad de elaborar los proyectos.</p>
+                Una inversión inteligente requiere una base que la justiﬁque. Es precisamente un proyecto bien estructurado y evaluado que indique la pauta que debe seguirse. De ahí se deriva la necesidad de usar un simulador.</p>
            
         </div>
         <div class="col-md-4">

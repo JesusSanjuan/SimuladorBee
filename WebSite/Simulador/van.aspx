@@ -79,7 +79,7 @@
 
                                         <div class="col-md-3 mb-4">
                                           <label for="validationCustom03">Valor de Salvamento</label>
-                                              <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. "><i class="fa fa-question-circle"></i></a>                                               
+                                              <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. "><i class="fa fa-question-circle"></i></a>                                               
                                                   <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend2">$</span>

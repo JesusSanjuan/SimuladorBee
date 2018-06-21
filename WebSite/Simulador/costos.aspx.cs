@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
@@ -28,19 +29,19 @@ public partial class Simulador_costos : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
     }
 
-
-
-    public static string userName = "";
-    [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-    public static string getUserName(string concepto)
+    [WebMethod]
+    public static string sendTable(List<Dictionary<string, string>> dataTabla)
     {
-        //userName = "Welcome, " + name;
-        Console.WriteLine("parameter", concepto);
-        return concepto;
+        //Here I want to iterate the  objects 
 
+        int a = dataTabla.Count();
+
+        string json = JsonConvert.SerializeObject(dataTabla);
+        System.Diagnostics.Debug.WriteLine(json);
+
+        return json;
 
     }
-
 
 
 

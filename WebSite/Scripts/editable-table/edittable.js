@@ -38,59 +38,31 @@ $(document).ready(function () {
         /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
         var selector = $(this).parents('.tab-pane').attr("id");
         var data = $('#' + selector).find('table').tableToJSON();
-        var myJsonString = JSON.stringify(data);
-        console.log(myJsonString);
-
+        //var myJsonString = JSON.stringify(data);
+        //console.log(myJsonString);
         
-
-       /* $.ajax({
-            error: function (data) {
-                console.log('error  ' + data);
-            },
+        $.ajax({
             type: "POST",
             url: "costos.aspx/sendTable",
-            data: myJsonString,
-            dataType: "json",
-            contentType: 'application/json; charset=utf-8',
-            success: function (Datos) {
-                console.log('sucess  ' + Datos);
-            }
-        });*/
-
-       /* var data = {};
-        data.strUserName = "ali";
-
-        $.ajax({
-            url: 'costos.aspx/IsValidUser',
-            type: 'POST',
-            data: JSON.stringify({name:textUserName}),
-            contentType: 'application/json;utf-8',
-            datatype: 'json'
-        }).done(function (data) {
-            console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });*/
-
-        var textUserName = "Jose";
-        $.ajax({
-            type: "POST",
-            url: "costos.aspx/getUserName",
-            data: myJsonString,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (msg) {
-
-                //console.log(msg);
+            async: false,
+            data: JSON.stringify({ dataTabla: data }),
+            success: function (result) {
+                console.log(result);
             },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError);
+            error: function (result) {
+                alert(result.responseText);
             }
+
         }).done(function (data) {
-            console.log(data);
+            //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
         });
+
+
+         
 
        
     });

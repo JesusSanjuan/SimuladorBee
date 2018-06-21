@@ -14,7 +14,11 @@
     </nav>
     <div class="card align-middle">
         <div class="card-header">
-            <h1><i class="fa fa-money"></i>  Amortización</h1>
+            <h1><i class="fa fa-money"></i> Depreciación y amortización</h1>
+            <p>
+               La depreciación y la amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  </p>
+            <p>
+             <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Teclea el monto de cada recurso de tu empresa."><i class="fa fa-question-circle"></i></a>
         </div>
 
         <div class="tab-content  tab-pane" id="myTabContent2">

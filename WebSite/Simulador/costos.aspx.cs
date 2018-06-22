@@ -23,7 +23,10 @@ public partial class Simulador_costos : System.Web.UI.Page
                                  $(document).ready(function () {
                                  $('#Continuacioncostos').modal({ show: true }); });
                                      $( '#costo_continuar' ).click(function() {
-                                            $('#myTab li:nth-child(2) a').tab('show')
+                                            $('#myTab li:nth-child(2) a').tab('show');
+                                            $('#myTab li:nth-child(1) a').addClass('disabled');
+
+
                           });
                        </script>";
         ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);

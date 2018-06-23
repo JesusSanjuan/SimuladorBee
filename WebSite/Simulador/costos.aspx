@@ -58,22 +58,15 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-sm-6 text-center">
                         <asp:Button id="add_row" 	CssClass="btn btn-primary add_row "  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                     </div>
-                    <div class="col">
-                        <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                            <i class='fa fa-save'></i> Guardar
+                    <div class="col col-sm-6 text-center">
+                        <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                             Siguiente <i class='fa fa-angle-double-right'></i>
                         </asp:LinkButton>
                     </div>
-                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                            <div class="col">
-                                <asp:Button id="Continuar"  CssClass="btn btn-primary" onclick="Continuar_Click" Text="Siguiente"  runat="server"/>                                               
-                            </div>
-                            </ContentTemplate>
-                    </asp:UpdatePanel>
+                    
                 </div>
             </div>
           </div>
@@ -104,12 +97,12 @@
                         </table>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-center">
                             <asp:Button id="Button1" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
-                        <div class="col">
-                            <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                <i class='fa fa-save'></i> Guardar
+                        <div class="col text-center">
+                            <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                                Siguiente <i class='fa fa-angle-double-right'></i>
                             </asp:LinkButton>
                         </div>
                         <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
@@ -143,12 +136,12 @@
                         </table>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-center">
                             <asp:Button id="Button2" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
-                        <div class="col">
-                            <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                <i class='fa fa-save'></i> Guardar
+                        <div class="col text-center">
+                            <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                                Siguiente <i class='fa fa-angle-double-right'></i>
                             </asp:LinkButton>
                         </div>
                         <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
@@ -182,12 +175,12 @@
                         </table>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col text-center">
                             <asp:Button id="Button3" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
                         </div>
-                        <div class="col">
-                            <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary  save_data" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                <i class='fa fa-save'></i> Guardar
+                        <div class="col text-center">
+                            <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
+                                Siguiente <i class='fa fa-angle-double-right'></i>
                             </asp:LinkButton>
                         </div>
                         <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
@@ -203,7 +196,9 @@
 <!-- The Modal -->
             <div class="modal fade" id="Continuacioncostos" >
                 <div class="modal-dialog">
-                    <div class="modal-content">      
+                    <div class="modal-content"> 
+                        <!--- input hidden-->
+                        <input type="hidden" name="selector" id="selector" value=""/>
                         <!-- Modal Header -->
                         <div class="modal-header">
                                 <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Continuar</h4>
@@ -211,12 +206,12 @@
                         </div>        
                         <!-- Modal body -->
                         <div class="modal-body" id="modal-text-body">
-                            Desea realmente continuar con el ingreso de costos?
+                            Desea Guardar y Continuar con el ingreso de costos?
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button  id="costo_cancel" type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                            <button  id="costo_continuar" type="button" class="btn btn-danger" data-dismiss="modal">Continuar</button>
+                            <button  id="costo_cancel" type="button" class="btn btn-danger " data-dismiss="modal">Cancelar</button>
+                            <button  id="costo_continuar" type="button" class="btn btn-primary" data-dismiss="modal">Continuar</button>
                         </div>
                     </div>
                  </div>

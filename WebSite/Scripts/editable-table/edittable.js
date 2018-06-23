@@ -34,9 +34,24 @@ $(document).ready(function () {
         t.order([1, 'desc']).draw();
     });
 
-    $("body").on("click", ".save_data", function () {
-        /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
+    /****** actvacion de pestañas **/
+    $('#myTab li a').addClass('disabled');
+    $('#myTab li:nth-child(1) a').tab('show');
+    var nav = 1;
+
+    $("body").on("click", ".continuar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
+        $(".modal-content #selector").val(selector);
+        $('#Continuacioncostos').modal({ show: true });
+  
+    });
+
+
+    //$("body").on("click", ".save_data", function () {
+    $("body").on("click", "#costo_continuar", function () {
+        /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
+       // var selector = $(this).parents('.tab-pane').attr("id");
+        var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
         //var myJsonString = JSON.stringify(data);
         //console.log(myJsonString);
@@ -61,9 +76,16 @@ $(document).ready(function () {
             console.log("Error: " + data);
         });
 
+        nav++;
+        if (nav > 4) {
+            nav = 1;
+        }
 
-         
+        $('#myTab li:nth-child(' + nav + ') a').removeClass('disabled');
+        $('#myTab li:nth-child('+nav+') a').tab('show');
+        $('#myTab li:nth-child(' + (nav - 1) + ') a').addClass('disabled');
 
+        
        
     });
 
@@ -104,23 +126,31 @@ $(document).ready(function () {
         /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
         var data = $("#amortTable").tableToJSON();
         var myJsonString = JSON.stringify(data);
+       // console.log(myJsonString);
 
-        console.log(myJsonString);
 
-        /* $.ajax({
-             error: function (data) {
-                 console.log('error  ' + data);
-             },
-             type: "POST",
-             url: "../../Simulador/costos.aspx/getTable",
-             data: myJsonString,
-             dataType: "json",
-             contentType: 'application/json; charset=utf-8',
-             success: function (Datos) {
-                 console.log('sucess  ');
-             }
-         });*/
+        $.ajax({
+            type: "POST",
+            url: "amortizacion.aspx/sendTableAmort",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ dataTabla: data }),
+            success: function (result) {
+                console.log(result);
+                $('#successA').modal({ show: true });
+            },
+            error: function (result) {
+                alert(result.responseText);
+            }
 
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+
+        
 
     });
 

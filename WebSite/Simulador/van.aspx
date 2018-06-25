@@ -175,7 +175,7 @@
                     <div class="card-header">
                       <h4> <i class="fa fa-line-chart"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
                     </div>
-                        <ul class="nav nav-tabs">
+                       <ul class="nav nav-tabs">
         		            <li class="nav-item">
         			            <a href="#Resultado" class="nav-link active" role="tab" data-toggle="tab">VAN</a>
         		            </li>
@@ -183,13 +183,13 @@
         			            <a href="#Resultado2" class="nav-link" role="tab" data-toggle="tab">TIR</a>
         		            </li>
                             <li class="nav-item">
-        			            <a href="#Resultado3" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
+        			            <a href="#Resultado3" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
         		            </li>
                             <li class="nav-item">
         			            <a href="#Resultado4" class="nav-link" role="tab" data-toggle="tab">Beneficio/Costo</a>
         		            </li>
         		            <li class="nav-item">
-        			            <a href="#Tabla" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
+        			            <a href="#Tabla"  onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
         		            </li>
         		            <li class="nav-item">
         			            <a href="#Grafica" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
@@ -198,7 +198,7 @@
         			            <a href="#Descargas" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
         		            </li>
         	            </ul>
-                        <div class="tab-content">
+                        <div class="tab-content" id="ResultadosFinales">
                                 <div role="tabpanel" class="tab-pane fade show active" id="Resultado">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
                                                     <div class="card-header" >

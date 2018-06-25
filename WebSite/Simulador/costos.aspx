@@ -194,7 +194,7 @@
   
 
 <!-- The Modal -->
-            <div class="modal fade" id="Continuacioncostos" >
+            <div class="modal fade" id="Continuacion" >
                 <div class="modal-dialog">
                     <div class="modal-content"> 
                         <!--- input hidden-->
@@ -206,7 +206,7 @@
                         </div>        
                         <!-- Modal body -->
                         <div class="modal-body" id="modal-text-body">
-                            Desea Guardar y Continuar con el ingreso de costos?
+                            Desea Guardar y Continuar con el ingreso de Datos?
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">

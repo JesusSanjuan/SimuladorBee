@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7428e58daa9f4424b8a98374c714c929" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.ConceptosAmortizacion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Costos" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ConceptosAmortizacion" Width="1.5" PointX="4.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Costos" Width="1.5" PointX="6.5" PointY="0.625" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

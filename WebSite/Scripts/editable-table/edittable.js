@@ -42,7 +42,7 @@ $(document).ready(function () {
     $("body").on("click", ".continuar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         $(".modal-content #selector").val(selector);
-        $('#Continuacioncostos').modal({ show: true });
+        $('#Continuacion').modal({ show: true });
   
     });
 
@@ -55,27 +55,30 @@ $(document).ready(function () {
         var data = $('#' + selector).find('table').tableToJSON();
         //var myJsonString = JSON.stringify(data);
         //console.log(myJsonString);
+
+        if (selector !== "tab1") {
+            $.ajax({
+                type: "POST",
+                url: "costos.aspx/sendTable",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ dataTabla: data }),
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+
+        }
         
-        $.ajax({
-            type: "POST",
-            url: "costos.aspx/sendTable",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({ dataTabla: data }),
-            success: function (result) {
-                console.log(result);
-            },
-            error: function (result) {
-                alert(result.responseText);
-            }
-
-        }).done(function (data) {
-            //console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });
-
         nav++;
         if (nav > 4) {
             nav = 1;
@@ -212,6 +215,8 @@ $(document).ready(function () {
         $(".na").html("");
     });
 
+
+    
 
 
 });

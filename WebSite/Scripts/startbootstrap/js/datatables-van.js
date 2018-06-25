@@ -31,3 +31,14 @@ $(document).ready(function () {
         data: DTabla
     });
 });
+
+function Modal(Texto) {
+    TTexto = JSON.parse(JSON.stringify(Texto));
+    $(document).ready(function () {
+        $('#modal-text-body').text(TTexto);
+        $('#myModal').modal({ show: true });
+        $('#cerrar').click(function () {
+            location.href = "#ResultadosFinales";
+        });
+    });
+}

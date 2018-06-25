@@ -200,13 +200,12 @@ public partial class User_van : System.Web.UI.Page
         String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
         String comando = "RellenarTabla(" + MatrizFinal + ")";
         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "clave", comando, true);
-        // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", comando, true);
 
         double P = Convert.ToDouble(Inversion.Text);
         for (int i = 1; i <= Periodo; i++)
         {
             double x1 = Convert.ToDouble(ArregloDatos[i, 6]);
-            if (x1 > 0)
+            if (x1 >= 0)
             {
                 double x2 = Convert.ToDouble(ArregloDatos[i - 1, 6]);
                 if (x2 < 0)
@@ -214,18 +213,36 @@ public partial class User_van : System.Web.UI.Page
                     double Anio = Convert.ToDouble(ArregloDatos[i - 1, 0]);
                     if (PeriodoSelect == "Mes")
                     {
-                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + Anio - 1), 3)) + " " + PeriodoSelect + "es";
+                        double T1 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
+
+                        if(T1>1)
+                        {
+                            PeridoRec.Text = Convert.ToString(T1) + " " + PeriodoSelect + "es";
+                        }
+                        else
+                        {
+                            PeridoRec.Text = Convert.ToString(T1) + " " + PeriodoSelect;
+                        }
+                        
                     }
                     else
                     {
-                        PeridoRec.Text = Convert.ToString(Math.Round((P / ((x2 * -1) + x1) + Anio - 1), 3)) + " " + PeriodoSelect;
+                        double T2 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
+                        if (T2 > 1)
+                        {
+                            PeridoRec.Text = Convert.ToString(T2) + " " + PeriodoSelect + "s";
+                        }
+                        else
+                        {
+                            PeridoRec.Text = Convert.ToString(T2) + " " + PeriodoSelect;
+                        }
                     }
                     break;
                 }
             }
             else
             {
-                PeridoRec.Text = "No es posible calcular. Plazo demasiado corto.";
+                PeridoRec.Text = "No es posible calcular";
             }
 
         }

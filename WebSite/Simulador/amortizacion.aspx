@@ -19,9 +19,6 @@
             <div class="col col-10">
                La depreciación y la amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
             </div>
-            <div class="col col-2">
-                <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Teclea el monto de cada recurso de tu empresa."><i class="fa fa-question-circle"></i></a>
-            </div>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">

@@ -201,7 +201,7 @@
                         <input type="hidden" name="selector" id="selector" value=""/>
                         <!-- Modal Header -->
                         <div class="modal-header">
-                                <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Continuar</h4>
+                                <h4 class="modal-title"> <i class="fa fa-arrow-right"></i> Continuar</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->

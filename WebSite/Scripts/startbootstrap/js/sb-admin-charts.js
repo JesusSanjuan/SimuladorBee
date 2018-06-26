@@ -52,7 +52,7 @@ function Graficar(x,y,Periodo) {
                 pointBorderColor: "rgba(255,255,255,1)",// Color de los bordes del punto e intensidad del borde
                 pointHoverRadius: pointHoverRadius,// Agrandar al pasar el raton sobre el punto
                 pointHoverBackgroundColor: pointBackgroundColor,// Color del interior del punto al pasar el cursor y agrandarse
-                pointHitRadius: 14,//determina la distancia a la cuál los puntos trazados comenzarán a interactuar con el ratón.
+                pointHitRadius: 8,//determina la distancia a la cuál los puntos trazados comenzarán a interactuar con el ratón.
                 pointBorderWidth: 2, //Distancia del punto de su borde al centro
                 pointStyle: pointStyle,
                 data: repArray
@@ -96,8 +96,18 @@ function Graficar(x,y,Periodo) {
                     }
                 }],
             },
+            animation: {
+                duration: 10, // general animation time
+            },
+            hover: {
+                animationDuration: 10, // duration of animations when hovering an item
+            },
+            responsiveAnimationDuration: 10, // animation duration after a resize
             legend: {
-                display: true
+                display: true,
+                labels: {
+                    fontColor: 'rgb(255, 0,0)'
+                }
             }
         }
     });

@@ -78,6 +78,14 @@ $(document).ready(function () {
             });
 
         }
+        else {
+            var nperiodo = $('.range-output').text();
+           // $('#nperiodo').val(nperiodo);
+            console.log("pestañas en amortizacion-->" + nperiodo );
+        }
+
+
+
         
         nav++;
         if (nav > 4) {
@@ -95,6 +103,7 @@ $(document).ready(function () {
     /****************TABLA AMORTIZACION****************/
     $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
     $(".na").html("");
+
 
     $("body").on("click", "#MainContent_add_row", function () {
         var t = $("#amortTable").DataTable();

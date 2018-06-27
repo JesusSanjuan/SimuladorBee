@@ -806,3 +806,9 @@ footer.sticky-footer {
 .card-body {
     padding: 10px 15px !important;
 }
+
+/*********modif selectpicker**********/
+.bootstrap-select .dropdown-menu li a.dropdown-item.active, .bootstrap-select .dropdown-menu li a.dropdown-item:active {
+    color: #212529;
+    background-color: transparent;
+}

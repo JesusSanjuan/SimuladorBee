@@ -512,7 +512,12 @@ footer.sticky-footer {
     color: white !important;
 }
 
-
+.preborder {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.17);
+    border-radius: 10px;
+}
 
 /* Precarga efecto visual en VAN*/
 /*
@@ -806,3 +811,4 @@ footer.sticky-footer {
 .card-body {
     padding: 10px 15px !important;
 }
+

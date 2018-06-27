@@ -14,7 +14,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">    
 
 
-                <nav aria-label="breadcrumb">
+                <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
                           <ol class="breadcrumb">
                             <li class="breadcrumb-item">  
                                 <a href="Index.aspx">Inicio</a>
@@ -34,13 +34,13 @@
                         <div class="col-10 "> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
                         <div class="col-2 " >
                         </div>
-                </div>
-           
+                </div>                        
                           <div class="form-row">
-                                        <div class="col-md-3 mb-4">
+                                        <div class="col-md-3 mb-2">
                                           <label for="validationCustom01">Inversión</label>
-                                             <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. "><i class="fa fa-question-circle"></i></a>    
-                                                <div class="input-group">
+                                             <a tabindex="0" class="btn btn-lg" role="button" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. "><i class="fa fa-question-circle"></i></a>    
+                                             
+                                            <div class="input-group">
                                                         <div class="input-group-append">
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
                                                              <span class="input-group-text">0.00</span>
@@ -57,9 +57,9 @@
                                                 <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                         </div>
 
-                                        <div class="col-md-3 mb-4">
+                                        <div class="col-md-3 mb-2">
                                           <label for="validationCustom02">Flujo Neto de Efectivo</label>  
-                                            <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado."><i class="fa fa-question-circle"></i></a>                                             
+                                            <a tabindex="0" class="btn btn-lg" role="button" style="float: !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado."><i class="fa fa-question-circle"></i></a>                                             
                                                  <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend1">$</span>
@@ -77,9 +77,9 @@
                    
                                         </div>
 
-                                        <div class="col-md-3 mb-4">
+                                        <div class="col-md-3 mb-2">
                                           <label for="validationCustom03">Valor de Salvamento</label>
-                                              <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. "><i class="fa fa-question-circle"></i></a>                                               
+                                              <a tabindex="0" class="btn btn-lg" role="button" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. "><i class="fa fa-question-circle"></i></a>                                               
                                                   <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend2">$</span>
@@ -95,9 +95,9 @@
                                                   </div>
                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Vds" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                          </div>
-                                          <div class="col-md-3 mb-4">
+                                          <div class="col-md-3 mb-2">
                                           <label for="validationCustom04">TMAR</label>
-                                                <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa "><i class="fa fa-question-circle"></i></a>                                                
+                                                <a tabindex="0" class="btn btn-lg" role="button" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa "><i class="fa fa-question-circle"></i></a>                                                
                                                   <div class="input-group">                    
                                                         <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required="required"/>
                                                         <div class="input-group-prepend">
@@ -138,7 +138,7 @@
                           </div>
 
                           <div class="form-row">  
-                                <div class="col-md-5 mb-5">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <div class="form-check">
                                           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -201,30 +201,35 @@
                         <div class="tab-content" id="ResultadosFinales">
                                 <div role="tabpanel" class="tab-pane fade show active" id="Resultado">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                                             <div class="preborder">
                                                     <div class="card-header" >
                                                             <h5><i class="fa fa-dollar"></i>  Resultado VAN</h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
-                                                        <h3>    <asp:Label id="VAN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                                <h3>    <asp:Label id="VAN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
                                                     </div>
+                                             </div>
                                         </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Resultado2">
-                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
+                                            <div class="preborder">
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Tasa Interna de Rendimiento</h5>
                                                     </div>
-                                                    <div class="breadcrumb">
+                                                    <div class="breadcrumb" >
                                                         <div class="card-body text-info">
                                                         <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
                                                     </div>
+                                              </div>
                                         </div>
                                 </div>
                                <div role="tabpanel" class="tab-pane fade" id="Resultado3">
-                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">    
+                                            <div class="preborder">
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Periodo de Recuperación</h5>
                                                     </div>
@@ -233,8 +238,10 @@
                                                         <h3>    <asp:Label id="PeridoRec" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
                                                     </div>
+                                             </div>
                                         </div>
-                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
+                                            <div class="preborder">
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
                                                     </div>
@@ -243,10 +250,12 @@
                                                         <h3>    <asp:Label id="PeridoRec2" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
                                                     </div>
+                                            </div>
                                         </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Resultado4">
-                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                       
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
+                                            <div class="preborder">
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Beneficio/Costo </h5>
                                                     </div>
@@ -255,11 +264,12 @@
                                                         <h3>    <asp:Label id="BenCosto" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
                                                     </div>
+                                             </div>
                                         </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Tabla">
-                                        <div  class="container-fluid card-body" style="">
-                                                        <div style="border-style: solid; border-width: 1px; border-color:rgba(0, 0, 0, 0.20)">
+                                        <div  class="container-fluid card-body">
+                                                        <div class="preborder">
                                                                  <div class="card-header">
                                                                     <h5><i class="fa fa-table"></i>  Tabla</h5>
                                                                  </div>
@@ -296,23 +306,27 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Grafica">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
-                                            <div class="card-header">
-                                                <h5><i class="fa fa-bar-chart"></i>  Gráfica</h5>
-                                            </div>
-                                            <div class="card-body breadcrumb">
-                                              <canvas id="myAreaChart" width="100" height="30"></canvas>
-                                            </div>
+                                            <div class="preborder">
+                                                    <div class="card-header">
+                                                        <h5><i class="fa fa-bar-chart"></i>  Gráfica</h5>
+                                                    </div>
+                                                    <div class="card-body breadcrumb">
+                                                      <canvas id="myAreaChart" width="100" height="30"></canvas>
+                                                    </div>
+                                             </div>
                                         </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Descargas">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
-                                          <div class="card-header">
-                                            <h5><i class="fa fa-cloud-download"></i>   Descargas</h5>
-                                          </div>
-                                            <div class="breadcrumb">
-                                              <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-                                              <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-                                            </div>
+                                            <div class="preborder">
+                                                      <div class="card-header">
+                                                        <h5><i class="fa fa-cloud-download"></i>   Descargas</h5>
+                                                      </div>
+                                                    <div class="breadcrumb">
+                                                        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+                                                        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+                                                    </div>
+                                               </div>
                                         </div>
                                </div>
                          </div>

@@ -177,25 +177,25 @@
                     </div>
                        <ul class="nav nav-tabs">
         		            <li class="nav-item">
-        			            <a href="#Resultado" class="nav-link active" role="tab" data-toggle="tab">VAN</a>
+        			            <a href="#Resultado" onclick="location.href='#ResultadosFinales'" class="nav-link active" role="tab" data-toggle="tab">VAN</a>
         		            </li>
         		            <li class="nav-item">
-        			            <a href="#Resultado2" class="nav-link" role="tab" data-toggle="tab">TIR</a>
+        			            <a href="#Resultado2" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">TIR</a>
         		            </li>
                             <li class="nav-item">
         			            <a href="#Resultado3" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
         		            </li>
                             <li class="nav-item">
-        			            <a href="#Resultado4" class="nav-link" role="tab" data-toggle="tab">Beneficio/Costo</a>
+        			            <a href="#Resultado4" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Beneficio/Costo</a>
         		            </li>
         		            <li class="nav-item">
         			            <a href="#Tabla"  onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
         		            </li>
         		            <li class="nav-item">
-        			            <a href="#Grafica" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
+        			            <a href="#Grafica" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
         		            </li>
 				            <li class="nav-item">
-        			            <a href="#Descargas" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
+        			            <a href="#Descargas" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
         		            </li>
         	            </ul>
                         <div class="tab-content" id="ResultadosFinales">

@@ -2,6 +2,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
     <link href="../Scripts/rangeslider.js/rangeslider.css" rel="stylesheet" />
+    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -40,9 +41,15 @@
                         </button>
                         <strong>¡Antes de comenzar!</strong> Selecciona el rango de periodos por meses/años a calcular.
                     </div>
-                    <section>
-                        <div class="col col-12">
+                    <section class="row">
+                        <div class="col col-md-8 ">
                            <input  type="range" max="10" value="1">
+                        </div>
+                        <div class="col col-md-4 ">
+                            <select class="selectpicker">
+                                <option>Años</option>
+                                <option>Meses</option>
+                            </select>
                         </div>
             
                     </section>
@@ -216,6 +223,8 @@
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
      <!-- plugin rangeslide-->
     <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <!-- plugin selectpicker-->
+    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -230,6 +239,8 @@
                 }
             });
 
+            /**Inicialización selectpicker.js**/
+            $('.selectpicker').selectpicker();
             
         });
     </script>

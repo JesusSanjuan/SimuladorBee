@@ -17,7 +17,7 @@
         <div class="card-header">
             <h1><i class="fa fa-money"></i> Depreciación y amortización</h1>
             <div class="col col-10">
-               La depreciación y la amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
+               La depreciación hace referencia al desgaste que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  La amortización refiere a los gastos diferidos e intangibles y la depreciación a los activos fijos. 
             </div>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">

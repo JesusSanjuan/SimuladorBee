@@ -59,13 +59,13 @@ public partial class User_van : System.Web.UI.Page
 
         if (ResultadoVPN > 0)
         {
-            VAN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
+            VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
             /* Calculo de la TIR */
-            TIR.Text = Convert.ToString((Math.Round(CalcularTIR(fTMAR / 100), 6)) * 100) + " %";
+            TIR.Text = (Math.Round(CalcularTIR(fTMAR / 100), 6) * 100 ).ToString("0,0.0") + " %";
         }
         else
         {
-            VAN.Text = "$ " + Convert.ToString(Math.Round(ResultadoVPN, 2));
+            VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
             TIR.Text = "No aplicable";
         }
 

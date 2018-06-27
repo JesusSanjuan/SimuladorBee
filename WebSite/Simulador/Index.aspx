@@ -3,12 +3,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Simulador</a>
-        </li>
-        <li class="breadcrumb-item active">Inicio</li>
-      </ol>
+         <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Simulador</a>
+            </li>
+            <li class="breadcrumb-item active">Inicio</li>
+          </ol>
+      </nav> 
       <!-- Icon Cards-->
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-3">

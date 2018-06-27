@@ -82,6 +82,7 @@ $(document).ready(function () {
 function Modal(Texto) {
     TTexto = JSON.parse(JSON.stringify(Texto));
     $(document).ready(function () {
+        $('#modal-text-body').append("<img id='theImg' src='https://giphy.com/gifs/xT4uQqpZxt3DskFkB2/html5'/>");
         $('#modal-text-body').text(TTexto);
         $('#myModal').modal({ show: true });
         $('#cerrar').click(function () {

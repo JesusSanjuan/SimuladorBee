@@ -31,8 +31,8 @@
               </div>
 
                  <div class="row">
-                        <div class="col-10 "> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
-                        <div class="col-2 " >
+                        <div class="col-12"> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
+                        <div class="col-0 " >
                         </div>
                 </div>                        
                           <div class="form-row">
@@ -354,7 +354,7 @@
                         </div>        
                         <!-- Modal body -->
                         <div class="modal-body" id="modal-text-body">
-                        
+                                <img id='theImg' src='https://giphy.com/gifs/xT4uQqpZxt3DskFkB2/html5'/>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">

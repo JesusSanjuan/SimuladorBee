@@ -287,3 +287,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /WebSite/vwd.webinfo
+/WebSite/App_Data/aspnet-WebSite-1c734e7a-3975-4a2b-bf45-a4cdc0a117ff.mdf
+/WebSite/App_Data/aspnet-WebSite-1c734e7a-3975-4a2b-bf45-a4cdc0a117ff_log.ldf

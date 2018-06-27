@@ -257,42 +257,41 @@
                                                     </div>
                                         </div>
                                 </div>
-                            <input type="hidden" name="reference" id="reference" runat="server" />
-
                                 <div role="tabpanel" class="tab-pane fade" id="Tabla">
-                                        <div  class="container-fluid card-body" style="padding-top:15px;padding-bottom:15px">
-                                             <div class="card-header">
-                                                <h5><i class="fa fa-table"></i>  Tabla</h5>
-                                             </div>
-                                                                               <div class="table-responsive breadcrumb">
-                                                                                     <Table class="table table-bordered"  id="dataTableVAN"  >
-                                                                                      <thead>
-                                                                                        <tr>
-                                                                                          <th></th>
-                                                                                          <th>Año/Mes</th>
-                                                                                          <th>Costos</th>                                                                                            
-                                                                                          <th>Ingresos</th>
-                                                                                          <th>Flujo Neto de Efectivo</th>
-                                                                                          <th>Ingreso Actualizado</th>
-                                                                                          <th>Periodo de Recuperación</th>
-                                                                                        </tr>
-                                                                                      </thead>
-                                                                                      <tfoot>
-                                                                                        <tr>
-                                                                                          <th></th>
-                                                                                          <th>Año/Mes</th>
-                                                                                          <th>Costos</th>                                                                                            
-                                                                                          <th>Ingresos</th>
-                                                                                          <th>Flujo Neto de Efectivo</th>
-                                                                                          <th>Ingreso Actualizado</th>
-                                                                                          <th>Periodo de Recuperación</th>
-                                                                                        </tr>
-                                                                                      </tfoot>
-                                                                                      <tbody  id="dataTableVANBody">                                                                                                                                                                           
-                                                                                      </tbody>
-                                                                                </Table>
-                                                                         </div>
-             
+                                        <div  class="container-fluid card-body" style="">
+                                                        <div style="border-style: solid; border-width: 1px; border-color:rgba(0, 0, 0, 0.20)">
+                                                                 <div class="card-header">
+                                                                    <h5><i class="fa fa-table"></i>  Tabla</h5>
+                                                                 </div>
+                                                                                           <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
+                                                                                                 <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVAN"  >
+                                                                                                      <thead>
+                                                                                                        <tr>
+                                                                                                          <th></th>
+                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th>Costos</th>                                                                                            
+                                                                                                          <th>Ingresos</th>
+                                                                                                          <th>Flujo Neto de Efectivo</th>
+                                                                                                          <th>Ingreso Actualizado</th>
+                                                                                                          <th>Periodo de Recuperación</th>
+                                                                                                        </tr>
+                                                                                                      </thead>
+                                                                                                      <tfoot>
+                                                                                                        <tr>
+                                                                                                          <th></th>
+                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th>Costos</th>                                                                                            
+                                                                                                          <th>Ingresos</th>
+                                                                                                          <th>Flujo Neto de Efectivo</th>
+                                                                                                          <th>Ingreso Actualizado</th>
+                                                                                                          <th>Periodo de Recuperación</th>
+                                                                                                        </tr>
+                                                                                                      </tfoot>
+                                                                                                      <tbody  id="dataTableVANBody">                                                                                                                                                                           
+                                                                                                      </tbody>
+                                                                                                </Table>
+                                                                                          </div>
+                                                      </div>
                                         </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Grafica">

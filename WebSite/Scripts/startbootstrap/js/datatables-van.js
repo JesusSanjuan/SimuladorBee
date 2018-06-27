@@ -50,7 +50,7 @@ function number_format(amount, decimals) {
 }
 
 $(document).ready(function () {
-    $('#dataTableVAN').DataTable({
+    var table = $('#dataTableVAN').DataTable({
         language: {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",

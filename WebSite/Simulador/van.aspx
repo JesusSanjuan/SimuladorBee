@@ -37,16 +37,18 @@
                 </div>                        
                           <div class="form-row">
                                         <div class="col-md-3 mb-2">
+
+
                                           <label for="validationCustom01">Inversión</label>
-                                             <a tabindex="0" class="btn btn-lg" role="button" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. "><i class="fa fa-question-circle"></i></a>    
-                                             
                                             <div class="input-group">
-                                                        <div class="input-group-append">
+                                                        <div class="input-group-append"  >
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
-                                                             <span class="input-group-text">0.00</span>
-                                                            
+                                                             <span class="input-group-text">0.00</span>                                                            
                                                         </div>
                                                             <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo"  required="required" />
+                                                        <div class="input-group-append"  >                                                             
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. " ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                        </div>
                                                         <div class="invalid-feedback">                       
                                                           Por favor ingrese la inversion.
                                                         </div>
@@ -58,15 +60,17 @@
                                         </div>
 
                                         <div class="col-md-3 mb-2">
-                                          <label for="validationCustom02">Flujo Neto de Efectivo</label>  
-                                            <a tabindex="0" class="btn btn-lg" role="button" style="float: !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado."><i class="fa fa-question-circle"></i></a>                                             
-                                                 <div class="input-group">
+                                          <label for="validationCustom02">Flujo Neto de Efectivo</label>
+                                            <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend1">$</span>
                                                              <span class="input-group-text">0.00</span>
                                                         </div>
                                                              <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" CausesValidation="True" runat="server"  required="required"/>
-                                                        <div class="invalid-feedback">
+                                                        <div class="input-group-append"  >                                                             
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                        </div>
+                                                       <div class="invalid-feedback">
                                                           Por favor ingrese el FNE.
                                                         </div>
                                                         <div class="valid-feedback">
@@ -79,14 +83,16 @@
 
                                         <div class="col-md-3 mb-2">
                                           <label for="validationCustom03">Valor de Salvamento</label>
-                                              <a tabindex="0" class="btn btn-lg" role="button" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. "><i class="fa fa-question-circle"></i></a>                                               
-                                                  <div class="input-group">
+                                            <div class="input-group">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend2">$</span>
                                                              <span class="input-group-text">0.00</span>
                                                         </div>
                                                             <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
-                                                        <div class="invalid-feedback">
+                                                       <div class="input-group-append"  >                                                             
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. " ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                       </div> 
+                                                       <div class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento
                                                         </div>
                                                         <div class="valid-feedback">
@@ -97,12 +103,13 @@
                                          </div>
                                           <div class="col-md-3 mb-2">
                                           <label for="validationCustom04">TMAR</label>
-                                                <a tabindex="0" class="btn btn-lg" role="button" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa "><i class="fa fa-question-circle"></i></a>                                                
-                                                  <div class="input-group">                    
+                                              <div class="input-group">                    
                                                         <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required="required"/>
-                                                        <div class="input-group-prepend">
+                                                      
+                                                       <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
-                                                        </div>
+                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                       </div>
                                                         <div class="invalid-feedback">
                                                           Por favor ingrese el valor de TMAR.
                                                         </div>
@@ -126,6 +133,7 @@
                                                                                       <option value="Mes" class="dropdown-item">Mes</option>
                                                                                       <option value="Año" class="dropdown-item">Año</option>
                                                                        </select>
+                                                                       <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
                                                                  </div>
                                                         <div class="invalid-feedback">
                                                           Por favor seleccione

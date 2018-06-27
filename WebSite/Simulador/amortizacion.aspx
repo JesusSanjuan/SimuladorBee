@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">  
                 <a href="Index.aspx">Inicio</a>

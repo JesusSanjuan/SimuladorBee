@@ -17,8 +17,13 @@
     <div class="card align-middle">
         <div class="card-header">
             <h1><i class="fa fa-money"></i> Depreciación y amortización</h1>
-            <div class="col col-10">
-               La depreciación y la amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
+            <div class="row">
+                <div class="col col-10">
+                   La depreciación y la amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
+                </div>
+                <div class="col col-2">
+                    <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Selecciona la celda para modificar."><i class="fa fa-question-circle"></i></a>
+                </div>
             </div>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -40,15 +45,15 @@
                     </div>
                     <section class="row">
                         <div class="col col-md-8 ">
-                           <input  type="range" max="10" value="1">
+                           <input  type="range" max="10" value="1" id="periodo">
                         </div>
                         <div class="col col-md-4 ">
-                            <select class="selectpicker">
+                            <select class="selectpicker show-tick" id="lapso">
                                 <option>Años</option>
                                 <option>Meses</option>
                             </select>
                         </div>
-            
+    
                     </section>
                 </div>
                 <div class="row">
@@ -60,6 +65,18 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="Amortización">
+                <section class="row">
+                    <div class="col">
+                        <div class="form-group">
+                        <label for="selecciona" class="col-form-label">Selecciona el período</label>
+                            <select class="selectpicker show-tick" id="cnperiodo">
+                                <% for(int i = 0; i < 5; i++) %> 
+                                <% { Response.Write("<option value="+i+">"+i+"</option>"); }%>
+                            
+                            </select>
+                        </div>
+                    </div>
+                </section>
                 <div class="tab-content  tab-pane" id="myTabContent2">
                     <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">          
                         <div class="card-header">
@@ -235,7 +252,7 @@
                     this.output.html(value);
                 }
             });
-
+           
             /**Inicialización selectpicker.js**/
             $('.selectpicker').selectpicker();
             

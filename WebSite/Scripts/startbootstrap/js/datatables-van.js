@@ -79,12 +79,27 @@ $(document).ready(function () {
     });
 });
 
-function Modal(Texto) {
-    TTexto = JSON.parse(JSON.stringify(Texto));
+function Modal(Resultado) {
+    ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
+      
     $(document).ready(function () {
-        $('#modal-text-body').append("<img id='theImg' src='https://giphy.com/gifs/xT4uQqpZxt3DskFkB2/html5'/>");
-        $('#modal-text-body').text(TTexto);
+        var Texto, Imagen,audio;
+        if (ResultadoVPN > 0) {
+            Texto = "Se recomienda aceptar la inversion";
+            Imagen = '<img src="../Scripts/startbootstrap/correcto.png" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+            audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/correcto.mp3" >';
+        }
+        else {
+            Texto = "Se recomienda rechazar la inversion";
+            Imagen = '<img src="../Scripts/startbootstrap/imagen.png" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+        }        
+
+        $('#imgmodal').html(Imagen);
+        $('#texmodal').html(Texto);
+        $('#audio').html(audio);
         $('#myModal').modal({ show: true });
+        var audio = document.getElementById("audio");
+        audio.play();
         $('#cerrar').click(function () {
             location.href = "#ResultadosFinales";
         });

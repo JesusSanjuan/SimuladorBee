@@ -47,7 +47,7 @@
                                                         </div>
                                                             <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo"  required="required" />
                                                         <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. " ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                         <div class="invalid-feedback">                       
                                                           Por favor ingrese la inversion.
@@ -68,7 +68,7 @@
                                                         </div>
                                                              <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" CausesValidation="True" runat="server"  required="required"/>
                                                         <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                        <div class="invalid-feedback">
                                                           Por favor ingrese el FNE.
@@ -90,7 +90,7 @@
                                                         </div>
                                                             <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
                                                        <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. " ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
                                                        <div class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento
@@ -108,7 +108,7 @@
                                                       
                                                        <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
-                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
                                                         <div class="invalid-feedback">
                                                           Por favor ingrese el valor de TMAR.
@@ -276,6 +276,14 @@
                                         </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Tabla">
+                                    <!--Temporal -->
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>Atencion!!!</strong> La unica columna con resultados fiables es <strong>Periodo de recuperacion y Flujo Neto de Efectivo</strong>.
+                                    </div>
+                                    <!--Temporal -->
                                         <div  class="container-fluid card-body">
                                                         <div class="preborder">
                                                                  <div class="card-header">
@@ -353,8 +361,13 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->
-                        <div class="modal-body" id="modal-text-body">
-                                <img id='theImg' src='https://giphy.com/gifs/xT4uQqpZxt3DskFkB2/html5'/>
+                        <div class="modal-body" id="modal-text-body">    
+                            <div class="row">
+                                    <div class="col-md-3" id="imgmodal"></div>
+                                    <div class="col-md-9" ><strong id="texmodal" style="vertical-align:middle;"></strong></div>
+                                    <audio id="audio" style="display:none" controls>    
+                                    </audio >                                     
+                            </div>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">

@@ -24,19 +24,9 @@ public partial class User_van : System.Web.UI.Page
         CreacionTabla();
         ResultadoVPN = CalculoVPN();
         ResultadosVAN.Visible = true;
-
-        String Texto = "";
-        if (ResultadoVPN > 0)
-        {
-            Texto = "Se recomienda aceptar la inversión";
-
-        }
-        else
-        {
-            Texto = " Se recomienda rechazar la inversión";
-        }
-        String TextoEn = JsonConvert.SerializeObject(Texto);
-        string script3 = "Modal(" + TextoEn + ");";
+        
+       // String TextoEn = JsonConvert.SerializeObject(Texto);
+        string script3 = "Modal(" + ResultadoVPN + ");";
 
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
     }

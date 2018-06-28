@@ -133,7 +133,7 @@
                                                                                       <option value="Mes" class="dropdown-item">Mes</option>
                                                                                       <option value="Año" class="dropdown-item">Año</option>
                                                                        </select>
-                                                                       <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:mediumblue;"></i></span>                                                            
+                                                                       <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                                  </div>
                                                         <div class="invalid-feedback">
                                                           Por favor seleccione
@@ -365,9 +365,9 @@
                             <div class="row">
                                     <div class="col-md-3" id="imgmodal"></div>
                                     <div class="col-md-9" ><strong id="texmodal" style="vertical-align:middle;"></strong></div>
-                                    <audio id="audio" style="display:none" controls>    
-                                    </audio >                                     
+                                                                        
                             </div>
+                            <audio id="audio" style="display:none" controls> </audio > 
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">

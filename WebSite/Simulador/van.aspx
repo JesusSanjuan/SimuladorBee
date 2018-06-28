@@ -1,7 +1,7 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-
+       <link  rel = "stylesheet"  href = "http://anijs.github.io/lib/anicollection/anicollection.css" > 
 
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
@@ -11,7 +11,7 @@
  <!-- Scrip para graficas debe estar en Head-->         
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">    
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server" >    
 
 
                 <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
@@ -35,7 +35,7 @@
                         <div class="col-0 " >
                         </div>
                 </div>                        
-                          <div class="form-row">
+                          <div class="form-row" >
                                         <div class="col-md-3 mb-2">
 
 
@@ -352,7 +352,7 @@
 
 
     <!-- The Modal -->
-              <div class="modal fade" id="myModal" >
+              <div class="modal fade" id="myModal" data-anijs="if: scroll, on: window, do: swing animated, before: scrollReveal" >
                 <div class="modal-dialog">
                   <div class="modal-content">      
                         <!-- Modal Header -->
@@ -361,10 +361,10 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->
-                        <div class="modal-body" id="modal-text-body">    
+                        <div class="modal-body" id="modal-text-body" >    
                             <div class="row">
-                                    <div class="col-md-3" id="imgmodal"></div>
-                                    <div class="col-md-9" ><strong id="texmodal" style="vertical-align:middle;"></strong></div>
+                                    <div class="col-3" id="imgmodal"></div>
+                                    <div class="col-9" ><strong id="texmodal" style="vertical-align:middle;"></strong></div>
                                                                         
                             </div>
                             <audio id="audio" style="display:none" controls> </audio > 
@@ -380,6 +380,12 @@
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+
+    <!-- Archivo principal de AniJS --> 
+<script  src="../Scripts/anijs-master/anijs.js" > </script>
+    <!-- ScrollReveal Helper -->
+<script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
+
 
  <!-- Manejo de funcion de tabla en VAN-->
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>

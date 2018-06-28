@@ -86,12 +86,12 @@ function Modal(Resultado) {
         var Texto, Imagen,audio;
         if (ResultadoVPN > 0) {
             Texto = "Se recomienda aceptar la inversion";
-            Imagen = '<img src="../Scripts/startbootstrap/correcto.png" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+            Imagen = '<img src="../Scripts/startbootstrap/correcto.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
             audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/correcto.mp3" >';
         }
         else {
             Texto = "Se recomienda rechazar la inversion";
-            Imagen = '<img src="../Scripts/startbootstrap/imagen.png" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+            Imagen = '<img src="../Scripts/startbootstrap/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
         }        
 
         $('#imgmodal').html(Imagen);

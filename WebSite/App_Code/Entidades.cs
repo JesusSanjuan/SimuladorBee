@@ -10,17 +10,107 @@
 using System;
 using System.Collections.Generic;
 
-public partial class ConceptosAmortizacion
+public partial class Amortizacion_cat
 {
-    public int Id { get; set; }
+    public string ID_Amortizacion { get; set; }
     public string Concepto { get; set; }
-    public double Porcentaje { get; set; }
+    public int Porcentaje { get; set; }
 }
 
-public partial class Costos
+public partial class Amortizacion_pro
 {
-    public int Id { get; set; }
+    public string ID_Amortizacion_pro { get; set; }
+    public string ID_Proyecto { get; set; }
+    public string ID_Periodo { get; set; }
+    public string Amortizacion { get; set; }
+    public double Total { get; set; }
+
+    public virtual Proyecto Proyecto { get; set; }
+}
+
+public partial class AspNetUsers
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public AspNetUsers()
+    {
+        this.Proyecto = new HashSet<Proyecto>();
+    }
+
+    public string Id { get; set; }
+    public string Email { get; set; }
+    public bool EmailConfirmed { get; set; }
+    public string PasswordHash { get; set; }
+    public string SecurityStamp { get; set; }
+    public string PhoneNumber { get; set; }
+    public bool PhoneNumberConfirmed { get; set; }
+    public bool TwoFactorEnabled { get; set; }
+    public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
+    public bool LockoutEnabled { get; set; }
+    public int AccessFailedCount { get; set; }
+    public string UserName { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Proyecto> Proyecto { get; set; }
+}
+
+public partial class Costos_cat
+{
+    public string ID_Costos { get; set; }
     public string Concepto { get; set; }
-    public double Costo { get; set; }
     public string Tipo { get; set; }
+}
+
+public partial class Costos_Pro
+{
+    public string ID_Costos_pro { get; set; }
+    public string ID_Proyecto { get; set; }
+    public string ID_Periodo { get; set; }
+    public string Produccion { get; set; }
+    public string Ventas { get; set; }
+    public string Financiamiento { get; set; }
+    public string Admon { get; set; }
+    public double Total { get; set; }
+
+    public virtual Proyecto Proyecto { get; set; }
+}
+
+public partial class FNE
+{
+    public string ID_FNE { get; set; }
+    public string ID_Proyecto { get; set; }
+    public string ID_Periodo { get; set; }
+    public double Ingreso { get; set; }
+    public double Total_Costo { get; set; }
+    public double UAI { get; set; }
+    public double Impuesto { get; set; }
+    public double UDI { get; set; }
+    public double Amortizacion { get; set; }
+    public double Total_FNE { get; set; }
+
+    public virtual Proyecto Proyecto { get; set; }
+}
+
+public partial class Proyecto
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Proyecto()
+    {
+        this.Amortizacion_pro = new HashSet<Amortizacion_pro>();
+        this.Costos_Pro = new HashSet<Costos_Pro>();
+        this.FNE = new HashSet<FNE>();
+    }
+
+    public string ID_Proyecto { get; set; }
+    public string ID_Usuario { get; set; }
+    public string Nombre_Proyecto { get; set; }
+    public System.DateTime Fecha_Hora { get; set; }
+    public string ID_Periodo { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Amortizacion_pro> Amortizacion_pro { get; set; }
+    public virtual AspNetUsers AspNetUsers { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Costos_Pro> Costos_Pro { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<FNE> FNE { get; set; }
 }

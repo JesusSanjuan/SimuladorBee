@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="User_Index" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="container-fluid">
+    <div class="container-fluid" >
       <!-- Breadcrumbs-->
          <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
           <ol class="breadcrumb">
@@ -12,7 +12,7 @@
           </ol>
       </nav> 
       <!-- Icon Cards-->
-      <div class="row">
+      <div class="row" data-anijs="if: scroll, on:window, do: rollIn animated, before: scrollReveal, after: removeAnim">
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white  bg-primary o-hidden h-100">
             <div class="row card-body">
@@ -94,7 +94,7 @@
       </div>
       
       <!-- Example DataTables Card-->
-      <div class="card mb-3">
+      <div class="card mb-3" data-anijs="if: scroll, on: window, do: fadeInUp animated, before: scrollReveal">
         <div class="card-header">
           <i class="fa fa-table"></i> Mis proyectos</div>
         <div class="card-body">

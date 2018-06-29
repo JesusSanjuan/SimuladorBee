@@ -13,7 +13,8 @@
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />   
     <webopt:bundlereference runat="server" path="~/Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" />   
-    
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
 </head>
 <body >
     <form runat="server">
@@ -139,5 +140,8 @@
 
 
     </form>
+     <asp:ContentPlaceHolder ID="Foder" runat="server">
+    </asp:ContentPlaceHolder>
+
 </body>
 </html>

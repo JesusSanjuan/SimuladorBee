@@ -11,9 +11,9 @@
  <!-- Scrip para graficas debe estar en Head-->         
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">    
-
-
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server" >    
+    
+    <div >
                 <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
                           <ol class="breadcrumb">
                             <li class="breadcrumb-item">  
@@ -29,13 +29,14 @@
          
                   </div>
               </div>
-
+    </div>
+    <div >
                  <div class="row">
                         <div class="col-12"> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
                         <div class="col-0 " >
                         </div>
                 </div>                        
-                          <div class="form-row">
+                          <div class="form-row" >
                                         <div class="col-md-3 mb-2">
 
 
@@ -173,13 +174,13 @@
                                                 <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  Text="Calcular"  runat="server"/>
                                         </div>                            
                                 </div>
-                                </div>
+                            </div>
                         </div>   
 
+            </div>
 
 
-
-              <div class="card align-middle" id="ResultadosVAN" runat="server" >    
+              <div class="card align-middle" id="ResultadosVAN" data-anijs="if: scroll, on:window, do: bounceInLeft animated, before: scrollReveal, after: removeAnim" runat="server" >    
                     <div class="card-header">
                       <h4> <i class="fa fa-line-chart"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
                     </div>
@@ -352,7 +353,7 @@
 
 
     <!-- The Modal -->
-              <div class="modal fade" id="myModal" >
+              <div class="modal fade" id="myModal" data-anijs="if: scroll, on: window, do: swing animated, before: scrollReveal" >
                 <div class="modal-dialog">
                   <div class="modal-content">      
                         <!-- Modal Header -->
@@ -361,10 +362,10 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->
-                        <div class="modal-body" id="modal-text-body">    
+                        <div class="modal-body" id="modal-text-body" >    
                             <div class="row">
-                                    <div class="col-md-3" id="imgmodal"></div>
-                                    <div class="col-md-9" ><strong id="texmodal" style="vertical-align:middle;"></strong></div>
+                                    <div class="col-3" id="imgmodal"></div>
+                                    <div class="col-9" ><strong id="texmodal" class="preview-item shake shake-chunk shake-constant" style="vertical-align:middle;"></strong></div>
                                                                         
                             </div>
                             <audio id="audio" style="display:none" controls> </audio > 
@@ -380,7 +381,6 @@
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
-
  <!-- Manejo de funcion de tabla en VAN-->
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        

@@ -11,6 +11,10 @@
   <meta name="author" content="">
   <title>Simulador</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+   <!-- Efectos visuales--> 
+    <link rel="stylesheet"  href="../Scripts/anijs-master/anicollection.css" />
+    <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
+   <!-- Efectos visuales--> 
    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
            <!-- Bootstrap core CSS-->
                  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -320,6 +324,12 @@
             <!-- pooper para efecto de ayuda -->
                  <script src="../Scripts/umd/popper.js"></script> 
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->  
+            <!-- Efectos visuales--> 
+                <!-- Archivo principal de AniJS --> 
+                <script  src="../Scripts/anijs-master/anijs.js" > </script>
+                <!-- ScrollReveal Helper -->
+                <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
+            <!-- Efectos visuales--> 
     <asp:ContentPlaceHolder ID="Foder" runat="server">
     </asp:ContentPlaceHolder>
    

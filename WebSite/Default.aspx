@@ -1,7 +1,13 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <!-- Efectos visuales--> 
+    <link rel="stylesheet"  href="../Scripts/anijs-master/anicollection.css" />
+    <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
+   <!-- Efectos visuales--> 
+</asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
+<div style="margin-top: 20px; " data-anijs="if: scroll, on:window, do: bounceInLeft animated, before: scrollReveal, after: removeAnim">
     <div class="jumbotron">
         <h1>Simulador de Negocios</h1>
         <p class="lead">Objetivo: Reproducir el comportamiento de una realidad o proceso que ayuda a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar una inversión.</p>
@@ -32,4 +38,13 @@
             
         </div>
     </div>
+</div>
 </asp:Content>
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+            <!-- Efectos visuales--> 
+                <!-- Archivo principal de AniJS --> 
+                <script  src="../Scripts/anijs-master/anijs.js" > </script>
+                <!-- ScrollReveal Helper -->
+                <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
+            <!-- Efectos visuales--> 
+ </asp:Content>

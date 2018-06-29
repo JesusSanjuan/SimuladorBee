@@ -352,7 +352,7 @@
 
 
 
-    <!-- The Modal -->
+    <!-- The Modal --> 
               <div class="modal fade" id="myModal" data-anijs="if: scroll, on: window, do: swing animated, before: scrollReveal" >
                 <div class="modal-dialog">
                   <div class="modal-content">      

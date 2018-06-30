@@ -13,84 +13,84 @@
       </nav> 
       <!-- Icon Cards-->
       <div class="row" data-anijs="if: scroll, on:window, do: rollIn animated, before: scrollReveal, after: removeAnim">
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white  bg-primary o-hidden h-100">
-            <div class="row card-body">
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card text-white  bg-primary o-hidden h-100">
+                    <div class="row card-body">
               
-                <div class="col-3">
-                    <i class="fa fa-tasks fa-5x"></i>
-                </div>
-                <div class="col-9 text-right">
-                    <div class="huge">2</div>
-                    <div>Proyectos</div>
-                </div>
+                        <div class="col-3">
+                            <i class="fa fa-tasks fa-5x"></i>
+                        </div>
+                        <div class="col-9 text-right">
+                            <div class="huge">2</div>
+                            <div>Proyectos</div>
+                        </div>
 
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#" id="addProject">
-              <span class="pull-left">Agregar Nuevo</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-warning o-hidden h-100">
-            <div class="row card-body">
-              <div class="col-3">
-                <i class="fa fa-comments fa-5x"></i>
-              </div>
-              <div class="col-9 text-right">
-                <div class="huge">26</div>
-                <div>Nuevos comentarios!</div>
-              </div>
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#">
-              <span class="pull-left">Ver detalles</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden h-100">
-            <div class="row card-body">
-              <div class="col-3">
-                <i class="fa fa-shopping-cart fa-5x"></i>
-              </div>
-              <div class="col-9 text-right">
-                <div class="huge">123</div>
-                <div>Nuevas ordenes!</div>
-              </div>
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#">
-              <span class="pull-left">Ver detalles</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-danger o-hidden h-100">
-            <div class="row card-body">
-              <div class="col-3">
-                <i class="fa fa-support fa-5x"></i>
-              </div>
-              <div class="col-9 text-right">
-                <div class="huge">13</div>
-                <div>Nuevos Tickets!</div>
-              </div>
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#">
-              <span class="pull-left">Ver detalles</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#" id="addProject">
+                      <span class="pull-left">Agregar Nuevo</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card text-white bg-warning o-hidden h-100">
+                    <div class="row card-body">
+                      <div class="col-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                      </div>
+                      <div class="col-9 text-right">
+                        <div class="huge">26</div>
+                        <div>Nuevos comentarios!</div>
+                      </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#">
+                      <span class="pull-left">Ver detalles</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card text-white bg-success o-hidden h-100">
+                    <div class="row card-body">
+                      <div class="col-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                      </div>
+                      <div class="col-9 text-right">
+                        <div class="huge">123</div>
+                        <div>Nuevas ordenes!</div>
+                      </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#">
+                      <span class="pull-left">Ver detalles</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card text-white bg-danger o-hidden h-100">
+                    <div class="row card-body">
+                      <div class="col-3">
+                        <i class="fa fa-support fa-5x"></i>
+                      </div>
+                      <div class="col-9 text-right">
+                        <div class="huge">13</div>
+                        <div>Nuevos Tickets!</div>
+                      </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#">
+                      <span class="pull-left">Ver detalles</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
       </div>
       
       <!-- Example DataTables Card-->

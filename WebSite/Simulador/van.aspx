@@ -1,8 +1,6 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-
-
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 

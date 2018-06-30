@@ -7,18 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> </title>    
+    <title><%: Page.Title %> </title>
+     <!-- Efectos visuales-->
+            <link href="Scripts/anijs-master/animate.min.css" rel="stylesheet" />
+            <link href="Scripts/csshake-master/csshake.min.css" rel="stylesheet" />
+     <!-- Efectos visuales-->
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />   
-    <webopt:bundlereference runat="server" path="~/Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" /> 
-     <!-- Efectos visuales--> 
-            <link rel="stylesheet"  href="../Scripts/anijs-master/anicollection.css" />
-            <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
-     <!-- Efectos visuales--> 
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-    </asp:ContentPlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" />      
 </head>
 <body >
     <form runat="server">
@@ -26,7 +26,6 @@
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
-
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="bootstrap" />
@@ -60,7 +59,7 @@
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item"><a runat="server" href="~/Account/Register" class="nav-link">Registrarse</a>
                                 </li>
-                                <li class="nav-item" ><a runat="server" href="~/Account/Login" class="nav-link"><i class="fa fa-fw fa-calculator"></i> Simulador</a>
+                                <li class="nav-item" data-anijs=" if: mouseover, do: pulse animated" ><a runat="server" href="~/Account/Login" class="nav-link"><i class="fa fa-fw fa-calculator"></i> Simulador</a>
                                 </li>
                             </ul>
                         </anonymoustemplate>
@@ -70,7 +69,7 @@
                                             <a runat="server" href="~/Account/Manage" title="Configuracion de tu cuenta" class="nav-link"> Bienvenido: <%: Context.User.Identity.GetUserName()  %> 
                                             </a>
                                         </li>
-								        <li class="nav-item" >
+								        <li class="nav-item" data-anijs=" if: mouseover, do: pulse animated" >
                                             <a runat="server" href="~/Simulador/Index.aspx"  class="nav-link" ><i class="fa fa-fw fa-calculator"></i> Simulador</a>
 								        </li>   
                                          <li class="nav-item">
@@ -86,63 +85,42 @@
                 </div>
           </div>
     </div>
-     <div class="content-wrapper" >  
-
-        <div class="container body-content">
-            <asp:contentplaceholder id="MainContent" runat="server">
-
-
-            </asp:contentplaceholder>
-
-
-         </div>
-
-
-                        <!-- Logout Modal-->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Te vas tan rapido?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
-                                  <span aria-hidden="true">×</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</div>
-                              <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            
-                                   <asp:LoginView runat="server" ViewStateMode="Disabled">
-                                              <LoggedInTemplate>
-
-                                                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  Cssclass="btn btn-primary" />
-
-                                              </LoggedInTemplate>
-                                 </asp:LoginView>
-
-
-            
+       <div class="content-wrapper" >  
+            <div class="container body-content">
+                <asp:contentplaceholder id="MainContent" runat="server">
+                </asp:contentplaceholder>
+             </div>
+                            <!-- Logout Modal-->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Te vas tan rapido?</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
+                                      <span aria-hidden="true">×</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</div>
+                                  <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>            
+                                       <asp:LoginView runat="server" ViewStateMode="Disabled">
+                                                  <LoggedInTemplate>
+                                                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  Cssclass="btn btn-primary" />
+                                                  </LoggedInTemplate>
+                                     </asp:LoginView>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-
-                         <!-- Logout Modal-->
-
-
-   
-         <footer class="sticky-footer">
-              <div class="container">
-                <div class="text-center">
-                  <small>Copyright © <%: DateTime.Now.Year %> </small>
-                </div>
-              </div>
-            </footer>
-       
-
+                            <!-- Logout Modal-->
+             <footer class="sticky-footer">
+                  <div class="container">
+                    <div class="text-center">
+                      <small>Copyright © <%: DateTime.Now.Year %> </small>
+                    </div>
+                  </div>
+             </footer> 
          </div>
-
-
     </form>
     <!-- Efectos visuales--> 
         <!-- Archivo principal de AniJS --> 
@@ -152,7 +130,5 @@
      <!-- Efectos visuales--> 
      <asp:ContentPlaceHolder ID="Foder" runat="server">
     </asp:ContentPlaceHolder>
-
-
 </body>
 </html>

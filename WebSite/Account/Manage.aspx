@@ -3,6 +3,7 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<div style="margin-top: 20px;">
     <h2><%: Title %>.</h2>
 
     <div>
@@ -25,7 +26,7 @@
                         <hr />
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                         <div class="form-group">
-                            <asp:Label runat="server" AssociatedControlID="password" CssClass="col-md-2 control-label">Contraseña</asp:Label>
+                            <asp:Label runat="server" AssociatedControlID="password" CssClass="col-md-6 control-label">Contraseña</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="password" TextMode="Password"  CssClass="form-control"  />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="password"
@@ -37,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Confirmar contraseña</asp:Label>
+                            <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-6 control-label">Confirmar contraseña</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password"  CssClass="form-control"  />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="confirmPassword"
@@ -63,7 +64,7 @@
                         <h4>Formulario para cambiar contraseña</h4>
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                         <div class="form-group">
-                            <asp:Label runat="server" ID="CurrentPasswordLabel" AssociatedControlID="CurrentPassword" CssClass="col-md-2 control-label">Contraseña actual</asp:Label>
+                            <asp:Label runat="server" ID="CurrentPasswordLabel" AssociatedControlID="CurrentPassword" CssClass="col-md-6 control-label">Contraseña actual</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="CurrentPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="CurrentPassword"
@@ -72,7 +73,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <asp:Label runat="server" ID="NewPasswordLabel" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">Nueva contraseña</asp:Label>
+                            <asp:Label runat="server" ID="NewPasswordLabel" AssociatedControlID="NewPassword" CssClass="col-md-6 control-label">Nueva contraseña</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="NewPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
@@ -81,7 +82,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <asp:Label runat="server" ID="ConfirmNewPasswordLabel" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-2 control-label">Confirmar la nueva contraseña</asp:Label>
+                            <asp:Label runat="server" ID="ConfirmNewPasswordLabel" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-6 control-label">Confirmar la nueva contraseña</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="ConfirmNewPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmNewPassword"
@@ -94,7 +95,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" Text="Cambiar contraseña" OnClick="ChangePassword_Click" CssClass="btn btn-default" ValidationGroup="ChangePassword" />
+                                <asp:Button runat="server" Text="Cambiar contraseña" OnClick="ChangePassword_Click" CssClass="btn btn-primary btn-lg" ValidationGroup="ChangePassword" />
                             </div>
                         </div>
                     </div>
@@ -133,5 +134,5 @@
 
         </div>
     </div>
-
+</div>
 </asp:Content>

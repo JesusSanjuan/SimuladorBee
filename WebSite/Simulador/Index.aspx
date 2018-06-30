@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="container-fluid" >
       <!-- Breadcrumbs-->
-         <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
+         <nav aria-label="breadcrumb" style="padding-bottom:1rem;"  data-anijs="if: load, on:window, do: pulse animated, before: scrollReveal, after: removeAnim">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <a href="#">Simulador</a>
@@ -12,8 +12,8 @@
           </ol>
       </nav> 
       <!-- Icon Cards-->
-      <div class="row" data-anijs="if: scroll, on:window, do: rollIn animated, before: scrollReveal, after: removeAnim">
-                <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="row" >
+                <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: rubberBand animated, before: scrollReveal, after: removeAnim">
                   <div class="card text-white  bg-primary o-hidden h-100">
                     <div class="row card-body">
               
@@ -34,7 +34,7 @@
                     </a>
                   </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="col-xl-3 col-sm-6 mb-3"  data-anijs="if: load, on:window, do: tada animated, before: scrollReveal, after: removeAnim">
                   <div class="card text-white bg-warning o-hidden h-100">
                     <div class="row card-body">
                       <div class="col-3">
@@ -53,7 +53,7 @@
                     </a>
                   </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: tada animated, before: scrollReveal, after: removeAnim">
                   <div class="card text-white bg-success o-hidden h-100">
                     <div class="row card-body">
                       <div class="col-3">
@@ -72,7 +72,7 @@
                     </a>
                   </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: rubberBand animated, before: scrollReveal, after: removeAnim">
                   <div class="card text-white bg-danger o-hidden h-100">
                     <div class="row card-body">
                       <div class="col-3">
@@ -94,7 +94,7 @@
       </div>
       
       <!-- Example DataTables Card-->
-      <div class="card mb-3" data-anijs="if: scroll, on: window, do: fadeInUp animated, before: scrollReveal">
+      <div class="card mb-3" data-anijs="if: load, on: window, do: fadeInUp animated, before: scrollReveal">
         <div class="card-header">
           <i class="fa fa-table"></i> Mis proyectos</div>
         <div class="card-body">

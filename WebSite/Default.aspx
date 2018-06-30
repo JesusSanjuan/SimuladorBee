@@ -3,11 +3,11 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-<div style="margin-top: 20px; " data-anijs="if: scroll, on:window, do: fadeInLeft animated, before: scrollReveal, after: removeAnim">
+<div style="margin-top: 20px; " data-anijs="if: load, on:window, do: fadeInLeft animated, before: scrollReveal, after: removeAnim">
     <div class="jumbotron">
         <h1>Simulador de Negocios</h1>
         <p class="lead">Objetivo: Reproducir el comportamiento de una realidad o proceso que ayuda a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar una inversión.</p>
-        <p><a href="Simulador/Index.aspx" class="btn btn-primary btn-lg"  data-anijs="if:mousedown, on:window, do: pulse animated" ><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
+        <p><a href="Simulador/Index.aspx" class="btn btn-primary btn-lg"  data-anijs="if:mouseout, on:window, do: pulse animated" ><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
     </div>
 
 

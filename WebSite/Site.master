@@ -43,7 +43,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" data-anijs="if: scroll, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim">
+       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" data-anijs="if: load, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim">
             <div class="container">               
                 <a class="navbar-brand" runat="server" href="~/">Evaluacion de proyectos</a>
                 <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></button> 
@@ -113,7 +113,7 @@
                               </div>
                             </div>
                             <!-- Logout Modal-->
-             <footer class="sticky-footer">
+             <footer class="sticky-footer" data-anijs="if: load, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim">
                   <div class="container">
                     <div class="text-center">
                       <small>Copyright © <%: DateTime.Now.Year %> </small>

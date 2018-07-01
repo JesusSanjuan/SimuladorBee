@@ -1,8 +1,6 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-
-
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 
@@ -180,7 +178,7 @@
             </div>
 
 
-              <div class="card align-middle" id="ResultadosVAN" data-anijs="if: scroll, on:window, do: bounceInLeft animated, before: scrollReveal, after: removeAnim" runat="server" >    
+              <div class="card align-middle" id="ResultadosVAN" data-anijs="if: load, on:window, do: bounceInLeft animated, before: scrollReveal, after: removeAnim" runat="server" >    
                     <div class="card-header">
                       <h4> <i class="fa fa-line-chart"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
                     </div>
@@ -282,7 +280,7 @@
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
-                                      <strong>Atencion!!!</strong> La unica columna con resultados fiables es <strong>Periodo de recuperacion y Flujo Neto de Efectivo</strong>.
+                                      <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Periodo de recuperacion y Flujo Neto de Efectivo</strong>.
                                     </div>
                                     <!--Temporal -->
                                         <div  class="container-fluid card-body">
@@ -352,8 +350,8 @@
 
 
 
-    <!-- The Modal -->
-              <div class="modal fade" id="myModal" data-anijs="if: scroll, on: window, do: swing animated, before: scrollReveal" >
+    <!-- The Modal --> 
+              <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
                 <div class="modal-dialog">
                   <div class="modal-content">      
                         <!-- Modal Header -->

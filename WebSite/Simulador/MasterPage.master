@@ -12,7 +12,7 @@
   <title>Simulador</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
    <!-- Efectos visuales--> 
-    <link rel="stylesheet"  href="../Scripts/anijs-master/anicollection.css" />
+    <link href="../Scripts/anijs-master/animate.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
    <!-- Efectos visuales--> 
    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
@@ -34,7 +34,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" >  
      <form runat="server" class="needs-validation" novalidate> 
        <!-- Menu-->
-       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" id="mainNav">                                 
+       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" id="mainNav" >                                 
 
                                   <a class="navbar-brand" runat="server" href="../">Evaluacion de proyectos</a>
                                    <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></button> 

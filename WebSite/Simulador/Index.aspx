@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="User_Index" %>
 
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../Scripts/rangeslider.js/rangeslider.css" rel="stylesheet" />
+    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="container-fluid" >
       <!-- Breadcrumbs-->
@@ -152,20 +157,35 @@
                 <div class="modal-body">
                 <!--<form>-->
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Título:</label>
-                    <input type="text" class="form-control" id="name">
+                    <asp:Label runat="server" AssociatedControlID="ProjectName" CssClass="control-label">Título</asp:Label>
+                    <asp:TextBox runat="server" ID="ProjectName" CssClass="form-control" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
+                        CssClass="text-danger" ErrorMessage="El campo de nombre de proyecto es obligatorio." />
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm">
+                        <asp:Label runat="server" AssociatedControlID="ProjectAnio" CssClass="control-label">Año</asp:Label>
+                        <asp:TextBox runat="server" ID="ProjectAnio" CssClass="form-control" />
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectAnio"
+                            CssClass="text-danger" ErrorMessage="El campo de año de proyecto es obligatorio." />
+                    </div>
+                    <div class="form-group col-sm">
+                        <asp:Label runat="server" AssociatedControlID="pais" CssClass="control-label">País</asp:Label>
+                        <asp:TextBox runat="server" ID="pais" CssClass="form-control" />
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="pais"
+                            CssClass="text-danger" ErrorMessage="El campo es obligatorio." />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Año</label>
-                    <input type="text" class="form-control" id="anio">
+                    <asp:Label runat="server" AssociatedControlID="periodo" CssClass="control-label">Período de evaluación</asp:Label>
+                    <input  type="range" max="10" value="1" id="periodo" runat="server">
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">País</label>
-                    <input type="text" class="form-control" id="pais">
-                </div>
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Objetivos:</label>
-                    <textarea class="form-control" id="objetivos"></textarea>
+                    <label for="lapso" class="col-form-label">Lapso por</label>
+                    <select class="selectpicker show-tick" id="lapso" runat="server">
+                        <option>Años</option>
+                        <option>Meses</option>
+                    </select>
                 </div>
                 <!--</form>-->
                 </div>
@@ -177,6 +197,32 @@
         </div>
     </div>
 
+
+</asp:Content>
+
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+     <!-- plugin rangeslide-->
+    <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <!-- plugin selectpicker-->
+    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            /**Inicialización rangeslider.js**/
+            $('input[type="range"]').rangeslider({
+                polyfill: false,
+                onInit: function () {
+                    this.output = $('<div class="range-output" />').insertAfter(this.$range).html(this.$element.val());
+                },
+                onSlide: function (position, value) {
+                    this.output.html(value);
+                }
+            });
+           
+            /**Inicialización selectpicker.js**/
+            $('.selectpicker').selectpicker();
+            
+        });
+    </script>
 
 </asp:Content>
 

@@ -81,7 +81,16 @@ $(document).ready(function () {
         else {
             var nperiodo = $('.range-output').text();
            // $('#nperiodo').val(nperiodo);
-            console.log("pestañas en amortizacion-->" + nperiodo );
+            console.log("pestañas en amortizacion-->" + nperiodo);
+            var options = [];
+
+            for (i = 1; i <= nperiodo; i++) {
+                var option = "<option value="+i+">" + i + "</option>"
+                options.push(option);
+            }
+            $('#cnperiodo').html(options);
+            $('#cnperiodo').selectpicker('refresh');
+            
         }
 
 
@@ -180,7 +189,9 @@ $(document).ready(function () {
         var data = t.row(rowIdx).data();
         if (clase == "costo") {
             if (data[2] !== "") {
-                var costoFinal = (newValue * data[2]) / 100;
+                var value = parseFloat(newValue.replace(',', ""));
+                console.log(value);
+                var costoFinal = (value * data[2]) / 100;
                 //console.log('porcentaje--->' + data[2]);
                 t.cell(rowIdx, 3).data(costoFinal).draw();
                 t.order([3, 'desc']).draw();
@@ -224,7 +235,25 @@ $(document).ready(function () {
         $(".na").html("");
     });
 
+    /*******formato moneda******/
+    /*$('body').on('keyup', '#myTabContent2 .table-responsive  input', function (ev) {
+        
+        $("input").css("background-color", "pink");
+        console.log("keyy");
+    });*/
 
+    $("#myTabContent2 .table-responsive  input").on({
+        "focus": function (event) {
+            $(event.target).select();
+        },
+        "keyup": function (event) {
+            $(event.target).val(function (index, value) {
+                return value.replace(/\D/g, "")
+                    .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+                    .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+            });
+        }
+    });
     
 
 

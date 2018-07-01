@@ -26,157 +26,115 @@
                 </div>
             </div>
         </div>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a href="#tab1" id="tabOne" class="nav-link active" role="tab" data-toggle="tab"> Antes de comenzar</a>
-            </li>
-            <li class="nav-item">
-                <a href="#tab2" id="tabTwo" class="nav-link"  role="tab" data-toggle="tab">Depreciación/Amortización</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContentA">
-            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="Before">
-                <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>¡Antes de comenzar!</strong> Selecciona el rango de periodos por meses/años a calcular.
-                    </div>
-                    <section class="row">
-                        <div class="col col-md-8 ">
-                           <input  type="range" max="10" value="1" id="periodo">
-                        </div>
-                        <div class="col col-md-4 ">
-                            <select class="selectpicker show-tick" id="lapso">
-                                <option>Años</option>
-                                <option>Meses</option>
-                            </select>
-                        </div>
-    
-                    </section>
+
+        <div class="tab-content  tab-pane" id="myTabContent2">
+            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">       
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>¡Antes de comenzar!</strong> Selecciona el perído a cacular.
                 </div>
-                <div class="row">
-                    <div class="col text-right">
-                        <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                            Siguiente <i class='fa fa-angle-double-right'></i>
-                        </asp:LinkButton>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="Amortización">
                 <section class="row">
                     <div class="col">
                         <div class="form-group">
                         <label for="selecciona" class="col-form-label">Selecciona el período</label>
                             <select class="selectpicker show-tick" id="cnperiodo">
-                                <% for(int i = 0; i < 5; i++) %> 
-                                <% { Response.Write("<option value="+i+">"+i+"</option>"); }%>
-                            
                             </select>
                         </div>
                     </div>
                 </section>
-                <div class="tab-content  tab-pane" id="myTabContent2">
-                    <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">          
-                        <div class="card-header">
-                            <h5><i class="fa fa-table"></i>  Amortización</h5>
-                        </div>      
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="amortTable" >
-                                <thead>
-                                    <tr>
-                                        <th >Concepto</th>
-                                        <th >$ Costo</th>
-                                        <th class="porcentaje">%</th>
-                                        <th >Total</th>
-                                        <th class="elim"></th>
+                <div class="card-header">
+                    <h5><i class="fa fa-table"></i>  Amortización</h5>
+                </div>      
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="amortTable" >
+                        <thead>
+                            <tr>
+                                <th >Concepto</th>
+                                <th >$ Costo</th>
+                                <th class="porcentaje">%</th>
+                                <th >Total</th>
+                                <th class="elim"></th>
                 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="previous">Terrenos</td>
-                                        <td class="costo">0</td>
-                                        <td class="porct">20</td>
-                                        <td data-editable="false">0</td>
-                                        <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="previous">Terrenos</td>
+                                <td class="costo">0</td>
+                                <td class="porct">20</td>
+                                <td data-editable="false">0</td>
+                                <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td class="previous">Edificios</td>
-                                        <td class="costo">0</td>
-                                        <td class="porct">5</td>
-                                        <td data-editable="false">0</td>
-                                        <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
+                            </tr>
+                            <tr>
+                                <td class="previous">Edificios</td>
+                                <td class="costo">0</td>
+                                <td class="porct">5</td>
+                                <td data-editable="false">0</td>
+                                <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td class="previous">Transporte</td>
-                                        <td class="costo">0</td>
-                                        <td class="porct">25</td>
-                                        <td data-editable="false">0</td>
-                                        <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
+                            </tr>
+                            <tr>
+                                <td class="previous">Transporte</td>
+                                <td class="costo">0</td>
+                                <td class="porct">25</td>
+                                <td data-editable="false">0</td>
+                                <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td class="previous">Cómputo</td>
-                                        <td class="costo">0</td>
-                                        <td class="porct">30</td>
-                                        <td data-editable="false">0</td>
-                                        <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
+                            </tr>
+                            <tr>
+                                <td class="previous">Cómputo</td>
+                                <td class="costo">0</td>
+                                <td class="porct">30</td>
+                                <td data-editable="false">0</td>
+                                <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
-                                    </tr>
-                                        <tr>
-                                        <td class="previous">Mobiliario</td>
-                                        <td class="costo">0</td>
-                                        <td class="porct">10</td>
-                                        <td data-editable="false">0</td>
-                                        <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
+                            </tr>
+                                <tr>
+                                <td class="previous">Mobiliario</td>
+                                <td class="costo">0</td>
+                                <td class="porct">10</td>
+                                <td data-editable="false">0</td>
+                                <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
-                                    </tr>
-                                        <tr>
-                                        <td class="previous">Equipo de Oficina</td>
-                                        <td class="costo">0</td>
-                                        <td class="porct">10</td>
-                                        <td data-editable="false">0</td>
-                                        <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
+                            </tr>
+                                <tr>
+                                <td class="previous">Equipo de Oficina</td>
+                                <td class="costo">0</td>
+                                <td class="porct">10</td>
+                                <td data-editable="false">0</td>
+                                <td data-editable="false"><i  class="fa fa-times fa-3 remove" aria-hidden="true"></i> </td>
 
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th><strong>TOTAL</strong></th>
-                                        <th></th>
-                                        <th class="na"></th>
-                                        <th id="total"></th>
-                                        <th class="na"></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>  
-
-                    <div class="row">
-                        <div class="col col-sm-6 text-center">
-                            <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"   runat="server" OnClientClick="return false;"/>
-                        </div>
-                        <div class="col col-sm-6 text-center">
-                            <asp:LinkButton runat="server" ID="guardar_amort" OnClientClick="return false;" CssClass="btn btn-primary">
-                                <i class='fa fa-save'></i> Guardar
-                            </asp:LinkButton>
-                        </div>
-                    </div>
-
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th><strong>TOTAL</strong></th>
+                                <th></th>
+                                <th class="na"></th>
+                                <th id="total"></th>
+                                <th class="na"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
+            </div>  
 
+            <div class="row">
+                <div class="col col-sm-6 text-center">
+                    <asp:Button id="add_row" 	CssClass="btn btn-primary"  Text="Agregar"   runat="server" OnClientClick="return false;"/>
+                </div>
+                <div class="col col-sm-6 text-center">
+                    <asp:LinkButton runat="server" ID="guardar_amort" OnClientClick="return false;" CssClass="btn btn-primary">
+                        <i class='fa fa-save'></i> Guardar
+                    </asp:LinkButton>
+                </div>
             </div>
+
         </div>
 
-        
-
-        
-        
     </div>
 
     <!-- modal de succes -->
@@ -242,20 +200,6 @@
 
     <script>
         $(document).ready(function () {
-            /**Inicialización rangeslider.js**/
-            $('input[type="range"]').rangeslider({
-                polyfill: false,
-                onInit: function () {
-                    this.output = $('<div class="range-output" />').insertAfter(this.$range).html(this.$element.val());
-                },
-                onSlide: function (position, value) {
-                    this.output.html(value);
-                }
-            });
-           
-            /**Inicialización selectpicker.js**/
-            $('.selectpicker').selectpicker();
-            
         });
     </script>
 

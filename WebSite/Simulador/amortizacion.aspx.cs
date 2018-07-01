@@ -27,4 +27,12 @@ public partial class Simulador_Default : System.Web.UI.Page
         return json;
 
     }
+
+    /*[WebMethod]
+    public static int llenarSelect(int nperiodo)
+    {
+
+        return nperiodo;
+
+    }*/
 }

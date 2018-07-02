@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="OpenAuthProviders.ascx.cs" Inherits="OpenAuthProviders" %>
 
 <div id="socialLoginList">
-    <h4>Utilice otro servicio para iniciar sesión.</h4>
+    <h4>¿QUÉ ES UN SIMULADOR?</h4>
     <hr />
     <asp:ListView runat="server" ID="providerDetails" ItemType="System.String"
         SelectMethod="GetProviderNames" ViewStateMode="Disabled">
@@ -15,7 +15,7 @@
         </ItemTemplate>
         <EmptyDataTemplate>
             <div>
-                <p>No existen servicios de autenticación externos configurados. Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=252803">este artículo</a> para obtener información sobre cómo configurar esta aplicación ASP.NET para admitir el inicio de sesión a través de servicios externos.</p>
+                <p>Un simulador de negocios es una herramienta de aprendizaje, que pretende la reproducción de un sistema económico, financiero y/o empresarial.</p>
             </div>
         </EmptyDataTemplate>
     </asp:ListView>

@@ -686,7 +686,7 @@ footer.sticky-footer {
 
 
 
-.Fondo {
+/*.Fondo {
     position: fixed;
     top: 0px;
     bottom: 0px;
@@ -715,8 +715,8 @@ footer.sticky-footer {
     border: 1px solid Gray;
     background-image: url('loading.gif');
     background-repeat: no-repeat;
-    background-position: center;*/
-}
+    background-position: center;
+}*/
 #preloader_1 {
     position: fixed;
     top: 45%;

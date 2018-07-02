@@ -41,7 +41,7 @@
                                    <div class="collapse navbar-collapse anyClass" id="navbarResponsive">
                                       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Inicio">
-                                          <a class="nav-link" href="Index.aspx">
+                                          <a class="nav-link" href="Index">
                                             <i class="fa fa-home"></i>
                                             <span class="nav-link-text">Inicio</span>
                                           </a>
@@ -53,49 +53,49 @@
                                           </a>
                                             <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
-                                                      <a class="nav-link" href="amortizacion.aspx">
+                                                      <a class="nav-link" href="amortizacion">
                                                         <i class="fa fa-bar-chart-o"></i>
                                                         <span class="nav-link-text">Amortización</span>
                                                       </a>
                                                 </li>
                                                 <li>
-                                                       <a class="nav-link" href="costos.aspx">
+                                                       <a class="nav-link" href="costos">
                                                           <i class="fa fa-bar-chart-o"></i>
                                                           <span class="nav-link-text">Costos</span>
                                                       </a>
                                                 </li>
                                                 <li>
-                                                      <a class="nav-link" href="impuestos.aspx">
+                                                      <a class="nav-link" href="impuestos">
                                                         <i class="fa fa-bar-chart-o"></i>
                                                         <span class="nav-link-text">Impuestos</span>
                                                       </a>
                                                 </li>
                                                 <li>
-                                                      <a class="nav-link" href="Construccion.aspx">
+                                                      <a class="nav-link" href="Construccion">
                                                         <i class="fa fa-bar-chart-o"></i>
                                                         <span class="nav-link-text">Perdidas</span>
                                                       </a>
                                                 </li>
                                                 <li>
-                                                      <a class="nav-link" href="Construccion.aspx">
+                                                      <a class="nav-link" href="Construccion">
                                                         <i class="fa fa-bar-chart-o"></i>
                                                         <span class="nav-link-text">Gastos</span>
                                                       </a>
                                                 </li>
                                                  <li>
-                                                       <a class="nav-link" href="van.aspx">
+                                                       <a class="nav-link" href="van">
                                                           <i class="fa fa-bar-chart-o"></i>
                                                           <span class="nav-link-text">VAN</span>
                                                       </a>
                                                 </li> 
                                                  <li>
-                                                       <a class="nav-link" href="Construccion.aspx">
+                                                       <a class="nav-link" href="Construccion">
                                                           <i class="fa fa-bar-chart-o"></i>
                                                           <span class="nav-link-text">TMAR</span>
                                                       </a>
                                                 </li> 
                                                 <li>
-                                                       <a class="nav-link" href="Construccion.aspx">
+                                                       <a class="nav-link" href="Construccion">
                                                           <i class="fa fa-bar-chart-o"></i>
                                                           <span class="nav-link-text">Punto de Equilibrio</span>
                                                       </a>
@@ -110,10 +110,10 @@
                                           </a>
                                           <ul class="sidenav-second-level collapse" id="collapseComponents2">
                                             <li>
-                                              <a class="nav-link" href="Construccion.aspx">Opcion 1</a>
+                                              <a class="nav-link" href="Construccion">Opcion 1</a>
                                             </li>
                                             <li>
-                                              <a class="nav-link" href="Construccion.aspx">Opcion 2</a>
+                                              <a class="nav-link" href="Construccion">Opcion 2</a>
                                             </li>
                                           </ul>
                                         </li>
@@ -124,32 +124,32 @@
                                           </a>
                                           <ul class="sidenav-second-level collapse" id="collapseMulti">
                                             <li>
-                                              <a class="nav-link" href="Construccion.aspx">Opcion de segundo nivel</a>
+                                              <a class="nav-link" href="Construccion">Opcion de segundo nivel</a>
                                             </li>
                                             <li>
-                                              <a class="nav-link" href="Construccion.aspx">Opcion de segundo nivel</a>
+                                              <a class="nav-link" href="Construccion">Opcion de segundo nivel</a>
                                             </li>
                                             <li>
-                                              <a class="nav-link" href="Construccion.aspx">Opcion de segundo nivel</a>
+                                              <a class="nav-link" href="Construccion">Opcion de segundo nivel</a>
                                             </li>
                                             <li>
                                               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Tercer Nivel</a>
                                               <ul class="sidenav-third-level collapse" id="collapseMulti2">
                                                 <li>
-                                                  <a class="nav-link" href="Construccion.aspx">Opcion de tercer nivel</a>
+                                                  <a class="nav-link" href="Construccion">Opcion de tercer nivel</a>
                                                 </li>
                                                 <li>
-                                                  <a class="nav-link" href="Construccion.aspx">Opcion de tercer nivel</a>
+                                                  <a class="nav-link" href="Construccion">Opcion de tercer nivel</a>
                                                 </li>
                                                 <li>
-                                                  <a class="nav-link" href="Construccion.aspx">Opcion de tercer nivel</a>
+                                                  <a class="nav-link" href="Construccion">Opcion de tercer nivel</a>
                                                 </li>
                                               </ul>
                                             </li>
                                           </ul>
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                                          <a class="nav-link" href="Construccion.aspx">
+                                          <a class="nav-link" href="Construccion">
                                             <i class="fa fa-fw fa-link"></i>
                                             <span class="nav-link-text">Link</span>
                                           </a>
@@ -164,7 +164,7 @@
                                       </ul>
                                       <ul class="navbar-nav ml-auto">
                                         <li class="nav-item dropdown">
-                                          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="Construccion.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="Construccion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-fw fa-envelope"></i>
                                             <span class="d-lg-none">Messages
                                               <span class="badge badge-pill badge-primary">12 New</span>
@@ -176,29 +176,29 @@
                                           <div class="dropdown-menu" aria-labelledby="messagesDropdown">
                                             <h6 class="dropdown-header">New Messages:</h6>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Construccion.aspx">
+                                            <a class="dropdown-item" href="Construccion">
                                               <strong>David Miller</strong>
                                               <span class="small float-right text-muted">11:21 AM</span>
                                               <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Construccion.aspx">
+                                            <a class="dropdown-item" href="Construccion">
                                               <strong>Jane Smith</strong>
                                               <span class="small float-right text-muted">11:21 AM</span>
                                               <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Construccion.aspx">
+                                            <a class="dropdown-item" href="Construccion">
                                               <strong>John Doe</strong>
                                               <span class="small float-right text-muted">11:21 AM</span>
                                               <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item small" href="Construccion.aspx">View all messages</a>
+                                            <a class="dropdown-item small" href="Construccion">View all messages</a>
                                           </div>
                                         </li>
                                         <li class="nav-item dropdown">
-                                          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="Construccion.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="Construccion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-fw fa-bell"></i>
                                             <span class="d-lg-none">Alerts
                                               <span class="badge badge-pill badge-warning">6 New</span>
@@ -210,7 +210,7 @@
                                           <div class="dropdown-menu" aria-labelledby="alertsDropdown">
                                             <h6 class="dropdown-header">New Alerts:</h6>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Construccion.aspx">
+                                            <a class="dropdown-item" href="Construccion">
                                               <span class="text-success">
                                                 <strong>
                                                   <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
@@ -219,7 +219,7 @@
                                               <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Construccion.aspx">
+                                            <a class="dropdown-item" href="Construccion">
                                               <span class="text-danger">
                                                 <strong>
                                                   <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
@@ -228,7 +228,7 @@
                                               <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="Construccion.aspx">
+                                            <a class="dropdown-item" href="Construccion">
                                               <span class="text-success">
                                                 <strong>
                                                   <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
@@ -237,7 +237,7 @@
                                               <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item small" href="Construccion.aspx">View all alerts</a>
+                                            <a class="dropdown-item small" href="Construccion">View all alerts</a>
                                           </div>
                                         </li>
                                         <li class="nav-item">

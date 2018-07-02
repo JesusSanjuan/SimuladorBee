@@ -280,7 +280,7 @@
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
-                                      <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Periodo de recuperacion y Flujo Neto de Efectivo</strong>.
+                                      <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Flujo Neto de Efectivo y Periodo de recuperacion</strong>.
                                     </div>
                                     <!--Temporal -->
                                         <div  class="container-fluid card-body">

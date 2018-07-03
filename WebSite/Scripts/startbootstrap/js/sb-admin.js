@@ -47,17 +47,9 @@
     $('.example-popover').popover({
         container: 'body'
     })
-
-
     /** modal new project***/
     $("body").on("click", "#addProject", function () {
-        $('#newProject').modal({ show: true });
-  
-    });
-
-    
-
-    
-  
+        $('#newProject').modal({ show: true });  
+    });    
 })(jQuery); // End of use strict
 

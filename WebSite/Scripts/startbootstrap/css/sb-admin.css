@@ -73,11 +73,12 @@ body.fixed-nav {
 #mainNav .navbar-collapse .navbar-nav .nav-item .nav-link {
   cursor: pointer;
 }
-
+    /*https://stackoverflow.com/questions/47788847/fontawesome-5-font-family-not-work*/
 #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
-  float: right;
-  content: '\f107';
-  font-family: 'FontAwesome';
+    float: right;
+    content: '\f107';
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
 }
 
 #mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse.collapsed:after {
@@ -117,13 +118,14 @@ body.fixed-nav {
   position: relative;
   min-width: 45px;
 }
-
+    /*https://stackoverflow.com/questions/47788847/fontawesome-5-font-family-not-work*/
 #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link:after {
-  float: right;
-  width: auto;
-  content: '\f105';
-  border: none;
-  font-family: 'FontAwesome';
+    float: right;
+    width: auto;
+    content: '\f105';
+    border: none;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
 }
 
 #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link .indicator {
@@ -480,8 +482,6 @@ footer.sticky-footer {
   }
 }
 
-
-
 /*******new config*********/
 
 .bg-dark {
@@ -512,273 +512,15 @@ footer.sticky-footer {
     color: white !important;
 }
 
+/* Borde para Van*/
 .preborder {
     border-style: solid;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.17);
     border-radius: 10px;
 }
+/* Borde para Van*/
 
-/* Precarga efecto visual en VAN*/
-/*
-.modales {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1050;
-    display: none;
-    overflow: hidden;
-    outline: 0;
-}
-
-.modales-open .modales {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.modales-dialog {
-    position: relative;
-    width: auto;
-    margin: 0.5rem;
-    pointer-events: none;
-}
-
-.modales.fade .modales-dialog {
-    transition: -webkit-transform 0.3s ease-out;
-    transition: transform 0.3s ease-out;
-    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-    -webkit-transform: translate(0, -25%);
-    transform: translate(0, -25%);
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-    .modales.fade .modales-dialog {
-        transition: none;
-    }
-}
-
-.modales.show .modales-dialog {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-}
-
-.modales-dialog-centered {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    min-height: calc(100% - (0.5rem * 2));
-}
-
-.modales-content {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.3rem;
-    outline: 0;
-}
-
-.modales-backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    background-color: #000;
-}
-
-    .modales-backdrop.fade {
-        opacity: 0;
-    }
-
-    .modales-backdrop.show {
-        opacity: 0.5;
-    }
-
-.modales-header {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 1rem;
-    border-bottom: 1px solid #e9ecef;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
-}
-
-    .modales-header .close {
-        padding: 1rem;
-        margin: -1rem -1rem -1rem auto;
-    }
-
-.modales-title {
-    margin-bottom: 0;
-    line-height: 1.5;
-}
-
-.modales-body {
-    position: relative;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1rem;
-}
-
-.modales-footer {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    padding: 1rem;
-    border-top: 1px solid #e9ecef;
-}
-
-    .modales-footer > :not(:first-child) {
-        margin-left: .25rem;
-    }
-
-    .modales-footer > :not(:last-child) {
-        margin-right: .25rem;
-    }
-
-.modales-scrollbar-measure {
-    position: absolute;
-    top: -9999px;
-    width: 50px;
-    height: 50px;
-    overflow: scroll;
-}
-
-@media (min-width: 576px) {
-    .modales-dialog {
-        max-width: 500px;
-        margin: 1.75rem auto;
-    }
-
-    .modales-dialog-centered {
-        min-height: calc(100% - (1.75rem * 2));
-    }
-
-    .modales-sm {
-        max-width: 300px;
-    }
-}
-
-@media (min-width: 992px) {
-    .modales-lg {
-        max-width: 800px;
-    }
-}
-*/
-
-
-
-/*.Fondo {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    background-color: #909090;
-    filter: alpha(opacity=80);
-    opacity: 0.7;
-    -webkit-transition: all 5s ease;
-    -o-transition: all 5s ease;
-    transition:all 5s ease;
-    z-index: 100000;
-}
-
-.Progreso {
-    position: fixed;
-    top: 40%;
-    left: 40%;
-    height: 20%;
-    width: 20%;
-    z-index: 100001;
-  /*  background-color: #FFFFFF;
-    border: 1px solid Gray;
-    background-image: url('loading.gif');
-    background-repeat: no-repeat;
-    background-position: center;
-}*/
-#preloader_1 {
-    position: fixed;
-    top: 45%;
-    left: 49%;
-}
-
-    #preloader_1 span {
-        bottom: 0px;
-        width: 9px;
-        height: 5px;
-        background: #9b59b6;
-        position: absolute;
-        animation: preloader_1 1.5s infinite ease-in-out;
-    }
-
-        #preloader_1 span:nth-child(2) {
-            left: 11px;
-            animation-delay: .2s;
-        }
-
-        #preloader_1 span:nth-child(3) {
-            left: 22px;
-            animation-delay: .4s;
-        }
-
-        #preloader_1 span:nth-child(4) {
-            left: 33px;
-            animation-delay: .6s;
-        }
-
-        #preloader_1 span:nth-child(5) {
-            left: 44px;
-            animation-delay: .8s;
-        }
-
-@keyframes preloader_1 {
-    0% {
-        height: 5px;
-        transform: translateY(0px);
-        background: #9b59b6;
-    }
-
-    25% {
-        height: 30px;
-        transform: translateY(15px);
-        background: #3498db;
-    }
-
-    50% {
-        height: 5px;
-        transform: translateY(0px);
-        background: #9b59b6;
-    }
-
-    100% {
-        height: 5px;
-        transform: translateY(0px);
-        background: #9b59b6;
-    }
-}
-
-/* Precarga efecto visual en VAN*/
 
 /* Tabla Editable de Costos*/
 #myTabContent table {

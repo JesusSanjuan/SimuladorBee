@@ -4,88 +4,46 @@
 
 <html>
 <head runat="server">
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Simulador</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-   <!-- Efectos visuales--> 
-    <link href="../Scripts/anijs-master/animate.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
-   <!-- Efectos visuales--> 
-   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
-           <!-- Bootstrap core CSS-->
-                 <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-           <!-- Fuentes personalizadas para esta plantilla Iconos-->
-                <link href="../Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  
-           <!-- Estilos personalizados para esta plantilla-->
-                <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
-   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
-<asp:ContentPlaceHolder ID="HeadContent" runat="server">
-</asp:ContentPlaceHolder>
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
-    <style>
-/* Center the loader */
-#loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
-}
-
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
-}
-
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
-
-#myDiv {
-  display: none;
-}
-</style>
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta name="description" content="">
+          <meta name="author" content="">
+          <title>Simulador</title>
+                        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+                   <!-- Efectos visuales--> 
+                        <link href="../Scripts/anijs-master/animate.min.css" rel="stylesheet" />
+                        <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
+                   <!-- Efectos visuales--> 
+                    <!--Preloader de hilado CSS3-->
+                        <link href="../Scripts/startbootstrap/css/loader-wrapper.css" rel="stylesheet" />
+                    <!--preloader de hilado CSS3-->
+                   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
+                           <!-- Bootstrap core CSS-->
+                                 <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+                           <!-- Fuentes personalizadas para esta plantilla  https://fontawesome.com/-->
+                                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+                               <!--<link href="../Scripts/startbootstrap/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">  
+                           <!-- Estilos personalizados para esta plantilla-->
+                                <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
+                   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:PlaceHolder runat="server">
+            <%: Scripts.Render("~/bundles/modernizr") %>
+        </asp:PlaceHolder>
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top" >  
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">  
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div> 
+    </div>
 
 
-    <div  >
+   <div  class="animate-bottom">
      <form runat="server" class="needs-validation" novalidate> 
        <!-- Menu-->
        <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" id="mainNav" >                                 
@@ -102,55 +60,55 @@
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Estudio Financiero">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
-                                            <i class="fa fa-fw fa-area-chart"></i>
+                                            <i class="fas fa-chart-area"></i>
                                             <span class="nav-link-text">Estudio Financiero</span>
                                           </a>
                                             <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
                                                 <li>
                                                       <a class="nav-link" href="amortizacion">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fas fa-chart-bar"></i>
                                                         <span class="nav-link-text">Amortización</span>
                                                       </a>
                                                 </li>
                                                 <li>
                                                        <a class="nav-link" href="costos">
-                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <i class="fas fa-chart-bar"></i>
                                                           <span class="nav-link-text">Costos</span>
                                                       </a>
                                                 </li>
                                                 <li>
                                                       <a class="nav-link" href="impuestos">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fas fa-chart-bar"></i>
                                                         <span class="nav-link-text">Impuestos</span>
                                                       </a>
                                                 </li>
                                                 <li>
                                                       <a class="nav-link" href="Construccion">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fas fa-chart-bar"></i>
                                                         <span class="nav-link-text">Perdidas</span>
                                                       </a>
                                                 </li>
                                                 <li>
                                                       <a class="nav-link" href="Construccion">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fas fa-chart-bar"></i>
                                                         <span class="nav-link-text">Gastos</span>
                                                       </a>
                                                 </li>
                                                  <li>
                                                        <a class="nav-link" href="van">
-                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <i class="fas fa-chart-bar"></i>
                                                           <span class="nav-link-text">VAN</span>
                                                       </a>
                                                 </li> 
                                                  <li>
                                                        <a class="nav-link" href="Construccion">
-                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <i class="fas fa-chart-bar"></i>
                                                           <span class="nav-link-text">TMAR</span>
                                                       </a>
                                                 </li> 
                                                 <li>
                                                        <a class="nav-link" href="Construccion">
-                                                          <i class="fa fa-bar-chart-o"></i>
+                                                          <i class="fas fa-chart-bar"></i>
                                                           <span class="nav-link-text">Punto de Equilibrio</span>
                                                       </a>
                                                 </li> 
@@ -267,7 +225,7 @@
                                             <a class="dropdown-item" href="Construccion">
                                               <span class="text-success">
                                                 <strong>
-                                                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+                                                  <i class="fas fa-arrow-up"></i>Status Update</strong>
                                               </span>
                                               <span class="small float-right text-muted">11:21 AM</span>
                                               <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
@@ -276,7 +234,7 @@
                                             <a class="dropdown-item" href="Construccion">
                                               <span class="text-danger">
                                                 <strong>
-                                                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+                                                  <i class="fas fa-arrow-down"></i>Status Update</strong>
                                               </span>
                                               <span class="small float-right text-muted">11:21 AM</span>
                                               <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
@@ -285,7 +243,7 @@
                                             <a class="dropdown-item" href="Construccion">
                                               <span class="text-success">
                                                 <strong>
-                                                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+                                                  <i class="fas fa-arrow-up"></i>Status Update</strong>
                                               </span>
                                               <span class="small float-right text-muted">11:21 AM</span>
                                               <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
@@ -308,7 +266,7 @@
                                         </li>
                                         <li class="nav-item">
                                           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                                            <i class="fa fa-fw fa-sign-out"></i>
+                                           <i class="fas fa-sign-out-alt"></i>
                                               Cerrar Sesion
                                           </a>
                                         </li>
@@ -330,7 +288,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- /.content-wrapper-->
+                                <!-- content-wrapper-->
                                 <footer class="sticky-footer">
                                   <div class="container">
                                     <div class="text-center">
@@ -379,24 +337,19 @@
                  <script src="../Scripts/umd/popper.js"></script> 
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->  
             <!-- Efectos visuales--> 
-                <!-- Archivo principal de AniJS --> 
-                <script  src="../Scripts/anijs-master/anijs.js" > </script>
-                <!-- ScrollReveal Helper -->
-                <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
+                 <!-- Archivo principal de AniJS --> 
+                     <script  src="../Scripts/anijs-master/anijs.js" > </script>
+                 <!-- ScrollReveal Helper -->
+                     <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
             <!-- Efectos visuales--> 
-
+            <!-- Ejecuta y oculta preloader--> 
                 <script>
-                        var myVar;
-
-                        function myFunction() {
-                            myVar = setTimeout(showPage, 3000);
-                        }
-
-                        function showPage() {
-                          document.getElementById("loader").style.display = "none";
-                          document.getElementById("myDiv").style.display = "block";
-                        }
+                    $(document).ready(function() {	
+	                   $('body').addClass('loaded');
+		               $('h1').css('color','#222222');	
+                    });
                  </script>
+            <!-- Ejecuta y oculta preloader--> 
                 <asp:ContentPlaceHolder ID="Foder" runat="server">
                 </asp:ContentPlaceHolder>
    </div>

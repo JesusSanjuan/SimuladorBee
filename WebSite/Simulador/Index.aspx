@@ -76,7 +76,7 @@
                   <div class="card text-white bg-danger o-hidden h-100">
                     <div class="row card-body">
                       <div class="col-3">
-                        <i class="fa fa-support fa-5x"></i>
+                          <i class="far fa-life-ring fa-5x"></i>
                       </div>
                       <div class="col-9 text-right">
                         <div class="huge">13</div>
@@ -153,7 +153,7 @@
                 <!--<form>-->
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Título:</label>
-                    <input type="text" class="form-control" id="name">
+                    <asp:TextBox CssClass="form-control" id="Nombre_Proyecto" CausesValidation="True" runat="server" required="required"/>
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Año</label>
@@ -171,7 +171,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <asp:Button id="Guardar_Proyecto" CssClass="btn btn-primary" OnClick="Guardar_PoyectoBtn_Click" Text="Guardar" runat="server"/>
+                <!--    <button id="Guardar_Proyecto" type="button" class="btn btn-primary">Guardar</button> -->
                 </div>
             </div>
         </div>

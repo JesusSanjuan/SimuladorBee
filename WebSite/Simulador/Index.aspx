@@ -76,7 +76,7 @@
                   <div class="card text-white bg-danger o-hidden h-100">
                     <div class="row card-body">
                       <div class="col-3">
-                        <i class="fa fa-support fa-5x"></i>
+                          <i class="far fa-life-ring fa-5x"></i>
                       </div>
                       <div class="col-9 text-right">
                         <div class="huge">13</div>

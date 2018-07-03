@@ -14,12 +14,14 @@ function Graficar(x,y,Periodo) {
     var pointRadius = new Array(repArray.length);
     var pointHoverRadius = new Array(repArray.length);
     var pointStyle = new Array(repArray.length);
+   // var tooltipsbackgroundColor = new Array(repArray.length);
 
     for (var i = 0; i < repArray.length; i++) {       
         pointBackgroundColor[i] = "rgba(2,117,216,1)";   
         pointRadius[i] = 3;
         pointHoverRadius[i] = 6;
         pointStyle[i] = 'circle';
+      //  tooltipsbackgroundColor[i] = 'rgba(0, 0, 0, 0.7)';
     }
 
     for (var i = 0; i < repArray.length; i++) {
@@ -29,6 +31,7 @@ function Graficar(x,y,Periodo) {
             pointRadius[i] = 8;
             pointHoverRadius[i] = 10;
             pointStyle[i] = 'rectRounded';
+            //tooltipsbackgroundColor[i] ='rgba(255, 0, 0, 0.7)'
             break;
         }
         
@@ -43,7 +46,7 @@ function Graficar(x,y,Periodo) {
             labels: time,
             datasets: [{
                 label: "Mi VPN",
-                lineTension: 0.2,                
+                lineTension: 0.2,
                 backgroundColor: "rgba(2,117,216,0.2)",// Para lo de bajo o arriba de la lineas y el decimal para la intencidad
                 borderColor: "rgba(2,117,216,0.9)",// El color de las lineas que unen los puntos y la intencidad
                 borderWidth: 3,
@@ -56,7 +59,7 @@ function Graficar(x,y,Periodo) {
                 pointBorderWidth: 2, //Distancia del punto de su borde al centro
                 pointStyle: pointStyle,
                 data: repArray
-             
+
             }],
         },
         options: {
@@ -88,13 +91,20 @@ function Graficar(x,y,Periodo) {
                     },
                     ticks: {
                         //min: 0,
-                       // max: 40000,
+                        // max: 40000,
                         maxTicksLimit: 20
                     },
                     gridLines: {
                         display: true
                     }
                 }],
+            },
+            tooltips: {
+                xPadding: 16,
+                yPadding: 10,
+                backgroundColor: 'rgba(0,5,109, 0.5)',
+                titleFontStyle: 'normal',
+                titleMarginBottom: 15
             },
             animation: {
                 duration: 10, // general animation time
@@ -106,7 +116,7 @@ function Graficar(x,y,Periodo) {
             legend: {
                 display: true,
                 labels: {
-                    fontColor: 'rgb(255, 0,0)'
+                    fontColor: 'rgb(0, 0, 0)'// Color de los labels del titulo
                 }
             }
         }

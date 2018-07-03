@@ -23,6 +23,11 @@ public partial class Entidades : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
-    public virtual DbSet<ConceptosAmortizacion> ConceptosAmortizacion { get; set; }
-    public virtual DbSet<Costos> Costos { get; set; }
+    public virtual DbSet<Amortizacion_pro> Amortizacion_pro { get; set; }
+    public virtual DbSet<Proyecto> Proyecto { get; set; }
+    public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+    public virtual DbSet<Amortizacion_cat> Amortizacion_cat { get; set; }
+    public virtual DbSet<Costos_cat> Costos_cat { get; set; }
+    public virtual DbSet<Costos_Pro> Costos_Pro { get; set; }
+    public virtual DbSet<FNE> FNE { get; set; }
 }

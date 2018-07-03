@@ -2,10 +2,11 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
     <link href="../Scripts/rangeslider.js/rangeslider.css" rel="stylesheet" />
+    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">  
                 <a href="Index.aspx">Inicio</a>
@@ -16,8 +17,13 @@
     <div class="card align-middle">
         <div class="card-header">
             <h1><i class="fa fa-money"></i> Depreciación y amortización</h1>
-            <div class="col col-10">
-               La depreciación hace referencia al desgaste que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  La amortización refiere a los gastos diferidos e intangibles y la depreciación a los activos fijos. 
+            <div class="row">
+                <div class="col col-10">
+                   La depreciación y la amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
+                </div>
+                <div class="col col-2">
+                    <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Selecciona la celda para modificar."><i class="fa fa-question-circle"></i></a>
+                </div>
             </div>
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,11 +43,17 @@
                         </button>
                         <strong>¡Antes de comenzar!</strong> Selecciona el rango de periodos por meses/años a calcular.
                     </div>
-                    <section>
-                        <div class="col col-12">
-                           <input  type="range" max="10" value="1">
+                    <section class="row">
+                        <div class="col col-md-8 ">
+                           <input  type="range" max="10" value="1" id="periodo">
                         </div>
-            
+                        <div class="col col-md-4 ">
+                            <select class="selectpicker show-tick" id="lapso">
+                                <option>Años</option>
+                                <option>Meses</option>
+                            </select>
+                        </div>
+    
                     </section>
                 </div>
                 <div class="row">
@@ -53,6 +65,18 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="Amortización">
+                <section class="row">
+                    <div class="col">
+                        <div class="form-group">
+                        <label for="selecciona" class="col-form-label">Selecciona el período</label>
+                            <select class="selectpicker show-tick" id="cnperiodo">
+                                <% for(int i = 0; i < 5; i++) %> 
+                                <% { Response.Write("<option value="+i+">"+i+"</option>"); }%>
+                            
+                            </select>
+                        </div>
+                    </div>
+                </section>
                 <div class="tab-content  tab-pane" id="myTabContent2">
                     <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">          
                         <div class="card-header">
@@ -213,6 +237,8 @@
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
      <!-- plugin rangeslide-->
     <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <!-- plugin selectpicker-->
+    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -226,7 +252,9 @@
                     this.output.html(value);
                 }
             });
-
+           
+            /**Inicialización selectpicker.js**/
+            $('.selectpicker').selectpicker();
             
         });
     </script>

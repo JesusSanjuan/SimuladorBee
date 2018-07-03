@@ -1,98 +1,100 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="User_Index" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="container-fluid">
+    <div class="container-fluid" >
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Simulador</a>
-        </li>
-        <li class="breadcrumb-item active">Inicio</li>
-      </ol>
+         <nav aria-label="breadcrumb" style="padding-bottom:1rem;"  data-anijs="if: load, on:window, do: pulse animated, before: scrollReveal, after: removeAnim">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Simulador</a>
+            </li>
+            <li class="breadcrumb-item active">Inicio</li>
+          </ol>
+      </nav> 
       <!-- Icon Cards-->
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white  bg-primary o-hidden h-100">
-            <div class="row card-body">
+      <div class="row" >
+                <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: rubberBand animated, before: scrollReveal, after: removeAnim">
+                  <div class="card text-white  bg-primary o-hidden h-100">
+                    <div class="row card-body">
               
-                <div class="col-3">
-                    <i class="fa fa-tasks fa-5x"></i>
-                </div>
-                <div class="col-9 text-right">
-                    <div class="huge">2</div>
-                    <div>Proyectos</div>
-                </div>
+                        <div class="col-3">
+                            <i class="fa fa-tasks fa-5x"></i>
+                        </div>
+                        <div class="col-9 text-right">
+                            <div class="huge">2</div>
+                            <div>Proyectos</div>
+                        </div>
 
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#" id="addProject">
-              <span class="pull-left">Agregar Nuevo</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-warning o-hidden h-100">
-            <div class="row card-body">
-              <div class="col-3">
-                <i class="fa fa-comments fa-5x"></i>
-              </div>
-              <div class="col-9 text-right">
-                <div class="huge">26</div>
-                <div>Nuevos comentarios!</div>
-              </div>
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#">
-              <span class="pull-left">Ver detalles</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden h-100">
-            <div class="row card-body">
-              <div class="col-3">
-                <i class="fa fa-shopping-cart fa-5x"></i>
-              </div>
-              <div class="col-9 text-right">
-                <div class="huge">123</div>
-                <div>Nuevas ordenes!</div>
-              </div>
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#">
-              <span class="pull-left">Ver detalles</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-danger o-hidden h-100">
-            <div class="row card-body">
-              <div class="col-3">
-                <i class="fa fa-support fa-5x"></i>
-              </div>
-              <div class="col-9 text-right">
-                <div class="huge">13</div>
-                <div>Nuevos Tickets!</div>
-              </div>
-            </div>
-            <a class="card-footer bg-light  clearfix small z-1 " href="#">
-              <span class="pull-left">Ver detalles</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#" id="addProject">
+                      <span class="pull-left">Agregar Nuevo</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3"  data-anijs="if: load, on:window, do: tada animated, before: scrollReveal, after: removeAnim">
+                  <div class="card text-white bg-warning o-hidden h-100">
+                    <div class="row card-body">
+                      <div class="col-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                      </div>
+                      <div class="col-9 text-right">
+                        <div class="huge">26</div>
+                        <div>Nuevos comentarios!</div>
+                      </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#">
+                      <span class="pull-left">Ver detalles</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: tada animated, before: scrollReveal, after: removeAnim">
+                  <div class="card text-white bg-success o-hidden h-100">
+                    <div class="row card-body">
+                      <div class="col-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                      </div>
+                      <div class="col-9 text-right">
+                        <div class="huge">123</div>
+                        <div>Nuevas ordenes!</div>
+                      </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#">
+                      <span class="pull-left">Ver detalles</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: rubberBand animated, before: scrollReveal, after: removeAnim">
+                  <div class="card text-white bg-danger o-hidden h-100">
+                    <div class="row card-body">
+                      <div class="col-3">
+                        <i class="fa fa-support fa-5x"></i>
+                      </div>
+                      <div class="col-9 text-right">
+                        <div class="huge">13</div>
+                        <div>Nuevos Tickets!</div>
+                      </div>
+                    </div>
+                    <a class="card-footer bg-light  clearfix small z-1 " href="#">
+                      <span class="pull-left">Ver detalles</span>
+                      <span class="float-right">
+                        <i class="fa fa-angle-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
       </div>
       
       <!-- Example DataTables Card-->
-      <div class="card mb-3">
+      <div class="card mb-3" data-anijs="if: load, on: window, do: fadeInUp animated, before: scrollReveal">
         <div class="card-header">
           <i class="fa fa-table"></i> Mis proyectos</div>
         <div class="card-body">

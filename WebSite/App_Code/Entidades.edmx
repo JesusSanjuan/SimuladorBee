@@ -4,76 +4,418 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ConceptosAmortizacion">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Amortizacion_cat">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID_Amortizacion" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Concepto" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Porcentaje" Type="float" Nullable="false" />
+          <Property Name="ID_Amortizacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Concepto" Type="text" Nullable="false" />
+          <Property Name="Porcentaje" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Costos">
+        <EntityType Name="Amortizacion_pro">
+          <Key>
+            <PropertyRef Name="ID_Amortizacion_pro" />
+          </Key>
+          <Property Name="ID_Amortizacion_pro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Periodo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Amortizacion" Type="text" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Concepto" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Costo" Type="float" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Costos_cat">
+          <Key>
+            <PropertyRef Name="ID_Costos" />
+          </Key>
+          <Property Name="ID_Costos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Concepto" Type="text" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Costos_Pro">
+          <Key>
+            <PropertyRef Name="ID_Costos_pro" />
+          </Key>
+          <Property Name="ID_Costos_pro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Periodo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Produccion" Type="text" Nullable="false" />
+          <Property Name="Ventas" Type="text" Nullable="false" />
+          <Property Name="Financiamiento" Type="text" Nullable="false" />
+          <Property Name="Admon" Type="text" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FNE">
+          <Key>
+            <PropertyRef Name="ID_FNE" />
+          </Key>
+          <Property Name="ID_FNE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Periodo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Ingreso" Type="float" Nullable="false" />
+          <Property Name="Total_Costo" Type="float" Nullable="false" />
+          <Property Name="UAI" Type="float" Nullable="false" />
+          <Property Name="Impuesto" Type="float" Nullable="false" />
+          <Property Name="UDI" Type="float" Nullable="false" />
+          <Property Name="Amortizacion" Type="float" Nullable="false" />
+          <Property Name="Total_FNE" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="ID_Proyecto" />
+          </Key>
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Usuario" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre_Proyecto" Type="text" Nullable="false" />
+          <Property Name="Fecha_Hora" Type="datetime" Nullable="false" />
+          <Property Name="ID_Periodo" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Amortizacion_pro_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Amortizacion_pro" Type="Self.Amortizacion_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Amortizacion_pro">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Costos_Pro_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Costos_Pro" Type="Self.Costos_Pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Costos_Pro">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FNE_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="FNE" Type="Self.FNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="FNE">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="ConceptosAmortizacion" EntityType="Self.ConceptosAmortizacion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Costos" EntityType="Self.Costos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Amortizacion_cat" EntityType="Self.Amortizacion_cat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Amortizacion_pro" EntityType="Self.Amortizacion_pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Costos_cat" EntityType="Self.Costos_cat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Costos_Pro" EntityType="Self.Costos_Pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FNE" EntityType="Self.FNE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Self.FK_Amortizacion_pro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Amortizacion_pro" EntitySet="Amortizacion_pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Costos_Pro_Proyecto" Association="Self.FK_Costos_Pro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Costos_Pro" EntitySet="Costos_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FNE_Proyecto" Association="Self.FK_FNE_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="FNE" EntitySet="FNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_AspNetUsers" Association="Self.FK_Proyecto_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ConceptosAmortizacion">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Porcentaje" Type="Double" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Costos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Costo" Type="Double" Nullable="false" />
-          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ConceptosAmortizacion" EntityType="Self.ConceptosAmortizacion" />
-          <EntitySet Name="Costos" EntityType="Self.Costos" />
+          <EntitySet Name="Amortizacion_pro" EntityType="Model.Amortizacion_pro" />
+          <EntitySet Name="Proyecto" EntityType="Model.Proyecto" />
+          <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Model.FK_Amortizacion_pro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Amortizacion_pro" EntitySet="Amortizacion_pro" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUsers" />
+          <AssociationSet Name="FK_Proyecto_AspNetUsers" Association="Model.FK_Proyecto_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <EntitySet Name="Amortizacion_cat" EntityType="Model.Amortizacion_cat" />
+          <EntitySet Name="Costos_cat" EntityType="Model.Costos_cat" />
+          <EntitySet Name="Costos_Pro" EntityType="Model.Costos_Pro" />
+          <EntitySet Name="FNE" EntityType="Model.FNE" />
+          <AssociationSet Name="FK_Costos_Pro_Proyecto" Association="Model.FK_Costos_Pro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Costos_Pro" EntitySet="Costos_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FNE_Proyecto" Association="Model.FK_FNE_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="FNE" EntitySet="FNE" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Amortizacion_pro">
+          <Key>
+            <PropertyRef Name="ID_Amortizacion_pro" />
+          </Key>
+          <Property Name="ID_Amortizacion_pro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Amortizacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Amortizacion_pro_Proyecto" FromRole="Amortizacion_pro" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="ID_Proyecto" />
+          </Key>
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Usuario" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_Proyecto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Amortizacion_pro" Relationship="Model.FK_Amortizacion_pro_Proyecto" FromRole="Proyecto" ToRole="Amortizacion_pro" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Proyecto_AspNetUsers" FromRole="Proyecto" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Costos_Pro" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Proyecto" ToRole="Costos_Pro" />
+          <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
+        </EntityType>
+        <Association Name="FK_Amortizacion_pro_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Amortizacion_pro" Role="Amortizacion_pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Amortizacion_pro">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Proyecto_AspNetUsers" FromRole="AspNetUsers" ToRole="Proyecto" />
+        </EntityType>
+        <Association Name="FK_Proyecto_AspNetUsers">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Amortizacion_cat">
+          <Key>
+            <PropertyRef Name="ID_Amortizacion" />
+          </Key>
+          <Property Name="ID_Amortizacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Porcentaje" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Costos_cat">
+          <Key>
+            <PropertyRef Name="ID_Costos" />
+          </Key>
+          <Property Name="ID_Costos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Costos_Pro">
+          <Key>
+            <PropertyRef Name="ID_Costos_pro" />
+          </Key>
+          <Property Name="ID_Costos_pro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Produccion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ventas" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Financiamiento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Admon" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Costos_Pro" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="FNE">
+          <Key>
+            <PropertyRef Name="ID_FNE" />
+          </Key>
+          <Property Name="ID_FNE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Ingreso" Type="Double" Nullable="false" />
+          <Property Name="Total_Costo" Type="Double" Nullable="false" />
+          <Property Name="UAI" Type="Double" Nullable="false" />
+          <Property Name="Impuesto" Type="Double" Nullable="false" />
+          <Property Name="UDI" Type="Double" Nullable="false" />
+          <Property Name="Amortizacion" Type="Double" Nullable="false" />
+          <Property Name="Total_FNE" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_FNE_Proyecto" FromRole="FNE" ToRole="Proyecto" />
+        </EntityType>
+        <Association Name="FK_Costos_Pro_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Costos_Pro" Role="Costos_Pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Costos_Pro">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FNE_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.FNE" Role="FNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="FNE">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entidades">
-          <EntitySetMapping Name="ConceptosAmortizacion">
-            <EntityTypeMapping TypeName="Model.ConceptosAmortizacion">
-              <MappingFragment StoreEntitySet="ConceptosAmortizacion">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <EntitySetMapping Name="Amortizacion_pro">
+            <EntityTypeMapping TypeName="Model.Amortizacion_pro">
+              <MappingFragment StoreEntitySet="Amortizacion_pro">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Amortizacion" ColumnName="Amortizacion" />
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Amortizacion_pro" ColumnName="ID_Amortizacion_pro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Costos">
-            <EntityTypeMapping TypeName="Model.Costos">
-              <MappingFragment StoreEntitySet="Costos">
+          <EntitySetMapping Name="Proyecto">
+            <EntityTypeMapping TypeName="Model.Proyecto">
+              <MappingFragment StoreEntitySet="Proyecto">
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="Fecha_Hora" ColumnName="Fecha_Hora" />
+                <ScalarProperty Name="Nombre_Proyecto" ColumnName="Nombre_Proyecto" />
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Amortizacion_cat">
+            <EntityTypeMapping TypeName="Model.Amortizacion_cat">
+              <MappingFragment StoreEntitySet="Amortizacion_cat">
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
                 <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="ID_Amortizacion" ColumnName="ID_Amortizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Costos_cat">
+            <EntityTypeMapping TypeName="Model.Costos_cat">
+              <MappingFragment StoreEntitySet="Costos_cat">
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="ID_Costos" ColumnName="ID_Costos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Costos_Pro">
+            <EntityTypeMapping TypeName="Model.Costos_Pro">
+              <MappingFragment StoreEntitySet="Costos_Pro">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Admon" ColumnName="Admon" />
+                <ScalarProperty Name="Financiamiento" ColumnName="Financiamiento" />
+                <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+                <ScalarProperty Name="Produccion" ColumnName="Produccion" />
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Costos_pro" ColumnName="ID_Costos_pro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FNE">
+            <EntityTypeMapping TypeName="Model.FNE">
+              <MappingFragment StoreEntitySet="FNE">
+                <ScalarProperty Name="Total_FNE" ColumnName="Total_FNE" />
+                <ScalarProperty Name="Amortizacion" ColumnName="Amortizacion" />
+                <ScalarProperty Name="UDI" ColumnName="UDI" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="UAI" ColumnName="UAI" />
+                <ScalarProperty Name="Total_Costo" ColumnName="Total_Costo" />
+                <ScalarProperty Name="Ingreso" ColumnName="Ingreso" />
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_FNE" ColumnName="ID_FNE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

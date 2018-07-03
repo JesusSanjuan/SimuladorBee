@@ -153,7 +153,7 @@
                 <!--<form>-->
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Título:</label>
-                    <input type="text" class="form-control" id="name">
+                    <asp:TextBox CssClass="form-control" id="Nombre_Proyecto" CausesValidation="True" runat="server" required="required"/>
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Año</label>
@@ -171,7 +171,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <asp:Button id="Guardar_Proyecto" CssClass="btn btn-primary" OnClick="Guardar_PoyectoBtn_Click" Text="Guardar" runat="server"/>
+                <!--    <button id="Guardar_Proyecto" type="button" class="btn btn-primary">Guardar</button> -->
                 </div>
             </div>
         </div>

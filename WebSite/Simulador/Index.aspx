@@ -159,7 +159,9 @@
                 <!--<form>-->
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Título:</label>
-                    <input type="text" class="form-control" id="name">
+                    <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre_Proyecto"
+                            CssClass="text-danger" ErrorMessage="Debe asignarle un nombre al proyecto" />
                 </div>
                 <div class="row">
                     <div class="form-group col-sm">
@@ -190,8 +192,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <asp:Button id="Guardar_Proyecto" CssClass="btn btn-primary" OnClick="Guardar_PoyectoBtn_Click" Text="Guardar" runat="server"/>
-                <!--    <button id="Guardar_Proyecto" type="button" class="btn btn-primary">Guardar</button> -->
+                    <asp:Button id="Guardar_Proyecto" CssClass="btn btn-primary" OnClick="Guardar_ProyectoBtn_Click" Text="Guardar" runat="server"/>
                 </div>
             </div>
         </div>

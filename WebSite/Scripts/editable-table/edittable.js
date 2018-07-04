@@ -187,6 +187,8 @@ $(document).ready(function () {
         //CALCULAMOS EL PORCENTAJE DEL COSTO
         var rowIdx = t.cell(this).index().row;
         var data = t.row(rowIdx).data();
+       
+
         if (clase == "costo") {
             if (data[2] !== "") {
                 var value = parseFloat(newValue.replace(',', ""));
@@ -200,6 +202,7 @@ $(document).ready(function () {
         }
         if (clase == "porct") {
             if (data[1] !== "") {
+                console.log(value);
                 var costoFinal = (data[1] * newValue) / 100;
                 //console.log('porcentaje--->' + newValue);
                 t.cell(rowIdx, 3).data(costoFinal).draw();
@@ -217,6 +220,29 @@ $(document).ready(function () {
         );
 
         $(".na").html("");
+
+        var column2 = t.column(1);
+
+        $(column2.footer()).html(
+            column2.data().map(parseFloat).reduce(function (a, b) {
+                return a + b;
+            })
+        );
+
+
+        /*$(column2.footer()).html(
+            column2.data().map(
+                function (n, i) {
+                    return parseFloat(n.replace(',', ""));
+                }
+
+            ).reduce(function (a, b) {
+                return a + b;
+            })
+        );*/
+
+        
+       
 
     });
 
@@ -236,13 +262,8 @@ $(document).ready(function () {
     });
 
     /*******formato moneda******/
-    /*$('body').on('keyup', '#myTabContent2 .table-responsive  input', function (ev) {
-        
-        $("input").css("background-color", "pink");
-        console.log("keyy");
-    });*/
 
-    $("#myTabContent2 .table-responsive  input").on({
+   /* $("#myTabContent2 .table-responsive  input").on({
         "focus": function (event) {
             $(event.target).select();
         },
@@ -253,7 +274,7 @@ $(document).ready(function () {
                     .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
             });
         }
-    });
+    });*/
     
 
 

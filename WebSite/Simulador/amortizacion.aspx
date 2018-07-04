@@ -112,7 +112,7 @@
                         <tfoot>
                             <tr>
                                 <th><strong>TOTAL</strong></th>
-                                <th></th>
+                                <th class="na"></th>
                                 <th class="na"></th>
                                 <th id="total"></th>
                                 <th class="na"></th>

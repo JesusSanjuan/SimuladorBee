@@ -7,7 +7,21 @@ using System.Web.UI.WebControls;
 
 public partial class User_Index : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Guardar_PoyectoBtn_Click(Object sender, EventArgs e)
+    {
+        // Probando a guardar datos de eejmplo en la BD
+        var db = new Entidades();
+        var NuevoProyecto = new Proyecto();
+        NuevoProyecto.ID_Proyecto = "0001";
+        NuevoProyecto.ID_Usuario = "0001";
+        NuevoProyecto.Nombre_Proyecto = Nombre_Proyecto.Text;
+        NuevoProyecto.Fecha_Hora = DateTime.Now;
+        NuevoProyecto.ID_Periodo = "0";
+        db.Proyecto.Add(NuevoProyecto);
+        db.SaveChanges();
+    }
+
+        protected void Page_Load(object sender, EventArgs e)
     {
 
     }

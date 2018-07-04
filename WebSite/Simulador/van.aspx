@@ -9,7 +9,7 @@
  <!-- Scrip para graficas debe estar en Head-->         
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server" >    
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
     
     <div >
                 <nav aria-label="breadcrumb" style="padding-bottom:1rem;">

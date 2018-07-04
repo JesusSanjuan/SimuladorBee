@@ -47,7 +47,7 @@ h1 {
 }
 
     #loader:before {
-        content: "Despues";
+        content: "";
         position: absolute;
         top: 5px;
         left: 5px;
@@ -62,7 +62,7 @@ h1 {
     }
 
     #loader:after {
-        content: "Antes";
+        content: "";
         position: absolute;
         top: 15px;
         left: 15px;
@@ -176,9 +176,9 @@ h1 {
 /*Animacion despues de terminar de cargar */
 .animate-bottom {
     -webkit-animation-name: animatebottom;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 3s;
     animation-name: animatebottom;
-    animation-duration: 2s
+    animation-duration: 3s
 }
 
 @-webkit-keyframes animatebottom {
@@ -193,17 +193,6 @@ h1 {
     }
 }
 
-@keyframes animatebottom {
-    from {
-        bottom: -100px;
-        opacity: 0
-    }
-
-    to {
-        bottom: 0;
-        opacity: 1
-    }
-}
 /* Animacion despues de terminar de cargar */
 
 

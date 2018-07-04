@@ -6,6 +6,7 @@
     <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+<div class="animate-bottom">
     <div class="container-fluid" >
       <!-- Breadcrumbs-->
          <nav aria-label="breadcrumb" style="padding-bottom:1rem;"  data-anijs="if: load, on:window, do: pulse animated, before: scrollReveal, after: removeAnim">
@@ -81,7 +82,7 @@
                   <div class="card text-white bg-danger o-hidden h-100">
                     <div class="row card-body">
                       <div class="col-3">
-                        <i class="fa fa-support fa-5x"></i>
+                          <i class="far fa-life-ring fa-5x"></i>
                       </div>
                       <div class="col-9 text-right">
                         <div class="huge">13</div>
@@ -125,7 +126,7 @@
                 <tr>
                   <td>consultoria empresarial</td>
                   <td>06/12/2018 2:26 PM</td>
-                  <td><i class="fa fa-check-square-o fa-lg" aria-hidden="true"></i></td>
+                  <td><i class="fas fa-check" aria-hidden="true"></td>
                   <td><i class="fa fa-download fa-lg" aria-hidden="true"></i></td>
                 </tr>
                 <tr>
@@ -157,10 +158,8 @@
                 <div class="modal-body">
                 <!--<form>-->
                 <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="ProjectName" CssClass="control-label">Título</asp:Label>
-                    <asp:TextBox runat="server" ID="ProjectName" CssClass="form-control" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectName"
-                        CssClass="text-danger" ErrorMessage="El campo de nombre de proyecto es obligatorio." />
+                    <label for="recipient-name" class="col-form-label">Título:</label>
+                    <input type="text" class="form-control" id="name">
                 </div>
                 <div class="row">
                     <div class="form-group col-sm">
@@ -191,7 +190,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <asp:Button id="Guardar_Proyecto" CssClass="btn btn-primary" OnClick="Guardar_PoyectoBtn_Click" Text="Guardar" runat="server"/>
+                <!--    <button id="Guardar_Proyecto" type="button" class="btn btn-primary">Guardar</button> -->
                 </div>
             </div>
         </div>
@@ -199,30 +199,3 @@
 
 
 </asp:Content>
-
-<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
-     <!-- plugin rangeslide-->
-    <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
-    <!-- plugin selectpicker-->
-    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            /**Inicialización rangeslider.js**/
-            $('input[type="range"]').rangeslider({
-                polyfill: false,
-                onInit: function () {
-                    this.output = $('<div class="range-output" />').insertAfter(this.$range).html(this.$element.val());
-                },
-                onSlide: function (position, value) {
-                    this.output.html(value);
-                }
-            });
-           
-            /**Inicialización selectpicker.js**/
-            $('.selectpicker').selectpicker();
-            
-        });
-    </script>
-
-</asp:Content>
-

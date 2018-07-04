@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <section id="passwordForm">
                 <asp:PlaceHolder runat="server" ID="setPassword" Visible="false">
                     <p>
@@ -95,7 +95,9 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" Text="Cambiar contraseña" OnClick="ChangePassword_Click" CssClass="btn btn-primary btn-lg" ValidationGroup="ChangePassword" />
+                                <div class="hvr-shadow">
+                                    <asp:Button runat="server" Text="Cambiar contraseña " OnClick="ChangePassword_Click" CssClass="btn btn-primary"  style="vertical-align:middle" s ValidationGroup="ChangePassword" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,10 +131,16 @@
                     </ItemTemplate>
                 </asp:ListView>
 
-                <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
+                
             </section>
-
         </div>
+         <div class="col-md-4">
+              Aqui puede ir un contenido increible
+         </div>
+       
+    </div>
+    <div class="row">
+         <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
     </div>
 </div>
 </asp:Content>

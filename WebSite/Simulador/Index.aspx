@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="User_Index" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+<div class="animate-bottom">
     <div class="container-fluid" >
       <!-- Breadcrumbs-->
          <nav aria-label="breadcrumb" style="padding-bottom:1rem;"  data-anijs="if: load, on:window, do: pulse animated, before: scrollReveal, after: removeAnim">
@@ -120,7 +121,7 @@
                 <tr>
                   <td>consultoria empresarial</td>
                   <td>06/12/2018 2:26 PM</td>
-                  <td><i class="fa fa-check-square-o fa-lg" aria-hidden="true"></i></td>
+                  <td><i class="fas fa-check" aria-hidden="true"></td>
                   <td><i class="fa fa-download fa-lg" aria-hidden="true"></i></td>
                 </tr>
                 <tr>
@@ -178,6 +179,12 @@
         </div>
     </div>
 
-
+</div>
 </asp:Content>
-
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+     <script>
+                    $(document).ready(function() {	
+	                   $('body').addClass('loaded');
+                    });
+                 </script>
+</asp:Content>

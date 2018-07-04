@@ -10,8 +10,11 @@
             <title><%: Page.Title %> </title>
              <!-- Efectos visuales-->
                     <link href="Scripts/anijs-master/animate.min.css" rel="stylesheet" />
-                    <link href="Scripts/csshake-master/csshake.min.css" rel="stylesheet" />           
+                    <link href="Scripts/csshake-master/csshake.min.css" rel="stylesheet" />          
              <!-- Efectos visuales-->
+              <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->
+                    <link href="Scripts/Hover-master/css/hover.css" rel="stylesheet" /> 
+            <!-- Efectos visuales Botones-->
              <!--Preloader de hilado CSS3-->
                     <link href="Scripts/startbootstrap/css/loader-wrapper.css" rel="stylesheet" />
              <!--preloader de hilado CSS3-->
@@ -26,14 +29,6 @@
             <webopt:bundlereference runat="server" path="~/Content/css" />    
 </head>
 <body >
-
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div> 
-    </div>
-
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -56,7 +51,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" data-anijs="if: DOMContentLoaded, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim">
+       <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" data-anijs="if: load, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim">
             <div class="container">               
                 <a class="navbar-brand" runat="server" href="~/">Evaluacion de proyectos</a>
                 <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></button> 
@@ -94,9 +89,44 @@
     </div>
        <div class="content-wrapper" >  
             <div class="container body-content">
-                <asp:contentplaceholder id="MainContent" runat="server">
-                </asp:contentplaceholder>
+                <div class="row">
+                         <div class="col-12"><!--loader-->
+                                <div id="loader-wrapper"> 
+                                    <div id="loader"></div>        
+                                    <div class="loader-section section-left"></div>
+                                    <div class="loader-section section-right"></div> 
+                                </div>                                 
+                                <div  class="animate-bottom"> <!--loader-->
+                                        <asp:contentplaceholder id="MainContent" runat="server">
+                                        </asp:contentplaceholder>       
+                                 </div><!--loader-->
+                          </div>
+                    </div>
              </div>
+
+
+
+                        <footer class="sticky-footer" data-anijs="if:load, on:window, do: fadeInRightBig animated, before: scrollReveal, after: removeAnim"> 
+                              <!--   <div class="row">
+                                          <div class="col-3 container text-center">
+                                              Company Information
+                                          </div>
+                                          <div class="col-3 container text-center">
+                                             <i class="fas fa-stroopwafel"></i>  Contact Us
+                                          </div>
+                                          <div class="col-3 container text-center">
+                                          </div> 
+                                          <div class="col-3 container text-center">
+                                          </div>
+                                 </div>-->    <div class="container">
+                                                    <div class="text-center">                                        
+                                                            <small > <a runat="server" href="~/About" >Acerca de</a></small>
+                                                            <small> <a runat="server" href="~/Contact">Contacto</a></small> 
+                                                                <i class="fab fa-facebook-f"></i> <i class="fab fa-twitter-square"></i> <i class="fab fa-instagram"></i>
+                                                           <small>Copyright © <%: DateTime.Now.Year %> </small>
+                                                </div>
+                                             </div>
+                             </footer> 
                             <!-- Logout Modal-->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
@@ -120,40 +150,21 @@
                               </div>
                             </div>
                             <!-- Logout Modal-->
-                             <footer class="sticky-footer" data-anijs="if: DOMContentLoaded, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim"> 
-                              <!--   <div class="row">
-                                          <div class="col-3 container text-center">
-                                              Company Information
-                                          </div>
-                                          <div class="col-3 container text-center">
-                                             <i class="fas fa-stroopwafel"></i>  Contact Us
-                                          </div>
-                                          <div class="col-3 container text-center">
-                                          </div> 
-                                          <div class="col-3 container text-center">
-                                          </div>
-                                 </div>-->    <div class="container">
-                                                    <div class="text-center">                                        
-                                                            <small > <a runat="server" href="~/About" >Acerca de</a></small>
-                                                            <small> <a runat="server" href="~/Contact">Contacto</a></small> 
-                                                                <i class="fab fa-facebook-f"></i> <i class="fab fa-twitter-square"></i> <i class="fab fa-instagram"></i>
-                                                           <small>Copyright © <%: DateTime.Now.Year %> </small>
-                                                </div>
-                                             </div>
-                             </footer> 
+                            
          </div>
     </form>
+
         <!-- Efectos visuales--> 
             <!-- Archivo principal de AniJS --> 
             <script  src="../Scripts/anijs-master/anijs.js" > </script>
             <!-- ScrollReveal Helper -->
             <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
-         <!-- Efectos visuales--> 
+         <!-- Efectos visuales-->  
          <!-- Ejecuta y oculta preloader--> 
             <script>
                 $(document).ready(function() {	
 	                $('body').addClass('loaded');
-		            $('h1').css('color','#222222');	
+		          $('h1').css('color','#222222');	
                 });
                 </script>
          <!-- Ejecuta y oculta preloader--> 

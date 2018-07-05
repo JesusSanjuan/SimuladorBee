@@ -83,24 +83,27 @@ function Modal(Resultado) {
     ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
       
     $(document).ready(function () {
-        var Texto, Imagen,audio;
+        var Texto, Imagen,audio,audioP;
         if (ResultadoVPN > 0) {
             Texto = "Se recomienda aceptar la inversion";
             Imagen = '<img src="../Scripts/startbootstrap/correcto.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
-            audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/correcto.mp3" >';
+            audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/Aplausos.mp3" >';
         }
         else {
             Texto = "Se recomienda rechazar la inversion";
             Imagen = '<img src="../Scripts/startbootstrap/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+            audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/error.mp3" >';
         }        
 
         $('#imgmodal').html(Imagen);
         $('#texmodal').html(Texto);
         $('#audio').html(audio);
         $('#myModal').modal({ show: true });
-        var audio = document.getElementById("audio");
-        audio.play();
+       audioP = document.getElementById("audio");
+        audioP.play();
         $('#cerrar').click(function () {
+            audioP.pause();
+            audioP.currentTime = 0;
             location.href = "#ResultadosFinales";
         });
     });

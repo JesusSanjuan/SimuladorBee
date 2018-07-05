@@ -16,7 +16,7 @@
                     <div class="jumbotron">
                         <h1>Simulador de Negocios</h1>
                         <p class="lead">Objetivo: Reproducir el comportamiento de una realidad o proceso que ayuda a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar una inversión.</p>
-                        <p><a href="Simulador/Index.aspx" class="btn btn-primary btn-lg"  data-anijs="if:mouseout, on:window, do: pulse animated" ><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
+                        <p><a href="Simulador/Index.aspx" class="btn btn-primary btn-lg pulse animated infinite"><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
                     </div>
 
 

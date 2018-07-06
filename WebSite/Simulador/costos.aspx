@@ -18,7 +18,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <!--<a class="nav-link active" id="home-tab" data-toggle="tab" href="#Costos1" role="tab" aria-controls="home" aria-selected="true">Home</a>-->
-                <a href="#Costos1" id="NCostos1" class="nav-link active" role="tab" data-toggle="tab"> Costos de Producción</a>
+                <a href="#Costos1" id="NCostos1" class="nav-link active" role="tab" data-toggle="tab"> Costos de Producción</a>                                   
             </li>
             <li class="nav-item">
                 <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos de Distribución</a>
@@ -34,8 +34,8 @@
           <div class="tab-pane fade show active" id="Costos1" role="tabpanel" aria-labelledby="producción">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                 <div class="card-header">
-                    <h5><i class="fa fa-table"></i>  Costos de Producción</h5><!-- son los costos que se generan en el proceso de transformar la materia prima en productos terminados-->
-                </div>
+                    <h5><i class="fa fa-table"></i>  Costos de Producción</h5><!-- son los costos que se generan en el proceso de transformar la materia prima en productos terminados-->                          
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="costTable" >
                         <thead>

@@ -46,7 +46,7 @@
                                                         </div>
                                                             <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo"  required="required" />
                                                         <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El capital de trabajo es la inversión adicional líquida que debe aportarse para que la empresa empiece a elaborar el producto. " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                         <div class="invalid-feedback">                       
                                                           Por favor ingrese la inversion.
@@ -89,7 +89,7 @@
                                                         </div>
                                                             <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
                                                        <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="La cuota de salvamento es aquel valor del activo que no depreciamos, de modo que al terminar la vida útil del activo, nos queda ese valor residual sin depreciar. " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
                                                        <div class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento

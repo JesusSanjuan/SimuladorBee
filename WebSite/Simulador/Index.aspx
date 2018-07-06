@@ -157,6 +157,7 @@
                 </div>
                 <div class="modal-body">
                 <!--<form>-->
+                <asp:HiddenField id="nperiodo" runat="server" />
                 <div class="form-group">
                     <label for="titulo" class="col-form-label">Título:</label>
                     <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
@@ -193,6 +194,7 @@
     <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
     <script>
         $(document).ready(function () {
+            $("#MainContent_nperiodo").val("1");
             /**Inicialización rangeslider.js**/
             $('input[type="range"]').rangeslider({
                 polyfill: false,
@@ -201,6 +203,7 @@
                 },
                 onSlide: function (position, value) {
                     this.output.html(value);
+                    $("#MainContent_nperiodo").val(value);
                 }
             });
            

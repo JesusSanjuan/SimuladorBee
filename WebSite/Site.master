@@ -13,9 +13,9 @@
                     <link href="Scripts/anijs-master/animate.min.css" rel="stylesheet" />
                     <link href="Scripts/csshake-master/csshake.min.css" rel="stylesheet" />          
              <!-- Efectos visuales-->
-              <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->
+             <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->
                     <link href="Scripts/Hover-master/css/hover.css" rel="stylesheet" /> 
-            <!-- Efectos visuales Botones-->
+             <!-- Efectos visuales Botones-->
              <!--Preloader de hilado CSS3-->
                     <link href="Scripts/startbootstrap/css/loader-wrapper.css" rel="stylesheet" />
              <!--preloader de hilado CSS3-->

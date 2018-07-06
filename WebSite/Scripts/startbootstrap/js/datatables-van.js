@@ -83,28 +83,58 @@ function Modal(Resultado) {
     ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
       
     $(document).ready(function () {
-        var Texto, Imagen,audio,audioP;
+        var Texto,TextoEfecto,Textovelocidad,TextoRepticiones,Imagen,audio,audioP;
         if (ResultadoVPN > 0) {
-            Texto = "Se recomienda aceptar la inversion";
-            Imagen = '<img src="../Scripts/startbootstrap/correcto.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+            Texto = "<strong style='vertical - align: middle;'>Se recomienda aceptar la inversion</strong>";
+            TextoEfecto = "pulse animated"; Textovelocidad = '2s'; TextoRepticiones = '5';
+            Imagen = '<img src="../Scripts/startbootstrap/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/>';
             audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/Aplausos.mp3" >';
         }
         else {
-            Texto = "Se recomienda rechazar la inversion";
-            Imagen = '<img src="../Scripts/startbootstrap/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>';
+            Texto = "<strong style='vertical - align: middle;'>Se recomienda rechazar la inversion</strong>";
+            TextoEfecto = "tada animated"; Textovelocidad = '4s'; TextoRepticiones = 'infinite';
+            Imagen = '<img src="../Scripts/startbootstrap/alerta.gif" class="img-fluid bounce animated infinite" width="100" height="100" alt="Responsive image"/>';
             audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/error.mp3" >';
         }        
-
+        $('#myModal').modal({ show: true });
+        $("#modalheader").css({
+            "-webkit-animation-delay": "1s"
+        });
         $('#imgmodal').html(Imagen);
         $('#texmodal').html(Texto);
-        $('#audio').html(audio);
-        $('#myModal').modal({ show: true });
-       audioP = document.getElementById("audio");
+        $('#texmodal').addClass(TextoEfecto); //otra manera de aplicar efectos
+        $("#texmodal").css({
+            "-webkit-animation-duration": Textovelocidad, //velocidad de efecto
+            "-webkit-animation-delay": "2s", // Tiempo a esperar antes de empezar a  ejecutar animacion
+            "-webkit-animation-iteration-count": TextoRepticiones,// Veces de repeticion de efecto
+            "animation-iteration-count": TextoRepticiones//, // Veces de repeticion de efecto
+           // "-webkit-animation": "mymove 1s; ", //Velocidad de la animacion
+           // "animation": "mymove 1s;"//Velocidad de la animacion
+        });    
+        $('#audio').html(audio);        
+        audioP = document.getElementById("audio");
         audioP.play();
+        
         $('#cerrar').click(function () {
             audioP.pause();
             audioP.currentTime = 0;
             location.href = "#ResultadosFinales";
+            $("#ResultadosVAN").css("display", "block");
+            $('#ResultadosVAN').addClass("bounceInLeft animated");
+            $("#ResultadosVAN").css({
+                "-webkit-animation-delay": ".5s"
+            }); 
         });
+        $("#myModal").on('hide.bs.modal', function () {
+            audioP.pause();
+            audioP.currentTime = 0;
+            location.href = "#ResultadosFinales"; 
+            $("#ResultadosVAN").css("display", "block");
+            $('#ResultadosVAN').addClass("bounceInLeft animated");
+            $("#ResultadosVAN").css({
+                "-webkit-animation-delay": ".5s"
+            }); 
+        });
+        
     });
 }

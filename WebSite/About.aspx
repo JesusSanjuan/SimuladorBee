@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div style="margin-top: 20px;">
     <h1><%: Title %></h1>
-        <div class="accordion" id="accordionExample">
+        <div  id="accordionExample">
                         <div class="card">
                              <div class="card-header" id="headingOne">                                 
                                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

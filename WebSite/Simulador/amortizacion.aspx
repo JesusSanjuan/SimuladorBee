@@ -112,7 +112,7 @@
                         <tfoot>
                             <tr>
                                 <th><strong>TOTAL</strong></th>
-                                <th class="na"></th>
+                                <th ></th>
                                 <th class="na"></th>
                                 <th id="total"></th>
                                 <th class="na"></th>
@@ -200,6 +200,30 @@
 
     <script>
         $(document).ready(function () {
+            //suponiendo que ya se obtiene el id proyecto
+            var id_proyecto = "0001";
+            /******Obteneer el numero de periodos******/
+            $.ajax({
+                type: "POST",
+                url: "amortizacion.aspx/getPeriodo",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ idProyecto: id_proyecto }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result.d);
+                    console.log(String(result));
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
         });
     </script>
 

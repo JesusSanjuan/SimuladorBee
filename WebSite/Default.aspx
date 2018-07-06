@@ -2,21 +2,13 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">      
 </asp:Content>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">   
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div> 
-    </div>
-    
-   <div  class="animate-bottom">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">       
        
                 <div style="margin-top: 20px; " data-anijs="if: load, on:window, do: fadeInLeft animated, before: scrollReveal, after: removeAnim">
                     <div class="jumbotron">
                         <h1>Simulador de Negocios</h1>
                         <p class="lead">Objetivo: Reproducir el comportamiento de una realidad o proceso que ayuda a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar una inversión.</p>
-                        <p><a href="Simulador/Index.aspx" class="btn btn-primary btn-lg pulse animated infinite"><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
+                        <p><a href="Simulador/Index" class="btn btn-primary btn-lg pulse animated infinite"><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
                     </div>
 
 
@@ -50,7 +42,6 @@
                                     </div>
                     </div>
                 </div>
-   </div>
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">      

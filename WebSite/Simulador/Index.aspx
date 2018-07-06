@@ -158,24 +158,10 @@
                 <div class="modal-body">
                 <!--<form>-->
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Título:</label>
+                    <label for="titulo" class="col-form-label">Título:</label>
                     <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre_Proyecto"
                             CssClass="text-danger" ErrorMessage="Debe asignarle un nombre al proyecto" />
-                </div>
-                <div class="row">
-                    <div class="form-group col-sm">
-                        <asp:Label runat="server" AssociatedControlID="ProjectAnio" CssClass="control-label">Año</asp:Label>
-                        <asp:TextBox runat="server" ID="ProjectAnio" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ProjectAnio"
-                            CssClass="text-danger" ErrorMessage="El campo de año de proyecto es obligatorio." />
-                    </div>
-                    <div class="form-group col-sm">
-                        <asp:Label runat="server" AssociatedControlID="pais" CssClass="control-label">País</asp:Label>
-                        <asp:TextBox runat="server" ID="pais" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="pais"
-                            CssClass="text-danger" ErrorMessage="El campo es obligatorio." />
-                    </div>
                 </div>
                 <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="periodo" CssClass="control-label">Período de evaluación</asp:Label>
@@ -198,5 +184,30 @@
         </div>
     </div>
 
+
+</asp:Content>
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
+     <!-- plugin rangeslide-->
+    <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <!-- plugin selectpicker-->
+    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            /**Inicialización rangeslider.js**/
+            $('input[type="range"]').rangeslider({
+                polyfill: false,
+                onInit: function () {
+                    this.output = $('<div class="range-output" />').insertAfter(this.$range).html(this.$element.val());
+                },
+                onSlide: function (position, value) {
+                    this.output.html(value);
+                }
+            });
+           
+            /**Inicialización selectpicker.js**/
+            $('.selectpicker').selectpicker();
+            
+        });
+    </script>
 
 </asp:Content>

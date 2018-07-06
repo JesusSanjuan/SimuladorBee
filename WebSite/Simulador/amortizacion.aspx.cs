@@ -31,7 +31,8 @@ public partial class Simulador_Default : System.Web.UI.Page
 
     [WebMethod]
     public static int getPeriodo(string idProyecto) {
-        var nperiodo = 5;
+        int nperiodo = 5;
+        System.Diagnostics.Debug.WriteLine(idProyecto);
         System.Diagnostics.Debug.WriteLine(nperiodo);
         return nperiodo;
 

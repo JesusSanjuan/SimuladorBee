@@ -14,20 +14,16 @@ public partial class User_van : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        ResultadosVAN.Visible = false;
     }
 
     protected void GreetingBtn_Click(Object sender, EventArgs e)
     {
         double ResultadoVPN;
-        //System.Threading.Thread.Sleep(Convert.ToInt32(2000));
         CreacionTabla();
         ResultadoVPN = CalculoVPN();
-        ResultadosVAN.Visible = true;
         
-       // String TextoEn = JsonConvert.SerializeObject(Texto);
         string script3 = "Modal(" + ResultadoVPN + ");";
-
+        
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
     }
 

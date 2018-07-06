@@ -140,7 +140,9 @@
        
     </div>
     <div class="row">
-         <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
+            <div class="col-md-12">
+                    <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
+            </div>
     </div>
 </div>
 </asp:Content>

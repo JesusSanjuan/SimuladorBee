@@ -2,12 +2,12 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div style="margin-top: 20px;">
-            <h2><%: Title %>.</h2>
+            <h1><%: Title %>.</h1>
             <h3>Contáctenos.</h3>
             <hr />
         <div class="card">
             <div class="card-header">
-                Direccion
+                <h5> Direccion </h5>
             </div>
             <div class="card-body">
                 <address>

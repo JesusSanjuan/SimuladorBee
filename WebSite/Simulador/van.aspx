@@ -6,7 +6,8 @@
         <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 
         <script src="../Scripts/jquery-3.3.1.js"></script>
         <script src="../Scripts/startbootstrap/js/datatables-van.js"></script>
- <!-- Scrip para graficas debe estar en Head-->         
+ <!-- Scrip para graficas debe estar en Head--> 
+
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
@@ -20,19 +21,17 @@
                             <li class="breadcrumb-item active">Valor Actual Neto</li>
                           </ol>            
                  </nav>  
-              <div class="card align-middle">  
-                  <div class="card-header">
-                        <h1><i class="fa fa-line-chart"></i> Valor Actual Neto (VAN)</h1>
-                  <p>    Es el valor monetario que resulta de restar la suma de los ﬂujos descontados a la inversión inicial.</p>
+                 <div class="card align-middle">  
+                      <div class="card-header">
+                            <h1><i class="fas fa-chart-line"></i> Valor Actual Neto (VAN)</h1>
+                             Es el valor monetario que resulta de restar la suma de los ﬂujos descontados a la inversión inicial.
          
-                  </div>
-              </div>
+                      </div>
+                </div>
     </div>
-    <div >
+    <div style="padding-top:1rem;">
                  <div class="row">
-                        <div class="col-12"> <p> A continuación, usted podrá calcular el Valor Actual Neto (VAN)</p></div>
-                        <div class="col-0 " >
-                        </div>
+                        <div class="col-12" style="padding-bottom:1rem;">  A continuación, usted podrá calcular el Valor Actual Neto (VAN)</div>
                 </div>                        
                           <div class="form-row" >
                                         <div class="col-md-3 mb-2">
@@ -145,42 +144,30 @@
                           </div>
 
                           <div class="form-row">  
-                                <div class="col-md-5">
-                                    <div class="form-group">
+                                <div class="col-md-5 mb-3">
                                         <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                          <label class="form-check-label" for="invalidCheck">
-                                                Acepta los términos y condiciones
-                                          </label>
-                                          <div class="invalid-feedback">
-                                             Debe aceptar los terminos antes de enviar
-                                          </div>
-                                        </div>
-                                      </div>        
+                                              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                              <label class="form-check-label" for="invalidCheck">
+                                                    Acepta los términos y condiciones
+                                              </label>
+                                              <div class="invalid-feedback">
+                                                 Debe aceptar los terminos antes de enviar
+                                              </div>
+                                        </div>       
                                 </div>
                           </div>
-   
   <!--   <asp:GridView class="table table-bordered" id="myTable"  runat="server">  
                            
     </asp:GridView> -->
-
-
-                        <div class="form-row">
-                            <div class="col-md-2 mb-3">
-                                <div class="form-row">   
-                                        <div class="col-md-3 mb-3">
-                                                <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  Text="Calcular"  runat="server"/>
-                                        </div>                            
-                                </div>
-                            </div>
-                        </div>   
-
+                        <div class="form-row">  
+                            <div class="col-md-3 mb-2">
+                                    <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  Text="Calcular"  runat="server"/>
+                            </div>   
+                        </div>  
             </div>
-
-
-              <div class="card align-middle" id="ResultadosVAN" data-anijs="if: load, on:window, do: bounceInLeft animated, before: scrollReveal, after: removeAnim" runat="server" >    
+              <div class="card align-middle" id="ResultadosVAN" style="display:none"  >    
                     <div class="card-header">
-                      <h4> <i class="fa fa-line-chart"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
+                      <h4> <i class="fas fa-chart-pie"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
                     </div>
                        <ul class="nav nav-tabs">
         		            <li class="nav-item">
@@ -205,12 +192,13 @@
         			            <a href="#Descargas" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
         		            </li>
         	            </ul>
+
                         <div class="tab-content" id="ResultadosFinales">
                                 <div role="tabpanel" class="tab-pane fade show active" id="Resultado">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
                                              <div class="preborder">
                                                     <div class="card-header" >
-                                                            <h5><i class="fa fa-dollar"></i>  Resultado VAN</h5>
+                                                            <h5><i class="fas fa-dollar-sign"></i>  Resultado VAN</h5>
                                                     </div>
                                                     <div class="breadcrumb">
                                                         <div class="card-body text-info">
@@ -323,7 +311,7 @@
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
                                             <div class="preborder">
                                                     <div class="card-header">
-                                                        <h5><i class="fa fa-bar-chart"></i>  Gráfica</h5>
+                                                        <h5><i class="far fa-chart-bar"></i>  Gráfica</h5>
                                                     </div>
                                                     <div class="card-body breadcrumb">
                                                       <canvas id="myAreaChart" width="100" height="30"></canvas>
@@ -333,14 +321,36 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Descargas">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
-                                            <div class="preborder">
+                                              <div class="preborder">
                                                       <div class="card-header">
-                                                        <h5><i class="fa fa-cloud-download"></i>   Descargas</h5>
+                                                          <h5><i class="fas fa-cloud-download-alt"></i>   Descargas</h5>
                                                       </div>
-                                                    <div class="breadcrumb">
-                                                        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-                                                        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-                                                    </div>
+                                                      <div class="breadcrumb" style="text-align:center;">
+                                                          <div class="col-md-4" >
+                                                               <div class="row" >
+                                                                       <h6> PDF</h6>
+                                                               </div>
+                                                               <div class="row">
+                                                                    <i class="fas fa-file-pdf fa-3x hvr-pulse " ></i>    
+                                                               </div>
+                                                          </div>
+                                                          <div class="col-md-4">
+                                                              <div class="row" >
+                                                                  <h6>Excel</h6>
+                                                              </div>
+                                                              <div class="row" >
+                                                                  <i class="fas fa-file-excel fa-3x hvr-pulse" ></i>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-md-4">
+                                                              <div class="row">
+                                                                 <h6> Word</h6>
+                                                              </div>
+                                                              <div class="row" >                                                                  
+                                                                  <i class="fas fa-file-word fa-3x hvr-pulse" ></i>
+                                                              </div>
+                                                          </div>
+                                                      </div>
                                                </div>
                                         </div>
                                </div>
@@ -356,21 +366,20 @@
                   <div class="modal-content">      
                         <!-- Modal Header -->
                         <div class="modal-header">
-                             <h4 class="modal-title bounce animated"> <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
+                             <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->
                         <div class="modal-body" id="modal-text-body" >    
                             <div class="row">
-                                    <div class="col-3  tada animated infinite" id="imgmodal" ></div>
-                                    <div class="col-9" ><strong id="texmodal"  style="vertical-align:middle;"></strong></div>
-                                                                        
+                                    <div class="col-3" id="imgmodal"></div>
+                                    <div class="col-9" id="texmodal"></div>                                                                        
                             </div>
                             <audio id="audio" style="display:none" controls> </audio > 
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                           <button type="button" id="cerrar" class="btn btn-danger pulse animated infinite" data-dismiss="modal">Cerrar</button>
+                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                   </div>

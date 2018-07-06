@@ -15,9 +15,12 @@
                         <link href="../Scripts/anijs-master/animate.min.css" rel="stylesheet" />
                         <link rel="stylesheet" type="text/css" href="../Scripts/csshake-master/csshake.min.css">
                    <!-- Efectos visuales--> 
-                    <!--Preloader de hilado CSS3-->
+                   <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->
+                        <link href="../Scripts/Hover-master/css/hover.css" rel="stylesheet" />
+                   <!-- Efectos visuales Botones-->
+                   <!--Preloader de hilado CSS3-->
                         <link href="../Scripts/startbootstrap/css/loader-wrapper.css" rel="stylesheet" />
-                    <!--preloader de hilado CSS3-->
+                   <!--preloader de hilado CSS3-->
                    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
                            <!-- Bootstrap core CSS-->
                                  <link href="../Content/bootstrap.min.css" rel="stylesheet" />
@@ -25,7 +28,7 @@
                                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
                            <!-- Estilos personalizados para esta plantilla-->
                                 <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
-                   <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
+                    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
         </asp:ContentPlaceHolder>
         <asp:PlaceHolder runat="server">
@@ -112,11 +115,11 @@
 
                                         </li>                                        
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Componentes">
-                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents2" data-parent="#exampleAccordion">
+                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb2" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-wrench"></i>
                                             <span class="nav-link-text">Componentes</span>
                                           </a>
-                                          <ul class="sidenav-second-level collapse" id="collapseComponents2">
+                                          <ul class="sidenav-second-level collapse" id="cb2">
                                             <li>
                                               <a class="nav-link" href="Construccion">Opcion 1</a>
                                             </li>
@@ -126,11 +129,11 @@
                                           </ul>
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Nivel de menus">
-                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+                                          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb3" data-parent="#exampleAccordion">
                                             <i class="fa fa-fw fa-sitemap"></i>
                                             <span class="nav-link-text">Nivel de menus</span>
                                           </a>
-                                          <ul class="sidenav-second-level collapse" id="collapseMulti">
+                                          <ul class="sidenav-second-level collapse" id="cb3">
                                             <li>
                                               <a class="nav-link" href="Construccion">Opcion de segundo nivel</a>
                                             </li>

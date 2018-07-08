@@ -3,14 +3,13 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div style="margin-top: 20px;">
     <h1><%: Title %></h1>
-        <div  id="accordionExample">
                         <div class="card">
-                             <div class="card-header" id="headingOne">                                 
-                                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                     <h5 class="mb-0"> <i class="fa fa-desktop"></i> Acerca de este sitio web.</h5>
-                                    </button>                                
+                             <div class="card-header" id="headingOne" >  
+                                 <h5 class="mb-0" style="cursor: pointer;" data-anijs=" if: mouseover, do: pulse animated">
+                                      <i class="fa fa-desktop"></i><a data-toggle="collapse" data-parent="#accordion" href="#c1" style="color:black;text-decoration:none;">&nbsp;&nbsp;&nbsp;Acerca de este sitio web</a>  
+                                 </h5>                                
                               </div>    
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="c1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body">           
                                         <p  align="justify">Nuestra herramienta virtual contribuye al fortalecimiento del aprendizaje en la evaluación de proyectos y dirigida a estudiantes universitarios, emprendedores y personas dedicadas al ámbito de los negocios </p>    
                                     </div>
@@ -18,47 +17,47 @@
                        </div>
                         <div class="card">
                             <div class="card-header" id="headingTwo">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                       <h5 class="mb-0"> <i class="	fa fa-question"></i> ¿Por qué se llama simulador?</h5>
-                                    </button>                                 
+                                 <h5 class="mb-0" style="cursor: pointer" data-anijs=" if: mouseover, do: pulse animated"> 
+                                    <i class="fa fa-question"></i> <a data-toggle="collapse" data-parent="#accordion" href="#c2"  style="color:black;text-decoration:none;">&nbsp;&nbsp;&nbsp;¿Por qué se llama simulador?</a>                                          
+                                 </h5>                                
                             </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div id="c2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                     <div class="card-body">  
                                          <p  align="justify">Reciben el nombre de simulador debido a que intenta reproducir la realidad del mercado utilizando los mismos elementos, relaciones, variables y situaciones que se encuentran en el mundo de los negocios, brindando así la oportunidad de desarrollar las habilidades necesarias que exige el área de Administración y Dirección de Empresas.</p>
                                     </div>
                             </div>
                        </div>   
                         <div class="card">
-                                 <div class="card-header" id="headingThree">               
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                             <h5 class="mb-0"> <i class="fa fa-address-book-o"></i>  Soporte Tecnico</h5>
-                                        </button>
+                                 <div class="card-header" id="headingThree">      
+                                      <h5 class="mb-0" style="cursor: pointer" data-anijs=" if: mouseover, do: pulse animated">
+                                        <i class="far fa-address-book"></i>   <a data-toggle="collapse" data-parent="#accordion" href="#c3"  style="color:black;text-decoration:none;">&nbsp;&nbsp;&nbsp;Soporte Tecnico</a>  
+                                      </h5>
                                 </div>
-                               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                               <div id="c3" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                      <div class="card-body"> 
                                          <p  align="justify">Envianos tus dudas técnicas del simulador de negocios al correo electrónico @ugto.mx </p>
                                      </div>
                                </div>
                         </div>
                         <div class="card">
-                               <div class="card-header" id="headingFourt">                     
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFourt" aria-expanded="false" aria-controls="collapseFourt"">
-                                           <h5 class="mb-0"> <i class="fa fa-book"></i>   Comentarios acerca del sitio web.</h5>
-                                        </button>
+                               <div class="card-header" id="headingFourt">  
+                                   <h5 class="mb-0" style="cursor: pointer" data-anijs=" if: mouseover, do: pulse animated">
+                                            <i class="fa fa-book"></i>   <a data-toggle="collapse" data-parent="#accordion" href="#c4"  style="color:black;text-decoration:none;">&nbsp;&nbsp;&nbsp;Comentarios acerca del sitio web</a>  
+                                   </h5>
                                 </div>
-                              <div id="collapseFourt" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                              <div id="c4" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                         <div class="card-body"> 
                                             <p  align="justify">opiniones de los usuarios por medio de ......</p>
                                         </div>
                                </div>
                         </div>
                         <div class="card">
-                             <div class="card-header" id="headingFive">                               
-                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                           <h5 class="mb-0"> <i class="fa fa-balance-scale"> </i>   Políticas.</h5>
-                                        </button>
+                             <div class="card-header" id="headingFive">     
+                                    <h5 class="mb-0" style="cursor: pointer" data-anijs=" if: mouseover, do: pulse animated">
+                                        <i class="fa fa-balance-scale"> </i><a data-toggle="collapse" data-parent="#accordion" href="#c5"  style="color:black;text-decoration:none;">&nbsp;&nbsp;&nbsp;Políticas</a> 
+                                     </h5>
                             </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div id="c5" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       
                                     <div class="card-body"> 
                                             <p  align="justify">La Política de Privacidad establece los términos en que el Simulador de negocios usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web.</p>
@@ -66,5 +65,4 @@
                                 </div>
                         </div>
             </div>
-    </div>
 </asp:Content>

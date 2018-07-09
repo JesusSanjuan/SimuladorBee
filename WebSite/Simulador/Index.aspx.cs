@@ -40,22 +40,29 @@ public partial class User_Index : System.Web.UI.Page
         /***Get the user id**/
         string id_user = httpContext.User.Identity.GetUserId();
         var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user);
-        System.Diagnostics.Debug.WriteLine(consulta);
 
-        System.Diagnostics.Debug.WriteLine(consulta.ToString());
+        List<List<string>> result_query = new List<List<string>>();
 
         foreach (Proyecto Proyect in consulta)
         {
             System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
                 Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));
 
+            List<string> item = new List<string>();
+            item.Add(Proyect.Nombre_Proyecto);
+            item.Add(String.Format("{0:dd/MM/yyyy HH:mm:ss}", Proyect.Fecha_Hora));
+            item.Add("<i class='fas fa-check' aria-hidden='true'>");
+            item.Add("<i class='fa fa-download fa-lg' aria-hidden='true'>");
+            result_query.Add(item);
             System.Diagnostics.Debug.WriteLine(" -----------------------------------------\n");
         }
 
-       // System.Diagnostics.Debug.WriteLine(json);
+        var json = JsonConvert.SerializeObject(result_query);
+
+        // System.Diagnostics.Debug.WriteLine(json);
 
 
-        return "hola";
+        return json;
     }
 
     

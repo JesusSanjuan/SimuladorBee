@@ -33,20 +33,29 @@ public partial class User_Index : System.Web.UI.Page
     public static string getsource()
     {
         var db = new Entidades();   /* Crear la instancia a las tablas de la BD */
-        //string id_user = getId();
+        /**Otra forma de obtener el id del usuario**/
+        /****Obtén el contexto actual**/
+        var httpContext = HttpContext.Current;
+        /***Get the user id**/
+        string id_user = httpContext.User.Identity.GetUserId();
         var consulta = db.Proyecto.Where(Proyecto => Proyecto.ID_Usuario == id_user);
         System.Diagnostics.Debug.WriteLine(consulta);
-        
 
-        return "holaaa";
+        foreach (Proyecto proyecto in consulta)
+        {
+            Console.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
+                proyecto.ID_Proyecto, proyecto.ID_Usuario, proyecto.Nombre_Proyecto, proyecto.Fecha_Hora, proyecto.ID_Periodo));
+            
+            Console.WriteLine(" -----------------------------------------\n");
+        }
+
+       // System.Diagnostics.Debug.WriteLine(json);
+
+
+        return "hola";
     }
 
-    protected string getId(){
-        string id_user = User.Identity.GetUserId();
-        return id_user;
-
-    }
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 

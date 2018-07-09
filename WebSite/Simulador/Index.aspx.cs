@@ -27,6 +27,7 @@ public partial class User_Index : System.Web.UI.Page
         NuevoProyecto.ID_Periodo    = id_periodo;
         db.Proyecto.Add(NuevoProyecto);
         db.SaveChanges();
+        System.Web.HttpContext.Current.Session["ID_Proyecto"] = id_proyect;
         System.Diagnostics.Debug.WriteLine(nombre_proyecto + "--"+ id_periodo +"--"+ id_user);
     }
     [WebMethod]

@@ -7,7 +7,7 @@
                 <div style="margin-top: 20px; " data-anijs="if: load, on:window, do: fadeInLeft animated, before: scrollReveal, after: removeAnim">
                     <div class="jumbotron">
                         <h1>Simulador de Negocios</h1>
-                        <p class="lead">Objetivo: Reproducir el comportamiento de una realidad o proceso que ayuda a conocer la rentabilidad económica de un proyecto de tal manera que asegure tomar una buena decisión en realizar una inversión.</p>
+                        <p class="lead">Objetivo: Reproducir el comportamiento de una realidad que ayuda a conocer la rentabilidad económica de un proyecto.</p>
                         <p><a href="Simulador/Index" class="btn btn-primary btn-lg pulse animated infinite"><i class="fa fa-fw fa-calculator"></i> Simulador</a></p>
                     </div>
 
@@ -16,28 +16,28 @@
                                     <div class="col-md-4">
                                         <h2 align="justify">¿Qué es un proyecto?</h2>
                                         <p align="justify">
-                                            El proyecto de inversión se puede describir como un plan que, si se le asigna determinado monto de capital y se le proporcionan insumos de varios tipos, podrá producir un bien o un servicio, útil a la sociedad en general.
+                                            Un proyecto es la búsqueda de una solución inteligente al planteamiento de un problema tendente a resolver una necesidad humana.
                                         </p>
                                         <p>
-                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://go.microsoft.com/fwlink/?LinkId=301948">Aprende mas »</a>
+                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://nodo.ugto.mx/course/unidad-de-aprendizaje-administracion-de-negocios">Aprende mas »</a>
                                         </p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h2 align="justify">¿Por qué se invierte y por qué son necesarios los proyectos?</h2>
+                                        <h2 align="left">¿Por qué es vital una herramienta de evaluación financiera?</h2>
                                         <p align="justify">
-                                            Una inversión inteligente requiere una base que la justiﬁque. Es precisamente un proyecto bien estructurado y evaluado que indique la pauta que debe seguirse. De ahí se deriva la necesidad de usar un simulador.
+                                            Permite numéricamente y con precisión determinar qué tan rentable es un proyecto en relación con un parámetro ya conocido o de referencia.
                                         </p>
                                         <p>
-                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://go.microsoft.com/fwlink/?LinkId=301948">Aprende mas »</a>
+                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://localhost:52712/About">Aprende mas »</a>
                                         </p>
                                     </div>
                                     <div class="col-md-4">
                                         <h2>Decisión sobre un proyecto</h2>
                                         <p align="justify">
-                                            El hecho de realizar un análisis que se considere lo más completo posible, no implica que, al invertir, el dinero estará exento de riesgo. El futuro siempre es incierto y por esta razón el dinero siempre se arriesgará.
+                                            Todo proyecto de inversión comienza como una idea sencilla.
                                         </p> 
                                         <p>
-                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://go.microsoft.com/fwlink/?LinkId=301948">Aprende mas »</a>
+                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://www.fondos.guanajuato.gob.mx/fondosgto/">Aprende mas »</a>
                                         </p>
                                     </div>
                     </div>

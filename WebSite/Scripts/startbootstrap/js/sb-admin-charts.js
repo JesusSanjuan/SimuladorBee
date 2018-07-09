@@ -5,10 +5,12 @@ function Graficar(x,y,Periodo) {
     Chart.defaults.global.defaultFontColor = '#292b2c';
 
     //convertimos el array en json
-
     var time = JSON.parse(JSON.stringify(x));
     var repArray = JSON.parse(JSON.stringify(y));
     var PeriodoSelect = JSON.parse(JSON.stringify(Periodo));
+
+    var prueba = repArray[repArray.length - 1];
+
 
     var pointBackgroundColor = new Array(repArray.length);    
     var pointRadius = new Array(repArray.length);
@@ -45,7 +47,7 @@ function Graficar(x,y,Periodo) {
         data: {
             labels: time,
             datasets: [{
-                label: "Mi VPN",
+                label: "VPN",
                 lineTension: 0.2,
                 backgroundColor: "rgba(2,117,216,0.2)",// Para lo de bajo o arriba de la lineas y el decimal para la intencidad
                 borderColor: "rgba(2,117,216,0.9)",// El color de las lineas que unen los puntos y la intencidad
@@ -81,7 +83,12 @@ function Graficar(x,y,Periodo) {
                         labelString: "TMAR en ".concat(PeriodoSelect)
                     },
                     ticks: {
-                        maxTicksLimit: 20
+                            min: time[0],
+                            max: time[repArray.length - 1],
+                            callback: function (value, index, values) {
+                                return value + '%';
+                            }
+                           // maxTicksLimit: 40
                     }
                 }],
                 yAxes: [{
@@ -90,9 +97,12 @@ function Graficar(x,y,Periodo) {
                         labelString: 'VPN'
                     },
                     ticks: {
-                        //min: 0,
-                        // max: 40000,
-                        maxTicksLimit: 20
+                        //min: repArray[repArray.length - 1],
+                        //max: repArray[0],
+                        callback: function (value, index, values) {
+                            return '$' + value;
+                        }
+                        // maxTicksLimit: 40
                     },
                     gridLines: {
                         display: true
@@ -104,7 +114,20 @@ function Graficar(x,y,Periodo) {
                 yPadding: 10,
                 backgroundColor: 'rgba(0,5,109, 0.5)',
                 titleFontStyle: 'normal',
-                titleMarginBottom: 15
+                titleMarginBottom: 15/*,
+                callbacks: {
+                    labelColor: function (tooltipItem, chart) {
+                        console.log(tooltipItem);
+                    return {
+                       
+                        borderColor: 'rgb(255, 0, 0)',
+                        backgroundColor: 'rgb(255, 0, 0)'
+                    }
+                },
+                labelTextColor:function(tooltipItem, chart){
+                    return '#543453';
+                }
+            }*/
             },
             animation: {
                 duration: 10, // general animation time

@@ -314,7 +314,7 @@
                                                         <h5><i class="far fa-chart-bar"></i>  Gráfica</h5>
                                                     </div>
                                                     <div class="card-body breadcrumb">
-                                                      <canvas id="myAreaChart" width="100" height="30"></canvas>
+                                                      <canvas id="myAreaChart" width="100" height="50"></canvas>
                                                     </div>
                                              </div>
                                         </div>

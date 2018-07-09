@@ -9,9 +9,6 @@ using Newtonsoft.Json;
 
 public partial class User_van : System.Web.UI.Page
 {
-
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -47,7 +44,7 @@ public partial class User_van : System.Web.UI.Page
         {
             VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
             /* Calculo de la TIR */
-            TIR.Text = (Math.Round(CalcularTIR(fTMAR / 100), 6) * 100 ).ToString("0,0.0") + " %";
+            TIR.Text = (Math.Round(CalcularTIR(fTMAR / 100), 6) * 100).ToString("0,0.0") + " %";
         }
         else
         {
@@ -55,6 +52,10 @@ public partial class User_van : System.Web.UI.Page
             TIR.Text = "No aplicable";
         }
 
+        /*Buscando interseccion con eje x */
+        double ValorY0 = Math.Round(CalcularVPN(CalcularTIR(fTMAR / 100)),1);
+        double ValorX0 = Math.Round(CalcularTIR(fTMAR / 100)*100,6);
+        /*Buscando interseccion con eje x */
         fTMAR = 0;
 
         do
@@ -72,7 +73,23 @@ public partial class User_van : System.Web.UI.Page
             }
             fTMAR = Convert.ToDouble(Math.Round(fTMAR + 0.02, 4));
 
-        } while (negativos < 10);
+        } while (negativos < 5);
+
+        /*Buscando interseccion con eje x */
+        double v1, v2;
+        var xxx = ListaX.Count;
+        for (int z = 1;   z< ListaX.Count; z++)
+        {
+            v1 = (double)ListaX[z - 1];
+            v2 = (double)ListaX[z];
+            if (ValorX0 >= v1 && ValorX0 <= v2)
+            {
+                ListaX.Insert(z, ValorX0);
+                ListaY.Insert(z, ValorY0);
+                break;
+            }            
+        }
+        /*Buscando interseccion con eje x */
         // pasamos las variabes en formato array json
         timeC = JsonConvert.SerializeObject(ListaX);
         repArrayC = JsonConvert.SerializeObject(ListaY);

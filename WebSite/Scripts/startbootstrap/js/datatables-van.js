@@ -127,13 +127,13 @@ function Modal(Resultado) {
         });
         $("#myModal").on('hide.bs.modal', function () {
             audioP.pause();
-            audioP.currentTime = 0;
-            location.href = "#ResultadosFinales"; 
+            audioP.currentTime = 0;             
             $("#ResultadosVAN").css("display", "block");
             $('#ResultadosVAN').addClass("bounceInLeft animated");
             $("#ResultadosVAN").css({
                 "-webkit-animation-delay": ".5s"
             }); 
+            location.href = "#ResultadosFinales";
         });
         
     });

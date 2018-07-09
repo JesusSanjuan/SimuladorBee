@@ -211,9 +211,15 @@
                 async: false,
                 data: JSON.stringify({ idProyecto: id_proyecto }),
                 success: function (result) {
-                    console.log(result);
-                    alert(result.d);
-                    console.log(String(result));
+                    console.log(result.d);
+                    var options = [];
+                    for (i = 0; i <= result.d; i++) {
+                        var option = "<option value="+(i+1)+">" + (i+1) + "</option>"
+                        options.push(option);
+                    }
+                    $('#cnperiodo').html(options);
+                    $('#cnperiodo').selectpicker('refresh');
+                    
                 },
                 error: function (result) {
                     console.log(result.responseText);

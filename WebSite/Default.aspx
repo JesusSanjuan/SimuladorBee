@@ -35,6 +35,8 @@
                                         <h2>Decisión sobre un proyecto</h2>
                                         <p align="justify">
                                             Todo proyecto de inversión comienza como una idea sencilla.
+                                          <p align="center">   “No necesitas tener una empresa de 100 personas para desarrollar esa idea” 
+                                            ― Larry Page</p> 
                                         </p> 
                                         <p>
                                             <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://www.fondos.guanajuato.gob.mx/fondosgto/">Aprende mas »</a>

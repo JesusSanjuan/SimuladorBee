@@ -38,15 +38,17 @@ public partial class User_Index : System.Web.UI.Page
         var httpContext = HttpContext.Current;
         /***Get the user id**/
         string id_user = httpContext.User.Identity.GetUserId();
-        var consulta = db.Proyecto.Where(Proyecto => Proyecto.ID_Usuario == id_user);
+        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user);
         System.Diagnostics.Debug.WriteLine(consulta);
 
-        foreach (Proyecto proyecto in consulta)
+        System.Diagnostics.Debug.WriteLine(consulta.ToString());
+
+        foreach (Proyecto Proyect in consulta)
         {
-            Console.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
-                proyecto.ID_Proyecto, proyecto.ID_Usuario, proyecto.Nombre_Proyecto, proyecto.Fecha_Hora, proyecto.ID_Periodo));
-            
-            Console.WriteLine(" -----------------------------------------\n");
+            System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
+                Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));
+
+            System.Diagnostics.Debug.WriteLine(" -----------------------------------------\n");
         }
 
        // System.Diagnostics.Debug.WriteLine(json);

@@ -242,7 +242,7 @@
                 //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);
-                });
+            });
 
             /****cargar el proyecto****/
             $("body").on("click", ".cargar", function () {
@@ -253,7 +253,31 @@
                 console.log("id" + id + "-- nombre" + name);
                 $("#nameProject").text(name);
                 //visualizamos el mensaje
-                $( ".alert" ).removeClass( "d-none" ).addClass( "d-block" );
+                $(".alert").removeClass("d-none").addClass("d-block");
+
+                $.ajax({
+                    type: "POST",
+                    url: "Index.aspx/createSessionProyect",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({ id_proyect: id }),
+                    success: function (data) {
+                        console.log(data.d);
+                        if (typeof ID_Proyecto !== 'undefined') {
+
+                            console.log("existee session --->"+ID_Proyecto );
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        console.log(err.responseText);
+                    }
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
 
             });
             

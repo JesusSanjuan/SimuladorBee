@@ -15,25 +15,25 @@ public partial class User_van : System.Web.UI.Page
 
     protected void GreetingBtn_Click(Object sender, EventArgs e)
     {
-        double ResultadoVPN;
+        decimal ResultadoVPN;
         CreacionTabla();
-        ResultadoVPN = CalculoVPN();
+        ResultadoVPN = Calculos();
         
         string script3 = "Modal(" + ResultadoVPN + ");";
         
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
     }
 
-    public double CalculoVPN()
+    public decimal Calculos()
     {
         String timeC;
         String repArrayC;
         String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
-        double fTMAR = Convert.ToDouble(TMAR.Text);
+        decimal fTMAR = Convert.ToDecimal(TMAR.Text);
         int Periodo = Convert.ToInt32(n.Text);
         int negativos;
-        double num, ResultadoVPN;
+        decimal num, ResultadoVPN;
 
         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
@@ -44,7 +44,8 @@ public partial class User_van : System.Web.UI.Page
         {
             VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
             /* Calculo de la TIR */
-            TIR.Text = (Math.Round(CalcularTIR(fTMAR / 100), 6) * 100).ToString("0,0.0") + " %";
+           /* decimal ResultadoCTIR = CalcularTIR(fTMAR / 100);
+            TIR.Text = (Math.Round(ResultadoCTIR, 6) * 100).ToString("0,0.0") + " %";*////////////////////////////////////////////////////////REVISAR
         }
         else
         {
@@ -53,8 +54,9 @@ public partial class User_van : System.Web.UI.Page
         }
 
         /*Buscando interseccion con eje x */
-        double ValorY0 = Math.Round(CalcularVPN(CalcularTIR(fTMAR / 100)),1);
-        double ValorX0 = Math.Round(CalcularTIR(fTMAR / 100)*100,6);
+        // double ResultadoCTIR = CalcularTIR(fTMAR / 100);
+        //  decimal ValorY0 = Math.Round(CalcularVPN(CalcularTIR(fTMAR / 100)), 1);////////////////////////////////////////////////////////REVISAR
+        //  decimal ValorX0 = Math.Round(CalcularTIR(fTMAR / 100) * 100, 6);
         /*Buscando interseccion con eje x */
         fTMAR = 0;
 
@@ -65,30 +67,30 @@ public partial class User_van : System.Web.UI.Page
             negativos = 0;
             foreach (var item in ListaY)
             {
-                num = Convert.ToDouble(item);
+                num = Convert.ToDecimal(item);
                 if (num < 0)
                 {
                     negativos++;
                 }
             }
-            fTMAR = Convert.ToDouble(Math.Round(fTMAR + 0.02, 4));
+            fTMAR = Convert.ToDecimal(Math.Round(fTMAR + 0.02M, 4));
 
         } while (negativos < 5);
 
-        /*Buscando interseccion con eje x */
-        double v1, v2;
-        var xxx = ListaX.Count;
+        /*Buscando interseccion con eje x 
+        decimal v1, v2;
+        var xxx = ListaX.Count;////////////////////////////////////////////////////////REVISAR
         for (int z = 1;   z< ListaX.Count; z++)
         {
-            v1 = (double)ListaX[z - 1];
-            v2 = (double)ListaX[z];
+            v1 = (decimal)ListaX[z - 1];
+            v2 = (decimal)ListaX[z];
             if (ValorX0 >= v1 && ValorX0 <= v2)
             {
                 ListaX.Insert(z, ValorX0);
                 ListaY.Insert(z, ValorY0);
                 break;
             }            
-        }
+        }*/
         /*Buscando interseccion con eje x */
         // pasamos las variabes en formato array json
         timeC = JsonConvert.SerializeObject(ListaX);
@@ -100,49 +102,51 @@ public partial class User_van : System.Web.UI.Page
         return ResultadoVPN;
     }
 
-    public double CalcularVPN(double fTMAR)
+    public decimal CalcularVPN(decimal fTMAR)
     {
-        double P = Convert.ToDouble(Inversion.Text);
-        double fFNE = Convert.ToDouble(FNE.Text);
-        double fVS = Convert.ToDouble(VdS.Text);
-        double FNEAcumulado, fVPN;
+        decimal P = Convert.ToDecimal(Inversion.Text);
+        decimal fFNE = Convert.ToDecimal(FNE.Text);
+        decimal fVS = Convert.ToDecimal(VdS.Text);
+        decimal FNEAcumulado = 0, fVPN=0;
         int Periodo = Convert.ToInt32(n.Text);
         int i;
 
-        FNEAcumulado = 0;
-        double DivTMAR = 1 + fTMAR;
+        decimal DivTMAR = 1M + fTMAR;
         for (i = 1; i < Periodo; i++)
         {
-            FNEAcumulado = FNEAcumulado + (fFNE / Convert.ToDouble(Math.Pow(DivTMAR, i)));
+            FNEAcumulado = FNEAcumulado + (fFNE / Convert.ToDecimal(Math.Pow((double)DivTMAR, i)));
         }
-        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Convert.ToDouble(Math.Pow(DivTMAR, i)));
+        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Convert.ToDecimal(Math.Pow((double)DivTMAR, i)));
         fVPN = FNEAcumulado - P;
 
-        return fVPN;
+        return Math.Round(fVPN,4);
     }
 
-    public double CalcularTIR(double ValorTIR)
+    public decimal CalcularTIR(decimal ValorTIR)
     {
-        double TasaIncDec;
-        double Resultado;
+        decimal TasaIncDec = 0.01M;
+        decimal Resultado;
         Boolean MenosCero = false;
-        TasaIncDec = 0.01F;
-        ValorTIR = ValorTIR + TasaIncDec;
-
+        ValorTIR =ValorTIR + TasaIncDec;
+        
         do
         {
             Resultado = CalcularVPN(ValorTIR);
 
             if (MenosCero == true)
+            {
                 TasaIncDec = TasaIncDec / 2;
+            }
             if (Resultado > 0)
+            {
                 ValorTIR = ValorTIR + TasaIncDec;
+            }
             else
             {
-                ValorTIR = ValorTIR - TasaIncDec;
+                ValorTIR = Math.Round(ValorTIR - TasaIncDec,2);
                 MenosCero = true;
             }
-        } while (Math.Abs(Resultado) >= 0.01);
+        } while (Math.Abs(Resultado) >= 0.01M);
 
         return ValorTIR;
     }

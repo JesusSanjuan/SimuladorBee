@@ -14,6 +14,7 @@
     <div class="card align-middle">  
         <div class="card-header">
             <h1><i class="fa fa-money"></i>  Evaluación de costos</h1>
+
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
@@ -34,8 +35,11 @@
           <div class="tab-pane fade show active" id="Costos1" role="tabpanel" aria-labelledby="producción">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                 <div class="card-header">
-                    <h5><i class="fa fa-table"></i>  Costos de Producción</h5><!-- son los costos que se generan en el proceso de transformar la materia prima en productos terminados-->                          
-                    </div>
+                    <h5><i class="fa fa-table"></i>  Costos de Producción</h5>                          
+                            <p align="justify">
+                                            Son los costos que se generan en el proceso de transformar la materia prima en productos terminados.
+                                        </p>    
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="costTable" >
                         <thead>
@@ -73,7 +77,10 @@
           <div class="tab-pane fade" id="Costos2" role="tabpanel" aria-labelledby="Distribución">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                     <div class="card-header">
-                        <h5><i class="fa fa-table"></i> Costos de Distribución</h5><!-- son los que se generan por llevar el producto o servicio hasta el consumidor final-->
+                        <h5><i class="fa fa-table"></i> Costos de Distribución</h5>
+                    <p align="justify">
+                                            Son determinados por el departamento de ventas, también llamado de mercadotecnia.
+                                        </p>  
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="costTable2" >
@@ -112,7 +119,10 @@
           <div class="tab-pane fade" id="Costos3" role="tabpanel" aria-labelledby="Administración">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                     <div class="card-header">
-                        <h5><i class="fa fa-table"></i> Costos de Administración: </h5><!-- son los generados en las áreas administrativas de la empresa. Se denominan gastos-->
+                        <h5><i class="fa fa-table"></i> Costos de Administración: </h5>
+                     <p align="justify">
+                                            Son los costos que provienen de las áreas administrativas en la empresa.
+                                        </p> 
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="costTable3" >
@@ -151,7 +161,10 @@
           <div class="tab-pane fade" id="Costos4" role="tabpanel" aria-labelledby="financiamiento: ">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">                
                     <div class="card-header">
-                        <h5><i class="fa fa-table"></i> Costos de Financiamiento </h5><!-- son los que se generan por el uso de recursos de capital.-->
+                        <h5><i class="fa fa-table"></i> Costos de Financiamiento </h5>
+                         <p align="justify">
+                                            Son los intereses que se deben pagar conforme a los capitales obtenidos en préstamo.
+                                        </p> 
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="costTable4" >

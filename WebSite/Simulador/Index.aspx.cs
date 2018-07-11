@@ -52,7 +52,7 @@ public partial class User_Index : System.Web.UI.Page
             item.Add(Proyect.Nombre_Proyecto);
             item.Add(String.Format("{0:dd/MM/yyyy HH:mm:ss}", Proyect.Fecha_Hora));
             item.Add("<i class='fas fa-check' aria-hidden='true'>");
-            item.Add("<i class='fa fa-download fa-lg' aria-hidden='true'>");
+            item.Add("<a href='#' class='nav-link cargar' data-id="+ Proyect.ID_Proyecto+ "  data-name=' " + Proyect.Nombre_Proyecto +" '><i class='fa fa-redo fa-lg'></i></a>");
             result_query.Add(item);
             System.Diagnostics.Debug.WriteLine(" -----------------------------------------\n");
         }
@@ -60,8 +60,7 @@ public partial class User_Index : System.Web.UI.Page
         var json = JsonConvert.SerializeObject(result_query);
 
         // System.Diagnostics.Debug.WriteLine(json);
-
-
+       
         return json;
     }
 

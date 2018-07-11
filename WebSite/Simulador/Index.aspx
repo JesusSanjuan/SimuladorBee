@@ -17,6 +17,10 @@
             <li class="breadcrumb-item active">Inicio</li>
           </ol>
       </nav> 
+     <!-- Mensaje -->
+        <div class="alert alert-primary d-none" role="alert">
+            Proyecto <a href="#" class="alert-link" id="nameProject">x</a> cargado...
+        </div>
       <!-- Icon Cards-->
       <div class="row" >
                 <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: rubberBand animated, before: scrollReveal, after: removeAnim">
@@ -27,7 +31,7 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-9 text-right">
-                            <div class="huge">2</div>
+                            <div class="huge" id="nproyect">0</div>
                             <div>Proyectos</div>
                         </div>
 
@@ -219,9 +223,14 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    console.log(data.d);
+                    //console.log(data.d);
+                    var registros = JSON.parse(data.d);
+                    $('#nproyect').text(registros.length);
                     $('#tableProyect').DataTable({
-                        "aaData": JSON.parse(data.d),
+                        "aaData": registros,
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                        }
                     });
 
                 },
@@ -233,6 +242,19 @@
                 //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);
+                });
+
+            /****cargar el proyecto****/
+            $("body").on("click", ".cargar", function () {
+                //obtenemos los datas
+                var id = $(this).attr("data-id");
+
+                var name = $(this).attr("data-name");
+                console.log("id" + id + "-- nombre" + name);
+                $("#nameProject").text(name);
+                //visualizamos el mensaje
+                $( ".alert" ).removeClass( "d-none" ).addClass( "d-block" );
+
             });
             
         });

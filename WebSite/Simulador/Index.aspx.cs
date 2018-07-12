@@ -82,7 +82,34 @@ public partial class User_Index : System.Web.UI.Page
 
     }
 
-        protected void Page_Load(object sender, EventArgs e)
+    [WebMethod]
+    public static object buscarID_proyect()
+    {
+        try
+        {
+            if (System.Web.HttpContext.Current.Session["ID_Proyecto"] != null)
+            {
+                System.Diagnostics.Debug.WriteLine("existe");
+                return System.Web.HttpContext.Current.Session["ID_Proyecto"];
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("No existe");
+                return "false";
+            }
+            
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
+
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
     {
 
     }

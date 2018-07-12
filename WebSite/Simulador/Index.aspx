@@ -280,6 +280,26 @@
                 });
 
             });
+
+            /***** verificar si la session id_proyect existe *****/
+            $.ajax({
+                type: "POST",
+                url: "Index.aspx/buscarID_proyect",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data.d);
+                    
+                },
+                error: function (err) {
+                    console.log(err);
+                    console.log(err.responseText);
+                }
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
             
         });
     </script>

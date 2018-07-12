@@ -44,8 +44,8 @@ public partial class User_van : System.Web.UI.Page
         {
             VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
             /* Calculo de la TIR */
-           /* decimal ResultadoCTIR = CalcularTIR(fTMAR / 100);
-            TIR.Text = (Math.Round(ResultadoCTIR, 6) * 100).ToString("0,0.0") + " %";*////////////////////////////////////////////////////////REVISAR
+            decimal ResultadoCTIR = CalcularTIR(fTMAR / 100);
+            TIR.Text = (Math.Round(ResultadoCTIR, 6) * 100).ToString("0,0.0") + " %";////////////////////////////////////////////////////////REVISAR
         }
         else
         {
@@ -55,8 +55,8 @@ public partial class User_van : System.Web.UI.Page
 
         /*Buscando interseccion con eje x */
         // double ResultadoCTIR = CalcularTIR(fTMAR / 100);
-        //  decimal ValorY0 = Math.Round(CalcularVPN(CalcularTIR(fTMAR / 100)), 1);////////////////////////////////////////////////////////REVISAR
-        //  decimal ValorX0 = Math.Round(CalcularTIR(fTMAR / 100) * 100, 6);
+        decimal ValorY0 = Math.Round(CalcularVPN(CalcularTIR(fTMAR / 100)), 1);////////////////////////////////////////////////////////REVISAR
+        decimal ValorX0 = Math.Round(CalcularTIR(fTMAR / 100) * 100, 6);
         /*Buscando interseccion con eje x */
         fTMAR = 0;
 
@@ -77,7 +77,7 @@ public partial class User_van : System.Web.UI.Page
 
         } while (negativos < 5);
 
-        /*Buscando interseccion con eje x 
+        /*Buscando interseccion con eje x */
         decimal v1, v2;
         var xxx = ListaX.Count;////////////////////////////////////////////////////////REVISAR
         for (int z = 1;   z< ListaX.Count; z++)
@@ -90,7 +90,7 @@ public partial class User_van : System.Web.UI.Page
                 ListaY.Insert(z, ValorY0);
                 break;
             }            
-        }*/
+        }
         /*Buscando interseccion con eje x */
         // pasamos las variabes en formato array json
         timeC = JsonConvert.SerializeObject(ListaX);
@@ -136,14 +136,15 @@ public partial class User_van : System.Web.UI.Page
             if (MenosCero == true)
             {
                 TasaIncDec = TasaIncDec / 2;
+                MenosCero = false;
             }
             if (Resultado > 0)
             {
-                ValorTIR = ValorTIR + TasaIncDec;
+                ValorTIR = ValorTIR + TasaIncDec;                
             }
             else
             {
-                ValorTIR = Math.Round(ValorTIR - TasaIncDec,2);
+                ValorTIR = ValorTIR - TasaIncDec;
                 MenosCero = true;
             }
         } while (Math.Abs(Resultado) >= 0.01M);

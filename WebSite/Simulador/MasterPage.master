@@ -60,19 +60,25 @@
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Estudio Financiero">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb1" data-parent="#exampleAccordion">
                                             <i class="fas fa-chart-area"></i>
-                                            <span class="nav-link-text">Estudio Financiero</span>
+                                            <span class="nav-link-text">Operaciones Financieras</span>
                                           </a>
-                                            <ul class="sidenav-second-level collapse" id="cb1">                                                                                               
-                                                <li>
-                                                      <a class="nav-link" href="amortizacion">
-                                                        <i class="fas fa-chart-bar"></i>
-                                                        <span class="nav-link-text">Amortización</span>
-                                                      </a>
-                                                </li>
+                                            <ul class="sidenav-second-level collapse" id="cb1"> 
                                                 <li>
                                                        <a class="nav-link" href="costos">
                                                           <i class="fas fa-chart-bar"></i>
                                                           <span class="nav-link-text">Costos</span>
+                                                      </a>
+                                                </li>
+                                                <li>
+                                                      <a class="nav-link" href="Construccion">
+                                                        <i class="fas fa-chart-bar"></i>
+                                                        <span class="nav-link-text">Gastos</span>
+                                                      </a>
+                                                </li>
+                                                <li>
+                                                      <a class="nav-link" href="amortizacion">
+                                                        <i class="fas fa-chart-bar"></i>
+                                                        <span class="nav-link-text">Amortización</span>
                                                       </a>
                                                 </li>
                                                 <li>
@@ -82,35 +88,46 @@
                                                       </a>
                                                 </li>
                                                 <li>
-                                                      <a class="nav-link" href="Construccion">
-                                                        <i class="fas fa-chart-bar"></i>
-                                                        <span class="nav-link-text">Perdidas</span>
-                                                      </a>
-                                                </li>
-                                                <li>
-                                                      <a class="nav-link" href="Construccion">
-                                                        <i class="fas fa-chart-bar"></i>
-                                                        <span class="nav-link-text">Gastos</span>
-                                                      </a>
-                                                </li>
-                                                 <li>
-                                                       <a class="nav-link" href="van">
-                                                          <i class="fas fa-chart-bar"></i>
-                                                          <span class="nav-link-text">VAN</span>
-                                                      </a>
-                                                </li> 
-                                                 <li>
-                                                       <a class="nav-link" href="Construccion">
-                                                          <i class="fas fa-chart-bar"></i>
-                                                          <span class="nav-link-text">TMAR</span>
-                                                      </a>
-                                                </li> 
-                                                <li>
                                                        <a class="nav-link" href="Construccion">
                                                           <i class="fas fa-chart-bar"></i>
                                                           <span class="nav-link-text">Punto de Equilibrio</span>
                                                       </a>
                                                 </li> 
+                                                <li>
+                                                      <a class="nav-link" href="Construccion">
+                                                        <i class="fas fa-chart-bar"></i>
+                                                        <span class="nav-link-text">Perdidas</span>
+                                                      </a>
+                                                </li>  
+                                                 <li>
+                                                      <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#c1b3">Evaluacion Finaciera</a>
+                                                      <ul class="sidenav-third-level collapse" id="c1b3">
+                                                            <li>
+                                                                    <a class="nav-link" href="van">
+                                                                      <i class="fas fa-chart-bar"></i>
+                                                                      <span class="nav-link-text">VAN Constante</span>
+                                                                    </a>
+                                                            </li> 
+                                                            <li>
+                                                                    <a class="nav-link" href="van">
+                                                                      <i class="fas fa-chart-bar"></i>
+                                                                      <span class="nav-link-text">VAN Variable</span>
+                                                                    </a>
+                                                            </li> 
+                                                            <li>
+                                                                    <a class="nav-link" href="van">
+                                                                      <i class="fas fa-chart-bar"></i>
+                                                                      <span class="nav-link-text">VAN Variable Manual</span>
+                                                                    </a>
+                                                            </li> 
+                                                             <li>
+                                                                      <a class="nav-link" href="Construccion">
+                                                                          <i class="fas fa-chart-bar"></i>
+                                                                          <span class="nav-link-text">TMAR</span>
+                                                                      </a>
+                                                            </li> 
+                                                      </ul>
+                                                </li>
                                             </ul>
 
                                         </li>                                        

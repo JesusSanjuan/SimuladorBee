@@ -14,56 +14,47 @@ public partial class User_van : System.Web.UI.Page
     }
 
     protected void GreetingBtn_Click(Object sender, EventArgs e)
-    {
-        decimal ResultadoVPN;
+    {        
+        Graficar();
         CreacionTabla();
-        ResultadoVPN = Calculos();
-        
-        string script3 = "Modal(" + ResultadoVPN + ");";
-        
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
     }
 
-    public decimal Calculos()
+    public void Graficar()
     {
-        String timeC;
-        String repArrayC;
-        String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
-        /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
         decimal fTMAR = Convert.ToDecimal(TMAR.Text);
-        int Periodo = Convert.ToInt32(n.Text);
-        int negativos;
-        decimal num, ResultadoVPN;
-
+        int negativos, Periodo = Convert.ToInt32(n.Text);
+        decimal num;
         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
+        decimal ResultadoVPN, RCalcuTIR;
+        Boolean Ceros = false;
+
+        /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */       
+       
 
         ResultadoVPN = CalcularVPN(fTMAR / 100);
+        string script3 = "Modal(" + ResultadoVPN + ");";
+        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
+
 
         if (ResultadoVPN > 0)
         {
-            VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
-            /* Calculo de la TIR */
-            decimal ResultadoCTIR = CalcularTIR(fTMAR / 100);
-            TIR.Text = (Math.Round(ResultadoCTIR, 6) * 100).ToString("0,0.0") + " %";////////////////////////////////////////////////////////REVISAR
+            VAN.Text = "$" + ResultadoVPN.ToString("0,0.0000");
+            RCalcuTIR = CalcularTIR(fTMAR / 100, 1);
+            TIR.Text = (RCalcuTIR * 100).ToString("0,0.00") + " %";
         }
         else
         {
-            VAN.Text = "$" + Math.Round(ResultadoVPN, 2).ToString("0,0.00");
+            VAN.Text = "$" + ResultadoVPN.ToString("0,0.0000");
             TIR.Text = "No aplicable";
-        }
+            RCalcuTIR = CalcularTIR(fTMAR / 100, 2);
+        }      
 
-        /*Buscando interseccion con eje x */
-        // double ResultadoCTIR = CalcularTIR(fTMAR / 100);
-        decimal ValorY0 = Math.Round(CalcularVPN(CalcularTIR(fTMAR / 100)), 1);////////////////////////////////////////////////////////REVISAR
-        decimal ValorX0 = Math.Round(CalcularTIR(fTMAR / 100) * 100, 6);
-        /*Buscando interseccion con eje x */
         fTMAR = 0;
-
         do
         {
-            ListaX.Add(Math.Round(fTMAR * 100, 2));
-            ListaY.Add(Math.Round(CalcularVPN(fTMAR), 2));
+            ListaX.Add(fTMAR * 100);
+            ListaY.Add(CalcularVPN(fTMAR));
             negativos = 0;
             foreach (var item in ListaY)
             {
@@ -72,84 +63,127 @@ public partial class User_van : System.Web.UI.Page
                 {
                     negativos++;
                 }
+                if (num <= .1M && num >= -0.1M)
+                {
+                    Ceros = true;// Busca si ya existe el cruce en el eje x con 0
+                }
             }
-            fTMAR = Convert.ToDecimal(Math.Round(fTMAR + 0.02M, 4));
-
-        } while (negativos < 5);
+            fTMAR = fTMAR + 0.02M;// Cantidad de saltos de los puntos en el eje X
+        } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
 
         /*Buscando interseccion con eje x */
-        decimal v1, v2;
-        var xxx = ListaX.Count;////////////////////////////////////////////////////////REVISAR
-        for (int z = 1;   z< ListaX.Count; z++)
+        if (!Ceros)
         {
-            v1 = (decimal)ListaX[z - 1];
-            v2 = (decimal)ListaX[z];
-            if (ValorX0 >= v1 && ValorX0 <= v2)
+            decimal ValorY0 = Math.Round(CalcularVPN(RCalcuTIR), 2);
+            decimal ValorX0 = Math.Round(RCalcuTIR * 100, 4);
+            decimal v1, v2;
+            for (int z = 1; z < ListaX.Count; z++)
             {
-                ListaX.Insert(z, ValorX0);
-                ListaY.Insert(z, ValorY0);
-                break;
-            }            
+                v1 = (decimal)ListaX[z - 1];
+                v2 = (decimal)ListaX[z];
+                if (ValorX0 >= v1 && ValorX0 <= v2)
+                {
+                    ListaX.Insert(z, ValorX0);
+                    ListaY.Insert(z, ValorY0);
+                    break;
+                }
+            }
         }
         /*Buscando interseccion con eje x */
         // pasamos las variabes en formato array json
-        timeC = JsonConvert.SerializeObject(ListaX);
-        repArrayC = JsonConvert.SerializeObject(ListaY);
+        String timeC = JsonConvert.SerializeObject(ListaX);
+        String repArrayC = JsonConvert.SerializeObject(ListaY);
+        String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
 
         //llamamos la función pasaando los parametros
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
 
-        return ResultadoVPN;
     }
 
     public decimal CalcularVPN(decimal fTMAR)
     {
-        decimal P = Convert.ToDecimal(Inversion.Text);
-        decimal fFNE = Convert.ToDecimal(FNE.Text);
-        decimal fVS = Convert.ToDecimal(VdS.Text);
-        decimal FNEAcumulado = 0, fVPN=0;
-        int Periodo = Convert.ToInt32(n.Text);
-        int i;
-
-        decimal DivTMAR = 1M + fTMAR;
-        for (i = 1; i < Periodo; i++)
+        
+            decimal P = Convert.ToDecimal(Inversion.Text);
+            decimal fFNE = Convert.ToDecimal(FNE.Text);
+            decimal fVS = Convert.ToDecimal(VdS.Text);
+            decimal FNEAcumulado = 0, fVPN = 0;
+            int Periodo = Convert.ToInt32(n.Text), i = 0;
+        
+        try
         {
-            FNEAcumulado = FNEAcumulado + (fFNE / Convert.ToDecimal(Math.Pow((double)DivTMAR, i)));
-        }
-        FNEAcumulado = FNEAcumulado + ((fFNE + fVS) / Convert.ToDecimal(Math.Pow((double)DivTMAR, i)));
-        fVPN = FNEAcumulado - P;
+            decimal DivTMAR = 1M + fTMAR;
+            for (i = 1; i < Periodo; i++)
+            {
+                decimal valorinferior = (decimal)Math.Pow((double)DivTMAR, i);
+                FNEAcumulado = FNEAcumulado + Math.Round(fFNE / Convert.ToDecimal(valorinferior), 4);
+            }
 
-        return Math.Round(fVPN,4);
+            decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
+            System.Diagnostics.Debug.WriteLine(DivTMAR);
+            System.Diagnostics.Debug.WriteLine(i);
+            FNEAcumulado = FNEAcumulado + Math.Round((fFNE + fVS) / Convert.ToDecimal(valorinferiorF), 4);
+            fVPN = FNEAcumulado - P;
+
+            
+        }
+        catch (OverflowException e)
+        {
+            Console.WriteLine("Exception: {0} > {1}.", e, decimal.MaxValue);
+        }
+        return fVPN;
     }
 
-    public decimal CalcularTIR(decimal ValorTIR)
+    public decimal CalcularTIR(decimal ValorTIR, int caso)
     {
         decimal TasaIncDec = 0.01M;
         decimal Resultado;
         Boolean MenosCero = false;
-        ValorTIR =ValorTIR + TasaIncDec;
-        
-        do
+        decimal ValorTIRR =ValorTIR + TasaIncDec;
+        switch (caso)
         {
-            Resultado = CalcularVPN(ValorTIR);
-
-            if (MenosCero == true)
-            {
-                TasaIncDec = TasaIncDec / 2;
-                MenosCero = false;
-            }
-            if (Resultado > 0)
-            {
-                ValorTIR = ValorTIR + TasaIncDec;                
-            }
-            else
-            {
-                ValorTIR = ValorTIR - TasaIncDec;
-                MenosCero = true;
-            }
-        } while (Math.Abs(Resultado) >= 0.01M);
-
-        return ValorTIR;
+            case 1:
+                    do
+                    {
+                        Resultado = CalcularVPN(ValorTIRR);
+                        if (MenosCero == true)
+                        {
+                            TasaIncDec = TasaIncDec / 2;
+                            MenosCero = false;
+                        }
+                        if (Resultado > 0)
+                        {
+                            ValorTIRR = ValorTIRR + TasaIncDec;
+                        }
+                        else
+                        {
+                            ValorTIRR = ValorTIRR - TasaIncDec;
+                            MenosCero = true;
+                        }
+                    } while (Math.Abs(Resultado) >= 0.01M);
+                    break;
+            case 2:
+                    do
+                    {
+                        Resultado = CalcularVPN(ValorTIRR);
+                        if (MenosCero == true)
+                        {
+                            TasaIncDec = TasaIncDec / 2;
+                            MenosCero = false;
+                        }
+                        if (Resultado > 0)
+                        {
+                            ValorTIRR = ValorTIRR + TasaIncDec;
+                            MenosCero = true;
+                        }
+                        else
+                        {
+                            ValorTIRR = ValorTIRR - TasaIncDec;
+                            
+                        }
+                    } while (Math.Abs(Resultado) >= 0.01M);
+                    break;
+        }       
+        return ValorTIRR;
     }
 
     public void CreacionTabla()
@@ -193,7 +227,7 @@ public partial class User_van : System.Web.UI.Page
         {
             for (int i = 1; i <= Periodo; i++)
             {
-                double IngresoActual = (Convert.ToDouble(ArregloDatos[i, 3].Trim(new Char[] { '$', ' ' }))) / Convert.ToDouble(Math.Pow(1 + .1, i));
+                decimal IngresoActual = (Convert.ToDecimal(ArregloDatos[i, 3])) / Convert.ToDecimal(Math.Pow(1 + .1, i));
                 ArregloDatos[j, 5] = Convert.ToString(Math.Round(IngresoActual, 3));
             }
         }
@@ -201,27 +235,27 @@ public partial class User_van : System.Web.UI.Page
         ArregloDatos[0, 6] = ArregloDatos[0, 2];
         for (int i = 1; i <= Periodo; i++)
         {
-            double x = Convert.ToDouble(ArregloDatos[i - 1, 6]);
-            double Flujoneto = Convert.ToDouble(ArregloDatos[i, 4]);
+            decimal x = Convert.ToDecimal(ArregloDatos[i - 1, 6]);
+            decimal Flujoneto = Convert.ToDecimal(ArregloDatos[i, 4]);
             ArregloDatos[i, 6] = Convert.ToString(x + Flujoneto);
         }
         String MatrizFinal = JsonConvert.SerializeObject(ArregloDatos);
         String comando = "RellenarTabla(" + MatrizFinal + ")";
         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "clave", comando, true);
 
-        double P = Convert.ToDouble(Inversion.Text);
+        decimal P = Convert.ToDecimal(Inversion.Text);
         for (int i = 1; i <= Periodo; i++)
         {
-            double x1 = Convert.ToDouble(ArregloDatos[i, 6]);
+            decimal x1 = Convert.ToDecimal(ArregloDatos[i, 6]);
             if (x1 >= 0)
             {
-                double x2 = Convert.ToDouble(ArregloDatos[i - 1, 6]);
+                decimal x2 = Convert.ToDecimal(ArregloDatos[i - 1, 6]);
                 if (x2 < 0)
                 {
-                    double Anio = Convert.ToDouble(ArregloDatos[i - 1, 0]);
+                    decimal Anio = Convert.ToDecimal(ArregloDatos[i - 1, 0]);
                     if (PeriodoSelect == "Mes")
                     {
-                        double T1 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
+                        decimal T1 = Math.Round(((P / ((x2 * -1M) + x1)) + (Anio - 1)), 3);
 
                         if(T1>1)
                         {
@@ -235,7 +269,7 @@ public partial class User_van : System.Web.UI.Page
                     }
                     else
                     {
-                        double T2 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
+                        decimal T2 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
                         if (T2 > 1)
                         {
                             PeridoRec.Text = Convert.ToString(T2) + " " + PeriodoSelect + "s";
@@ -255,19 +289,19 @@ public partial class User_van : System.Web.UI.Page
 
         }
 
-        double SumIngresos_actualizados = 0;
+        decimal SumIngresos_actualizados = 0;
         for (int i = 1; i <= Periodo; i++)
         {
-            SumIngresos_actualizados = SumIngresos_actualizados + Convert.ToDouble(ArregloDatos[i, 4]);
+            SumIngresos_actualizados = SumIngresos_actualizados + Convert.ToDecimal(ArregloDatos[i, 4]);
         }
 
-        double Sum_costos = 0;
+        decimal Sum_costos = 0;
         for (int i = 1; i <= Periodo; i++)
         {
-            Sum_costos = Sum_costos + Convert.ToDouble(ArregloDatos[i, 5]);
+            Sum_costos = Sum_costos + Convert.ToDecimal(ArregloDatos[i, 5]);
         }
 
-        double CRBC = SumIngresos_actualizados / Sum_costos;
+        decimal CRBC = SumIngresos_actualizados / Sum_costos;
         BenCosto.Text = "Por cada peso invertido usted obtendra una ganancia de: $" + Convert.ToString(Math.Round(CRBC, 3));
     }
 

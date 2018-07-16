@@ -26,9 +26,11 @@ function Graficar(x,y,Periodo) {
       //  tooltipsbackgroundColor[i] = 'rgba(0, 0, 0, 0.7)';
     }
 
-    for (var i = 0; i < repArray.length; i++) {
+    for (var i = 1; i < repArray.length; i++) {
         var tem = repArray[i];
-        if (tem <= 0) {
+        var tem1 = repArray[i - 1];
+        var tem2 = repArray[i + 1];
+        if (tem2< 0 && tem1 > 0) {            
             pointBackgroundColor[i] = "rgba(255, 87, 51,1)";
             pointRadius[i] = 8;
             pointHoverRadius[i] = 10;
@@ -57,7 +59,7 @@ function Graficar(x,y,Periodo) {
                 pointBorderColor: "rgba(255,255,255,1)",// Color de los bordes del punto e intensidad del borde
                 pointHoverRadius: pointHoverRadius,// Agrandar al pasar el raton sobre el punto
                 pointHoverBackgroundColor: pointBackgroundColor,// Color del interior del punto al pasar el cursor y agrandarse
-                pointHitRadius: 8,//determina la distancia a la cuál los puntos trazados comenzarán a interactuar con el ratón.
+                pointHitRadius: 4,//determina la distancia a la cuál los puntos trazados comenzarán a interactuar con el ratón.
                 pointBorderWidth: 2, //Distancia del punto de su borde al centro
                 pointStyle: pointStyle,
                 data: repArray

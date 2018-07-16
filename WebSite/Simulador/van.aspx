@@ -3,11 +3,10 @@
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
-        <script src="../Scripts/startbootstrap/js/sb-admin-charts.js"></script> 
+        <script src="../Scripts/startbootstrap/js/charts-van.js"></script> 
         <script src="../Scripts/jquery-3.3.1.js"></script>
-        <script src="../Scripts/startbootstrap/js/datatables-van.js"></script>
+        <script src="../Scripts/startbootstrap/js/datatables-van.js"></script>        
  <!-- Scrip para graficas debe estar en Head--> 
-
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
@@ -43,7 +42,7 @@
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
                                                              <span class="input-group-text">0.00</span>                                                            
                                                         </div>
-                                                            <asp:TextBox CssClass="form-control" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo"  required="required" />
+                                                            <asp:TextBox CssClass="form-control number" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo" autocomplete="off" required="required" />
                                                         <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
@@ -54,7 +53,7 @@
                       
                                                         </div>                   
                                                   </div> 
-                                                <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="RegularExpression1" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Inversion" ValidationExpression="^(\d|-)?(\d|,)*\.?\d{1,2}$" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                         </div>
 
                                         <div class="col-md-3 mb-2">
@@ -64,7 +63,7 @@
                                                           <span class="input-group-text" id="inputGroupPrepend1">$</span>
                                                              <span class="input-group-text">0.00</span>
                                                         </div>
-                                                             <asp:TextBox CssClass="form-control" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" CausesValidation="True" runat="server"  required="required"/>
+                                                             <asp:TextBox CssClass="form-control number2" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" CausesValidation="True" runat="server"   required="required"/>
                                                         <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
@@ -75,7 +74,7 @@
                        
                                                         </div>
                                                   </div>  
-                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="FNE" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="FNE" ValidationExpression="^(\d|-)?(\d|,)*\.?\d{1,2}$"  Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                    
                                         </div>
 
@@ -86,7 +85,7 @@
                                                           <span class="input-group-text" id="inputGroupPrepend2">$</span>
                                                              <span class="input-group-text">0.00</span>
                                                         </div>
-                                                            <asp:TextBox  CssClass="form-control" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
+                                                            <asp:TextBox  CssClass="form-control number3" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
                                                        <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
@@ -97,12 +96,12 @@
                        
                                                         </div>
                                                   </div>
-                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Vds" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="Vds" ValidationExpression="^(\d|-)?(\d|,)*\.?\d{1,2}$"  Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                          </div>
                                           <div class="col-md-3 mb-2">
                                           <label for="validationCustom04">TMAR</label>
                                               <div class="input-group">                    
-                                                        <asp:TextBox  CssClass="form-control" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required="required"/>
+                                                        <asp:TextBox  CssClass="form-control number4" id="TMAR" placeholder="Ingrese el valor de TMAR"  runat="server"  required="required"/>
                                                       
                                                        <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
@@ -114,8 +113,8 @@
                                                         <div class="valid-feedback">
                        
                                                         </div>
-                                                  </div> 
-                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="([0-9]*)(\.[0-9]{1,2})?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                                              </div> 
+                                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="^(\d|-)?(\d|,)*\.?\d{1,2}$" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                    
                                         </div> 
                           </div>
@@ -123,10 +122,9 @@
                                         <div class="col-md-4 mb-2">
                                           <label for="validationCustom05">Plazo (n)</label>
                                                   <div class="input-group">                   
-                                                       <asp:TextBox  CssClass="form-control" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" required="required"/> 
-                   
-                                                                  <div class="input-group-append">
-                                                                      <select  class="btn btn-outline-secondary " id="Select" runat="server" required="required">
+                                                                <asp:TextBox  CssClass="form-control number5" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" autocomplete="off" required="required"/>                    
+                                                                 <div class="input-group-append">
+                                                                      <select  class="btn btn-outline-secondary" id="Select" runat="server" required="required">
                                                                                       <option value="" class="dropdown-item">Seleccione</option>
                                                                                       <option value="Mes" class="dropdown-item">Mes</option>
                                                                                       <option value="Año" class="dropdown-item">Año</option>
@@ -156,15 +154,13 @@
                                         </div>       
                                 </div>
                           </div>
-  <!--   <asp:GridView class="table table-bordered" id="myTable"  runat="server">  
-                           
-    </asp:GridView> -->
+
                         <div class="form-row">  
                             <div class="col-md-3 mb-2">
-                                    <asp:Button id="Button1" 	CssClass="btn btn-primary" OnClick="GreetingBtn_Click"  Text="Calcular"  runat="server"/>
+                                    <asp:Button id="Button1" onclick="GreetingBtn_Click"	CssClass="btn btn-primary" Text="Calcular"  runat="server"/>
                             </div>   
                         </div>  
-            </div>
+   </div>
               <div class="card align-middle" id="ResultadosVAN" style="display:none"  >    
                     <div class="card-header">
                       <h4> <i class="fas fa-chart-pie"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
@@ -391,30 +387,9 @@
  <!-- Manejo de funcion de tabla en VAN-->
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
- <!-- Manejo de funcion de tabla en VAN-->
-    
-<!-- Para validacion de campos-->
-        <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-               (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                    //form.classList.add('was-feedback');
-                }, false);
-            });
-        }, false);
-    })();
-        </script>
-<!-- Para validacion de campos-->
+ <!-- Manejo de funcion de tabla en VAN-->    
+ <!-- Para validacion de campos-->    
+        <script src="../Scripts/startbootstrap/js/validaciones-van.js"></script>        
+ <!-- Para validacion de campos-->
 
  </asp:Content>

@@ -161,7 +161,8 @@
                             </div>   
                         </div>  
    </div>
-              <div class="card align-middle" id="ResultadosVAN" style="display:none"  >    
+    <div style="padding-bottom:1rem;">
+              <div class="card align-middle" id="ResultadosVAN" style="display:none;">    
                     <div class="card-header">
                       <h4> <i class="fas fa-chart-pie"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
                     </div>
@@ -353,7 +354,7 @@
                          </div>
                     <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>   
             </div>
-
+    </div>
 
 
     <!-- The Modal --> 

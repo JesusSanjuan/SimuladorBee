@@ -93,7 +93,7 @@ public partial class User_van : System.Web.UI.Page
         // pasamos las variabes en formato array json
         String timeC = JsonConvert.SerializeObject(ListaX);
         String repArrayC = JsonConvert.SerializeObject(ListaY);
-        String PeriodoSelect = JsonConvert.SerializeObject(Select.Value);
+        String PeriodoSelect = JsonConvert.SerializeObject(select.Value);
 
         //llamamos la función pasaando los parametros
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
@@ -188,7 +188,12 @@ public partial class User_van : System.Web.UI.Page
 
     public void CreacionTabla()
     {
-        String PeriodoSelect = Select.Value;
+        String PeriodoSelect="Año";
+        if (select.Value=="1")
+        {
+           PeriodoSelect = "Mes";
+        }
+        
 
         Random r = new Random();
         int Costos = r.Next(200000, 2500000);
@@ -304,6 +309,4 @@ public partial class User_van : System.Web.UI.Page
         decimal CRBC = SumIngresos_actualizados / Sum_costos;
         BenCosto.Text = "Por cada peso invertido usted obtendra una ganancia de: $" + Convert.ToString(Math.Round(CRBC, 3));
     }
-
-
 }

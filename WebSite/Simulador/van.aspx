@@ -1,6 +1,7 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+        <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/startbootstrap/js/charts-van.js"></script> 
@@ -121,23 +122,28 @@
                           <div class="form-row">     
                                         <div class="col-md-4 mb-2">
                                           <label for="validationCustom05">Plazo (n)</label>
-                                                  <div class="input-group">                   
-                                                                <asp:TextBox  CssClass="form-control number5" id="n" placeholder="Ingrese el plazo del proyecto"  runat="server" autocomplete="off" required="required"/>                    
-                                                                 <div class="input-group-append">
-                                                                      <select  class="btn btn-outline-secondary" id="Select" runat="server" required="required">
-                                                                                      <option value="" class="dropdown-item">Seleccione</option>
-                                                                                      <option value="Mes" class="dropdown-item">Mes</option>
-                                                                                      <option value="Año" class="dropdown-item">Año</option>
+                                                  <div class="input-group"> 
+                                                        <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Ingrese el plazo del proyecto"  runat="server" autocomplete="off" ClientIDMode="Static"  required="required"/>   
+                                                        <div class="input-group-append ">
+                                                                      <select  id="select" class="select selectpicker show-tick"  runat="server" ClientIDMode="Static" style="width: 20%;" required="required">
+                                                                                      <option value="" class="dropdown-item" selected>Seleccione</option>
+                                                                                      <option value="1" class="dropdown-item">Mes</option>
+                                                                                      <option value="2" class="dropdown-item">Año</option>
                                                                        </select>
                                                                        <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                                 </div>
-                                                        <div class="invalid-feedback">
-                                                          Por favor seleccione
-                                                        </div>
-                                                        <div class="valid-feedback">
-                                                        </div>
+                                                                        <div class="invalid-feedback">
+                                                                          Seleccione
+                                                                        </div>
+                                                                        <div class="valid-feedback">
+                                                                        </div>
+                                                          </div> 
+                                                            <div class="invalid-feedback">
+                                                                  Por ingrese y seleccione el plazo
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                            </div>
                                                   </div>
-                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="n" ValidationExpression="([0-9]*)?" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="n" ValidationExpression="^(\d|-)?(\d|,)*" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                         </div>                
                           </div>
 
@@ -149,11 +155,13 @@
                                                     Acepta los términos y condiciones
                                               </label>
                                               <div class="invalid-feedback">
-                                                 Debe aceptar los terminos antes de enviar
+                                                 Debe aceptar los terminos antes de calcular
                                               </div>
                                         </div>       
                                 </div>
                           </div>
+
+     
 
                         <div class="form-row">  
                             <div class="col-md-3 mb-2">
@@ -392,5 +400,7 @@
  <!-- Para validacion de campos-->    
         <script src="../Scripts/startbootstrap/js/validaciones-van.js"></script>        
  <!-- Para validacion de campos-->
-
+ <!-- plugin selectpicker-->
+    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+<!-- plugin selectpicker-->
  </asp:Content>

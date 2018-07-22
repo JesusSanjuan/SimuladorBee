@@ -559,3 +559,8 @@ footer.sticky-footer {
     color: #212529;
     background-color: transparent;
 }
+/*Borde ocupado en Select VAN*/
+.select {
+    border: 1px solid #ccc;
+}
+/*Borde ocupado en Select VAN*/

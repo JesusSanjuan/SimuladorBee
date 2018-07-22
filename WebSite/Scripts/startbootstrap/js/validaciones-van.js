@@ -32,7 +32,8 @@ number.addEventListener('keyup', (e) => {
 	const element = e.target;
 	const value = element.value;
   element.value = formatNumber(value);
-            });
+});
+/* Validacion del campo Inversion */
 
 /* Validacion del campo Flujo Neto de Efectivo */
 const number2 = document.querySelector('.number2');
@@ -47,8 +48,9 @@ number2.addEventListener('keyup', (e2) => {
 	const value2 = element2.value;
   element2.value = formatNumber2(value2);
 });
-
 /* Validacion del campo Flujo Neto de Efectivo */
+
+/* Validacion del campo Valor de Salvamento*/
 const number3 = document.querySelector('.number3');
 
 function formatNumber3(n) {
@@ -61,6 +63,7 @@ number3.addEventListener('keyup', (e3) => {
     const value3 = element3.value;
     element3.value = formatNumber3(value3);
 });
+/* Validacion del campo Valor de Salvamento*/
 
 /* Validacion del campo TMAR*/
 const number4 = document.querySelector('.number4');
@@ -75,17 +78,35 @@ number4.addEventListener('keyup', (e4) => {
     const value4 = element4.value;
     element4.value = formatNumber4(value4);
 });
-
+/* Validacion del campo TMAR*/
 
 /* Validacion del campo PLAZO*/
 const number5 = document.querySelector('.number5');
 
 function formatNumber5(n) {
-    n = String(n).replace(/\D/g, "");
+    n = String(n).replace(/\D/g, "");   
     return n === '' ? n : Number(n).toLocaleString();
 }
 number5.addEventListener('keyup', (e5) => {
     const element5 = e5.target;
     const value5 = element5.value;
-    element5.value = formatNumber5(value5);
+    element5.value = formatNumber5(value5);    
 });
+
+
+$('#n').keyup(function (event) {
+    valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
+    $('#select').prop('disabled', false).change;
+    if (valorN >= 13) {
+        $("#select").val("2").change();
+        $('#select option[value="1"]').attr("disabled", true);
+    }
+    else {
+        $('#select option[value="1"]').attr("disabled", false);
+        $("#select").val("").change();
+    }
+});
+
+/* Validacion del campo PLAZO*/
+
+

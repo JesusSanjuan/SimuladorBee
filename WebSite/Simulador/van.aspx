@@ -138,7 +138,7 @@
                                                                         </div>
                                                           </div> 
                                                             <div class="invalid-feedback">
-                                                                  Por ingrese y seleccione el plazo
+                                                                  Por favor ingrese y seleccione el plazo
                                                             </div>
                                                             <div class="valid-feedback">
                                                             </div>
@@ -294,6 +294,8 @@
                                                                                                           <th>Periodo de Recuperación</th>
                                                                                                         </tr>
                                                                                                       </thead>
+                                                                                                      <tbody  id="dataTableVANBody">                                                                                                                                                                           
+                                                                                                      </tbody>
                                                                                                       <tfoot>
                                                                                                         <tr>
                                                                                                           <th></th>
@@ -304,9 +306,7 @@
                                                                                                           <th>Ingreso Actualizado</th>
                                                                                                           <th>Periodo de Recuperación</th>
                                                                                                         </tr>
-                                                                                                      </tfoot>
-                                                                                                      <tbody  id="dataTableVANBody">                                                                                                                                                                           
-                                                                                                      </tbody>
+                                                                                                      </tfoot>                                                                                                     
                                                                                                 </Table>
                                                                                           </div>
                                                       </div>
@@ -402,5 +402,5 @@
  <!-- Para validacion de campos-->
  <!-- plugin selectpicker-->
     <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
-<!-- plugin selectpicker-->
+ <!-- plugin selectpicker-->
  </asp:Content>

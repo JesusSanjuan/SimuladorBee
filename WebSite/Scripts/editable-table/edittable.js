@@ -260,23 +260,6 @@ $(document).ready(function () {
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
     });
-
-    /*******formato moneda******/
-
-   /* $("#myTabContent2 .table-responsive  input").on({
-        "focus": function (event) {
-            $(event.target).select();
-        },
-        "keyup": function (event) {
-            $(event.target).val(function (index, value) {
-                return value.replace(/\D/g, "")
-                    .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-                    .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
-            });
-        }
-    });*/
-    
-
-
+       
 });
 

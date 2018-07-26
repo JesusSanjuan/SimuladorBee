@@ -230,7 +230,7 @@
                 console.log("Error: " + data);
             });
         });
-
+/*Solamente efecto visual aun no se que que js guardarlo*/
  $(document).ready(function () {             
         
         $('#warning').addClass("pulse animated"); //otra manera de aplicar efectos   https://api.jquery.com/hover/
@@ -251,16 +251,13 @@
                      "animation-play-state": "running"// Ejecuta efecto
                 }); 
 
-     }
-
-         , function() {
-    $( this ).removeClass( "hover" );
-  }
+     }, function() {
+                $( this ).removeClass( "hover" );
+        }
      );
+ });
 
-        });
-
-
+/*Solamente efecto visual aun no se que que js guardarlo*/
 
     </script>
 

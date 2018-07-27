@@ -22,7 +22,7 @@ public partial class User_van : System.Web.UI.Page
     public void Graficar()
     {
         decimal fTMAR = Convert.ToDecimal(TMAR.Text);
-        int negativos, Periodo = Convert.ToInt32(n.Text);
+        int negativos, Periodo = Convert.ToInt32(n.Text.Replace(",", ""));
         decimal num;
         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
@@ -107,7 +107,7 @@ public partial class User_van : System.Web.UI.Page
             decimal fFNE = Convert.ToDecimal(FNE.Text);
             decimal fVS = Convert.ToDecimal(VdS.Text);
             decimal FNEAcumulado = 0, fVPN = 0;
-            int Periodo = Convert.ToInt32(n.Text), i = 0;
+            int Periodo = Convert.ToInt32(n.Text.Replace(",", "")), i = 0;
         
         try
         {
@@ -201,9 +201,8 @@ public partial class User_van : System.Web.UI.Page
         Random r2 = new Random();
         int Ingresos = r2.Next(500000, 2500000);
 
-        int Periodo = Convert.ToInt32(n.Text);
+        int Periodo = Convert.ToInt32(n.Text.Replace(",", ""));
         String[,] ArregloDatos = new String[Periodo + 1, 7];
-        ArregloDatos[0, 1] = PeriodoSelect + " 0";
         ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
         /*Cambiar cuado aya valores verdaderos de costos*/
         ArregloDatos[0, 2] = "-" + Inversion.Text;
@@ -212,7 +211,7 @@ public partial class User_van : System.Web.UI.Page
         {
             ArregloDatos[j, 0] = Convert.ToString(j + 1);
         }
-        for (int j = 1; j <= Periodo; j++)
+        for (int j = 0; j <= Periodo; j++)
         {
             ArregloDatos[j, 1] = PeriodoSelect + " " + Convert.ToString(j);
         }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="vanc.aspx.cs" Inherits="Simulador_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="vanv.aspx.cs" Inherits="Simulador_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <!-- Manejo del Select-->
@@ -6,17 +6,14 @@
     <!-- Manejo del Select-->
     <!-- Estilo de tabla-->
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-    <!-- Estilo de tabla-->     
-    
+    <!-- Estilo de tabla-->         
 
-        <script src="../Scripts/jquery-3.3.1.js"></script>
-        <script src="../Scripts/startbootstrap/js/vanc.js"></script>
-
+        <script src="../Scripts/jquery-3.3.1.js"></script>  
     <!-- plugin editable-->
         <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>        
     <!-- plugin dataTable-->
-
+      <script src="../Scripts/startbootstrap/js/datatables-vanv.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div >
@@ -95,37 +92,26 @@
                      <div class="table-responsive" style="margin-top: 0px; padding-bottom:0px;" >
                                                         <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVANC"  >
                                                                 <thead>
-                                                                <tr>
-                                                                    <th></th>
-                                                                    <th>Año/Mes</th>
-                                                                    <th>Costos</th>                                                                                            
-                                                                    <th>Ingresos</th>
-                                                                    <th>Flujo Neto de Efectivo</th>
-                                                                    <th>Ingreso Actualizado</th>
-                                                                    <th>Periodo de Recuperación</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody id="dataTableVANCBody">
-                                                                <tr>
-                                                                    <td data-editable="false">1</td>
-                                                                    <td data-editable="false">Año 0</td>
-                                                                    <td >20</td>
-                                                                    <td >20</td>
-                                                                    <td >20</td>
-                                                                    <td >20</td>
-                                                                    <td >20</td>
-                                                                </tr>
-                                                                </tbody>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>Año/Mes</th>
+                                                                        <th>Costos</th>                                                                                            
+                                                                        <th>Ingresos</th>
+                                                                        <th>Flujo Neto de Efectivo</th>
+                                                                        <th>Ingreso Actualizado</th>
+                                                                        <th>Periodo de Recuperación</th>
+                                                                    </tr>
+                                                                </thead>                                                                
                                                                 <tfoot>
-                                                                <tr>
-                                                                    <th></th>
-                                                                    <th>Año/Mes</th>
-                                                                    <th>Costos</th>                                                                                            
-                                                                    <th>Ingresos</th>
-                                                                    <th>Flujo Neto de Efectivo</th>
-                                                                    <th>Ingreso Actualizado</th>
-                                                                    <th>Periodo de Recuperación</th>
-                                                                </tr>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>Año/Mes</th>
+                                                                        <th>Costos</th>                                                                                            
+                                                                        <th>Ingresos</th>
+                                                                        <th>Flujo Neto de Efectivo</th>
+                                                                        <th>Ingreso Actualizado</th>
+                                                                        <th>Periodo de Recuperación</th>
+                                                                    </tr>
                                                                 </tfoot>
                                                         </Table>
                         </div>
@@ -144,9 +130,9 @@
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
          <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
- <!--   Manejo de funcion de tabla en VANC-->
+    <!--   Manejo de funcion de tabla en VANC-->
     <!-- Para validacion de campos-->    
-        <script src="../Scripts/startbootstrap/js/validaciones-vanc.js"></script>        
+        <script src="../Scripts/startbootstrap/js/validaciones-vanv.js"></script>        
     <!-- Para validacion de campos-->
     <!-- plugin selectpicker-->
         <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>

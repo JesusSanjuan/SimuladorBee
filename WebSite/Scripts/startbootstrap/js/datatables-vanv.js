@@ -3,9 +3,14 @@
 function InicializarTabla(Datos) {
     DTabla = JSON.parse(JSON.stringify(Datos));     
     $(document).ready(function () {
+        $('#dataTableVANC').editableTableWidget();
+        $("#CapturaVAN").css("display", "block");
+});
 
-    $('#dataTableVANC').editableTableWidget();
+}
 
+
+$(document).ready(function () {
     var table = $('#dataTableVANC').DataTable({
         language: {
             "sProcessing": "Procesando...",
@@ -32,11 +37,14 @@ function InicializarTabla(Datos) {
             }
         },
         data: DTabla
-        });
+    });
+    $("#dataTableVANC").find('td:last').attr("data-editable", "false");
+    $("#dataTableVANC").find('td').eq(3).attr("data-editable", "false");
+    $("#dataTableVANC").find('td:last').prev().attr("data-editable", "false"); 
 
-
-        $("#CapturaVAN").css("display", "block");
-
+    $("#dataTableVANC").find('td:last').attr("data-editable", "false");
+    $("#dataTableVANC").find('td').eq(4).attr("data-editable", "false");
+    $("#dataTableVANC").find('td:last').prev().attr("data-editable", "false");
 });
 
-}
+

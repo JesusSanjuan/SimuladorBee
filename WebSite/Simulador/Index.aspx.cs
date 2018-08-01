@@ -27,7 +27,8 @@ public partial class User_Index : System.Web.UI.Page
         NuevoProyecto.ID_Periodo    = id_periodo;
         db.Proyecto.Add(NuevoProyecto);
         db.SaveChanges();
-        System.Web.HttpContext.Current.Session["ID_Proyecto"] = id_proyect;
+        System.Web.HttpContext.Current.Session["ID_Proyecto"]   = id_proyect;
+        System.Web.HttpContext.Current.Session["name_Proyecto"] = nombre_proyecto;
         System.Diagnostics.Debug.WriteLine(nombre_proyecto + "--"+ id_periodo +"--"+ id_user);
     }
     [WebMethod]
@@ -65,11 +66,12 @@ public partial class User_Index : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static object createSessionProyect(string id_proyect)
+    public static object createSessionProyect(string id_proyect, string nam_proyect)
     {
         try
         {
             System.Web.HttpContext.Current.Session["ID_Proyecto"] = id_proyect;
+            System.Web.HttpContext.Current.Session["name_Proyecto"] = nam_proyect;
             return "succes";
         }
         // Most specific:
@@ -90,7 +92,7 @@ public partial class User_Index : System.Web.UI.Page
             if (System.Web.HttpContext.Current.Session["ID_Proyecto"] != null)
             {
                 System.Diagnostics.Debug.WriteLine("existe");
-                return System.Web.HttpContext.Current.Session["ID_Proyecto"];
+                return System.Web.HttpContext.Current.Session["name_Proyecto"];
             }
             else
             {

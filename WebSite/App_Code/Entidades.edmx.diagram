@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7428e58daa9f4424b8a98374c714c929" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Proyecto" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.Amortizacion_pro" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Proyecto" Width="1.5" PointX="0.875" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.Amortizacion_pro" Width="1.5" PointX="1.125" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_Amortizacion_pro_Proyecto" />
-        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="6.125" PointY="0.5" />
+        <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="4.75" PointY="0.5" />
         <AssociationConnector Association="Model.FK_Proyecto_AspNetUsers" />
-        <EntityTypeShape EntityType="Model.Amortizacion_cat" Width="1.5" PointX="0.5" PointY="0.625" />
-        <EntityTypeShape EntityType="Model.Costos_cat" Width="1.5" PointX="8.125" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.Costos_Pro" Width="1.5" PointX="10.375" PointY="0.5" />
-        <EntityTypeShape EntityType="Model.FNE" Width="1.5" PointX="12.375" PointY="0.5" />
+        <EntityTypeShape EntityType="Model.Amortizacion_cat" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.Costos_cat" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.Costos_Pro" Width="1.5" PointX="3.625" PointY="4.625" />
+        <EntityTypeShape EntityType="Model.FNE" Width="1.5" PointX="6.625" PointY="0.5" />
         <AssociationConnector Association="Model.FK_Costos_Pro_Proyecto" />
         <AssociationConnector Association="Model.FK_FNE_Proyecto" />
       </Diagram>

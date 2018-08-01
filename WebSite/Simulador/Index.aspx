@@ -199,6 +199,7 @@
     <!-- plugin dataTable-->
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SCRIPT DE LOS CONTENIDOS -->
     <script src="../Scripts/startbootstrap/js/scripts.js"></script>  
 
 </asp:Content>

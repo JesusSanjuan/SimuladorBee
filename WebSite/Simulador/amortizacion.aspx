@@ -34,8 +34,10 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <strong>¡Antes de comenzar!</strong> Selecciona el perído a cacular.
+                            <strong>¡Antes de comenzar!</strong> Selecciona el período a cacular.
                         </div>  
+                        <div class="alert d-none" role="alert">
+                        </div>
                         <div class="form-group">
                         <label for="selecciona" class="col-form-label"><strong>Selecciona el período: </strong></label>
                             <select class="selectpicker show-tick" id="cnperiodo">
@@ -196,11 +198,44 @@
     <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
     <!-- plugin selectpicker-->
     <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
-
+    <!-- SCRIPT DE LOS CONTENIDOS -->
+    <!--<script src="../Scripts/startbootstrap/js/scripts.js"></script>  -->
     <script>
-        $(document).ready(function () {
+         $(document).ready(function () {    
+            /*******SCRIPTS PARA CONTENT AMORTIZACION***************/
             //suponiendo que ya se obtiene el id proyecto
-            var id_proyecto = "0001";
+            /***** verificar si la session id_proyect existe *****/
+            var id_proyecto;
+
+             $.ajax({
+                async:false,    
+                cache:false,   
+                type: "POST",
+                url: "amortizacion.aspx/buscarID_proyect",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d != "false") {
+                        id_proyecto = data.d;
+                        //visualizamos el mensaje
+
+                        //$("#nameProject").text(data.d);
+                        //$(".alert").removeClass("d-none").addClass("d-block");
+                    }
+
+                },
+                error: function (err) {
+                    console.log(err);
+                    console.log(err.responseText);
+                }
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+
+            console.log(id_proyecto);
+        
             /******Obteneer el numero de periodos******/
             $.ajax({
                 type: "POST",
@@ -211,14 +246,15 @@
                 data: JSON.stringify({ idProyecto: id_proyecto }),
                 success: function (result) {
                     console.log(result.d);
-                    var options = [];
-                    for (i = 0; i <= result.d; i++) {
-                        var option = "<option value="+(i+1)+">" + (i+1) + "</option>"
+                    
+                    /*var options = [];
+                    for (i = 1; i <= result.d; i++) {
+                        var option = "<option value=" + i + ">" + i + "</option>"
                         options.push(option);
                     }
                     $('#cnperiodo').html(options);
-                    $('#cnperiodo').selectpicker('refresh');
-                    
+                    $('#cnperiodo').selectpicker('refresh');*/
+
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -229,7 +265,11 @@
             }).fail(function (data) {
                 console.log("Error: " + data);
             });
-        });
+         });
+    </script>
+
+    <script>
+       
 /*Solamente efecto visual aun no se que que js guardarlo*/
  $(document).ready(function () {             
         

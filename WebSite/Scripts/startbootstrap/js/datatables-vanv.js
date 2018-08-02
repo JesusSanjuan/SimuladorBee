@@ -36,15 +36,29 @@ $(document).ready(function () {
                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
             }
         },
+
+        createdRow: function (row, data, dataIndex) {
+            // Set the data-status attribute, and add a class
+            $(row).find('td:eq(0)').attr("data-editable", "false");
+            $(row).find('td:eq(1)').attr("data-editable", "false");
+            $(row).find('td:eq(5)').attr("data-editable", "false");
+            $(row).find('td:eq(6)').attr("data-editable", "false");
+
+            $(row).find("td:eq( 2 )").css("color", "red");
+        },
+
         data: DTabla
     });
+
+    $(row).find('td:eq(2)').attr("data-editable", "false");
+    $(row).find('td:eq(3)').attr("data-editable", "false");
+    $(row).find('td:eq(4)').attr("data-editable", "false");
+
+
     $("#dataTableVANC").find('td:last').attr("data-editable", "false");
     $("#dataTableVANC").find('td').eq(3).attr("data-editable", "false");
     $("#dataTableVANC").find('td:last').prev().attr("data-editable", "false"); 
-
-    $("#dataTableVANC").find('td:last').attr("data-editable", "false");
-    $("#dataTableVANC").find('td').eq(4).attr("data-editable", "false");
-    $("#dataTableVANC").find('td:last').prev().attr("data-editable", "false");
+    
 });
 
 

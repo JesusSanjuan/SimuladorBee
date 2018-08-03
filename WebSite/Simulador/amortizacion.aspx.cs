@@ -16,16 +16,44 @@ public partial class Simulador_Default : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string sendTableAmort(List<Dictionary<string, string>> dataTabla)
+    public static object sendTableAmort(List<Dictionary<string, string>> dataTabla, string Nperiod, float total)
     {
-        //Here I want to iterate the  objects 
+        try
+        {
+            //Here I want to iterate the  objects 
+            int a = dataTabla.Count();
+            string json = JsonConvert.SerializeObject(dataTabla);
+            //System.Diagnostics.Debug.WriteLine(json);
+            System.Diagnostics.Debug.WriteLine(Nperiod);
+            System.Diagnostics.Debug.WriteLine(total);
+            // OBTENEMOS LOS DATOS DE LA AMORTIZACION DEL PERIODO SELECCIONADO
+            string id_amortizac = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+            string id_proyect      = (string) System.Web.HttpContext.Current.Session["ID_Proyecto"];
+            string id_periodo   = Nperiod;
+            string tabl_json    = json;
+            float tabl_total    = total;
 
-        int a = dataTabla.Count();
+            // GUARDAMOS A LA BASE DE DATOS
+            var db = new Entidades();
+            var NuevaAmortizacion = new Amortizacion_pro();
+            NuevaAmortizacion.ID_Amortizacion_pro = id_amortizac;
+            NuevaAmortizacion.ID_Proyecto = id_proyect;
+            NuevaAmortizacion.ID_Periodo = id_periodo;
+            NuevaAmortizacion.Amortizacion = tabl_json;
+            NuevaAmortizacion.Total = tabl_total;
 
-        string json = JsonConvert.SerializeObject(dataTabla);
-        System.Diagnostics.Debug.WriteLine(json);
+            db.Amortizacion_pro.Add(NuevaAmortizacion);
+            db.SaveChanges();
 
-        return json;
+            return "succes";
+
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
 
     }
     [WebMethod]

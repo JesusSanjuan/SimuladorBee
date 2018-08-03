@@ -147,8 +147,10 @@ $(document).ready(function () {
         /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
         var data = $("#amortTable").tableToJSON();
         var myJsonString = JSON.stringify(data);
-       // console.log(myJsonString);
+        var nperiodo = $('.selectpicker').val();
+        var tot = $('#total').text();    
 
+        console.log(tot);
 
         $.ajax({
             type: "POST",
@@ -156,10 +158,12 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
-            data: JSON.stringify({ dataTabla: data }),
+            data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot }),
             success: function (result) {
-                console.log(result);
-                $('#successA').modal({ show: true });
+                console.log(result.d);
+                if (result.d == "succes") {
+                    $('#successA').modal({ show: true });
+                }
             },
             error: function (result) {
                 alert(result.responseText);
@@ -247,7 +251,7 @@ $(document).ready(function () {
     });
 
 
-/********************remover filas**************************/
+/********************REMOVER FILAS**************************/
     $("body").on("click", ".remove", function () {
 
         var selector = $(this).parents('.tab-pane').attr("id");

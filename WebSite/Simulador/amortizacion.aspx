@@ -30,14 +30,14 @@
 
         <div class="tab-content  tab-pane" id="myTabContent2">
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
+                        <div id="message" class="alert d-none" role="alert">
+                        </div>
                         <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <strong>¡Antes de comenzar!</strong> Selecciona el período a cacular.
                         </div>  
-                        <div class="alert d-none" role="alert">
-                        </div>
                         <div class="form-group">
                         <label for="selecciona" class="col-form-label"><strong>Selecciona el período: </strong></label>
                             <select class="selectpicker show-tick" id="cnperiodo">
@@ -214,13 +214,21 @@
                 url: "amortizacion.aspx/buscarID_proyect",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function (data) {
-                    if (data.d != "false") {
-                        id_proyecto = data.d;
-                        //visualizamos el mensaje
-
-                        //$("#nameProject").text(data.d);
-                        //$(".alert").removeClass("d-none").addClass("d-block");
+                success: function (result) {
+                    if (result.d != "false") {
+                        var data = JSON.parse(result.d);
+                        id_proyecto = data[0];
+                        //visualizamos el mensaje de succes
+                        $("#message").html("Proyecto <strong>¡"+data[1]+"!</strong> cargado...");
+                        $("#message").removeClass("d-none").addClass("d-block");
+                        $("#message").addClass("alert-success");
+                    }
+                    else {
+                        //visualizamos el mensaje de error
+                        $("#message").html("<strong>¡No hay proyecto cargado!</strong>");
+                        $("#message").removeClass("d-none").addClass("d-block");
+                        $("#message").addClass("alert-danger");
+                        id_proyecto = "false";
                     }
 
                 },
@@ -237,34 +245,36 @@
             console.log(id_proyecto);
         
             /******Obteneer el numero de periodos******/
-            $.ajax({
-                type: "POST",
-                url: "amortizacion.aspx/getPeriodo",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                data: JSON.stringify({ idProyecto: id_proyecto }),
-                success: function (result) {
-                    console.log(result.d);
-                    
-                    /*var options = [];
-                    for (i = 1; i <= result.d; i++) {
-                        var option = "<option value=" + i + ">" + i + "</option>"
-                        options.push(option);
-                    }
-                    $('#cnperiodo').html(options);
-                    $('#cnperiodo').selectpicker('refresh');*/
+             if (id_proyecto != "false") {
+                 $.ajax({
+                     type: "POST",
+                     url: "amortizacion.aspx/getPeriodo",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     async: false,
+                     data: JSON.stringify({ idProyecto: id_proyecto }),
+                     success: function (result) {
+                         var data = JSON.parse(result.d);
+                         console.log(result.d);
+                         var options = [];
+                         for (i = 1; i <= result.d; i++) {
+                             var option = "<option value=" + i + ">" + i + "</option>"
+                             options.push(option);
+                         }
+                         $('#cnperiodo').html(options);
+                         $('#cnperiodo').selectpicker('refresh');
 
-                },
-                error: function (result) {
-                    console.log(result.responseText);
-                }
+                     },
+                     error: function (result) {
+                         console.log(result.responseText);
+                     }
 
-            }).done(function (data) {
-                //console.log(data);
-            }).fail(function (data) {
-                console.log("Error: " + data);
-            });
+                 }).done(function (data) {
+                     //console.log(data);
+                 }).fail(function (data) {
+                     console.log("Error: " + data);
+                 });
+             }
          });
     </script>
 

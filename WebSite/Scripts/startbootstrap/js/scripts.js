@@ -162,11 +162,43 @@
             async: false,
             data: JSON.stringify({ idProyecto: id_proyecto }),
             success: function (result) {
-                var data = JSON.parse(result.d);
-                console.log(result.d);
+                var resultado = JSON.parse(result.d);
+                var res_period = resultado[0][(resultado[0].length-1)];
+                var nperiodo = (res_period).substring(0, (res_period).length - 1);
+                // si es mensual o anual
+                var periodo = (res_period).charAt((res_period).length - 1);
+                
+                $("#lapse").val(periodo);
+                if (periodo == "M") {
+                    $("#lapso").html("Mes");
+                }
+                else {
+                    $("#lapso").html("Año");
+                }
+
                 var options = [];
-                for (i = 1; i <= result.d; i++) {
-                    var option = "<option value=" + i + ">" + i + "</option>"
+                var ban = 0;
+                for (i = 1; i <= nperiodo; i++) {
+                    //Buscar que periodos ya estan ingresados
+                    for (j = 0; j < resultado[0].length - 1; j++) {
+                        
+                        if (i == resultado[0][j]) {
+                            ban = 1;
+                            break;
+                        }
+                        else {
+                            ban = 0;
+                        }
+
+                    }
+                    var option;
+                    if (ban == 1) {
+                        option = "<option value=" + i + " disabled>" + i + "</option>";
+                    }
+                    else {
+                        option = "<option value=" + i + ">" + i + "</option>"
+                    }
+                    
                     options.push(option);
                 }
                 $('#cnperiodo').html(options);

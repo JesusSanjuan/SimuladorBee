@@ -148,35 +148,45 @@ $(document).ready(function () {
         var data = $("#amortTable").tableToJSON();
         var myJsonString = JSON.stringify(data);
         var nperiodo = $('.selectpicker').val();
+        nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#total').text();    
+        console.log(nperiodo);
+        if ($('.selectpicker').val() > 0) {
+            $.ajax({
+                type: "POST",
+                url: "amortizacion.aspx/sendTableAmort",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot }),
+                success: function (result) {
+                    console.log(result.d);
+                    if (result.d == "succes") {
+                        $('#successA').modal({ show: true });
+                    }
 
-        console.log(tot);
 
-        $.ajax({
-            type: "POST",
-            url: "amortizacion.aspx/sendTableAmort",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot }),
-            success: function (result) {
-                console.log(result.d);
-                if (result.d == "succes") {
-                    $('#successA').modal({ show: true });
+                },
+                error: function (result) {
+                    alert(result.responseText);
                 }
-            },
-            error: function (result) {
-                alert(result.responseText);
-            }
 
-        }).done(function (data) {
-            //console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });
-
-        
-
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+        }
+        else {
+            console.log("no hay seleccion");
+            $('#successA').find(".alert").html("Sin seleccion de datos");
+            $('#successA').find(".alert").removeClass("alert-primary").addClass("alert-danger");
+            $('#successA').modal({ show: true });
+        }
+    });
+    //cerrar el modal
+    $("#successA").on("hidden.bs.modal", function () {
+        location.reload();
     });
 
     $("body").on("change", " #myTabContent2 table td", function (evt, newValue) {
@@ -231,22 +241,7 @@ $(document).ready(function () {
             column2.data().map(parseFloat).reduce(function (a, b) {
                 return a + b;
             })
-        );
-
-
-        /*$(column2.footer()).html(
-            column2.data().map(
-                function (n, i) {
-                    return parseFloat(n.replace(',', ""));
-                }
-
-            ).reduce(function (a, b) {
-                return a + b;
-            })
-        );*/
-
-        
-       
+        );       
 
     });
 

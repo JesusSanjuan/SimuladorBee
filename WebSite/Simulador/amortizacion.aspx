@@ -38,11 +38,12 @@
                             </button>
                             <strong>¡Antes de comenzar!</strong> Selecciona el período a cacular.
                         </div>  
-                        <div class="form-group">
-                        <label for="selecciona" class="col-form-label"><strong>Selecciona el período: </strong></label>
+                        <div class="form-group text-center">
+                        <label for="selecciona" class="col-form-label"><strong id="lapso">Selecciona el período: </strong></label>
                             <select class="selectpicker show-tick" id="cnperiodo">
                             </select>
-                        </div>        
+                        </div> 
+                        <input type="hidden" id="lapse" />
                         <div class="preborder">   
                                 <div class="card-header">
                                     <h5><i class="fa fa-table"></i>  Amortización</h5>

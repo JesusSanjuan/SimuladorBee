@@ -97,19 +97,39 @@ public partial class Simulador_Default : System.Web.UI.Page
         var httpContext = HttpContext.Current;
         /***Get the user id**/
         string id_user = httpContext.User.Identity.GetUserId();
+
         var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == idProyecto);
 
         var nperiodos   =   "";
         foreach (Proyecto Proyect in consulta)
         {
-            System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
-                Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));
-            nperiodos   =   ((Proyect.ID_Periodo).Substring(0, ((Proyect.ID_Periodo).Length) - 1));
-
-            System.Diagnostics.Debug.WriteLine(" -----------------------------------------\n");
+            /*System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
+                Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));*/
+            //nperiodos   =   ((Proyect.ID_Periodo).Substring(0, ((Proyect.ID_Periodo).Length) - 1));
+            nperiodos = Proyect.ID_Periodo;
         }
-        System.Diagnostics.Debug.WriteLine(nperiodos);
-        return nperiodos;
+
+        //consultamos que periodos ya fuerón guardados en amortizacion_pro
+        var query2 = db.Amortizacion_pro.Where(Amortizacion => Amortizacion.ID_Proyecto == idProyecto);
+        List<List<string>> result_query = new List<List<string>>();
+        List<string> periodos = new List<string>();
+        foreach (Amortizacion_pro Amort in query2)
+        {
+            System.Diagnostics.Debug.WriteLine(string.Format("ID_Amortizacion_pro: {0}\tID_Proyecto: {1}\tID_Periodo: {2}\tAmortizacion: {3}\tTotal: {4}",
+                Amort.ID_Amortizacion_pro, Amort.ID_Proyecto, Amort.ID_Periodo, Amort.Amortizacion, Amort.Total));
+
+            periodos.Add((Amort.ID_Periodo).Substring(0, ((Amort.ID_Periodo).Length) - 1) );// para obtener solo el numero de periodo
+            System.Diagnostics.Debug.WriteLine(" +++++++++++++++++++++++++++++\n");
+        }
+        //guardo el nperiodos
+        periodos.Add(nperiodos);
+        result_query.Add(periodos);
+
+        var json = JsonConvert.SerializeObject(result_query);
+
+        System.Diagnostics.Debug.WriteLine(json);
+
+        return json;
 
     }
 

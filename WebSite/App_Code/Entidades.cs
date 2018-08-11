@@ -23,7 +23,7 @@ public partial class Amortizacion_pro
     public string ID_Proyecto { get; set; }
     public string ID_Periodo { get; set; }
     public string Amortizacion { get; set; }
-    public double Total { get; set; }
+    public decimal Total { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }
 }
@@ -69,7 +69,7 @@ public partial class Costos_Pro
     public string Ventas { get; set; }
     public string Financiamiento { get; set; }
     public string Admon { get; set; }
-    public double Total { get; set; }
+    public decimal Total { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }
 }
@@ -79,13 +79,13 @@ public partial class FNE
     public string ID_FNE { get; set; }
     public string ID_Proyecto { get; set; }
     public string ID_Periodo { get; set; }
-    public double Ingreso { get; set; }
-    public double Total_Costo { get; set; }
-    public double UAI { get; set; }
+    public decimal Ingreso { get; set; }
+    public decimal Total_Costo { get; set; }
+    public decimal UAI { get; set; }
     public double Impuesto { get; set; }
-    public double UDI { get; set; }
-    public double Amortizacion { get; set; }
-    public double Total_FNE { get; set; }
+    public decimal UDI { get; set; }
+    public decimal Amortizacion { get; set; }
+    public decimal Total_FNE { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }
 }

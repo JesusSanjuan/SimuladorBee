@@ -16,7 +16,7 @@ public partial class Simulador_Default : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static object sendTableAmort(List<Dictionary<string, string>> dataTabla, string Nperiod, float total)
+    public static object sendTableAmort(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total)
     {
         try
         {
@@ -31,7 +31,7 @@ public partial class Simulador_Default : System.Web.UI.Page
             string id_proyect      = (string) System.Web.HttpContext.Current.Session["ID_Proyecto"];
             string id_periodo   = Nperiod;
             string tabl_json    = json;
-            float tabl_total    = total;
+            Decimal tabl_total    = total;
 
             // GUARDAMOS A LA BASE DE DATOS
             var db = new Entidades();

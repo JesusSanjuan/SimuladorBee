@@ -93,8 +93,11 @@ public partial class User_van : System.Web.UI.Page
         // pasamos las variabes en formato array json
         String timeC = JsonConvert.SerializeObject(ListaX);
         String repArrayC = JsonConvert.SerializeObject(ListaY);
-        String PeriodoSelect = JsonConvert.SerializeObject(select.Value);
-
+        String PeriodoSelect = JsonConvert.SerializeObject("Año");
+        if ("1" == select.Value)
+        {
+            PeriodoSelect = JsonConvert.SerializeObject("Mes");
+        }
         //llamamos la función pasaando los parametros
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
 
@@ -205,7 +208,7 @@ public partial class User_van : System.Web.UI.Page
         String[,] ArregloDatos = new String[Periodo + 1, 7];
         ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
         /*Cambiar cuado aya valores verdaderos de costos*/
-        ArregloDatos[0, 2] = "-" + Inversion.Text;
+        ArregloDatos[0, 2] = "-" + Inversion.Text.Replace(",", "");
         /*Cambiar cuado aya valores verdaderos de costos*/
         for (int j = 0; j <= Periodo; j++)
         {

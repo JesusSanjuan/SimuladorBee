@@ -75,6 +75,11 @@ $(document).ready(function () {
                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
             }
         },
+        createdRow: function (row, data, dataIndex) {
+            if (data[6].replace(/[\$,]/g, '') * 1 > 1) {
+                $(row).find('td:eq(6)').css("color", "red");
+            }
+        },
         data: DTabla
     });
 });

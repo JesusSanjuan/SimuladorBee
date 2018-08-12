@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="vanv.aspx.cs" Inherits="Simulador_Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server"> 
     <!-- Manejo del Select-->
         <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
     <!-- Manejo del Select-->
@@ -128,7 +128,8 @@
   
     <!-- Manejo de funcion de tabla en VANC-->
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../Scripts/DataTables/js/dataTables.keyTable.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>    
          <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
     <!--   Manejo de funcion de tabla en VANC-->
     <!-- Para validacion de campos-->    

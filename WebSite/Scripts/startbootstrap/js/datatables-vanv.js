@@ -11,6 +11,7 @@ function InicializarTabla(Datos) {
 
 
 $(document).ready(function () {
+    var events = $('#events');
     var table = $('#dataTableVANC').DataTable({
         language: {
             "sProcessing": "Procesando...",
@@ -44,21 +45,21 @@ $(document).ready(function () {
             $(row).find('td:eq(5)').attr("data-editable", "false");
             $(row).find('td:eq(6)').attr("data-editable", "false");
 
-            $(row).find("td:eq( 2 )").css("color", "red");
+            $(row).find("td:eq( 0 )").css("background-color", "#B5B7B9");
         },
-
         data: DTabla
     });
 
-    $(row).find('td:eq(2)').attr("data-editable", "false");
-    $(row).find('td:eq(3)').attr("data-editable", "false");
-    $(row).find('td:eq(4)').attr("data-editable", "false");
+    table
+        .on('change', function (evt, newValue) {
+
+            return newValue.replace(/\D/g, "")
+                .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+                .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+            alert(newValue);
+        });
 
 
-    $("#dataTableVANC").find('td:last').attr("data-editable", "false");
-    $("#dataTableVANC").find('td').eq(3).attr("data-editable", "false");
-    $("#dataTableVANC").find('td:last').prev().attr("data-editable", "false"); 
-    
 });
 
 

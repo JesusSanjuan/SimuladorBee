@@ -36,8 +36,8 @@ $(document).ready(function () {
                 "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
             }
-        },
-
+        },        
+        data: DTabla,
         createdRow: function (row, data, dataIndex) {
             // Set the data-status attribute, and add a class
             $(row).find('td:eq(0)').attr("data-editable", "false");
@@ -46,17 +46,16 @@ $(document).ready(function () {
             $(row).find('td:eq(6)').attr("data-editable", "false");
 
             $(row).find("td:eq( 0 )").css("background-color", "#B5B7B9");
-        },
-        data: DTabla
+        }
     });
 
-    table
-        .on('change', function (evt, newValue) {
-
-            return newValue.replace(/\D/g, "")
+    table.on('change', function (evt, newValue) {
+        
+            var x= newValue.replace(/\D/g, "")
                 .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-                .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
-            alert(newValue);
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        alert(x);
+        return x;
         });
 
 

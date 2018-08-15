@@ -84,42 +84,77 @@
                         </div>
     </div>
     <div  id="CapturaVAN" style="padding-bottom:1rem; display:none" >
-              <div class="card align-middle" >    
-                    <div class="card-header">
-                      <h4> <i class="fas fa-chart-pie"></i> Captura de informacion para el cálculo del Valor Actual Neto (VAN)</h4>
-                    </div>
-                  <div class="card-body">
-                     <div class="table-responsive" style="margin-top: 0px; padding-bottom:0px;" >
-                                                        <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVANC"  >
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th></th>
-                                                                        <th>Año/Mes</th>
-                                                                        <th>Costos</th>                                                                                            
-                                                                        <th>Ingresos</th>
-                                                                        <th>Flujo Neto de Efectivo</th>
-                                                                        <th>Ingreso Actualizado</th>
-                                                                        <th>Periodo de Recuperación</th>
-                                                                    </tr>
-                                                                </thead>                                                                
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <th></th>
-                                                                        <th>Año/Mes</th>
-                                                                        <th>Costos</th>                                                                                            
-                                                                        <th>Ingresos</th>
-                                                                        <th>Flujo Neto de Efectivo</th>
-                                                                        <th>Ingreso Actualizado</th>
-                                                                        <th>Periodo de Recuperación</th>
-                                                                    </tr>
-                                                                </tfoot>
-                                                        </Table>
-                        </div>
-                  </div>
-            
-             </div>
+        
 
-                         
+
+
+
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         <h4> <i class="fas fa-chart-pie"></i> Captura de informacion para el cálculo del Valor Actual Neto (VAN)</h4>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive" style="margin-top: 0px; padding-bottom:0px;" >
+                                                                <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVANC"  >
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th></th>
+                                                                                <th>Año/Mes</th>
+                                                                                <th>Costos</th>                                                                                            
+                                                                                <th>Ingresos</th>
+                                                                                <th>Flujo Neto de Efectivo</th>
+                                                                                <th>Ingreso Actualizado</th>
+                                                                                <th>Periodo de Recuperación</th>
+                                                                            </tr>
+                                                                        </thead>                                                                
+                                                                        <tfoot>
+                                                                            <tr>
+                                                                                <th></th>
+                                                                                <th>Año/Mes</th>
+                                                                                <th>Costos</th>                                                                                            
+                                                                                <th>Ingresos</th>
+                                                                                <th>Flujo Neto de Efectivo</th>
+                                                                                <th>Ingreso Actualizado</th>
+                                                                                <th>Periodo de Recuperación</th>
+                                                                            </tr>
+                                                                        </tfoot>
+                                                                </Table>
+            </div>
+
+          <div class="form-row">  
+                            <div class="col-md-3 mb-2" style="padding-bottom:1rem; padding-top:1rem;">
+                                    <asp:Button id="Button3"  CssClass="btn btn-primary" Text="Calcular"  runat="server"/>
+                            </div>   
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h4> <i class="fas fa-chart-pie"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      
+      
+      
+      </div>
+    </div>
+  </div>  
+</div>                
              
      </div>
 

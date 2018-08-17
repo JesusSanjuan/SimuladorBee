@@ -49,16 +49,14 @@ $(document).ready(function () {
         }
     });
 
-    table.on('change', function (evt, newValue) {
-        
-            var x= newValue.replace(/\D/g, "")
-                .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+
+    $('#dataTableVANC tbody').on('change', 'td', function (evt, newValue) {
+        var cell = table.cell(this);
+        var x = newValue.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
             .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
-        alert(x);
-        return x;
-        });
-
-
+        cell.data(x).draw();
+    });
 });
 
 

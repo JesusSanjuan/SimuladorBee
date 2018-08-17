@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     $("body").on("change", "#myTabContent table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
-        var t = $('#' + selector).find('table').DataTable()
+        var t = $('#' + selector).find('table').DataTable();
         //console.log(newValue);
         t.cell(this).data(newValue).draw();
         t.order([1, 'desc']).draw();

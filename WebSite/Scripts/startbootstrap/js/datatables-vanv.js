@@ -38,6 +38,7 @@ $(document).ready(function () {
             }
         },        
         data: DTabla,
+        "paging": false,
         createdRow: function (row, data, dataIndex) {
             // Set the data-status attribute, and add a class
             $(row).find('td:eq(0)').attr("data-editable", "false");

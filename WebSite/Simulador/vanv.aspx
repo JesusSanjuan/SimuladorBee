@@ -93,7 +93,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" type="button" style="color:black; text-decoration:none;">
          <h4> <i class="fas fa-chart-pie"></i> Captura de informacion para el cálculo del Valor Actual Neto (VAN)</h4>
         </button>
       </h5>
@@ -132,7 +132,7 @@
                             <div class="col-md-3 mb-2" style="padding-bottom:1rem; padding-top:1rem;">
                                     <asp:Button id="Button3"  CssClass="btn btn-primary" Text="Calcular"  runat="server"/>
                             </div>   
-        </div>
+          </div>
 
       </div>
     </div>
@@ -140,17 +140,209 @@
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="button" style="color:black; text-decoration:none;">
           <h4> <i class="fas fa-chart-pie"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
         </button>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      
-      
-      
+      <div >
+        
+
+
+                      <ul class="nav nav-tabs">
+        		            <li class="nav-item">
+        			            <a href="#Resultado" onclick="location.href='#ResultadosFinales'" class="nav-link active" role="tab" data-toggle="tab">VAN</a>
+        		            </li>
+        		            <li class="nav-item">
+        			            <a href="#Resultado2" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">TIR</a>
+        		            </li>
+                            <li class="nav-item">
+        			            <a href="#Resultado3" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Periodo de Recuperación</a>
+        		            </li>
+                            <li class="nav-item">
+        			            <a href="#Resultado4" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Beneficio/Costo</a>
+        		            </li>
+        		            <li class="nav-item">
+        			            <a href="#Tabla"  onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Tabla</a>
+        		            </li>
+        		            <li class="nav-item">
+        			            <a href="#Grafica" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
+        		            </li>
+				            <li class="nav-item">
+        			            <a href="#Descargas" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
+        		            </li>
+        	            </ul>
+
+                        <div class="tab-content" id="ResultadosFinales">
+                                <div role="tabpanel" class="tab-pane fade show active" id="Resultado">
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
+                                             <div class="preborder">
+                                                    <div class="card-header" >
+                                                            <h5><i class="fas fa-dollar-sign"></i>  Resultado VAN</h5>
+                                                    </div>
+                                                    <div class="fondoresultados">
+                                                        <div class="card-body text-info">
+                                                                <h3>    <asp:Label id="VAN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                        </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Resultado2">
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
+                                            <div class="preborder">
+                                                    <div class="card-header" >
+                                                            <h5> <i class="fa fa-percent"></i> Tasa Interna de Rendimiento</h5>
+                                                    </div>
+                                                    <div class="fondoresultados" >
+                                                        <div class="card-body text-info">
+                                                        <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        </div>
+                                                    </div>
+                                              </div>
+                                        </div>
+                                </div>
+                               <div role="tabpanel" class="tab-pane fade" id="Resultado3">
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">    
+                                            <div class="preborder">
+                                                    <div class="card-header" >
+                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperación</h5>
+                                                    </div>
+                                                    <div class="fondoresultados">
+                                                        <div class="card-body text-info">
+                                                        <h3>    <asp:Label id="PeridoRec" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                        </div>
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
+                                            <div class="preborder">
+                                                    <div class="card-header" >
+                                                            <h5> <i class="fa fa-percent"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
+                                                    </div>
+                                                    <div class="fondoresultados">
+                                                        <div class="card-body text-info">
+                                                        <h3>    <asp:Label id="PeridoRec2" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Resultado4">
+                                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
+                                            <div class="preborder">
+                                                    <div class="card-header" >
+                                                            <h5> <i class="fa fa-percent"></i> Beneficio/Costo </h5>
+                                                    </div>
+                                                    <div class="fondoresultados">
+                                                        <div class="card-body text-info">
+                                                        <h3>    <asp:Label id="BenCosto" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                        </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Tabla">
+                                    <!--Temporal -->
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Flujo Neto de Efectivo y Periodo de recuperacion</strong>.
+                                    </div>
+                                    <!--Temporal -->
+                                        <div  class="container-fluid card-body">
+                                                        <div class="preborder">
+                                                                 <div class="card-header">
+                                                                    <h5><i class="fa fa-table"></i>  Tabla</h5>
+                                                                 </div>
+                                                                                           <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
+                                                                                                 <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVAN"  >
+                                                                                                      <thead>
+                                                                                                        <tr>
+                                                                                                          <th></th>
+                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th>Costos</th>                                                                                            
+                                                                                                          <th>Ingresos</th>
+                                                                                                          <th>Flujo Neto de Efectivo</th>
+                                                                                                          <th>Ingreso Actualizado</th>
+                                                                                                          <th>Periodo de Recuperación</th>
+                                                                                                        </tr>
+                                                                                                      </thead>
+                                                                                                      <tbody  id="dataTableVANBody">                                                                                                                                                                           
+                                                                                                      </tbody>
+                                                                                                      <tfoot>
+                                                                                                        <tr>
+                                                                                                          <th></th>
+                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th>Costos</th>                                                                                            
+                                                                                                          <th>Ingresos</th>
+                                                                                                          <th>Flujo Neto de Efectivo</th>
+                                                                                                          <th>Ingreso Actualizado</th>
+                                                                                                          <th>Periodo de Recuperación</th>
+                                                                                                        </tr>
+                                                                                                      </tfoot>                                                                                                     
+                                                                                                </Table>
+                                                                                          </div>
+                                                      </div>
+                                        </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Grafica">
+                                        <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
+                                            <div class="preborder">
+                                                    <div class="card-header">
+                                                        <h5><i class="far fa-chart-bar"></i>  Gráfica</h5>
+                                                    </div>
+                                                    <div class="card-body fondoresultados">
+                                                      <canvas id="myAreaChart" width="100" height="50"></canvas>
+                                                    </div>
+                                             </div>
+                                        </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Descargas">
+                                        <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
+                                              <div class="preborder">
+                                                      <div class="card-header">
+                                                          <h5><i class="fas fa-cloud-download-alt"></i>   Descargas</h5>
+                                                      </div>
+                                                      <div class="fondoresultados" style="text-align:center;">
+                                                          <div class="col-md-4" >
+                                                               <div class="row" >
+                                                                       <h6> PDF</h6>
+                                                               </div>
+                                                               <div class="row">
+                                                                    <i class="fas fa-file-pdf fa-3x hvr-pulse " ></i>    
+                                                               </div>
+                                                          </div>
+                                                          <div class="col-md-4">
+                                                              <div class="row" >
+                                                                  <h6>Excel</h6>
+                                                              </div>
+                                                              <div class="row" >
+                                                                  <i class="fas fa-file-excel fa-3x hvr-pulse" ></i>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-md-4">
+                                                              <div class="row">
+                                                                 <h6> Word</h6>
+                                                              </div>
+                                                              <div class="row" >                                                                  
+                                                                  <i class="fas fa-file-word fa-3x hvr-pulse" ></i>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                               </div>
+                                        </div>
+                               </div>
+                         </div>
+
+
+
+
+
+
+
       </div>
     </div>
   </div>  

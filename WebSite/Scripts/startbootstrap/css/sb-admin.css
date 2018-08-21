@@ -564,3 +564,11 @@ footer.sticky-footer {
     border: 1px solid #ccc;
 }
 /*Borde ocupado en Select VAN*/
+
+/*Fondo para resultados en VAN y VANV*/
+.fondoresultados {
+    background-color: #e9ecef;
+    padding: .75rem 1rem;
+    border-radius: .25rem;    
+}
+/*Fondo para resultados en VAN y VANV*/

@@ -205,7 +205,7 @@
                                                     <div class="card-header" >
                                                             <h5><i class="fas fa-dollar-sign"></i>  Resultado VAN</h5>
                                                     </div>
-                                                    <div class="breadcrumb">
+                                                    <div class="fondoresultados">
                                                         <div class="card-body text-info">
                                                                 <h3>    <asp:Label id="VAN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
@@ -219,7 +219,7 @@
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Tasa Interna de Rendimiento</h5>
                                                     </div>
-                                                    <div class="breadcrumb" >
+                                                    <div class="fondoresultados" >
                                                         <div class="card-body text-info">
                                                         <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
@@ -233,7 +233,7 @@
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Periodo de Recuperación</h5>
                                                     </div>
-                                                    <div class="breadcrumb">
+                                                    <div class="fondoresultados">
                                                         <div class="card-body text-info">
                                                         <h3>    <asp:Label id="PeridoRec" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
@@ -245,7 +245,7 @@
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Periodo de Recuperación en funcion del ingreso actualizado </h5>
                                                     </div>
-                                                    <div class="breadcrumb">
+                                                    <div class="fondoresultados">
                                                         <div class="card-body text-info">
                                                         <h3>    <asp:Label id="PeridoRec2" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
@@ -259,7 +259,7 @@
                                                     <div class="card-header" >
                                                             <h5> <i class="fa fa-percent"></i> Beneficio/Costo </h5>
                                                     </div>
-                                                    <div class="breadcrumb">
+                                                    <div class="fondoresultados">
                                                         <div class="card-body text-info">
                                                         <h3>    <asp:Label id="BenCosto" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
                                                         </div>
@@ -318,7 +318,7 @@
                                                     <div class="card-header">
                                                         <h5><i class="far fa-chart-bar"></i>  Gráfica</h5>
                                                     </div>
-                                                    <div class="card-body breadcrumb">
+                                                    <div class="card-body fondoresultados">
                                                       <canvas id="myAreaChart" width="100" height="50"></canvas>
                                                     </div>
                                              </div>
@@ -330,7 +330,7 @@
                                                       <div class="card-header">
                                                           <h5><i class="fas fa-cloud-download-alt"></i>   Descargas</h5>
                                                       </div>
-                                                      <div class="breadcrumb" style="text-align:center;">
+                                                      <div class="fondoresultados" style="text-align:center;">
                                                           <div class="col-md-4" >
                                                                <div class="row" >
                                                                        <h6> PDF</h6>

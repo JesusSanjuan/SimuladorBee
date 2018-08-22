@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     $('#myTabContent, #myTabContent2').find('table').DataTable({
         "language": {
@@ -12,9 +11,9 @@ $(document).ready(function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
         t.row.add([
-           '',
-           '0',
-           '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
+            '',
+            '0',
+            '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
         t.order([1, 'desc']).draw();
 
@@ -22,7 +21,7 @@ $(document).ready(function () {
         $('#' + selector).find('table').find('td:last').attr("data-editable", "false");
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
-       
+
     });
     //$('#myTabContent').find('table').find('td').on('change', function (evt, newValue) {
 
@@ -43,7 +42,7 @@ $(document).ready(function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         $(".modal-content #selector").val(selector);
         $('#Continuacion').modal({ show: true });
-  
+
     });
 
 
@@ -102,8 +101,8 @@ $(document).ready(function () {
 
             }
 
-            
-            
+
+
             /*nav++;
             if (nav > 4) {
                 nav = 1;
@@ -114,8 +113,8 @@ $(document).ready(function () {
             $('#myTab li:nth-child(' + (nav - 1) + ') a').addClass('disabled');*/
 
         }
-        
-       
+
+
     });
 
     /****************TABLA AMORTIZACION****************/
@@ -133,7 +132,7 @@ $(document).ready(function () {
             '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
         t.order([3, 'desc']).draw();
-       
+
         $("#amortTable").find('td:last').prev().prev().prev().prev().addClass('previous');
         $("#amortTable").find('td').eq(0).addClass('previous');
 
@@ -157,7 +156,7 @@ $(document).ready(function () {
         var data = $("#amortTable").tableToJSON();
         var nperiodo = $('#cnperiodo').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
-        var tot = $('#total').text();    
+        var tot = $('#total').text();
         console.log(nperiodo);
         if ($('#cnperiodo').val() > 0) {
             $.ajax({
@@ -209,7 +208,7 @@ $(document).ready(function () {
         //CALCULAMOS EL PORCENTAJE DEL COSTO
         var rowIdx = t.cell(this).index().row;
         var data = t.row(rowIdx).data();
-       
+
 
         if (clase === "costo") {
             if (data[2] !== "") {
@@ -230,7 +229,7 @@ $(document).ready(function () {
                 t.cell(rowIdx, 3).data(costoFinal_r).draw();
                 t.order([3, 'desc']).draw();
             }
-            
+
         }
 
         var column = t.column(3);
@@ -249,12 +248,12 @@ $(document).ready(function () {
             column2.data().map(parseFloat).reduce(function (a, b) {
                 return a + b;
             })
-        );       
+        );
 
     });
 
 
-/********************REMOVER FILAS**************************/
+    /********************REMOVER FILAS**************************/
     $("body").on("click", ".remove", function () {
 
         var selector = $(this).parents('.tab-pane').attr("id");
@@ -267,6 +266,5 @@ $(document).ready(function () {
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
     });
-       
-});
 
+});

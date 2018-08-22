@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     $("body").on("change", "#myTabContent table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
-        var t = $('#' + selector).find('table').DataTable()
+        var t = $('#' + selector).find('table').DataTable();
         //console.log(newValue);
         t.cell(this).data(newValue).draw();
         t.order([1, 'desc']).draw();
@@ -36,8 +36,8 @@ $(document).ready(function () {
 
     /****** actvacion de pestañas **/
     $('#myTab li a').addClass('disabled');
-    $('#myTab li:nth-child(1) a').tab('show');
-    var nav = 1;
+    /*$('#myTab li:nth-child(1) a').tab('show');
+    var nav = 1;*/
 
     $("body").on("click", ".continuar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
@@ -50,61 +50,70 @@ $(document).ready(function () {
     //$("body").on("click", ".save_data", function () {
     $("body").on("click", "#costo_continuar", function () {
         /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
-       // var selector = $(this).parents('.tab-pane').attr("id");
         var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
-        //var myJsonString = JSON.stringify(data);
-        //console.log(myJsonString);
 
-        if (selector !== "tab1") {
-            $.ajax({
-                type: "POST",
-                url: "costos.aspx/sendTable",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                data: JSON.stringify({ dataTabla: data }),
-                success: function (result) {
-                    console.log(result);
-                },
-                error: function (result) {
-                    alert(result.responseText);
-                }
 
-            }).done(function (data) {
-                //console.log(data);
-            }).fail(function (data) {
-                console.log("Error: " + data);
-            });
 
-        }
-        else {
-            var nperiodo = $('.range-output').text();
-           // $('#nperiodo').val(nperiodo);
-            console.log("pestañas en amortizacion-->" + nperiodo);
-            var options = [];
+        var nperiodo = $('#cnperiod_c').val();
+        nperiodo = nperiodo + "" + $("#lapse").val() + "";
+        var tot = $('#' + selector).find('table').find('.total').text();
+        var nav = $('#myTab li a.active').attr('id');
+        console.log('total-->' + tot);
 
-            for (i = 1; i <= nperiodo; i++) {
-                var option = "<option value="+i+">" + i + "</option>"
-                options.push(option);
+        if ($('#cnperiod_c').val() > 0) {
+
+
+            if (selector !== "tab1") {
+                $.ajax({
+                    type: "POST",
+                    url: "costos.aspx/sendTable",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
+                    success: function (result) {
+                        console.log(result);
+                        location.reload();
+                    },
+                    error: function (result) {
+                        alert(result.responseText);
+                    }
+
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
+
             }
-            $('#cnperiodo').html(options);
-            $('#cnperiodo').selectpicker('refresh');
+            else {
+                /*var nperiodo = $('.range-output').text();
+                // $('#nperiodo').val(nperiodo);
+                console.log("pestañas en amortizacion-->" + nperiodo);
+                var options = [];
+
+                for (i = 1; i <= nperiodo; i++) {
+                    var option = "<option value=" + i + ">" + i + "</option>"
+                    options.push(option);
+                }
+                $('#cnperiodo').html(options);
+                $('#cnperiodo').selectpicker('refresh');*/
+
+            }
+
             
+            
+            /*nav++;
+            if (nav > 4) {
+                nav = 1;
+            }
+
+            $('#myTab li:nth-child(' + nav + ') a').removeClass('disabled');
+            $('#myTab li:nth-child(' + nav + ') a').tab('show');
+            $('#myTab li:nth-child(' + (nav - 1) + ') a').addClass('disabled');*/
+
         }
-
-
-
-        
-        nav++;
-        if (nav > 4) {
-            nav = 1;
-        }
-
-        $('#myTab li:nth-child(' + nav + ') a').removeClass('disabled');
-        $('#myTab li:nth-child('+nav+') a').tab('show');
-        $('#myTab li:nth-child(' + (nav - 1) + ') a').addClass('disabled');
-
         
        
     });
@@ -146,12 +155,11 @@ $(document).ready(function () {
     $("body").on("click", "#MainContent_guardar_amort", function () {
         /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
         var data = $("#amortTable").tableToJSON();
-        var myJsonString = JSON.stringify(data);
-        var nperiodo = $('.selectpicker').val();
+        var nperiodo = $('#cnperiodo').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#total').text();    
         console.log(nperiodo);
-        if ($('.selectpicker').val() > 0) {
+        if ($('#cnperiodo').val() > 0) {
             $.ajax({
                 type: "POST",
                 url: "amortizacion.aspx/sendTableAmort",
@@ -161,7 +169,7 @@ $(document).ready(function () {
                 data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot }),
                 success: function (result) {
                     console.log(result.d);
-                    if (result.d == "succes") {
+                    if (result.d === "succes") {
                         $('#successA').modal({ show: true });
                     }
 
@@ -203,7 +211,7 @@ $(document).ready(function () {
         var data = t.row(rowIdx).data();
        
 
-        if (clase == "costo") {
+        if (clase === "costo") {
             if (data[2] !== "") {
                 var value = parseFloat(newValue.replace(',', ""));
                 console.log(value);
@@ -214,12 +222,12 @@ $(document).ready(function () {
             }
 
         }
-        if (clase == "porct") {
+        if (clase === "porct") {
             if (data[1] !== "") {
                 console.log(value);
-                var costoFinal = (data[1] * newValue) / 100;
+                var costoFinal_r = (data[1] * newValue) / 100;
                 //console.log('porcentaje--->' + newValue);
-                t.cell(rowIdx, 3).data(costoFinal).draw();
+                t.cell(rowIdx, 3).data(costoFinal_r).draw();
                 t.order([3, 'desc']).draw();
             }
             

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
@@ -17,10 +18,26 @@
             <h1><i class="fa fa-money"></i>  Evaluación de costos</h1>
 
         </div>
+        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
+            <div id="message" class="alert d-none" role="alert">
+            </div>
+            <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>¡Antes de comenzar!</strong> Selecciona el período a calcular.
+            </div>  
+            <div class="form-group text-center">
+                <label for="selecciona" class="col-form-label"><strong id="lapso">Selecciona el período: </strong></label>
+                <select class="selectpicker show-tick" id="cnperiod_c">
+                </select>
+            </div>
+            <input type="hidden" id="lapse" />
+        </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <!--<a class="nav-link active" id="home-tab" data-toggle="tab" href="#Costos1" role="tab" aria-controls="home" aria-selected="true">Home</a>-->
-                <a href="#Costos1" id="NCostos1" class="nav-link active" role="tab" data-toggle="tab"> Costos de Producción</a>                                   
+                <a href="#Costos1" id="NCostos1" class="nav-link" role="tab" data-toggle="tab"> Costos de Producción</a>                                   
             </li>
             <li class="nav-item">
                 <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos de Distribución</a>
@@ -34,7 +51,7 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="Costos1" role="tabpanel" aria-labelledby="producción">
-              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
+              <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
                   <div class="preborder">    
                             <div class="card-header">
                                 <h5><i class="fa fa-table"></i>  Costos de Producción</h5>                          
@@ -56,7 +73,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
-                                            <th></th>
+                                            <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
                                     </tfoot>
@@ -101,7 +118,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
-                                            <th></th>
+                                            <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
                                     </tfoot>
@@ -147,7 +164,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
-                                            <th></th>
+                                            <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
                                     </tfoot>
@@ -191,7 +208,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
-                                            <th></th>
+                                            <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
                                     </tfoot>
@@ -252,9 +269,16 @@
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>
         <script src="../Scripts/editable-table/edittable.js"></script> 
     <!-- plugin editable-->
-
+    <!-- plugin dataTable-->
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
+
+    <!-- plugin rangeslide-->
+    <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <!-- plugin selectpicker-->
+    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- SCRIPT DE LOS CONTENIDOS -->
+    <script src="../Scripts/startbootstrap/js/scripts.js"></script>  
 </asp:Content>
 

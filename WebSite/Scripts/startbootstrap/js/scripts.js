@@ -10,7 +10,6 @@
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            console.log(data.d);
 
             if (data.d != "false") {
 
@@ -150,10 +149,10 @@
         console.log("Error: " + data);
     });
 
-    console.log(id_proyecto);
+    //console.log(id_proyecto);
 
     /******Obteneer el numero de periodos******/
-    if (id_proyecto != "false") {
+    if (id_proyecto !== "false") {
         $.ajax({
             type: "POST",
             url: "amortizacion.aspx/getPeriodo",
@@ -169,7 +168,7 @@
                 var periodo = (res_period).charAt((res_period).length - 1);
                 
                 $("#lapse").val(periodo);
-                if (periodo == "M") {
+                if (periodo === "M") {
                     $("#lapso").html("Mes");
                 }
                 else {
@@ -215,7 +214,123 @@
             console.log("Error: " + data);
         });
     }
+
      /****************************************/
+    /*******SCRIPTS PARA CONTENT COSTOS***************/
+    $('#cnperiod_c.selectpicker').on('change', function () {
+        cargar_cont_costos();
+    });
+
+    $('#cnperiod_c.selectpicker').change();
+
+    function cargar_cont_costos() {
+        if (id_proyecto !== "false") {
+            $.ajax({
+                type: "POST",
+                url: "costos.aspx/getPeriodo",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ idProyecto: id_proyecto }),
+                success: function (result) {
+                    console.log(result.d);
+                    var resultado = JSON.parse(result.d);
+                    var res_period = String(resultado[2]);
+                    var nperiodo = (res_period).substring(0, (res_period).length - 1);
+                    // si es mensual o anual
+                    var periodo = (res_period).charAt((res_period).length - 1);
+                    $("#lapse").val(periodo);
+                    if (periodo === "M") {
+                        $("#lapso").html("Mes");
+                    }
+                    else {
+                        $("#lapso").html("Año");
+                    }
+                    var options = [];
+                    var ban = 0;
+                    for (i = 1; i <= nperiodo; i++) {
+
+                        //Buscar que periodos ya estan ingresados
+                        for (j = 0; j < resultado[0].length; j++) {
+                            if (i == resultado[0][j]) {
+                                ban = 1;
+                                break;
+                            }
+                            else {
+                                ban = 0;
+                            }
+
+                        }
+                        var option;
+                        if (ban == 1) {
+                            option = "<option value=" + i + " disabled>" + i + "</option>";
+                        }
+                        else {
+                            option = "<option value=" + i + ">" + i + "</option>";
+                        }
+
+                        options.push(option);
+                    }
+                    $('#cnperiod_c').html(options);
+                    $('#cnperiod_c').selectpicker('refresh');
+                    //llaamos una funcion para crear la session de id_costo
+                    crear_session_costo();
+                    /*** ¨¨¨*/
+                    if (resultado[1].length > 0) {
+                        $('#myTab li a:eq(' + resultado[1][ resultado[1].length - 1 ] + ')').removeClass('disabled');
+                        $('#myTab li a:eq(' + resultado[1][ resultado[1].length - 1 ] + ')').tab('show');
+                        $('#myTab li a:eq(' + resultado[1][ resultado[1].length - 1 ] + ')').addClass('active');
+                    }
+                    else if (resultado[1].length == 4) {
+                        $('#myTab li a').addClass('disabled');
+                    }
+                    else {
+                        $('#myTab li a:first').removeClass('disabled');
+                        $('#myTab li a:first').tab('show');
+                        $('#myTab li a:first').addClass('active');
+                    }
+
+
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+        }
+
+    }
+
+    function crear_session_costo() {
+
+        var periodo_select = $("#cnperiod_c").val();
+        $.ajax({
+            type: "POST",
+            url: "costos.aspx/crear_session_costo",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ idproyecto: id_proyecto, periodSelect: periodo_select }),
+            success: function (result) {
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+    }
+
+    
+    
+    /****************************************/
     
     
 

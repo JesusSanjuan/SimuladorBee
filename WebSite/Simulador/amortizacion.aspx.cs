@@ -21,11 +21,7 @@ public partial class Simulador_Default : System.Web.UI.Page
         try
         {
             //Here I want to iterate the  objects 
-            int a = dataTabla.Count();
-            string json = JsonConvert.SerializeObject(dataTabla);
-            //System.Diagnostics.Debug.WriteLine(json);
-            System.Diagnostics.Debug.WriteLine(Nperiod);
-            System.Diagnostics.Debug.WriteLine(total);
+            string json = JsonConvert.SerializeObject(dataTabla);// selializamos las List de la tabla
             // OBTENEMOS LOS DATOS DE LA AMORTIZACION DEL PERIODO SELECCIONADO
             string id_amortizac = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
             string id_proyect      = (string) System.Web.HttpContext.Current.Session["ID_Proyecto"];
@@ -133,11 +129,5 @@ public partial class Simulador_Default : System.Web.UI.Page
 
     }
 
-    /*[WebMethod]
-    public static int llenarSelect(int nperiodo)
-    {
-
-        return nperiodo;
-
-    }*/
+   
 }

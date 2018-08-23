@@ -127,18 +127,6 @@
                 </tr>
               </tfoot>
               <tbody>
-                <!--<tr>
-                  <td>consultoria empresarial</td>
-                  <td>06/12/2018 2:26 PM</td>
-                  <td><i class="fas fa-check" aria-hidden="true"></td>
-                  <td><i class="fa fa-download fa-lg" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                  <td>proyecto 2</td>
-                  <td>06/08/2018 1:26 PM</td>
-                  <td><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></td>
-                  <td><i class="fa fa-download fa-lg" aria-hidden="true"></i></td>
-                </tr>-->
               </tbody>
             </table>
           </div>
@@ -160,26 +148,24 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <!--<form>-->
-                <asp:HiddenField id="nperiodo" runat="server" />
-                <div class="form-group">
-                    <label for="titulo" class="col-form-label">Título:</label>
-                    <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre_Proyecto"
-                            CssClass="text-danger" ErrorMessage="Debe asignarle un nombre al proyecto" />
-                </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="periodo" CssClass="control-label">Período de evaluación</asp:Label>
-                    <input  type="range" max="10" value="1" id="periodo" runat="server">
-                </div>
-                <div class="form-group">
-                    <label for="lapso" class="col-form-label">Lapso por</label>
-                    <select class="selectpicker show-tick" id="lapso" runat="server">
-                        <option>Años</option>
-                        <option>Meses</option>
-                    </select>
-                </div>
-                <!--</form>-->
+                    <asp:HiddenField id="nperiodo" runat="server" />
+                    <div class="form-group">
+                        <label for="titulo" class="col-form-label">Título:</label>
+                        <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre_Proyecto"
+                                CssClass="text-danger" ErrorMessage="Debe asignarle un nombre al proyecto" />
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="periodo" CssClass="control-label">Período de evaluación</asp:Label>
+                        <input  type="range" max="10" value="1" id="periodo" runat="server">
+                    </div>
+                    <div class="form-group">
+                        <label for="lapso" class="col-form-label">Lapso por</label>
+                        <select class="selectpicker show-tick" id="lapso" runat="server">
+                            <option>Años</option>
+                            <option>Meses</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

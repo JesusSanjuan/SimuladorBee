@@ -1,8 +1,6 @@
 ﻿$(document).ready(function () {
 
-
     /*******SCRIPTS PARA CONTENT INDEX***************/
-
     //verificar si la session id_proyect existe 
     $.ajax({
         type: "POST",
@@ -30,7 +28,6 @@
     });
 
 
-
     $("#MainContent_nperiodo").val("1");
     /**Inicialización rangeslider.js**/
     $('input[type="range"]').rangeslider({
@@ -46,7 +43,7 @@
 
     /**Inicialización selectpicker.js**/
     $('.selectpicker').selectpicker
-    /***Inicializando la Tabla****/
+    /***Inicializando la Tabla de Mis proyectos****/
     $.ajax({
         type: "POST",
         url: "Index.aspx/getsource",
@@ -149,7 +146,6 @@
         console.log("Error: " + data);
     });
 
-    //console.log(id_proyecto);
 
     /******Obteneer el numero de periodos******/
     if (id_proyecto !== "false") {
@@ -217,7 +213,7 @@
 
      /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
-    $('#cnperiod_c.selectpicker').on('change', function () {
+    $('#cnperiod_c.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         cargar_cont_costos();
     });
 
@@ -249,7 +245,6 @@
                     var options = [];
                     var ban = 0;
                     for (i = 1; i <= nperiodo; i++) {
-
                         //Buscar que periodos ya estan ingresados
                         for (j = 0; j < resultado[0].length; j++) {
                             if (i == resultado[0][j]) {
@@ -271,11 +266,12 @@
 
                         options.push(option);
                     }
+                    //cargamos y refrescamos el select
                     $('#cnperiod_c').html(options);
                     $('#cnperiod_c').selectpicker('refresh');
                     //llaamos una funcion para crear la session de id_costo
                     crear_session_costo();
-                    /*** ¨¨¨*/
+
                     if (resultado[1].length > 0) {
                         $('#myTab li a:eq(' + resultado[1][ resultado[1].length - 1 ] + ')').removeClass('disabled');
                         $('#myTab li a:eq(' + resultado[1][ resultado[1].length - 1 ] + ')').tab('show');
@@ -326,10 +322,7 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
-    }
-
-    
-    
+    }    
     /****************************************/
     
     

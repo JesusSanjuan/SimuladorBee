@@ -16,28 +16,11 @@ public partial class Simulador_costos : System.Web.UI.Page
     {
 
     }
-
-    protected void Continuar_Click(Object sender, EventArgs e)
-    {
-        System.Diagnostics.Debug.WriteLine("Prueba");
-        string script = @"<script type='text/javascript'>
-                                 $(document).ready(function () {
-                                 $('#Continuacioncostos').modal({ show: true }); });
-                                     $( '#costo_continuar' ).click(function() {
-                                            $('#myTab li:nth-child(2) a').tab('show');
-                                            $('#myTab li:nth-child(1) a').addClass('disabled');
-
-
-                          });
-                       </script>";
-        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion2", script, false);
-    }
-
+   
     [WebMethod]
     public static object  sendTable(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total, string pestania)
     {
         //Here I want to iterate the  objects 
-
         int a = dataTabla.Count();
 
         string json = JsonConvert.SerializeObject(dataTabla);
@@ -53,7 +36,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         System.Diagnostics.Debug.WriteLine("totaal-->" + tabl_total);
 
 
-
         try
         {
             // GUARDAMOS A LA BASE DE DATOS
@@ -61,7 +43,7 @@ public partial class Simulador_costos : System.Web.UI.Page
             
             switch (pestania)
             {
-                case "NCostos1":
+                case "NCostos1"://Para guardar los datos por primera vez
                     
                     var NuevoCosto = new Costos_Pro();
                     NuevoCosto.ID_Costos_pro = id_costos;
@@ -77,7 +59,7 @@ public partial class Simulador_costos : System.Web.UI.Page
                     System.Web.HttpContext.Current.Session["id_costo"] = id_costos;
                     
                     break;
-                default:
+                default://Para el update
                    
                     if (System.Web.HttpContext.Current.Session["id_costo"] != null)
                     {
@@ -191,11 +173,9 @@ public partial class Simulador_costos : System.Web.UI.Page
         result_query.Add(periodos);
         result_query.Add(pestanias);
         result_query.Add(nperiodos_a);
-
+        // el formato que envia es : [[arreglo de los periodos que ya estan completos],[pestanias que estan completas],[num de periodo en total que tiene]]
         var json = JsonConvert.SerializeObject(result_query);
-
         return json;
-
     }
 
     [WebMethod]

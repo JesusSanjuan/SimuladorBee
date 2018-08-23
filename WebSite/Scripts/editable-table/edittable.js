@@ -6,7 +6,7 @@
         }
     });
     /****************TABLAS COSTOS****************/
-    // Automatically add a first row of data
+    // Automatically add a first row of data (Genérico para todas las tablas que ocupo)
     $('.add_row').on('click', function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
@@ -16,28 +16,25 @@
             '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
         t.order([1, 'desc']).draw();
-
+        //aplicamos lasa propiedades editable de las celdas
         $('#' + selector).find('table').find('td:last').prev().prev().addClass('previous');
         $('#' + selector).find('table').find('td:last').attr("data-editable", "false");
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
 
     });
-    //$('#myTabContent').find('table').find('td').on('change', function (evt, newValue) {
-
+    // función que ordena descendentemente los datos(costos) ingresados automaicamente
     $("body").on("change", "#myTabContent table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
-        //console.log(newValue);
         t.cell(this).data(newValue).draw();
         t.order([1, 'desc']).draw();
     });
 
-    /****** actvacion de pestañas **/
+    /****** activacion de pestañas **/
     $('#myTab li a').addClass('disabled');
-    /*$('#myTab li:nth-child(1) a').tab('show');
-    var nav = 1;*/
 
+    //evento para avanzar en las pestañas (navs)
     $("body").on("click", ".continuar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         $(".modal-content #selector").val(selector);
@@ -45,10 +42,9 @@
 
     });
 
-
-    //$("body").on("click", ".save_data", function () {
+    //funcion para GUARDAR DATOS de COSTOS
     $("body").on("click", "#costo_continuar", function () {
-        /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
+        /*OBTENIENDO DATOS DE LAS FUNCIONES DE Table To JSON*/
         var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
 
@@ -57,8 +53,7 @@
         var tot = $('#' + selector).find('table').find('.total').text();
         var nav = $('#myTab li a.active').attr('id');
         console.log('total-->' + tot);
-        //Validamos que no existan celdas vaciar
-
+        //Validamos que no existan celdas vacias
         var table = $('#' + selector).find('table').DataTable();
         table.column(0).data().each(function (value, index) {
             if (value === "") {
@@ -67,9 +62,9 @@
             }
         });
 
-        if ($('#cnperiod_c').val() > 0) {
+        if ($('#cnperiod_c').val() > 0) {//verifica  que haya un valor aceptable en el select
             if (selector !== "tab1") {
-                if (tot > 0) {
+                if (tot > 0) {//verifica  que haya un valor aceptable en el total
                     $.ajax({
                         type: "POST",
                         url: "costos.aspx/sendTable",
@@ -113,7 +108,6 @@
     $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
     $(".na").html("");
 
-
     $("body").on("click", "#MainContent_add_row", function () {
         var t = $("#amortTable").DataTable();
         t.row.add([
@@ -150,7 +144,7 @@
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#total').text();
         console.log(nperiodo);
-        //Validamos que no existan celdas vaciar
+        //Validamos que no existan celdas vacias
         var table = $("#amortTable").DataTable();
         table.column(0).data().each(function (value, index) {
             if (value === "") {
@@ -159,9 +153,7 @@
             }
         });
         if ($('#cnperiodo').val() > 0) {
-
             if (tot > 0) {
-
                 $.ajax({
                     type: "POST",
                     url: "amortizacion.aspx/sendTableAmort",
@@ -205,20 +197,17 @@
     $("#successA").on("hidden.bs.modal", function () {
         location.reload();
     });
-
+    //Funcion al cambiar los valores de los costos en amortizacion
     $("body").on("change", " #myTabContent2 table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable()
         //console.log(newValue);
         t.cell(this).data(newValue).draw();
         t.order([3, 'desc']).draw();
-
         var clase = $(this).attr("class");
-
         //CALCULAMOS EL PORCENTAJE DEL COSTO
         var rowIdx = t.cell(this).index().row;
         var data = t.row(rowIdx).data();
-
 
         if (clase === "costo") {
             if (data[2] !== "") {
@@ -252,16 +241,15 @@
 
         $(".na").html("");
 
-        var column2 = t.column(1);
+        var column2 = t.column(1); 
 
-        $(column2.footer()).html(
+        $(column2.footer()).html(//Para poner el total en la ultima celda footer
             column2.data().map(parseFloat).reduce(function (a, b) {
                 return a + b;
             })
         );
 
     });
-
 
     /********************REMOVER FILAS**************************/
     $("body").on("click", ".remove", function () {

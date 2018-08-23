@@ -50,6 +50,8 @@ public partial class Simulador_costos : System.Web.UI.Page
         string tabl_json = json;
         Decimal tabl_total = total;
 
+        System.Diagnostics.Debug.WriteLine("totaal-->" + tabl_total);
+
 
 
         try
@@ -69,10 +71,11 @@ public partial class Simulador_costos : System.Web.UI.Page
                     NuevoCosto.Ventas = "";
                     NuevoCosto.Financiamiento = "";
                     NuevoCosto.Admon = "";
+                    NuevoCosto.Total = tabl_total;
                     db.Costos_Pro.Add(NuevoCosto);
                     //Guardo el id que se creo
                     System.Web.HttpContext.Current.Session["id_costo"] = id_costos;
-                    System.Diagnostics.Debug.WriteLine("case 1---->");
+                    
                     break;
                 default:
                    
@@ -90,15 +93,18 @@ public partial class Simulador_costos : System.Web.UI.Page
                             if (pestania    == "NCostos2")
                             {
                                 costo.Ventas = tabl_json;
+                                costo.Total = costo.Total + tabl_total;
                             }
                             else if (pestania == "NCostos3")
                             {
                                 costo.Admon = tabl_json;
+                                costo.Total = costo.Total + tabl_total;
 
                             }
                             else if (pestania == "NCostos4")
                             {
                                 costo.Financiamiento = tabl_json;
+                                costo.Total = costo.Total + tabl_total;
                             }
                             
                         }
@@ -147,8 +153,9 @@ public partial class Simulador_costos : System.Web.UI.Page
         List<string> pestanias = new List<string>();
         foreach (Costos_Pro Cost in query2)
         {
-            System.Diagnostics.Debug.WriteLine(string.Format("ID_Costos_pro: {0}\tID_Proyecto: {1}\tID_Periodo: {2}\tProduccion: {3}\tVentas: {4}\tFinanciamiento: {5}\tAdmon: {6}\tFinanciamiento: {5}\tTotal: {7}",
+            /*System.Diagnostics.Debug.WriteLine(string.Format("ID_Costos_pro: {0}\tID_Proyecto: {1}\tID_Periodo: {2}\tProduccion: {3}\tVentas: {4}\tFinanciamiento: {5}\tAdmon: {6}\tFinanciamiento: {5}\tTotal: {7}",
                 Cost.ID_Costos_pro, Cost.ID_Proyecto, Cost.ID_Periodo, Cost.Produccion, Cost.Ventas, Cost.Financiamiento, Cost.Admon, Cost.Total));
+            */
             var periodo = (Cost.ID_Periodo).Substring(0, ((Cost.ID_Periodo).Length) - 1);// para obtener solo el numero de periodo
             if (Cost.Ventas != ""  & Cost.Financiamiento != "" & Cost.Admon != "")
             {
@@ -176,7 +183,6 @@ public partial class Simulador_costos : System.Web.UI.Page
                 }
             }
             
-            System.Diagnostics.Debug.WriteLine(" +++++++++++++++++++++++++++++\n");
         }
         //guardo el nperiodos
         List<string> nperiodos_a = new List<string>();
@@ -187,8 +193,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         result_query.Add(nperiodos_a);
 
         var json = JsonConvert.SerializeObject(result_query);
-
-        System.Diagnostics.Debug.WriteLine(json);
 
         return json;
 

@@ -232,6 +232,29 @@
 
     </div>
     </div>
+
+
+    <!-- modal de succes -->
+    <div class="modal fade bd-example-modal-sm" id="success" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <!--- input hidden-->
+                <!--<input type="hidden" name="selector" id="selector" value=""/>-->
+                <!-- Modal Header -->
+                <div class="modal-header">
+                        <h4 class="modal-title"> <i class="fa fa-check-square-o"></i> Mensaje</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>        
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-text-body-suc">
+                    <div class="alert alert-primary" role="alert">
+                      Datos guardados satisfactoriamente!!
+                    </div>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
   
 

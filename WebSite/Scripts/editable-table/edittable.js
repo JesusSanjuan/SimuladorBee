@@ -52,68 +52,60 @@
         var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
 
-
-
         var nperiodo = $('#cnperiod_c').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#' + selector).find('table').find('.total').text();
         var nav = $('#myTab li a.active').attr('id');
         console.log('total-->' + tot);
+        //Validamos que no existan celdas vaciar
+
+        var table = $('#' + selector).find('table').DataTable();
+        table.column(0).data().each(function (value, index) {
+            if (value === "") {
+                tot = 0;
+                return false;
+            }
+        });
 
         if ($('#cnperiod_c').val() > 0) {
-
-
             if (selector !== "tab1") {
-                $.ajax({
-                    type: "POST",
-                    url: "costos.aspx/sendTable",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    async: false,
-                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
-                    success: function (result) {
-                        console.log(result);
-                        location.reload();
-                    },
-                    error: function (result) {
-                        alert(result.responseText);
-                    }
+                if (tot > 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: "costos.aspx/sendTable",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
+                        success: function (result) {
+                            console.log(result);
+                            location.reload();
+                        },
+                        error: function (result) {
+                            alert(result.responseText);
+                        }
 
-                }).done(function (data) {
-                    //console.log(data);
-                }).fail(function (data) {
-                    console.log("Error: " + data);
-                });
-
-            }
-            else {
-                /*var nperiodo = $('.range-output').text();
-                // $('#nperiodo').val(nperiodo);
-                console.log("pestañas en amortizacion-->" + nperiodo);
-                var options = [];
-
-                for (i = 1; i <= nperiodo; i++) {
-                    var option = "<option value=" + i + ">" + i + "</option>"
-                    options.push(option);
+                    }).done(function (data) {
+                        //console.log(data);
+                    }).fail(function (data) {
+                        console.log("Error: " + data);
+                    });
                 }
-                $('#cnperiodo').html(options);
-                $('#cnperiodo').selectpicker('refresh');*/
+                else {
+                    $('#success').find(".alert").html("Ingrese por lo menos un concepto ");
+                    $('#success').find(".alert").removeClass("alert-primary").addClass("alert-danger");
+                    $('#success').modal({ show: true });
 
+                }
             }
+        }
+        else {
 
-
-
-            /*nav++;
-            if (nav > 4) {
-                nav = 1;
-            }
-
-            $('#myTab li:nth-child(' + nav + ') a').removeClass('disabled');
-            $('#myTab li:nth-child(' + nav + ') a').tab('show');
-            $('#myTab li:nth-child(' + (nav - 1) + ') a').addClass('disabled');*/
+            $('#success').find(".alert").html("Todos los costos de cada Período han sido Guardados");
+            $('#success').modal({ show: true });
 
         }
-
+        
 
     });
 
@@ -158,31 +150,49 @@
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#total').text();
         console.log(nperiodo);
+        //Validamos que no existan celdas vaciar
+        var table = $("#amortTable").DataTable();
+        table.column(0).data().each(function (value, index) {
+            if (value === "") {
+                tot = 0;
+                return false;
+            }
+        });
         if ($('#cnperiodo').val() > 0) {
-            $.ajax({
-                type: "POST",
-                url: "amortizacion.aspx/sendTableAmort",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot }),
-                success: function (result) {
-                    console.log(result.d);
-                    if (result.d === "succes") {
-                        $('#successA').modal({ show: true });
+
+            if (tot > 0) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "amortizacion.aspx/sendTableAmort",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot }),
+                    success: function (result) {
+                        console.log(result.d);
+                        if (result.d === "succes") {
+                            $('#successA').modal({ show: true });
+                        }
+
+
+                    },
+                    error: function (result) {
+                        alert(result.responseText);
                     }
 
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
+            }
+            else {
+                $('#successA').find(".alert").html("Ingrese un costo mayor a 0");
+                $('#successA').find(".alert").removeClass("alert-primary").addClass("alert-danger");
+                $('#successA').modal({ show: true });
 
-                },
-                error: function (result) {
-                    alert(result.responseText);
-                }
-
-            }).done(function (data) {
-                //console.log(data);
-            }).fail(function (data) {
-                console.log("Error: " + data);
-            });
+            }
         }
         else {
             console.log("no hay seleccion");
@@ -265,6 +275,17 @@
         $('#' + selector).find('table').find('td:last').attr("data-editable", "false");
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
+    });
+    /********************Refrescar el plugin editable**************************/
+    
+    //$("body").on("click", ".page-link", function () {
+    $('table').on('page.dt', function () {
+        var selector = $(this).parents('.tab-pane').attr("id");
+        console.log("click en siguiente pagina,selecto-->" + selector);
+        $('#' + selector).find('table').find('td:last').prev().prev().addClass('previous');
+       
+
+        //$("table").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
     });
 
 });

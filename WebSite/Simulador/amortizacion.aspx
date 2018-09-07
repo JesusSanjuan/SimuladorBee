@@ -49,7 +49,7 @@
                                     <h5><i class="fa fa-table"></i>  Amortización</h5>
                                 </div>      
                                 <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;" >
-                                    <table class="table table-bordered" id="amortTable" >
+                                    <table class="table table-striped table-bordered" id="amortTable" >
                                         <thead>
                                             <tr>
                                                 <th >Concepto</th>

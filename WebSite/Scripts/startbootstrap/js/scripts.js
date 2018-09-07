@@ -147,6 +147,13 @@
     });
 
 
+    var completeC = false;
+    $('#cnperiodo.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        if (completeC == true)
+            cargar_data_amort();
+    });
+
+
     /******Obteneer el numero de periodos******/
     if (id_proyecto !== "false") {
         $.ajax({
@@ -172,32 +179,52 @@
                 }
 
                 var options = [];
-                var ban = 0;
-                for (i = 1; i <= nperiodo; i++) {
-                    //Buscar que periodos ya estan ingresados
-                    for (j = 0; j < resultado[0].length - 1; j++) {
-                        
-                        if (i == resultado[0][j]) {
-                            ban = 1;
-                            break;
+
+                if ((resultado[0].length - 1) == nperiodo) {
+                    for (i = 1; i <= nperiodo; i++) {
+                        var option;
+                        option = "<option value=" + i + ">" + i + "</option>";
+                        options.push(option);
+                    }
+                    console.log("finalizado!!");
+                    $('#cnperiodo').html(options);
+                    $('#cnperiodo').selectpicker('refresh');
+                    completeC = true;
+                    $('#cnperiodo.selectpicker').change();
+                }
+                else {
+                    var ban = 0;
+                    for (i = 1; i <= nperiodo; i++) {
+                        //Buscar que periodos ya estan ingresados
+                        for (j = 0; j < resultado[0].length - 1; j++) {
+
+                            if (i == resultado[0][j]) {
+                                ban = 1;
+                                break;
+                            }
+                            else {
+                                ban = 0;
+                            }
+
+                        }
+                        var option;
+                        if (ban == 1) {
+                            option = "<option value=" + i + " disabled>" + i + "</option>";
                         }
                         else {
-                            ban = 0;
+                            option = "<option value=" + i + ">" + i + "</option>";
                         }
 
+                        options.push(option);
                     }
-                    var option;
-                    if (ban == 1) {
-                        option = "<option value=" + i + " disabled>" + i + "</option>";
-                    }
-                    else {
-                        option = "<option value=" + i + ">" + i + "</option>"
-                    }
-                    
-                    options.push(option);
+                    $('#cnperiodo').html(options);
+                    $('#cnperiodo').selectpicker('refresh');
+
                 }
-                $('#cnperiodo').html(options);
-                $('#cnperiodo').selectpicker('refresh');
+
+
+
+                
 
             },
             error: function (result) {
@@ -211,6 +238,72 @@
         });
     }
 
+
+    function cargar_data_amort() {
+        if (id_proyecto !== "false") {
+            var periodo_select = $("#cnperiodo").val();
+            console.log("cargar_data_amort-->periodo: " + periodo_select);
+            /*$.ajax({
+                type: "POST",
+                url: "costos.aspx/get_data_amort",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ idproyecto: id_proyecto, periodSelect: periodo_select }),
+                success: function (result) {
+                    var resultado = JSON.parse(result.d);
+                    var table = $('#myTabContent').find('table').DataTable();
+                    table.clear().draw();
+                    //Tab Producción
+                    var res = JSON.parse(resultado[1]);
+                    var i, obj, param1, param2;
+                    for (i = 0; i < res.length - 1; i++) {
+                        obj = res[i];
+                        param1 = obj["Concepto"];
+                        param2 = obj["$ Costo"];
+                        cargar_datatable_costos("costTable", param1, param2);
+                    }
+                    //Tab Ventas
+                    var res2 = JSON.parse(resultado[2]);
+                    for (i = 0; i < res2.length - 1; i++) {
+                        obj = res2[i];
+                        param1 = obj["Concepto"];
+                        param2 = obj["$ Costo"];
+                        cargar_datatable_costos("costTable2", param1, param2);
+                    }
+                    //Tab Admon
+                    var res3 = JSON.parse(resultado[3]);
+                    for (i = 0; i < res3.length - 1; i++) {
+                        obj = res3[i];
+                        param1 = obj["Concepto"];
+                        param2 = obj["$ Costo"];
+                        cargar_datatable_costos("costTable3", param1, param2);
+                    }
+                    //Tab Admon
+                    var res4 = JSON.parse(resultado[4]);
+                    for (i = 0; i < res4.length - 1; i++) {
+                        obj = res4[i];
+                        param1 = obj["Concepto"];
+                        param2 = obj["$ Costo"];
+                        cargar_datatable_costos("costTable4", param1, param2);
+                    }
+
+
+                    $('#myTab li a').removeClass('disabled');
+                    $('#myTab li:first a').tab('show');
+                    $("#myTab li:first a").addClass('active');
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });*/
+        }
+    }
      /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
     var complete = false;
@@ -233,11 +326,9 @@
                 async: false,
                 data: JSON.stringify({ idProyecto: id_proyecto }),
                 success: function (result) {
-                    console.log(result.d);
                     var resultado = JSON.parse(result.d);
                     var res_period = String(resultado[2]);
                     var nperiodo = (res_period).substring(0, (res_period).length - 1);
-                    console.log("1: " + resultado[0] + " 2: " + resultado[1] + "3: " + resultado[2]);
                     // si es mensual o anual
                     var periodo = (res_period).charAt((res_period).length - 1);
                     $("#lapse").val(periodo);
@@ -353,7 +444,6 @@
                 async: false,
                 data: JSON.stringify({ idproyecto: id_proyecto, periodSelect: periodo_select }),
                 success: function (result) {
-                    console.log("sucess cargar_data_costo");
                     var resultado = JSON.parse(result.d);
                     var table = $('#myTabContent').find('table').DataTable();
                     table.clear().draw();
@@ -364,7 +454,7 @@
                         obj = res[i];
                         param1 = obj["Concepto"];
                         param2 = obj["$ Costo"];
-                        cargar_datatable("costTable", param1, param2);
+                        cargar_datatable_costos("costTable", param1, param2);
                     }
                     //Tab Ventas
                     var res2 = JSON.parse(resultado[2]);
@@ -372,7 +462,7 @@
                         obj = res2[i];
                         param1 = obj["Concepto"];
                         param2 = obj["$ Costo"];
-                        cargar_datatable("costTable2", param1, param2);
+                        cargar_datatable_costos("costTable2", param1, param2);
                     }
                     //Tab Admon
                     var res3 = JSON.parse(resultado[3]);
@@ -380,7 +470,7 @@
                         obj = res3[i];
                         param1 = obj["Concepto"];
                         param2 = obj["$ Costo"];
-                        cargar_datatable("costTable3", param1, param2);
+                        cargar_datatable_costos("costTable3", param1, param2);
                     }
                     //Tab Admon
                     var res4 = JSON.parse(resultado[4]);
@@ -388,7 +478,7 @@
                         obj = res4[i];
                         param1 = obj["Concepto"];
                         param2 = obj["$ Costo"];
-                        cargar_datatable("costTable4", param1, param2);
+                        cargar_datatable_costos("costTable4", param1, param2);
                     }
 
 
@@ -408,7 +498,7 @@
         }
     }
 
-    function cargar_datatable(table, camp1, camp2) {
+    function cargar_datatable_costos(table, camp1, camp2) {
         var t = $('#'+table+'').DataTable();
         t.row.add([
             camp1,

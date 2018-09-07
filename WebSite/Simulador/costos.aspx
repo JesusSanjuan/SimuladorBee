@@ -60,7 +60,7 @@
                                                     </p>    
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-bordered" id="costTable" >
+                                <table class="table table-striped table-bordered" id="costTable" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
@@ -104,7 +104,7 @@
                                                 </p>  
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-bordered" id="costTable2"  >
+                                <table class="table table-striped table-bordered" id="costTable2"  >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
@@ -150,7 +150,7 @@
                                                 </p> 
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-bordered" id="costTable3" >
+                                <table class="table table-striped table-bordered" id="costTable3" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
@@ -194,7 +194,7 @@
                                                 </p> 
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-bordered" id="costTable4" >
+                                <table class="table table-striped table-bordered" id="costTable4" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>

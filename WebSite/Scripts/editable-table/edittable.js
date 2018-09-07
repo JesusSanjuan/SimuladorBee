@@ -31,7 +31,7 @@
         t.order([1, 'desc']).draw();
     });
 
-    /****** activacion de pestañas **/
+    /****** desactivacion de pestañas **/
     $('#myTab li a').addClass('disabled');
 
     //evento para avanzar en las pestañas (navs)

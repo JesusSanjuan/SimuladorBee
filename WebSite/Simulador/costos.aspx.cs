@@ -209,6 +209,46 @@ public partial class Simulador_costos : System.Web.UI.Page
 
     }
 
+    [WebMethod]
+    public static object get_data_costos(string idproyecto, string periodSelect)
+    {
 
+        try
+        {
+            //Realizamos la consula
+            var db = new Entidades();
+            var query = db.Costos_Pro.Where(Costos => Costos.ID_Proyecto == idproyecto && Costos.ID_Periodo.StartsWith(periodSelect));
+
+            List<string> result_query = new List<string>();
+
+            foreach (var Result in query)
+            {
+                result_query.Add(Result.ID_Periodo);
+                result_query.Add(Result.Produccion);
+                result_query.Add(Result.Ventas);
+                result_query.Add(Result.Admon);
+                result_query.Add(Result.Financiamiento);
+                //Verificamos que no exista la session
+                if (System.Web.HttpContext.Current.Session["id_costo"] == null)
+                {
+                    System.Web.HttpContext.Current.Session["id_costo"] = Result.ID_Costos_pro;
+
+                }
+
+            }
+
+            var json = JsonConvert.SerializeObject(result_query);
+            System.Diagnostics.Debug.WriteLine(json);
+            return json;
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
+
+    }
 
 }

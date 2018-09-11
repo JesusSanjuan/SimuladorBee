@@ -129,7 +129,6 @@
                                                       </ul>
                                                 </li>
                                             </ul>
-
                                         </li>                                        
                                         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Componentes">
                                           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb2" data-parent="#exampleAccordion" data-anijs=" if: mouseover, do: pulse animated">
@@ -194,14 +193,14 @@
 
 
 
-                                          <li class="nav-item dropdown">
+                                          <li class="nav-item dropdown" >
                                           <a class="nav-link dropdown-toggle mr-lg-2" id="LogdeProyecto" href="Construccion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-suitcase"></i>
-                                            <span class="d-lg-none">Messages
-                                              <span class="badge badge-pill badge-primary">12 New</span>
+                                            <i class="fas fa-suitcase  wobble animated infinite"></i>
+                                            <span class="d-lg-none ">Messages
+                                              <span class="badge badge-pill badge-primary ">12 New</span>
                                             </span>
-                                            <span class="indicator text-primary d-none d-lg-block">
-                                              <i class="fa fa-fw fa-circle"></i>
+                                            <span class=" flash animated infinite indicator text-danger d-none d-lg-block " >
+                                              <i class="fa fa-fw fa-circle "></i>
                                             </span>
                                           </a>
                                           <div class="dropdown-menu" aria-labelledby="LogdeProyecto">
@@ -213,7 +212,7 @@
                                                       <div class="dropdown-message small">Comentarios rapidos del proyecto dasdasdasdasdasdas</div>
                                                     </a>                                                    
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item small" href="Index">Cerrar Sesion</a>
+                                                    <a class="dropdown-item small" href="Index">Cambiar de Proyecto</a>
                                           </div>
                                         </li>
 

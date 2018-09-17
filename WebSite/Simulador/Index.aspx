@@ -44,6 +44,7 @@
                     </a>
                   </div>
                 </div>
+          <!--
                 <div class="col-xl-3 col-sm-6 mb-3"  data-anijs="if: load, on:window, do: tada animated, before: scrollReveal, after: removeAnim">
                   <div class="card text-white bg-warning o-hidden h-100">
                     <div class="row card-body">
@@ -101,7 +102,9 @@
                     </a>
                   </div>
                 </div>
+      
       </div>
+    -->
       
       <!-- Example DataTables -->
       <div class="card mb-3" data-anijs="if: load, on: window, do: fadeInUp animated, before: scrollReveal">
@@ -148,24 +151,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <asp:HiddenField id="nperiodo" runat="server" />
                     <div class="form-group">
                         <label for="titulo" class="col-form-label">Título:</label>
                         <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre_Proyecto"
                                 CssClass="text-danger" ErrorMessage="Debe asignarle un nombre al proyecto" />
                     </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="periodo" CssClass="control-label">Período de evaluación</asp:Label>
-                        <input  type="range" max="10" value="1" id="periodo" runat="server">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="lapso" class="col-form-label">Lapso por</label>
+                                <select class="selectpicker show-tick" id="lapso" runat="server">
+                                    <option>Años</option>
+                                    <option>Meses</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="periodo" class="col-form-label">Período de evaluación</label>
+                                <asp:TextBox runat="server" ID="nperiodo" CssClass="form-control" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="nperiodo"
+                                        CssClass="text-danger" ErrorMessage="Debe asignarle un período válido" />
+                                
+                                <asp:RegularExpressionValidator runat="server" ControlToValidate="nperiodo" 
+                                    CssClass="text-danger" ValidationExpression="^\d+$"  Display="Dynamic"  ErrorMessage="Debe asignarle un período válido" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="lapso" class="col-form-label">Lapso por</label>
-                        <select class="selectpicker show-tick" id="lapso" runat="server">
-                            <option>Años</option>
-                            <option>Meses</option>
-                        </select>
-                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

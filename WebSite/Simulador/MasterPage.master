@@ -64,7 +64,7 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="cb3">
                             <li>
-                                <a class="nav-link" href="Construccion">
+                                <a class="nav-link" href="tasainflacion">
                                     <i class="fas fa-calculator"></i>
                                     <span class="nav-link-text">Tasa de inflación</span>
                                 </a>

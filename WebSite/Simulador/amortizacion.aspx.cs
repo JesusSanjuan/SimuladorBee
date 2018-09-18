@@ -129,37 +129,5 @@ public partial class Simulador_Default : System.Web.UI.Page
 
     }
 
-    [WebMethod]
-    public static object get_data_amort(string idproyecto, string periodSelect)
-    {
-
-        try
-        {
-            //Realizamos la consula
-            var db = new Entidades();
-            var query = db.Amortizacion_pro.Where(Amort => Amort.ID_Proyecto == idproyecto && Amort.ID_Periodo.StartsWith(periodSelect));
-
-            List<string> result_query = new List<string>();
-
-            foreach (var Result in query)
-            {
-                result_query.Add(Result.ID_Amortizacion_pro);
-                result_query.Add(Result.ID_Periodo);
-                result_query.Add(Result.Amortizacion);
-
-            }
-
-            var json = JsonConvert.SerializeObject(result_query);
-            return json;
-        }
-        // Most specific:
-        catch (ArgumentNullException e)
-        {
-            Console.WriteLine("{0} First exception caught.", e);
-            return e;
-        }
-
-
-    }
-
+   
 }

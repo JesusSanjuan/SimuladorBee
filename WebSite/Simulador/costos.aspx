@@ -88,10 +88,6 @@
                                             <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
                                                  Siguiente <i class='fa fa-angle-double-right'></i>
                                             </asp:LinkButton>
-                                            <a href="#" class="btn btn-success actualizar float-right" style="display:none">
-                                                Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
-                                            </a>
-
                                         </div>                    
                             </div>
                    

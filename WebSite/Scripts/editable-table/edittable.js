@@ -104,18 +104,6 @@
 
     });
 
-    //EVENTO PARA ACTUALIZAR DATOS COSTOS
-
-    //evento para avanzar en las pestañas (navs)
-    $("body").on("click", ".actualizar", function () {
-        var selector = $(this).parents('.tab-pane').attr("id");
-        console.log(selector);
-        //$(".modal-content #selector").val(selector);
-        //$('#Continuacion').modal({ show: true });
-
-    });
-
-
     /****************TABLA AMORTIZACION****************/
     $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
     $(".na").html("");

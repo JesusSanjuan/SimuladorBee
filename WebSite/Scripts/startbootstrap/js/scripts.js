@@ -242,56 +242,30 @@
     function cargar_data_amort() {
         if (id_proyecto !== "false") {
             var periodo_select = $("#cnperiodo").val();
-            console.log("cargar_data_amort-->periodo: " + periodo_select);
-            /*$.ajax({
+            $.ajax({
                 type: "POST",
-                url: "costos.aspx/get_data_amort",
+                url: "amortizacion.aspx/get_data_amort",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
                 data: JSON.stringify({ idproyecto: id_proyecto, periodSelect: periodo_select }),
                 success: function (result) {
                     var resultado = JSON.parse(result.d);
-                    var table = $('#myTabContent').find('table').DataTable();
+                    var table = $('#myTabContent2').find('table').DataTable();
                     table.clear().draw();
-                    //Tab Producción
-                    var res = JSON.parse(resultado[1]);
-                    var i, obj, param1, param2;
+                    //Tab amortizacion
+                    var res = JSON.parse(resultado[2]);
+                    var i, obj, param1, param2, param3, param4;
                     for (i = 0; i < res.length - 1; i++) {
                         obj = res[i];
                         param1 = obj["Concepto"];
                         param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable", param1, param2);
-                    }
-                    //Tab Ventas
-                    var res2 = JSON.parse(resultado[2]);
-                    for (i = 0; i < res2.length - 1; i++) {
-                        obj = res2[i];
-                        param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable2", param1, param2);
-                    }
-                    //Tab Admon
-                    var res3 = JSON.parse(resultado[3]);
-                    for (i = 0; i < res3.length - 1; i++) {
-                        obj = res3[i];
-                        param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable3", param1, param2);
-                    }
-                    //Tab Admon
-                    var res4 = JSON.parse(resultado[4]);
-                    for (i = 0; i < res4.length - 1; i++) {
-                        obj = res4[i];
-                        param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable4", param1, param2);
-                    }
+                        param3 = obj["%"];
+                        param4 = obj["Total"];
 
-
-                    $('#myTab li a').removeClass('disabled');
-                    $('#myTab li:first a').tab('show');
-                    $("#myTab li:first a").addClass('active');
+                        cargar_datatable_amort(param1, param2, param3, param4);
+                    }
+                    
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -301,8 +275,34 @@
                 //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);
-            });*/
+            });
         }
+    }
+
+    function cargar_datatable_amort (camp1, camp2, camp3, camp4) {
+        var t = $('#amortTable').DataTable();
+        t.row.add([
+            camp1,
+            camp2,
+            camp3,
+            camp4,
+            '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
+        ]).draw(false);
+        t.order([1, 'desc']).draw();
+        //aplicamos lasa propiedades editable de las celdas
+        $("#amortTable").find('td:last').prev().prev().prev().prev().addClass('previous');
+        $("#amortTable").find('td').eq(0).addClass('previous');
+        $("#amortTable").find('td:last').prev().prev().prev().addClass('costo');
+        $("#amortTable").find('td').eq(1).addClass('costo');
+        $("#amortTable").find('td:last').prev().prev().addClass('porct');
+        $("#amortTable").find('td').eq(2).addClass('porct');
+        $("#amortTable").find('td:last').attr("data-editable", "false");
+        $("#amortTable").find('td').eq(3).attr("data-editable", "false");
+        $("#amortTable").find('td:last').prev().attr("data-editable", "false");
+        $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
+        $(".na").html("");
+    
+
     }
      /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
@@ -348,6 +348,8 @@
                             options.push(option);
                         }
                         complete = true;
+                        $(".continuar").hide();
+                        $(".actualizar").show();
                         $('#cnperiod_c').html(options);
                         $('#cnperiod_c').selectpicker('refresh');
                         $('#cnperiod_c.selectpicker').change();

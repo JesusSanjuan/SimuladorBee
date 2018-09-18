@@ -13,7 +13,7 @@ public partial class User_Index : System.Web.UI.Page
     protected void Guardar_ProyectoBtn_Click(Object sender, EventArgs e)
     {
         string nombre_proyecto = Nombre_Proyecto.Text;
-        string id_periodo      = nperiodo.Value.Substring(0, 1) + lapso.Value.ToString().Substring(0, 1);//Para crear el idPeriodo
+        string id_periodo      = nperiodo.Text.Substring(0, 1) + lapso.Value.ToString().Substring(0, 1);//Para crear el idPeriodo
         string id_user         = User.Identity.GetUserId();/*para obtener el id de usuario utilizando Microsoft.AspNet.Identity */
         string id_proyect      = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
 

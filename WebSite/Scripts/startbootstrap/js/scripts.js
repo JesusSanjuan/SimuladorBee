@@ -28,9 +28,9 @@
     });
 
 
-    $("#MainContent_nperiodo").val("1");
+    //$("#MainContent_nperiodo").val("1");
     /**Inicialización rangeslider.js**/
-    $('input[type="range"]').rangeslider({
+    /*$('input[type="range"]').rangeslider({
         polyfill: false,
         onInit: function () {
             this.output = $('<div class="range-output" />').insertAfter(this.$range).html(this.$element.val());
@@ -39,7 +39,7 @@
             this.output.html(value);
             $("#MainContent_nperiodo").val(value);
         }
-    });
+    });*/
 
     /**Inicialización selectpicker.js**/
     $('.selectpicker').selectpicker

@@ -102,9 +102,9 @@
                     </a>
                   </div>
                 </div>
-      
+      -->
       </div>
-    -->
+    
       
       <!-- Example DataTables -->
       <div class="card mb-3" data-anijs="if: load, on: window, do: fadeInUp animated, before: scrollReveal">

@@ -16,7 +16,7 @@
                                     <div class="col-md-4">
                                         <h2 align="justify">¿Qué es un proyecto?</h2>
                                         <p align="justify">
-                                            Un proyecto es la búsqueda de una solución inteligente al planteamiento de un problema tendente a resolver una necesidad humana.
+                                            Un proyecto es la búsqueda de una solución inteligente, al planteamiento de un problema tendente a resolver una necesidad humana.
                                         </p>
                                         <p>
                                             <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://nodo.ugto.mx/course/unidad-de-aprendizaje-administracion-de-negocios">Aprende mas »</a>
@@ -25,7 +25,7 @@
                                     <div class="col-md-4">
                                         <h2 align="left">¿Por qué es vital una herramienta de evaluación financiera?</h2>
                                         <p align="justify">
-                                            Permite numéricamente y con precisión determinar qué tan rentable es un proyecto en relación con un parámetro ya conocido o de referencia.
+                                            Al contar con una herramienta se nos permite numéricamente y con precisión, determinar qué tan rentable es un proyecto en relación con un parámetro o de referencia ya conocida.
                                         </p>
                                         <p>
                                             <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://localhost:52712/About">Aprende mas »</a>

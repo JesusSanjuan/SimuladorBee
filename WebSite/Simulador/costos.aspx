@@ -40,7 +40,7 @@
                 <a href="#Costos1" id="NCostos1" class="nav-link" role="tab" data-toggle="tab"> Costos de Producción</a>                                   
             </li>
             <li class="nav-item">
-                <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos de Distribución</a>
+                <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos de Ventas</a>
             </li>
             <li class="nav-item">
                 <a href="#Costos3" id="NCostos3"  class="nav-link" role="tab" data-toggle="tab">Costos de Administración</a>

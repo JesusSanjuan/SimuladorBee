@@ -73,13 +73,13 @@
                             <li>
                                 <a class="nav-link" href="Construccion">
                                     <i class="fas fa-calculator"></i>
-                                    Tasa de remdimiento
+                                    Tasa de reNdimiento
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link" href="Construccion">
                                     <i class="fas fa-calculator"></i>
-                                    Tasa de aceptable
+                                    Tasa minima aceptable de retorno (TMAR)
                                 </a>
                             </li>
                             <li>

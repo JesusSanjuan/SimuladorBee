@@ -76,6 +76,19 @@
           <Property Name="Amortizacion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total_FNE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="Gastos_Pro">
+          <Key>
+            <PropertyRef Name="ID_Gastos_pro" />
+          </Key>
+          <Property Name="ID_Gastos_pro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Periodo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Produccion" Type="text" Nullable="false" />
+          <Property Name="Ventas" Type="text" Nullable="false" />
+          <Property Name="Financiamiento" Type="text" Nullable="false" />
+          <Property Name="Admon" Type="text" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Proyecto">
           <Key>
             <PropertyRef Name="ID_Proyecto" />
@@ -122,6 +135,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Gastos_Pro_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Gastos_Pro" Type="Self.Gastos_Pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Gastos_Pro">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Proyecto_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
@@ -141,6 +166,7 @@
           <EntitySet Name="Costos_cat" EntityType="Self.Costos_cat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Costos_Pro" EntityType="Self.Costos_Pro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FNE" EntityType="Self.FNE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gastos_Pro" EntityType="Self.Gastos_Pro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Self.FK_Amortizacion_pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -153,6 +179,10 @@
           <AssociationSet Name="FK_FNE_Proyecto" Association="Self.FK_FNE_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="FNE" EntitySet="FNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gastos_Pro_Proyecto" Association="Self.FK_Gastos_Pro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Gastos_Pro" EntitySet="Gastos_Pro" />
           </AssociationSet>
           <AssociationSet Name="FK_Proyecto_AspNetUsers" Association="Self.FK_Proyecto_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -170,6 +200,7 @@
           <EntitySet Name="Costos_cat" EntityType="Model.Costos_cat" />
           <EntitySet Name="Costos_Pro" EntityType="Model.Costos_Pro" />
           <EntitySet Name="FNE" EntityType="Model.FNE" />
+          <EntitySet Name="Gastos_Pro" EntityType="Model.Gastos_Pro" />
           <EntitySet Name="Proyecto" EntityType="Model.Proyecto" />
           <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Model.FK_Amortizacion_pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -186,6 +217,10 @@
           <AssociationSet Name="FK_FNE_Proyecto" Association="Model.FK_FNE_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="FNE" EntitySet="FNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gastos_Pro_Proyecto" Association="Model.FK_Gastos_Pro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Gastos_Pro" EntitySet="Gastos_Pro" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Amortizacion_cat">
@@ -263,6 +298,20 @@
           <Property Name="Total_FNE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Proyecto" Relationship="Model.FK_FNE_Proyecto" FromRole="FNE" ToRole="Proyecto" />
         </EntityType>
+        <EntityType Name="Gastos_Pro">
+          <Key>
+            <PropertyRef Name="ID_Gastos_pro" />
+          </Key>
+          <Property Name="ID_Gastos_pro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Produccion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ventas" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Financiamiento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Admon" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Gastos_Pro" ToRole="Proyecto" />
+        </EntityType>
         <EntityType Name="Proyecto">
           <Key>
             <PropertyRef Name="ID_Proyecto" />
@@ -276,6 +325,7 @@
           <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Proyecto_AspNetUsers" FromRole="Proyecto" ToRole="AspNetUsers" />
           <NavigationProperty Name="Costos_Pro" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Proyecto" ToRole="Costos_Pro" />
           <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
+          <NavigationProperty Name="Gastos_Pro" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Proyecto" ToRole="Gastos_Pro" />
         </EntityType>
         <Association Name="FK_Amortizacion_pro_Proyecto">
           <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
@@ -321,6 +371,18 @@
               <PropertyRef Name="ID_Proyecto" />
             </Principal>
             <Dependent Role="FNE">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gastos_Pro_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Gastos_Pro" Role="Gastos_Pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Gastos_Pro">
               <PropertyRef Name="ID_Proyecto" />
             </Dependent>
           </ReferentialConstraint>
@@ -405,6 +467,20 @@
                 <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
                 <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
                 <ScalarProperty Name="ID_FNE" ColumnName="ID_FNE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gastos_Pro">
+            <EntityTypeMapping TypeName="Model.Gastos_Pro">
+              <MappingFragment StoreEntitySet="Gastos_Pro">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Admon" ColumnName="Admon" />
+                <ScalarProperty Name="Financiamiento" ColumnName="Financiamiento" />
+                <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+                <ScalarProperty Name="Produccion" ColumnName="Produccion" />
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Gastos_pro" ColumnName="ID_Gastos_pro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

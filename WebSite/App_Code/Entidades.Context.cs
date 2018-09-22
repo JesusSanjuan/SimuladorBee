@@ -29,5 +29,6 @@ public partial class Entidades : DbContext
     public virtual DbSet<Costos_cat> Costos_cat { get; set; }
     public virtual DbSet<Costos_Pro> Costos_Pro { get; set; }
     public virtual DbSet<FNE> FNE { get; set; }
+    public virtual DbSet<Gastos_Pro> Gastos_Pro { get; set; }
     public virtual DbSet<Proyecto> Proyecto { get; set; }
 }

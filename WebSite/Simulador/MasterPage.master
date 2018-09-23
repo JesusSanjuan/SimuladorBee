@@ -173,7 +173,7 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="cb4"> 
                             <li>
-                                <a class="nav-link" href="costos">
+                                <a class="nav-link" href="../Account/Manage.aspx">
                                    <i class="fas fa-users-cog"></i>
                                     <span class="nav-link-text">Ajustes de cuenta</span>
                                 </a>

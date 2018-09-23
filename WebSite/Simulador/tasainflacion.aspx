@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="tasainflacion.aspx.cs" Inherits="Simulador_tasainflacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
     <div >
@@ -22,7 +22,7 @@
                   <div class="card align-middle" style="border-style: none;">  
                       <div class="card-header">
                             <h1><i class="fas fa-calculator"></i> Calculadora de inflacion</h1>
-                           <h6> La calculadora de inflacion le permite conocer cual ha sido la inflacion en el preiodo que usted defina. </h6>
+                           <h6> La calculadora de inflacion le permite conocer cual ha sido la inflacion en el periodo que usted defina. </h6>
                         A continuacion elija la calculadora que desea usar:
          
                       </div>
@@ -81,80 +81,157 @@
                                 <div role="tabpanel" class="tab-pane fade" id="R2">
                                         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
                                             <div class="preborder">
-                                                    <div class="card-header" >
-                                                        <center>  <h5> Calculo de inflacion</h5>  </center> 
+                                                    <div class="card-header text-info" >
+                                                        <center>  <h4> Calculo de inflacion</h4>  </center> 
 
                                                     </div>
-                                                    <div class="card-body text-info">
-                                                              <div class="row" style="padding-top:10px;" >
-                                                                   <div class="col" style="text-align: center;"> <h4>Indice nacional del precio al consumidor </h4></div> 
-                                                               </div>
-                                                               <div class="row" style="padding-top:10px;">     
-                                                                     <div class="col" style="text-align: center;"><h5> Indice General </h5></div> 
-                                                               </div>
-                                                               <div class="row" style="padding-top:10px;">
-                                                                  <div class="col-6" style="text-align: center;"><h6>Período: Ene 1969 - Jul 2018<h6></div>
-                                                                  <div class="col-6" style="text-align: center;"> <h6>Índice base segunda quincena de diciembre 2010 = 100 <h6></div>
-                                                               </div>  
-                                                               <div class="row" style="padding-top:10px;">
-                                                                    <div class="col" style="text-align: center;"> <h5> Inflación en un período determinado</h5> </div>
-                                                               </div>
-                                                               <div class="row"  style="padding-top:10px;">
-                                                                  <div class="col" style="text-align: center;">Seleccione el período de interés y oprima el botón de calcular. </div> 
-                                                               </div>
-                                                               <div class="row" style="padding-top:10px;">
-                                                                   <div class="col-2" style="text-align: center;"></div>
-                                                                   <div class="col" style="text-align: center;"> DE</div>
-                                                                   <div class="col-.8" style="text-align: center;"></div>                                                                   
-                                                                   <div class="col" style="text-align: center;"> A </div>
-                                                                   <div class="col-2" style="text-align: center;"></div>
-                                                              </div>
+                                                    <div class="card-body " style="padding: 0px 15px !important;">
+                                                                              <div class="row" style="padding-top:10px;" >
+                                                                                   <div class="col" style="text-align: center;"> <h4>Indice nacional del precio al consumidor </h4></div> 
+                                                                               </div>
+                                                                               <div class="row" style="padding-top:10px;">     
+                                                                                     <div class="col" style="text-align: center;"><h5> Indice General </h5></div> 
+                                                                               </div>
+                                                                               <div class="row" style="padding-top:10px;">
+                                                                                  <div class="col-6" style="text-align: center;"><h6>Período: Enero 1969 - Julio 2018<h6></div>
+                                                                                  <div class="col-6" style="text-align: center;"> <h6>Índice base segunda quincena de diciembre 2010 = 100 <h6></div>
+                                                                               </div>  
+                                                                               <div class="row" style="padding-top:10px;">
+                                                                                    <div class="col" style="text-align: center;"> <h5> Inflación en un período determinado</h5> </div>
+                                                                               </div>
+                                                                               <div class="row"  style="padding-top:10px;">
+                                                                                  <div class="col" style="text-align: center;">Seleccione el período de interés y oprima el botón de calcular. </div> 
+                                                                               </div>
 
-                                                               <div class="row" style="padding-top:10px;">
-                                                                   <div class="col-2" style="text-align: center;"></div>
-                                                                   <div class="col" style="text-align: center;"> 
-                                                                       Mes:&nbsp; 
-                                                                       <select  id="select"  runat="server"  required="required">
-                                                                                      <option value="" selected>Seleccione</option>
-                                                                                      <option value="1" >Mes</option>
-                                                                                      <option value="2" >Año</option>
-                                                                       </select>
-                                                                       /&nbsp;Año:&nbsp;
-                                                                       <select  id="select1"  runat="server"  required="required">
-                                                                                      <option value="" selected>Seleccione</option>
-                                                                                      <option value="1" >Mes</option>
-                                                                                      <option value="2" >Año</option>
-                                                                       </select>
-                                                                   </div>
-                                                                   
-                                                                   <div class="col-.8" style="text-align: center;"></div>
-                                                                   <div class="col" style="text-align: center;"> 
-                                                                       Mes:&nbsp;
-                                                                        <select  id="select2"  runat="server"  required="required">
-                                                                                      <option value="" selected>Seleccione</option>
-                                                                                      <option value="1" >Mes</option>
-                                                                                      <option value="2" >Año</option>
-                                                                       </select>
-                                                                       
-                                                                       /&nbsp;Año:&nbsp;
-                                                                       <select  id="select3"  runat="server"  required="required">
-                                                                                      <option value="" selected>Seleccione</option>
-                                                                                      <option value="1" >Mes</option>
-                                                                                      <option value="2" >Año</option>
-                                                                       </select>
-                                                                   </div>
-                                                                   <div class="col-2" style="text-align: center;"></div>
-                                                               </div>
-                                                               <div class="row" style="padding-top:10px;">
-                                                                   <div class="col-2" style="text-align: center;"></div>
-                                                                   <div class="col" style="text-align: center;"> </div>
-                                                                   <div class="col-.8" style="text-align: center;">
-                                                                        <asp:Button id="Calculartasainfla" 	CssClass="btn btn-primary" Text="Calcular"  runat="server"/>
-                                                                   </div>                                                                   
-                                                                   <div class="col" style="text-align: center;"> </div>
-                                                                   <div class="col-2" style="text-align: center;"></div>
-                                                              </div>
+                                                                               <div class="row" style="padding-top:10px;">
+                                                                                        <div class="col-3" style="padding-bottom:10px;"></div>
+                                                                                        <div class="col-6 preborder" style="padding-bottom:10px;" > 
+                                                                                                <div class="row" style="text-align: center; " >
+                                                                                                    <div  class="col"  style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25);" >
+                                                                                                       <strong>DE</strong>    
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row" style="text-align: center;  ">
+                                                                                                        <div  class="col" style="padding-bottom:10px; padding-top:10px;" >
+                                                                                                                    Mes:&nbsp; 
+                                                                                                                <select  id="select"  runat="server"  required="required">
+                                                                                                                                <option value="" selected>Seleccione</option>
+                                                                                                                                <option value="1" >Mes</option>
+                                                                                                                                <option value="2" >Año</option>
+                                                                                                                </select>
+                                                                                                        </div>
+                                                                                                        <div class="col" style="padding-bottom:10px;  padding-top:10px;">
+                                                                                                                &nbsp;Año:&nbsp;
+                                                                                                                <select  id="select1"  runat="server"  required="required">
+                                                                                                                            <option value="" selected>Seleccione</option>
+                                                                                                                            <option value="1" >Mes</option>
+                                                                                                                            <option value="2" >Año</option>
+                                                                                                                </select>
+                                                                                                        </div>
+                                                                                                </div>
+                                                                                        </div>    
+                                                                                        <div class="col-3" style="padding-bottom:10px;"></div>
+                                                                                   </div>
+                                                                                   <div class="row" style="padding-top:10px;padding-bottom:25px;"> 
+                                                                                       <div class="col-3" style="padding-bottom:10px;"></div>
+                                                                                       <div class="col-6 preborder" style="padding-bottom:10px;">
+                                                                                           <div class="row " style="text-align: center;">
+                                                                                                <div  class="col" style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25);">
+                                                                                                    <strong>A</strong> 
+                                                                                                </div>
+                                                                                            </div>
+                                                                                           <div class="row " style="text-align: center;">
+                                                                                                   <div class="col" style="padding-bottom:10px; padding-top:10px;">
+                                                                                                                Mes:&nbsp;
+                                                                                                            <select  id="select2"  runat="server"  required="required">
+                                                                                                                          <option value="" selected>Seleccione</option>
+                                                                                                                          <option value="1" >Mes</option>
+                                                                                                                          <option value="2" >Año</option>
+                                                                                                           </select>
+                                                                                                   </div>
+                                                                                                   <div  class="col" style="padding-bottom:10px;  padding-top:10px;">
+                                                                                                       &nbsp;Año:&nbsp;
+                                                                                                       <select  id="select3"  runat="server"  required="required">
+                                                                                                                      <option value="" selected>Seleccione</option>
+                                                                                                                      <option value="1" >Mes</option>
+                                                                                                                      <option value="2" >Año</option>
+                                                                                                       </select>
+                                                                                                   </div>
+                                                                                            </div>
+                                                                                       </div>
+                                                                                       <div class="col-3" style="padding-bottom:10px;"></div>
+                                                                                   </div>
                                                                 
+                                                              
+                                                                               <div class="row" style="padding-top:10px;padding-bottom:10px;">
+                                                                                   <div class="col-2" style="text-align: center;"></div>
+                                                                                   <div class="col" style="text-align: center;"> </div>
+                                                                                   <div class="col-.8" style="text-align: center;">
+                                                                                        <asp:Button id="Calculartasainfla" 	CssClass="btn btn-primary"  onclick="Btn_ClickInflacion" OnClientClick="postback false;"  Text="Calcular"  runat="server"/>
+                                                                                   </div>                                                                   
+                                                                                   <div class="col" style="text-align: center;"> </div>
+                                                                                   <div class="col-2" style="text-align: center;"></div>
+                                                                              </div>
+                                                                                <div id="Resultados" style="display:none" runat="server">
+                                                                                         <div class="card-header row preborder text-info " style="padding-top:25px; border-radius: 0px;" >
+                                                                                               <div class="col" style="text-align: center;"> <h4>Resultados </h4></div> 
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col fondoresultados" style="text-align: center;">
+                                                                                                <div class="row">
+                                                                                                    <div class="col">
+                                                                                                            <h5>Inflacion</h5>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row">
+                                                                                                    <div class="col">
+                                                                                                            <h6>Periodo:&nbsp;<strong>2017 a Julio 2018 </strong> </h6>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                    <div class="col" style="text-align: center;"> </div>
+                                                                                                    <div class="col-.8 preborderinfla " style="text-align: center;">0.24%</div>                                                                   
+                                                                                                    <div class="col" style="text-align: center;"> </div>
+                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col fondoresultados" style="text-align: center;">
+                                                                                                 <div class="row">
+                                                                                                    <div class="col">
+                                                                                                            <h5>Tasa Promedio Mensual de Inflación</h5>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row">
+                                                                                                    <div class="col">
+                                                                                                            <h6>Periodo:&nbsp;<strong>2017 a Julio 2018 </strong> </h6>
+                                                                                                 </div>
+                                                                                                </div>
+                                                                                                 <div class="row">
+                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                    <div class="col" style="text-align: center;"> </div>
+                                                                                                    <div class="col-.8 preborderinfla " style="text-align: center;">1.66%</div>                                                                   
+                                                                                                    <div class="col" style="text-align: center;"> </div>
+                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                       <div class="row">
+                                                                                           <div class="col fondoresultados" style="text-align: center;">
+                                                                                                 <div class="row">
+                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                    <div class="col" style="text-align: center;"> </div>
+                                                                                                    <div class="col-.8" style="text-align: center;">
+                                                                                                        <asp:Button id="Guardarinflacion" 	CssClass="btn btn-primary" Text="Guardar"  runat="server"/>
+                                                                                                    </div>                                                                   
+                                                                                                    <div class="col" style="text-align: center;"> </div>
+                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                   </div>
+                                                                                               </div>
+                                                                                       </div>
+                                                                                </div>
                                                         </div>
                                               </div>
                                         </div>

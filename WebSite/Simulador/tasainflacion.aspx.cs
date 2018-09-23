@@ -11,4 +11,9 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     {
 
     }
+
+    protected void Btn_ClickInflacion(Object sender, EventArgs e)
+    {
+        Resultados.Visible = true;
+    }
 }

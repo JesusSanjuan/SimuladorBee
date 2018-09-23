@@ -103,7 +103,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="Construccion">
+                                <a class="nav-link" href="gastos">
                                     <i class="fas fa-funnel-dollar"></i>
                                     <span class="nav-link-text">Gastos</span>
                                 </a>

@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
 
-    $('#myTabContent, #myTabContent2').find('table').DataTable({
+    $('#myTabContent, #myTabContent2, #myTabContent3').find('table').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         }
     });
-    /****************TABLAS COSTOS****************/
+    /****************TABLAS COSTOS Y GASTOS****************/
     // Automatically add a first row of data (Genérico para todas las tablas que ocupo)
     $('.add_row').on('click', function () {
         var selector = $(this).parents('.tab-pane').attr("id");
@@ -23,8 +23,8 @@
         $(".na").html("");
 
     });
-    // función que ordena descendentemente los datos(costos) ingresados automaicamente
-    $("body").on("change", "#myTabContent table td", function (evt, newValue) {
+    // función que ordena descendentemente los datos(costos, gastos) ingresados automaicamente
+    $("body").on("change", "#myTabContent table td", "#myTabContent3 table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
         t.cell(this).data(newValue).draw();
@@ -33,7 +33,9 @@
 
     /****** desactivacion de pestañas **/
     $('#myTab li a').addClass('disabled');
+    $('#myTab_g li a').addClass('disabled');
 
+    $("#costo_update").hide();
     //evento para avanzar en las pestañas (navs)
     $("body").on("click", ".continuar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
@@ -44,14 +46,20 @@
 
     //funcion para GUARDAR DATOS de COSTOS
     $("body").on("click", "#costo_continuar", function () {
+        guardar_datos("cnperiod_c", "myTab", "costos.aspx");
+    });
+    $("body").on("click", "#gasto_continuar", function () {
+        guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx");
+    });
+    function guardar_datos(select, Tab, controller){
         /*OBTENIENDO DATOS DE LAS FUNCIONES DE Table To JSON*/
         var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
 
-        var nperiodo = $('#cnperiod_c').val();
+        var nperiodo = $('#'+select+'').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#' + selector).find('table').find('.total').text();
-        var nav = $('#myTab li a.active').attr('id');
+        var nav = $('#'+Tab+' li a.active').attr('id');
         console.log('total-->' + tot);
         //Validamos que no existan celdas vacias
         var table = $('#' + selector).find('table').DataTable();
@@ -62,57 +70,58 @@
             }
         });
 
-        if ($('#cnperiod_c').val() > 0) {//verifica  que haya un valor aceptable en el select
-            if (selector !== "tab1") {
-                if (tot > 0) {//verifica  que haya un valor aceptable en el total
-                    $.ajax({
-                        type: "POST",
-                        url: "costos.aspx/sendTable",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
-                        success: function (result) {
-                            console.log(result);
-                            location.reload();
-                        },
-                        error: function (result) {
-                            alert(result.responseText);
-                        }
+        if ($('#' + select +'').val() > 0) {//verifica  que haya un valor aceptable en el select
+            if (tot > 0) {//verifica  que haya un valor aceptable en el total
+                $.ajax({
+                    type: "POST",
+                    url: controller+"/sendTable",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
+                    success: function (result) {
+                        console.log(result);
+                        location.reload();
+                    },
+                    error: function (result) {
+                        alert(result.responseText);
+                    }
 
-                    }).done(function (data) {
-                        //console.log(data);
-                    }).fail(function (data) {
-                        console.log("Error: " + data);
-                    });
-                }
-                else {
-                    $('#success').find(".alert").html("Ingrese por lo menos un concepto ");
-                    $('#success').find(".alert").removeClass("alert-primary").addClass("alert-danger");
-                    $('#success').modal({ show: true });
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
+            }
+            else {
+                $('#success').find(".alert").html("Ingrese por lo menos un concepto ");
+                $('#success').find(".alert").removeClass("alert-primary").addClass("alert-danger");
+                $('#success').modal({ show: true });
 
-                }
             }
         }
         else {
 
-            $('#success').find(".alert").html("Todos los costos de cada Período han sido Guardados");
+            $('#success').find(".alert").html("Todos los datos de cada Período han sido Guardados");
             $('#success').modal({ show: true });
 
         }
-        
-
-    });
+    }
 
     //EVENTO PARA ACTUALIZAR DATOS COSTOS
 
-    //evento para avanzar en las pestañas (navs)
     $("body").on("click", ".actualizar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         console.log(selector);
-        //$(".modal-content #selector").val(selector);
-        //$('#Continuacion').modal({ show: true });
+        $(".modal-content #selector").val(selector);
 
+        $("#Continuacion.modal-text-body ").html("¿Desea actualizar los Datos?");
+        $('#Continuacion').modal({ show: true });
+
+    });
+
+    $("body").on("click", "#costo_update", function () {
+        
     });
 
 

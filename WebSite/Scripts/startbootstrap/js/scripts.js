@@ -307,20 +307,22 @@
      /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
     var complete = false;
+    var controller = "costos.aspx";
     $('#cnperiod_c.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         if (complete == false)
-            cargar_cont_costos();
+            cargar_cont_c_g(controller, "cnperiod_c", "myTab");
         else
-            cargar_data_costo();
+            cargar_data_c_g("", controller, "cnperiod_c", "myTab");
     });
 
     $('#cnperiod_c.selectpicker').change();
 
-    function cargar_cont_costos() {
+    //Funciones genericas para costos y gastos
+    function cargar_cont_c_g(controller, select, Tab) {
         if (id_proyecto !== "false") {
             $.ajax({
                 type: "POST",
-                url: "costos.aspx/getPeriodo",
+                url: controller + "/getPeriodo",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
@@ -350,9 +352,9 @@
                         complete = true;
                         $(".continuar").hide();
                         $(".actualizar").show();
-                        $('#cnperiod_c').html(options);
-                        $('#cnperiod_c').selectpicker('refresh');
-                        $('#cnperiod_c.selectpicker').change();
+                        $('#'+select+'').html(options);
+                        $('#' + select + '').selectpicker('refresh');
+                        $('#' + select + '').change();
                     }
                     else {
                        
@@ -380,23 +382,23 @@
                             options.push(option);
                         }
                         if (resultado[1].length > 0) {
-                            $('#myTab li a:eq(' + resultado[1][resultado[1].length - 1] + ')').removeClass('disabled');
-                            $('#myTab li a:eq(' + resultado[1][resultado[1].length - 1] + ')').tab('show');
-                            $('#myTab li a:eq(' + resultado[1][resultado[1].length - 1] + ')').addClass('active');
+                            $('#'+Tab+' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').removeClass('disabled');
+                            $('#'+ Tab +' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').tab('show');
+                            $('#'+ Tab +' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').addClass('active');
                         }
                         
                         else {
-                            $('#myTab li a:first').removeClass('disabled');
-                            $('#myTab li a:first').tab('show');
-                            $('#myTab li a:first').addClass('active');
+                            $('#' + Tab +' li a:first').removeClass('disabled');
+                            $('#' + Tab +' li a:first').tab('show');
+                            $('#' + Tab +' li a:first').addClass('active');
                         }
-                        $('#cnperiod_c').html(options);
-                        $('#cnperiod_c').selectpicker('refresh');
+                        $('#'+ select +'').html(options);
+                        $('#'+ select +'').selectpicker('refresh');
                     }
                     //cargamos y refrescamos el select
                     
                     //llaamos una funcion para crear la session de id_costo
-                    crear_session_costo();
+                    crear_session_costo_gasto(select, controller);
 
                 },
                 error: function (result) {
@@ -412,12 +414,12 @@
 
     }
 
-    function crear_session_costo() {
+    function crear_session_costo_gasto(select, controller) {
 
-        var periodo_select = $("#cnperiod_c").val();
+        var periodo_select = $('#' + select + '').val();
         $.ajax({
             type: "POST",
-            url: "costos.aspx/crear_session_costo",
+            url: controller+"/crear_session_costo",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
@@ -435,58 +437,68 @@
         });
     }    
 
-    function cargar_data_costo() {
+    function cargar_data_c_g(ncontent, controller, select, Tab) {
         if (id_proyecto !== "false") {
-            var periodo_select = $("#cnperiod_c").val();
+            var periodo_select = $("#"+select+"").val();
             $.ajax({
                 type: "POST",
-                url: "costos.aspx/get_data_costos",
+                url: controller +"/get_data",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
                 data: JSON.stringify({ idproyecto: id_proyecto, periodSelect: periodo_select }),
                 success: function (result) {
                     var resultado = JSON.parse(result.d);
-                    var table = $('#myTabContent').find('table').DataTable();
+                    var table = $('#myTabContent' + ncontent+'').find('table').DataTable();
                     table.clear().draw();
+                    //variables dependiendo del content
+                    var campo, prefix = "";
+                    if (ncontent == "3") {
+                        campo  = "$ Gasto";
+                        prefix = "gast";
+                    }
+                    else {
+                        campo  = "$ Costo";
+                        prefix = "cost";
+                    }
                     //Tab Producción
                     var res = JSON.parse(resultado[1]);
                     var i, obj, param1, param2;
                     for (i = 0; i < res.length - 1; i++) {
                         obj = res[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable", param1, param2);
+                        param2 = obj[campo];
+                        cargar_datatable_costos(prefix+"Table", param1, param2);
                     }
                     //Tab Ventas
                     var res2 = JSON.parse(resultado[2]);
                     for (i = 0; i < res2.length - 1; i++) {
                         obj = res2[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable2", param1, param2);
+                        param2 = obj[campo];
+                        cargar_datatable_costos(prefix+"Table2", param1, param2);
                     }
                     //Tab Admon
                     var res3 = JSON.parse(resultado[3]);
                     for (i = 0; i < res3.length - 1; i++) {
                         obj = res3[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable3", param1, param2);
+                        param2 = obj[campo];
+                        cargar_datatable_costos(prefix+"Table3", param1, param2);
                     }
                     //Tab Admon
                     var res4 = JSON.parse(resultado[4]);
                     for (i = 0; i < res4.length - 1; i++) {
                         obj = res4[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        cargar_datatable_costos("costTable4", param1, param2);
+                        param2 = obj[campo];
+                        cargar_datatable_costos(prefix+"Table4", param1, param2);
                     }
 
 
-                    $('#myTab li a').removeClass('disabled');
-                    $('#myTab li:first a').tab('show');
-                    $("#myTab li:first a").addClass('active');
+                    $('#'+Tab+' li a').removeClass('disabled');
+                    $('#'+Tab+' li:first a').tab('show');
+                    $('#'+Tab +' li:first a').addClass('active');
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -517,6 +529,18 @@
     }
     /****************************************/
     
-    
+    /*******SCRIPTS PARA CONTENT Gastos***************/
+    var controller2 = "gastos.aspx";
+    var completeG = false;
+    $('#cnperiod_g.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        if (completeG == false)
+            cargar_cont_c_g(controller2, "cnperiod_g", "myTab_g");
+        else
+            cargar_data_c_g("3", controller2, "cnperiod_g", "myTab_g");
+    });
+
+    $('#cnperiod_g.selectpicker').change();
+
+    /****************************************/
 
 });

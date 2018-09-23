@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="gastos.aspx.cs" Inherits="Simulador_costos" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
     <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
@@ -9,13 +9,13 @@
             <li class="breadcrumb-item">  
                 <a href="Index.aspx">Inicio</a>
             </li>
-            <li class="breadcrumb-item active">Costos</li>
+            <li class="breadcrumb-item active">Gastos</li>
         </ol>
     </nav> 
     <div style="padding-bottom:1rem;">
           <div class="card align-middle" >  
         <div class="card-header">
-            <h1><i class="fa fa-money"></i>  Evaluación de costos</h1>
+            <h1><i class="fa fa-money"></i>  Evaluación de Gastos</h1>
 
         </div>
         <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
@@ -29,42 +29,42 @@
             </div>  
             <div class="form-group text-center">
                 <label for="selecciona" class="col-form-label"><strong id="lapso">Selecciona el período: </strong></label>
-                <select class="selectpicker show-tick" id="cnperiod_c">
+                <select class="selectpicker show-tick" id="cnperiod_g">
                 </select>
             </div>
             <input type="hidden" id="lapse" />
         </div>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs" id="myTab_g" role="tablist">
             <li class="nav-item">
                 <!--<a class="nav-link active" id="home-tab" data-toggle="tab" href="#Costos1" role="tab" aria-controls="home" aria-selected="true">Home</a>-->
-                <a href="#Costos1" id="NCostos1" class="nav-link" role="tab" data-toggle="tab"> Costos de Producción</a>                                   
+                <a href="#Gastos1" id="NGastos1" class="nav-link" role="tab" data-toggle="tab"> Gastos de Producción</a>                                   
             </li>
             <li class="nav-item">
-                <a href="#Costos2" id="NCostos2" class="nav-link"  role="tab" data-toggle="tab">Costos de Ventas</a>
+                <a href="#Gastos2" id="NGastos2" class="nav-link"  role="tab" data-toggle="tab">Gastos de Ventas</a>
             </li>
             <li class="nav-item">
-                <a href="#Costos3" id="NCostos3"  class="nav-link" role="tab" data-toggle="tab">Costos de Administración</a>
+                <a href="#Gastos3" id="NGastos3"  class="nav-link" role="tab" data-toggle="tab">Gastos de Administración</a>
             </li>
             <li class="nav-item">
-                <a href="#Costos4" id="NCostos4"  class="nav-link" role="tab" data-toggle="tab">Costos de Financiamiento </a>
+                <a href="#Gastos4" id="NGastos4"  class="nav-link" role="tab" data-toggle="tab">Gastos de Financiamiento </a>
             </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="Costos1" role="tabpanel" aria-labelledby="producción">
+        <div class="tab-content" id="myTabContent3">
+          <div class="tab-pane fade show active" id="Gastos1" role="tabpanel" aria-labelledby="producción">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
                   <div class="preborder">    
                             <div class="card-header">
-                                <h5><i class="fa fa-table"></i>  Costos de Producción</h5>                          
+                                <h5><i class="fa fa-table"></i>  Gastos de Producción</h5>                          
                                         <p align="justify">
-                                                        Son los costos que se generan en el proceso de transformar la materia prima en productos terminados.
-                                                    </p>    
+                                            Son los gastos que ...
+                                        </p>    
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="costTable" >
+                                <table class="table table-striped table-bordered" id="gastTable" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
+                                            <th >$ Gasto</th>
                                             <th ></th>                
                                         </tr>
                                     </thead>
@@ -97,22 +97,22 @@
                    
             </div>
           </div>
-          <div class="tab-pane fade" id="Costos2" role="tabpanel" aria-labelledby="Ventas">
+          <div class="tab-pane fade" id="Gastos2" role="tabpanel" aria-labelledby="Ventas">
               <div class="preborder">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
                     <div class="preborder">    
                             <div class="card-header">
-                                <h5><i class="fa fa-table"></i> Costos de Ventas</h5>
+                                <h5><i class="fa fa-table"></i> Gastos de Ventas</h5>
                             <p align="justify">
-                                                    Son determinados por el departamento de ventas, también llamado de mercadotecnia.
-                                                </p>  
+                                Son determinados por ....
+                            </p>  
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="costTable2"  >
+                                <table class="table table-striped table-bordered" id="gastTable2"  >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
+                                            <th >$ Gasto</th>
                                             <th ></th>
                 
                                         </tr>
@@ -144,21 +144,21 @@
                 </div>
                   </div>
           </div>
-          <div class="tab-pane fade" id="Costos3" role="tabpanel" aria-labelledby="Administración">
+          <div class="tab-pane fade" id="Gastos3" role="tabpanel" aria-labelledby="Administración">
               <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
                   <div class="preborder">    
                             <div class="card-header">
-                                <h5><i class="fa fa-table"></i> Costos de Administración: </h5>
+                                <h5><i class="fa fa-table"></i> Gastos de Administración: </h5>
                              <p align="justify">
-                                                    Son los costos que provienen de las áreas administrativas en la empresa.
+                                                    Son los gastos que...
                                                 </p> 
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="costTable3" >
+                                <table class="table table-striped table-bordered" id="gastTable3" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
+                                            <th >$ Gasto</th>
                                             <th ></th>
                 
                                         </tr>
@@ -188,21 +188,21 @@
                     </div>                      
                 </div>
           </div>
-          <div class="tab-pane fade" id="Costos4" role="tabpanel" aria-labelledby="financiamiento: ">
+          <div class="tab-pane fade" id="Gastos4" role="tabpanel" aria-labelledby="financiamiento: ">
                <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">       
                   <div class="preborder">    
                             <div class="card-header">
-                                <h5><i class="fa fa-table"></i> Costos de Financiamiento </h5>
+                                <h5><i class="fa fa-table"></i> Gastos de Financiamiento </h5>
                                  <p align="justify">
-                                                    Son los intereses que se deben pagar conforme a los capitales obtenidos en préstamo.
-                                                </p> 
+                                    Son los ...
+                                </p> 
                             </div>
                             <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="costTable4" >
+                                <table class="table table-striped table-bordered" id="gastTable4" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
+                                            <th >$ Gasto</th>
                                             <th ></th>
                 
                                         </tr>
@@ -280,15 +280,12 @@
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <button  id="costo_cancel" type="button" class="btn btn-danger " data-dismiss="modal">Cancelar</button>
-                            <button  id="costo_continuar" type="button" class="btn btn-primary" data-dismiss="modal">Continuar</button>
-                            <button  id="costo_update" type="button" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
+                            <button  id="gasto_continuar" type="button" class="btn btn-primary" data-dismiss="modal">Continuar</button>
                         </div>
                     </div>
                  </div>
             </div> 
 <!-- The Modal -->
-
-    
   
                 
 

@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="tasainflacion.aspx.cs" Inherits="Simulador_tasainflacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
     <div >
@@ -54,26 +53,26 @@
                                                                                 <div class="form-row" >
                                                                                     <div class="col-sm">
                                                                                         <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                                                                                        <div class="input-group mb-2">
+                                                                                        <div class="input-group mb-2">                                                                                            
+                                                                                            <input type="text" class="form-control" id="inflacion" placeholder="Inflación">
                                                                                             <div class="input-group-prepend">
                                                                                                 <div class="input-group-text">%</div>
                                                                                             </div>
-                                                                                            <input type="text" class="form-control" id="inflacion" placeholder="Inflación">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm">
                                                                                         <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                                                                                        <div class="input-group mb-2">
-                                                                                            <div class="input-group-prepend">
+                                                                                        <div class="input-group mb-2">                                                                                           
+                                                                                            <input type="text" class="form-control" id="TPMI" placeholder="Tasa Promedio Mensual">
+                                                                                             <div class="input-group-prepend">
                                                                                                 <div class="input-group-text">%</div>
                                                                                             </div>
-                                                                                            <input type="text" class="form-control" id="TPMI" placeholder="Tasa Promedio Mensual">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                 </div>
                                                                 <div class="embed-responsive embed-responsive-21by9">
-                                                                  <iframe class="embed-responsive-item" style="padding-top:15px;padding-bottom:15px" src="http://www.inegi.org.mx/sistemas/indiceprecios/CalculadoraInflacion.aspx"></iframe>
+                                                                    <iframe width="560" height="315"style="padding-top:15px;padding-bottom:15px" src="http://www.inegi.org.mx/sistemas/indiceprecios/CalculadoraInflacion.aspx" frameborder="0" allowfullscreen></iframe>
                                                                 </div>
                                                        
                                         </div>
@@ -107,7 +106,7 @@
                                                                                         <div class="col-3" style="padding-bottom:10px;"></div>
                                                                                         <div class="col-6 preborder" style="padding-bottom:10px;" > 
                                                                                                 <div class="row" style="text-align: center; " >
-                                                                                                    <div  class="col"  style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25);" >
+                                                                                                    <div  class="col"  style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25); padding-top:10px;padding-bottom:10px;" >
                                                                                                        <strong>DE</strong>    
                                                                                                     </div>
                                                                                                 </div>
@@ -136,7 +135,7 @@
                                                                                        <div class="col-3" style="padding-bottom:10px;"></div>
                                                                                        <div class="col-6 preborder" style="padding-bottom:10px;">
                                                                                            <div class="row " style="text-align: center;">
-                                                                                                <div  class="col" style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25);">
+                                                                                                <div  class="col" style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25); padding-top:10px;padding-bottom:10px;">
                                                                                                     <strong>A</strong> 
                                                                                                 </div>
                                                                                             </div>
@@ -167,12 +166,12 @@
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-.8" style="text-align: center;">
-                                                                                        <asp:Button id="Calculartasainfla" 	CssClass="btn btn-primary"  onclick="Btn_ClickInflacion" OnClientClick="postback false;"  Text="Calcular"  runat="server"/>
+                                                                                        <asp:Button id="Calculartasainfla" 	CssClass="btn btn-primary"  onclick="Btn_ClickInflacion" autopostback="false" Text="Calcular"  runat="server"/>
                                                                                    </div>                                                                   
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                               </div>
-                                                                                <div id="Resultados" style="display:none" runat="server">
+                                                                                <div id="Resultados"  runat="server">
                                                                                          <div class="card-header row preborder text-info " style="padding-top:25px; border-radius: 0px;" >
                                                                                                <div class="col" style="text-align: center;"> <h4>Resultados </h4></div> 
                                                                                         </div>
@@ -185,15 +184,20 @@
                                                                                                 </div>
                                                                                                 <div class="row">
                                                                                                     <div class="col">
-                                                                                                            <h6>Periodo:&nbsp;<strong>2017 a Julio 2018 </strong> </h6>
+                                                                                                            <h6>Periodo:&nbsp;<strong>Diciembre 2017 a Julio 2018 </strong> </h6>
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
-                                                                                                    <div class="col-2" style="text-align: center;"></div>
-                                                                                                    <div class="col" style="text-align: center;"> </div>
-                                                                                                    <div class="col-.8 preborderinfla " style="text-align: center;">0.24%</div>                                                                   
-                                                                                                    <div class="col" style="text-align: center;"> </div>
-                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                    <div class="col-3" style="text-align: center;"> </div>
+                                                                                                    <div class="col preborderinfla " style="text-align: center;">
+                                                                                                           <div class="input-group mb-2">                                                                                                                
+                                                                                                                <input type="text" class="form-control" id="inf1" placeholder="Inflacion">
+                                                                                                               <div class="input-group-prepend">
+                                                                                                                    <div class="input-group-text">%</div>
+                                                                                                                </div>
+                                                                                                            </div> 
+                                                                                                      </div>                                                                   
+                                                                                                    <div class="col-3" style="text-align: center;"> </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -206,28 +210,31 @@
                                                                                                 </div>
                                                                                                 <div class="row">
                                                                                                     <div class="col">
-                                                                                                            <h6>Periodo:&nbsp;<strong>2017 a Julio 2018 </strong> </h6>
+                                                                                                            <h6>Periodo:&nbsp;<strong>Diciembre 2017 a Julio 2018 </strong> </h6>
                                                                                                  </div>
                                                                                                 </div>
                                                                                                  <div class="row">
-                                                                                                    <div class="col-2" style="text-align: center;"></div>
-                                                                                                    <div class="col" style="text-align: center;"> </div>
-                                                                                                    <div class="col-.8 preborderinfla " style="text-align: center;">1.66%</div>                                                                   
-                                                                                                    <div class="col" style="text-align: center;"> </div>
-                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                    <div class="col-3" style="text-align: center;"> </div>
+                                                                                                    <div class="col preborderinfla " style="text-align: center;">
+                                                                                                          <div class="input-group mb-2" style="text-align: center;">                                                                                                                
+                                                                                                              <input type="text" class="form-control" id="TPMI1" placeholder="Tasa Promedio Mensual">
+                                                                                                              <div class="input-group-prepend">
+                                                                                                                    <div class="input-group-text">%</div>
+                                                                                                                </div>
+                                                                                                            </div> 
+                                                                                                    </div>                                                                   
+                                                                                                    <div class="col-3" style="text-align: center;"> </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                        <div class="row">
                                                                                            <div class="col fondoresultados" style="text-align: center;">
                                                                                                  <div class="row">
-                                                                                                    <div class="col-2" style="text-align: center;"></div>
-                                                                                                    <div class="col" style="text-align: center;"> </div>
-                                                                                                    <div class="col-.8" style="text-align: center;">
+                                                                                                    <div class="col-3" style="text-align: center;"></div>
+                                                                                                    <div class="col" style="text-align: center;">
                                                                                                         <asp:Button id="Guardarinflacion" 	CssClass="btn btn-primary" Text="Guardar"  runat="server"/>
-                                                                                                    </div>                                                                   
-                                                                                                    <div class="col" style="text-align: center;"> </div>
-                                                                                                    <div class="col-2" style="text-align: center;"></div>
+                                                                                                    </div>                                                
+                                                                                                    <div class="col-3" style="text-align: center;"></div>
                                                                                                    </div>
                                                                                                </div>
                                                                                        </div>

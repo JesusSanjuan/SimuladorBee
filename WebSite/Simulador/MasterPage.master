@@ -73,7 +73,7 @@
                             <li>
                                 <a class="nav-link" href="Construccion">
                                     <i class="fas fa-calculator"></i>
-                                    Tasa de reNdimiento
+                                    Tasa de rendimiento
                                 </a>
                             </li>
                             <li>
@@ -131,13 +131,15 @@
                                     <i class="fas fa-chart-line"></i>
                                     <span class="nav-link-text">Perdidas</span>
                                 </a>
-                            </li>  
-                            <li>
-                                <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#c1b3">
-                                    <i class="fas fa-file-signature"></i>
-                                    <span class="nav-link-text">Evaluacion Financiera</span>
-                               </a>
-                                <ul class="sidenav-third-level collapse" id="c1b3">
+                            </li>                             
+                        </ul>
+                    </li>    
+                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Configuracion" >
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb3" data-parent="#exampleAccordion" data-anijs=" if: mouseover, do: pulse animated">
+                            <i class="fas fa-file-signature"></i>
+                            <span class="nav-link-text">Evaluacion Financiera</span>
+                        </a>
+                        <ul class="sidenav-third-level collapse" id="cb3">
                                     <li>
                                         <a class="nav-link" href="van">
                                             <i class="fas fa-chart-bar"></i>
@@ -163,15 +165,13 @@
                                         </a>
                                     </li> 
                                 </ul>
-                            </li>
-                        </ul>
-                    </li>                                        
+                    </li>
                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Configuracion" >
-                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb3" data-parent="#exampleAccordion" data-anijs=" if: mouseover, do: pulse animated">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#cb4" data-parent="#exampleAccordion" data-anijs=" if: mouseover, do: pulse animated">
                             <i class="fa fa-fw fa-wrench"></i>
                             <span class="nav-link-text">Configuracion</span>
                         </a>
-                        <ul class="sidenav-second-level collapse" id="cb3"> 
+                        <ul class="sidenav-second-level collapse" id="cb4"> 
                             <li>
                                 <a class="nav-link" href="costos">
                                    <i class="fas fa-users-cog"></i>

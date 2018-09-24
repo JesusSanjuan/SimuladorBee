@@ -419,7 +419,7 @@
         var periodo_select = $('#' + select + '').val();
         $.ajax({
             type: "POST",
-            url: controller+"/crear_session_costo",
+            url: controller+"/crear_session",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
@@ -511,7 +511,7 @@
             });
         }
     }
-
+    //funcion generica para costos y gastos
     function cargar_datatable_costos(table, camp1, camp2) {
         var t = $('#'+table+'').DataTable();
         t.row.add([

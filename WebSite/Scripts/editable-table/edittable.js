@@ -46,29 +46,32 @@
 
     //funcion para GUARDAR DATOS de COSTOS
     $("body").on("click", "#costo_continuar", function () {
-        guardar_datos("cnperiod_c", "myTab", "costos.aspx");
+        guardar_datos("cnperiod_c", "myTab", "costos.aspx", "myTabContent");
     });
     $("body").on("click", "#gasto_continuar", function () {
-        guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx");
+        guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx", "myTabContent3");
     });
-    function guardar_datos(select, Tab, controller){
+    function guardar_datos(select, Tab, controller, content){
         /*OBTENIENDO DATOS DE LAS FUNCIONES DE Table To JSON*/
         var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
-
         var nperiodo = $('#'+select+'').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#' + selector).find('table').find('.total').text();
         var nav = $('#'+Tab+' li a.active').attr('id');
-        console.log('total-->' + tot);
+
+        console.log('selector-->' + selector);
         //Validamos que no existan celdas vacias
-        var table = $('#' + selector).find('table').DataTable();
+        var table = $('#'+ content).find('#' + selector).find('table').DataTable();
         table.column(0).data().each(function (value, index) {
-            if (value === "") {
+            console.log(value);
+            if (value == "") {
                 tot = 0;
                 return false;
             }
         });
+
+        console.log('totaal-->' + tot);
 
         if ($('#' + select +'').val() > 0) {//verifica  que haya un valor aceptable en el select
             if (tot > 0) {//verifica  que haya un valor aceptable en el total
@@ -221,7 +224,7 @@
     //Funcion al cambiar los valores de los costos en amortizacion
     $("body").on("change", " #myTabContent2 table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
-        var t = $('#' + selector).find('table').DataTable()
+        var t = $('#' + selector).find('table').DataTable();
         //console.log(newValue);
         t.cell(this).data(newValue).draw();
         t.order([3, 'desc']).draw();

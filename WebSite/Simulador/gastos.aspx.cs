@@ -24,17 +24,12 @@ public partial class Simulador_costos : System.Web.UI.Page
         int a = dataTabla.Count();
 
         string json = JsonConvert.SerializeObject(dataTabla);
-        System.Diagnostics.Debug.WriteLine("nperiodo-->"+ Nperiod+" total-->"+total+" nava-->"+ pestania);
-
         // OBTENEMOS LOS DATOS DE LA TABLA COSTOS DEL PERIODO SELECCIONADO
-        string id_costos = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+        string id_gastos  = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
         string id_proyect = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
         string id_periodo = Nperiod;
-        string tabl_json = json;
+        string tabl_json   = json;
         Decimal tabl_total = total;
-
-        System.Diagnostics.Debug.WriteLine("totaal-->" + tabl_total);
-
 
         try
         {
@@ -43,50 +38,50 @@ public partial class Simulador_costos : System.Web.UI.Page
             
             switch (pestania)
             {
-                case "NCostos1"://Para guardar los datos por primera vez
+                case "NGastos1"://Para guardar los datos por primera vez
                     
-                    var NuevoCosto = new Costos_Pro();
-                    NuevoCosto.ID_Costos_pro = id_costos;
-                    NuevoCosto.ID_Proyecto = id_proyect;
-                    NuevoCosto.ID_Periodo = id_periodo;
-                    NuevoCosto.Produccion = tabl_json;
-                    NuevoCosto.Ventas = "";
-                    NuevoCosto.Financiamiento = "";
-                    NuevoCosto.Admon = "";
-                    NuevoCosto.Total = tabl_total;
-                    db.Costos_Pro.Add(NuevoCosto);
+                    var NuevoGasto = new Gastos_Pro();
+                    NuevoGasto.ID_Gastos_pro = id_gastos;
+                    NuevoGasto.ID_Proyecto   = id_proyect;
+                    NuevoGasto.ID_Periodo    = id_periodo;
+                    NuevoGasto.Produccion    = tabl_json;
+                    NuevoGasto.Ventas        = "";
+                    NuevoGasto.Financiamiento = "";
+                    NuevoGasto.Admon = "";
+                    NuevoGasto.Total = tabl_total;
+                    db.Gastos_Pro.Add(NuevoGasto);
                     //Guardo el id que se creo
-                    System.Web.HttpContext.Current.Session["id_costo"] = id_costos;
+                    System.Web.HttpContext.Current.Session["id_gasto"] = id_gastos;
                     
                     break;
                 default://Para el update
                    
-                    if (System.Web.HttpContext.Current.Session["id_costo"] != null)
+                    if (System.Web.HttpContext.Current.Session["id_gasto"] != null)
                     {
                         
-                        string idCosto = (string)System.Web.HttpContext.Current.Session["id_costo"];
+                        string idGasto = (string)System.Web.HttpContext.Current.Session["id_gasto"];
                         // Realizamos la consulta
-                        var costos = db.Costos_Pro.Where(costo => costo.ID_Costos_pro == idCosto);
+                        var gastos = db.Gastos_Pro.Where(costo => costo.ID_Gastos_pro == idGasto);
 
                         // Modificamos los objetos que consideremos oportunos
-                        foreach (var costo in costos)
+                        foreach (var gasto in gastos)
                         {
                             System.Diagnostics.Debug.WriteLine("case 2---->pestania-->" + pestania);
-                            if (pestania    == "NCostos2")
+                            if (pestania    == "NGastos2")
                             {
-                                costo.Ventas = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
+                                gasto.Ventas = tabl_json;
+                                gasto.Total = gasto.Total + tabl_total;
                             }
-                            else if (pestania == "NCostos3")
+                            else if (pestania == "NGastos3")
                             {
-                                costo.Admon = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
+                                gasto.Admon = tabl_json;
+                                gasto.Total = gasto.Total + tabl_total;
 
                             }
-                            else if (pestania == "NCostos4")
+                            else if (pestania == "NGastos4")
                             {
-                                costo.Financiamiento = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
+                                gasto.Financiamiento = tabl_json;
+                                gasto.Total = gasto.Total + tabl_total;
                             }
                             
                         }
@@ -128,35 +123,35 @@ public partial class Simulador_costos : System.Web.UI.Page
         }
 
         //consultamos que periodos ya fuerón guardados en gastos
-        var query2 = db.Costos_Pro.Where(Costos => Costos.ID_Proyecto == idProyecto);
+        var query2 = db.Gastos_Pro.Where(Gastos => Gastos.ID_Proyecto == idProyecto);
         //List<List<List<string>>> result_query = new List<List<List<string>>>();
         List<List<string> >result_query = new List<List<string>>();
         List<string> periodos = new List<string>();
         List<string> pestanias = new List<string>();
-        foreach (Costos_Pro Cost in query2)
+        foreach (Gastos_Pro Gast in query2)
         {
-            var periodo = (Cost.ID_Periodo).Substring(0, ((Cost.ID_Periodo).Length) - 1);// para obtener solo el numero de periodo
-            if (Cost.Ventas != ""  & Cost.Financiamiento != "" & Cost.Admon != "")
+            var periodo = (Gast.ID_Periodo).Substring(0, ((Gast.ID_Periodo).Length) - 1);// para obtener solo el numero de periodo
+            if (Gast.Ventas != ""  & Gast.Financiamiento != "" & Gast.Admon != "")
             {
                 periodos.Add(periodo);
             }
             else
             {
-                if (Cost.Produccion != "")
+                if (Gast.Produccion != "")
                 {
                     pestanias.Add("1");
 
                 }
-                if (Cost.Ventas != "")
+                if (Gast.Ventas != "")
                 {
                     pestanias.Add("2");
 
                 }
-                if (Cost.Admon != "")
+                if (Gast.Admon != "")
                 {
                     pestanias.Add("3");
                 }
-                if (Cost.Financiamiento != "")
+                if (Gast.Financiamiento != "")
                 {
                     pestanias.Add("4");
                 }
@@ -176,21 +171,21 @@ public partial class Simulador_costos : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static object crear_session_costo(string idproyecto, string periodSelect)
+    public static object crear_session(string idproyecto, string periodSelect)
     {
 
         try
         {
             
             //Verificamos que no exista la session
-            if (System.Web.HttpContext.Current.Session["id_costo"] == null)
+            if (System.Web.HttpContext.Current.Session["id_gasto"] == null)
             {
                 //Realizamos la consula
                 var db = new Entidades();
-                var query = db.Costos_Pro.Where(Costos => Costos.ID_Proyecto == idproyecto && Costos.ID_Periodo.StartsWith(periodSelect));
+                var query = db.Gastos_Pro.Where(Gastos => Gastos.ID_Proyecto == idproyecto && Gastos.ID_Periodo.StartsWith(periodSelect));
                 foreach (var Result in query)
                 {
-                    System.Web.HttpContext.Current.Session["id_costo"] = Result.ID_Costos_pro;
+                    System.Web.HttpContext.Current.Session["id_gasto"] = Result.ID_Gastos_pro;
                 }
             }
 
@@ -214,7 +209,7 @@ public partial class Simulador_costos : System.Web.UI.Page
         {
             //Realizamos la consula
             var db = new Entidades();
-            var query = db.Costos_Pro.Where(Costos => Costos.ID_Proyecto == idproyecto && Costos.ID_Periodo.StartsWith(periodSelect));
+            var query = db.Gastos_Pro.Where(Gastos => Gastos.ID_Proyecto == idproyecto && Gastos.ID_Periodo.StartsWith(periodSelect));
 
             List<string> result_query = new List<string>();
 
@@ -226,9 +221,9 @@ public partial class Simulador_costos : System.Web.UI.Page
                 result_query.Add(Result.Admon);
                 result_query.Add(Result.Financiamiento);
                 //Verificamos que no exista la session
-                if (System.Web.HttpContext.Current.Session["id_costo"] == null)
+                if (System.Web.HttpContext.Current.Session["id_gasto"] == null)
                 {
-                    System.Web.HttpContext.Current.Session["id_costo"] = Result.ID_Costos_pro;
+                    System.Web.HttpContext.Current.Session["id_gasto"] = Result.ID_Gastos_pro;
 
                 }
 

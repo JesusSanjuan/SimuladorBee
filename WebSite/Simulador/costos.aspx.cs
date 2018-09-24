@@ -57,7 +57,10 @@ public partial class Simulador_costos : System.Web.UI.Page
                     db.Costos_Pro.Add(NuevoCosto);
                     //Guardo el id que se creo
                     System.Web.HttpContext.Current.Session["id_costo"] = id_costos;
-                    
+
+                    //Proyeccion(id_proyect, pestania, tabl_json, tabl_total);
+
+
                     break;
                 default://Para el update
                    
@@ -107,6 +110,100 @@ public partial class Simulador_costos : System.Web.UI.Page
         }       
 
     }
+
+    private static void Proyeccion(string id_proyect, string pestania, string tabl_json, decimal tabl_total)
+    {
+        System.Diagnostics.Debug.WriteLine("¡¡¡Proyeccion!!!");
+        string json = tabl_json;
+       
+        //BUSCAMOS CUANTOS PERIODOS TIENE
+        var db = new Entidades();   
+        var httpContext = HttpContext.Current;
+        string id_user = httpContext.User.Identity.GetUserId();
+        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyect);
+        int nperiodos = 0;
+        var claveperiodo = "";
+        foreach (Proyecto Proyect in consulta)
+        {
+            // para obtener solo el A(anual) M(mensual)
+            claveperiodo = (Proyect.ID_Periodo).Substring((Proyect.ID_Periodo).Length - 1, 1);
+            // para obtener solo el numero de periodo
+            nperiodos = Int32.Parse( (Proyect.ID_Periodo).Substring(0, ((Proyect.ID_Periodo).Length) - 1) );
+            
+        }
+        for (int i = 0; i < nperiodos; i++)
+        {
+            string id_costos = System.Guid.NewGuid().ToString("D");
+            try
+            {
+                // GUARDAMOS A LA BASE DE DATOS
+                switch (pestania)
+                {
+                    case "NCostos1"://Para guardar los datos por primera vez
+
+                        var NuevoCosto = new Costos_Pro();
+                        NuevoCosto.ID_Costos_pro = id_costos;
+                        NuevoCosto.ID_Proyecto = id_proyect;
+                        NuevoCosto.ID_Periodo = i+claveperiodo;
+                        NuevoCosto.Produccion = tabl_json;
+                        NuevoCosto.Ventas = "";
+                        NuevoCosto.Financiamiento = "";
+                        NuevoCosto.Admon = "";
+                        NuevoCosto.Total = tabl_total;
+                        db.Costos_Pro.Add(NuevoCosto);
+                        
+                        break;
+                    default://Para el update
+
+                        
+                        string idCosto = (string)System.Web.HttpContext.Current.Session["id_costo"];
+                        // Realizamos la consulta
+                        var costos = db.Costos_Pro.Where(costo => costo.ID_Costos_pro == idCosto);
+
+                        // Modificamos los objetos que consideremos oportunos
+                        foreach (var costo in costos)
+                        {
+                            System.Diagnostics.Debug.WriteLine("case 2---->pestania-->" + pestania);
+                            if (pestania == "NCostos2")
+                            {
+                                costo.Ventas = tabl_json;
+                                costo.Total = costo.Total + tabl_total;
+                            }
+                            else if (pestania == "NCostos3")
+                            {
+                                costo.Admon = tabl_json;
+                                costo.Total = costo.Total + tabl_total;
+
+                            }
+                            else if (pestania == "NCostos4")
+                            {
+                                costo.Financiamiento = tabl_json;
+                                costo.Total = costo.Total + tabl_total;
+                            }
+
+                        }
+                        break;
+                }
+
+                db.SaveChanges();
+
+                //return "succes";
+            }
+            // Most specific:
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine("{0} First exception caught.", e);
+                return e;
+            }
+
+
+        }
+
+
+
+    }
+
+
 
     [WebMethod]
     public static string getPeriodo(string idProyecto)
@@ -179,7 +276,7 @@ public partial class Simulador_costos : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static object crear_session_costo(string idproyecto, string periodSelect)
+    public static object crear_session(string idproyecto, string periodSelect)
     {
 
         try

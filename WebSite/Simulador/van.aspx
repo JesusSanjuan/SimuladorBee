@@ -115,35 +115,36 @@
                        
                                                         </div>
                                               </div> 
-                                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="^(\d|-)?(\d|,)*\.?\d{1,2}$" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
-                   
+                                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="TMAR" ValidationExpression="^(\d|-)?(\d|,)*\.?\d{1,2}$" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>                   
                                         </div> 
                           </div>
                           <div class="form-row">     
                                         <div class="col-md-4 mb-2">
                                           <label for="validationCustom05">Plazo (n)</label>
                                                   <div class="input-group"> 
-                                                        <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Ingrese el plazo del proyecto"  runat="server" autocomplete="off" ClientIDMode="Static"  required="required"/>   
-                                                        <div class="input-group-append ">
-                                                                      <select  id="select" class="select selectpicker show-tick"  runat="server" ClientIDMode="Static" style="width: 20%;" required="required">
+                                                    
+                                                       <select  id="select" class="selectpicker show-tick form-control "  runat="server" ClientIDMode="Static"  required="required" >
                                                                                       <option value="" class="dropdown-item" selected>Seleccione</option>
                                                                                       <option value="1" class="dropdown-item">Mes</option>
                                                                                       <option value="2" class="dropdown-item">Año</option>
-                                                                       </select>
-                                                                       <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                                        <div class="invalid-feedback">
-                                                                          Seleccione
+                                                        </select>  
+                                                       <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Ingrese el plazo del proyecto"  runat="server" autocomplete="off" ClientIDMode="Static"  required="required"/>  
+                                                       <div class="input-group-append ">
+                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                                         <div class="invalid-feedback">
+                                                                            Seleccione
                                                                         </div>
                                                                         <div class="valid-feedback">
                                                                         </div>
-                                                          </div> 
-                                                            <div class="invalid-feedback">
-                                                                  Por favor ingrese y seleccione el plazo
-                                                            </div>
-                                                            <div class="valid-feedback">
-                                                            </div>
+                                                        </div> 
+                                                        <div class="invalid-feedback">
+                                                                Por favor ingrese y seleccione el plazo
+                                                        </div>
+                                                        <div class="valid-feedback">
+                                                        </div>
                                                   </div>
                                                   <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="n" ValidationExpression="^(\d|-)?(\d|,)*" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
+                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="Longitud incorrecta" ControlToValidate="n" ValidationExpression="^([1-3][0-9][0-9])|([0-9][1-9])|([1-9])" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                         </div>                
                           </div>
 

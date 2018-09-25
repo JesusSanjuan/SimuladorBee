@@ -193,7 +193,7 @@ public partial class Simulador_costos : System.Web.UI.Page
             catch (ArgumentNullException e)
             {
                 Console.WriteLine("{0} First exception caught.", e);
-                return e;
+               // return e;
             }
 
 

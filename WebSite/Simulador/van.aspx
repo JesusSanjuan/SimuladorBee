@@ -131,7 +131,7 @@
                                                        <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
                                                        <div class="input-group-append ">
                                                                      <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                                         <div class="invalid-feedback">
+                                                                         <div id="errorplazo" class="invalid-feedback">
                                                                             Seleccione
                                                                         </div>
                                                                         <div class="valid-feedback">

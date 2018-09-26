@@ -80,19 +80,18 @@ number4.addEventListener('keyup', (e4) => {
 });
 /* Validacion del campo TMAR*/
 
-/* Validacion del campo PLAZO
+/* Validacion del campo PLAZO*/
 const number5 = document.querySelector('.number5');
 
 function formatNumber5(n) {
-    n = String(n).replace(/\D/g, "");   
-    return n === '' ? n : Number(n).toLocaleString();
+    return n.replace(/([0-9])([0-9]{3})$/, '$1');
 }
 number5.addEventListener('keyup', (e5) => {
     const element5 = e5.target;
     const value5 = element5.value;
     element5.value = formatNumber5(value5);    
 });
-*/
+
 /*
 $('#n').keyup(function (event) {
     valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
@@ -107,31 +106,52 @@ $('#n').keyup(function (event) {
     }
 });*/
 
+
+$('#n').keyup(function (event) {
+    valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
+   
+    var valor = $("#select").val();
+        switch (valor)
+        {
+            case "1":
+                if (valorN > 300)
+                {
+                    $('#errorplazo').append('<p>Test</p>');
+                }
+                break;
+            case "2":
+                if (valorN > 100) {
+                    $('#errorplazo').append('<p>Test2</p>');
+                }
+                break;
+            default:
+                break;
+        }
+
+});
+
 $("#select").change(function () {
     
     var valor = $(this).val();
     switch (valor)
     {        
         case "1":
-           // $("n").attr('disabled', 'disabled');
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
-            $("#n").prop('tooltipText',"Ingrese el plazo del proyecto");
+            $("#n").val('');
             break;
         case "2":
-           // $("n").attr('disabled', 'disabled');
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
-            $('#n').data('tooltip').getTip().html("Ingrese el plazo del proyecto");
+            $("#n").val('');
             break;
         default:
             $("#n").attr('disabled', 'disabled');
             $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
-
+            $("#n").val('');
             break;
     }
 });
-
 /* Validacion del campo PLAZO*/
 
 

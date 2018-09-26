@@ -80,7 +80,7 @@ number4.addEventListener('keyup', (e4) => {
 });
 /* Validacion del campo TMAR*/
 
-/* Validacion del campo PLAZO*/
+/* Validacion del campo PLAZO
 const number5 = document.querySelector('.number5');
 
 function formatNumber5(n) {
@@ -92,8 +92,8 @@ number5.addEventListener('keyup', (e5) => {
     const value5 = element5.value;
     element5.value = formatNumber5(value5);    
 });
-
-
+*/
+/*
 $('#n').keyup(function (event) {
     valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
     $('#select').prop('disabled', false).change;
@@ -104,6 +104,31 @@ $('#n').keyup(function (event) {
     else {
         $('#select option[value="1"]').attr("disabled", false);
         $("#select").val("").change();
+    }
+});*/
+
+$("#select").change(function () {
+    
+    var valor = $(this).val();
+    switch (valor)
+    {        
+        case "1":
+           // $("n").attr('disabled', 'disabled');
+            $("#n").removeAttr('disabled');
+            $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+            $("#n").prop('tooltipText',"Ingrese el plazo del proyecto");
+            break;
+        case "2":
+           // $("n").attr('disabled', 'disabled');
+            $("#n").removeAttr('disabled');
+            $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+            $('#n').data('tooltip').getTip().html("Ingrese el plazo del proyecto");
+            break;
+        default:
+            $("#n").attr('disabled', 'disabled');
+            $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
+
+            break;
     }
 });
 

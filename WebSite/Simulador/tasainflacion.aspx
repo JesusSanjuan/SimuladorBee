@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="tasainflacion.aspx.cs" Inherits="Simulador_tasainflacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+     <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
     <div >
@@ -103,62 +104,78 @@
                                                                                </div>
 
                                                                                <div class="row" style="padding-top:10px;">
-                                                                                        <div class="col-3" style="padding-bottom:10px;"></div>
-                                                                                        <div class="col-6 preborder" style="padding-bottom:10px;" > 
+                                                                                        <div class="col-2" style="padding-bottom:10px;"></div>
+                                                                                        <div class="col-8 preborder" style="padding-bottom:10px;" > 
                                                                                                 <div class="row" style="text-align: center; " >
                                                                                                     <div  class="col"  style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25); padding-top:10px;padding-bottom:10px;" >
                                                                                                        <strong>DE</strong>    
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row" style="text-align: center;  ">
-                                                                                                        <div  class="col" style="padding-bottom:10px; padding-top:10px;" >
-                                                                                                                    Mes:&nbsp; 
-                                                                                                                <select  id="select"  runat="server"  required="required">
-                                                                                                                                <option value="" selected>Seleccione</option>
-                                                                                                                                <option value="1" >Mes</option>
-                                                                                                                                <option value="2" >Año</option>
+                                                                                                        <div  class="col" style="padding-bottom:10px; padding-top:10px;" >                                                                                                            
+                                                                                                             <div class="input-group"> 
+                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" >  
+                                                                                                                    Mes: 
+                                                                                                                 </div>
+                                                                                                                 <select  id="select" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                                <option value="" class="dropdown-item"  selected>Seleccione</option>
+                                                                                                                                <option value="1" class="dropdown-item" >Mes</option>
+                                                                                                                                <option value="2" class="dropdown-item" >Año</option>
                                                                                                                 </select>
+                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="col" style="padding-bottom:10px;  padding-top:10px;">
-                                                                                                                &nbsp;Año:&nbsp;
-                                                                                                                <select  id="select1"  runat="server"  required="required">
-                                                                                                                            <option value="" selected>Seleccione</option>
-                                                                                                                            <option value="1" >Mes</option>
-                                                                                                                            <option value="2" >Año</option>
+                                                                                                             <div class="input-group"> 
+                                                                                                                <div  style="padding-bottom:5px; padding-top:5px;" > 
+                                                                                                                     Año:
+                                                                                                                </div>
+                                                                                                                <select  id="select1" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                            <option value="" class="dropdown-item" selected>Seleccione</option>
+                                                                                                                            <option value="1" class="dropdown-item">Mes</option>
+                                                                                                                            <option value="2" class="dropdown-item">Año</option>
                                                                                                                 </select>
+                                                                                                             </div>
                                                                                                         </div>
                                                                                                 </div>
                                                                                         </div>    
-                                                                                        <div class="col-3" style="padding-bottom:10px;"></div>
+                                                                                        <div class="col-2" style="padding-bottom:10px;"></div>
                                                                                    </div>
                                                                                    <div class="row" style="padding-top:10px;padding-bottom:25px;"> 
-                                                                                       <div class="col-3" style="padding-bottom:10px;"></div>
-                                                                                       <div class="col-6 preborder" style="padding-bottom:10px;">
+                                                                                       <div class="col-2" style="padding-bottom:10px;"></div>
+                                                                                       <div class="col-8 preborder" style="padding-bottom:10px;">
                                                                                            <div class="row " style="text-align: center;">
                                                                                                 <div  class="col" style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25); padding-top:10px;padding-bottom:10px;">
                                                                                                     <strong>A</strong> 
                                                                                                 </div>
                                                                                             </div>
-                                                                                           <div class="row " style="text-align: center;">
+                                                                                           <div class="row " >
                                                                                                    <div class="col" style="padding-bottom:10px; padding-top:10px;">
-                                                                                                                Mes:&nbsp;
-                                                                                                            <select  id="select2"  runat="server"  required="required">
-                                                                                                                          <option value="" selected>Seleccione</option>
-                                                                                                                          <option value="1" >Mes</option>
-                                                                                                                          <option value="2" >Año</option>
-                                                                                                           </select>
+                                                                                                             <div class="input-group" > 
+                                                                                                                  <div style="padding-bottom:5px; padding-top:5px;" >  
+                                                                                                                    Mes: 
+                                                                                                                 </div>
+                                                                                                                 <select  id="select2" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                                <option value="" class="dropdown-item"  selected>Seleccione</option>
+                                                                                                                                <option value="1" class="dropdown-item" >Mes</option>
+                                                                                                                                <option value="2" class="dropdown-item" >Año</option>
+                                                                                                                </select>
+                                                                                                             </div>
                                                                                                    </div>
                                                                                                    <div  class="col" style="padding-bottom:10px;  padding-top:10px;">
-                                                                                                       &nbsp;Año:&nbsp;
-                                                                                                       <select  id="select3"  runat="server"  required="required">
-                                                                                                                      <option value="" selected>Seleccione</option>
-                                                                                                                      <option value="1" >Mes</option>
-                                                                                                                      <option value="2" >Año</option>
-                                                                                                       </select>
+                                                                                                          <div class="input-group"> 
+                                                                                                                <div  style="padding-bottom:5px; padding-top:5px;" > 
+                                                                                                                     Año:
+                                                                                                                </div>
+                                                                                                                <select  id="select3" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                            <option value="" class="dropdown-item" selected>Seleccione</option>
+                                                                                                                            <option value="1" class="dropdown-item">Mes</option>
+                                                                                                                            <option value="2" class="dropdown-item">Año</option>
+                                                                                                                </select>
+                                                                                                          </div>
                                                                                                    </div>
                                                                                             </div>
                                                                                        </div>
-                                                                                       <div class="col-3" style="padding-bottom:10px;"></div>
+                                                                                       <div class="col-2" style="padding-bottom:10px;"></div>
                                                                                    </div>
                                                                 
                                                               
@@ -302,5 +319,8 @@
 
 
     </script>
+     <!-- plugin selectpicker-->
+        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- plugin selectpicker-->
 </asp:Content>
 

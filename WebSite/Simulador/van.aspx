@@ -43,7 +43,7 @@
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
                                                              <span class="input-group-text">0.00</span>                                                            
                                                         </div>
-                                                            <asp:TextBox CssClass="form-control number" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor ejemplo" autocomplete="off" required="required" />
+                                                            <asp:TextBox CssClass="form-control number" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor" autocomplete="off" required="required" />
                                                         <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
@@ -123,12 +123,12 @@
                                           <label for="validationCustom05">Plazo (n)</label>
                                                   <div class="input-group"> 
                                                     
-                                                       <select  id="select" class="selectpicker show-tick form-control "  runat="server" ClientIDMode="Static"  required="required" >
+                                                       <select  id="select" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
                                                                                       <option value="" class="dropdown-item" selected>Seleccione</option>
                                                                                       <option value="1" class="dropdown-item">Mes</option>
                                                                                       <option value="2" class="dropdown-item">Año</option>
-                                                        </select>  
-                                                       <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Ingrese el plazo del proyecto"  runat="server" autocomplete="off" ClientIDMode="Static"  required="required"/>  
+                                                       </select>  
+                                                       <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
                                                        <div class="input-group-append ">
                                                                      <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                                          <div class="invalid-feedback">

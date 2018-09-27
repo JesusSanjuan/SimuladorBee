@@ -6,19 +6,24 @@
         }
     });
     /****************TABLAS COSTOS Y GASTOS****************/
-    // Automatically add a first row of data (Genérico para todas las tablas que ocupo)
+    // Automatically add a first row of data (Genérico para  las tablas que costos y gastos)
     $('.add_row').on('click', function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
         t.row.add([
             '',
+            '1',
+            '0',
             '0',
             '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
-        t.order([1, 'desc']).draw();
+        t.order([3, 'desc']).draw();
         //aplicamos lasa propiedades editable de las celdas
-        $('#' + selector).find('table').find('td:last').prev().prev().addClass('previous');
-        $('#' + selector).find('table').find('td:last').attr("data-editable", "false");
+        $('#' + selector).find('table').find('td:nth-child(1)').addClass('previous');
+        $('#' + selector).find('table').find('td:nth-child(3)').addClass('cunit');
+        $('#' + selector).find('table').find('td:nth-child(4)').attr("data-editable", "false");
+        $('#' + selector).find('table').find('td:nth-child(5)').attr("data-editable", "false");
+
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
 
@@ -28,7 +33,27 @@
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
         t.cell(this).data(newValue).draw();
-        t.order([1, 'desc']).draw();
+        t.order([3, 'desc']).draw();
+
+        var clase = $(this).attr("class");
+
+        //CALCULAMOS la multiplicacion DEL COSTO
+        var rowIdx = t.cell(this).index().row;
+        var data = t.row(rowIdx).data();
+
+        if (data[1] != "" && data[2] != "") {
+            var costoTotal = (data[1] * data[2]);
+            t.cell(rowIdx, 3).data(costoTotal).draw();
+            t.order([3, 'desc']).draw();
+        }
+
+        var column = t.column(3);
+        $(column.footer()).html(
+            column.data().map(parseFloat).reduce(function (a, b) {
+                return a + b;
+            })
+        );
+
     });
 
     /****** desactivacion de pestañas **/
@@ -60,7 +85,6 @@
         var tot = $('#' + selector).find('table').find('.total').text();
         var nav = $('#'+Tab+' li a.active').attr('id');
 
-        console.log('selector-->' + selector);
         //Validamos que no existan celdas vacias
         var table = $('#'+ content).find('#' + selector).find('table').DataTable();
         table.column(0).data().each(function (value, index) {
@@ -71,7 +95,6 @@
             }
         });
 
-        console.log('totaal-->' + tot);
 
         if ($('#' + select +'').val() > 0) {//verifica  que haya un valor aceptable en el select
             if (tot > 0) {//verifica  que haya un valor aceptable en el total
@@ -167,7 +190,6 @@
         var nperiodo = $('#cnperiodo').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#total').text();
-        console.log(nperiodo);
         //Validamos que no existan celdas vacias
         var table = $("#amortTable").DataTable();
         table.column(0).data().each(function (value, index) {
@@ -233,26 +255,11 @@
         var rowIdx = t.cell(this).index().row;
         var data = t.row(rowIdx).data();
 
-        if (clase === "costo") {
-            if (data[2] !== "") {
-                var value = parseFloat(newValue.replace(',', ""));
-                console.log(value);
-                var costoFinal = (value * data[2]) / 100;
-                //console.log('porcentaje--->' + data[2]);
-                t.cell(rowIdx, 3).data(costoFinal).draw();
-                t.order([3, 'desc']).draw();
-            }
+        if (data[1] != "" && data[2] != "") {
+            var costoTotal = (data[1] * data[2]) / 100;
 
-        }
-        if (clase === "porct") {
-            if (data[1] !== "") {
-                console.log(value);
-                var costoFinal_r = (data[1] * newValue) / 100;
-                //console.log('porcentaje--->' + newValue);
-                t.cell(rowIdx, 3).data(costoFinal_r).draw();
-                t.order([3, 'desc']).draw();
-            }
-
+            t.cell(rowIdx, 3).data(costoTotal).draw();
+            t.order([3, 'desc']).draw();
         }
 
         var column = t.column(3);

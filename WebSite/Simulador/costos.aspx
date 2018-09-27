@@ -64,7 +64,9 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
+                                            <th >Cantidad</th>
+                                            <th >$ Costo Unitario</th>
+                                            <th >$ Costo Total</th>
                                             <th ></th>                
                                         </tr>
                                     </thead>
@@ -73,6 +75,8 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th></th>
+                                            <th></th>
                                             <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
@@ -112,9 +116,10 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
-                                            <th ></th>
-                
+                                            <th >Cantidad</th>
+                                            <th >$ Costo Unitario</th>
+                                            <th >$ Costo Total</th>
+                                            <th ></th>                
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,6 +127,8 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th></th>
+                                            <th></th>
                                             <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
@@ -158,9 +165,10 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
-                                            <th ></th>
-                
+                                            <th >Cantidad</th>
+                                            <th >$ Costo Unitario</th>
+                                            <th >$ Costo Total</th>
+                                            <th ></th>                
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -168,6 +176,8 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th></th>
+                                            <th></th>
                                             <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>
@@ -202,9 +212,10 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
-                                            <th >$ Costo</th>
-                                            <th ></th>
-                
+                                            <th >Cantidad</th>
+                                            <th >$ Costo Unitario</th>
+                                            <th >$ Costo Total</th>
+                                            <th ></th>                
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -212,6 +223,8 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th></th>
+                                            <th></th>
                                             <th class="total"></th>
                                             <th class="na"></th>
                                         </tr>

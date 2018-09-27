@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 
 public partial class Simulador_costos : System.Web.UI.Page
 {
@@ -24,7 +25,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         int a = dataTabla.Count();
 
         string json = JsonConvert.SerializeObject(dataTabla);
-        System.Diagnostics.Debug.WriteLine("nperiodo-->"+ Nperiod+" total-->"+total+" nava-->"+ pestania);
 
         // OBTENEMOS LOS DATOS DE LA TABLA COSTOS DEL PERIODO SELECCIONADO
         string id_costos = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
@@ -32,9 +32,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         string id_periodo = Nperiod;
         string tabl_json = json;
         Decimal tabl_total = total;
-
-        System.Diagnostics.Debug.WriteLine("totaal-->" + tabl_total);
-
 
         try
         {
@@ -56,10 +53,7 @@ public partial class Simulador_costos : System.Web.UI.Page
                     NuevoCosto.Total = tabl_total;
                     db.Costos_Pro.Add(NuevoCosto);
                     //Guardo el id que se creo
-                    System.Web.HttpContext.Current.Session["id_costo"] = id_costos;
-
-                    //Proyeccion(id_proyect, pestania, tabl_json, tabl_total);
-
+                    System.Web.HttpContext.Current.Session["id_costo"] = id_costos;                
 
                     break;
                 default://Para el update
@@ -74,7 +68,6 @@ public partial class Simulador_costos : System.Web.UI.Page
                         // Modificamos los objetos que consideremos oportunos
                         foreach (var costo in costos)
                         {
-                            System.Diagnostics.Debug.WriteLine("case 2---->pestania-->" + pestania);
                             if (pestania    == "NCostos2")
                             {
                                 costo.Ventas = tabl_json;
@@ -90,6 +83,10 @@ public partial class Simulador_costos : System.Web.UI.Page
                             {
                                 costo.Financiamiento = tabl_json;
                                 costo.Total = costo.Total + tabl_total;
+
+                                Proyeccion(db, id_proyect, id_periodo, costo.Total);
+
+
                             }
                             
                         }
@@ -98,8 +95,9 @@ public partial class Simulador_costos : System.Web.UI.Page
                     break;
             }
 
-            db.SaveChanges();
             
+            db.SaveChanges();
+
             return "succes";
         }
         // Most specific:
@@ -111,13 +109,19 @@ public partial class Simulador_costos : System.Web.UI.Page
 
     }
 
-    private static void Proyeccion(string id_proyect, string pestania, string tabl_json, decimal tabl_total)
+    public class Tabla
     {
-        System.Diagnostics.Debug.WriteLine("¡¡¡Proyeccion!!!");
-        string json = tabl_json;
-       
+        public string Concepto { get; set; }
+        public string Cantidad { get; set; }
+        public decimal Costo_Unitario { get; set; }
+        public decimal Costo_Total { get; set; }
+    }
+
+    private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total)
+    {
+        var inflacion = 1.5;
+
         //BUSCAMOS CUANTOS PERIODOS TIENE
-        var db = new Entidades();   
         var httpContext = HttpContext.Current;
         string id_user = httpContext.User.Identity.GetUserId();
         var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyect);
@@ -131,76 +135,57 @@ public partial class Simulador_costos : System.Web.UI.Page
             nperiodos = Int32.Parse( (Proyect.ID_Periodo).Substring(0, ((Proyect.ID_Periodo).Length) - 1) );
             
         }
-        for (int i = 0; i < nperiodos; i++)
+        var query = db.Costos_Pro.Where(Costos => Costos.ID_Proyecto == id_proyect && Costos.ID_Periodo == id_periodo);
+        List<string> result_query = new List<string>();
+        
+
+        foreach (var Result in query)
         {
-            string id_costos = System.Guid.NewGuid().ToString("D");
-            try
-            {
-                // GUARDAMOS A LA BASE DE DATOS
-                switch (pestania)
-                {
-                    case "NCostos1"://Para guardar los datos por primera vez
-
-                        var NuevoCosto = new Costos_Pro();
-                        NuevoCosto.ID_Costos_pro = id_costos;
-                        NuevoCosto.ID_Proyecto = id_proyect;
-                        NuevoCosto.ID_Periodo = i+claveperiodo;
-                        NuevoCosto.Produccion = tabl_json;
-                        NuevoCosto.Ventas = "";
-                        NuevoCosto.Financiamiento = "";
-                        NuevoCosto.Admon = "";
-                        NuevoCosto.Total = tabl_total;
-                        db.Costos_Pro.Add(NuevoCosto);
-                        
-                        break;
-                    default://Para el update
-
-                        
-                        string idCosto = (string)System.Web.HttpContext.Current.Session["id_costo"];
-                        // Realizamos la consulta
-                        var costos = db.Costos_Pro.Where(costo => costo.ID_Costos_pro == idCosto);
-
-                        // Modificamos los objetos que consideremos oportunos
-                        foreach (var costo in costos)
-                        {
-                            System.Diagnostics.Debug.WriteLine("case 2---->pestania-->" + pestania);
-                            if (pestania == "NCostos2")
-                            {
-                                costo.Ventas = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
-                            }
-                            else if (pestania == "NCostos3")
-                            {
-                                costo.Admon = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
-
-                            }
-                            else if (pestania == "NCostos4")
-                            {
-                                costo.Financiamiento = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
-                            }
-
-                        }
-                        break;
-                }
-
-                db.SaveChanges();
-
-                //return "succes";
-            }
-            // Most specific:
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine("{0} First exception caught.", e);
-               // return e;
-            }
-
-
+            result_query.Add(Result.Produccion);
+            result_query.Add(Result.Ventas);
+            result_query.Add(Result.Admon);
+            result_query.Add(Result.Financiamiento);
         }
+        Decimal total = tabl_total;
+
+        var arreglo = result_query;
+        for (int i = 2; i <= nperiodos; i++)
+        {
+            string clave = (i - 1).ToString()+ claveperiodo;
+            Decimal tot = 0;
+            List<string> campos = new List<string>();
+            foreach (var prime in arreglo)
+            {
+                List<Dictionary<string, string>> obj = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(prime);
+                foreach (Dictionary<string, string> lst in obj)
+                {
+                    decimal costoU = decimal.Parse(lst["$ Costo Unitario"]) * (decimal)(inflacion);
+                    decimal costoT = decimal.Parse(lst["$ Costo Total"]) * (decimal)(inflacion);
+                    lst["$ Costo Unitario"] = costoU.ToString();
+                    lst["$ Costo Total"]    = costoT.ToString();
 
 
+                }
+                campos.Add(JsonConvert.SerializeObject(obj));
+            }
 
+            total = total * (decimal)1.5;
+            //GUARDAMOS
+            string id_costos = System.Guid.NewGuid().ToString("D");
+            var NuevoCosto = new Costos_Pro();
+            NuevoCosto.ID_Costos_pro = id_costos;
+            NuevoCosto.ID_Proyecto = id_proyect;
+            NuevoCosto.ID_Periodo = i+claveperiodo;
+            NuevoCosto.Produccion = campos[0];
+            NuevoCosto.Ventas = campos[1];
+            NuevoCosto.Admon = campos[2];
+            NuevoCosto.Financiamiento = campos[3];
+            NuevoCosto.Total = total;
+            db.Costos_Pro.Add(NuevoCosto);
+            arreglo = campos;
+        }
+     
+        return "succes";
     }
 
 
@@ -335,7 +320,6 @@ public partial class Simulador_costos : System.Web.UI.Page
             }
 
             var json = JsonConvert.SerializeObject(result_query);
-            System.Diagnostics.Debug.WriteLine(json);
             return json;
         }
         // Most specific:
@@ -355,7 +339,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         int a = dataTabla.Count();
 
         string json = JsonConvert.SerializeObject(dataTabla);
-        System.Diagnostics.Debug.WriteLine("nperiodo-->" + Nperiod + " total-->" + total + " nava-->" + pestania);
 
         // OBTENEMOS LOS DATOS DE LA TABLA COSTOS DEL PERIODO SELECCIONADO
         string id_costos = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
@@ -363,9 +346,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         string id_periodo = Nperiod;
         string tabl_json = json;
         Decimal tabl_total = total;
-
-        System.Diagnostics.Debug.WriteLine("totaal-->" + tabl_total);
-
 
         try
         {
@@ -402,7 +382,6 @@ public partial class Simulador_costos : System.Web.UI.Page
                         // Modificamos los objetos que consideremos oportunos
                         foreach (var costo in costos)
                         {
-                            System.Diagnostics.Debug.WriteLine("case 2---->pestania-->" + pestania);
                             if (pestania == "NCostos2")
                             {
                                 costo.Ventas = tabl_json;

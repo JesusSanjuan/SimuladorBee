@@ -81,16 +81,7 @@ number4.addEventListener('keyup', (e4) => {
 /* Validacion del campo TMAR*/
 
 /* Validacion del campo PLAZO*/
-const number5 = document.querySelector('.number5');
 
-function formatNumber5(n) {
-    return n.replace(/([0-9])([0-9]{3})$/, '$1');
-}
-number5.addEventListener('keyup', (e5) => {
-    const element5 = e5.target;
-    const value5 = element5.value;
-    element5.value = formatNumber5(value5);    
-});
 
 /*
 $('#n').keyup(function (event) {
@@ -106,7 +97,8 @@ $('#n').keyup(function (event) {
     }
 });*/
 
-
+var validacion;
+var ExpReg;
 $('#n').keyup(function (event) {
     valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
    
@@ -114,20 +106,33 @@ $('#n').keyup(function (event) {
         switch (valor)
         {
             case "1":
-                if (valorN > 300)
-                {
+                validacion = /^([6-9]{4,})$/;//Corregir exprecion para que acepte de 601 en adelante
                     $('#errorplazo').append('<p>Test</p>');
-                }
                 break;
             case "2":
-                if (valorN > 100) {
+                validacion = /^([0-9]{3,})$/;
                     $('#errorplazo').append('<p>Test2</p>');
-                }
                 break;
             default:
                 break;
         }
 
+});
+
+
+
+const number5 = document.querySelector('.number5');
+
+
+function formatNumber5(n) {
+    return n.replace(/\D/g, "")    
+        .replace(validacion, "");
+    
+}
+number5.addEventListener('keyup', (e5) => {
+    const element5 = e5.target;
+    const value5 = element5.value;
+    element5.value = formatNumber5(value5);
 });
 
 $("#select").change(function () {

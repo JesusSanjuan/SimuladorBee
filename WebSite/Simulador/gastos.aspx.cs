@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Microsoft.AspNet.Identity;
 
-public partial class Simulador_costos : System.Web.UI.Page
+public partial class Simulador_gastos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -82,6 +82,8 @@ public partial class Simulador_costos : System.Web.UI.Page
                             {
                                 gasto.Financiamiento = tabl_json;
                                 gasto.Total = gasto.Total + tabl_total;
+
+                                Proyeccion(db, id_proyect, id_periodo, gasto.Total);
                             }
                             
                         }
@@ -101,6 +103,76 @@ public partial class Simulador_costos : System.Web.UI.Page
             return e;
         }       
 
+    }
+
+    private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total)
+    {
+        var inflacion = 1.5;
+
+        //BUSCAMOS CUANTOS PERIODOS TIENE
+        var httpContext = HttpContext.Current;
+        string id_user = httpContext.User.Identity.GetUserId();
+        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyect);
+        int nperiodos = 0;
+        var claveperiodo = "";
+        foreach (Proyecto Proyect in consulta)
+        {
+            // para obtener solo el A(anual) M(mensual)
+            claveperiodo = (Proyect.ID_Periodo).Substring((Proyect.ID_Periodo).Length - 1, 1);
+            // para obtener solo el numero de periodo
+            nperiodos = Int32.Parse((Proyect.ID_Periodo).Substring(0, ((Proyect.ID_Periodo).Length) - 1));
+
+        }
+        var query = db.Gastos_Pro.Where(Gastos => Gastos.ID_Proyecto == id_proyect && Gastos.ID_Periodo == id_periodo);
+        List<string> result_query = new List<string>();
+
+
+        foreach (var Result in query)
+        {
+            result_query.Add(Result.Produccion);
+            result_query.Add(Result.Ventas);
+            result_query.Add(Result.Admon);
+            result_query.Add(Result.Financiamiento);
+        }
+        Decimal total = tabl_total;
+
+        var arreglo = result_query;
+        for (int i = 2; i <= nperiodos; i++)
+        {
+            string clave = (i - 1).ToString() + claveperiodo;
+            List<string> campos = new List<string>();
+            foreach (var prime in arreglo)
+            {
+                List<Dictionary<string, string>> obj = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(prime);
+                foreach (Dictionary<string, string> lst in obj)
+                {
+                    decimal gastoU = decimal.Parse(lst["$ Gasto Unitario"]) * (decimal)(inflacion);
+                    decimal gastoT = decimal.Parse(lst["$ Gasto Total"]) * (decimal)(inflacion);
+                    lst["$ Gasto Unitario"] = gastoU.ToString();
+                    lst["$ Gasto Total"] = gastoT.ToString();
+
+
+                }
+                campos.Add(JsonConvert.SerializeObject(obj));
+            }
+
+            total = total * (decimal)1.5;
+            //GUARDAMOS
+            string id_costos = System.Guid.NewGuid().ToString("D");
+            var NuevoGasto = new Gastos_Pro();
+            NuevoGasto.ID_Gastos_pro = id_costos;
+            NuevoGasto.ID_Proyecto = id_proyect;
+            NuevoGasto.ID_Periodo = i + claveperiodo;
+            NuevoGasto.Produccion = campos[0];
+            NuevoGasto.Ventas = campos[1];
+            NuevoGasto.Admon = campos[2];
+            NuevoGasto.Financiamiento = campos[3];
+            NuevoGasto.Total = total;
+            db.Gastos_Pro.Add(NuevoGasto);
+            arreglo = campos;
+        }
+
+        return "succes";
     }
 
     [WebMethod]
@@ -242,5 +314,67 @@ public partial class Simulador_costos : System.Web.UI.Page
 
 
     }
+
+    [WebMethod]
+    public static object updateTable(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total, string pestania)
+    {
+        //Here I want to iterate the  objects 
+        int a = dataTabla.Count();
+
+        string json = JsonConvert.SerializeObject(dataTabla);
+
+        // OBTENEMOS LOS DATOS DE LA TABLA COSTOS DEL PERIODO SELECCIONADO
+        string tabl_json = json;
+        Decimal tabl_total = total;
+
+        try
+        {
+            // GUARDAMOS A LA BASE DE DATOS
+            var db = new Entidades();
+
+            if (System.Web.HttpContext.Current.Session["id_gasto"] != null)
+            {
+                string idGasto = (string)System.Web.HttpContext.Current.Session["id_gasto"];
+                // Realizamos la consulta
+                var gastos = db.Gastos_Pro.Where(gasto => gasto.ID_Gastos_pro == idGasto);
+                // Modificamos los objetos que consideremos oportunos
+                foreach (var gasto in gastos)
+                {
+                    switch (pestania)
+                    {
+                        case "NGastos1"://Para guardar los datos por primera vez
+                            gasto.Produccion = tabl_json;
+                            gasto.Total = gasto.Total + tabl_total;
+                            break;
+                        case "NGastos2":
+                            gasto.Ventas = tabl_json;
+                            gasto.Total = gasto.Total + tabl_total;
+                            break;
+                        case "NGastos3":
+                            gasto.Admon = tabl_json;
+                            gasto.Total = gasto.Total + tabl_total;
+                            break;
+
+                        default://NGastos4
+                            gasto.Financiamiento = tabl_json;
+                            gasto.Total = gasto.Total + tabl_total;
+                            break;
+                    }
+                }
+
+            }
+            db.SaveChanges();
+
+            return "succes";
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
+    }
+
 
 }

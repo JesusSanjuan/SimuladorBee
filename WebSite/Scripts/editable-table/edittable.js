@@ -29,15 +29,13 @@
 
     });
     // función que ordena descendentemente los datos(costos, gastos) ingresados automaicamente
-    $("body").on("change", "#myTabContent table td", "#myTabContent3 table td", function (evt, newValue) {
+    $("body").on("change", "#myTabContent table td, #myTabContent3 table td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
         t.cell(this).data(newValue).draw();
         t.order([3, 'desc']).draw();
 
-        var clase = $(this).attr("class");
-
-        //CALCULAMOS la multiplicacion DEL COSTO
+        //CALCULAMOS la multiplicacion DEL COSTO y GASTO
         var rowIdx = t.cell(this).index().row;
         var data = t.row(rowIdx).data();
 
@@ -61,6 +59,7 @@
     $('#myTab_g li a').addClass('disabled');
 
     $("#costo_update").hide();
+    $("#gasto_update").hide();
     //evento para avanzar en las pestañas (navs)
     $("body").on("click", ".continuar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
@@ -94,8 +93,6 @@
                 return false;
             }
         });
-
-
         if ($('#' + select +'').val() > 0) {//verifica  que haya un valor aceptable en el select
             if (tot > 0) {//verifica  que haya un valor aceptable en el total
                 $.ajax({
@@ -134,21 +131,79 @@
         }
     }
 
-    //EVENTO PARA ACTUALIZAR DATOS COSTOS
+    //EVENTO PARA ACTUALIZAR DATOS COSTOS y GASTOS
 
     $("body").on("click", ".actualizar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
         console.log(selector);
         $(".modal-content #selector").val(selector);
 
-        $("#Continuacion.modal-text-body ").html("¿Desea actualizar los Datos?");
+        $("#Continuacion#modal-text-body ").html("¿Desea actualizar los Datos?");
+        $("#costo_continuar").hide();
+        $("#costo_update").show();
+        $("#gasto_continuar").hide();
+        $("#gasto_update").show();
         $('#Continuacion').modal({ show: true });
 
     });
 
     $("body").on("click", "#costo_update", function () {
-        
+        actualizar_datos("cnperiod_c", "myTab", "costos.aspx", "myTabContent");     
     });
+    $("body").on("click", "#gasto_update", function () {
+        actualizar_datos("cnperiod_g", "myTab_g", "gastos.aspx", "myTabContent3");
+    });
+
+    function actualizar_datos(select, Tab, controller, content) {
+        /*OBTENIENDO DATOS DE LAS FUNCIONES DE Table To JSON*/
+        var selector = $('input#selector').val();
+        var data = $('#' + selector).find('table').tableToJSON();
+        var nperiodo = $('#' + select + '').val();
+        nperiodo = nperiodo + "" + $("#lapse").val() + "";
+        var tot = $('#' + selector).find('table').find('.total').text();
+        var nav = $('#' + Tab + ' li a.active').attr('id');
+
+        //Validamos que no existan celdas vacias
+        var table = $('#' + content).find('#' + selector).find('table').DataTable();
+        table.column(0).data().each(function (value, index) {
+            if (value == "") {
+                tot = 0;
+                return false;
+            }
+        });
+
+        if ($('#' + select + '').val() > 0) {//verifica  que haya un valor aceptable en el select
+            if (tot > 0) {//verifica  que haya un valor aceptable en el total
+                $.ajax({
+                    type: "POST",
+                    url: controller + "/updateTable",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
+                    success: function (result) {
+                        console.log(result);
+                        location.reload();
+                    },
+                    error: function (result) {
+                        alert(result.responseText);
+                    }
+
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
+            }
+            else {
+                $('#success').find(".alert").html("Ingrese por lo menos un concepto ");
+                $('#success').find(".alert").removeClass("alert-primary").addClass("alert-danger");
+                $('#success').modal({ show: true });
+
+            }
+        }
+        
+    }
 
 
     /****************TABLA AMORTIZACION****************/
@@ -166,19 +221,12 @@
         ]).draw(false);
         t.order([3, 'desc']).draw();
 
-        $("#amortTable").find('td:last').prev().prev().prev().prev().addClass('previous');
-        $("#amortTable").find('td').eq(0).addClass('previous');
+        $("#amortTable").find('td:nth-child(1)').addClass('previous');
+        $("#amortTable").find('td:nth-child(2)').addClass('costo');
 
-        $("#amortTable").find('td:last').prev().prev().prev().addClass('costo');
-        $("#amortTable").find('td').eq(1).addClass('costo');
-
-        $("#amortTable").find('td:last').prev().prev().addClass('porct');
-        $("#amortTable").find('td').eq(2).addClass('porct');
-
-        $("#amortTable").find('td:last').attr("data-editable", "false");
-        $("#amortTable").find('td').eq(3).attr("data-editable", "false");
-        $("#amortTable").find('td:last').prev().attr("data-editable", "false");
-
+        $("#amortTable").find('td:nth-child(3)').addClass('porct');
+        $("#amortTable").find('td:nth-child(4)').attr("data-editable", "false");    
+        $("#amortTable").find('td:nth-child(5)').attr("data-editable", "false");
         $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
 
@@ -212,7 +260,6 @@
                         if (result.d === "succes") {
                             $('#successA').modal({ show: true });
                         }
-
 
                     },
                     error: function (result) {
@@ -290,7 +337,7 @@
 
         table.row($(this).parents('tr')).remove().draw();
 
-        $('#' + selector).find('table').find('td:last').prev().prev().addClass('previous');
+        $('#' + selector).find('table').find('td:nth-child(1)').addClass('previous');
         $('#' + selector).find('table').find('td:last').attr("data-editable", "false");
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");

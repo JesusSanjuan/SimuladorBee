@@ -109,14 +109,6 @@ public partial class Simulador_costos : System.Web.UI.Page
 
     }
 
-    public class Tabla
-    {
-        public string Concepto { get; set; }
-        public string Cantidad { get; set; }
-        public decimal Costo_Unitario { get; set; }
-        public decimal Costo_Total { get; set; }
-    }
-
     private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total)
     {
         var inflacion = 1.5;
@@ -152,7 +144,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         for (int i = 2; i <= nperiodos; i++)
         {
             string clave = (i - 1).ToString()+ claveperiodo;
-            Decimal tot = 0;
             List<string> campos = new List<string>();
             foreach (var prime in arreglo)
             {
@@ -341,9 +332,6 @@ public partial class Simulador_costos : System.Web.UI.Page
         string json = JsonConvert.SerializeObject(dataTabla);
 
         // OBTENEMOS LOS DATOS DE LA TABLA COSTOS DEL PERIODO SELECCIONADO
-        string id_costos = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
-        string id_proyect = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
-        string id_periodo = Nperiod;
         string tabl_json = json;
         Decimal tabl_total = total;
 
@@ -352,60 +340,40 @@ public partial class Simulador_costos : System.Web.UI.Page
             // GUARDAMOS A LA BASE DE DATOS
             var db = new Entidades();
 
-            switch (pestania)
+            if (System.Web.HttpContext.Current.Session["id_costo"] != null)
             {
-                case "NCostos1"://Para guardar los datos por primera vez
-
-                    var NuevoCosto = new Costos_Pro();
-                    NuevoCosto.ID_Costos_pro = id_costos;
-                    NuevoCosto.ID_Proyecto = id_proyect;
-                    NuevoCosto.ID_Periodo = id_periodo;
-                    NuevoCosto.Produccion = tabl_json;
-                    NuevoCosto.Ventas = "";
-                    NuevoCosto.Financiamiento = "";
-                    NuevoCosto.Admon = "";
-                    NuevoCosto.Total = tabl_total;
-                    db.Costos_Pro.Add(NuevoCosto);
-                    //Guardo el id que se creo
-                    System.Web.HttpContext.Current.Session["id_costo"] = id_costos;
-
-                    break;
-                default://Para el update
-
-                    if (System.Web.HttpContext.Current.Session["id_costo"] != null)
+                string idCosto = (string)System.Web.HttpContext.Current.Session["id_costo"];
+                // Realizamos la consulta
+                var costos = db.Costos_Pro.Where(costo => costo.ID_Costos_pro == idCosto);
+                // Modificamos los objetos que consideremos oportunos
+                foreach (var costo in costos)
+                {
+                    switch (pestania)
                     {
-
-                        string idCosto = (string)System.Web.HttpContext.Current.Session["id_costo"];
-                        // Realizamos la consulta
-                        var costos = db.Costos_Pro.Where(costo => costo.ID_Costos_pro == idCosto);
-
-                        // Modificamos los objetos que consideremos oportunos
-                        foreach (var costo in costos)
-                        {
-                            if (pestania == "NCostos2")
-                            {
-                                costo.Ventas = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
-                            }
-                            else if (pestania == "NCostos3")
-                            {
-                                costo.Admon = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
-
-                            }
-                            else if (pestania == "NCostos4")
-                            {
-                                costo.Financiamiento = tabl_json;
-                                costo.Total = costo.Total + tabl_total;
-                            }
-
-                        }
-
+                        case "NCostos1"://Para guardar los datos por primera vez
+                            costo.Produccion = tabl_json;
+                            costo.Total = costo.Total + tabl_total;
+                            break;
+                        case "NCostos2":
+                            costo.Ventas = tabl_json;
+                            costo.Total = costo.Total + tabl_total;
+                            break;
+                        case "NCostos3":
+                            costo.Admon = tabl_json;
+                            costo.Total = costo.Total + tabl_total;
+                            break;
+                        
+                        default://NCostos4
+                            costo.Financiamiento = tabl_json;
+                            costo.Total = costo.Total + tabl_total;
+                            break;
                     }
-                    break;
-            }
+                }
 
-            db.SaveChanges();
+                    
+
+            }
+                db.SaveChanges();
 
             return "succes";
         }

@@ -26,21 +26,6 @@
     }).fail(function (data) {
         console.log("Error: " + data);
     });
-
-
-    //$("#MainContent_nperiodo").val("1");
-    /**Inicialización rangeslider.js**/
-    /*$('input[type="range"]').rangeslider({
-        polyfill: false,
-        onInit: function () {
-            this.output = $('<div class="range-output" />').insertAfter(this.$range).html(this.$element.val());
-        },
-        onSlide: function (position, value) {
-            this.output.html(value);
-            $("#MainContent_nperiodo").val(value);
-        }
-    });*/
-
     /**Inicialización selectpicker.js**/
     $('.selectpicker').selectpicker
     /***Inicializando la Tabla de Mis proyectos****/
@@ -146,7 +131,6 @@
         console.log("Error: " + data);
     });
 
-
     var completeC = false;
     $('#cnperiodo.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         if (completeC == true)
@@ -221,11 +205,6 @@
                     $('#cnperiodo').selectpicker('refresh');
 
                 }
-
-
-
-                
-
             },
             error: function (result) {
                 console.log(result.responseText);
@@ -262,10 +241,8 @@
                         param2 = obj["$ Costo"];
                         param3 = obj["%"];
                         param4 = obj["Total"];
-
                         cargar_datatable_amort(param1, param2, param3, param4);
-                    }
-                    
+                    }                  
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -290,19 +267,15 @@
         ]).draw(false);
         t.order([1, 'desc']).draw();
         //aplicamos lasa propiedades editable de las celdas
-        $("#amortTable").find('td:last').prev().prev().prev().prev().addClass('previous');
-        $("#amortTable").find('td').eq(0).addClass('previous');
-        $("#amortTable").find('td:last').prev().prev().prev().addClass('costo');
-        $("#amortTable").find('td').eq(1).addClass('costo');
-        $("#amortTable").find('td:last').prev().prev().addClass('porct');
-        $("#amortTable").find('td').eq(2).addClass('porct');
+        $("#amortTable").find('td:nth-child(1)').addClass('previous');
+        $("#amortTable").find('td:nth-child(2)').addClass('costo');
+        $("#amortTable").find('td:nth-child(3)').addClass('porct');
         $("#amortTable").find('td:last').attr("data-editable", "false");
-        $("#amortTable").find('td').eq(3).attr("data-editable", "false");
-        $("#amortTable").find('td:last').prev().attr("data-editable", "false");
+        $("#amortTable").find('td:nth-child(5)').attr("data-editable", "false");
+        $("#amortTable").find('td:nth-child(4)').attr("data-editable", "false");  
         $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
     
-
     }
      /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
@@ -312,7 +285,7 @@
         if (complete == false)
             cargar_cont_c_g(controller, "cnperiod_c", "myTab");
         else
-            cargar_data_c_g("", controller, "cnperiod_c", "myTab");
+            get_data_c_g("", controller, "cnperiod_c", "myTab");
     });
 
     $('#cnperiod_c.selectpicker').change();
@@ -349,7 +322,10 @@
                             option = "<option value=" + i + ">" + i + "</option>";
                             options.push(option);
                         }
-                        complete = true;
+                        if (Tab == "myTab")
+                            complete = true;
+                        else
+                            completeG = true;
                         $(".continuar").hide();
                         $(".actualizar").show();
                         $('#'+select+'').html(options);
@@ -394,9 +370,7 @@
                         }
                         $('#'+ select +'').html(options);
                         $('#'+ select +'').selectpicker('refresh');
-                    }
-                    //cargamos y refrescamos el select
-                    
+                    }                    
                     //llaamos una funcion para crear la session de id_costo
                     crear_session_costo_gasto(select, controller);
 
@@ -437,7 +411,7 @@
         });
     }    
 
-    function cargar_data_c_g(ncontent, controller, select, Tab) {
+    function get_data_c_g(ncontent, controller, select, Tab) {
         if (id_proyecto !== "false") {
             var periodo_select = $("#"+select+"").val();
             $.ajax({
@@ -495,7 +469,6 @@
                     }
                     //Tab Admon
                     var res4 = JSON.parse(resultado[4]);
-                    console.log("res4-->" + res4);
                     for (i = 0; i < res4.length - 1; i++) {
                         obj = res4[i];
                         param1 = obj["Concepto"];
@@ -533,11 +506,11 @@
         ]).draw(false);
         t.order([1, 'desc']).draw();
         //aplicamos lasa propiedades editable de las celdas
-        $('#' + table + '').find('td:last').prev().prev().addClass('previous');
+        $('#' + table + '').find('td:nth-child(1)').addClass('previous');
         $('#' + table + '').find('td:last').attr("data-editable", "false");
         $('#' + table + '').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
-
+      
     }
     /****************************************/
     
@@ -548,7 +521,7 @@
         if (completeG == false)
             cargar_cont_c_g(controller2, "cnperiod_g", "myTab_g");
         else
-            cargar_data_c_g("3", controller2, "cnperiod_g", "myTab_g");
+            get_data_c_g("3", controller2, "cnperiod_g", "myTab_g");
     });
 
     $('#cnperiod_g.selectpicker').change();

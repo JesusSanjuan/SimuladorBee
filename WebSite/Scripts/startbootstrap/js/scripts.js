@@ -510,6 +510,10 @@
         $('#' + table + '').find('td:last').attr("data-editable", "false");
         $('#' + table + '').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
+
+        var selector = $('#' + table + '').parents('.tab-pane').attr("id");
+        $('#' + selector).find('.total_ant').val($('#' + table + '').find('.total').text());
+
       
     }
     /****************************************/

@@ -161,8 +161,10 @@
         var nperiodo = $('#' + select + '').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#' + selector).find('table').find('.total').text();
+        var tot_ant = $('#' + selector).find('.total_ant').val();
         var nav = $('#' + Tab + ' li a.active').attr('id');
 
+        
         //Validamos que no existan celdas vacias
         var table = $('#' + content).find('#' + selector).find('table').DataTable();
         table.column(0).data().each(function (value, index) {
@@ -174,13 +176,15 @@
 
         if ($('#' + select + '').val() > 0) {//verifica  que haya un valor aceptable en el select
             if (tot > 0) {//verifica  que haya un valor aceptable en el total
+
+                
                 $.ajax({
                     type: "POST",
                     url: controller + "/updateTable",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
-                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
+                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, total_a: tot_ant, pestania: nav }),
                     success: function (result) {
                         console.log(result);
                         location.reload();
@@ -194,6 +198,9 @@
                 }).fail(function (data) {
                     console.log("Error: " + data);
                 });
+
+
+                
             }
             else {
                 $('#success').find(".alert").html("Ingrese por lo menos un concepto ");

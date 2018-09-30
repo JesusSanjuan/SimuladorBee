@@ -94,6 +94,7 @@
                                 <a href="#" class="btn btn-success actualizar float-right" style="display:none">
                                     Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
                                 </a>
+                                <input type="hidden" class="total_ant" />
                             </div>                    
                         </div>
                    
@@ -145,6 +146,7 @@
                                     <a href="#" class="btn btn-success actualizar float-right" style="display:none">
                                         Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
                                     </a>
+                                    <input type="hidden" class="total_ant" />
                                 </div>
                             <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
                             </div>
@@ -197,6 +199,7 @@
                                 <a href="#" class="btn btn-success actualizar float-right" style="display:none">
                                     Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
                                 </a>
+                                <input type="hidden" class="total_ant" />
                             </div>
                             <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
                         </div>                      
@@ -247,6 +250,7 @@
                                 <a href="#" class="btn btn-success actualizar float-right" style="display:none">
                                     Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
                                 </a>
+                                <input type="hidden" class="total_ant" />
                             </div>
                             <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
                         </div>                     

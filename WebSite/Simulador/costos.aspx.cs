@@ -324,7 +324,7 @@ public partial class Simulador_costos : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static object updateTable(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total, string pestania)
+    public static object updateTable(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total, Decimal total_a, string pestania)
     {
         //Here I want to iterate the  objects 
         int a = dataTabla.Count();
@@ -333,18 +333,20 @@ public partial class Simulador_costos : System.Web.UI.Page
 
         // OBTENEMOS LOS DATOS DE LA TABLA COSTOS DEL PERIODO SELECCIONADO
         string tabl_json = json;
+        string periodo = Nperiod;
         Decimal tabl_total = total;
+        Decimal total_ant = total_a;
 
         try
         {
             // GUARDAMOS A LA BASE DE DATOS
             var db = new Entidades();
 
-            if (System.Web.HttpContext.Current.Session["id_costo"] != null)
+            if (System.Web.HttpContext.Current.Session["ID_Proyecto"] != null)
             {
-                string idCosto = (string)System.Web.HttpContext.Current.Session["id_costo"];
+                string idProyecto = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
                 // Realizamos la consulta
-                var costos = db.Costos_Pro.Where(costo => costo.ID_Costos_pro == idCosto);
+                var costos = db.Costos_Pro.Where(costo => costo.ID_Proyecto == idProyecto && costo.ID_Periodo == periodo);
                 // Modificamos los objetos que consideremos oportunos
                 foreach (var costo in costos)
                 {
@@ -352,20 +354,20 @@ public partial class Simulador_costos : System.Web.UI.Page
                     {
                         case "NCostos1"://Para guardar los datos por primera vez
                             costo.Produccion = tabl_json;
-                            costo.Total = costo.Total + tabl_total;
+                            costo.Total = (costo.Total - total_a) + tabl_total;
                             break;
                         case "NCostos2":
                             costo.Ventas = tabl_json;
-                            costo.Total = costo.Total + tabl_total;
+                            costo.Total = (costo.Total - total_a) + tabl_total;
                             break;
                         case "NCostos3":
                             costo.Admon = tabl_json;
-                            costo.Total = costo.Total + tabl_total;
+                            costo.Total = (costo.Total - total_a) + tabl_total;
                             break;
                         
                         default://NCostos4
                             costo.Financiamiento = tabl_json;
-                            costo.Total = costo.Total + tabl_total;
+                            costo.Total = (costo.Total - total_a) + tabl_total;
                             break;
                     }
                 }

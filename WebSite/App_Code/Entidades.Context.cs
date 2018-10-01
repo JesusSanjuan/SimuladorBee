@@ -30,5 +30,8 @@ public partial class Entidades : DbContext
     public virtual DbSet<Costos_Pro> Costos_Pro { get; set; }
     public virtual DbSet<FNE> FNE { get; set; }
     public virtual DbSet<Gastos_Pro> Gastos_Pro { get; set; }
+    public virtual DbSet<indice_INPC> indice_INPC { get; set; }
+    public virtual DbSet<INPC> INPC { get; set; }
     public virtual DbSet<Proyecto> Proyecto { get; set; }
+    public virtual DbSet<tipo_anio_base_INPC> tipo_anio_base_INPC { get; set; }
 }

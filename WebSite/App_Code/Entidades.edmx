@@ -89,6 +89,34 @@
           <Property Name="Admon" Type="text" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="indice_INPC">
+          <Key>
+            <PropertyRef Name="Id_indice" />
+          </Key>
+          <Property Name="Id_indice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion_indice_base" Type="ntext" />
+        </EntityType>
+        <EntityType Name="INPC">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="anio" Type="int" />
+          <Property Name="enero" Type="float" />
+          <Property Name="febrero" Type="float" />
+          <Property Name="marzo" Type="float" />
+          <Property Name="abril" Type="float" />
+          <Property Name="mayo" Type="float" />
+          <Property Name="junio" Type="float" />
+          <Property Name="julio" Type="float" />
+          <Property Name="agosto" Type="float" />
+          <Property Name="septiembre" Type="float" />
+          <Property Name="octubre" Type="float" />
+          <Property Name="noviembre" Type="float" />
+          <Property Name="diciembre" Type="float" />
+          <Property Name="id_indice" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_tipo_anio_base" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Proyecto">
           <Key>
             <PropertyRef Name="ID_Proyecto" />
@@ -98,6 +126,13 @@
           <Property Name="Nombre_Proyecto" Type="text" Nullable="false" />
           <Property Name="Fecha_Hora" Type="datetime" Nullable="false" />
           <Property Name="ID_Periodo" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_anio_base_INPC">
+          <Key>
+            <PropertyRef Name="id_tipo_anio_base" />
+          </Key>
+          <Property Name="id_tipo_anio_base" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion_tipo_anio_base" Type="ntext" />
         </EntityType>
         <Association Name="FK_Amortizacion_pro_Proyecto">
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
@@ -147,6 +182,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_INPC_indice_INPC">
+          <End Role="indice_INPC" Type="Self.indice_INPC" Multiplicity="0..1" />
+          <End Role="INPC" Type="Self.INPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indice_INPC">
+              <PropertyRef Name="Id_indice" />
+            </Principal>
+            <Dependent Role="INPC">
+              <PropertyRef Name="id_indice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INPC_tipo_anio_base_INPC">
+          <End Role="tipo_anio_base_INPC" Type="Self.tipo_anio_base_INPC" Multiplicity="0..1" />
+          <End Role="INPC" Type="Self.INPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_anio_base_INPC">
+              <PropertyRef Name="id_tipo_anio_base" />
+            </Principal>
+            <Dependent Role="INPC">
+              <PropertyRef Name="id_tipo_anio_base" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Proyecto_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
@@ -167,7 +226,10 @@
           <EntitySet Name="Costos_Pro" EntityType="Self.Costos_Pro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FNE" EntityType="Self.FNE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos_Pro" EntityType="Self.Gastos_Pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="indice_INPC" EntityType="Self.indice_INPC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INPC" EntityType="Self.INPC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_anio_base_INPC" EntityType="Self.tipo_anio_base_INPC" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Self.FK_Amortizacion_pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Amortizacion_pro" EntitySet="Amortizacion_pro" />
@@ -183,6 +245,14 @@
           <AssociationSet Name="FK_Gastos_Pro_Proyecto" Association="Self.FK_Gastos_Pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Gastos_Pro" EntitySet="Gastos_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INPC_indice_INPC" Association="Self.FK_INPC_indice_INPC">
+            <End Role="indice_INPC" EntitySet="indice_INPC" />
+            <End Role="INPC" EntitySet="INPC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INPC_tipo_anio_base_INPC" Association="Self.FK_INPC_tipo_anio_base_INPC">
+            <End Role="tipo_anio_base_INPC" EntitySet="tipo_anio_base_INPC" />
+            <End Role="INPC" EntitySet="INPC" />
           </AssociationSet>
           <AssociationSet Name="FK_Proyecto_AspNetUsers" Association="Self.FK_Proyecto_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -201,7 +271,10 @@
           <EntitySet Name="Costos_Pro" EntityType="Model.Costos_Pro" />
           <EntitySet Name="FNE" EntityType="Model.FNE" />
           <EntitySet Name="Gastos_Pro" EntityType="Model.Gastos_Pro" />
+          <EntitySet Name="indice_INPC" EntityType="Model.indice_INPC" />
+          <EntitySet Name="INPC" EntityType="Model.INPC" />
           <EntitySet Name="Proyecto" EntityType="Model.Proyecto" />
+          <EntitySet Name="tipo_anio_base_INPC" EntityType="Model.tipo_anio_base_INPC" />
           <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Model.FK_Amortizacion_pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Amortizacion_pro" EntitySet="Amortizacion_pro" />
@@ -221,6 +294,14 @@
           <AssociationSet Name="FK_Gastos_Pro_Proyecto" Association="Model.FK_Gastos_Pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Gastos_Pro" EntitySet="Gastos_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INPC_indice_INPC" Association="Model.FK_INPC_indice_INPC">
+            <End Role="indice_INPC" EntitySet="indice_INPC" />
+            <End Role="INPC" EntitySet="INPC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INPC_tipo_anio_base_INPC" Association="Model.FK_INPC_tipo_anio_base_INPC">
+            <End Role="tipo_anio_base_INPC" EntitySet="tipo_anio_base_INPC" />
+            <End Role="INPC" EntitySet="INPC" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Amortizacion_cat">
@@ -312,6 +393,37 @@
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Proyecto" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Gastos_Pro" ToRole="Proyecto" />
         </EntityType>
+        <EntityType Name="indice_INPC">
+          <Key>
+            <PropertyRef Name="Id_indice" />
+          </Key>
+          <Property Name="Id_indice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion_indice_base" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="INPC" Relationship="Model.FK_INPC_indice_INPC" FromRole="indice_INPC" ToRole="INPC" />
+        </EntityType>
+        <EntityType Name="INPC">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="anio" Type="Int32" />
+          <Property Name="enero" Type="Double" />
+          <Property Name="febrero" Type="Double" />
+          <Property Name="marzo" Type="Double" />
+          <Property Name="abril" Type="Double" />
+          <Property Name="mayo" Type="Double" />
+          <Property Name="junio" Type="Double" />
+          <Property Name="julio" Type="Double" />
+          <Property Name="agosto" Type="Double" />
+          <Property Name="septiembre" Type="Double" />
+          <Property Name="octubre" Type="Double" />
+          <Property Name="noviembre" Type="Double" />
+          <Property Name="diciembre" Type="Double" />
+          <Property Name="id_indice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_tipo_anio_base" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="indice_INPC" Relationship="Model.FK_INPC_indice_INPC" FromRole="INPC" ToRole="indice_INPC" />
+          <NavigationProperty Name="tipo_anio_base_INPC" Relationship="Model.FK_INPC_tipo_anio_base_INPC" FromRole="INPC" ToRole="tipo_anio_base_INPC" />
+        </EntityType>
         <EntityType Name="Proyecto">
           <Key>
             <PropertyRef Name="ID_Proyecto" />
@@ -326,6 +438,14 @@
           <NavigationProperty Name="Costos_Pro" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Proyecto" ToRole="Costos_Pro" />
           <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
           <NavigationProperty Name="Gastos_Pro" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Proyecto" ToRole="Gastos_Pro" />
+        </EntityType>
+        <EntityType Name="tipo_anio_base_INPC">
+          <Key>
+            <PropertyRef Name="id_tipo_anio_base" />
+          </Key>
+          <Property Name="id_tipo_anio_base" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion_tipo_anio_base" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="INPC" Relationship="Model.FK_INPC_tipo_anio_base_INPC" FromRole="tipo_anio_base_INPC" ToRole="INPC" />
         </EntityType>
         <Association Name="FK_Amortizacion_pro_Proyecto">
           <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
@@ -384,6 +504,30 @@
             </Principal>
             <Dependent Role="Gastos_Pro">
               <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INPC_indice_INPC">
+          <End Type="Model.indice_INPC" Role="indice_INPC" Multiplicity="0..1" />
+          <End Type="Model.INPC" Role="INPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="indice_INPC">
+              <PropertyRef Name="Id_indice" />
+            </Principal>
+            <Dependent Role="INPC">
+              <PropertyRef Name="id_indice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INPC_tipo_anio_base_INPC">
+          <End Type="Model.tipo_anio_base_INPC" Role="tipo_anio_base_INPC" Multiplicity="0..1" />
+          <End Type="Model.INPC" Role="INPC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_anio_base_INPC">
+              <PropertyRef Name="id_tipo_anio_base" />
+            </Principal>
+            <Dependent Role="INPC">
+              <PropertyRef Name="id_tipo_anio_base" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -484,6 +628,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="indice_INPC">
+            <EntityTypeMapping TypeName="Model.indice_INPC">
+              <MappingFragment StoreEntitySet="indice_INPC">
+                <ScalarProperty Name="descripcion_indice_base" ColumnName="descripcion_indice_base" />
+                <ScalarProperty Name="Id_indice" ColumnName="Id_indice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INPC">
+            <EntityTypeMapping TypeName="Model.INPC">
+              <MappingFragment StoreEntitySet="INPC">
+                <ScalarProperty Name="id_tipo_anio_base" ColumnName="id_tipo_anio_base" />
+                <ScalarProperty Name="id_indice" ColumnName="id_indice" />
+                <ScalarProperty Name="diciembre" ColumnName="diciembre" />
+                <ScalarProperty Name="noviembre" ColumnName="noviembre" />
+                <ScalarProperty Name="octubre" ColumnName="octubre" />
+                <ScalarProperty Name="septiembre" ColumnName="septiembre" />
+                <ScalarProperty Name="agosto" ColumnName="agosto" />
+                <ScalarProperty Name="julio" ColumnName="julio" />
+                <ScalarProperty Name="junio" ColumnName="junio" />
+                <ScalarProperty Name="mayo" ColumnName="mayo" />
+                <ScalarProperty Name="abril" ColumnName="abril" />
+                <ScalarProperty Name="marzo" ColumnName="marzo" />
+                <ScalarProperty Name="febrero" ColumnName="febrero" />
+                <ScalarProperty Name="enero" ColumnName="enero" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Proyecto">
             <EntityTypeMapping TypeName="Model.Proyecto">
               <MappingFragment StoreEntitySet="Proyecto">
@@ -492,6 +666,14 @@
                 <ScalarProperty Name="Nombre_Proyecto" ColumnName="Nombre_Proyecto" />
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
                 <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_anio_base_INPC">
+            <EntityTypeMapping TypeName="Model.tipo_anio_base_INPC">
+              <MappingFragment StoreEntitySet="tipo_anio_base_INPC">
+                <ScalarProperty Name="descripcion_tipo_anio_base" ColumnName="descripcion_tipo_anio_base" />
+                <ScalarProperty Name="id_tipo_anio_base" ColumnName="id_tipo_anio_base" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

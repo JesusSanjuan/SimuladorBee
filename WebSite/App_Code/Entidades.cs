@@ -104,6 +104,44 @@ public partial class Gastos_Pro
     public virtual Proyecto Proyecto { get; set; }
 }
 
+public partial class indice_INPC
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public indice_INPC()
+    {
+        this.INPC = new HashSet<INPC>();
+    }
+
+    public string Id_indice { get; set; }
+    public string descripcion_indice_base { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<INPC> INPC { get; set; }
+}
+
+public partial class INPC
+{
+    public string Id { get; set; }
+    public Nullable<int> anio { get; set; }
+    public Nullable<double> enero { get; set; }
+    public Nullable<double> febrero { get; set; }
+    public Nullable<double> marzo { get; set; }
+    public Nullable<double> abril { get; set; }
+    public Nullable<double> mayo { get; set; }
+    public Nullable<double> junio { get; set; }
+    public Nullable<double> julio { get; set; }
+    public Nullable<double> agosto { get; set; }
+    public Nullable<double> septiembre { get; set; }
+    public Nullable<double> octubre { get; set; }
+    public Nullable<double> noviembre { get; set; }
+    public Nullable<double> diciembre { get; set; }
+    public string id_indice { get; set; }
+    public string id_tipo_anio_base { get; set; }
+
+    public virtual indice_INPC indice_INPC { get; set; }
+    public virtual tipo_anio_base_INPC tipo_anio_base_INPC { get; set; }
+}
+
 public partial class Proyecto
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -130,4 +168,19 @@ public partial class Proyecto
     public virtual ICollection<FNE> FNE { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Gastos_Pro> Gastos_Pro { get; set; }
+}
+
+public partial class tipo_anio_base_INPC
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tipo_anio_base_INPC()
+    {
+        this.INPC = new HashSet<INPC>();
+    }
+
+    public string id_tipo_anio_base { get; set; }
+    public string descripcion_tipo_anio_base { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<INPC> INPC { get; set; }
 }

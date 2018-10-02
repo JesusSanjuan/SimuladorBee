@@ -88,21 +88,42 @@
                                                     <div class="card-body " style="padding: 0px 15px !important;">
                                                                               <div class="row" style="padding-top:10px;" >
                                                                                    <div class="col" style="text-align: center;"> <h4>Indice nacional del precio al consumidor </h4></div> 
-                                                                               </div>
-                                                                               <div class="row" style="padding-top:10px;">     
-                                                                                     <div class="col" style="text-align: center;"><h5> Indice General </h5></div> 
-                                                                               </div>
-                                                                               <div class="row" style="padding-top:10px;">
-                                                                                  <div class="col-6" style="text-align: center;"><h6>Período: Enero 1969 - Julio 2018<h6></div>
-                                                                                  <div class="col-6" style="text-align: center;"> <h6>Índice base segunda quincena de diciembre 2010 = 100 <h6></div>
-                                                                               </div>  
-                                                                               <div class="row" style="padding-top:10px;">
+                                                                               </div>                                                                               
+                                                                                <div class="row" style="padding-top:10px;">
                                                                                     <div class="col" style="text-align: center;"> <h5> Inflación en un período determinado</h5> </div>
                                                                                </div>
+                                                                                <div class="row"  style="padding-top:10px;">
+                                                                                  <div class="col" style="text-align: center;">Seleccione el indice base. </div> 
+                                                                               </div>
+                                                                               <div>
+                                                                                   <div class="row" style="padding-top:10px;">
+                                                                                      <div class="col-12" style="text-align: center;"> <h6>Índice base:<h6></div>
+                                                                                   </div> 
+                                                                                    <div class="row" style="padding-top:10px;">
+                                                                                              <div class="col-12" style="text-align: center;">
+                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                             <option value="" class="dropdown-item"  selected>Seleccione</option>
+                                                                                                  </select>
+                                                                                               </div>
+                                                                                   </div>                                                                                   
+                                                                                </div>
+                                                                                <div class="row"  style="padding-top:10px;">
+                                                                                    <div class="col" style="text-align: center;">Rango de datos diponibles del indice base seleccionado. </div> 
+                                                                               </div>
+                                                                                <div>
+                                                                                   <div class="row" style="padding-top:10px;">
+                                                                                      <div class="col-12" style="text-align: center;"> <h6>Período:<h6></div>
+                                                                                   </div> 
+                                                                                    <div class="row" style="padding-top:10px;">
+                                                                                          <div class="col-12" style="text-align: center;">
+                                                                                                 <div class="col-12" style="text-align: center;"> <h6>Enero 1969 - Julio 2018<h6></div>
+                                                                                           </div>
+                                                                                   </div>
+                                                                               </div>                                                                               
+                                                                               
                                                                                <div class="row"  style="padding-top:10px;">
                                                                                   <div class="col" style="text-align: center;">Seleccione el período de interés y oprima el botón de calcular. </div> 
                                                                                </div>
-
                                                                                <div class="row" style="padding-top:10px;">
                                                                                         <div class="col-2" style="padding-bottom:10px;"></div>
                                                                                         <div class="col-8 preborder" style="padding-bottom:10px;" > 
@@ -115,24 +136,20 @@
                                                                                                         <div  class="col" style="padding-bottom:10px; padding-top:10px;" >                                                                                                            
                                                                                                              <div class="input-group"> 
                                                                                                                  <div  style="padding-bottom:5px; padding-top:5px;" >  
-                                                                                                                    Mes: 
+                                                                                                                    Año: 
                                                                                                                  </div>
                                                                                                                  <select  id="select" class="selectpicker show-tick" runat="server"  required="required">
                                                                                                                                 <option value="" class="dropdown-item"  selected>Seleccione</option>
-                                                                                                                                <option value="1" class="dropdown-item" >Mes</option>
-                                                                                                                                <option value="2" class="dropdown-item" >Año</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                         </div>
                                                                                                         <div class="col" style="padding-bottom:10px;  padding-top:10px;">
                                                                                                              <div class="input-group"> 
                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" > 
-                                                                                                                     Año:
+                                                                                                                     Mes:
                                                                                                                 </div>
                                                                                                                 <select  id="select1" class="selectpicker show-tick" runat="server"  required="required">
                                                                                                                             <option value="" class="dropdown-item" selected>Seleccione</option>
-                                                                                                                            <option value="1" class="dropdown-item">Mes</option>
-                                                                                                                            <option value="2" class="dropdown-item">Año</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                         </div>
@@ -152,24 +169,20 @@
                                                                                                    <div class="col" style="padding-bottom:10px; padding-top:10px;">
                                                                                                              <div class="input-group" > 
                                                                                                                   <div style="padding-bottom:5px; padding-top:5px;" >  
-                                                                                                                    Mes: 
+                                                                                                                    Año: 
                                                                                                                  </div>
                                                                                                                  <select  id="select2" class="selectpicker show-tick" runat="server"  required="required">
                                                                                                                                 <option value="" class="dropdown-item"  selected>Seleccione</option>
-                                                                                                                                <option value="1" class="dropdown-item" >Mes</option>
-                                                                                                                                <option value="2" class="dropdown-item" >Año</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                    </div>
                                                                                                    <div  class="col" style="padding-bottom:10px;  padding-top:10px;">
                                                                                                           <div class="input-group"> 
                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" > 
-                                                                                                                     Año:
+                                                                                                                     Mes:
                                                                                                                 </div>
                                                                                                                 <select  id="select3" class="selectpicker show-tick" runat="server"  required="required">
                                                                                                                             <option value="" class="dropdown-item" selected>Seleccione</option>
-                                                                                                                            <option value="1" class="dropdown-item">Mes</option>
-                                                                                                                            <option value="2" class="dropdown-item">Año</option>
                                                                                                                 </select>
                                                                                                           </div>
                                                                                                    </div>

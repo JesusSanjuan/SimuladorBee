@@ -2,6 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
      <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- Scrip para graficas debe estar en Head--> 
+    <script src="../Scripts/startbootstrap/js/tasainflacion.js"></script> 
+    <!-- plugin selectpicker-->
+        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- plugin selectpicker-->
+<!-- Scrip para graficas debe estar en Head--> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
     <div >
@@ -332,8 +338,6 @@
 
 
     </script>
-     <!-- plugin selectpicker-->
-        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
-    <!-- plugin selectpicker-->
+     
 </asp:Content>
 

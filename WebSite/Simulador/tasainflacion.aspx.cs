@@ -12,7 +12,6 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Resultados.Visible = false;
-        getPeriodo();
     }
 
     protected void Btn_ClickInflacion(Object sender, EventArgs e)
@@ -21,9 +20,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     }
 
     [WebMethod]
-    public void getPeriodo()
+    public static string extraerindices()
     {
-        /********* busqueda del numero de periodos**********/
         var db = new Entidades();   /* Crear la instancia a las tablas de la BD */
 
         var consulta1 = db.indice_INPC.OrderByDescending(indice =>indice.Id_indice );
@@ -37,21 +35,14 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
             result_descrip_indice_base.Add(INPC_id.descripcion_indice_base);
         }
 
-        String vec1 = JsonConvert.SerializeObject(result_ids_indice);
-        String vec2 = JsonConvert.SerializeObject(result_descrip_indice_base);
+        List<List<string>> valores = new List<List<string>>();
+        valores.Add(result_ids_indice);
+        valores.Add(result_descrip_indice_base);
 
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "inicializacion(" + vec1 + ", " + vec2 +  ");", true);
+        var json = JsonConvert.SerializeObject(valores);
 
-      /*  var consulta3 = db.INPC.OrderByDescending(anio => anio.anio); 
 
-        List<string> result_ids = new List<string>();
-        List<int> result_anios= new List<int>();
+        return json;
 
-        foreach (INPC INPC_anio in consulta3)
-        {
-            result_ids.Add(INPC_anio.Id);
-            result_anios.Add((int)INPC_anio.anio);
-        }*/
-        
     }
 }

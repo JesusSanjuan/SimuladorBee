@@ -1,13 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="tasainflacion.aspx.cs" Inherits="Simulador_tasainflacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-     <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
-<!-- Scrip para graficas debe estar en Head--> 
-    <script src="../Scripts/startbootstrap/js/tasainflacion.js"></script> 
-    <!-- plugin selectpicker-->
-        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
-    <!-- plugin selectpicker-->
-<!-- Scrip para graficas debe estar en Head--> 
+    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    
+ 
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
     <div >
@@ -107,8 +104,7 @@
                                                                                    </div> 
                                                                                     <div class="row" style="padding-top:10px;">
                                                                                               <div class="col-12" style="text-align: center;">
-                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                             <option value="" class="dropdown-item"  selected>Seleccione</option>
+                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick"   required="required">                                                                                                             
                                                                                                   </select>
                                                                                                </div>
                                                                                    </div>                                                                                   
@@ -284,60 +280,13 @@
             </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-    
-
-     
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
-   <script>
-       
-       $(document).ready(function () {  
-
-           console.log("inflacion--"+ $("#inflacionValor").text());
-         
-           $("body").on("click", "#wuc_Calculadora1_BtnCalcular", function () {
-
-               console.log("inflacion--"+ $("#inflacionValor").html());
-            });
-
-        
-       });
-
-
-    </script>
+    <!-- plugin selectpicker-->
+        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <!-- plugin selectpicker-->
+    <script src="../Scripts/startbootstrap/js/tasainflacion.js"></script>
      
+    
 </asp:Content>
 

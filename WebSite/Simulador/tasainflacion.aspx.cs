@@ -47,23 +47,63 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
         try
         {
-            /*   //Realizamos la consula
-               var db = new Entidades();
-               var query = db.Amortizacion_pro.Where(Amort => Amort.ID_Proyecto == idproyecto && Amort.ID_Periodo.StartsWith(periodSelect));
+              //Realizamos la consula
+            var db = new Entidades();
+            var queryMax = db.INPC.Where(t => t.id_indice == id_indice_base).Select(t => new { t.Id, t.anio }).OrderByDescending(x => x.anio).FirstOrDefault();
+            var queryMin = db.INPC.Where(t => t.id_indice == id_indice_base).Select(t => new { t.Id, t.anio }).OrderBy(x => x.anio).FirstOrDefault();
+            //var query = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base);
+            // var queryPrueba = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base).Select(t => new { t.Id, t.anio });
+            string[] meses = new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+            int anio_MAX= (int)queryMax.anio;
+            string id_INCP_MAX = (string)queryMax.Id;
+            int anio_MIN = (int)queryMin.anio;
+            string id_INCP_MIN = (string)queryMin.Id;
 
-               List<string> result_query = new List<string>();
+            var queryMesMax = db.INPC.Where(t => t.Id == id_INCP_MAX);
+            var queryMesMin = db.INPC.Where(t => t.Id == id_INCP_MIN);
+                       
+            List<double> result_query = new List<double>();
+             /* List<string> result_query2 = new List<string>();*/
 
-               foreach (var Result in query)
-               {
-                   result_query.Add(Result.ID_Amortizacion_pro);
-                   result_query.Add(Result.ID_Periodo);
-                   result_query.Add(Result.Amortizacion);
+            foreach (var Result in queryMesMax)
+            {
+                result_query.Add((double)Result.enero);
+                result_query.Add((double)Result.febrero);
+                result_query.Add((double)Result.marzo);
+                result_query.Add((double)Result.abril);
+                result_query.Add((double)Result.mayo);
+                result_query.Add((double)Result.junio);
+                result_query.Add((double)Result.julio);                
+                result_query.Add((double)Result.agosto);
+                result_query.Add((double)Result.septiembre);
+                result_query.Add((double)Result.octubre);
+                result_query.Add((double)Result.noviembre);
+                result_query.Add((double)Result.diciembre);
 
-               }
-                var json = JsonConvert.SerializeObject(result_query);
-   */
-            var json = JsonConvert.SerializeObject("hola" + id_indice_base);
-            return json;
+            }
+            string mesMax;
+            for(int i=1; i<result_query.Count;i++)
+            {
+                if(result_query[0]==0)
+                {
+                    anio_MAX=anio_MAX - 1;
+                    break;
+                }
+                if(result_query[i]==0)
+                {
+                    mesMax=meses[i - 1];
+                    break;
+                }
+            }
+
+               /*List<List<string>> valores = new List<List<string>>();
+               valores.Add(result_query.Select(s => Convert.ToString(s)).ToList());
+               valores.Add(result_query2);
+
+               var json = JsonConvert.SerializeObject(result_query);*/
+
+            // var json = JsonConvert.SerializeObject("hola" + id_indice_base);
+            return null;
         }
         // Most specific:
         catch (ArgumentNullException e)
@@ -74,6 +114,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
 
     }
+
 
 
 }

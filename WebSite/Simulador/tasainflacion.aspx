@@ -98,7 +98,7 @@
                                                                                 <div class="row"  style="padding-top:10px;">
                                                                                   <div class="col" style="text-align: center;">Seleccione el indice base. </div> 
                                                                                </div>
-                                                                               <div>
+                                                                               <div style="padding-bottom:15px;  padding-top:10px;">
                                                                                    <div class="row" style="padding-top:10px;">
                                                                                       <div class="col-12" style="text-align: center;"> <h6>Índice base:<h6></div>
                                                                                    </div> 
@@ -109,6 +109,7 @@
                                                                                                </div>
                                                                                    </div>                                                                                   
                                                                                 </div>
+                                                        <div id="pre_datos" style="display: none">
                                                                                 <div class="row"  style="padding-top:10px;">
                                                                                     <div class="col" style="text-align: center;">Rango de datos diponibles del indice base seleccionado. </div> 
                                                                                </div>
@@ -198,12 +199,14 @@
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-.8" style="text-align: center;">
-                                                                                        <asp:Button id="Calculartasainfla" 	CssClass="btn btn-primary"  onclick="Btn_ClickInflacion" autopostback="false" Text="Calcular"  runat="server"/>
+                                                                                       <button id="Calculartasainfla" type="button" class="btn btn-primary" >Calcular</button>
                                                                                    </div>                                                                   
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                               </div>
-                                                                                <div id="Resultados"  runat="server">
+
+                                                       
+                                                        <div id="Resultados"  >
                                                                                          <div class="card-header row preborder text-info " style="padding-top:25px; border-radius: 0px;" >
                                                                                                <div class="col" style="text-align: center;"> <h4>Resultados </h4></div> 
                                                                                         </div>
@@ -270,7 +273,8 @@
                                                                                                    </div>
                                                                                                </div>
                                                                                        </div>
-                                                                                </div>
+                                                                </div>
+                                                             </div>
                                                         </div>
                                               </div>
                                         </div>

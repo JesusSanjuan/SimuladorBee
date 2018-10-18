@@ -63,7 +63,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
             var queryMesMin = db.INPC.Where(t => t.Id == id_INCP_MIN);
                        
             List<double> result_query = new List<double>();
-             /* List<string> result_query2 = new List<string>();*/
+            List<double> result_query2 = new List<double>();
 
             foreach (var Result in queryMesMax)
             {
@@ -81,12 +81,13 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                 result_query.Add((double)Result.diciembre);
 
             }
-            string mesMax;
+            string mesMax= meses[11];
             for(int i=1; i<result_query.Count;i++)
             {
                 if(result_query[0]==0)
                 {
                     anio_MAX=anio_MAX - 1;
+                    mesMax = meses[11];
                     break;
                 }
                 if(result_query[i]==0)
@@ -95,15 +96,63 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                     break;
                 }
             }
+            foreach (var Result in queryMesMin)
+            {
+                result_query2.Add((double)Result.enero);
+                result_query2.Add((double)Result.febrero);
+                result_query2.Add((double)Result.marzo);
+                result_query2.Add((double)Result.abril);
+                result_query2.Add((double)Result.mayo);
+                result_query2.Add((double)Result.junio);
+                result_query2.Add((double)Result.julio);
+                result_query2.Add((double)Result.agosto);
+                result_query2.Add((double)Result.septiembre);
+                result_query2.Add((double)Result.octubre);
+                result_query2.Add((double)Result.noviembre);
+                result_query2.Add((double)Result.diciembre);
 
-               /*List<List<string>> valores = new List<List<string>>();
-               valores.Add(result_query.Select(s => Convert.ToString(s)).ToList());
-               valores.Add(result_query2);
+            }
+            int cuentameses = 0;
+            int posicion = 0;
+            string mesMin;
+            for (int i = 0; i < result_query2.Count; i++)
+            {
+                if (result_query2[i] == 0)
+                {
+                    cuentameses++;
+                    mesMin = meses[i];
+                    posicion = i;
+                }
+                else
+                {
+                    break;
+                }
+                    
+            }
+            if(cuentameses==0)
+            {
+                mesMin = meses[0];
+            }
+            else
+            {
+                mesMin = meses[posicion+1];
+            }
+            List<string> T1 = new List<string>();
+            List<string> T2 = new List<string>();
+            T1.Add(Convert.ToString(anio_MIN));
+            T1.Add(mesMin);
 
-               var json = JsonConvert.SerializeObject(result_query);*/
+            T2.Add(Convert.ToString(anio_MAX));
+            T2.Add(mesMax);
 
-            // var json = JsonConvert.SerializeObject("hola" + id_indice_base);
-            return null;
+            List<List<string>> valoresF = new List<List<string>>();
+
+            valoresF.Add(T1);
+            valoresF.Add(T2);
+
+             var json = JsonConvert.SerializeObject(valoresF);
+
+            return json;
         }
         // Most specific:
         catch (ArgumentNullException e)

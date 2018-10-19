@@ -11,19 +11,12 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Resultados.Visible = false;
-        getPeriodo();
     }
 
-    protected void Btn_ClickInflacion(Object sender, EventArgs e)
-    {
-        Resultados.Visible = true;
-    }
 
     [WebMethod]
-    public void getPeriodo()
+    public static string extraerindices()
     {
-        /********* busqueda del numero de periodos**********/
         var db = new Entidades();   /* Crear la instancia a las tablas de la BD */
 
         var consulta1 = db.indice_INPC.OrderByDescending(indice =>indice.Id_indice );
@@ -37,21 +30,140 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
             result_descrip_indice_base.Add(INPC_id.descripcion_indice_base);
         }
 
-        String vec1 = JsonConvert.SerializeObject(result_ids_indice);
-        String vec2 = JsonConvert.SerializeObject(result_descrip_indice_base);
+        List<List<string>> valores = new List<List<string>>();
+        valores.Add(result_ids_indice);
+        valores.Add(result_descrip_indice_base);
 
-        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "inicializacion(" + vec1 + ", " + vec2 +  ");", true);
+        var json = JsonConvert.SerializeObject(valores);
 
-      /*  var consulta3 = db.INPC.OrderByDescending(anio => anio.anio); 
 
-        List<string> result_ids = new List<string>();
-        List<int> result_anios= new List<int>();
+        return json;
 
-        foreach (INPC INPC_anio in consulta3)
-        {
-            result_ids.Add(INPC_anio.Id);
-            result_anios.Add((int)INPC_anio.anio);
-        }*/
-        
     }
+
+    [WebMethod]
+    public static object get_imputs_post(string id_indice_base)
+    {
+
+        try
+        {
+              //Realizamos la consula
+            var db = new Entidades();
+            var queryMax = db.INPC.Where(t => t.id_indice == id_indice_base).Select(t => new { t.Id, t.anio }).OrderByDescending(x => x.anio).FirstOrDefault();
+            var queryMin = db.INPC.Where(t => t.id_indice == id_indice_base).Select(t => new { t.Id, t.anio }).OrderBy(x => x.anio).FirstOrDefault();
+            //var query = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base);
+            // var queryPrueba = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base).Select(t => new { t.Id, t.anio });
+            string[] meses = new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+            int anio_MAX= (int)queryMax.anio;
+            string id_INCP_MAX = (string)queryMax.Id;
+            int anio_MIN = (int)queryMin.anio;
+            string id_INCP_MIN = (string)queryMin.Id;
+
+            var queryMesMax = db.INPC.Where(t => t.Id == id_INCP_MAX);
+            var queryMesMin = db.INPC.Where(t => t.Id == id_INCP_MIN);
+                       
+            List<double> result_query = new List<double>();
+            List<double> result_query2 = new List<double>();
+
+            foreach (var Result in queryMesMax)
+            {
+                result_query.Add((double)Result.enero);
+                result_query.Add((double)Result.febrero);
+                result_query.Add((double)Result.marzo);
+                result_query.Add((double)Result.abril);
+                result_query.Add((double)Result.mayo);
+                result_query.Add((double)Result.junio);
+                result_query.Add((double)Result.julio);                
+                result_query.Add((double)Result.agosto);
+                result_query.Add((double)Result.septiembre);
+                result_query.Add((double)Result.octubre);
+                result_query.Add((double)Result.noviembre);
+                result_query.Add((double)Result.diciembre);
+
+            }
+            string mesMax= meses[11];
+            for(int i=1; i<result_query.Count;i++)
+            {
+                if(result_query[0]==0)
+                {
+                    anio_MAX=anio_MAX - 1;
+                    mesMax = meses[11];
+                    break;
+                }
+                if(result_query[i]==0)
+                {
+                    mesMax=meses[i - 1];
+                    break;
+                }
+            }
+            foreach (var Result in queryMesMin)
+            {
+                result_query2.Add((double)Result.enero);
+                result_query2.Add((double)Result.febrero);
+                result_query2.Add((double)Result.marzo);
+                result_query2.Add((double)Result.abril);
+                result_query2.Add((double)Result.mayo);
+                result_query2.Add((double)Result.junio);
+                result_query2.Add((double)Result.julio);
+                result_query2.Add((double)Result.agosto);
+                result_query2.Add((double)Result.septiembre);
+                result_query2.Add((double)Result.octubre);
+                result_query2.Add((double)Result.noviembre);
+                result_query2.Add((double)Result.diciembre);
+
+            }
+            int cuentameses = 0;
+            int posicion = 0;
+            string mesMin;
+            for (int i = 0; i < result_query2.Count; i++)
+            {
+                if (result_query2[i] == 0)
+                {
+                    cuentameses++;
+                    mesMin = meses[i];
+                    posicion = i;
+                }
+                else
+                {
+                    break;
+                }
+                    
+            }
+            if(cuentameses==0)
+            {
+                mesMin = meses[0];
+            }
+            else
+            {
+                mesMin = meses[posicion+1];
+            }
+            List<string> T1 = new List<string>();
+            List<string> T2 = new List<string>();
+            T1.Add(Convert.ToString(anio_MIN));
+            T1.Add(mesMin);
+
+            T2.Add(Convert.ToString(anio_MAX));
+            T2.Add(mesMax);
+
+            List<List<string>> valoresF = new List<List<string>>();
+
+            valoresF.Add(T1);
+            valoresF.Add(T2);
+
+             var json = JsonConvert.SerializeObject(valoresF);
+
+            return json;
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
+
+    }
+
+
+
 }

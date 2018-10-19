@@ -10,27 +10,43 @@ using Newtonsoft.Json;
 
 public partial class User_Index : System.Web.UI.Page
 {
-    protected void Guardar_ProyectoBtn_Click(Object sender, EventArgs e)
+    [WebMethod]
+    public static object Guardar_ProyectoBtn (string proyect, string lapse, string periodo)
     {
-        string nombre_proyecto = Nombre_Proyecto.Text;
-        string id_periodo      = nperiodo.Text.Substring(0, 1) + lapso.Value.ToString().Substring(0, 1);//Para crear el idPeriodo
-        string id_user         = User.Identity.GetUserId();/*para obtener el id de usuario utilizando Microsoft.AspNet.Identity */
-        string id_proyect      = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+        try
+        {
+            string nombre_proyecto = proyect;
+            string id_periodo = periodo + lapse.Substring(0, 1);//Para crear el idPeriodo
+            var httpContext = HttpContext.Current;
+            string id_user = httpContext.User.Identity.GetUserId();
+            string id_proyect = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
 
-        // Probando a guardar datos de ejrmplo en la BD
-        var db = new Entidades();
-        var NuevoProyecto           = new Proyecto();
-        NuevoProyecto.ID_Proyecto   = id_proyect;
-        NuevoProyecto.ID_Usuario    = id_user;
-        NuevoProyecto.Nombre_Proyecto = nombre_proyecto;
-        NuevoProyecto.Fecha_Hora    = DateTime.Now;
-        NuevoProyecto.ID_Periodo    = id_periodo;
-        db.Proyecto.Add(NuevoProyecto);
-        db.SaveChanges();
-        //crear las sessiones 
-        System.Web.HttpContext.Current.Session["ID_Proyecto"]   = id_proyect;
-        System.Web.HttpContext.Current.Session["name_Proyecto"] = nombre_proyecto;
-        System.Diagnostics.Debug.WriteLine(nombre_proyecto + "--"+ id_periodo +"--"+ id_user);
+            // Probando a guardar datos de ejrmplo en la BD
+
+            var db = new Entidades();
+            var NuevoProyecto           = new Proyecto();
+            NuevoProyecto.ID_Proyecto   = id_proyect;
+            NuevoProyecto.ID_Usuario    = id_user;
+            NuevoProyecto.Nombre_Proyecto = nombre_proyecto;
+            NuevoProyecto.Fecha_Hora    = DateTime.Now;
+            NuevoProyecto.ID_Periodo    = id_periodo;
+            db.Proyecto.Add(NuevoProyecto);
+            db.SaveChanges();
+            //crear las sessiones 
+            System.Web.HttpContext.Current.Session["ID_Proyecto"]   = id_proyect;
+            System.Web.HttpContext.Current.Session["name_Proyecto"] = nombre_proyecto;
+            System.Diagnostics.Debug.WriteLine(nombre_proyecto + "--"+ id_periodo +"--"+ id_user);
+            return "succes";
+
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
+        
     }
     [WebMethod]
     public static string getsource()
@@ -114,6 +130,15 @@ public partial class User_Index : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (Page.IsPostBack)
+        {
+            Page.Validate("periodo");
+            if (Page.IsValid)
+            {
+                //Continue
+            }
+        }
 
     }
 }

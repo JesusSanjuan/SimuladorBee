@@ -92,6 +92,86 @@
         });
 
     });
+
+    $("#valid1").hide();
+    $("#valid2").hide();
+    $("#valid3").hide();
+    $("#valid4").hide();
+    $("body").on('blur', "#Nombre_Proyecto", function () {
+
+        if ($(this).val() == "") 
+            $("#valid1").show();
+        else 
+            $("#valid1").hide();
+   
+    });
+
+    $("body").on('input', "#nperiodo", function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    $("body").on('blur', "#nperiodo", function () {
+        if ($(this).val() == "")
+            $("#valid2").show();
+        else {
+            $("#valid2").hide();
+            
+            if ($("#lapso").val() == "Años") {
+                if ($(this).val() > 80) {
+                    $("#valid3").html("El periodo debe sér máximo de 80 años");
+                    $("#valid3").show();
+                }
+                else
+                    $("#valid3").hide();
+            }
+            else if ($("#lapso").val() == "Meses") {
+                if ($(this).val() > 300) {
+                    $("#valid3").html("El periodo debe sér máximo de 300 meses");
+                    $("#valid3").show();
+                }
+                else
+                    $("#valid3").hide();
+            }
+                
+        }
+
+    });
+
+    $("#Guardar_Proyecto").on('click', function () {
+        var nproyecto = $("#Nombre_Proyecto").val();
+        var lapso = $("#lapso").val();
+        var nperiodo = $("#nperiodo").val();
+        if (nproyecto != "" && nperiodo != "") {
+
+            $.ajax({
+                type: "POST",
+                url: "Index.aspx/Guardar_ProyectoBtn",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ proyect: nproyecto, lapse: lapso, periodo: nperiodo }),
+                success: function (result) {
+                    location.reload();
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+        }
+
+        else {
+            $("#valid1").show();
+            $("#valid2").show();
+        }
+
+        
+    });
+
+
     /****************************************/
     /*******SCRIPTS PARA CONTENT AMORTIZACION***************/
     //verificar si la session id_proyect existe 

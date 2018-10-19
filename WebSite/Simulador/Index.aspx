@@ -4,8 +4,27 @@
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
     <link href="../Scripts/rangeslider.js/rangeslider.css" rel="stylesheet" />
     <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <script type="text/javascript">
+       
+            function validateRango(sender, args) {
+                 $(document).ready(function () {
+                    var perdiodo = "Años";
+
+
+                    alert("-->"+perdiodo);
+                    if (perdiodo == "Años")
+                        args.IsValid = (args.Value.length <= 80);
+                    else if (perdiodo == "Meses")
+                         args.IsValid = (args.Value.length <= 300);
+                  });
+            }
+        
+    </script>
+
+    
 <div class="animate-bottom">
     <div class="container-fluid" >
       <!-- Breadcrumbs-->
@@ -153,15 +172,17 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="titulo" class="col-form-label">Título:</label>
-                        <asp:TextBox runat="server" ID="Nombre_Proyecto" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="Nombre_Proyecto"
-                                CssClass="text-danger" ErrorMessage="Debe asignarle un nombre al proyecto" />
+                        <input ID="Nombre_Proyecto" class="form-control" />
+                        
+                        <span id="valid1"  class="text-danger">Debe asignarle un nombre al proyecto</span>
+                        
+                        
                     </div>
                     <div class="row">
                         <div class="col-sm">
                             <div class="form-group">
                                 <label for="lapso" class="col-form-label">Lapso por</label>
-                                <select class="selectpicker show-tick" id="lapso" runat="server">
+                                <select class="selectpicker show-tick" id="lapso" >
                                     <option>Años</option>
                                     <option>Meses</option>
                                 </select>
@@ -170,12 +191,16 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <label for="periodo" class="col-form-label">Período de evaluación</label>
-                                <asp:TextBox runat="server" ID="nperiodo" CssClass="form-control" />
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="nperiodo"
-                                        CssClass="text-danger" ErrorMessage="Debe asignarle un período válido" />
+                                <input ID="nperiodo" class="form-control">
+                                                               
+                                <span id="valid2" class="text-danger">Debe asignarle un período </span> 
+
+                                <span id="valid3"  class="text-danger"></span> 
+
+                                <span id="valid4"  class="text-danger">Debe asignarle un período válido</span> 
+
                                 
-                                <asp:RegularExpressionValidator runat="server" ControlToValidate="nperiodo" 
-                                    CssClass="text-danger" ValidationExpression="^\d+$"  Display="Dynamic"  ErrorMessage="Debe asignarle un período válido" />
+
                             </div>
                         </div>
                     </div>
@@ -183,12 +208,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <asp:Button id="Guardar_Proyecto" CssClass="btn btn-primary" OnClick="Guardar_ProyectoBtn_Click" Text="Guardar" runat="server"/>
+                    <button id="Guardar_Proyecto"  type="button" class="btn btn-primary" >Guardar </button>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
 </asp:Content>
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">

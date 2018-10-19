@@ -111,7 +111,7 @@ public partial class Simulador_costos : System.Web.UI.Page
 
     private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total)
     {
-        var inflacion = 1.5;
+        var inflacion = 1.5/100;
 
         //BUSCAMOS CUANTOS PERIODOS TIENE
         var httpContext = HttpContext.Current;

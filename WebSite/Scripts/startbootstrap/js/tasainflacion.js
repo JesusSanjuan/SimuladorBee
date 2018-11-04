@@ -67,21 +67,22 @@
                 async: false,
                 data: JSON.stringify({ id_indice_base: id_indice_base}),
                 success: function (result) {
-                    var resultado = JSON.parse(result.d);
-                    alert(resultado);
-                   /* var table = $('#myTabContent2').find('table').DataTable();
-                    table.clear().draw();
-                    //Tab amortizacion
-                    var res = JSON.parse(resultado[2]);
-                    var i, obj, param1, param2, param3, param4;
-                    for (i = 0; i < res.length - 1; i++) {
-                        obj = res[i];
-                        param1 = obj["Concepto"];
-                        param2 = obj["$ Costo"];
-                        param3 = obj["%"];
-                        param4 = obj["Total"];
-                        cargar_datatable_amort(param1, param2, param3, param4);
-                    }*/
+                    if (result.d == "")
+                    {
+                        $("#rango").html(' <h6> No hay datos aun para esta base intente con otro base distinta<h6>');
+                        $('#pre_datos2').css("display", "none");
+                    }
+                    else
+                    {
+                    
+                            var resultado = JSON.parse(result.d);                    
+                            var inicio = resultado[0];
+                            var fin = resultado[1];
+                            var TF = inicio[1].concat(" ", inicio[0]," - ", fin[1]," ", fin[0]);
+                            $("#rango").html(' <h6>' + TF + '<h6>');
+                            $('#pre_datos2').css("display", "block");
+                    }
+
                 },
                 error: function (result) {
                     console.log(result.responseText);

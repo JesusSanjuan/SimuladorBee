@@ -119,11 +119,11 @@
                                                                                    </div> 
                                                                                     <div class="row" style="padding-top:10px;">
                                                                                           <div class="col-12" style="text-align: center;">
-                                                                                                 <div class="col-12" style="text-align: center;"> <h6>Enero 1969 - Julio 2018<h6></div>
+                                                                                                 <div class="col-12" style="text-align: center;" id="rango"></div>
                                                                                            </div>
                                                                                    </div>
                                                                                </div>                                                                               
-                                                                               
+                                                           <div id="pre_datos2" style="display: none">          
                                                                                <div class="row"  style="padding-top:10px;">
                                                                                   <div class="col" style="text-align: center;">Seleccione el período de interés y oprima el botón de calcular. </div> 
                                                                                </div>
@@ -135,15 +135,15 @@
                                                                                                        <strong>DE</strong>    
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="row" style="text-align: center;  ">
-                                                                                                        <div  class="col" style="padding-bottom:10px; padding-top:10px;" >                                                                                                            
-                                                                                                             <div class="input-group"> 
-                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" >  
-                                                                                                                    Año: 
-                                                                                                                 </div>
-                                                                                                                 <select  id="select" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                                                <option value="" class="dropdown-item"  selected>Seleccione</option>
-                                                                                                                </select>
+                                                                                                <div class="row" >
+                                                                                                        <div  class="col " style="padding-bottom:10px; padding-top:10px;"  >                                                                                                            
+                                                                                                             <div class="input-group " style="margin:auto;"> 
+                                                                                                                         <div  style="padding-bottom:5px; padding-top:5px;" >  
+                                                                                                                            Año: 
+                                                                                                                         </div>
+                                                                                                                         <select  id="select" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                                        <option value="" class="dropdown-item"  selected>Seleccione</option>
+                                                                                                                        </select>
                                                                                                              </div>
                                                                                                         </div>
                                                                                                         <div class="col" style="padding-bottom:10px;  padding-top:10px;">
@@ -204,9 +204,9 @@
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                               </div>
-
+                                                        </div>
                                                        
-                                                        <div id="Resultados"  >
+                                                        <div id="Resultados" style="display: none" >
                                                                                          <div class="card-header row preborder text-info " style="padding-top:25px; border-radius: 0px;" >
                                                                                                <div class="col" style="text-align: center;"> <h4>Resultados </h4></div> 
                                                                                         </div>

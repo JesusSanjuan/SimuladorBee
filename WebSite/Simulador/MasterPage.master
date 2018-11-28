@@ -77,7 +77,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="Construccion">
+                                <a class="nav-link" href="TMAR">
                                     <i class="fas fa-calculator"></i>
                                     Tasa minima aceptable de retorno (TMAR)
                                 </a>
@@ -121,7 +121,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="Construccion">
+                                <a class="nav-link" href="puntoequilibrio">
                                     <i class="fas fa-balance-scale"></i>
                                     <span class="nav-link-text">Punto de Equilibrio</span>
                                 </a>

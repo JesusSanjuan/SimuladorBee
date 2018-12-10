@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-/*Validacion de todos los campos cambio a colores y mostrar textos*/
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+    /*Validacion de todos los campos cambio a colores y mostrar textos*/
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict';
         window.addEventListener('load', function () {
@@ -19,23 +19,7 @@
             });
         }, false);
     })();
-    /*Validacion de todos los campos cambio a colores y mostrar textos*/
 
-
-    /* Validacion del campo PLAZO*/
-    /*
-    const number5 = document.querySelector('.number5');
-
-    function formatNumber5(n) {
-        n = String(n).replace(/\D/g, "");
-        return n === '' ? n : Number(n).toLocaleString();
-    }
-    number5.addEventListener('keyup', (e5) => {
-        const element5 = e5.target;
-        const value5 = element5.value;
-        element5.value = formatNumber5(value5);
-    });
-    */
 
     $('#n').keyup(function (event) {
         valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
@@ -90,5 +74,100 @@
     }).fail(function (data) {
         console.log("Error: " + data);
     });
+
+
+
+    /*******VALIDACIONES VAN MANUAL ******************/
+
+    //Iniciación
+    $("#contentTableFlujos").hide();
+
+    var periodoM = "";
+
+    $("#formVANM #MainContent_n").on('blur', function (e) {
+
+        if ($(this).val() != "" && periodoM != "") {
+
+            var inversionInicial = $("#formVANM #MainContent_Inversion").val();
+
+            mostrarTablaFlujos(periodoM, $(this).val(), inversionInicial );
+
+        }
+       
+    });
+
+    function mostrarTablaFlujos(periodo, Nperiodo, inversionI) {
+
+        console.log(periodo + "---" + Nperiodo);
+
+        if (periodo == 1) {
+            $("#contentTableFlujos #periodo").html("Mes");
+        }
+        else {
+            $("#contentTableFlujos #periodo").html("Año");
+        }
+
+        
+
+        //Inicializamos la tabla
+        var t = $('#flujosM').DataTable();
+
+        //Aregamos las filas
+
+
+        for (var i = 0; i <= Nperiodo; i++) {
+            var valI = "";
+            if (inversionI != "" && i == 0) {
+                valI = inversionI;
+            }
+            t.row.add([
+                i,
+                valI
+            ]).draw(false);
+
+  
+        }
+        
+        $('#flujosM').find('td:nth-child(1)').attr("data-editable", "false");
+        $('#flujosM').editableTableWidget({ editor: $('<input class="form-control" id="flujo">') });
+
+
+        $("#contentTableFlujos").show();
+    }
+
+    $('#formVANM #select').on('change', function () {
+        periodoM = $(this).val();
+    });
+
+    //formato moneda
+    $("body").on('keyup', "#flujo , #MainContent_Inversion, #MainContent_VdS", function (event) {
+        $(event.target).val(function (index, value) {
+            return value.replace(/\D/g, "")
+                .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+                .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+
+    });
+    //Solo números
+    $("body").on('keyup', "#MainContent_n", function (event) {
+        $(event.target).val(function (index, value) {
+            return value.replace(/\D/g, "")
+                .replace(/([0-9]{3})/, "");
+        });
+
+    });
+
+    //Solo porcentaje
+    $("body").on('keyup', "#MainContent_TMAR", function (event) {
+        this.value = this.value.match(/\d{0,3}(\.\d{0,2})?/)[0];
+
+
+    });
+
+
+
+
+
+
 
 });

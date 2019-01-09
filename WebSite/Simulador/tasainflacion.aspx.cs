@@ -54,6 +54,9 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
             //var query = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base);
             // var queryPrueba = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base).Select(t => new { t.Id, t.anio });
             // Tengo que hacer una consulta con el id de la base seleccionada y obtener todos los id de los años de esa base seleccionada, de ahi de cada id obtener los meses
+         
+            var studentList = db.INPC.SqlQuery("Select * from INPC where id_indice= '"+ id_indice_base +"'").ToList<INPC>(); //Error al final de la consulta 
+
             var json ="";
             if (queryMax!= null && queryMin!=null)
             {    

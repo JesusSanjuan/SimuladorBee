@@ -54,9 +54,29 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
             //var query = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base);
             // var queryPrueba = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base).Select(t => new { t.Id, t.anio });
             // Tengo que hacer una consulta con el id de la base seleccionada y obtener todos los id de los años de esa base seleccionada, de ahi de cada id obtener los meses
-         
-            var studentList = db.INPC.SqlQuery("Select * from INPC where id_indice= '"+ id_indice_base +"'").ToList<INPC>(); //Error al final de la consulta 
 
+            /*var query = from st in db.INPC
+                        where st.id_indice == id_indice_base
+                        select st;
+
+            var student = query.ToList<INPC>();*/
+
+            var anonymousObjResult = from s in db.INPC
+                                     where s.id_indice == id_indice_base
+                                     orderby s.anio descending
+                                     select new
+                                     {
+                                         Id = s.Id,
+                                         Name = s.anio
+                                     };
+            List<string> R1 = new List<string>();
+            List<string> R2 = new List<string>();
+            foreach (var obj in anonymousObjResult)
+            {
+                R1.Add(obj.Id);
+                R2.Add(obj.Name.ToString());
+            }
+            // var studentList = db.INPC.SqlQuery("Select *  from INPC where id_indice= '" + id_indice_base + "' ORDER BY anio").ToList(); //Error al final de la consulta 
             var json ="";
             if (queryMax!= null && queryMin!=null)
             {    
@@ -170,6 +190,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                     List<List<string>> valoresF = new List<List<string>>();
                     valoresF.Add(T1);
                     valoresF.Add(T2);
+                    valoresF.Add(R1);
+                    valoresF.Add(R2);
                     if (cuentameses != 12)
                     {
                         json = JsonConvert.SerializeObject(valoresF);

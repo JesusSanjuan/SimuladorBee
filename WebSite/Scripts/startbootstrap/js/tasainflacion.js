@@ -78,9 +78,24 @@
                             var resultado = JSON.parse(result.d);                    
                             var inicio = resultado[0];
                             var fin = resultado[1];
+                            var id_anio = resultado[2];
+                            var anio = resultado[3];
                             var TF = inicio[1].concat(" ", inicio[0]," - ", fin[1]," ", fin[0]);
                             $("#rango").html(' <h6>' + TF + '<h6>');
                             $('#pre_datos2').css("display", "block");
+
+                        var optionsAnio = [];
+                        var valorAnio = "<option value='' class='dropdown-item' selected>Seleccione</option>";
+                        optionsAnio.push(valorAnio);
+                        for (i = 0; i < id_anio.length; i++) {
+                            var option;
+                            option = "<option value=" + id_anio[i] + ">" + anio[i] + "</option>";
+                            //console.log(option);
+                            optionsAnio.push(option);
+                        }
+
+                        $('#select').html(optionsAnio);
+                        $('#select').selectpicker('refresh');
                     }
 
                 },

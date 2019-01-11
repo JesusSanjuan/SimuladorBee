@@ -141,8 +141,7 @@
                                                                                                                          <div  style="padding-bottom:5px; padding-top:5px;" >  
                                                                                                                             Año: 
                                                                                                                          </div>
-                                                                                                                         <select  id="select" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                                                        <option value="" class="dropdown-item"  selected>Seleccione</option>
+                                                                                                                         <select  id="select" class="selectpicker show-tick"  required="required">
                                                                                                                         </select>
                                                                                                              </div>
                                                                                                         </div>
@@ -151,8 +150,7 @@
                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" > 
                                                                                                                      Mes:
                                                                                                                 </div>
-                                                                                                                <select  id="select1" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                                            <option value="" class="dropdown-item" selected>Seleccione</option>
+                                                                                                                <select  id="select1" class="selectpicker show-tick"  required="required" disabled="disabled">
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                         </div>
@@ -175,7 +173,6 @@
                                                                                                                     Año: 
                                                                                                                  </div>
                                                                                                                  <select  id="select2" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                                                <option value="" class="dropdown-item"  selected>Seleccione</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                    </div>
@@ -185,7 +182,6 @@
                                                                                                                      Mes:
                                                                                                                 </div>
                                                                                                                 <select  id="select3" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                                            <option value="" class="dropdown-item" selected>Seleccione</option>
                                                                                                                 </select>
                                                                                                           </div>
                                                                                                    </div>

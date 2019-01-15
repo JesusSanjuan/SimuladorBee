@@ -44,23 +44,12 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     [WebMethod]
     public static object get_imputs_post(string id_indice_base)
     {
-
         try
-        {
-            
+        {            
             var db = new Entidades();
             var queryMax = db.INPC.Where(t => t.id_indice == id_indice_base).Select(t => new { t.Id, t.anio }).OrderByDescending(x => x.anio).FirstOrDefault();
             var queryMin = db.INPC.Where(t => t.id_indice == id_indice_base).Select(t => new { t.Id, t.anio }).OrderBy(x => x.anio).FirstOrDefault();
-            //var query = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base);
-            // var queryPrueba = db.INPC.Where(Inpc => Inpc.id_indice == id_indice_base).Select(t => new { t.Id, t.anio });
-            // Tengo que hacer una consulta con el id de la base seleccionada y obtener todos los id de los años de esa base seleccionada, de ahi de cada id obtener los meses
-
-            /*var query = from st in db.INPC
-                        where st.id_indice == id_indice_base
-                        select st;
-
-            var student = query.ToList<INPC>();*/
-
+            
             var anonymousObjResult = from s in db.INPC
                                      where s.id_indice == id_indice_base
                                      orderby s.anio descending
@@ -214,6 +203,88 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
     }
 
+    [WebMethod]
+    public static object get_imputs_post_anio(string id_periodo_select)
+    {
+       // string[] meses = new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
 
+        var db = new Entidades();
+
+
+        var Result = from s in db.INPC
+                                 where s.Id == id_periodo_select
+                                 select new
+                                 {
+                                     Enero = s.enero,
+                                     Febrero= s.febrero,
+                                     Marzo = s.marzo,
+                                     Abril = s.abril,
+                                     Mayo = s.mayo,
+                                     Junio = s.junio,
+                                     Julio= s.junio,
+                                     Agosto= s.agosto,
+                                     Septiembre = s.septiembre,
+                                     Octubre = s.octubre,
+                                     Noviembre= s.noviembre,
+                                     Diciembre = s.diciembre
+
+                                 };
+        var json = "";
+        List<string> R1 = new List<string>();
+       foreach (var obj in Result)
+        {
+            if(obj.Enero.ToString()!="0")
+            {
+                R1.Add("Enero");
+            }
+            if (obj.Febrero.ToString() != "0")
+            {
+                R1.Add("Febrero");
+            }
+            if (obj.Marzo.ToString() != "0")
+            {
+                R1.Add("Marzo");
+            }
+            if (obj.Abril.ToString() != "0")
+            {
+                R1.Add("Abril");
+            }
+            if (obj.Mayo.ToString() != "0")
+            {
+                R1.Add("Mayo");
+            }
+            if (obj.Junio.ToString() != "0")
+            {
+                R1.Add("Junio");
+            }
+            if (obj.Julio.ToString() != "0")
+            {
+                R1.Add("Julio");
+            }
+            if (obj.Agosto.ToString() != "0")
+            {
+                R1.Add("Agosto");
+            }
+            if (obj.Septiembre.ToString() != "0")
+            {
+                R1.Add("Septiembre");
+            }
+            if (obj.Octubre.ToString() != "0")
+            {
+                R1.Add("Octubre");
+            }
+            if (obj.Noviembre.ToString() != "0")
+            {
+                R1.Add("Noviembre");
+            }
+            if (obj.Diciembre.ToString() != "0")
+            {
+                R1.Add("Diciembre");
+            }
+        }
+
+        json = JsonConvert.SerializeObject(R1);
+        return json;
+    }
 
 }

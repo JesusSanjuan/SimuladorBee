@@ -151,6 +151,7 @@
                                                                                                                      Mes:
                                                                                                                 </div>
                                                                                                                 <select  id="select1" class="selectpicker show-tick"  required="required" disabled="disabled">
+                                                                                                                <option value="">Seleccione</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                         </div>
@@ -173,6 +174,7 @@
                                                                                                                     Año: 
                                                                                                                  </div>
                                                                                                                  <select  id="select2" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                     
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                    </div>

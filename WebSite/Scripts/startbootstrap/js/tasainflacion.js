@@ -47,6 +47,7 @@
         var periodo_select = $("#select_indice_base.selectpicker").val();
         if (periodo_select.length == 0) {
             $('#pre_datos').css("display", "none");
+            $('#select1').prop("disabled", true); //////////////////////////////////////
         }
         else
         {
@@ -57,8 +58,7 @@
     });
 
     function consulta_inputs(id_indice_base)
-    {
-        
+    {        
             $.ajax({
                 type: "POST",
                 url: "tasainflacion.aspx/get_imputs_post",
@@ -111,5 +111,44 @@
         
     }
 
+    $('#select.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        var id_periodo_select = $("#select.selectpicker").val();
+        $.ajax({
+            type: "POST",
+            url: "tasainflacion.aspx/get_imputs_post_anio",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ id_periodo_select: id_periodo_select }),
+            success: function (result) {
+
+                $('#select1').prop("disabled", false);
+                var meses = JSON.parse(result.d); 
+                var optionsMeses = [];
+                var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
+                optionsMeses.push(valormes);
+                for (i = 0; i < meses.length; i++) {
+                    var option;
+                    option = "<option value=" + meses[i].toLowerCase() + ">" + meses[i]+ "</option>";
+                    optionsMeses.push(option);
+                }
+
+                $('#select1').html(optionsMeses);
+                $('#select1').selectpicker('refresh');
+
+
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+
+
+    });
 
 });

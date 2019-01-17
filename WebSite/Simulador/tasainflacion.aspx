@@ -151,7 +151,7 @@
                                                                                                                      Mes:
                                                                                                                 </div>
                                                                                                                 <select  id="select1" class="selectpicker show-tick"  required="required" disabled="disabled">
-                                                                                                                <option value="">Seleccioneeeeeeee</option>
+                                                                                                                <option value="">Seleccione</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                         </div>

@@ -47,7 +47,14 @@
         var periodo_select = $("#select_indice_base.selectpicker").val();
         if (periodo_select.length == 0) {
             $('#pre_datos').css("display", "none");
-            $('#select1').prop("disabled", true); //////////////////////////////////////
+
+            /* Limpia los demas campos posteriores */
+            var op1 = [];
+            op1.push("<option value='' class='dropdown-item' selected>Seleccione</option>");
+            $('#select1').html(op1);
+            $('#select1').prop("disabled", true); 
+            $('#select1').selectpicker('refresh');
+            /* Limpia los demas campos posteriores */
         }
         else
         {

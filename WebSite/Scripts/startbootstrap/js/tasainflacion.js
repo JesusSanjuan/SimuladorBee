@@ -142,8 +142,6 @@
 
                 $('#select1').html(optionsMeses);
                 $('#select1').selectpicker('refresh');
-
-
             },
             error: function (result) {
                 console.log(result.responseText);
@@ -154,6 +152,58 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
+
+
+    });
+
+    $('#select1.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        var id_periodo_select_anio = $("#select.selectpicker").val();
+        var id_periodo_select_mes = $("#select1.selectpicker").val();
+        if (id_periodo_select_mes.length == 0) {
+            id_periodo_select_anio = "";
+        }
+        $.ajax({
+            type: "POST",
+            url: "tasainflacion.aspx/get_imputs_post_anio_2",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio}),
+            success: function (result) {
+
+                var resultados = JSON.parse(result.d); 
+                var id_anios = resultados[0];
+                var anios = resultados[1];                
+                $('#select2').prop("disabled", false);
+
+                var optionsMeses = [];
+                var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
+                optionsMeses.push(valormes);
+                 for (i = 0; i <anios.length; i++) {
+                    var option;
+                    option = "<option value=" + id_anios[i] + ">" + anios[i] + "</option>";
+                    optionsMeses.push(option);
+                }
+
+                $('#select2').html(optionsMeses);
+                $('#select2').selectpicker('refresh');
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+
+
+
+
+
+
+
 
 
     });

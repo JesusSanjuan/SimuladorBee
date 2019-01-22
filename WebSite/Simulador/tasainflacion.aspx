@@ -132,7 +132,7 @@
                                                                                         <div class="col-8 preborder" style="padding-bottom:10px;" > 
                                                                                                 <div class="row" style="text-align: center; " >
                                                                                                     <div  class="col"  style=" border-bottom-style: solid; border-width: 1px;border-color: rgba(0, 0, 0, 0.25); padding-top:10px;padding-bottom:10px;" >
-                                                                                                       <strong>DE</strong>    
+                                                                                                       <strong>DEL</strong>    
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row" >
@@ -173,8 +173,8 @@
                                                                                                                   <div style="padding-bottom:5px; padding-top:5px;" >  
                                                                                                                     Año: 
                                                                                                                  </div>
-                                                                                                                 <select  id="select2" class="selectpicker show-tick" runat="server"  required="required">
-                                                                                                                     
+                                                                                                                 <select  id="select2" class="selectpicker show-tick" required="required">
+                                                                                                                     <option value="">Seleccione</option>
                                                                                                                 </select>
                                                                                                              </div>
                                                                                                    </div>
@@ -183,7 +183,8 @@
                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" > 
                                                                                                                      Mes:
                                                                                                                 </div>
-                                                                                                                <select  id="select3" class="selectpicker show-tick" runat="server"  required="required">
+                                                                                                                <select  id="select3" class="selectpicker show-tick"   required="required">
+                                                                                                                    <option value="">Seleccione</option>
                                                                                                                 </select>
                                                                                                           </div>
                                                                                                    </div>

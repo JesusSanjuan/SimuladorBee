@@ -63,6 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
+                                            <th >Tipo</th>
                                             <th >Cantidad</th>
                                             <th >$ Gasto Unitario</th>
                                             <th >$ Gasto Total</th>
@@ -74,6 +75,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th class="na"></th>
                                             <th></th>
                                             <th></th>
                                             <th class="total"></th>
@@ -115,6 +117,7 @@
                                         <thead>
                                             <tr>
                                                 <th >Concepto</th>
+                                                <th >Tipo</th>
                                                 <th >Cantidad</th>
                                                 <th >$ Gasto Unitario</th>
                                                 <th >$ Gasto Total</th>
@@ -126,6 +129,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th><strong>TOTAL</strong></th>
+                                                <th class="na"></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th class="total"></th>
@@ -168,6 +172,7 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
+                                            <th >Tipo</th>
                                             <th >Cantidad</th>
                                             <th >$ Gasto Unitario</th>
                                             <th >$ Gasto Total</th>
@@ -179,6 +184,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th class="na"></th>
                                             <th></th>
                                             <th></th>
                                             <th class="total"></th>
@@ -219,6 +225,7 @@
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
+                                            <th >Tipo</th>
                                             <th >Cantidad</th>
                                             <th >$ Gasto Unitario</th>
                                             <th >$ Gasto Total</th>
@@ -230,6 +237,7 @@
                                     <tfoot>
                                         <tr>
                                             <th><strong>TOTAL</strong></th>
+                                            <th class="na"></th>
                                             <th></th>
                                             <th></th>
                                             <th class="total"></th>

@@ -300,6 +300,10 @@ public partial class Simulador_gastos : System.Web.UI.Page
                 }
 
             }
+            /*****se hace la cosulta de la inflacion********/
+            var inflacion = (1.5).ToString();
+            result_query.Add(inflacion);
+            /*****se hace la cosulta de la inflacion********/
 
             var json = JsonConvert.SerializeObject(result_query);
             System.Diagnostics.Debug.WriteLine(json);

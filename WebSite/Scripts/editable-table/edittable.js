@@ -12,17 +12,22 @@
         var t = $('#' + selector).find('table').DataTable();
         t.row.add([
             '',
+            'Fijo',
             '1',
             '0',
             '0',
             '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
         t.order([3, 'desc']).draw();
+        //refrescos libreria selectpicker
+        $('.tipoSelect').selectpicker();
         //aplicamos lasa propiedades editable de las celdas
         $('#' + selector).find('table').find('td:nth-child(1)').addClass('previous');
-        $('#' + selector).find('table').find('td:nth-child(3)').addClass('cunit');
-        $('#' + selector).find('table').find('td:nth-child(4)').attr("data-editable", "false");
+        $('#' + selector).find('table').find('td:nth-child(2)').addClass('tipo');
+        $('#' + selector).find('table').find('td:nth-child(2)').attr("data-editable", "false");
+        $('#' + selector).find('table').find('td:nth-child(4)').addClass('cunit');
         $('#' + selector).find('table').find('td:nth-child(5)').attr("data-editable", "false");
+        $('#' + selector).find('table').find('td:nth-child(6)').attr("data-editable", "false");
 
         $('#' + selector).find('table').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
@@ -30,22 +35,32 @@
     });
     // función que ordena descendentemente los datos(costos, gastos) ingresados automaicamente
     $("body").on("change", "#myTabContent table td, #myTabContent3 table td", function (evt, newValue) {
+
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
-        t.cell(this).data(newValue).draw();
-        t.order([3, 'desc']).draw();
+
+        var clase = String($(this).attr("class"));
+        $(".na").html("");
+        if (clase === "tipo") {
+            //$(this).html('<select class="selectpicker show-tick tipoSelect"><option>Fijo</option><option> Variable</option></select >');
+        }
+        else {
+            t.cell(this).data(newValue).draw();
+            t.order([4, 'desc']).draw();
+
+        }
 
         //CALCULAMOS la multiplicacion DEL COSTO y GASTO
         var rowIdx = t.cell(this).index().row;
         var data = t.row(rowIdx).data();
 
-        if (data[1] != "" && data[2] != "") {
-            var costoTotal = (data[1] * data[2]);
-            t.cell(rowIdx, 3).data(costoTotal).draw();
-            t.order([3, 'desc']).draw();
+        if (data[2] != "" && data[3] != "") {
+            var costoTotal = (data[2] * data[3]);
+            t.cell(rowIdx, 4).data(costoTotal).draw();
+            t.order([4, 'desc']).draw();
         }
 
-        var column = t.column(3);
+        var column = t.column(4);
         $(column.footer()).html(
             column.data().map(parseFloat).reduce(function (a, b) {
                 return a + b;
@@ -53,6 +68,42 @@
         );
 
     });
+    /***********evento de click en td Tipo*/
+    function tdClicks() {
+        var x = "", y = "";
+        $("body").on("click", "#myTabContent table .tipo, #myTabContent3 table .tipo", function () {
+           /**Agregamos la clase tipo a todos los td(2), acciones para el edit <select>******/
+            $("#myTabContent table tbody tr td:nth-child(2), #myTabContent3 table tbody tr td:nth-child(2)").addClass('tipo');
+            $('.tipoSelect').change();
+            /**Agregamos la clase tipo a todos los td(2), acciones para el edit <select>******/
+
+            $(this).removeClass('tipo');
+            var OriginalContent = $(this).text();
+            //console.log('OriginalContent-->' + OriginalContent);
+            $(this).html('<select name="selValue" class="selectpicker show-tick tipoSelect"><option value="Fijo">Fijo</option><option value="Variable"> Variable</option></select >');
+            //refrescamos libreria selectpicker
+            $('.tipoSelect').selectpicker();
+            $('select[name=selValue]').val(OriginalContent);
+            $('.tipoSelect').selectpicker('refresh');
+
+        });
+    }
+
+    tdClicks();
+    //eventos de tipoSelect
+    $("body").on("change", ".selectpicker.tipoSelect", function (e) {
+        //buscamos el selector tabla
+        var selector = $(this).parents('.tab-pane').attr("id");
+        var t = $('#' + selector).find('table').DataTable();
+
+        var selectorTD = $(this).parents('td');
+        t.cell(selectorTD).data(this.value).draw();
+        selectorTD.addClass("tipo");
+
+    });
+
+    
+
 
     /****** desactivacion de pestañas **/
     $('#myTab li a').addClass('disabled');
@@ -62,6 +113,10 @@
     $("#gasto_update").hide();
     //evento para avanzar en las pestañas (navs)
     $("body").on("click", ".continuar", function () {
+        /**acciones para enviar correctamente la tabla****/
+        $("#myTabContent table tbody tr td:nth-child(2), #myTabContent3 table tbody tr td:nth-child(2)").addClass('tipo');
+        $('.tipoSelect').change();
+        /**acciones para enviar correctamente la tabla****/
         var selector = $(this).parents('.tab-pane').attr("id");
         $(".modal-content #selector").val(selector);
         $('#Continuacion').modal({ show: true });
@@ -75,14 +130,17 @@
     $("body").on("click", "#gasto_continuar", function () {
         guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx", "myTabContent3");
     });
-    function guardar_datos(select, Tab, controller, content){
+    function guardar_datos(select, Tab, controller, content) {
+       
         /*OBTENIENDO DATOS DE LAS FUNCIONES DE Table To JSON*/
         var selector = $('input#selector').val();
         var data = $('#' + selector).find('table').tableToJSON();
         var nperiodo = $('#'+select+'').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
         var tot = $('#' + selector).find('table').find('.total').text();
-        var nav = $('#'+Tab+' li a.active').attr('id');
+        var nav = $('#' + Tab + ' li a.active').attr('id');
+
+        console.log("DATAA: " + data);
 
         //Validamos que no existan celdas vacias
         var table = $('#'+ content).find('#' + selector).find('table').DataTable();
@@ -129,6 +187,7 @@
             $('#success').modal({ show: true });
 
         }
+
     }
 
     //EVENTO PARA ACTUALIZAR DATOS COSTOS y GASTOS

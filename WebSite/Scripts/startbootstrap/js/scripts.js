@@ -27,7 +27,7 @@
         console.log("Error: " + data);
     });
     /**Inicialización selectpicker.js**/
-    $('.selectpicker').selectpicker
+    $('.selectpicker').selectpicker();
     /***Inicializando la Tabla de Mis proyectos****/
     $.ajax({
         type: "POST",
@@ -518,50 +518,59 @@
                     //Tab Producción
                     var res = JSON.parse(resultado[1]);
 
-                    var i, obj, param1, param2, param3, param4;
+                    var i, obj, param1, param2, param3, param4, param5;
                     for (i = 0; i < res.length - 1; i++) {
                         obj = res[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["Cantidad"];
-                        param3 = obj[campo + " Unitario"];
-                        param4 = obj[campo + " Total"];
-                        cargar_datatable_costos(prefix + "Table", param1, param2, param3, param4);
+                        param2 = obj["Tipo"];
+                        param3 = obj["Cantidad"];
+                        param4 = obj[campo + " Unitario"];
+                        param5 = obj[campo + " Total"];
+                        cargar_datatable_costos(prefix + "Table", param1, param2, param3, param4, param5);
                     }
                     //Tab Ventas
                     var res2 = JSON.parse(resultado[2]);
                     for (i = 0; i < res2.length - 1; i++) {
                         obj = res2[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["Cantidad"];
-                        param3 = obj[campo + " Unitario"];
-                        param4 = obj[campo + " Total"];
-                        cargar_datatable_costos(prefix + "Table2", param1, param2, param3, param4);
+                        param2 = obj["Tipo"];
+                        param3 = obj["Cantidad"];
+                        param4 = obj[campo + " Unitario"];
+                        param5 = obj[campo + " Total"];
+                        cargar_datatable_costos(prefix + "Table2", param1, param2, param3, param4, param5);
                     }
                     //Tab Admon
                     var res3 = JSON.parse(resultado[3]);
                     for (i = 0; i < res3.length - 1; i++) {
                         obj = res3[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["Cantidad"];
-                        param3 = obj[campo + " Unitario"];
-                        param4 = obj[campo + " Total"];
-                        cargar_datatable_costos(prefix + "Table3", param1, param2, param3, param4);
+                        param2 = obj["Tipo"];
+                        param3 = obj["Cantidad"];
+                        param4 = obj[campo + " Unitario"];
+                        param5 = obj[campo + " Total"];
+                        cargar_datatable_costos(prefix + "Table3", param1, param2, param3, param4, param5);
                     }
                     //Tab Admon
                     var res4 = JSON.parse(resultado[4]);
                     for (i = 0; i < res4.length - 1; i++) {
                         obj = res4[i];
                         param1 = obj["Concepto"];
-                        param2 = obj["Cantidad"];
-                        param3 = obj[campo + " Unitario"];
-                        param4 = obj[campo + " Total"];
-                        cargar_datatable_costos(prefix + "Table4", param1, param2, param3, param4);
+                        param2 = obj["Tipo"];
+                        param3 = obj["Cantidad"];
+                        param4 = obj[campo + " Unitario"];
+                        param5 = obj[campo + " Total"];
+                        cargar_datatable_costos(prefix + "Table4", param1, param2, param3, param4, param5);
                     }
 
 
                     $('#'+Tab+' li a').removeClass('disabled');
                     $('#'+Tab+' li:first a').tab('show');
-                    $('#'+Tab +' li:first a').addClass('active');
+                    $('#' + Tab + ' li:first a').addClass('active');
+
+                    //mensaje de proyección
+                    $("#warning").html("Los precios son proyectados con una inflación de <strong>" + resultado[5] + " %</strong>");
+
+
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -575,19 +584,26 @@
         }
     }
     //funcion generica para costos y gastos
-    function cargar_datatable_costos(table, camp1, camp2, camp3, camp4) {
+    function cargar_datatable_costos(table, camp1, camp2, camp3, camp4, camp5) {
         var t = $('#'+table+'').DataTable();
         t.row.add([
             camp1,
             camp2,
             camp3,
             camp4,
+            camp5,
             '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
-        t.order([1, 'desc']).draw();
+        t.order([3, 'desc']).draw();
         //aplicamos lasa propiedades editable de las celdas
         $('#' + table + '').find('td:nth-child(1)').addClass('previous');
-        $('#' + table + '').find('td:last').attr("data-editable", "false");
+        $('#' + table + '').find('td:nth-child(2)').addClass('tipo');
+        $('#' + table + '').find('td:nth-child(2)').attr("data-editable", "false");
+        $('#' + table + '').find('td:nth-child(4)').addClass('cunit');
+        $('#' + table + '').find('td:nth-child(5)').attr("data-editable", "false");
+        $('#' + table + '').find('td:nth-child(6)').attr("data-editable", "false");
+
+
         $('#' + table + '').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
 

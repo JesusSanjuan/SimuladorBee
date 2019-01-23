@@ -1,24 +1,26 @@
-﻿$(document).ready(function () {
-    /*Validacion de todos los campos cambio a colores y mostrar textos*/
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                    //form.classList.add('was-feedback');
-                }, false);
-            });
-        }, false);
-    })();
+﻿/*Validacion de todos los campos cambio a colores y mostrar textos*/
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                //form.classList.add('was-feedback');
+            }, false);
+        });
+    }, false);
+})();
+/*Validacion de todos los campos cambio a colores y mostrar textos*/
+
+$(document).ready(function () {
 
 
     $('#n').keyup(function (event) {
@@ -84,21 +86,22 @@
 
     var periodoM = "";
 
-    $("#formVANM #MainContent_n").on('blur', function (e) {
+    $("#formVANM #n").on('blur', function (e) {
 
-        if ($(this).val() != "" && periodoM != "") {
+        if ($(this).val() != "" && periodoM != "" && $(this).val() != 0) {
 
             var inversionInicial = $("#formVANM #MainContent_Inversion").val();
 
-            mostrarTablaFlujos(periodoM, $(this).val(), inversionInicial );
+            mostrarTablaFlujos(periodoM, $(this).val(), inversionInicial);
 
+        }
+        else {
+            $("#contentTableFlujos").hide();
         }
        
     });
 
     function mostrarTablaFlujos(periodo, Nperiodo, inversionI) {
-
-        console.log(periodo + "---" + Nperiodo);
 
         if (periodo == 1) {
             $("#contentTableFlujos #periodo").html("Mes");
@@ -111,6 +114,8 @@
 
         //Inicializamos la tabla
         var t = $('#flujosM').DataTable();
+
+        t.clear().draw();
 
         //Aregamos las filas
 
@@ -135,8 +140,11 @@
         $("#contentTableFlujos").show();
     }
 
-    $('#formVANM #select').on('change', function () {
+    $('#formVANM #selectN').on('change', function () {
         periodoM = $(this).val();
+
+        $("#formVANM #n").prop('disabled', false);
+
     });
 
     //formato moneda
@@ -165,9 +173,25 @@
     });
 
 
+    $("#formVANM #calcular").on('click', function (e) {
+
+        console.log("cliiiiik");
+
+    });
+
+
+    //guardar arreglo de flujos
+    $("body").on('blur', "#flujo" , function (event) {
+        //Inicializamos la tabla
+        var t = $('#flujosM').DataTable().draw();
+        var elems = t.column(1).data().toArray();
+        console.log(elems);
+        $('#MainContent_datosFNE').val(JSON.stringify(elems));
+
+
+    });
 
 
 
-
-
+   
 });

@@ -181,17 +181,17 @@ $(document).ready(function () {
 
 
     //guardar arreglo de flujos
-    $("body").on('blur', "#flujo" , function (event) {
-        //Inicializamos la tabla
-        var t = $('#flujosM').DataTable().draw();
+
+    $("body").on("change", "#contentTableFlujos table td", function (evt, newValue) {
+
+        var t = $('#contentTableFlujos').find('table').DataTable();
+        t.cell(this).data(newValue).draw();
+        //guardamos los flujos netos en un input
         var elems = t.column(1).data().toArray();
         console.log(elems);
         $('#MainContent_datosFNE').val(JSON.stringify(elems));
 
-
     });
 
-
-
-   
+  
 });

@@ -15,16 +15,9 @@ public partial class User_vanM : System.Web.UI.Page
 
     protected void GreetingBtn_Click(Object sender, EventArgs e)
     {
-
-        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "obetnerFNE()", true);
-
-        //string table = flujosBody;
-
-        System.Diagnostics.Debug.WriteLine("GreetingBtn_Click");
-       // System.Diagnostics.Debug.WriteLine(table);
-
-        //Graficar();
-        //CreacionTabla();
+       
+        Graficar();
+        CreacionTabla();
     }
 
     public void Graficar()
@@ -111,8 +104,11 @@ public partial class User_vanM : System.Web.UI.Page
     {
 
         decimal P = Convert.ToDecimal(Inversion.Text);
+        string flujosN = datosFNE.Value;
         //decimal fFNE = Convert.ToDecimal(FNE.Text);
 
+        var fujosNE = JsonConvert.DeserializeObject<List<decimal>>(flujosN);
+        
         decimal fVS = Convert.ToDecimal(VdS.Text);
         decimal FNEAcumulado = 0, fVPN = 0;
         int Periodo = Convert.ToInt32(n.Text.Replace(",", "")), i = 0;
@@ -127,20 +123,18 @@ public partial class User_vanM : System.Web.UI.Page
             
             "</script>");
 
-        /*
+        
         try
         {
             decimal DivTMAR = 1M + fTMAR;
             for (i = 1; i < Periodo; i++)
             {
                 decimal valorinferior = (decimal)Math.Pow((double)DivTMAR, i);
-                FNEAcumulado = FNEAcumulado + Math.Round(fFNE / Convert.ToDecimal(valorinferior), 4);
+                FNEAcumulado = FNEAcumulado + Math.Round(fujosNE[i] / Convert.ToDecimal(valorinferior), 4);
             }
 
             decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
-            System.Diagnostics.Debug.WriteLine(DivTMAR);
-            System.Diagnostics.Debug.WriteLine(i);
-            FNEAcumulado = FNEAcumulado + Math.Round((fFNE + fVS) / Convert.ToDecimal(valorinferiorF), 4);
+            FNEAcumulado = FNEAcumulado + Math.Round((fujosNE[Periodo] + fVS) / Convert.ToDecimal(valorinferiorF), 4);
             fVPN = FNEAcumulado - P;
 
 
@@ -148,7 +142,7 @@ public partial class User_vanM : System.Web.UI.Page
         catch (OverflowException e)
         {
             Console.WriteLine("Exception: {0} > {1}.", e, decimal.MaxValue);
-        }*/
+        }
         return fVPN;
         
     }

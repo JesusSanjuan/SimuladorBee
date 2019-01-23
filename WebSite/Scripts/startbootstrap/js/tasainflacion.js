@@ -52,8 +52,11 @@
             var op1 = [];
             op1.push("<option value='' class='dropdown-item' selected>Seleccione</option>");
             $('#select1').html(op1);
+            $('#select2').html(op1);
             $('#select1').prop("disabled", true); 
+            $('#select2').prop("disabled", true); 
             $('#select1').selectpicker('refresh');
+            $('#select2').selectpicker('refresh');
             /* Limpia los demas campos posteriores */
         }
         else
@@ -134,6 +137,10 @@
                 var optionsMeses = [];
                 var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
                 optionsMeses.push(valormes);
+
+                $('#select2').html(optionsMeses);
+                $('#select2').selectpicker('refresh');
+
                 for (i = 0; i < meses.length; i++) {
                     var option;
                     option = "<option value=" + meses[i].toLowerCase() + ">" + meses[i]+ "</option>";
@@ -152,8 +159,6 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
-
-
     });
 
     $('#select1.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
@@ -170,7 +175,6 @@
             async: false,
             data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio}),
             success: function (result) {
-
                 var resultados = JSON.parse(result.d); 
                 var id_anios = resultados[0];
                 var anios = resultados[1];                
@@ -184,7 +188,6 @@
                     option = "<option value=" + id_anios[i] + ">" + anios[i] + "</option>";
                     optionsMeses.push(option);
                 }
-
                 $('#select2').html(optionsMeses);
                 $('#select2').selectpicker('refresh');
             },
@@ -197,14 +200,48 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
+    });
 
+    $('#select2.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        var id_periodo_select_anio = $("#select.selectpicker").val();
+        var id_periodo_select_mes = $("#select1.selectpicker").val();
+        var id_periodo_select_anio2 = $("#select2.selectpicker").val();
+        alert(id_periodo_select_anio);
+        alert(id_periodo_select_anio2);
+        $.ajax({
+            type: "POST",
+            url: "tasainflacion.aspx/get_imputs_post_anio_3",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio,id_periodo_select_mes: id_periodo_select_mes, id_periodo_select_anio2: id_periodo_select_anio2, }),
+            success: function (result) {
+               // alert(result.d);
+              /*  var resultados = JSON.parse(result.d);
+                var id_anios = resultados[0];
+                var anios = resultados[1];
+                $('#select2').prop("disabled", false);
 
+                var optionsMeses = [];
+                var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
+                optionsMeses.push(valormes);
+                for (i = 0; i < anios.length; i++) {
+                    var option;
+                    option = "<option value=" + id_anios[i] + ">" + anios[i] + "</option>";
+                    optionsMeses.push(option);
+                }
+                $('#select2').html(optionsMeses);
+                $('#select2').selectpicker('refresh');*/
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
 
-
-
-
-
-
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
 
     });
 

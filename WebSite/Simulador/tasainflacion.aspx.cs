@@ -206,10 +206,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     [WebMethod]
     public static object get_imputs_post_anio(string id_periodo_select)
     {
-        // string[] meses = new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
-
         var db = new Entidades();
-
 
         var Result = from s in db.INPC
                      where s.Id == id_periodo_select
@@ -221,7 +218,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                          Abril = s.abril,
                          Mayo = s.mayo,
                          Junio = s.junio,
-                         Julio = s.junio,
+                         Julio = s.julio,
                          Agosto = s.agosto,
                          Septiembre = s.septiembre,
                          Octubre = s.octubre,
@@ -292,11 +289,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     [WebMethod]
     public static object get_imputs_post_anio_2(string id_periodo_select_anio)
     {
-        var json = "";
-              
+                var json = "";              
                 var db = new Entidades();
-
-
                 var Result = from s in db.INPC
                              where s.Id == id_periodo_select_anio
                              select new
@@ -311,55 +305,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                     id_indice = obj.id_indice_general;
                     anio = obj.anio.Value;
                 }
-
-
-              /*  switch (id_periodo_select_mes)
-                {
-                    case "enero":
-                        Console.WriteLine("Case 1");
-                        break;
-                    case "febrero":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "marzo":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "abril":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "mayo":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "junio":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "julio":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "agosto":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "septiembre":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "octubre":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "noviembre":
-                        Console.WriteLine("Case 2");
-                        break;
-                    case "diciembre":
-                        Console.WriteLine("Case 2");
-                        break;
-                    default:
-                        Console.WriteLine("Default case");
-                        break;
-                }
-                */
-
-
-
-
+             
                 var Result2 = from s in db.INPC
                              where (s.id_indice == id_indice && s.anio>=anio)
                               orderby s.anio descending
@@ -379,13 +325,198 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                 }
 
                 List<List<string>> valoresF = new List<List<string>>();
-
                
                 valoresF.Add(result_query);
                 valoresF.Add(result_query2);
                 json = JsonConvert.SerializeObject(valoresF);
-
         
         return json;
     }
-}
+
+
+    [WebMethod]
+    public static object get_imputs_post_anio_3(string id_periodo_select_anio, string id_periodo_select_mes, string id_periodo_select_anio2)
+    {
+        var json = "";
+        var db = new Entidades();
+        if(id_periodo_select_anio == id_periodo_select_anio2)
+        {
+            switch (id_periodo_select_mes)
+               {
+                   case "enero":
+
+
+                       break;
+                   case "febrero":
+                            var lst1 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero
+                             };
+                            List<string> result_query = new List<string>();
+                            foreach (var obj in lst1)
+                            {
+                                if (obj.Enero.ToString() != "0")
+                                {
+                                    result_query.Add("Enero");
+                                }
+                            }
+                            json = JsonConvert.SerializeObject(result_query);
+                            break;
+                   case "marzo":
+                             var lst2 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero
+                             };
+                            List<string> result_query2 = new List<string>();
+                            foreach (var obj in lst2)
+                            {
+                                if (obj.Enero.ToString() != "0")
+                                {
+                                    result_query2.Add("Enero");
+                                }
+                                if (obj.Febrero.ToString() != "0")
+                                {
+                                    result_query2.Add("Febrero");
+                                }
+                            }
+                            json = JsonConvert.SerializeObject(result_query2);
+                            break;
+                   case "abril":
+                             var lst3 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo
+                             };
+                            List<string> result_query3 = new List<string>();
+                            foreach (var obj in lst3)
+                            {
+                                if (obj.Enero.ToString() != "0")
+                                {
+                                    result_query3.Add("Enero");
+                                }
+                                if (obj.Febrero.ToString() != "0")
+                                {
+                                    result_query3.Add("Febrero");
+                                }
+                                if (obj.Marzo.ToString() != "0")
+                                {
+                                    result_query3.Add("Marzo");
+                                }
+                            }
+                            json = JsonConvert.SerializeObject(result_query3);
+                            break;
+                   case "mayo":
+                              var lst4 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril
+                             };
+                            List<string> result_query4 = new List<string>();
+                            foreach (var obj in lst4)
+                            {
+                                if (obj.Enero.ToString() != "0")
+                                {
+                                    result_query4.Add("Enero");
+                                }
+                                if (obj.Febrero.ToString() != "0")
+                                {
+                                    result_query4.Add("Febrero");
+                                }
+                                if (obj.Marzo.ToString() != "0")
+                                {
+                                    result_query4.Add("Marzo");
+                                }
+                                if (obj.Abril.ToString() != "0")
+                                {
+                                    result_query4.Add("Abril");
+                                }
+                            }
+                            json = JsonConvert.SerializeObject(result_query4);
+                            break;
+                   case "junio":
+                             var lst5 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio
+                             };
+                            List<string> result_query5 = new List<string>();
+                            foreach (var obj in lst5)
+                            {
+                                if (obj.Enero.ToString() != "0")
+                                {
+                                    result_query5.Add("Enero");
+                                }
+                                if (obj.Febrero.ToString() != "0")
+                                {
+                                    result_query5.Add("Febrero");
+                                }
+                                if (obj.Marzo.ToString() != "0")
+                                {
+                                    result_query5.Add("Marzo");
+                                }
+                                if (obj.Abril.ToString() != "0")
+                                {
+                                    result_query5.Add("Abril");
+                                }
+                                if (obj.Mayo.ToString() != "0")
+                                {
+                                    result_query5.Add("Mayo");
+                                }
+                            }
+                            json = JsonConvert.SerializeObject(result_query5);
+                            break;
+                   case "julio":
+                          var  lst6 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio
+                             };
+                       break;
+                   case "agosto":
+                             var lst7 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio,
+                                 Julio = s.julio
+                             };
+                       break;
+                   case "septiembre":
+                            var lst8 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio,
+                                 Julio = s.julio, Agosto = s.agosto
+                             };
+                       break;
+                   case "octubre":
+                            var lst9 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio,
+                                 Julio = s.julio, Agosto = s.agosto, Septiembre = s.septiembre
+                             };
+                       break;
+                   case "noviembre":
+                            var lst10 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio,
+                                 Julio = s.julio, Agosto = s.agosto, Septiembre = s.septiembre, Octubre = s.octubre
+                             };
+                       break;
+                   case "diciembre":
+                             var lst11 = from s in db.INPC where s.Id == id_periodo_select_anio select new
+                             {  
+                                 Enero = s.enero, Febrero = s.febrero, Marzo = s.marzo, Abril = s.abril, Mayo = s.mayo, Junio = s.junio,
+                                 Julio = s.julio, Agosto = s.agosto, Septiembre = s.septiembre, Octubre = s.octubre, Noviembre = s.noviembre
+                             };
+                       break;
+                   default:
+                       Console.WriteLine("Default case");
+                       break;
+               }
+
+
+
+        }
+        else
+        {
+
+        }
+        
+
+        return json;
+    }
+ }

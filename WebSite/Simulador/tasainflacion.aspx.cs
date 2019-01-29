@@ -504,7 +504,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                              };
                        break;
                    default:
-                       Console.WriteLine("Default case");
+                       Console.WriteLine("Caso por default");
                        break;
                }
 

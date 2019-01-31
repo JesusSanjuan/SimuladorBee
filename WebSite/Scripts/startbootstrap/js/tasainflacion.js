@@ -46,24 +46,28 @@
     $('#select_indice_base.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         var periodo_select = $("#select_indice_base.selectpicker").val();
         if (periodo_select.length == 0) {
-            $('#pre_datos').css("display", "none");
-
-            /* Limpia los demas campos posteriores */
-            var op1 = [];
-            op1.push("<option value='' class='dropdown-item' selected>Seleccione</option>");
-            $('#select1').html(op1);
-            $('#select2').html(op1);
-            $('#select1').prop("disabled", true); 
-            $('#select2').prop("disabled", true); 
-            $('#select1').selectpicker('refresh');
-            $('#select2').selectpicker('refresh');
-            /* Limpia los demas campos posteriores */
+            $('#pre_datos').css("display", "none");          
         }
         else
         {
             $('#pre_datos').css("display", "block");
             consulta_inputs(periodo_select);
         }
+        /* Limpia los demas campos posteriores */
+        var op1 = [];
+        op1.push("<option value='' class='dropdown-item' selected>Seleccione</option>");
+        $('#select1').html(op1);
+        $('#select2').html(op1);
+        $('#select3').html(op1);
+        $('#select1').prop("disabled", true);
+        $('#select2').prop("disabled", true);
+        $('#select3').prop("disabled", true);
+        $('#select1').selectpicker('refresh');
+        $('#select2').selectpicker('refresh');
+        $('#select3').selectpicker('refresh');
+        document.getElementById("Calculartasainfla").style.display = 'none';
+            /* Limpia los demas campos posteriores */
+
      
     });
 
@@ -123,6 +127,10 @@
 
     $('#select.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         var id_periodo_select = $("#select.selectpicker").val();
+        if (id_periodo_select.length == 0)
+        {
+            document.getElementById("Calculartasainfla").style.display = 'none';
+        }
         $.ajax({
             type: "POST",
             url: "tasainflacion.aspx/get_imputs_post_anio",
@@ -139,7 +147,9 @@
                 optionsMeses.push(valormes);
 
                 $('#select2').html(optionsMeses);
+                $('#select3').html(optionsMeses);
                 $('#select2').selectpicker('refresh');
+                $('#select3').selectpicker('refresh');
 
                 for (i = 0; i < meses.length; i++) {
                     var option;
@@ -166,6 +176,7 @@
         var id_periodo_select_mes = $("#select1.selectpicker").val();
         if (id_periodo_select_mes.length == 0) {
             id_periodo_select_anio = "";
+            document.getElementById("Calculartasainfla").style.display = 'none';
         }
         $.ajax({
             type: "POST",
@@ -174,7 +185,9 @@
             dataType: "json",
             async: false,
             data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio}),
-            success: function (result) {
+            success: function (result) {          
+
+
                 var resultados = JSON.parse(result.d); 
                 var id_anios = resultados[0];
                 var anios = resultados[1];                
@@ -183,6 +196,10 @@
                 var optionsMeses = [];
                 var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
                 optionsMeses.push(valormes);
+                $('#select3').html(optionsMeses);
+
+
+                $('#select3').selectpicker('refresh');
                  for (i = 0; i <anios.length; i++) {
                     var option;
                     option = "<option value=" + id_anios[i] + ">" + anios[i] + "</option>";
@@ -203,11 +220,13 @@
     });
 
     $('#select2.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
-        var id_periodo_select_anio = $("#select.selectpicker").val();
+     var id_periodo_select_anio = $("#select.selectpicker").val();
         var id_periodo_select_mes = $("#select1.selectpicker").val();
         var id_periodo_select_anio2 = $("#select2.selectpicker").val();
-        alert(id_periodo_select_anio);
-        alert(id_periodo_select_anio2);
+        if (id_periodo_select_anio2.length == 0) {
+            document.getElementById("Calculartasainfla").style.display = 'none';
+        }
+
         $.ajax({
             type: "POST",
             url: "tasainflacion.aspx/get_imputs_post_anio_3",
@@ -216,22 +235,19 @@
             async: false,
             data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio,id_periodo_select_mes: id_periodo_select_mes, id_periodo_select_anio2: id_periodo_select_anio2, }),
             success: function (result) {
-               // alert(result.d);
-              /*  var resultados = JSON.parse(result.d);
-                var id_anios = resultados[0];
-                var anios = resultados[1];
-                $('#select2').prop("disabled", false);
+                var resultados = JSON.parse(result.d);
+                $('#select3').prop("disabled", false);
 
                 var optionsMeses = [];
                 var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
                 optionsMeses.push(valormes);
-                for (i = 0; i < anios.length; i++) {
+                for (i = 0; i < resultados.length; i++) {
                     var option;
-                    option = "<option value=" + id_anios[i] + ">" + anios[i] + "</option>";
+                    option = "<option value=" + resultados[i].toLowerCase() + ">" + resultados[i] + "</option>";
                     optionsMeses.push(option);
                 }
-                $('#select2').html(optionsMeses);
-                $('#select2').selectpicker('refresh');*/
+                $('#select3').html(optionsMeses);
+                $('#select3').selectpicker('refresh');
             },
             error: function (result) {
                 console.log(result.responseText);
@@ -244,5 +260,28 @@
         });
 
     });
+
+    $('#select3.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        var v1 = $("#select.selectpicker").val();
+        var v2 = $("#select1.selectpicker").val();
+        var v3 = $("#select2.selectpicker").val();
+        var v4 = $("#select3.selectpicker").val();
+
+        if (v4.length == 0) {
+            document.getElementById("Calculartasainfla").style.display = 'none';
+        }
+        else {
+            document.getElementById("Calculartasainfla").style.display = 'inline-block';
+        }
+
+    });
+
+
+    $('#Calculartasainfla').click(function () {
+        alert("Click");
+
+    });
+
+
 
 });

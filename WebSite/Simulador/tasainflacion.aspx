@@ -173,7 +173,7 @@
                                                                                                                   <div style="padding-bottom:5px; padding-top:5px;" >  
                                                                                                                     Año: 
                                                                                                                  </div>
-                                                                                                                 <select  id="select2" class="selectpicker show-tick" required="required">
+                                                                                                                 <select  id="select2" class="selectpicker show-tick" required="required" disabled="disabled">
                                                                                                                      <option value="">Seleccione</option>
                                                                                                                 </select>
                                                                                                              </div>
@@ -183,7 +183,7 @@
                                                                                                                 <div  style="padding-bottom:5px; padding-top:5px;" > 
                                                                                                                      Mes:
                                                                                                                 </div>
-                                                                                                                <select  id="select3" class="selectpicker show-tick"   required="required">
+                                                                                                                <select  id="select3" class="selectpicker show-tick"   required="required" disabled="disabled">
                                                                                                                     <option value="">Seleccione</option>
                                                                                                                 </select>
                                                                                                           </div>
@@ -198,7 +198,7 @@
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-.8" style="text-align: center;">
-                                                                                       <button id="Calculartasainfla" type="button" class="btn btn-primary" >Calcular</button>
+                                                                                       <button id="Calculartasainfla" type="button" class="btn btn-primary" style="display: none;">Calcular</button>
                                                                                    </div>                                                                   
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-2" style="text-align: center;"></div>

@@ -104,8 +104,7 @@ public partial class User_van : System.Web.UI.Page
     }
 
     public decimal CalcularVPN(decimal fTMAR)
-    {
-        
+    {       
             decimal P = Convert.ToDecimal(Inversion.Text);
             decimal fFNE = Convert.ToDecimal(FNE.Text);
             decimal fVS = Convert.ToDecimal(VdS.Text);

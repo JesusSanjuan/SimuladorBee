@@ -76,7 +76,7 @@
                                                                                 </div>
                                                                 </div>
                                                                 <div class="embed-responsive embed-responsive-21by9">
-                                                                    <iframe width="560" height="315"style="padding-top:15px;padding-bottom:15px" src="http://www.inegi.org.mx/sistemas/indiceprecios/CalculadoraInflacion.aspx" frameborder="0" allowfullscreen></iframe>
+                                                                    <iframe width="560" height="315"style="padding-top:15px;padding-bottom:15px" src="https://www.inegi.org.mx/app/indicesdeprecios/CalculadoraInflacion.aspx" frameborder="0" allowfullscreen></iframe>
                                                                 </div>
                                                        
                                         </div>

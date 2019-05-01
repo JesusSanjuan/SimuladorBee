@@ -262,9 +262,7 @@
     });
 
     $('#select3.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
-        var v1 = $("#select.selectpicker").val();
-        var v2 = $("#select1.selectpicker").val();
-        var v3 = $("#select2.selectpicker").val();
+        
         var v4 = $("#select3.selectpicker").val();
 
         if (v4.length == 0) {
@@ -278,7 +276,11 @@
 
 
     $('#Calculartasainfla').click(function () {
-        alert("Click");
+        var v1 = $("#select.selectpicker").val();
+        var v2 = $("#select1.selectpicker").val();
+        var v3 = $("#select2.selectpicker").val();
+        var v4 = $("#select3.selectpicker").val();
+        alert(v1 + " " + v2 + " " + v3 + " " + v4 );
 
     });
 

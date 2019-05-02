@@ -875,8 +875,23 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
             }
 
             json = JsonConvert.SerializeObject(R1);
+        }   
+        return json;
+    }
+
+    public static object calcular_inflacion(string id_inpc_inicial, string id_inpc_inicial_mes, string id_inpc_final, string id_inpc_final_mes)
+    {
+        var json = "";
+        var db = new Entidades();
+
+        var Result = from s in db.INPC
+                     where s.Id == id_inpc_inicial
+                     select s;
+
+        foreach (var obj in Result)
+        {
+            //var = obj.; necesito sacar mes
         }
-        
 
         return json;
     }

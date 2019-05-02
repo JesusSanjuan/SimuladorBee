@@ -45,7 +45,7 @@
 
     $('#select_indice_base.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         var periodo_select = $("#select_indice_base.selectpicker").val();
-        if (periodo_select.length == 0) {
+        if (periodo_select.length === 0) {
             $('#pre_datos').css("display", "none");          
         }
         else
@@ -81,7 +81,7 @@
                 async: false,
                 data: JSON.stringify({ id_indice_base: id_indice_base}),
                 success: function (result) {
-                    if (result.d == "")
+                    if (result.d === "")
                     {
                         $("#rango").html(' <h6> No hay datos aun para esta base intente con otro base distinta<h6>');
                         $('#pre_datos2').css("display", "none");
@@ -127,7 +127,7 @@
 
     $('#select.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         var id_periodo_select = $("#select.selectpicker").val();
-        if (id_periodo_select.length == 0)
+        if (id_periodo_select.length === 0)
         {
             document.getElementById("Calculartasainfla").style.display = 'none';
         }
@@ -174,7 +174,7 @@
     $('#select1.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
         var id_periodo_select_anio = $("#select.selectpicker").val();
         var id_periodo_select_mes = $("#select1.selectpicker").val();
-        if (id_periodo_select_mes.length == 0) {
+        if (id_periodo_select_mes.length === 0) {
             id_periodo_select_anio = "";
             document.getElementById("Calculartasainfla").style.display = 'none';
         }
@@ -223,7 +223,7 @@
      var id_periodo_select_anio = $("#select.selectpicker").val();
         var id_periodo_select_mes = $("#select1.selectpicker").val();
         var id_periodo_select_anio2 = $("#select2.selectpicker").val();
-        if (id_periodo_select_anio2.length == 0) {
+        if (id_periodo_select_anio2.length === 0) {
             document.getElementById("Calculartasainfla").style.display = 'none';
         }
 
@@ -233,7 +233,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
-            data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio,id_periodo_select_mes: id_periodo_select_mes, id_periodo_select_anio2: id_periodo_select_anio2, }),
+            data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio,id_periodo_select_mes: id_periodo_select_mes, id_periodo_select_anio2: id_periodo_select_anio2 }),
             success: function (result) {
                 var resultados = JSON.parse(result.d);
                 $('#select3').prop("disabled", false);
@@ -265,7 +265,7 @@
         
         var v4 = $("#select3.selectpicker").val();
 
-        if (v4.length == 0) {
+        if (v4.length === 0) {
             document.getElementById("Calculartasainfla").style.display = 'none';
         }
         else {
@@ -280,10 +280,28 @@
         var v2 = $("#select1.selectpicker").val();
         var v3 = $("#select2.selectpicker").val();
         var v4 = $("#select3.selectpicker").val();
-        alert(v1 + " " + v2 + " " + v3 + " " + v4 );
+        alert(v1 + " " + v2 + " " + v3 + " " + v4);
 
+        $.ajax({
+            type: "POST",
+            url: "tasainflacion.aspx/calcular_inflacion",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ id_inpc_inicial: v1, id_inpc_inicial_mes: v2, id_inpc_final: v3, id_inpc_final_mes:v4 }),
+            success: function (result) {
+                //var resultados = JSON.parse(result.d);
+                
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
     });
-
-
 
 });

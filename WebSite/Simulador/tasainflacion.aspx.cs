@@ -879,6 +879,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
         return json;
     }
 
+    [WebMethod]
     public static object calcular_inflacion(string id_inpc_inicial, string id_inpc_inicial_mes, string id_inpc_final, string id_inpc_final_mes)
     {
         var json = "";
@@ -886,11 +887,128 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
         var Result = from s in db.INPC
                      where s.Id == id_inpc_inicial
-                     select s;
+                     select new
+                     {
+                         Enero = s.enero,
+                         Febrero = s.febrero,
+                         Marzo = s.marzo,
+                         Abril = s.abril,
+                         Mayo = s.mayo,
+                         Junio = s.junio,
+                         Julio = s.julio,
+                         Agosto = s.agosto,
+                         Septiembre = s.septiembre,
+                         Octubre = s.octubre,
+                         Noviembre = s.noviembre,
+                         Diciembre = s.diciembre
 
+                     }; 
+        
+        double inpcinicial;
         foreach (var obj in Result)
         {
-            //var = obj.; necesito sacar mes
+            switch (id_inpc_inicial_mes) 
+            {
+                case "enero":
+                    inpcinicial = (double) obj.Enero;
+                    break;
+                case "febrero":
+                    inpcinicial = (double) obj.Febrero;
+                    break;
+                case "marzo":
+                    inpcinicial = (double)obj.Marzo;
+                    break;
+                case "abril":
+                    inpcinicial = (double)obj.Abril;
+                    break;
+                case "mayo":
+                    inpcinicial = (double)obj.Mayo;
+                    break;
+                case "junio":
+                    inpcinicial = (double)obj.Junio;
+                    break;
+                case "julio":
+                    inpcinicial = (double)obj.Julio;
+                    break;
+                case "agosto":
+                    inpcinicial = (double)obj.Agosto;
+                    break;
+                case "septiembre":
+                    inpcinicial = (double)obj.Septiembre;
+                    break;
+                case "octubre":
+                    inpcinicial = (double)obj.Octubre;
+                    break;
+                case "noviembre":
+                    inpcinicial = (double)obj.Noviembre;
+                    break;
+                case "diciembre":
+                    inpcinicial = (double)obj.Diciembre;
+                    break;
+            }
+            
+        }
+
+        var Result2 = from s in db.INPC
+                      where s.Id == id_inpc_final
+                      select new
+                      {
+                          Enero = s.enero,
+                          Febrero = s.febrero,
+                          Marzo = s.marzo,
+                          Abril = s.abril,
+                          Mayo = s.mayo,
+                          Junio = s.junio,
+                          Julio = s.julio,
+                          Agosto = s.agosto,
+                          Septiembre = s.septiembre,
+                          Octubre = s.octubre,
+                          Noviembre = s.noviembre,
+                          Diciembre = s.diciembre
+
+                      };
+        double inpcfinal;
+        foreach (var obj in Result2)
+        {
+            switch (id_inpc_final_mes)
+            {
+                case "enero":
+                    inpcfinal = (double)obj.Enero;
+                    break;
+                case "febrero":
+                    inpcfinal = (double)obj.Febrero;
+                    break;
+                case "marzo":
+                    inpcfinal = (double)obj.Marzo;
+                    break;
+                case "abril":
+                    inpcfinal = (double)obj.Abril;
+                    break;
+                case "mayo":
+                    inpcfinal = (double)obj.Mayo;
+                    break;
+                case "junio":
+                    inpcfinal = (double)obj.Junio;
+                    break;
+                case "julio":
+                    inpcfinal = (double)obj.Julio;
+                    break;
+                case "agosto":
+                    inpcfinal = (double)obj.Agosto;
+                    break;
+                case "septiembre":
+                    inpcfinal = (double)obj.Septiembre;
+                    break;
+                case "octubre":
+                    inpcfinal = (double)obj.Octubre;
+                    break;
+                case "noviembre":
+                    inpcfinal = (double)obj.Noviembre;
+                    break;
+                case "diciembre":
+                    inpcfinal  = (double)obj.Diciembre;
+                    break;
+            }
         }
 
         return json;

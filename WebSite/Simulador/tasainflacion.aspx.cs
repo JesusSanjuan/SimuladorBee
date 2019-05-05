@@ -884,6 +884,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     {
         var json = "";
         var db = new Entidades();
+        List<string> R1 = new List<string>();
 
         var Result = from s in db.INPC
                      where s.Id == id_inpc_inicial
@@ -900,50 +901,67 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                          Septiembre = s.septiembre,
                          Octubre = s.octubre,
                          Noviembre = s.noviembre,
-                         Diciembre = s.diciembre
+                         Diciembre = s.diciembre,
+                         Anio=s.anio
 
                      }; 
         
-        double inpcinicial;
+        double inpcinicial=0;
+        int anio_inicial = 0;
+        
         foreach (var obj in Result)
         {
+            anio_inicial = (int)obj.Anio;
+            R1.Add(anio_inicial.ToString());
             switch (id_inpc_inicial_mes) 
             {
                 case "enero":
                     inpcinicial = (double) obj.Enero;
+                    R1.Add("Enero");
                     break;
                 case "febrero":
                     inpcinicial = (double) obj.Febrero;
+                    R1.Add("Febrero");
                     break;
                 case "marzo":
                     inpcinicial = (double)obj.Marzo;
+                    R1.Add("Marzo");
                     break;
                 case "abril":
                     inpcinicial = (double)obj.Abril;
+                    R1.Add("Abril");
                     break;
                 case "mayo":
                     inpcinicial = (double)obj.Mayo;
+                    R1.Add("Mayo");
                     break;
                 case "junio":
                     inpcinicial = (double)obj.Junio;
+                    R1.Add("Junio");
                     break;
                 case "julio":
                     inpcinicial = (double)obj.Julio;
+                    R1.Add("Julio");
                     break;
                 case "agosto":
                     inpcinicial = (double)obj.Agosto;
+                    R1.Add("Agosto");
                     break;
                 case "septiembre":
                     inpcinicial = (double)obj.Septiembre;
+                    R1.Add("Septiembre");
                     break;
                 case "octubre":
                     inpcinicial = (double)obj.Octubre;
+                    R1.Add("Octubre");
                     break;
                 case "noviembre":
                     inpcinicial = (double)obj.Noviembre;
+                    R1.Add("Noviembre");
                     break;
                 case "diciembre":
                     inpcinicial = (double)obj.Diciembre;
+                    R1.Add("Diciembre");
                     break;
             }
             
@@ -964,53 +982,71 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                           Septiembre = s.septiembre,
                           Octubre = s.octubre,
                           Noviembre = s.noviembre,
-                          Diciembre = s.diciembre
-
+                          Diciembre = s.diciembre,
+                          Anio = s.anio
                       };
-        double inpcfinal;
+        double inpcfinal=0;
+        int anio_final = 0;
         foreach (var obj in Result2)
         {
+            anio_final = (int)obj.Anio;
+            R1.Add(anio_final.ToString());
             switch (id_inpc_final_mes)
             {
                 case "enero":
                     inpcfinal = (double)obj.Enero;
+                    R1.Add("Enero");
                     break;
                 case "febrero":
                     inpcfinal = (double)obj.Febrero;
+                    R1.Add("Febrero");
                     break;
                 case "marzo":
                     inpcfinal = (double)obj.Marzo;
+                    R1.Add("Marzo");
                     break;
                 case "abril":
                     inpcfinal = (double)obj.Abril;
+                    R1.Add("Abril");
                     break;
                 case "mayo":
                     inpcfinal = (double)obj.Mayo;
+                    R1.Add("Mayo");
                     break;
                 case "junio":
                     inpcfinal = (double)obj.Junio;
+                    R1.Add("Junio");
                     break;
                 case "julio":
                     inpcfinal = (double)obj.Julio;
+                    R1.Add("Julio");
                     break;
                 case "agosto":
                     inpcfinal = (double)obj.Agosto;
+                    R1.Add("Agosto");
                     break;
                 case "septiembre":
                     inpcfinal = (double)obj.Septiembre;
+                    R1.Add("Septiembre");
                     break;
                 case "octubre":
                     inpcfinal = (double)obj.Octubre;
+                    R1.Add("Noviembre");
                     break;
                 case "noviembre":
                     inpcfinal = (double)obj.Noviembre;
+                    R1.Add("Noviembre");
                     break;
                 case "diciembre":
                     inpcfinal  = (double)obj.Diciembre;
+                    R1.Add("Diciembre");
                     break;
             }
         }
 
+        double TasaInfla = (((inpcfinal - inpcinicial) / inpcinicial) * 100);
+        R1.Add(TasaInfla.ToString()); //RESULTADOS DE LA CALCULADORA
+        json = JsonConvert.SerializeObject(R1);
         return json;
     }
  }

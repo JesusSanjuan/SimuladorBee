@@ -217,8 +217,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
-                                                                                                    <div class="col">
-                                                                                                            <h6>Periodo:&nbsp;<strong>Diciembre 2017 a Julio 2018 </strong> </h6>
+                                                                                                    <div class="col" id="P1">                                                                                                           
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
@@ -243,9 +242,8 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
-                                                                                                    <div class="col">
-                                                                                                            <h6>Periodo:&nbsp;<strong>Diciembre 2017 a Julio 2018 </strong> </h6>
-                                                                                                 </div>
+                                                                                                    <div class="col" id="P2">                                                                                                            
+                                                                                                    </div>
                                                                                                 </div>
                                                                                                  <div class="row">
                                                                                                     <div class="col-3" style="text-align: center;"> </div>

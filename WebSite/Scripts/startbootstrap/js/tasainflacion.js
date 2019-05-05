@@ -280,7 +280,6 @@
         var v2 = $("#select1.selectpicker").val();
         var v3 = $("#select2.selectpicker").val();
         var v4 = $("#select3.selectpicker").val();
-        alert(v1 + " " + v2 + " " + v3 + " " + v4);
 
         $.ajax({
             type: "POST",
@@ -290,8 +289,12 @@
             async: false,
             data: JSON.stringify({ id_inpc_inicial: v1, id_inpc_inicial_mes: v2, id_inpc_final: v3, id_inpc_final_mes:v4 }),
             success: function (result) {
-                //var resultados = JSON.parse(result.d);
-                
+                var resultados = JSON.parse(result.d);               
+                $('#Resultados').css("display", "block");
+                $("#P1").html('<h6>Periodo Seleccionado:&nbsp; <strong>' + resultados[1] + ' ' + resultados[0] + ' a ' + resultados[3] + ' ' + resultados[2] + '</strong> </h6>');
+                $('#inf1').val(resultados[4]);                
+                $("#P2").html('<h6>Periodo Seleccionado:&nbsp; <strong>' + resultados[1] + ' ' + resultados[0] + ' a ' + resultados[3] + ' ' + resultados[2] + '</strong> </h6>');
+                $('#TPMI1').val("Aun no diponible el calculo");
             },
             error: function (result) {
                 console.log(result.responseText);

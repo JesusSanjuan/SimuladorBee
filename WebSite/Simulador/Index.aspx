@@ -197,9 +197,7 @@
 
                                 <span id="valid3"  class="text-danger"></span> 
 
-                                <span id="valid4"  class="text-danger">Debe asignarle un período válido</span> 
-
-                                
+                                <span id="valid4"  class="text-danger">Debe asignarle un período válido</span>                                
 
                             </div>
                         </div>

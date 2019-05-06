@@ -15,11 +15,8 @@
                             </li>
                             <li class="breadcrumb-item active">Valor Actual Neto</li>
                           </ol>            
-                 </nav>  
-                 
+                 </nav>                   
     </div>
-
-
     <div style="padding-bottom:1rem;">
               <div class="card align-middle" id="Calculadorainflacion" > 
                   <div class="card align-middle" style="border-style: none;">  
@@ -159,7 +156,7 @@
                                                                                         </div>    
                                                                                         <div class="col-2" style="padding-bottom:10px;"></div>
                                                                                    </div>
-                                                                                   <div class="row" style="padding-top:10px;padding-bottom:25px;"> 
+                                                                                   <div class="row" style="padding-top:10px;"> 
                                                                                        <div class="col-2" style="padding-bottom:10px;"></div>
                                                                                        <div class="col-8 preborder" style="padding-bottom:10px;">
                                                                                            <div class="row " style="text-align: center;">
@@ -194,11 +191,11 @@
                                                                                    </div>
                                                                 
                                                               
-                                                                               <div class="row" style="padding-top:10px;padding-bottom:10px;">
+                                                                               <div class="row" style="padding-top:20px;padding-bottom:20px;">
                                                                                    <div class="col-2" style="text-align: center;"></div>
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-.8" style="text-align: center;">
-                                                                                       <button id="Calculartasainfla" type="button" class="btn btn-primary" style="display: none;">Calcular</button>
+                                                                                       <button id="Calculartasainfla" type="button" class="btn btn-primary" style="visibility:hidden;">Calcular</button>
                                                                                    </div>                                                                   
                                                                                    <div class="col" style="text-align: center;"> </div>
                                                                                    <div class="col-2" style="text-align: center;"></div>
@@ -264,7 +261,7 @@
                                                                                                  <div class="row">
                                                                                                     <div class="col-3" style="text-align: center;"></div>
                                                                                                     <div class="col" style="text-align: center;">
-                                                                                                        <asp:Button id="Guardarinflacion" 	CssClass="btn btn-primary" Text="Guardar"  runat="server"/>
+                                                                                                         <button id="Guardarinflacion" type="button" class="btn btn-primary">Guardar</button>
                                                                                                     </div>                                                
                                                                                                     <div class="col-3" style="text-align: center;"></div>
                                                                                                    </div>
@@ -280,7 +277,24 @@
                     <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>   
             </div>
     </div>
-
+    <!-- Logout Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+                <div class="modal-body">Le falta seleccionar un campo.</div>
+                <div class="modal-footer">
+                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Logout Modal-->
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
     <!-- plugin selectpicker-->

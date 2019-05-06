@@ -122,6 +122,7 @@
                 }
 
             }).done(function (data) {
+                location.href = "#pre_datos2";
                 //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);
@@ -284,8 +285,6 @@
         $('#TPMI1').val("");
 
     });
-
-
     var myInput = document.getElementById('inf1');
     var myInput2 = document.getElementById('TPMI1');
     myInput.onpaste = function (e) {

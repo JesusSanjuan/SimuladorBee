@@ -101,7 +101,7 @@
                                                                                    </div> 
                                                                                     <div class="row" style="padding-top:10px;">
                                                                                               <div class="col-12" style="text-align: center;">
-                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick"   required="required">                                                                                                             
+                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick"  required="required">                                                                                                             
                                                                                                   </select>
                                                                                                </div>
                                                                                    </div>                                                                                   
@@ -301,7 +301,32 @@
         <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
     <script src="../Scripts/startbootstrap/js/tasainflacion.js"></script>
-     
+     <script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+    $("select").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
     
 </asp:Content>
 

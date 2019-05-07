@@ -369,7 +369,7 @@
             <!-- Custom scripts for all pages-->
                  <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>  
             <!-- pooper para efecto de ayuda -->
-                 <script src="../Scripts/umd/popper.js"></script> 
+                <script src="../Scripts/popper.js"></script>
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->  
             <!-- Efectos visuales--> 
                  <!-- Archivo principal de AniJS --> 

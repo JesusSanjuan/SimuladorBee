@@ -328,7 +328,7 @@
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
 
     <!-- plugin rangeslide-->
-    <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <script type="text/javascript" src="../Scripts/rangeslider/rangeslider.min.js"></script>
     <!-- plugin selectpicker-->
     <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->

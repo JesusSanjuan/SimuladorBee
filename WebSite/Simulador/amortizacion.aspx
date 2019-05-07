@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="amortizacion.aspx.cs" Inherits="Simulador_Default" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-    <link href="../Scripts/rangeslider.js/rangeslider.css" rel="stylesheet" />
+    <link href="../Scripts/rangeslider/rangeslider.css" rel="stylesheet" />
     <link href="../Content/bootstrap-select.css" rel="stylesheet" />
     <link href="../Content/bootstrap-select.css" rel="stylesheet" />
 </asp:Content>
@@ -197,7 +197,7 @@
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
      <!-- plugin rangeslide-->
-    <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
+    <script type="text/javascript" src="../Scripts/rangeslider/rangeslider.min.js"></script>
     <!-- plugin selectpicker-->    
     <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->

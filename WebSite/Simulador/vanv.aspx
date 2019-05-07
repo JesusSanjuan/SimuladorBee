@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server"> 
     <!-- Manejo del Select-->
-        <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+         <link href="../Content/bootstrap-select.css" rel="stylesheet" />
     <!-- Manejo del Select-->
     <!-- Estilo de tabla-->
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
@@ -350,7 +350,7 @@
         <script src="../Scripts/startbootstrap/js/validaciones-vanv.js"></script>        
     <!-- Para validacion de campos-->
     <!-- plugin selectpicker-->
-        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
 
     

@@ -3,7 +3,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
     <link href="../Scripts/rangeslider.js/rangeslider.css" rel="stylesheet" />
-    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-select.css" rel="stylesheet" />
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -218,7 +218,7 @@
      <!-- plugin rangeslide-->
     <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
     <!-- plugin selectpicker-->
-    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin dataTable-->
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>

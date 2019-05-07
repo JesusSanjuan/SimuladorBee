@@ -1,7 +1,7 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="vanM.aspx.cs" Inherits="User_vanM" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-        <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+         <link href="../Content/bootstrap-select.css" rel="stylesheet" />
 <!-- Scrip para graficas debe estar en Head-->   
     
 
@@ -413,7 +413,7 @@
         <script src="../Scripts/startbootstrap/js/validaciones-vanv.js"></script>        
  <!-- Para validacion de campos-->
  <!-- plugin selectpicker-->
-    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+   <script src="../Scripts/bootstrap-select.min.js"></script>
  <!-- plugin selectpicker-->
 
 <!-- plugin editable-->

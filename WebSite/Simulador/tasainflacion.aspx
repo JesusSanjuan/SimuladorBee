@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="tasainflacion.aspx.cs" Inherits="Simulador_tasainflacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+     <link href="../Content/bootstrap-select.css" rel="stylesheet" />
     
  
     
@@ -298,7 +298,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
     <!-- plugin selectpicker-->
-        <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
     <script src="../Scripts/startbootstrap/js/tasainflacion.js"></script>
      <script>

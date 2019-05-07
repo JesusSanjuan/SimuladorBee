@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="costos.aspx.cs" Inherits="Simulador_costos" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-    <link href="../Scripts/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+     <link href="../Content/bootstrap-select.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <nav aria-label="breadcrumb" style="padding-bottom:1rem;">
@@ -330,7 +330,7 @@
     <!-- plugin rangeslide-->
     <script type="text/javascript" src="../Scripts/rangeslider.js/rangeslider.min.js"></script>
     <!-- plugin selectpicker-->
-    <script type="text/javascript" src="../Scripts/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->
     <script src="../Scripts/startbootstrap/js/scripts.js"></script>  
 </asp:Content>

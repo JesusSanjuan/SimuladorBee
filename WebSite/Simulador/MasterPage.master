@@ -365,7 +365,7 @@
             <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js-->
                  <script src="../Scripts/bootstrap.bundle.min.js"></script> <!--Problemas con con este .js -->
             <!-- Core plugin JavaScript-->
-                <script src="../Scripts/startbootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>  
+                <script src="../Scripts/jquery.easing.1.3.js"></script>
             <!-- Custom scripts for all pages-->
                  <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>  
             <!-- pooper para efecto de ayuda -->

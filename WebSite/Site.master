@@ -17,7 +17,7 @@
                     <link href="Content/Hover-master/hover.css" rel="stylesheet" />
              <!-- Efectos visuales Botones-->
              <!--Preloader de hilado CSS3-->
-                    <link href="Scripts/startbootstrap/css/loader-wrapper.css" rel="stylesheet" />
+                     <link href="Content/PlantillaMaster/sb-admin.css" rel="stylesheet" />
              <!--preloader de hilado CSS3-->
              <!--Iconos font-awesome https://fontawesome.com/ -->                    
                     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">

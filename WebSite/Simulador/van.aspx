@@ -4,9 +4,9 @@
          <link href="../Content/bootstrap-select.css" rel="stylesheet" />
 <!-- Scrip para graficas debe estar en Head-->    
         <script src="../Scripts/Chart.js"></script>
-        <script src="../Scripts/startbootstrap/js/charts-van.js"></script> 
+        <script src="../Scripts/Simulador/charts-van.js"></script>
         <script src="../Scripts/jquery-3.3.1.js"></script>
-        <script src="../Scripts/startbootstrap/js/datatables-van.js"></script>        
+        <script src="../Scripts/Simulador/datatables-van.js"></script>  
  <!-- Scrip para graficas debe estar en Head--> 
 </asp:Content>
 
@@ -399,7 +399,7 @@
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
  <!-- Manejo de funcion de tabla en VAN-->    
  <!-- Para validacion de campos-->    
-        <script src="../Scripts/startbootstrap/js/validaciones-van.js"></script>        
+        <script src="../Scripts/Simulador/validaciones-van.js"></script>       
  <!-- Para validacion de campos-->
  <!-- plugin selectpicker-->
     <script src="../Scripts/bootstrap-select.min.js"></script>

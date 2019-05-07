@@ -13,7 +13,7 @@
         <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>        
     <!-- plugin dataTable-->
-      <script src="../Scripts/startbootstrap/js/datatables-vanv.js"></script>
+        <script src="../Scripts/Simulador/datatables-vanv.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div>
@@ -347,7 +347,7 @@
          <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
     <!--   Manejo de funcion de tabla en VANC-->
     <!-- Para validacion de campos-->    
-        <script src="../Scripts/startbootstrap/js/validaciones-vanv.js"></script>        
+        <script src="../Scripts/Simulador/validaciones-vanv.js"></script>        
     <!-- Para validacion de campos-->
     <!-- plugin selectpicker-->
         <script src="../Scripts/bootstrap-select.min.js"></script>

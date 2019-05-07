@@ -201,8 +201,7 @@
     <!-- plugin selectpicker-->    
     <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->
-    <script src="../Scripts/startbootstrap/js/scripts.js"></script>  
-   
+    <script src="../Scripts/Simulador/scripts.js"></script>
     <script>
        
 /*Solamente efecto visual aun no se que que js guardarlo*/

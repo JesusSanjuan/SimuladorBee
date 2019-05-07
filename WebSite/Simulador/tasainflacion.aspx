@@ -300,7 +300,7 @@
     <!-- plugin selectpicker-->
         <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
-    <script src="../Scripts/startbootstrap/js/tasainflacion.js"></script>
+    <script src="../Scripts/Simulador/tasainflacion.js"></script>
      <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links

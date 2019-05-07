@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="User_MasterPage" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -18,8 +17,8 @@
                    <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->
                         <link href="../Content/Hover-master/hover.css" rel="stylesheet" />
                    <!-- Efectos visuales Botones-->
-                   <!--Preloader de hilado CSS3-->
-                        <link href="../Scripts/startbootstrap/css/loader-wrapper.css" rel="stylesheet" />
+                   <!--Preloader  CSS3-->
+                        <link href="../Content/PlantillaMaster/sb-admin.css" rel="stylesheet" />
                    <!--preloader de hilado CSS3-->
                    <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
                            <!-- Bootstrap core CSS-->
@@ -27,7 +26,7 @@
                            <!-- Fuentes de iconos para esta plantilla  https://fontawesome.com/ -->
                                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
                            <!-- Estilos personalizados para esta plantilla-->
-                                <link href="../Scripts/startbootstrap/css/sb-admin.css" rel="stylesheet">    
+                                <link href="../Content/PlantillaMaster/sb-admin.css" rel="stylesheet" />
                     <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
         </asp:ContentPlaceHolder>
@@ -367,7 +366,7 @@
             <!-- Core plugin JavaScript-->
                 <script src="../Scripts/jquery.easing.1.3.js"></script>
             <!-- Custom scripts for all pages-->
-                 <script src="../Scripts/startbootstrap/js/sb-admin.js"></script>  
+                <script src="../Scripts/PlatillaMaster/sb-admin.js"></script>
             <!-- pooper para efecto de ayuda -->
                 <script src="../Scripts/popper.js"></script>
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->  

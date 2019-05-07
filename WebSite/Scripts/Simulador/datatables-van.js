@@ -92,14 +92,14 @@ function Modal(Resultado) {
         if (ResultadoVPN > 0) {
             Texto = "<strong style='vertical - align: middle;'>Se recomienda aceptar la inversion</strong>";
             TextoEfecto = "pulse animated"; Textovelocidad = '2s'; TextoRepticiones = '5';
-            Imagen = '<img src="../Scripts/startbootstrap/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/>';
-            audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/Aplausos.mp3" >';
+            Imagen = '<img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/>';
+            audio = '<source type = "audio/mp3" src = "../multimedia/Aplausos.mp3" >';
         }
         else {
             Texto = "<strong style='vertical - align: middle;'>Se recomienda rechazar la inversion</strong>";
             TextoEfecto = "tada animated"; Textovelocidad = '4s'; TextoRepticiones = 'infinite';
-            Imagen = '<img src="../Scripts/startbootstrap/alerta.gif" class="img-fluid bounce animated infinite" width="100" height="100" alt="Responsive image"/>';
-            audio = '<source type = "audio/mp3" src = "../Scripts/startbootstrap/error.mp3" >';
+            Imagen = '<img src="../multimedia/alerta.gif" class="img-fluid bounce animated infinite" width="100" height="100" alt="Responsive image"/>';
+            audio = '<source type = "audio/mp3" src = "../multimedia/error.mp3" >';
         }        
         $('#myModal').modal({ show: true });
         $("#modalheader").css({

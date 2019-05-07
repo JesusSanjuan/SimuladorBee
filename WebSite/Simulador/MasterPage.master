@@ -12,7 +12,7 @@
           <title>Simulador</title>
                         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
                    <!-- Efectos visuales--> 
-                        <link href="../Scripts/anijs-master/animate.min.css" rel="stylesheet" />
+                        <link href="../Content/AnimateCSS/animate.min.css" rel="stylesheet" />
                         <link href="../Content/CSShake/csshake.min.css" rel="stylesheet" />
                    <!-- Efectos visuales--> 
                    <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->

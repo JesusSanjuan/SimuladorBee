@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <title><%: Page.Title %> </title>
              <!-- Efectos visuales-->
-                    <link href="Scripts/anijs-master/animate.min.css" rel="stylesheet" />   
+                    <link href="Content/AnimateCSS/animate.min.css" rel="stylesheet" />
                     <link href="Content/CSShake/csshake.min.css" rel="stylesheet" />     
              <!-- Efectos visuales-->
              <!-- Efectos visuales Botones https://ianlunn.github.io/Hover/ -->

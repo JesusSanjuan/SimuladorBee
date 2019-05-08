@@ -182,7 +182,7 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <label for="lapso" class="col-form-label">Lapso por</label>
-                                <select class="selectpicker show-tick" id="lapso" >
+                                <select class="selectpicker show-tick" id="lapsoIndx" >
                                     <option>Años</option>
                                     <option>Meses</option>
                                 </select>

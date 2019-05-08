@@ -115,7 +115,7 @@
         else {
             $("#valid2").hide();
             
-            if ($("#lapso").val() == "Años") {
+            if ($("#lapsoIndx").val() == "Años") {
                 if ($(this).val() > 80) {
                     $("#valid3").html("El periodo debe sér máximo de 80 años");
                     $("#valid3").show();
@@ -123,7 +123,7 @@
                 else
                     $("#valid3").hide();
             }
-            else if ($("#lapso").val() == "Meses") {
+            else if ($("#lapsoIndx").val() == "Meses") {
                 if ($(this).val() > 300) {
                     $("#valid3").html("El periodo debe sér máximo de 300 meses");
                     $("#valid3").show();
@@ -138,7 +138,7 @@
 
     $("#Guardar_Proyecto").on('click', function () {
         var nproyecto = $("#Nombre_Proyecto").val();
-        var lapso = $("#lapso").val();
+        var lapso = $("#lapsoIndx").val();
         var nperiodo = $("#nperiodo").val();
         if (nproyecto != "" && nperiodo != "") {
 

@@ -28,9 +28,8 @@
     //convertimos el array en json
     var result_ids_indice = JSON.parse(JSON.stringify(x));
     var result_descrip_indice_base = JSON.parse(JSON.stringify(y));
-
-       var valor1 = "<option value='' class='dropdown-item' selected>Seleccione</option>";
-       options.push(valor1);
+    var valor1 = "<option value='' class='dropdown-item' selected>Seleccione</option>";
+    options.push(valor1);
     for (i = 0; i < result_ids_indice.length; i++)
     {
         var option;
@@ -122,7 +121,13 @@
                 }
 
             }).done(function (data) {
-                location.href = "#pre_datos2";
+              /*  $('#pre_datos2').smoothscroll({
+                    duration: 4000,
+                    easing: 'easeOutCirc',
+                    offset: 0,
+                    hash: true,
+                });
+                //location.href = "#pre_datos2";*/
                 //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);

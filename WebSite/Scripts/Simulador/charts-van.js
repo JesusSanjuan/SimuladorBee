@@ -26,15 +26,15 @@ function Graficar(x,y,Periodo) {
       //  tooltipsbackgroundColor[i] = 'rgba(0, 0, 0, 0.7)';
     }
 
-    for (var i = 1; i < repArray.length; i++) {
-        var tem = repArray[i];
-        var tem1 = repArray[i - 1];
-        var tem2 = repArray[i + 1];
+    for (var j = 1; j < repArray.length; j++) {
+        var tem = repArray[j];
+        var tem1 = repArray[j - 1];
+        var tem2 = repArray[j + 1];
         if (tem2< 0 && tem1 > 0) {            
-            pointBackgroundColor[i] = "rgba(255, 87, 51,1)";
-            pointRadius[i] = 8;
-            pointHoverRadius[i] = 10;
-            pointStyle[i] = 'rectRounded';
+            pointBackgroundColor[j] = "rgba(255, 87, 51,1)";
+            pointRadius[j] = 8;
+            pointHoverRadius[j] = 10;
+            pointStyle[j] = 'rectRounded';
             //tooltipsbackgroundColor[i] ='rgba(255, 0, 0, 0.7)'
             break;
         }
@@ -64,7 +64,7 @@ function Graficar(x,y,Periodo) {
                 pointStyle: pointStyle,
                 data: repArray
 
-            }],
+            }]
         },
         options: {
             responsive: true,
@@ -109,7 +109,7 @@ function Graficar(x,y,Periodo) {
                     gridLines: {
                         display: true
                     }
-                }],
+                }]
             },
             tooltips: {
                 xPadding: 16,
@@ -132,10 +132,10 @@ function Graficar(x,y,Periodo) {
             }*/
             },
             animation: {
-                duration: 10, // general animation time
+                duration: 10 // general animation time
             },
             hover: {
-                animationDuration: 10, // duration of animations when hovering an item
+                animationDuration: 10 // duration of animations when hovering an item
             },
             responsiveAnimationDuration: 10, // animation duration after a resize
             legend: {

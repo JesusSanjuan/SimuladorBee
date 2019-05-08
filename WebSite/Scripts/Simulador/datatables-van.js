@@ -18,8 +18,8 @@ function RellenarTabla(Datos) {
                 }
                 else
                 {
-                    var str1 = "$";
-                    res = str1.concat(resultadoFormato);
+                    var str2 = "$";
+                    res = str2.concat(resultadoFormato);
                 }
                 DTabla[i][j] = res;
             }

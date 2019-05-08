@@ -100,9 +100,9 @@
                                                                                       <div class="col-12" style="text-align: center;"> <h6>Índice base:<h6></div>
                                                                                    </div> 
                                                                                     <div class="row" style="padding-top:10px;">
-                                                                                              <div class="col-12" style="text-align: center;">
-                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick"  required="required">                                                                                                             
-                                                                                                  </select>
+                                                                                              <div class="col-12" style="text-align: center;">                                                                                                  
+                                                                                                  <select  id="select_indice_base" class="selectpicker show-tick"   required="required">  
+                                                                                                  </select>                                                                                                  
                                                                                                </div>
                                                                                    </div>                                                                                   
                                                                                 </div>
@@ -266,7 +266,7 @@
                                                                                                     <div class="col-3" style="text-align: center;"></div>
                                                                                                    </div>
                                                                                                </div>
-                                                                                       </div>
+                                                                                       </div>                                                          
                                                                 </div>
                                                              </div>
                                                         </div>
@@ -301,32 +301,20 @@
         <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
     <script src="../Scripts/Simulador/tasainflacion.js"></script>
-     <script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links
-    $("select").on('click', function(event) {
+     <!-- Deslizamiento suave
+    <script src="../Scripts/smoothscroll/jquery.smoothscroll.js"></script>
+    No funciona como deseo, borrar la libreria si no se usa
+    <script>
+        $(function () {
+            $('a[href*="#"]').smoothscroll({
+                duration: 1000,
+                easing: 'swing',
+                offset: 0,
+                hash: true,
+                focus: true
+            });
+        });
+</script>-->
 
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
-</script>
-    
 </asp:Content>
 

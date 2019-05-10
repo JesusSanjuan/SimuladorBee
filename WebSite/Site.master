@@ -154,7 +154,7 @@
                                     <div class="modal-body" id="modal-text-body" >    
                                         <div class="row">
                                                 <div class="col-3" id="imgmodal"><img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
-                                                <div class="col-9" id="texmodal"><strong style='vertical - align: middle;'>Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</strong></div>                                                                        
+                                                <div class="col-9" id="texmodal"><strong style='vertical-align: middle;'>Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</strong></div>                                                                        
                                         </div>
                                         <audio id="audio" style="display:none" controls> </audio > 
                                     </div>

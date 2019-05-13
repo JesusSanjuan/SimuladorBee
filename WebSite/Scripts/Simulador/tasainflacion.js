@@ -338,8 +338,85 @@
         }
     });
 
+    /***************************/
+    $('#alertSucces').hide();
+    inicializarProyectos();
+
+    function inicializarProyectos() {
+        //cargamos los proyectos en el select
+        $.ajax({
+            type: "POST",
+            url: "tasainflacion.aspx/cargar_proyectos",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                var resultados = JSON.parse(result.d);
+                var options = [];
+                for (var i = 0; i < resultados.length; i++) {
+                    var option;
+                    option = resultados[i];
+                    options.push(option);
+
+                }
+                $('#proyectos.selectpicker').html(options);
+                $('#proyectos.selectpicker').selectpicker('refresh');
+
+                $('#proyectosINEGI.selectpicker').html(options);
+                $('#proyectosINEGI.selectpicker').selectpicker('refresh');
+
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+
+    }
+
     $('#Guardarinflacion').click(function () {
         $('#myModal').modal({ show: true });
     });
+
+    $('#saveI').click(function () {
+        var inflacion = $("#inf1").val();
+        var inMensual = $("#TPMI1").val();
+        if (inflacion != "" ) {//inflacion != "" && inMensual != ""
+
+            var periodo = $("#P1").find("h6").find("strong").html();
+            var proyectos = $('#proyectos.selectpicker').val();
+           //GUardamos los datos en la tabla de indices
+            $("#myModal").modal('hide');
+
+        }
+    });
+    $('#saveINEGI').click(function () {
+        var inflacion = $("#inflacion").val();
+        var inMensual = $("#TPMI").val();
+        if (inflacion != "") {//inflacion != "" && inMensual != ""
+
+            var periodo = $("#periodoINEGI").val();
+            var proyectos = $('#proyectosINEGI.selectpicker').val();
+            //GUardamos los datos en la tabla de indices
+
+            $('#alertSucces').show();
+
+            setTimeout(
+            function () {
+                $("#alertSucces").modal('hide');
+            }, 3000);
+            
+
+            
+
+        }
+    });
+
+    
+    
 
 });

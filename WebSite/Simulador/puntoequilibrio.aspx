@@ -27,6 +27,8 @@
                 </div>
             </div>
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
+                <div id="message" class="alert d-none" role="alert">
+                </div>
                 <div class="preborder">
                     <div class="card-header text-info" >
                         <center>  <h4> Cálculo del Punto de Equilibrio</h4>  </center> 
@@ -148,9 +150,15 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
+    <!-- plugin dataTable-->
+    <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <!-- plugin selectpicker-->
         <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
+    <!-- SCRIPT DE LOS CONTENIDOS -->
+     <script src="../Scripts/Simulador/scripts.js"></script>
+    <!-- SCRIPT DE LOS CONTENIDOS -->
      
     
 </asp:Content>

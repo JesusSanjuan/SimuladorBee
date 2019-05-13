@@ -41,7 +41,7 @@
                                           <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
                                                                  <div>
                                                                      <div style="padding-top:15px;padding-bottom:15px; font: cursive;">
-                                                                                Ingreso los datos obtenidos por la calculadora en los campos de la parte inferior.
+                                                                                Ingrese los datos obtenidos por la calculadora en los campos de la parte inferior.
                                                                      </div>
 
                                                                         <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
@@ -50,28 +50,67 @@
                                                                             </button>
                                                                             <strong>¡Copie los resultados de la calculadora!</strong>
                                                                         </div>
-
-                                                                                <div class="form-row" >
-                                                                                    <div class="col-sm">
-                                                                                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                                                                                        <div class="input-group mb-2">                                                                                            
-                                                                                            <input type="text" class="form-control" id="inflacion" placeholder="Inflación">
-                                                                                            <div class="input-group-prepend">
-                                                                                                <div class="input-group-text">%</div>
-                                                                                            </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group " style="margin:auto;"> 
+                                                                                        <div  style="padding-bottom:5px; padding-top:5px;" >  
+                                                                                        Periodo: 
                                                                                         </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm">
-                                                                                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                                                                                        <div class="input-group mb-2">                                                                                           
-                                                                                            <input type="text" class="form-control" id="TPMI" placeholder="Tasa Promedio Mensual">
-                                                                                             <div class="input-group-prepend">
-                                                                                                <div class="input-group-text">%</div>
-                                                                                            </div>
+                                                                                        <input type="text" class="form-control" id="periodoINEGI" placeholder="mes año a mes año">
+                                                                                            <div class="input-group-prepend">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                </div>
+                                                                             </div>
+                                                                            <div class="col-sm">
+                                                                                <div class="form-group">
+                                                                                    <select class="selectpicker" id="proyectosINEGI"  title="Selecciona los proyectos" multiple>
+                              
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+  
+                                                                        <div class="row" >
+                                                                            <div class="col-sm">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group mb-2">                                                                                            
+                                                                                        <input type="text" class="form-control" id="inflacion" placeholder="Inflación">
+                                                                                        <div class="input-group-prepend">
+                                                                                            <div class="input-group-text">%</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group mb-2">                                                                                           
+                                                                                        <input type="text" class="form-control" id="TPMI" placeholder="Tasa Promedio Mensual">
+                                                                                            <div class="input-group-prepend">
+                                                                                            <div class="input-group-text">%</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                         <div class="row" >
+                                                                             <div class="col-sm">
+                                                                                <div class="form-group">
+                                                                                    <button type="button" class="btn btn-primary" id="saveINEGI">Guardar cambios</button>
+                                                                        
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                     <div class="row">
+                                                                         <div class="alert alert-success" role="alert" id="alertSucces">
+                                                                            <strong>Exitoso!</strong> Los datos fueron guardados correctamente.
+                                                                         </div>
+                                                                     </div>
+                                                                     </div>
+                                                                
                                                                 <div class="embed-responsive embed-responsive-21by9">
                                                                     <iframe width="560" height="315"style="padding-top:15px;padding-bottom:15px" src="https://www.inegi.org.mx/app/indicesdeprecios/CalculadoraInflacion.aspx" frameborder="0" allowfullscreen></iframe>
                                                                 </div>
@@ -282,13 +321,25 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Guardar inflación</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
                             <span aria-hidden="true">×</span>
                         </button>
                 </div>
-                <div class="modal-body">Le falta seleccionar un campo.</div>
+                <div class="modal-body">
+                    <h5>Seleccione los proyectos que utilizaran las inflaciones</h5>
+                    <div class="row">
+                        <div class="col">
+                            <select class="selectpicker" id="proyectos"  title="Selecciona los proyectos" multiple>
+                              
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
                 <div class="modal-footer">
+                     <button type="button" class="btn btn-primary" id="saveI">Guardar cambios</button>
                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>  
                 </div>
             </div>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1049,4 +1050,39 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
         json = JsonConvert.SerializeObject(R1);
         return json;
     }
- }
+
+    /***************/
+
+    [WebMethod]
+    public static string cargar_proyectos()
+    {
+        var db = new Entidades();   
+        var httpContext = HttpContext.Current;
+        /***Get the user id**/
+        string id_user = httpContext.User.Identity.GetUserId();
+        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user);//consulta los proyectos del usuario
+
+        List<string> item = new List<string>();
+        foreach (Proyecto Proyect in consulta)
+        {
+            string option;
+            option = "<option value='" + Proyect.ID_Proyecto + "'>" + Proyect.Nombre_Proyecto + "</option>";
+            if (System.Web.HttpContext.Current.Session["ID_Proyecto"] != null)
+            {
+                string idProyecto = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
+                if (idProyecto == Proyect.ID_Proyecto)
+                {
+                    option = "<option selected value='" + Proyect.ID_Proyecto + "'>" + Proyect.Nombre_Proyecto + "</option>";
+                }
+            }
+
+            item.Add(option);
+            
+                
+        }
+        var json = JsonConvert.SerializeObject(item);
+        return json;
+    }
+
+
+}

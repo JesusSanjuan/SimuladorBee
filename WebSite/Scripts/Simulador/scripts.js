@@ -628,4 +628,79 @@
 
     /****************************************/
 
+    /*********** SCRIPTS PARA EL CONTENT PUNTO DE EQUILIBRIO ********/
+    if (id_proyecto !== "false") {
+        $.ajax({
+            type: "POST",
+            url: "puntoequilibrio.aspx/get_costos_fijosT",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ idProyecto: id_proyecto }),
+            success: function (result) {
+                var resultado = JSON.parse(result.d);
+                //BUcamos en cada pestaña, costos fijos
+                //Tab Producción
+                var res = JSON.parse(resultado[1]);
+                console.log("-->" + res);
+                console.log("-->" + res.length);
+                var i, obj, param1, param2, param3, param4, param5;
+                var sumT = 0;
+                for (i = 0; i < res.length - 1; i++) {
+                    obj = res[i];
+                    param2 = obj["Tipo"];
+                    if (param2 == "Fijo") {
+                        param5 = obj["$ Costo Total"];
+                        sumT = sumT + param5; 
+                    }                                   
+                }
+                //Tab Ventas
+                var res2 = JSON.parse(resultado[2]);
+                for (i = 0; i < res2.length - 1; i++) {
+                    obj = res2[i];
+                    param2 = obj["Tipo"];
+                    if (param2 == "Fijo") {
+                        param5 = obj["$ Costo Total"];
+                        sumT = sumT + param5; 
+                    }
+                    
+                }
+                //Tab Admon
+                var res3 = JSON.parse(resultado[3]);
+                for (i = 0; i < res3.length - 1; i++) {
+                    obj = res3[i];
+                    param2 = obj["Tipo"];
+                    if (param2 == "Fijo") {
+                        param5 = obj["$ Costo Total"];
+                        sumT = sumT + param5;
+                    }
+                }
+                //Tab Admon
+                var res4 = JSON.parse(resultado[4]);
+                for (i = 0; i < res4.length - 1; i++) {
+                    obj = res4[i];
+                    param2 = obj["Tipo"];
+                    if (param2 == "Fijo") {
+                        param5 = obj["$ Costo Total"];
+                        sumT = sumT + param5;
+                    }
+                }
+
+                $("#costosFijos").val(sumT);
+                
+
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+    }
+
+    /************************/
+
 });

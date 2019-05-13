@@ -104,6 +104,17 @@ public partial class Gastos_Pro
     public virtual Proyecto Proyecto { get; set; }
 }
 
+public partial class Indicadores
+{
+    public string ID_Indicadores { get; set; }
+    public string ID_Proyecto { get; set; }
+    public Nullable<double> Inflacion_Actual { get; set; }
+    public Nullable<double> Inflacion_Simulada { get; set; }
+    public Nullable<System.DateTime> Periodo { get; set; }
+
+    public virtual Proyecto Proyecto { get; set; }
+}
+
 public partial class indice_INPC
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -151,6 +162,7 @@ public partial class Proyecto
         this.Costos_Pro = new HashSet<Costos_Pro>();
         this.FNE = new HashSet<FNE>();
         this.Gastos_Pro = new HashSet<Gastos_Pro>();
+        this.Indicadores = new HashSet<Indicadores>();
     }
 
     public string ID_Proyecto { get; set; }
@@ -168,6 +180,8 @@ public partial class Proyecto
     public virtual ICollection<FNE> FNE { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Gastos_Pro> Gastos_Pro { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Indicadores> Indicadores { get; set; }
 }
 
 public partial class tipo_anio_base_INPC

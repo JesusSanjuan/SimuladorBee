@@ -89,6 +89,16 @@
           <Property Name="Admon" Type="text" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="Indicadores">
+          <Key>
+            <PropertyRef Name="ID_Indicadores" />
+          </Key>
+          <Property Name="ID_Indicadores" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Inflacion_Actual" Type="float" />
+          <Property Name="Inflacion_Simulada" Type="float" />
+          <Property Name="Periodo" Type="datetime" />
+        </EntityType>
         <EntityType Name="indice_INPC">
           <Key>
             <PropertyRef Name="Id_indice" />
@@ -182,6 +192,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Indicadores_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Indicadores">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_INPC_indice_INPC">
           <End Role="indice_INPC" Type="Self.indice_INPC" Multiplicity="0..1" />
           <End Role="INPC" Type="Self.INPC" Multiplicity="*" />
@@ -226,6 +248,7 @@
           <EntitySet Name="Costos_Pro" EntityType="Self.Costos_Pro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FNE" EntityType="Self.FNE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos_Pro" EntityType="Self.Gastos_Pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Indicadores" EntityType="Self.Indicadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="indice_INPC" EntityType="Self.indice_INPC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INPC" EntityType="Self.INPC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
@@ -245,6 +268,10 @@
           <AssociationSet Name="FK_Gastos_Pro_Proyecto" Association="Self.FK_Gastos_Pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Gastos_Pro" EntitySet="Gastos_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_Proyecto" Association="Self.FK_Indicadores_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Indicadores" EntitySet="Indicadores" />
           </AssociationSet>
           <AssociationSet Name="FK_INPC_indice_INPC" Association="Self.FK_INPC_indice_INPC">
             <End Role="indice_INPC" EntitySet="indice_INPC" />
@@ -302,6 +329,11 @@
           <AssociationSet Name="FK_INPC_tipo_anio_base_INPC" Association="Model.FK_INPC_tipo_anio_base_INPC">
             <End Role="tipo_anio_base_INPC" EntitySet="tipo_anio_base_INPC" />
             <End Role="INPC" EntitySet="INPC" />
+          </AssociationSet>
+          <EntitySet Name="Indicadores" EntityType="Model.Indicadores" />
+          <AssociationSet Name="FK_Indicadores_Proyecto" Association="Model.FK_Indicadores_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Indicadores" EntitySet="Indicadores" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Amortizacion_cat">
@@ -438,6 +470,7 @@
           <NavigationProperty Name="Costos_Pro" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Proyecto" ToRole="Costos_Pro" />
           <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
           <NavigationProperty Name="Gastos_Pro" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Proyecto" ToRole="Gastos_Pro" />
+          <NavigationProperty Name="Indicadores" Relationship="Model.FK_Indicadores_Proyecto" FromRole="Proyecto" ToRole="Indicadores" />
         </EntityType>
         <EntityType Name="tipo_anio_base_INPC">
           <Key>
@@ -528,6 +561,29 @@
             </Principal>
             <Dependent Role="INPC">
               <PropertyRef Name="id_tipo_anio_base" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Indicadores">
+          <Key>
+            <PropertyRef Name="ID_Indicadores" />
+          </Key>
+          <Property Name="ID_Indicadores" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Inflacion_Actual" Type="Double" />
+          <Property Name="Inflacion_Simulada" Type="Double" />
+          <Property Name="Periodo" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Indicadores_Proyecto" FromRole="Indicadores" ToRole="Proyecto" />
+        </EntityType>
+        <Association Name="FK_Indicadores_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Indicadores" Role="Indicadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Indicadores">
+              <PropertyRef Name="ID_Proyecto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -674,6 +730,17 @@
               <MappingFragment StoreEntitySet="tipo_anio_base_INPC">
                 <ScalarProperty Name="descripcion_tipo_anio_base" ColumnName="descripcion_tipo_anio_base" />
                 <ScalarProperty Name="id_tipo_anio_base" ColumnName="id_tipo_anio_base" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indicadores">
+            <EntityTypeMapping TypeName="Model.Indicadores">
+              <MappingFragment StoreEntitySet="Indicadores">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Inflacion_Simulada" ColumnName="Inflacion_Simulada" />
+                <ScalarProperty Name="Inflacion_Actual" ColumnName="Inflacion_Actual" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Indicadores" ColumnName="ID_Indicadores" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

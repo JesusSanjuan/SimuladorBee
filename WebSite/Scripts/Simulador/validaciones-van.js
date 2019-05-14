@@ -135,7 +135,11 @@ number5.addEventListener('keyup', (e5) => {
     element5.value = formatNumber5(value5);
 });
 
+$('[data-toggle="popover"]').popover();// Hacer que aparesca el popover al pasar el cursor
+
 $("#select").change(function () {
+
+    
     
     var valor = $(this).val();
     switch (valor)
@@ -144,11 +148,13 @@ $("#select").change(function () {
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
+            $("#popover").popover("show");// Muestra 
             break;
         case "2":
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
+            $("#popover").popover('hide');
             break;
         default:
             $("#n").attr('disabled', 'disabled');

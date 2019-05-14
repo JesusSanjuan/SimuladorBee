@@ -45,7 +45,7 @@
                                                         </div>
                                                             <asp:TextBox CssClass="form-control number" ID="Inversion" placeholder="Ingrese la inversion" CausesValidation="True" runat="server" ToolTip="Ingrese valor" autocomplete="off" required="required" />
                                                         <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                         <div class="invalid-feedback">                       
                                                           Por favor ingrese la inversion.
@@ -66,7 +66,7 @@
                                                         </div>
                                                              <asp:TextBox CssClass="form-control number2" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" CausesValidation="True" runat="server"   required="required"/>
                                                         <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                        <div class="invalid-feedback">
                                                           Por favor ingrese el FNE.
@@ -88,7 +88,7 @@
                                                         </div>
                                                             <asp:TextBox  CssClass="form-control number3" id="VdS" placeholder="Ingrese el valor de salvamento"  runat="server"   required="required"/>
                                                        <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
                                                        <div class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento
@@ -106,7 +106,7 @@
                                                       
                                                        <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
-                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
                                                         <div class="invalid-feedback">
                                                           Por favor ingrese el valor de TMAR.
@@ -128,9 +128,12 @@
                                                                                       <option value="1" class="dropdown-item">Mes</option>
                                                                                       <option value="2" class="dropdown-item">Año</option>
                                                        </select>  
-                                                       <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
-                                                       <div class="input-group-append ">
-                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+
+                                                      <span id="popover" data-toggle="popover" data-trigger="hover" title="Popover Header" data-content="Some content inside the popover" >    
+                                                            <asp:TextBox id="n"  CssClass="form-control number5" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
+                                                      </span>                                                       
+                                                      <div class="input-group-append ">
+                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                                          <div id="errorplazo" class="invalid-feedback">
                                                                             Seleccione
                                                                         </div>

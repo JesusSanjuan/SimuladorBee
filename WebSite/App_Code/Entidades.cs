@@ -109,8 +109,9 @@ public partial class Indicadores
     public string ID_Indicadores { get; set; }
     public string ID_Proyecto { get; set; }
     public Nullable<double> Inflacion_Actual { get; set; }
-    public Nullable<double> Inflacion_Simulada { get; set; }
-    public Nullable<System.DateTime> Periodo { get; set; }
+    public Nullable<double> Inflacion_INEGI { get; set; }
+    public Nullable<double> Inflacion_Propia { get; set; }
+    public string Periodo { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }
 }

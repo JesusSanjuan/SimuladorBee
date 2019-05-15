@@ -23,7 +23,7 @@
         <AssociationConnector Association="Model.FK_Gastos_Pro_Proyecto" />
         <AssociationConnector Association="Model.FK_INPC_indice_INPC" />
         <AssociationConnector Association="Model.FK_INPC_tipo_anio_base_INPC" />
-        <EntityTypeShape EntityType="Model.Indicadores" Width="1.5" PointX="0.75" PointY="11.625" />
+        <EntityTypeShape EntityType="Model.Indicadores" Width="1.5" PointX="1.125" PointY="11.625" />
         <AssociationConnector Association="Model.FK_Indicadores_Proyecto" />
       </Diagram>
     </edmx:Diagrams>

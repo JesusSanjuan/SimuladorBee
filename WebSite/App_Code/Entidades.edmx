@@ -96,8 +96,9 @@
           <Property Name="ID_Indicadores" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Inflacion_Actual" Type="float" />
-          <Property Name="Inflacion_Simulada" Type="float" />
-          <Property Name="Periodo" Type="datetime" />
+          <Property Name="Inflacion_INEGI" Type="float" />
+          <Property Name="Inflacion_Propia" Type="float" />
+          <Property Name="Periodo" Type="text" />
         </EntityType>
         <EntityType Name="indice_INPC">
           <Key>
@@ -571,8 +572,9 @@
           <Property Name="ID_Indicadores" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Inflacion_Actual" Type="Double" />
-          <Property Name="Inflacion_Simulada" Type="Double" />
-          <Property Name="Periodo" Type="DateTime" Precision="3" />
+          <Property Name="Inflacion_INEGI" Type="Double" />
+          <Property Name="Inflacion_Propia" Type="Double" />
+          <Property Name="Periodo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Proyecto" Relationship="Model.FK_Indicadores_Proyecto" FromRole="Indicadores" ToRole="Proyecto" />
         </EntityType>
         <Association Name="FK_Indicadores_Proyecto">
@@ -737,7 +739,8 @@
             <EntityTypeMapping TypeName="Model.Indicadores">
               <MappingFragment StoreEntitySet="Indicadores">
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-                <ScalarProperty Name="Inflacion_Simulada" ColumnName="Inflacion_Simulada" />
+                <ScalarProperty Name="Inflacion_Propia" ColumnName="Inflacion_Propia" />
+                <ScalarProperty Name="Inflacion_INEGI" ColumnName="Inflacion_INEGI" />
                 <ScalarProperty Name="Inflacion_Actual" ColumnName="Inflacion_Actual" />
                 <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
                 <ScalarProperty Name="ID_Indicadores" ColumnName="ID_Indicadores" />

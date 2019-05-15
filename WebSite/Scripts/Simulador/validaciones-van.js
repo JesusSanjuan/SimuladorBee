@@ -82,38 +82,39 @@ number4.addEventListener('keyup', (e4) => {
 /* Validacion del campo PLAZO*/
 var validacion;
 $('#n').keyup(function (event) {
-   // valorN = $('#n').val().replace(new RegExp(',', 'g'), "");
-    //alert(valorN);
     var valor = $("#select").val();
-    var n = $("#n").val();
+    var n = $("#n").val();  
+
+    if (n.length === 0) {
+        $("#prueba").addClass("invalid-feedback");
+        $('#prueba').show();
+    }
         switch (valor)
         {
             case "1":
-                validacion = /^([6-9]{4,})$/; //corregir exprecion regular
-                $("#n").val(formatNumber5(n));
-                if (validacion.test(n) === true) {                    
-                    $('#popover').attr('data-original-title', "Verifique..");
-                    $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 1200 meses");
-                    $("#popover").popover('update');
-                    $("#popover").popover("show");
-                }
-                else
-                {
+                if (n < 601) {
                     $('#popover').attr('data-original-title', "De meses años");
                     var anios = n / 12;
                     $('#popover').attr('data-content', "Los meses ingresados son equivalentes en años a: " + anios);
                     $("#popover").popover('update');
                     $("#popover").popover("show");
                 }
+                else {
+                    $('#popover').attr('data-original-title', "Verifique..");
+                    $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 600 meses (50 años)");
+                    $("#popover").popover('update');
+                    $("#popover").popover("show");
+                    $("#n").val("");
+                }
                 break;
             case "2":
                 validacion = /^([0-9]{3,})$/;
-                if (validacion.test(n) === true) {
-                    $("#n").val(formatNumber5(n));
+                $("#n").val(formatNumber5(n));
+                if (validacion.test(n) === true) {                    
                     $('#popover').attr('data-original-title', "Verifique..");
                     $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 99 años");
                     $("#popover").popover('update');
-                    $("#popover").popover("show"); 
+                    $("#popover").popover("show");                     
                 }                
                 break;
             default:
@@ -121,7 +122,7 @@ $('#n').keyup(function (event) {
         }
 
 });
-function formatNumber5(n) {
+function formatNumber5(n) { 
     return n.replace(/\D/g, "")    
         .replace(validacion, "");    
 }
@@ -136,40 +137,34 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');  
-            $('#popover').attr('data-original-title', "A tomar encuenta!");
+            $('#popover').attr('data-original-title', "Toma en encuenta!");
             $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 1200 meses");
-            $("#popover").popover('update');
-            $("#popover").popover("show");      
+            $("#popover").popover('update');           
+            $("#popover").popover("show");                
             break;
         case "2":
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
-            $('#popover').attr('data-original-title', "A tomar encuenta!");
-            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");
+            $('#popover').attr('data-original-title', "Toma en cuenta!");
+            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");           
             $("#popover").popover('update');
-            $("#popover").popover("show");    
+            $("#popover").popover("show");                
             break;
         default:
+            $("#popover").popover("hide"); 
             $("#n").attr('disabled', 'disabled');
             $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
             $("#n").val('');
             break;
     }    
 });
-
-/*$('#popover').on('hide.bs.popover', function () {
-    $("#popover").popover('hide');
-});*/
-
-/*$('body').on('click', function (e) {
-    $('[data-toggle="popover"]').each(function () {       
-        // hide any open popovers when the anywhere else in the body is clicked
-        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-             $(this).popover('hide');
-        }
-    });
-});*/
 /* Validacion del campo PLAZO*/
+
+
+
+$("#Button1").click(function () {
+    alert("click button");
+});
 
 

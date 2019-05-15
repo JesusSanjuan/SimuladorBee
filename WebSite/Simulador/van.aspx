@@ -109,7 +109,7 @@
                                                           <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
                                                         <div class="invalid-feedback">
-                                                          Por favor ingrese el valor de TMAR.
+                                                          Por favor ingrese el valor de TMAR
                                                         </div>
                                                         <div class="valid-feedback">
                        
@@ -129,22 +129,18 @@
                                                                                       <option value="2" class="dropdown-item">Año</option>
                                                        </select>  
 
-                                                      <span id="popover" data-toggle="popover" data-trigger="hover" title="" data-content="" >    
+                                                      <span id="popover" data-toggle="popover" data-placement="bottom"  title="" data-content="" > 
                                                             <asp:TextBox id="n"  CssClass="form-control" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
                                                       </span>                                                       
                                                       <div class="input-group-append ">
-                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                                   <!--    <div class="valid-feedback">
-                                                                       </div>-->
-                                                        </div> 
-                                                        <div class="invalid-feedback">
+                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                      </div> 
+                                                        <div id="prueba" class="invalid-feedback">
                                                                 Por favor ingrese y seleccione el plazo
                                                         </div>
                                                         <div class="valid-feedback">
                                                         </div>
                                                   </div>
-                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Estructura incorrecta" ControlToValidate="n" ValidationExpression="^(\d|-)?(\d|,)*" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
-                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="Longitud incorrecta" ControlToValidate="n" ValidationExpression="^([1-3][0-9][0-9])|([0-9][1-9])|([1-9])" Display="Dynamic" Cssclass="invalid-feedback"></asp:RegularExpressionValidator>
                                         </div>                
                           </div>
 

@@ -119,29 +119,45 @@
                                         </div> 
                           </div>
                           <div class="form-row">     
-                                        <div class="col-md-4 mb-2">
-                                          <label for="validationCustom05">Plazo (n)</label>
-                                                  <div class="input-group"> 
-                                                    
+                                        <div class="col-md-6 mb-2 preborder" >
+                                            <div class="form-row"> 
+                                                <div class="col-md-12 mb-2">
+                                                 <label for="validationCustom05">Plazo (n)</label>    
+                                                </div>
+                                            </div>
+                                            <div class="form-row"> 
+                                                <div class="col-md-6 mb-2">  
+                                                    <div class="input-group">
                                                        <select  id="select" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
                                                                                       <option value="" class="dropdown-item" selected>Seleccione</option>
                                                                                       <option value="1" class="dropdown-item">Mes</option>
                                                                                       <option value="2" class="dropdown-item">Año</option>
-                                                       </select>  
-
-                                                      <span id="popover" data-toggle="popover" data-placement="bottom"  title="" data-content="" > 
-                                                            <asp:TextBox id="n"  CssClass="form-control" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
-                                                      </span>                                                       
-                                                      <div class="input-group-append ">
+                                                       </select>                                             
+                                                       <div class="input-group-append ">
                                                                      <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                      </div> 
-                                                        <div id="prueba" class="invalid-feedback">
-                                                                Por favor ingrese y seleccione el plazo
-                                                        </div>
-                                                        <div class="valid-feedback">
-                                                        </div>
-                                                  </div>
-                                        </div>                
+                                                      </div>                                                       
+                                                 </div>
+                                                </div>
+                                                <div class="col-md-6 mb-2"> 
+                                                    <div class="input-group">
+                                                        
+                                                                <asp:TextBox id="n"  CssClass="form-control" placeholder="Seleccione primero el tipo de plazo"  runat="server" autocomplete="off" ClientIDMode="Static" disabled="disabled"  required="required"/>  
+                                                         <span id="popover" data-toggle="popover" data-placement="bottom"  title="" data-content="" > 
+                                                        </span>                                                      
+                                                        <div class="input-group-append ">
+                                                                         <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                       </div> 
+                                                        
+                                                   </div>
+                                                    <div id="prueba" class="invalid-feedback">                                                               
+                                                      </div>
+                                                      <div class="valid-feedback">
+                                                      </div>
+                                                </div>
+                                            </div>
+                                           </div>     
+                                          <div class="col-md-6 mb-2">                                              
+                                          </div>
                           </div>
 
                           <div class="form-row">  

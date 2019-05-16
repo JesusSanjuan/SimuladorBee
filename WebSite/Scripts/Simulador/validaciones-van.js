@@ -87,7 +87,21 @@ $('#n').keyup(function (event) {
 
     if (n.length === 0) {
         $("#prueba").addClass("invalid-feedback");
+        var tipo;
+        switch (valor) {
+            case "1":
+                tipo = "meses";
+                break;
+            case "2":
+                tipo = "años";
+                break;
+            default:
+                break;
+        }
+        $('#prueba').text('Por favor ingrese el plazo en'+ tipo);
         $('#prueba').show();
+    } else {
+        $('#prueba').hide();
     }
         switch (valor)
         {
@@ -137,7 +151,7 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');  
-            $('#popover').attr('data-original-title', "Toma en encuenta!");
+            $('#popover').attr('data-original-title', "Toma en cuenta!");
             $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 1200 meses");
             $("#popover").popover('update');           
             $("#popover").popover("show");                
@@ -156,6 +170,7 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
             $("#n").attr('disabled', 'disabled');
             $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
             $("#n").val('');
+            $('#prueba').hide();
             break;
     }    
 });

@@ -98,7 +98,7 @@ $('#n').keyup(function (event) {
             default:
                 break;
         }
-        $('#prueba').text('Por favor ingrese el plazo en'+ tipo);
+        $('#prueba').text('Por favor ingrese el plazo en '+ tipo);
         $('#prueba').show();
     } else {
         $('#prueba').hide();

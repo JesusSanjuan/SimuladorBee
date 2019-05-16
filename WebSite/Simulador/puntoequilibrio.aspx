@@ -47,7 +47,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text"  class="form-control" id="costosFijos" >
+                                    <input type="text"  class="form-control moneda" id="costosFijos" >
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text"  class="form-control" id="precioVU" >
+                                    <input type="text"  class="form-control moneda" id="precioVU" >
                                 </div>
                             </div>
                         </div>
@@ -69,10 +69,19 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control" id="costoVU">
+                                    <input type="text" class="form-control moneda" id="costoVU">
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group row d-flex justify-content-center text-center">
+                            <div class="col text-center">
+                                <div class="input-group justify-content-center">
+                                    <button type="button" class="btn btn-primary" id="calc_PEU">Calcular</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+
                         <div class="form-group row d-flex justify-content-center text-center">
                             <label for="static" class="col-sm-3 col-form-label">Punto de Equilibrio en Unidades</label>
                             <div class="col-sm-3">
@@ -80,7 +89,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control" id="PEU">
+                                    <input type="text" class="form-control moneda" id="PEU" readonly>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +110,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text"  class="form-control" id="costosFijos2" >
+                                    <input type="text"  class="form-control moneda" id="costosFijos2" >
                                 </div>
                             </div>
                         </div>
@@ -112,7 +121,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text"  class="form-control" id="precioV" >
+                                    <input type="text"  class="form-control moneda" id="precioV" >
                                 </div>
                             </div>
                         </div>
@@ -123,7 +132,14 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control" id="costoV">
+                                    <input type="text" class="form-control moneda" id="costoV">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row d-flex justify-content-center text-center">
+                            <div class="col text-center">
+                                <div class="input-group justify-content-center">
+                                    <button type="button" class="btn btn-primary" id="calc_PEP">Calcular</button>
                                 </div>
                             </div>
                         </div>
@@ -134,11 +150,14 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control" id="PEP">
+                                    <input type="text" class="form-control moneda" id="PEP" readonly>
                                 </div>
                             </div>
                         </div>
                     
+                        <div class="form-group row d-flex justify-content-center text-center">
+                            <button type="button" class="btn btn-primary invisible" id="savePES">Guardar cambios</button>
+                        </div>
                     </div>
                     
 
@@ -147,6 +166,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Succes Modal-->
+    <div class="modal fade" id="succesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Guardar inflación</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Los datos para el proyecto <strong id="project">X</strong> fueron guardados satisfactoriamente</h5>
+                </div>
+                <div class="modal-footer">
+                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Succes Modal-->
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
@@ -162,4 +202,5 @@
      
     
 </asp:Content>
+
 

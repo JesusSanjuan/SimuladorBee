@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
+
     /*******SCRIPTS PARA CONTENT INDEX***************/
-    //verificar si la session id_proyect existe  
-    //prueba de ramas
+    //verificar si la session id_proyect existe 
     $.ajax({
         type: "POST",
         url: "Index.aspx/buscarID_proyect",
@@ -35,7 +35,6 @@
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            //console.log(data.d);
             var registros = JSON.parse(data.d);
             $('#nproyect').text(registros.length);
             $('#tableProyect').DataTable({
@@ -62,7 +61,6 @@
         var id = $(this).attr("data-id");
 
         var name = $(this).attr("data-name");
-        console.log("id" + id + "-- nombre" + name);
         $("#nameProject").text(name);
         //visualizamos el mensaje
         $(".alert").removeClass("d-none").addClass("d-block");
@@ -75,7 +73,6 @@
             async: false,
             data: JSON.stringify({ id_proyect: id, nam_proyect: name }),
             success: function (data) {
-                console.log(data.d);
                 if (typeof ID_Proyecto !== 'undefined') {
 
                     console.log("existee session --->" + ID_Proyecto);
@@ -99,11 +96,11 @@
     $("#valid4").hide();
     $("body").on('blur', "#Nombre_Proyecto", function () {
 
-        if ($(this).val() == "") 
+        if ($(this).val() == "")
             $("#valid1").show();
-        else 
+        else
             $("#valid1").hide();
-   
+
     });
 
     $("body").on('input', "#nperiodo", function () {
@@ -114,8 +111,8 @@
             $("#valid2").show();
         else {
             $("#valid2").hide();
-            
-            if ($("#lapsoIndx").val() === "Años") {
+
+            if ($("#lapsoIndx").val() == "Años") {
                 if ($(this).val() > 80) {
                     $("#valid3").html("El periodo debe sér máximo de 80 años");
                     $("#valid3").show();
@@ -123,7 +120,7 @@
                 else
                     $("#valid3").hide();
             }
-            else if ($("#lapsoIndx").val() === "Meses") {
+            else if ($("#lapsoIndx").val() == "Meses") {
                 if ($(this).val() > 300) {
                     $("#valid3").html("El periodo debe sér máximo de 300 meses");
                     $("#valid3").show();
@@ -131,7 +128,7 @@
                 else
                     $("#valid3").hide();
             }
-                
+
         }
 
     });
@@ -168,7 +165,7 @@
             $("#valid2").show();
         }
 
-        
+
     });
 
 
@@ -229,11 +226,11 @@
             data: JSON.stringify({ idProyecto: id_proyecto }),
             success: function (result) {
                 var resultado = JSON.parse(result.d);
-                var res_period = resultado[0][(resultado[0].length-1)];
+                var res_period = resultado[0][(resultado[0].length - 1)];
                 var nperiodo = (res_period).substring(0, (res_period).length - 1);
                 // si es mensual o anual
                 var periodo = (res_period).charAt((res_period).length - 1);
-                
+
                 $("#lapse").val(periodo);
                 if (periodo === "M") {
                     $("#lapso").html("Mes");
@@ -250,7 +247,6 @@
                         option = "<option value=" + i + ">" + i + "</option>";
                         options.push(option);
                     }
-                    console.log("finalizado!!");
                     $('#cnperiodo').html(options);
                     $('#cnperiodo').selectpicker('refresh');
                     completeC = true;
@@ -322,7 +318,7 @@
                         param3 = obj["%"];
                         param4 = obj["Total"];
                         cargar_datatable_amort(param1, param2, param3, param4);
-                    }                  
+                    }
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -336,7 +332,7 @@
         }
     }
 
-    function cargar_datatable_amort (camp1, camp2, camp3, camp4) {
+    function cargar_datatable_amort(camp1, camp2, camp3, camp4) {
         var t = $('#amortTable').DataTable();
         t.row.add([
             camp1,
@@ -352,12 +348,12 @@
         $("#amortTable").find('td:nth-child(3)').addClass('porct');
         $("#amortTable").find('td:last').attr("data-editable", "false");
         $("#amortTable").find('td:nth-child(5)').attr("data-editable", "false");
-        $("#amortTable").find('td:nth-child(4)').attr("data-editable", "false");  
+        $("#amortTable").find('td:nth-child(4)').attr("data-editable", "false");
         $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
-    
+
     }
-     /****************************************/
+    /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
     var complete = false;
     var controller = "costos.aspx";
@@ -408,12 +404,12 @@
                             completeG = true;
                         $(".continuar").hide();
                         $(".actualizar").show();
-                        $('#'+select+'').html(options);
+                        $('#' + select + '').html(options);
                         $('#' + select + '').selectpicker('refresh');
                         $('#' + select + '').change();
                     }
                     else {
-                       
+
                         var ban = 0;
                         for (i = 1; i <= nperiodo; i++) {
                             //Buscar que periodos ya estan ingresados
@@ -438,19 +434,19 @@
                             options.push(option);
                         }
                         if (resultado[1].length > 0) {
-                            $('#'+Tab+' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').removeClass('disabled');
-                            $('#'+ Tab +' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').tab('show');
-                            $('#'+ Tab +' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').addClass('active');
+                            $('#' + Tab + ' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').removeClass('disabled');
+                            $('#' + Tab + ' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').tab('show');
+                            $('#' + Tab + ' li a:eq(' + resultado[1][resultado[1].length - 1] + ')').addClass('active');
                         }
-                        
+
                         else {
-                            $('#' + Tab +' li a:first').removeClass('disabled');
-                            $('#' + Tab +' li a:first').tab('show');
-                            $('#' + Tab +' li a:first').addClass('active');
+                            $('#' + Tab + ' li a:first').removeClass('disabled');
+                            $('#' + Tab + ' li a:first').tab('show');
+                            $('#' + Tab + ' li a:first').addClass('active');
                         }
-                        $('#'+ select +'').html(options);
-                        $('#'+ select +'').selectpicker('refresh');
-                    }                    
+                        $('#' + select + '').html(options);
+                        $('#' + select + '').selectpicker('refresh');
+                    }
                     //llaamos una funcion para crear la session de id_costo
                     crear_session_costo_gasto(select, controller);
 
@@ -473,7 +469,7 @@
         var periodo_select = $('#' + select + '').val();
         $.ajax({
             type: "POST",
-            url: controller+"/crear_session",
+            url: controller + "/crear_session",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
@@ -489,30 +485,30 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
-    }    
+    }
 
     function get_data_c_g(ncontent, controller, select, Tab) {
         if (id_proyecto !== "false") {
-            var periodo_select = $("#"+select+"").val();
+            var periodo_select = $("#" + select + "").val();
             $.ajax({
                 type: "POST",
-                url: controller +"/get_data",
+                url: controller + "/get_data",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 async: false,
                 data: JSON.stringify({ idproyecto: id_proyecto, periodSelect: periodo_select }),
                 success: function (result) {
                     var resultado = JSON.parse(result.d);
-                    var table = $('#myTabContent' + ncontent+'').find('table').DataTable();
+                    var table = $('#myTabContent' + ncontent + '').find('table').DataTable();
                     table.clear().draw();
                     //variables dependiendo del content
                     var campo, prefix = "";
                     if (ncontent == "3") {
-                        campo  = "$ Gasto";
+                        campo = "$ Gasto";
                         prefix = "gast";
                     }
                     else {
-                        campo  = "$ Costo";
+                        campo = "$ Costo";
                         prefix = "cost";
                     }
                     //Tab Producción
@@ -563,8 +559,8 @@
                     }
 
 
-                    $('#'+Tab+' li a').removeClass('disabled');
-                    $('#'+Tab+' li:first a').tab('show');
+                    $('#' + Tab + ' li a').removeClass('disabled');
+                    $('#' + Tab + ' li:first a').tab('show');
                     $('#' + Tab + ' li:first a').addClass('active');
 
                     //mensaje de proyección
@@ -585,7 +581,7 @@
     }
     //funcion generica para costos y gastos
     function cargar_datatable_costos(table, camp1, camp2, camp3, camp4, camp5) {
-        var t = $('#'+table+'').DataTable();
+        var t = $('#' + table + '').DataTable();
         t.row.add([
             camp1,
             camp2,
@@ -610,10 +606,10 @@
         var selector = $('#' + table + '').parents('.tab-pane').attr("id");
         $('#' + selector).find('.total_ant').val($('#' + table + '').find('.total').text());
 
-      
+
     }
     /****************************************/
-    
+
     /*******SCRIPTS PARA CONTENT Gastos***************/
     var controller2 = "gastos.aspx";
     var completeG = false;
@@ -639,55 +635,21 @@
             data: JSON.stringify({ idProyecto: id_proyecto }),
             success: function (result) {
                 var resultado = JSON.parse(result.d);
-                //BUcamos en cada pestaña, costos fijos
-                //Tab Producción
-                var res = JSON.parse(resultado[1]);
-                console.log("-->" + res);
-                console.log("-->" + res.length);
-                var i, obj, param1, param2, param3, param4, param5;
                 var sumT = 0;
-                for (i = 0; i < res.length - 1; i++) {
-                    obj = res[i];
-                    param2 = obj["Tipo"];
-                    if (param2 == "Fijo") {
-                        param5 = obj["$ Costo Total"];
-                        sumT = sumT + param5; 
-                    }                                   
-                }
-                //Tab Ventas
-                var res2 = JSON.parse(resultado[2]);
-                for (i = 0; i < res2.length - 1; i++) {
-                    obj = res2[i];
-                    param2 = obj["Tipo"];
-                    if (param2 == "Fijo") {
-                        param5 = obj["$ Costo Total"];
-                        sumT = sumT + param5; 
-                    }
-                    
-                }
-                //Tab Admon
-                var res3 = JSON.parse(resultado[3]);
-                for (i = 0; i < res3.length - 1; i++) {
-                    obj = res3[i];
-                    param2 = obj["Tipo"];
-                    if (param2 == "Fijo") {
-                        param5 = obj["$ Costo Total"];
-                        sumT = sumT + param5;
+                for (var i = 0; i < resultado.length; i++) {
+                    for (var j = 0; j < resultado[i].length; j++) {
+                        var res = JSON.parse(resultado[i][j]);
+                        for (var k = 0; k < res.length; k++) {
+                            var obj = res[k];
+                            if (obj["Tipo"] == "Fijo") {
+                                sumT = parseFloat(sumT) + parseFloat(obj["$ Costo Total"]);
+                            }
+                        }
                     }
                 }
-                //Tab Admon
-                var res4 = JSON.parse(resultado[4]);
-                for (i = 0; i < res4.length - 1; i++) {
-                    obj = res4[i];
-                    param2 = obj["Tipo"];
-                    if (param2 == "Fijo") {
-                        param5 = obj["$ Costo Total"];
-                        sumT = sumT + param5;
-                    }
-                }
-
                 $("#costosFijos").val(sumT);
-                
+                $("#costosFijos2").val(sumT);
+                $("#savePES").removeClass("invisible");
 
             },
             error: function (result) {
@@ -701,6 +663,60 @@
         });
     }
 
+    $("#calc_PEU").on('click', function () {
+        var costos_fijos = remove_format_coin($("#costosFijos").val());
+        var precio = remove_format_coin($("#precioVU").val());
+        var costoV = remove_format_coin($("#costoVU").val());
+        if (costos_fijos != "" && precio != "" && costoV != "") {
+            var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
+            $('#PEU').val(create_format_coin(punto_equilibrio));
+        }
+
+
+    });
+    $("#calc_PEP").on('click', function () {
+        var costos_fijos = remove_format_coin($("#costosFijos2").val());
+        var precio = $("#precioV").val();
+        var costoV = $("#costoV").val();
+        if (costos_fijos != "" && precio != "" && costoV != "") {
+            var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
+            $('#PEP').val(create_format_coin(punto_equilibrio));
+        }
+
+    });
+
+    $("#savePES").on('click', function () {
+        var PE_unidades = $("#PEU").val();
+        var PE_pesos = $("#PEP").val();
+        if (PE_unidades != "" && PE_pesos != "") {
+            $("#project").html($("#message").find("strong").html());
+            $('#succesModal').modal('show');
+        }
+
+    });
+    $('#succesModal').on('hidden.bs.modal', function () {
+        location.reload();
+    });
+
+
+
+
     /************************/
+
+    $("body").on('keyup', ".moneda", function (event) {
+        $(event.target).val(function (index, value) {
+            return value.replace(/\D/g, "")
+                .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+                .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+        });
+
+    });
+
+    function remove_format_coin(cifra) {
+        return parseFloat(cifra.replace(',', ""));
+    }
+    function create_format_coin(cifra) {
+        return cifra.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    }
 
 });

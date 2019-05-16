@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-
     /*******SCRIPTS PARA CONTENT INDEX***************/
-    //verificar si la session id_proyect existe 
+    //verificar si la session id_proyect existe  
+    //prueba de ramas
     $.ajax({
         type: "POST",
         url: "Index.aspx/buscarID_proyect",
@@ -115,7 +115,7 @@
         else {
             $("#valid2").hide();
             
-            if ($("#lapsoIndx").val() == "Años") {
+            if ($("#lapsoIndx").val() === "Años") {
                 if ($(this).val() > 80) {
                     $("#valid3").html("El periodo debe sér máximo de 80 años");
                     $("#valid3").show();
@@ -123,7 +123,7 @@
                 else
                     $("#valid3").hide();
             }
-            else if ($("#lapsoIndx").val() == "Meses") {
+            else if ($("#lapsoIndx").val() === "Meses") {
                 if ($(this).val() > 300) {
                     $("#valid3").html("El periodo debe sér máximo de 300 meses");
                     $("#valid3").show();

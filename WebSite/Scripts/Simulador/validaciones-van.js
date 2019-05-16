@@ -1,4 +1,4 @@
-/*Validacion de todos los campos cambio a colores y mostrar textos*/
+/*Validacion de todos los campos cambio a colores y mostrar textos de la fusion*/
     (function () {
         'use strict';
     window.addEventListener('load', function () {

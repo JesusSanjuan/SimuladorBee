@@ -13,7 +13,7 @@ public partial class User_van : System.Web.UI.Page
     {
     }
 
-    protected void GreetingBtn_Click(Object sender, EventArgs e)
+   /* protected void GreetingBtn_Click(Object sender, EventArgs e)
     {        
         Graficar();
         CreacionTabla();
@@ -31,7 +31,7 @@ public partial class User_van : System.Web.UI.Page
 
         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */       
        
-
+/*
         ResultadoVPN = CalcularVPN(fTMAR / 100);
         string script3 = "Modal(" + ResultadoVPN + ");";
         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script22", script3, true);
@@ -71,7 +71,7 @@ public partial class User_van : System.Web.UI.Page
             fTMAR = fTMAR + 0.02M;// Cantidad de saltos de los puntos en el eje X
         } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
 
-        /*Buscando interseccion con eje x */
+        /*Buscando interseccion con eje x *//*
         if (!Ceros)
         {
             decimal ValorY0 = Math.Round(CalcularVPN(RCalcuTIR), 2);
@@ -89,7 +89,7 @@ public partial class User_van : System.Web.UI.Page
                 }
             }
         }
-        /*Buscando interseccion con eje x */
+        /*Buscando interseccion con eje x *//*
         // pasamos las variabes en formato array json
         String timeC = JsonConvert.SerializeObject(ListaX);
         String repArrayC = JsonConvert.SerializeObject(ListaY);
@@ -206,9 +206,9 @@ public partial class User_van : System.Web.UI.Page
         int Periodo = Convert.ToInt32(n.Text.Replace(",", ""));
         String[,] ArregloDatos = new String[Periodo + 1, 7];
         ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
-        /*Cambiar cuado aya valores verdaderos de costos*/
+        /*Cambiar cuado aya valores verdaderos de costos*//*
         ArregloDatos[0, 2] = "-" + Inversion.Text.Replace(",", "");
-        /*Cambiar cuado aya valores verdaderos de costos*/
+        /*Cambiar cuado aya valores verdaderos de costos*//*
         for (int j = 0; j <= Periodo; j++)
         {
             ArregloDatos[j, 0] = Convert.ToString(j + 1);
@@ -309,5 +309,5 @@ public partial class User_van : System.Web.UI.Page
 
         decimal CRBC = SumIngresos_actualizados / Sum_costos;
         BenCosto.Text = "Por cada peso invertido usted obtendra una ganancia de: $" + Convert.ToString(Math.Round(CRBC, 3));
-    }
+    }*/
 }

@@ -31,7 +31,6 @@ number.addEventListener('keyup', (e) => {
 	const value = element.value;
   element.value = formatNumber(value);
 });
-
 $('#Inversion').keyup(function (event) {
     var inversion = $("#Inversion").val();
     if (inversion .length === 0) {
@@ -44,6 +43,19 @@ $('#Inversion').keyup(function (event) {
         $("#Inversion").removeClass("is-invalid");
         $("#Inversion").addClass("is-valid");
         $('#Inversionval').hide();
+
+        var reg = /^(\d|,)*\.\d{1,2}$/g;
+        if (inversion.match(reg)) {
+            $("#Inversion").removeClass("is-invalid");
+            $("#Inversion").addClass("is-valid");
+            $('#Inversionval').hide();
+        } else {           
+            $("#Inversionval").addClass("invalid-feedback");
+            $("#Inversion").removeClass("is-valid");
+            $("#Inversion").addClass("is-invalid");
+            $('#Inversionval').text('Por favor ingrese mas digitos');
+            $('#Inversionval').show();
+        }
     }
 });
 /* Validacion del campo Inversion */
@@ -61,6 +73,34 @@ number2.addEventListener('keyup', (e2) => {
 	const value2 = element2.value;
   element2.value = formatNumber2(value2);
 });
+
+$('#FNE').keyup(function (event) {
+    var FNE = $("#FNE").val();
+    if (FNE.length === 0) {
+        $("#FNEval").addClass("invalid-feedback");
+        $("#FNE").removeClass("is-valid");
+        $("#FNE").addClass("is-invalid");
+        $('#FNEval').text('Por favor ingrese el FNE.');
+        $('#FNEval').show();
+    } else {
+        $("#FNE").removeClass("is-invalid");
+        $("#FNE").addClass("is-valid");
+        $('#FNEval').hide();
+
+        var reg = /^(\d|,)*\.\d{1,2}$/g;
+        if (FNE.match(reg)) {
+            $("#FNE").removeClass("is-invalid");
+            $("#FNE").addClass("is-valid");
+            $('#FNEval').hide();
+        } else {
+            $("#FNEval").addClass("invalid-feedback");
+            $("#FNE").removeClass("is-valid");
+            $("#FNE").addClass("is-invalid");
+            $('#FNEval').text('Por favor ingrese mas digitos');
+            $('#FNEval').show();
+        }
+    }
+});
 /* Validacion del campo Flujo Neto de Efectivo */
 
 /* Validacion del campo Valor de Salvamento*/
@@ -75,6 +115,34 @@ number3.addEventListener('keyup', (e3) => {
     const element3 = e3.target;
     const value3 = element3.value;
     element3.value = formatNumber3(value3);
+});
+
+$('#VdS').keyup(function (event) {
+    var VdS = $("#VdS").val();
+    if (VdS.length === 0) {
+        $("#VdSval").addClass("invalid-feedback");
+        $("#VdS").removeClass("is-valid");
+        $("#VdS").addClass("is-invalid");
+        $('#VdSval').text('Por favor ingrese el Valor de Salvamento.');
+        $('#VdSval').show();
+    } else {
+        $("#VdS").removeClass("is-invalid");
+        $("#VdS").addClass("is-valid");
+        $('#VdSval').hide();
+
+        var reg = /^(\d|,)*\.\d{1,2}$/g;
+        if (VdS.match(reg)) {
+            $("#VdS").removeClass("is-invalid");
+            $("#VdS").addClass("is-valid");
+            $('#VdSval').hide();
+        } else {
+            $("#VdSval").addClass("invalid-feedback");
+            $("#VdS").removeClass("is-valid");
+            $("#VdS").addClass("is-invalid");
+            $('#VdSval').text('Por favor ingrese mas digitos');
+            $('#VdSval').show();
+        }
+    }
 });
 /* Validacion del campo Valor de Salvamento*/
 
@@ -91,6 +159,34 @@ number4.addEventListener('keyup', (e4) => {
     const value4 = element4.value;
     element4.value = formatNumber4(value4);
 });
+$('#TMAR').keyup(function (event) {
+    var TMAR = $("#TMAR").val();
+    if (TMAR.length === 0) {
+        $("#TMARval").addClass("invalid-feedback");
+        $("#TMAR").removeClass("is-valid");
+        $("#TMAR").addClass("is-invalid");
+        $('#TMARval').text('Por favor ingrese la TMAR.');
+        $('#TMARval').show();
+    } else {
+        $("#TMAR").removeClass("is-invalid");
+        $("#TMAR").addClass("is-valid");
+        $('#TMARval').hide();
+
+        var reg = /^(\d|,)*\.\d{1,2}$/g;
+        if (TMAR.match(reg)) {
+            $("#TMAR").removeClass("is-invalid");
+            $("#TMAR").addClass("is-valid");
+            $('#TMARval').hide();
+        } else {
+            $("#TMARval").addClass("invalid-feedback");
+            $("#TMAR").removeClass("is-valid");
+            $("#TMAR").addClass("is-invalid");
+            $('#TMARval').text('Por favor ingrese mas digitos');
+            $('#TMARval').show();
+        }
+    }
+});
+
 /* Validacion del campo TMAR*/
 
 /* Validacion del campo PLAZO*/
@@ -103,7 +199,7 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
             $('#popover').attr('data-original-title', "Toma en cuenta!");
-            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 1200 meses");
+            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
             $("#popover").popover('update');
             $("#popover").popover("show");
             break;
@@ -120,10 +216,12 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
             $("#popover").popover("hide");
             $("#n").attr('disabled', 'disabled');
             $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
-            $("#n").val('');
-            $('#prueba').hide();
+            $("#n").val('');            
+            $('#nval').hide();
             break;
     }
+    $("#n").removeClass("is-invalid");
+    $("#n").removeClass("is-valid");
 });
 
 var validacion;
@@ -132,7 +230,7 @@ $('#n').keyup(function (event) {
     var n = $("#n").val();  
 
     if (n.length === 0) {
-        $("#prueba").addClass("invalid-feedback");
+        $("#nval").addClass("invalid-feedback");
         var tipo;
         switch (valor) {
             case "1":
@@ -144,10 +242,14 @@ $('#n').keyup(function (event) {
             default:
                 break;
         }
-        $('#prueba').text('Por favor ingrese el plazo en '+ tipo);
-        $('#prueba').show();
+        $("#n").removeClass("is-valid");
+        $("#n").addClass("is-invalid");
+        $('#nval').text('Por favor ingrese el plazo en '+ tipo);
+        $('#nval').show();
     } else {
-        $('#prueba').hide();
+        $("#n").removeClass("is-invalid");
+        $("#n").addClass("is-valid");
+        $('#nval').hide();
     }
         switch (valor)
         {
@@ -164,6 +266,10 @@ $('#n').keyup(function (event) {
                     $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 600 meses (50 años)");
                     $("#popover").popover('update');
                     $("#popover").popover("show");
+                    $("#n").removeClass("is-valid");
+                    $("#n").addClass("is-invalid");
+
+
                     $("#n").val("");
                 }
                 break;
@@ -174,6 +280,11 @@ $('#n').keyup(function (event) {
                     $('#popover').attr('data-original-title', "Verifique..");
                     $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 99 años");
                     $("#popover").popover('update');
+                    $("#n").removeClass("is-valid");
+                    $("#n").addClass("is-invalid");
+
+
+
                     $("#popover").popover("show");                     
                 }                
                 break;
@@ -181,7 +292,7 @@ $('#n').keyup(function (event) {
                 break;
         }
 });
-function formatNumber5(n) { 
+function formatNumber5(n) {    
     return n.replace(/\D/g, "")    
         .replace(validacion, "");    
 }

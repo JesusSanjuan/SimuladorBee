@@ -47,7 +47,8 @@
                                                         <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
-                                                        <div id="Inversionval" class="invalid-feedback">  
+                                                        <div id="Inversionval" class="invalid-feedback"> 
+                                                            Por favor ingrese la inversion.
                                                         </div>
                                                         <div class="valid-feedback">
                                                         </div>                   
@@ -66,7 +67,7 @@
                                                         <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
-                                                       <div class="invalid-feedback">
+                                                       <div id="FNEval" class="invalid-feedback">
                                                           Por favor ingrese el FNE.
                                                         </div>
                                                         <div class="valid-feedback">                       
@@ -85,12 +86,12 @@
                                                        <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
-                                                       <div class="invalid-feedback">
+                                                       <div id="VdSval"class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento
-                                                        </div>
-                                                        <div class="valid-feedback">
+                                                       </div>
+                                                       <div class="valid-feedback">
                        
-                                                        </div>
+                                                       </div>
                                                   </div>
                                         </div>
                                           <div class="col-md-3 mb-2">
@@ -101,7 +102,7 @@
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
                                                           <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
-                                                        <div class="invalid-feedback">
+                                                        <div  id="TMARval"class="invalid-feedback">
                                                           Por favor ingrese el valor de TMAR
                                                         </div>
                                                         <div class="valid-feedback">                       
@@ -139,7 +140,7 @@
                                                        </div> 
                                                         
                                                    </div>
-                                                    <div id="prueba" class="invalid-feedback">                                                               
+                                                    <div id="nval" class="invalid-feedback">                                                               
                                                       </div>
                                                       <div class="valid-feedback">
                                                       </div>
@@ -401,7 +402,7 @@
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
  <!-- Manejo de funcion de tabla en VAN-->    
  <!-- Para validacion de campos-->    
-        <script src="../Scripts/Simulador/validaciones-van.js"></script>       
+        <script src="../Scripts/Simulador/van.js"></script>       
  <!-- Para validacion de campos-->
  <!-- plugin selectpicker-->
     <script src="../Scripts/bootstrap-select.min.js"></script>

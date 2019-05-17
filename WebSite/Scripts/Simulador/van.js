@@ -21,7 +21,6 @@
    
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
-
 function formatNumber (n) {
 	return n.replace(/\D/g, "")
                         .replace(/([0-9])([0-9]{2})$/, '$1.$2')
@@ -31,6 +30,21 @@ number.addEventListener('keyup', (e) => {
 	const element = e.target;
 	const value = element.value;
   element.value = formatNumber(value);
+});
+
+$('#Inversion').keyup(function (event) {
+    var inversion = $("#Inversion").val();
+    if (inversion .length === 0) {
+        $("#Inversionval").addClass("invalid-feedback");
+        $("#Inversion").removeClass("is-valid");
+        $("#Inversion").addClass("is-invalid");
+        $('#Inversionval').text('Por favor ingrese la inversion.');
+        $('#Inversionval').show();
+    } else {
+        $("#Inversion").removeClass("is-invalid");
+        $("#Inversion").addClass("is-valid");
+        $('#Inversionval').hide();
+    }
 });
 /* Validacion del campo Inversion */
 
@@ -80,6 +94,38 @@ number4.addEventListener('keyup', (e4) => {
 /* Validacion del campo TMAR*/
 
 /* Validacion del campo PLAZO*/
+
+$("#select").change(function () {  //Estrar datos y del campo de texto y luego aplicar  validacion y mostrar popper en caso de errror
+    var valor = $(this).val();
+    switch (valor) {
+        case "1":
+            $("#n").removeAttr('disabled');
+            $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+            $("#n").val('');
+            $('#popover').attr('data-original-title', "Toma en cuenta!");
+            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 1200 meses");
+            $("#popover").popover('update');
+            $("#popover").popover("show");
+            break;
+        case "2":
+            $("#n").removeAttr('disabled');
+            $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+            $("#n").val('');
+            $('#popover').attr('data-original-title', "Toma en cuenta!");
+            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");
+            $("#popover").popover('update');
+            $("#popover").popover("show");
+            break;
+        default:
+            $("#popover").popover("hide");
+            $("#n").attr('disabled', 'disabled');
+            $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
+            $("#n").val('');
+            $('#prueba').hide();
+            break;
+    }
+});
+
 var validacion;
 $('#n').keyup(function (event) {
     var valor = $("#select").val();
@@ -134,52 +180,17 @@ $('#n').keyup(function (event) {
             default:
                 break;
         }
-
 });
 function formatNumber5(n) { 
     return n.replace(/\D/g, "")    
         .replace(validacion, "");    
 }
-
-$('[data-toggle="popover"]').popover();// Hacer que aparesca el popover al pasar el cursor
-
-$("#select").change(function () {  //Estrar datos y del campo de texto y luego aplicar  validacion y mostrar popper en caso de errror
-    var valor = $(this).val();
-    switch (valor)
-    {        
-        case "1":
-            $("#n").removeAttr('disabled');
-            $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
-            $("#n").val('');  
-            $('#popover').attr('data-original-title', "Toma en cuenta!");
-            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 1200 meses");
-            $("#popover").popover('update');           
-            $("#popover").popover("show");                
-            break;
-        case "2":
-            $("#n").removeAttr('disabled');
-            $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
-            $("#n").val('');
-            $('#popover').attr('data-original-title', "Toma en cuenta!");
-            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");           
-            $("#popover").popover('update');
-            $("#popover").popover("show");                
-            break;
-        default:
-            $("#popover").popover("hide"); 
-            $("#n").attr('disabled', 'disabled');
-            $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
-            $("#n").val('');
-            $('#prueba').hide();
-            break;
-    }    
-});
 /* Validacion del campo PLAZO*/
 
+//$('[data-toggle="popover"]').popover();// Hacer que aparesca el popover al pasar el cursor
 
-
-$("#Button1").click(function () {
-    alert("click button");
+$("#calcular").click(function () {
+    
 });
 
 

@@ -401,17 +401,35 @@
 
             var periodo = $("#periodoINEGI").val();
             var proyectos = $('#proyectosINEGI.selectpicker').val();
+            
             //GUardamos los datos en la tabla de indices
+            $.ajax({
+                type: "POST",
+                url: "tasainflacion.aspx/guardar_inflacion",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ Periodo: periodo, Proyectos: proyectos, Inflacion: inflacion, InMensual: inMensual }),
+                async: false,
+                success: function (result) {
+                    console.log("resul " + resul);
+                    var resul = result.d;
+                    if (resul == "OK") {
+                        $('#alertSucces').show();
+                        setTimeout(
+                            function () {
+                                $("#alertSucces").hide();
+                            }, 3000);
+                    }
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
 
-            $('#alertSucces').show();
-
-            setTimeout(
-            function () {
-                $("#alertSucces").modal('hide');
-            }, 3000);
-            
-
-            
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
 
         }
     });

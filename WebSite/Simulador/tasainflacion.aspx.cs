@@ -1084,5 +1084,27 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
         return json;
     }
 
+    [WebMethod]
+    public static string guardar_inflacion(string Periodo, string[] Proyectos, float Inflacion, float InMensual)
+    {
+        System.Diagnostics.Debug.WriteLine("Proyectos: " + Proyectos[1]);
+        // GUARDAMOS A LA BASE DE DATOS
+        var db = new Entidades();
+        var inflacion = new Indicadores();
+
+        for (int i=0; i<Proyectos.Length ; i++)
+        {
+            string id_indicadores = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+            string id_proyecto = Proyectos[i];
+            string inflacion_simulada = Inflacion.ToString();
+
+            inflacion.ID_Indicadores = id_indicadores;
+            inflacion.ID_Proyecto = id_indicadores;
+            inflacion.Inflacion_Propia = Inflacion;
+            db.Indicadores.Add(inflacion);
+        }
+
+        return "OK";
+    }
 
 }

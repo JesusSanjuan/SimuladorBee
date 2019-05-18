@@ -128,19 +128,20 @@
                                                        <div class="input-group-append ">
                                                                      <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                       </div>                                                       
-                                                 </div>
+                                                    </div>
+                                                    <div id="selectval" class="invalid-feedback">                                                               
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 mb-2"> 
-                                                    <div class="input-group">
-                                                        <span id="popover" data-toggle="popover" data-placement="bottom"  title="" data-content="" > 
-                                                                <input type="text"   class="form-control" id="n" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  required="required">                                                         
-                                                        </span>                                                      
-                                                        <div class="input-group-append ">
-                                                                         <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                       </div> 
-                                                        
-                                                   </div>
-                                                    <div id="nval" class="invalid-feedback">                                                               
+                                                      <div class="input-group">                                                            
+                                                                <input type="text"   class="form-control" id="n" data-toggle="popover" data-placement="bottom" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  required="required">                                                         
+                                                           <div class="input-group-append ">
+                                                                    <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                           </div>                                                         
+                                                      </div>
+                                                      <div id="nval" class="invalid-feedback">                                                               
                                                       </div>
                                                       <div class="valid-feedback">
                                                       </div>
@@ -151,25 +152,11 @@
                                           </div>
                           </div>
 
-                          <div class="form-row">  
-                                <div class="col-md-5 mb-3">
-                                        <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                              <label class="form-check-label" for="invalidCheck">
-                                                    Acepta los términos y condiciones
-                                              </label>
-                                              <div class="invalid-feedback">
-                                                 Debe aceptar los terminos antes de calcular
-                                              </div>
-                                        </div>       
-                                </div>
-                          </div>
-
      
 
                         <div class="form-row">  
                             <div class="col-md-3 mb-2">
-                                <button id="calcular" class="btn btn-primary" type="submit">Calcular</button>
+                                <button id="calcular" class="btn btn-primary" type="button">Calcular</button>
                             </div>   
                         </div>  
    </div>

@@ -1,4 +1,4 @@
-/*Validacion de todos los campos cambio a colores y mostrar textos de la fusion*/
+/*Validacion de todos los campos cambio a colores y mostrar textos de la fusion
     (function () {
         'use strict';
     window.addEventListener('load', function () {
@@ -16,7 +16,7 @@
         }, false);
     });
 }, false);
-})();
+})();*/
 /*Validacion de todos los campos cambio a colores y mostrar textos*/
    
 /* Validacion del campo Inversion */
@@ -192,34 +192,43 @@ $('#TMAR').keyup(function (event) {
 /* Validacion del campo PLAZO*/
 
 $("#select").change(function () {  //Estrar datos y del campo de texto y luego aplicar  validacion y mostrar popper en caso de errror
-    var valor = $(this).val();
+    var valor = $("#select").val();
     switch (valor) {
         case "1":
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
-            $('#popover').attr('data-original-title', "Toma en cuenta!");
-            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
-            $("#popover").popover('update');
-            $("#popover").popover("show");
+            $('#n').attr('data-original-title', "Toma en cuenta!");
+            $('#n').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
+            $("#n").popover('update');
+            $("#n").popover("show");
+            $('#selectval').hide();
             break;
         case "2":
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
-            $('#popover').attr('data-original-title', "Toma en cuenta!");
-            $('#popover').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");
-            $("#popover").popover('update');
-            $("#popover").popover("show");
+            $('#n').attr('data-original-title', "Toma en cuenta!");
+            $('#n').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");
+            $("#n").popover('update');
+            $("#n").popover("show");  
+            $('#selectval').hide();
             break;
         default:
-            $("#popover").popover("hide");
+            $("#n").popover("hide");
             $("#n").attr('disabled', 'disabled');
             $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
-            $("#n").val('');            
-            $('#nval').hide();
+            $("#n").val('');   
+            $("#selectval").addClass("invalid-feedback");
+            $("#select").removeClass("is-valid");
+            $("#select").addClass("is-invalid");
+            $('#selectval').text('Por favor seleccione un tipo de plazo');
+            $('#selectval').show();
             break;
     }
+
+    $('#nval').hide();
+    $("#n").focus();
     $("#n").removeClass("is-invalid");
     $("#n").removeClass("is-valid");
 });
@@ -228,20 +237,20 @@ var validacion;
 $('#n').keyup(function (event) {
     var valor = $("#select").val();
     var n = $("#n").val();  
-
+    var tipo;
+   
+    switch (valor) {
+        case "1":
+            tipo = "meses";
+            break;
+        case "2":
+            tipo = "años";
+            break;
+        default:
+            break;
+    }
     if (n.length === 0) {
-        $("#nval").addClass("invalid-feedback");
-        var tipo;
-        switch (valor) {
-            case "1":
-                tipo = "meses";
-                break;
-            case "2":
-                tipo = "años";
-                break;
-            default:
-                break;
-        }
+        $("#nval").addClass("invalid-feedback");        
         $("#n").removeClass("is-valid");
         $("#n").addClass("is-invalid");
         $('#nval').text('Por favor ingrese el plazo en '+ tipo);
@@ -251,46 +260,53 @@ $('#n').keyup(function (event) {
         $("#n").addClass("is-valid");
         $('#nval').hide();
     }
-        switch (valor)
-        {
-            case "1":
+    switch (valor)
+    {         
+        case "1":
+            if (n.length === 0) {
+                $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+                $('#n').attr('data-original-title', "Toma en cuenta!");
+                $('#n').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
+                $("#n").popover('update');
+                $("#n").popover("show");
+            } else {
                 if (n < 601) {
-                    $('#popover').attr('data-original-title', "De meses años");
+                    $('#n').attr('data-original-title', "De meses años");
                     var anios = n / 12;
-                    $('#popover').attr('data-content', "Los meses ingresados son equivalentes en años a: " + anios);
-                    $("#popover").popover('update');
-                    $("#popover").popover("show");
+                    $('#n').attr('data-content', "Los meses ingresados son equivalentes en años a: " + anios);
+                    $("#n").popover('update');
+                    $("#n").popover("show");
                 }
                 else {
-                    $('#popover').attr('data-original-title', "Verifique..");
-                    $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 600 meses (50 años)");
-                    $("#popover").popover('update');
-                    $("#popover").popover("show");
+                    $('#n').attr('data-original-title', "Verifique..");
+                    $('#n').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 600 meses (50 años)");
+                    $("#n").popover('update');
+                    $("#n").popover("show");
                     $("#n").removeClass("is-valid");
                     $("#n").addClass("is-invalid");
-
-
+                    $('#nval').text('Por favor ingrese el plazo ' + tipo);
+                    $('#nval').show();
                     $("#n").val("");
                 }
-                break;
-            case "2":
-                validacion = /^([0-9]{3,})$/;
-                $("#n").val(formatNumber5(n));
-                if (validacion.test(n) === true) {                    
-                    $('#popover').attr('data-original-title', "Verifique..");
-                    $('#popover').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 99 años");
-                    $("#popover").popover('update');
-                    $("#n").removeClass("is-valid");
-                    $("#n").addClass("is-invalid");
-
-
-
-                    $("#popover").popover("show");                     
-                }                
-                break;
-            default:
-                break;
-        }
+            }
+            break;
+        case "2":
+            validacion = /^([0-9]{3,})$/;
+            $("#n").val(formatNumber5(n));
+            if (validacion.test(n) === true) {                    
+                $('#n').attr('data-original-title', "Verifique..");
+                $('#n').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 99 años");
+                $("#n").popover('update');
+                $("#n").removeClass("is-valid");
+                $("#n").addClass("is-invalid");
+                $('#nval').text('Por favor ingrese el plazo ' + tipo);
+                $('#nval').show();
+                $("#n").popover("show");                     
+            }                
+            break;
+        default:
+            break;
+    }
 });
 function formatNumber5(n) {    
     return n.replace(/\D/g, "")    
@@ -301,7 +317,60 @@ function formatNumber5(n) {
 //$('[data-toggle="popover"]').popover();// Hacer que aparesca el popover al pasar el cursor
 
 $("#calcular").click(function () {
+    var inversion = $("#Inversion").val();
+    var FNE = $("#FNE").val();
+    var VdS = $("#VdS").val();
+    var TMAR = $("#TMAR").val();
+    var Select = $("#select").val();
+    var n = $("#n").val();  
     
+    if (inversion.length === 0) {
+        $("#Inversionval").addClass("invalid-feedback");
+        $("#Inversion").removeClass("is-valid");
+        $("#Inversion").addClass("is-invalid");
+        $('#Inversionval').text('Por favor ingrese la inversion.');
+        $('#Inversionval').show();
+    }
+
+    if (FNE.length === 0) {
+        $("#FNEval").addClass("invalid-feedback");
+        $("#FNE").removeClass("is-valid");
+        $("#FNE").addClass("is-invalid");
+        $('#FNEval').text('Por favor ingrese el FNE.');
+        $('#FNEval').show();
+    }
+
+    if (VdS .length === 0) {
+        $("#VdSval").addClass("invalid-feedback");
+        $("#VdS").removeClass("is-valid");
+        $("#VdS").addClass("is-invalid");
+        $('#VdSval').text('Por favor ingrese el Valor de Salvamento.');
+        $('#VdSval').show();
+    }
+    if (TMAR.length === 0) {
+        $("#TMARval").addClass("invalid-feedback");
+        $("#TMAR").removeClass("is-valid");
+        $("#TMAR").addClass("is-invalid");
+        $('#TMARval').text('Por favor ingrese la TMAR.');
+        $('#TMARval').show();
+    }
+    if (Select === "") {
+        $("#selectval").addClass("invalid-feedback");
+        $("#select").removeClass("is-valid");
+        $("#select").addClass("is-invalid");
+        $('#selectval').text('Por favor seleccione un tipo de plazo');
+        $('#selectval').show();
+    }
+
+    if (n.length === 0) {
+        $("#nval").addClass("invalid-feedback");
+        $("#n").removeClass("is-valid");
+        $("#n").addClass("is-invalid");
+        $('#nval').text('Por favor ingrese el plazo');
+        $('#nval').show();
+    }
+
+
 });
 
 

@@ -35,4 +35,6 @@ public partial class Entidades : DbContext
     public virtual DbSet<Proyecto> Proyecto { get; set; }
     public virtual DbSet<tipo_anio_base_INPC> tipo_anio_base_INPC { get; set; }
     public virtual DbSet<Indicadores> Indicadores { get; set; }
+    public virtual DbSet<Inflacion> Inflacion { get; set; }
+    public virtual DbSet<Punto_Equilibrio> Punto_Equilibrio { get; set; }
 }

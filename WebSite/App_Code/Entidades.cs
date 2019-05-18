@@ -131,6 +131,17 @@ public partial class indice_INPC
     public virtual ICollection<INPC> INPC { get; set; }
 }
 
+public partial class Inflacion
+{
+    public string ID_Inflacion { get; set; }
+    public string ID_Proyecto { get; set; }
+    public Nullable<double> Valor_Inflacion { get; set; }
+    public string Tipo { get; set; }
+    public string Periodo { get; set; }
+
+    public virtual Proyecto Proyecto { get; set; }
+}
+
 public partial class INPC
 {
     public string Id { get; set; }
@@ -164,6 +175,8 @@ public partial class Proyecto
         this.FNE = new HashSet<FNE>();
         this.Gastos_Pro = new HashSet<Gastos_Pro>();
         this.Indicadores = new HashSet<Indicadores>();
+        this.Inflacion = new HashSet<Inflacion>();
+        this.Punto_Equilibrio = new HashSet<Punto_Equilibrio>();
     }
 
     public string ID_Proyecto { get; set; }
@@ -183,6 +196,20 @@ public partial class Proyecto
     public virtual ICollection<Gastos_Pro> Gastos_Pro { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Indicadores> Indicadores { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Inflacion> Inflacion { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Punto_Equilibrio> Punto_Equilibrio { get; set; }
+}
+
+public partial class Punto_Equilibrio
+{
+    public string ID_PE { get; set; }
+    public string ID_Proyecto { get; set; }
+    public Nullable<double> PE_Unidades { get; set; }
+    public Nullable<decimal> PE_Pesos { get; set; }
+
+    public virtual Proyecto Proyecto { get; set; }
 }
 
 public partial class tipo_anio_base_INPC

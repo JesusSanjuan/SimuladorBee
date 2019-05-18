@@ -107,6 +107,16 @@
           <Property Name="Id_indice" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="descripcion_indice_base" Type="ntext" />
         </EntityType>
+        <EntityType Name="Inflacion">
+          <Key>
+            <PropertyRef Name="ID_Inflacion" />
+          </Key>
+          <Property Name="ID_Inflacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Valor_Inflacion" Type="float" />
+          <Property Name="Tipo" Type="text" />
+          <Property Name="Periodo" Type="text" />
+        </EntityType>
         <EntityType Name="INPC">
           <Key>
             <PropertyRef Name="Id" />
@@ -137,6 +147,15 @@
           <Property Name="Nombre_Proyecto" Type="text" Nullable="false" />
           <Property Name="Fecha_Hora" Type="datetime" Nullable="false" />
           <Property Name="ID_Periodo" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Punto_Equilibrio">
+          <Key>
+            <PropertyRef Name="ID_PE" />
+          </Key>
+          <Property Name="ID_PE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PE_Unidades" Type="float" />
+          <Property Name="PE_Pesos" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tipo_anio_base_INPC">
           <Key>
@@ -205,6 +224,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Inflacion_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Inflacion" Type="Self.Inflacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Inflacion">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_INPC_indice_INPC">
           <End Role="indice_INPC" Type="Self.indice_INPC" Multiplicity="0..1" />
           <End Role="INPC" Type="Self.INPC" Multiplicity="*" />
@@ -241,6 +272,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Punto_Equilibrio_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="Punto_Equilibrio" Type="Self.Punto_Equilibrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Punto_Equilibrio">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Amortizacion_cat" EntityType="Self.Amortizacion_cat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Amortizacion_pro" EntityType="Self.Amortizacion_pro" Schema="dbo" store:Type="Tables" />
@@ -251,8 +294,10 @@
           <EntitySet Name="Gastos_Pro" EntityType="Self.Gastos_Pro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Indicadores" EntityType="Self.Indicadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="indice_INPC" EntityType="Self.indice_INPC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inflacion" EntityType="Self.Inflacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INPC" EntityType="Self.INPC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Punto_Equilibrio" EntityType="Self.Punto_Equilibrio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_anio_base_INPC" EntityType="Self.tipo_anio_base_INPC" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Amortizacion_pro_Proyecto" Association="Self.FK_Amortizacion_pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
@@ -274,6 +319,10 @@
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Indicadores" EntitySet="Indicadores" />
           </AssociationSet>
+          <AssociationSet Name="FK_Inflacion_Proyecto" Association="Self.FK_Inflacion_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Inflacion" EntitySet="Inflacion" />
+          </AssociationSet>
           <AssociationSet Name="FK_INPC_indice_INPC" Association="Self.FK_INPC_indice_INPC">
             <End Role="indice_INPC" EntitySet="indice_INPC" />
             <End Role="INPC" EntitySet="INPC" />
@@ -285,6 +334,10 @@
           <AssociationSet Name="FK_Proyecto_AspNetUsers" Association="Self.FK_Proyecto_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Punto_Equilibrio_Proyecto" Association="Self.FK_Punto_Equilibrio_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Punto_Equilibrio" EntitySet="Punto_Equilibrio" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -335,6 +388,16 @@
           <AssociationSet Name="FK_Indicadores_Proyecto" Association="Model.FK_Indicadores_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Indicadores" EntitySet="Indicadores" />
+          </AssociationSet>
+          <EntitySet Name="Inflacion" EntityType="Model.Inflacion" />
+          <EntitySet Name="Punto_Equilibrio" EntityType="Model.Punto_Equilibrio" />
+          <AssociationSet Name="FK_Inflacion_Proyecto" Association="Model.FK_Inflacion_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Inflacion" EntitySet="Inflacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Punto_Equilibrio_Proyecto" Association="Model.FK_Punto_Equilibrio_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Punto_Equilibrio" EntitySet="Punto_Equilibrio" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Amortizacion_cat">
@@ -472,6 +535,8 @@
           <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
           <NavigationProperty Name="Gastos_Pro" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Proyecto" ToRole="Gastos_Pro" />
           <NavigationProperty Name="Indicadores" Relationship="Model.FK_Indicadores_Proyecto" FromRole="Proyecto" ToRole="Indicadores" />
+          <NavigationProperty Name="Inflacion" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Proyecto" ToRole="Inflacion" />
+          <NavigationProperty Name="Punto_Equilibrio" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Proyecto" ToRole="Punto_Equilibrio" />
         </EntityType>
         <EntityType Name="tipo_anio_base_INPC">
           <Key>
@@ -585,6 +650,51 @@
               <PropertyRef Name="ID_Proyecto" />
             </Principal>
             <Dependent Role="Indicadores">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Inflacion">
+          <Key>
+            <PropertyRef Name="ID_Inflacion" />
+          </Key>
+          <Property Name="ID_Inflacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_Inflacion" Type="Double" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Inflacion" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Punto_Equilibrio">
+          <Key>
+            <PropertyRef Name="ID_PE" />
+          </Key>
+          <Property Name="ID_PE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PE_Unidades" Type="Double" />
+          <Property Name="PE_Pesos" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Punto_Equilibrio" ToRole="Proyecto" />
+        </EntityType>
+        <Association Name="FK_Inflacion_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Inflacion" Role="Inflacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Inflacion">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Punto_Equilibrio_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Punto_Equilibrio" Role="Punto_Equilibrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Punto_Equilibrio">
               <PropertyRef Name="ID_Proyecto" />
             </Dependent>
           </ReferentialConstraint>
@@ -744,6 +854,27 @@
                 <ScalarProperty Name="Inflacion_Actual" ColumnName="Inflacion_Actual" />
                 <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
                 <ScalarProperty Name="ID_Indicadores" ColumnName="ID_Indicadores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inflacion">
+            <EntityTypeMapping TypeName="Model.Inflacion">
+              <MappingFragment StoreEntitySet="Inflacion">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Valor_Inflacion" ColumnName="Valor_Inflacion" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Inflacion" ColumnName="ID_Inflacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Punto_Equilibrio">
+            <EntityTypeMapping TypeName="Model.Punto_Equilibrio">
+              <MappingFragment StoreEntitySet="Punto_Equilibrio">
+                <ScalarProperty Name="PE_Pesos" ColumnName="PE_Pesos" />
+                <ScalarProperty Name="PE_Unidades" ColumnName="PE_Unidades" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_PE" ColumnName="ID_PE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

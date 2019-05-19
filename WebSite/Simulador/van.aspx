@@ -2,14 +2,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
          <link href="../Content/bootstrap-select.css" rel="stylesheet" />
-<!-- Scrip para graficas debe estar en Head-->    
-        <script src="../Scripts/Chart.js"></script>
-        <script src="../Scripts/Simulador/charts-van.js"></script>
-        <script src="../Scripts/jquery-3.3.1.js"></script>
-        <script src="../Scripts/Simulador/datatables-van.js"></script>  
- <!-- Scrip para graficas debe estar en Head--> 
 </asp:Content>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
     
     <div >
@@ -128,19 +121,20 @@
                                                        <div class="input-group-append ">
                                                                      <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                       </div>                                                       
-                                                 </div>
+                                                    </div>
+                                                    <div id="selectval" class="invalid-feedback">                                                               
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 mb-2"> 
-                                                    <div class="input-group">
-                                                        <span id="popover" data-toggle="popover" data-placement="bottom"  title="" data-content="" > 
-                                                                <input type="text"   class="form-control" id="n" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  required="required">                                                         
-                                                        </span>                                                      
-                                                        <div class="input-group-append ">
-                                                                         <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                       </div> 
-                                                        
-                                                   </div>
-                                                    <div id="nval" class="invalid-feedback">                                                               
+                                                      <div class="input-group">                                                            
+                                                                <input type="text"   class="form-control" id="n" data-toggle="popover" data-placement="bottom" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  required="required">                                                         
+                                                           <div class="input-group-append ">
+                                                                    <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Aqui hay un contenido increible ;)" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                           </div>                                                         
+                                                      </div>
+                                                      <div id="nval" class="invalid-feedback">                                                               
                                                       </div>
                                                       <div class="valid-feedback">
                                                       </div>
@@ -151,25 +145,15 @@
                                           </div>
                           </div>
 
-                          <div class="form-row">  
-                                <div class="col-md-5 mb-3">
-                                        <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                              <label class="form-check-label" for="invalidCheck">
-                                                    Acepta los términos y condiciones
-                                              </label>
-                                              <div class="invalid-feedback">
-                                                 Debe aceptar los terminos antes de calcular
-                                              </div>
-                                        </div>       
-                                </div>
-                          </div>
-
      
 
                         <div class="form-row">  
-                            <div class="col-md-3 mb-2">
-                                <button id="calcular" class="btn btn-primary" type="submit">Calcular</button>
+                            <div class="col-md-4 mb-2">
+                            </div>  
+                            <div class="col-md-4 mb-2">
+                                <button id="calcular" class="btn btn-primary btn-lg btn-block" type="button">Calcular</button>
+                            </div>   
+                            <div class="col-md-4 mb-2">
                             </div>   
                         </div>  
    </div>
@@ -211,7 +195,8 @@
                                                     </div>
                                                     <div class="fondoresultados">
                                                         <div class="card-body text-info">
-                                                                <h3>    <asp:Label id="VAN" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+
+                                                                <h3><label id="VAN" class="card-text"></label></h3>
                                                         </div>
                                                     </div>
                                              </div>
@@ -225,7 +210,7 @@
                                                     </div>
                                                     <div class="fondoresultados" >
                                                         <div class="card-body text-info">
-                                                        <h3>    <asp:Label id="TIR" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        <h3><label id="TIR" class="card-text"></label></h3>
                                                         </div>
                                                     </div>
                                               </div>
@@ -239,7 +224,7 @@
                                                     </div>
                                                     <div class="fondoresultados">
                                                         <div class="card-body text-info">
-                                                        <h3>    <asp:Label id="PeridoRec" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        <h3>  <label id="PeridoRec" class="card-text"></label></h3>
                                                         </div>
                                                     </div>
                                              </div>
@@ -251,7 +236,7 @@
                                                     </div>
                                                     <div class="fondoresultados">
                                                         <div class="card-body text-info">
-                                                        <h3>    <asp:Label id="PeridoRec2" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        <h3> <label id="PeridoRec2" class="card-text"></label> </h3>
                                                         </div>
                                                     </div>
                                             </div>
@@ -265,7 +250,7 @@
                                                     </div>
                                                     <div class="fondoresultados">
                                                         <div class="card-body text-info">
-                                                        <h3>    <asp:Label id="BenCosto" runat="server" Cssclass="card-text" Text="Label" ></asp:Label> </h3>
+                                                        <h3>  <label id="BenCosto" class="card-text"></label> </h3>
                                                         </div>
                                                     </div>
                                              </div>
@@ -395,16 +380,18 @@
                 </div> 
 <!-- The Modal -->
 </asp:Content>
-
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
  <!-- Manejo de funcion de tabla en VAN-->
         <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
- <!-- Manejo de funcion de tabla en VAN-->    
+ <!-- Manejo de funcion de tabla en VAN-->  
+ <!-- plugin selectpicker-->
+        <script src="../Scripts/bootstrap-select.min.js"></script>
+ <!-- plugin selectpicker-->
+ <!-- Libreria de graficas-->
+        <script src="../Scripts/Chart.js"></script>
+ <!-- Libreria de graficas-->
  <!-- Para validacion de campos-->    
         <script src="../Scripts/Simulador/van.js"></script>       
  <!-- Para validacion de campos-->
- <!-- plugin selectpicker-->
-    <script src="../Scripts/bootstrap-select.min.js"></script>
- <!-- plugin selectpicker-->
  </asp:Content>

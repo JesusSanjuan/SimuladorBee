@@ -180,19 +180,21 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
     var valor = $("#select").val();
     switch (valor) {
         case "1":
+            $("#n").css("cursor", "pointer");
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
             $('#n').attr('data-original-title', "Toma en cuenta!");
             $('#n').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
             $("#n").popover('update');
-            $("#n").popover("show");
+            $("#n").popover("show");           
             $('#selectval').hide();
             $("#select").addClass("is-invalid");
             $("#select").removeClass("is-valid"); 
             Selectv = true;
             break;
         case "2":
+            $("#n").css("cursor", "pointer");
             $("#n").removeAttr('disabled');
             $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
             $("#n").val('');
@@ -206,6 +208,7 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
             Selectv = true;
             break;
         default:
+            $("#n").css("cursor", "default");
             $("#n").popover("hide");
             $("#n").attr('disabled', 'disabled');
             $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");

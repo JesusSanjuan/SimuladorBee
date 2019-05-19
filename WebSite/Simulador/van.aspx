@@ -31,14 +31,14 @@
 
 
                                           <label for="validationCustom01">Inversión</label>
-                                            <div class="input-group">
+                                                <div class="input-group" style="cursor:default" >
                                                         <div class="input-group-append"  >
                                                              <span class="input-group-text" id="inputGroupPrepend0">$</span>
                                                              <span class="input-group-text">0.00</span>                                                            
                                                         </div>
-                                                            <input type="text"   class="form-control number" id="Inversion" placeholder="Ingrese la inversion"  autocomplete="off" required="required">
-                                                        <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                            <input type="text"   class="form-control number" id="Inversion" placeholder="Ingrese la inversion"  autocomplete="off"  style="cursor:pointer" required="required">
+                                                        <div class="input-group-append">                                                             
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                         <div id="Inversionval" class="invalid-feedback"> 
                                                             Por favor ingrese la inversion.
@@ -51,14 +51,14 @@
 
                                         <div class="col-md-3 mb-2">
                                           <label for="validationCustom02">Flujo Neto de Efectivo</label>
-                                            <div class="input-group">
+                                            <div class="input-group" style="cursor:default">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend1">$</span>
                                                              <span class="input-group-text">0.00</span>
                                                         </div>
-                                                             <input type="text"   class="form-control number2" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" autocomplete="off" required="required">
+                                                             <input type="text"   class="form-control number2" id="FNE" placeholder="Ingrese el Flujo Neto de Efectivo" autocomplete="off" style="cursor:pointer" required="required">
                                                         <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                        <div id="FNEval" class="invalid-feedback">
                                                           Por favor ingrese el FNE.
@@ -70,14 +70,14 @@
 
                                         <div class="col-md-3 mb-2">
                                           <label for="validationCustom03">Valor de Salvamento</label>
-                                            <div class="input-group">
+                                            <div class="input-group" style="cursor:default">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend2">$</span>
                                                              <span class="input-group-text">0.00</span>
                                                         </div>
-                                                            <input type="text"   class="form-control number3" id="VdS" placeholder="Ingrese el valor de salvamento" autocomplete="off" required="required">
+                                                            <input type="text"   class="form-control number3" id="VdS" placeholder="Ingrese el valor de salvamento" autocomplete="off" style="cursor:pointer" required="required">
                                                        <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
                                                        <div id="VdSval"class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento
@@ -89,11 +89,11 @@
                                         </div>
                                           <div class="col-md-3 mb-2">
                                           <label for="validationCustom04">TMAR</label>
-                                              <div class="input-group">                    
-                                                        <input type="text"   class="form-control number4" id="TMAR" placeholder="Ingrese el valor de TMAR" autocomplete="off" required="required">
+                                              <div class="input-group" style="cursor:default">                    
+                                                        <input type="text"   class="form-control number4" id="TMAR" placeholder="Ingrese el valor de TMAR" autocomplete="off" style="cursor:pointer" required="required">
                                                        <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
-                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
                                                         <div  id="TMARval"class="invalid-feedback">
                                                           Por favor ingrese el valor de TMAR
@@ -119,7 +119,7 @@
                                                                                       <option value="2" class="dropdown-item">Año</option>
                                                        </select>                                             
                                                        <div class="input-group-append ">
-                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el períodos de tiempo que se adecue mas a tu proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el períodos de tiempo que se adecue mas a tu proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                       </div>                                                       
                                                     </div>
                                                     <div id="selectval" class="invalid-feedback">                                                               
@@ -128,9 +128,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 mb-2"> 
-                                                      <div class="input-group">                                                            
-                                                                <input type="text"   class="form-control" id="n" data-toggle="popover" data-placement="bottom" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  required="required">                                                         
-                                                           <div class="input-group-append ">
+                                                      <div class="input-group" style="cursor:default">                                                            
+                                                                <input type="text"   class="form-control" id="n" data-toggle="popover" data-placement="bottom" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  style="cursor:default" required="required">                                                         
+                                                           <div class="input-group-append" >
                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="1,2...n: Numero de periodos de vida util del proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                            </div>                                                         
                                                       </div>

@@ -306,10 +306,15 @@ function formatNumber5(n) {
     return n.replace(/\D/g, "")    
         .replace(validacion, "");    
 }
+$("#n").blur(function () {
+    $("#n").popover("hide");
+});
+
 /* Validacion del campo PLAZO*/
 //$('[data-toggle="popover"]').popover();// Hacer que aparesca el popover al pasar el cursor
 /* Ejecucion de boton*/
 $("#calcular").click(function () {
+    $("#n").popover("hide");
     var inversion = $("#Inversion").val();
     var FNE = $("#FNE").val();
     var VdS = $("#VdS").val();
@@ -668,6 +673,7 @@ function RellenarTabla(Datos) {
         }
     }
     var table = $('#dataTableVAN').DataTable({
+        destroy: true,
         language: {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",

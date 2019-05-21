@@ -324,7 +324,7 @@
                         $("#P1").html('<h6>Periodo Seleccionado:&nbsp; <strong>' + resultados[1] + ' ' + resultados[0] + ' a ' + resultados[3] + ' ' + resultados[2] + '</strong> </h6>');
                         $('#inf1').val(resultados[4]);                
                         $("#P2").html('<h6>Periodo Seleccionado:&nbsp; <strong>' + resultados[1] + ' ' + resultados[0] + ' a ' + resultados[3] + ' ' + resultados[2] + '</strong> </h6>');
-                        $('#TPMI1').val("Aun no diponible el calculo");
+                        $('#TPMI1').val(resultados[5]);
                     },
                     error: function (result) {
                         console.log(result.responseText);
@@ -340,6 +340,7 @@
 
     /***************************/
     $('#alertSucces').hide();
+    $('#alertSDanger').hide();
     inicializarProyectos();
 
     function inicializarProyectos() {
@@ -385,40 +386,32 @@
     $('#saveI').click(function () {
         var inflacion = $("#inf1").val();
         var inMensual = $("#TPMI1").val();
-        if (inflacion != "" ) {//inflacion != "" && inMensual != ""
+
+        var proyectos = $('#proyectos.selectpicker').val();
+
+
+        if (inflacion != "" && inMensual != "" && proyectos.length > 0) {//inflacion != "" && inMensual != ""
+            var array_inflacion = [];
+            array_inflacion[0] = inflacion;
+            array_inflacion[1] = inMensual;
 
             var periodo = $("#P1").find("h6").find("strong").html();
-            var proyectos = $('#proyectos.selectpicker').val();
-           //GUardamos los datos en la tabla de indices
-            $("#myModal").modal('hide');
 
-        }
-    });
-    $('#saveINEGI').click(function () {
-        var inflacion = $("#inflacion").val();
-        var inMensual = $("#TPMI").val();
-        if (inflacion != "") {//inflacion != "" && inMensual != ""
-
-            var periodo = $("#periodoINEGI").val();
-            var proyectos = $('#proyectosINEGI.selectpicker').val();
             
-            //GUardamos los datos en la tabla de indices
+           //GUardamos los datos en la tabla de indices
             $.ajax({
                 type: "POST",
                 url: "tasainflacion.aspx/guardar_inflacion",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                data: JSON.stringify({ Periodo: periodo, Proyectos: proyectos, Inflacion: inflacion, InMensual: inMensual }),
+                data: JSON.stringify({ Periodo: periodo, Proyectos: proyectos, Inflaciones: array_inflacion }),
                 async: false,
                 success: function (result) {
                     console.log("resul " + resul);
                     var resul = result.d;
                     if (resul == "OK") {
-                        $('#alertSucces').show();
-                        setTimeout(
-                            function () {
-                                $("#alertSucces").hide();
-                            }, 3000);
+                        $("#myModal").modal('hide');
+                        location.reload();
                     }
                 },
                 error: function (result) {
@@ -431,7 +424,101 @@
                 console.log("Error: " + data);
             });
 
+
+
+            
+
         }
+    });
+    $('#saveINEGI').click(function () {
+        var inflacion = $("#inflacion").val();
+        var inMensual = $("#TPMI").val();
+
+        var proyectos = $('#proyectosINEGI.selectpicker').val();
+
+        if (inflacion != "" && inMensual != "" && proyectos.length > 0) {//inflacion != "" && inMensual != ""
+            var array_inflacion = [];
+            array_inflacion[0] = inflacion;
+            array_inflacion[1] = inMensual;
+
+            var periodo = $("#periodoINEGI").val();
+
+            //Diciembre 2018 a Marzo 2019
+            periodo = periodo.trim();
+
+            periodo = periodo.replace(/\s+/gi, ' ');
+
+            arregloDeSubCadenas = periodo.split(" ");
+            if (arregloDeSubCadenas.length == 5) {
+                var mesI = arregloDeSubCadenas[0];
+                var mesF = arregloDeSubCadenas[3];
+                var mesesINEGI = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+                var mesesPROPI = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                for (var x = 0; x < mesesINEGI.length; x++) {
+                    if (mesI == mesesINEGI[x]) 
+                        mesI = mesesPROPI[x];
+                    if (mesF == mesesINEGI[x])
+                        mesF = mesesPROPI[x];
+                }
+                arregloDeSubCadenas[0] = mesI;
+                arregloDeSubCadenas[3] = mesF;
+                periodo = arregloDeSubCadenas.toString();
+                periodo = periodo.replace(/,/g, ' ');
+
+                //periodo = periodo.trim();
+                
+
+                //GUardamos los datos en la tabla de indices
+
+                $.ajax({
+                    type: "POST",
+                    url: "tasainflacion.aspx/guardar_inflacion",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ Periodo: periodo, Proyectos: proyectos, Inflaciones: array_inflacion }),
+                    async: false,
+                    success: function (result) {
+                        console.log("resul " + resul);
+                        var resul = result.d;
+                        console.log("-->" + resul);
+                        if (resul == "OK") {
+                            $('#alertSucces').show();
+                            setTimeout(
+                                function () {
+                                    $("#alertSucces").hide();
+                                }, 3000);
+                            location.reload();
+                        }
+                    },
+                    error: function (result) {
+                        console.log(result.responseText);
+                    }
+
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
+                
+            }
+            else {
+                $('#alertSDanger').show();
+                setTimeout(
+                    function () {
+                        $("#alertSDanger").hide();
+                    }, 3000);
+            }
+
+            
+            
+
+        }
+    });
+
+    //solo porcentaje
+    $("body").on('keyup', ".porcen", function (event) {
+        this.value = this.value.match(/\d{0,3}(\.\d{0,2})?/)[0];
+
     });
 
     

@@ -909,6 +909,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
         
         double inpcinicial=0;
         int anio_inicial = 0;
+        //NUM DE MES inicial PARA CALCULAR EL PERIODO
+        int mesI = 0;
         
         foreach (var obj in Result)
         {
@@ -919,50 +921,62 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                 case "enero":
                     inpcinicial = (double) obj.Enero;
                     R1.Add("Enero");
+                    mesI = 1;//ADDED
                     break;
                 case "febrero":
                     inpcinicial = (double) obj.Febrero;
                     R1.Add("Febrero");
+                    mesI = 2;//ADDED
                     break;
                 case "marzo":
                     inpcinicial = (double)obj.Marzo;
                     R1.Add("Marzo");
+                    mesI = 3;//ADDED
                     break;
                 case "abril":
                     inpcinicial = (double)obj.Abril;
                     R1.Add("Abril");
+                    mesI = 4;//ADDED
                     break;
                 case "mayo":
                     inpcinicial = (double)obj.Mayo;
                     R1.Add("Mayo");
+                    mesI = 5;//ADDED
                     break;
                 case "junio":
                     inpcinicial = (double)obj.Junio;
                     R1.Add("Junio");
+                    mesI = 6;//ADDED
                     break;
                 case "julio":
                     inpcinicial = (double)obj.Julio;
                     R1.Add("Julio");
+                    mesI = 7;//ADDED
                     break;
                 case "agosto":
                     inpcinicial = (double)obj.Agosto;
                     R1.Add("Agosto");
+                    mesI = 8;//ADDED
                     break;
                 case "septiembre":
                     inpcinicial = (double)obj.Septiembre;
                     R1.Add("Septiembre");
+                    mesI = 9;//ADDED
                     break;
                 case "octubre":
                     inpcinicial = (double)obj.Octubre;
                     R1.Add("Octubre");
+                    mesI = 10;//ADDED
                     break;
                 case "noviembre":
                     inpcinicial = (double)obj.Noviembre;
                     R1.Add("Noviembre");
+                    mesI = 11;//ADDED
                     break;
                 case "diciembre":
                     inpcinicial = (double)obj.Diciembre;
                     R1.Add("Diciembre");
+                    mesI = 12;//ADDED
                     break;
             }
             
@@ -988,6 +1002,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                       };
         double inpcfinal=0;
         int anio_final = 0;
+        //NUM DE MES final PARA CALCULAR EL PERIODO
+        int mesF = 0;
         foreach (var obj in Result2)
         {
             anio_final = (int)obj.Anio;
@@ -997,56 +1013,75 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                 case "enero":
                     inpcfinal = (double)obj.Enero;
                     R1.Add("Enero");
+                    mesF = 1;//ADDED
                     break;
                 case "febrero":
                     inpcfinal = (double)obj.Febrero;
                     R1.Add("Febrero");
+                    mesF = 2;//ADDED
                     break;
                 case "marzo":
                     inpcfinal = (double)obj.Marzo;
                     R1.Add("Marzo");
+                    mesF = 3;//ADDED
                     break;
                 case "abril":
                     inpcfinal = (double)obj.Abril;
                     R1.Add("Abril");
+                    mesF = 4;//ADDED
                     break;
                 case "mayo":
                     inpcfinal = (double)obj.Mayo;
                     R1.Add("Mayo");
+                    mesF = 5;//ADDED
                     break;
                 case "junio":
                     inpcfinal = (double)obj.Junio;
                     R1.Add("Junio");
+                    mesF = 6;//ADDED
                     break;
                 case "julio":
                     inpcfinal = (double)obj.Julio;
                     R1.Add("Julio");
+                    mesF = 7;//ADDED
                     break;
                 case "agosto":
                     inpcfinal = (double)obj.Agosto;
                     R1.Add("Agosto");
+                    mesF = 8;//ADDED
                     break;
                 case "septiembre":
                     inpcfinal = (double)obj.Septiembre;
                     R1.Add("Septiembre");
+                    mesF = 9;//ADDED
                     break;
                 case "octubre":
                     inpcfinal = (double)obj.Octubre;
                     R1.Add("Noviembre");
+                    mesF = 10;//ADDED
                     break;
                 case "noviembre":
                     inpcfinal = (double)obj.Noviembre;
                     R1.Add("Noviembre");
+                    mesF = 11;//ADDED
                     break;
                 case "diciembre":
                     inpcfinal  = (double)obj.Diciembre;
                     R1.Add("Diciembre");
+                    mesF = 12;//ADDED
                     break;
             }
         }
 
         double TasaInfla = (((inpcfinal - inpcinicial) / inpcinicial) * 100);
+        //resultado de inflacion promedio mensual
+        int per = ((anio_final - anio_inicial)*12)+(mesF- mesI);
+        double div = (inpcfinal / inpcinicial);
+        double TasaPromMen = ((Math.Pow(div, (1.0 / per))) - 1) * 100;
+
         R1.Add(TasaInfla.ToString()); //RESULTADOS DE LA CALCULADORA
+        //tasa promedio mensual
+        R1.Add(TasaPromMen.ToString());
         json = JsonConvert.SerializeObject(R1);
         return json;
     }
@@ -1085,26 +1120,56 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string guardar_inflacion(string Periodo, string[] Proyectos, float Inflacion, float InMensual)
+    public static string guardar_inflacion(string Periodo, string[] Proyectos, float[] Inflaciones)
     {
-        System.Diagnostics.Debug.WriteLine("Proyectos: " + Proyectos[1]);
-        // GUARDAMOS A LA BASE DE DATOS
         var db = new Entidades();
-        var inflacion = new Indicadores();
+        var retur = "FAIL";
 
-        for (int i=0; i<Proyectos.Length ; i++)
+        
+        
+        // GUARDAMOS A LA BASE DE DATOS
+        for (int i = 0; i < Proyectos.Length; i++)
         {
-            string id_indicadores = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
-            string id_proyecto = Proyectos[i];
-            string inflacion_simulada = Inflacion.ToString();
+            for (int x = 0; x < Inflaciones.Length; x++)
+            {
+                string id_proyecto = Proyectos[i];
 
-            inflacion.ID_Indicadores = id_indicadores;
-            inflacion.ID_Proyecto = id_indicadores;
-            inflacion.Inflacion_Propia = Inflacion;
-            db.Indicadores.Add(inflacion);
+                //Verificamos que el Periodo no este calculado      
+                var query = db.Inflacion.Where(Infla => Infla.ID_Proyecto == id_proyecto &&  Infla.Periodo == Periodo );
+                if (query.Count() > 0)
+                {
+                    retur = "OK";
+                }
+                else
+                {
+                    string Tipo = "";
+                    if (x == 0)
+                        Tipo = "Inf_acumulada";
+                    else
+                        Tipo = "Inf_prom_mensual";
+
+                    Inflacion inflacion = new Inflacion();
+                    string id_inflacion = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+                    inflacion.ID_Inflacion = id_inflacion;
+                    inflacion.ID_Proyecto = id_proyecto;
+                    inflacion.Valor_Inflacion = Inflaciones[x];
+                    inflacion.Tipo = Tipo;
+                    inflacion.Periodo = Periodo;
+                    db.Inflacion.Add(inflacion);
+
+                }
+
+
+                
+            }
+            retur = "OK";
         }
+        db.SaveChanges();
+        retur = "OK";
 
-        return "OK";
+        
+
+        return retur;
     }
 
 }

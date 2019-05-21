@@ -115,7 +115,7 @@
           <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Valor_Inflacion" Type="float" />
           <Property Name="Tipo" Type="text" />
-          <Property Name="Periodo" Type="text" />
+          <Property Name="Periodo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="INPC">
           <Key>
@@ -662,7 +662,7 @@
           <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Valor_Inflacion" Type="Double" />
           <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Periodo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Proyecto" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Inflacion" ToRole="Proyecto" />
         </EntityType>
         <EntityType Name="Punto_Equilibrio">

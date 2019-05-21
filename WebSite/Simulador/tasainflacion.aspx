@@ -77,7 +77,7 @@
                                                                             <div class="col-sm">
                                                                                 <div class="form-group">
                                                                                     <div class="input-group mb-2">                                                                                            
-                                                                                        <input type="text" class="form-control" id="inflacion" placeholder="Inflación">
+                                                                                        <input type="text" class="form-control porcen" id="inflacion" placeholder="Inflación">
                                                                                         <div class="input-group-prepend">
                                                                                             <div class="input-group-text">%</div>
                                                                                         </div>
@@ -87,7 +87,7 @@
                                                                             <div class="col-sm">
                                                                                 <div class="form-group">
                                                                                     <div class="input-group mb-2">                                                                                           
-                                                                                        <input type="text" class="form-control" id="TPMI" placeholder="Tasa Promedio Mensual">
+                                                                                        <input type="text" class="form-control porcen" id="TPMI" placeholder="Tasa Promedio Mensual">
                                                                                             <div class="input-group-prepend">
                                                                                             <div class="input-group-text">%</div>
                                                                                         </div>
@@ -107,6 +107,9 @@
                                                                      <div class="row">
                                                                          <div class="alert alert-success" role="alert" id="alertSucces">
                                                                             <strong>Exitoso!</strong> Los datos fueron guardados correctamente.
+                                                                         </div>
+                                                                         <div class="alert alert-danger" role="alert" id="alertSDanger">
+                                                                            <strong>Estructura incorrecta!</strong> Escriba correctamente el periodo.
                                                                          </div>
                                                                      </div>
                                                                      </div>

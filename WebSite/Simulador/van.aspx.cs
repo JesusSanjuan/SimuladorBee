@@ -16,7 +16,7 @@ public partial class User_van : System.Web.UI.Page
 
     [WebMethod]
     public static string Graficar(decimal inversion, decimal FNE, decimal VdS, decimal TMAR, int Select, int n)
-     {
+    {
          int negativos, Periodo = n;
          decimal num;
          System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
@@ -29,12 +29,10 @@ public partial class User_van : System.Web.UI.Page
          decimal ResultadoVPN, RCalcuTIR;
          Boolean Ceros = false;
 
-         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
-    
-        ResultadoVPN = CalcularVPN(TMAR / 100, inversion, FNE,VdS,n);
+        /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
+        ResultadoVPN = CalcularVPN( inversion, FNE,VdS, TMAR / 100, n);
         ResultadoVPNArray.Add(ResultadoVPN);
-        ListaFinal.Add(ResultadoVPNArray);
-       
+        ListaFinal.Add(ResultadoVPNArray);      
         
         if (ResultadoVPN > 0)
          {
@@ -55,7 +53,7 @@ public partial class User_van : System.Web.UI.Page
          do
          {
              ListaX.Add(TMAR * 100);
-             ListaY.Add(CalcularVPN(TMAR, inversion, FNE, VdS, n));
+             ListaY.Add(CalcularVPN(inversion, FNE, VdS, TMAR / 100, n));
              negativos = 0;
              foreach (var item in ListaY)
              {
@@ -75,7 +73,7 @@ public partial class User_van : System.Web.UI.Page
          /*Buscando interseccion con eje x */
          if (!Ceros)
           {
-              decimal ValorY0 = Math.Round(CalcularVPN(RCalcuTIR, inversion, FNE, VdS, n), 2);
+              decimal ValorY0 = Math.Round(CalcularVPN( inversion, FNE, VdS, RCalcuTIR, n), 2);
               decimal ValorX0 = Math.Round(RCalcuTIR * 100, 4);
               decimal v1, v2;
               for (int z = 1; z < ListaX.Count; z++)
@@ -109,27 +107,22 @@ public partial class User_van : System.Web.UI.Page
         return json;
     }
 
-        public static decimal CalcularVPN(decimal fTMAR, decimal P, decimal fFNE, decimal fVS, int Periodo)
-        {                       
-                decimal FNEAcumulado = 0, fVPN = 0;
-                int i = 0;
 
+        public static decimal CalcularVPN(decimal Inversion, decimal FNE, decimal VS, decimal TMAR, int Periodo)
+        {                       
+            decimal FNEAcumulado = 0, fVPN = 0;
+            int i = 0;
             try
             {
-                decimal DivTMAR = 1M + fTMAR;
+                decimal DivTMAR = 1M + TMAR;
                 for (i = 1; i < Periodo; i++)
                 {
-                    decimal valorinferior = (decimal)Math.Pow((double)DivTMAR, i);
-                    FNEAcumulado = FNEAcumulado + Math.Round(fFNE / Convert.ToDecimal(valorinferior), 4);
+                    decimal valorinferior = (decimal) Math.Pow((double)DivTMAR, i);
+                    FNEAcumulado = FNEAcumulado + FNE /valorinferior;
                 }
-
                 decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
-                System.Diagnostics.Debug.WriteLine(DivTMAR);
-                System.Diagnostics.Debug.WriteLine(i);
-                FNEAcumulado = FNEAcumulado + Math.Round((fFNE + fVS) / Convert.ToDecimal(valorinferiorF), 4);
-                fVPN = FNEAcumulado - P;
-
-
+                FNEAcumulado = (FNEAcumulado + (FNE + VS)) / valorinferiorF;
+                fVPN = Math.Round(FNEAcumulado - Inversion,4);
             }
             catch (OverflowException e)
             {
@@ -149,7 +142,7 @@ public partial class User_van : System.Web.UI.Page
                 case 1:
                         do
                         {
-                            Resultado = CalcularVPN(ValorTIRR, inversion, FNE, VdS, n);
+                            Resultado = CalcularVPN(inversion, FNE, VdS, ValorTIRR, n);
                             if (MenosCero == true)
                             {
                                 TasaIncDec = TasaIncDec / 2;
@@ -169,7 +162,7 @@ public partial class User_van : System.Web.UI.Page
                 case 2:
                         do
                         {
-                            Resultado = CalcularVPN(ValorTIRR, inversion, FNE, VdS, n);
+                            Resultado = CalcularVPN( inversion, FNE, VdS, ValorTIRR, n);
                             if (MenosCero == true)
                             {
                                 TasaIncDec = TasaIncDec / 2;

@@ -664,10 +664,14 @@
     }
 
     $("#calc_PEU").on('click', function () {
-        var costos_fijos = remove_format_coin($("#costosFijos").val());
-        var precio = remove_format_coin($("#precioVU").val());
-        var costoV = remove_format_coin($("#costoVU").val());
+        var costos_fijos = ($("#costosFijos").val());
+        var precio = ($("#precioVU").val());
+        var costoV = ($("#costoVU").val());
         if (costos_fijos != "" && precio != "" && costoV != "") {
+            costos_fijos = remove_format_coin(costos_fijos);
+            precio = remove_format_coin(precio);
+            costoV = remove_format_coin(costoV);
+
             var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
             $('#PEU').val(create_format_coin(punto_equilibrio));
         }
@@ -675,10 +679,15 @@
 
     });
     $("#calc_PEP").on('click', function () {
-        var costos_fijos = remove_format_coin($("#costosFijos2").val());
+        var costos_fijos = ($("#costosFijos2").val());
         var precio = $("#precioV").val();
         var costoV = $("#costoV").val();
+        console.log("costos_fijos->" + costos_fijos + " precio->" + precio + " costoV->" + costoV);
         if (costos_fijos != "" && precio != "" && costoV != "") {
+            costos_fijos = remove_format_coin(costos_fijos);
+            precio = remove_format_coin(precio);
+            costoV = remove_format_coin(costoV);
+
             var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
             $('#PEP').val(create_format_coin(punto_equilibrio));
         }
@@ -689,8 +698,49 @@
         var PE_unidades = $("#PEU").val();
         var PE_pesos = $("#PEP").val();
         if (PE_unidades != "" && PE_pesos != "") {
-            $("#project").html($("#message").find("strong").html());
-            $('#succesModal').modal('show');
+
+            var costos_fijos = remove_format_coin($("#costosFijos").val());
+            var precio_venta_unidad = remove_format_coin($("#precioVU").val());
+            var costo_variable_unidad = remove_format_coin($("#costoVU").val());
+            PE_unidades = remove_format_coin(PE_unidades);
+            var precio_venta = remove_format_coin($("#precioV").val());
+            var costo_venta = remove_format_coin($("#costoV").val());
+            PE_pesos = remove_format_coin(PE_pesos);
+
+            $.ajax({
+                type: "POST",
+                url: "puntoequilibrio.aspx/guardar_PE",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({
+                    idProyecto: id_proyecto,
+                    costosFijos: costos_fijos,
+                    precio_VU: precio_venta_unidad,
+                    costo_variable_unidad: costo_variable_unidad,
+                    punto_equilibrio_U: PE_unidades,
+                    precio_V: precio_venta,
+                    costo_V: costo_venta,
+                    punto_equilibrio_P: PE_pesos
+                }),
+                success: function (result) {
+                    var resultado = (result.d);
+                    if (resultado == "OK") {
+                        $("#project").html($("#message").find("strong").html());
+                        $('#succesModal').modal('show');
+                    } 
+                    
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+
         }
 
     });

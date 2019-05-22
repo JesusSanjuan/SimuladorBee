@@ -87,7 +87,7 @@
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">$</div>
+                                        <div class="input-group-text"><i class="fas fa-layer-group"></i></div>
                                     </div>
                                     <input type="text" class="form-control moneda" id="PEU" readonly>
                                 </div>
@@ -172,7 +172,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Guardar inflación</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Guardar Punto Equilibrio</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
                             <span aria-hidden="true">×</span>
                         </button>

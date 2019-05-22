@@ -154,7 +154,11 @@
           </Key>
           <Property Name="ID_PE" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio_Venta_Unidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Costo_Variable_Unidad" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PE_Unidades" Type="float" />
+          <Property Name="Precio_Venta" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Costo_Venta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PE_Pesos" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tipo_anio_base_INPC">
@@ -674,6 +678,10 @@
           <Property Name="PE_Unidades" Type="Double" />
           <Property Name="PE_Pesos" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Proyecto" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Punto_Equilibrio" ToRole="Proyecto" />
+          <Property Name="Precio_Venta_Unidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Costo_Variable_Unidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Precio_Venta" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Costo_Venta" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_Inflacion_Proyecto">
           <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
@@ -871,6 +879,10 @@
           <EntitySetMapping Name="Punto_Equilibrio">
             <EntityTypeMapping TypeName="Model.Punto_Equilibrio">
               <MappingFragment StoreEntitySet="Punto_Equilibrio">
+                <ScalarProperty Name="Costo_Venta" ColumnName="Costo_Venta" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Costo_Variable_Unidad" ColumnName="Costo_Variable_Unidad" />
+                <ScalarProperty Name="Precio_Venta_Unidad" ColumnName="Precio_Venta_Unidad" />
                 <ScalarProperty Name="PE_Pesos" ColumnName="PE_Pesos" />
                 <ScalarProperty Name="PE_Unidades" ColumnName="PE_Unidades" />
                 <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />

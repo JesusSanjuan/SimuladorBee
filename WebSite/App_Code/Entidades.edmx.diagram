@@ -26,7 +26,7 @@
         <EntityTypeShape EntityType="Model.Indicadores" Width="1.5" PointX="1.125" PointY="11.625" />
         <AssociationConnector Association="Model.FK_Indicadores_Proyecto" />
         <EntityTypeShape EntityType="Model.Inflacion" Width="1.5" PointX="5.25" PointY="18.5" />
-        <EntityTypeShape EntityType="Model.Punto_Equilibrio" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Punto_Equilibrio" Width="1.5" PointX="3.375" PointY="0.625" />
         <AssociationConnector Association="Model.FK_Inflacion_Proyecto" />
         <AssociationConnector Association="Model.FK_Punto_Equilibrio_Proyecto" />
       </Diagram>

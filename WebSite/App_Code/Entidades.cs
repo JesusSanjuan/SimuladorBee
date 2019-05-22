@@ -208,6 +208,10 @@ public partial class Punto_Equilibrio
     public string ID_Proyecto { get; set; }
     public Nullable<double> PE_Unidades { get; set; }
     public Nullable<decimal> PE_Pesos { get; set; }
+    public Nullable<decimal> Precio_Venta_Unidad { get; set; }
+    public Nullable<decimal> Costo_Variable_Unidad { get; set; }
+    public Nullable<decimal> Precio_Venta { get; set; }
+    public Nullable<decimal> Costo_Venta { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }
 }

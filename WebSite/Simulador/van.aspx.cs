@@ -121,8 +121,8 @@ public partial class User_van : System.Web.UI.Page
                     FNEAcumulado = FNEAcumulado + FNE /valorinferior;
                 }
                 decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
-                FNEAcumulado = (FNEAcumulado + (FNE + VS)) / valorinferiorF;
-                fVPN = Math.Round(FNEAcumulado - Inversion,4);
+                FNEAcumulado = FNEAcumulado + ((FNE + VS) / valorinferiorF);
+                fVPN = FNEAcumulado - Inversion;
             }
             catch (OverflowException e)
             {
@@ -137,6 +137,7 @@ public partial class User_van : System.Web.UI.Page
             decimal Resultado;
             Boolean MenosCero = false;
             decimal ValorTIRR =ValorTIR + TasaIncDec;
+            int iteraciones = 0;
             switch (caso)
             {
                 case 1:
@@ -157,7 +158,9 @@ public partial class User_van : System.Web.UI.Page
                                 ValorTIRR = ValorTIRR - TasaIncDec;
                                 MenosCero = true;
                             }
-                        } while (Math.Abs(Resultado) >= 0.01M);
+                                iteraciones++;
+                                System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+" Resultado condicion: "+Resultado+" TIR: "+ValorTIRR);
+                            } while (Math.Abs(Resultado) >= 0.01M);
                         break;
                 case 2:
                         do
@@ -178,7 +181,9 @@ public partial class User_van : System.Web.UI.Page
                                 ValorTIRR = ValorTIRR - TasaIncDec;
 
                             }
-                        } while (Math.Abs(Resultado) >= 0.01M);
+                    iteraciones++;
+                    System.Diagnostics.Debug.WriteLine("Iteracion: " + iteraciones + " Resultado condicion: " + Resultado + " TIR: " + ValorTIRR);
+                } while (Math.Abs(Resultado) >= 0.01M);
                         break;
             }       
             return ValorTIRR;

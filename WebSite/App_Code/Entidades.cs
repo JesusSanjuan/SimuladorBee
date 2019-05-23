@@ -212,6 +212,9 @@ public partial class Punto_Equilibrio
     public Nullable<decimal> Costo_Variable_Unidad { get; set; }
     public Nullable<decimal> Precio_Venta { get; set; }
     public Nullable<decimal> Costo_Venta { get; set; }
+    public Nullable<decimal> Costos_Fijos_Unidad { get; set; }
+    public Nullable<decimal> Costos_Fijos_Pesos { get; set; }
+    public Nullable<System.DateTime> Fecha { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }
 }

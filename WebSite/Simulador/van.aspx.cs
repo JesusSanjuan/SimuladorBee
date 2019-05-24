@@ -32,8 +32,7 @@ public partial class User_van : System.Web.UI.Page
         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
         ResultadoVPN = CalcularVPN( inversion, FNE,VdS, TMAR / 100, n);
         ResultadoVPNArray.Add(ResultadoVPN);
-        ListaFinal.Add(ResultadoVPNArray);      
-        
+        ListaFinal.Add(ResultadoVPNArray);
         if (ResultadoVPN > 0)
          {
              ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
@@ -143,7 +142,7 @@ public partial class User_van : System.Web.UI.Page
                 case 1:
                         do
                         {
-                            Resultado = CalcularVPN(inversion, FNE, VdS, ValorTIRR, n);
+                            Resultado = Math.Round(CalcularVPN(inversion, FNE, VdS, ValorTIRR, n), 10);
                             if (MenosCero == true)
                             {
                                 TasaIncDec = TasaIncDec / 2;
@@ -151,16 +150,30 @@ public partial class User_van : System.Web.UI.Page
                             }
                             if (Resultado > 0)
                             {
-                                ValorTIRR = ValorTIRR + TasaIncDec;
+                                ValorTIRR = Math.Round(ValorTIRR + TasaIncDec,10);
                             }
                             else
                             {
-                                ValorTIRR = ValorTIRR - TasaIncDec;
+                                ValorTIRR = Math.Round(ValorTIRR - TasaIncDec,10);
                                 MenosCero = true;
                             }
                                 iteraciones++;
-                                System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+" Resultado condicion: "+Resultado+" TIR: "+ValorTIRR);
-                            } while (Math.Abs(Resultado) >= 0.01M);
+                                System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+ " \tResultado condicion: "+Resultado+ " \tTIR: " + ValorTIRR);
+                            if(Math.Abs(Resultado) >= 0.01M)
+                            {
+                               // System.Diagnostics.Debug.WriteLine("Entro ");
+                            }
+                            else
+                            {
+
+                               // System.Diagnostics.Debug.WriteLine("No entro ");
+                            }
+
+                            if(49990==iteraciones)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Entrox ");
+                    }
+                } while (Math.Abs(Resultado) >= 0.01M);
                         break;
                 case 2:
                         do

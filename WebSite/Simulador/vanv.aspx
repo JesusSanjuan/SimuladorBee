@@ -8,7 +8,7 @@
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
     <!-- Estilo de tabla-->         
 
-        <script src="../Scripts/jquery-3.3.1.js"></script>  
+        <script src="../Scripts/jquery-3.4.1.js"></script>  
     <!-- plugin editable-->
         <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>        

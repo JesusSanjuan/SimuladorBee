@@ -7,7 +7,7 @@
 
         <script src="../Scripts/Chart.js"></script>
         <script src="../Scripts/Simulador/charts-van.js"></script>
-        <script src="../Scripts/jquery-3.3.1.js"></script>
+        <script src="../Scripts/jquery-3.4.1.js"></script>
         <script src="../Scripts/Simulador/datatables-van.js"></script>
         <script src="../Scripts/Simulador/scriptsVANM.js"></script>
  <!-- Scrip para graficas debe estar en Head--> 

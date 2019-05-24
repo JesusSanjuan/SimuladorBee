@@ -368,7 +368,7 @@
     </form>  
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR--> 
             <!-- jquery-->  
-                 <script src="../Scripts/jquery-3.3.1.js"></script>
+                 <script src="../Scripts/jquery-3.4.1.js"></script>
             <!-- Bootstrap core JavaScript ya se incluye en datatables.min.js-->
                  <script src="../Scripts/bootstrap.bundle.min.js"></script> <!--Problemas con con este .js -->
             <!-- Core plugin JavaScript-->

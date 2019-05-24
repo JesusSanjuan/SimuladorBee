@@ -29,6 +29,9 @@
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
                 <div id="message" class="alert d-none" role="alert">
                 </div>
+                <div id="messageWarning" class="alert alert-warning d-none" role="alert">
+                      This is a warning alert—check it out!
+                </div>
                 <div class="preborder">
                     <div class="card-header text-info" >
                         <center>  <h4> Cálculo del Punto de Equilibrio</h4>  </center> 

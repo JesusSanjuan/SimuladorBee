@@ -625,6 +625,7 @@
     /****************************************/
 
     /*********** SCRIPTS PARA EL CONTENT PUNTO DE EQUILIBRIO ********/
+
     if (id_proyecto !== "false") {
         $.ajax({
             type: "POST",
@@ -660,7 +661,45 @@
             //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
+            });
+
+        $.ajax({
+            type: "POST",
+            url: "puntoequilibrio.aspx/get_punto_equilibrio",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ idProyecto: id_proyecto }),
+            success: function (result) {
+                var resultado = JSON.parse(result.d);
+                var precio_VU = resultado[0];
+                var costo_VU = resultado[1];
+                var PE_unidades = resultado[2];
+                var precio_V = resultado[3];
+                var costo_V = resultado[4];
+                var PE_pesos = resultado[5];
+                $("#precioVU").val(precio_VU);
+                $("#costoVU").val(costo_VU);
+                $("#PEU").val(PE_unidades);
+                $("#precioV").val(precio_V);
+                $("#costoV").val(costo_V);
+                $("#PEP").val(PE_pesos);
+
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
         });
+
+
+        $("#messageWarning").html("Datos del último cálculo de Punto Equilibrio registrado");
+        $("#messageWarning").removeClass("d-none").addClass("d-block");
+        
     }
 
     $("#calc_PEU").on('click', function () {

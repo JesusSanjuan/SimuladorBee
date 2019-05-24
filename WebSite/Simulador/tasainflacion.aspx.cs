@@ -99,7 +99,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
                 }
                 string mesMax = meses[11];
-                for (int i = 1; i <= result_query.Count; i++)
+                for (int i = 1; i < result_query.Count; i++)
                 {
                     if (anio_MAX == anio_MIN)
                     {

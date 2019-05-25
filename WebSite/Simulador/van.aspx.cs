@@ -47,48 +47,24 @@ public partial class User_van : System.Web.UI.Page
          }
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
-       
-        TMAR = 0;
-         do
-         {
-             ListaX.Add(TMAR * 100);
-             ListaY.Add(CalcularVPN(inversion, FNE, VdS, TMAR, n));
-             negativos = 0;
-             foreach (var item in ListaY)
-             {
-                 num = Convert.ToDecimal(item);
-                 if (num < 0)
-                 {
-                     negativos++;
-                 }
-                 if (num <= .1M && num >= -0.1M)
-                 {
-                     Ceros = true;// Busca si ya existe el cruce en el eje x con 0
-                 }
-             }
-             TMAR = TMAR + 0.02M;// Cantidad de saltos de los puntos en el eje X
-         } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
 
-         /*Buscando interseccion con eje x */
-         if (!Ceros)
-          {
-              decimal ValorY0 = Math.Round(CalcularVPN( inversion, FNE, VdS, RCalcuTIR, n), 2);
-              decimal ValorX0 = Math.Round(RCalcuTIR * 100, 4);
-              decimal v1, v2;
-              for (int z = 1; z < ListaX.Count; z++)
-              {
-                  v1 = (decimal)ListaX[z - 1];
-                  v2 = (decimal)ListaX[z];
-                  if (ValorX0 >= v1 && ValorX0 <= v2)
-                  {
-                      ListaX.Insert(z, ValorX0);
-                      ListaY.Insert(z, ValorY0);
-                      break;
-                  }
-              }
-          }
-        /*Buscando interseccion con eje x */
-        // pasamos las variabes en formato array json
+        TMAR = RCalcuTIR * 10;
+        do
+        {
+            ListaX.Add(Math.Round(TMAR,2));
+            ListaY.Add(Math.Round(CalcularVPN(inversion, FNE, VdS, TMAR/100, n),1));
+            negativos = 0;
+            foreach (var item in ListaY)
+            {
+                num = Convert.ToDecimal(item);
+                if (num < 0)
+                {
+                    negativos++;
+                }
+            }
+            TMAR = TMAR + (RCalcuTIR * 10);// Cantidad de saltos de los puntos en el eje X
+        } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
+
         ListaFinal.Add(ListaX);
         ListaFinal.Add(ListaY);        
         if (1 == Select)
@@ -100,108 +76,104 @@ public partial class User_van : System.Web.UI.Page
             PeriodoSelect.Add("Año");
         }
         ListaFinal.Add(PeriodoSelect);
-        //llamamos la función pasaando los parametros
-       // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "Graficar(" + timeC + ", " + repArrayC + "," + PeriodoSelect + ");", true);
         String json = JsonConvert.SerializeObject(ListaFinal);
         return json;
     }
 
 
-        public static decimal CalcularVPN(decimal Inversion, decimal FNE, decimal VS, decimal TMAR, int Periodo)
-        {                       
-            decimal FNEAcumulado = 0, fVPN = 0;
-            int i = 0;
-            try
-            {
-                decimal DivTMAR = 1M + TMAR;
-                for (i = 1; i < Periodo; i++)
-                {
-                    decimal valorinferior = (decimal) Math.Pow((double)DivTMAR, i);
-                    FNEAcumulado = FNEAcumulado + FNE /valorinferior;
-                }
-                decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
-                FNEAcumulado = FNEAcumulado + ((FNE + VS) / valorinferiorF);
-                fVPN = FNEAcumulado - Inversion;
-            }
-            catch (OverflowException e)
-            {
-                Console.WriteLine("Exception: {0} > {1}.", e, decimal.MaxValue);
-            }
-            return Math.Round(fVPN,4);
-        }
-
-        public static decimal CalcularTIR(decimal ValorTIR, int caso, decimal inversion, decimal FNE, decimal VdS,int n)
+    public static decimal CalcularVPN(decimal Inversion, decimal FNE, decimal VS, decimal TMAR, int Periodo)
+    {                       
+        decimal FNEAcumulado = 0, fVPN = 0;
+        int i = 0;
+        try
         {
-            decimal TasaIncDec = 0.01M;
-            decimal Resultado;
-            Boolean MenosCero = false;
-            decimal ValorTIRR =ValorTIR + TasaIncDec;
-            int iteraciones = 0;
-            switch (caso)
+            decimal DivTMAR = 1M + TMAR;
+            for (i = 1; i < Periodo; i++)
             {
-                case 1:
-                        do
-                        {
-                            Resultado = Math.Round(CalcularVPN(inversion, FNE, VdS, ValorTIRR, n), 10);
-                            if (MenosCero == true)
-                            {
-                                TasaIncDec = TasaIncDec / 2;
-                                MenosCero = false;
-                            }
-                            if (Resultado > 0)
-                            {
-                                ValorTIRR = Math.Round(ValorTIRR + TasaIncDec,10);
-                            }
-                            else
-                            {
-                                ValorTIRR = Math.Round(ValorTIRR - TasaIncDec,10);
-                                MenosCero = true;
-                            }
-                                iteraciones++;
-                                System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+ " \tResultado condicion: "+Resultado+ " \tTIR: " + ValorTIRR);
-                            if(Math.Abs(Resultado) >= 0.01M)
-                            {
-                               // System.Diagnostics.Debug.WriteLine("Entro ");
-                            }
-                            else
-                            {
-
-                               // System.Diagnostics.Debug.WriteLine("No entro ");
-                            }
-
-                            if(49990==iteraciones)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Entrox ");
-                    }
-                } while (Math.Abs(Resultado) >= 0.01M);
-                        break;
-                case 2:
-                        do
-                        {
-                            Resultado = CalcularVPN( inversion, FNE, VdS, ValorTIRR, n);
-                            if (MenosCero == true)
-                            {
-                                TasaIncDec = TasaIncDec / 2;
-                                MenosCero = false;
-                            }
-                            if (Resultado > 0)
-                            {
-                                ValorTIRR = ValorTIRR + TasaIncDec;
-                                MenosCero = true;
-                            }
-                            else
-                            {
-                                ValorTIRR = ValorTIRR - TasaIncDec;
-
-                            }
-                    iteraciones++;
-                    System.Diagnostics.Debug.WriteLine("Iteracion: " + iteraciones + " Resultado condicion: " + Resultado + " TIR: " + ValorTIRR);
-                } while (Math.Abs(Resultado) >= 0.01M);
-                        break;
-            }       
-            return ValorTIRR;
+                decimal valorinferior = (decimal) Math.Pow((double)DivTMAR, i);
+                FNEAcumulado = FNEAcumulado + FNE /valorinferior;
+            }
+            decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
+            FNEAcumulado = FNEAcumulado + ((FNE + VS) / valorinferiorF);
+            fVPN = FNEAcumulado - Inversion;
         }
+        catch (OverflowException e)
+        {
+            Console.WriteLine("Exception: {0} > {1}.", e, decimal.MaxValue);
+        }
+        return fVPN;
+    }
+    public static decimal CalcularTIR(decimal ValorTIR, int caso, decimal inversion, decimal FNE, decimal VdS,int n)
+    {
+        decimal TasaIncDec = 0.01M;
+        decimal Resultado;
+        Boolean MenosCero = false;
+        decimal ValorTIRR =ValorTIR + TasaIncDec;
+        int iteraciones = 0;
+        switch (caso)
+        {
+            case 1:
+                    do
+                    {
+                        Resultado = Math.Round(CalcularVPN(inversion, FNE, VdS, ValorTIRR, n), 10);
+                        if (MenosCero == true)
+                        {
+                            TasaIncDec = TasaIncDec / 2;
+                            MenosCero = false;
+                        }
+                        if (Resultado > 0)
+                        {
+                            ValorTIRR = Math.Round(ValorTIRR + TasaIncDec,10);
+                        }
+                        else
+                        {
+                            ValorTIRR = Math.Round(ValorTIRR - TasaIncDec,10);
+                            MenosCero = true;
+                        }
+                            iteraciones++;
+                            System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+ " \tResultado condicion: "+Resultado+ " \tTIR: " + ValorTIRR);
+                        if(Math.Abs(Resultado) >= 0.01M)
+                        {
+                            // System.Diagnostics.Debug.WriteLine("Entro ");
+                        }
+                        else
+                        {
 
+                            // System.Diagnostics.Debug.WriteLine("No entro ");
+                        }
+
+                        if(49990==iteraciones)
+                {
+                    System.Diagnostics.Debug.WriteLine("Entrox ");
+                }
+            } while (Math.Abs(Resultado) >= 0.01M);
+                    break;
+            case 2:
+                    do
+                    {
+                        Resultado = CalcularVPN( inversion, FNE, VdS, ValorTIRR, n);
+                        if (MenosCero == true)
+                        {
+                            TasaIncDec = TasaIncDec / 2;
+                            MenosCero = false;
+                        }
+                        if (Resultado > 0)
+                        {
+                            ValorTIRR = ValorTIRR + TasaIncDec;
+                            MenosCero = true;
+                        }
+                        else
+                        {
+                            ValorTIRR = ValorTIRR - TasaIncDec;
+
+                        }
+                iteraciones++;
+                System.Diagnostics.Debug.WriteLine("Iteracion: " + iteraciones + " Resultado condicion: " + Resultado + " TIR: " + ValorTIRR);
+            } while (Math.Abs(Resultado) >= 0.01M);
+                    break;
+        }       
+        return ValorTIRR;
+    }
     [WebMethod]
     public static string CreacionTabla(decimal inversion, decimal FNE, decimal VdS, decimal TMAR, int Select, int n)
     {

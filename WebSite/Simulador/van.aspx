@@ -2,6 +2,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
          <link href="../Content/bootstrap-select.css" rel="stylesheet" />
+         <link href="../Content/Precarga/load-van.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
     
@@ -352,8 +353,6 @@
                     <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>   
             </div>
     </div>
-
-
     <!-- The Modal --> 
               <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
                 <div class="modal-dialog">
@@ -378,7 +377,54 @@
                     </div>
                   </div>
                 </div> 
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- The Modal -->
+    <div class="modal fade" id="Cargando_Modal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal">
+                <div class="modal-dialog ">
+    <div class="modal-content2">
+                    
+                              <centerior>
+                                    <svg>
+                                      <g>
+                                        <path d="M 50,100 A 1,1 0 0 1 50,0"/>
+                                      </g>
+                                      <g>
+                                        <path d="M 50,75 A 1,1 0 0 0 50,-25"/>
+                                      </g>
+                                      <defs>
+                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                          <stop offset="0%" style="stop-color:#FF56A1;stop-opacity:1" />
+                                          <stop offset="100%" style="stop-color:#FF9350;stop-opacity:1" />
+                                        </linearGradient>
+                                      </defs>
+                                    </svg>
+                               </centerior>
+                </div>
+          </div>
+        </div>
 </asp:Content>
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
  <!-- Manejo de funcion de tabla en VAN-->

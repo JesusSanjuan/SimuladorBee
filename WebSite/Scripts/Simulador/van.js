@@ -391,6 +391,8 @@ $("#calcular").click(function () {
     }
     
     if (Inversion === true && Inversion === true && FNEV === true && FNEV1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
+       // $('#exampleModal').modal('show');
+        $('#Cargando_Modal').modal('show');
         inversion = inversion.replace(/,/g, '');
         FNE = FNE.replace(/,/g, '');
         VdS = VdS.replace(/,/g, '');
@@ -400,10 +402,14 @@ $("#calcular").click(function () {
             url: "van.aspx/Graficar",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            async: false,
+            async: true,
             data: JSON.stringify({ inversion: inversion, FNE: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
+                //$('#Cargando_Modal').hide();
+               // $('#exampleModal').modal('hide');
+                $('#Cargando_Modal').modal('hide');
+                //$('#Cargando_Modal').modal({ hide: true });
                 Modal(valores[0]);
                 $("#VAN").text(valores[1]);
                 $("#TIR").text(valores[2]);
@@ -413,7 +419,8 @@ $("#calcular").click(function () {
                 console.log(err);
                 console.log(err.responseText);
             }
-        }).done(function (data) {
+        }).done(function (data) {   
+            $('#content').html('');
                     $.ajax({
                         type: "POST",
                         url: "van.aspx/CreacionTabla",
@@ -516,10 +523,7 @@ function Graficar(x, y, Periodo) {
     var time = JSON.parse(JSON.stringify(x));
     var repArray = JSON.parse(JSON.stringify(y));
     var PeriodoSelect = JSON.parse(JSON.stringify(Periodo));
-
-    var prueba = repArray[repArray.length - 1];
-
-
+    
     var pointBackgroundColor = new Array(repArray.length);
     var pointRadius = new Array(repArray.length);
     var pointHoverRadius = new Array(repArray.length);
@@ -536,9 +540,7 @@ function Graficar(x, y, Periodo) {
 
     for (var j = 1; j < repArray.length; j++) {
         var tem = repArray[j];
-        var tem1 = repArray[j - 1];
-        var tem2 = repArray[j + 1];
-        if (tem2 < 0 && tem1 > 0) {
+        if (tem <= 0.2 && tem >= -0.2) {
             pointBackgroundColor[j] = "rgba(255, 87, 51,1)";
             pointRadius[j] = 8;
             pointHoverRadius[j] = 10;
@@ -546,8 +548,8 @@ function Graficar(x, y, Periodo) {
             //tooltipsbackgroundColor[i] ='rgba(255, 0, 0, 0.7)'
             break;
         }
-
     }
+
     var ctx = document.getElementById("myAreaChart");
     var myLineChart = new Chart(ctx, {
         type: 'line',

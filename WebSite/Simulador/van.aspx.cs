@@ -52,7 +52,7 @@ public partial class User_van : System.Web.UI.Page
          do
          {
              ListaX.Add(TMAR * 100);
-             ListaY.Add(CalcularVPN(inversion, FNE, VdS, TMAR / 100, n));
+             ListaY.Add(CalcularVPN(inversion, FNE, VdS, TMAR, n));
              negativos = 0;
              foreach (var item in ListaY)
              {
@@ -127,7 +127,7 @@ public partial class User_van : System.Web.UI.Page
             {
                 Console.WriteLine("Exception: {0} > {1}.", e, decimal.MaxValue);
             }
-            return fVPN;
+            return Math.Round(fVPN,4);
         }
 
         public static decimal CalcularTIR(decimal ValorTIR, int caso, decimal inversion, decimal FNE, decimal VdS,int n)

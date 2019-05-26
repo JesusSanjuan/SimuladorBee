@@ -18,7 +18,7 @@
                  <div class="card align-middle">  
                       <div class="card-header">
                             <h1><i class="fas fa-chart-line"></i> Calculadora de VAN y TIR</h1>
-                             El uso de estas criterios de evaluacion financiera le permitira saber si aceptación o rechazo de un proyecto de inversión.         
+                             El uso de estos criterios de evaluacion financiera le permitira saber si se acepta o rechazo un proyecto de inversión.         
                       </div>
                 </div>
     </div>

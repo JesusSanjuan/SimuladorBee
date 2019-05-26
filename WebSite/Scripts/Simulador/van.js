@@ -391,6 +391,12 @@ $("#calcular").click(function () {
     }
     
     if (Inversion === true && Inversion === true && FNEV === true && FNEV1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
+        if (myLineChart) {//Limpieza si se vuelve a realizar otro calculo de la grafica
+            myLineChart.clear();
+            myLineChart.destroy();
+        }
+
+        $("#ResultadosVAN").css("display", "none");
         inversion = inversion.replace(/,/g, '');
         FNE = FNE.replace(/,/g, '');
         VdS = VdS.replace(/,/g, '');
@@ -415,8 +421,7 @@ $("#calcular").click(function () {
                 Modal(valores[0]);
                 $("#VAN").text(valores[1]);
                 $("#TIR").text(valores[2]);
-                Graficar(valores[3], valores[4], valores[5]);
-                console.log("data", data);
+                Graficar(valores[3], valores[4], valores[5],valores[6]);
             },
             error: function (err) {
                 console.log(err);
@@ -500,12 +505,14 @@ function Modal(Resultado) {
         $('#cerrar').click(function () {
             audioP.pause();
             audioP.currentTime = 0;
-            location.href = "#ResultadosFinales";
+                        
             $("#ResultadosVAN").css("display", "block");
             $('#ResultadosVAN').addClass("bounceInLeft animated");
             $("#ResultadosVAN").css({
                 "-webkit-animation-delay": ".5s"
             });
+            //$("#ResultadosVAN").load(" #ResultadosVAN");
+            location.href = "#ResultadosFinales";
         });
         $("#myModal").on('hide.bs.modal', function () {
             audioP.pause();
@@ -515,15 +522,16 @@ function Modal(Resultado) {
             $("#ResultadosVAN").css({
                 "-webkit-animation-delay": ".5s"
             });
+            //$("#ResultadosVAN").load(" #ResultadosVAN");
             location.href = "#ResultadosFinales";
         });
 
     });
 }
 /* Funcion de modal de resultados de van*/
-
+var myLineChart;
 /* Funcion de graficacion de resultados de van*/
-function Graficar(x, y, Periodo) {
+function Graficar(x, y, Periodo,posRojo) {
 
     // Chart.js scripts
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -533,6 +541,7 @@ function Graficar(x, y, Periodo) {
     var time = JSON.parse(JSON.stringify(x));
     var repArray = JSON.parse(JSON.stringify(y));
     var PeriodoSelect = JSON.parse(JSON.stringify(Periodo));
+    var posRojo1 = JSON.parse(JSON.stringify(posRojo));
     
     var pointBackgroundColor = new Array(repArray.length);
     var pointRadius = new Array(repArray.length);
@@ -549,26 +558,13 @@ function Graficar(x, y, Periodo) {
         //  tooltipsbackgroundColor[i] = 'rgba(0, 0, 0, 0.7)';
     }
 
-    for (var j = 1; j < repArray.length; j++) {
-        var tem = repArray[j];
-        var redondeo = Math.round(tem);
-        var tem1 = repArray[j - 1];
-        var tem2 = repArray[j + 1];
-        var numPos = Math.sign(tem1);
-        var numCentral = Math.sign(redondeo );
-        var numNeg= Math.sign(tem2);
-        if (numPos === 1 && numNeg === -1 && (numCentral === -0 || numCentral=== 0)){
-            pointBackgroundColor[j] = "rgba(255, 87, 51,1)";
-            pointRadius[j] = 8;
-            pointHoverRadius[j] = 10;
-            pointStyle[j] = 'rectRounded';
-            //tooltipsbackgroundColor[i] ='rgba(255, 0, 0, 0.7)'
-            break;
-        }
-    }
+    pointBackgroundColor[posRojo1] = "rgba(255, 87, 51,1)";
+    pointRadius[posRojo1] = 8;
+    pointHoverRadius[posRojo1] = 10;
+    pointStyle[posRojo1] = 'rectRounded';
 
     var ctx = document.getElementById("myAreaChart");
-    var myLineChart = new Chart(ctx, {
+    myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: time,

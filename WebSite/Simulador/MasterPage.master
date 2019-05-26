@@ -142,19 +142,19 @@
                                     <li>
                                         <a class="nav-link" href="van">
                                             <i class="fas fa-chart-bar"></i>
-                                            <span class="nav-link-text">VAN Constante</span>
+                                            <span class="nav-link-text">VAN y TIR Constante</span>
                                         </a>
                                     </li> 
                                     <li>
                                         <a class="nav-link" href="vanv">
                                             <i class="far fa-chart-bar"></i>
-                                            <span class="nav-link-text">VAN Variable</span>
+                                            <span class="nav-link-text">VAN y TIR Variable</span>
                                         </a>
                                     </li> 
                                     <li>
                                         <a class="nav-link" href="vanM">
                                             <i class="fas fa-chart-bar"></i>
-                                            <span class="nav-link-text">VAN Variable Manual</span>
+                                            <span class="nav-link-text">VAN y TIR Variable Manual</span>
                                         </a>
                                     </li> 
                                     <li>

@@ -17,15 +17,14 @@
                  </nav>  
                  <div class="card align-middle">  
                       <div class="card-header">
-                            <h1><i class="fas fa-chart-line"></i> Valor Actual Neto (VAN)</h1>
-                             Es el valor monetario que resulta de restar la suma de los ﬂujos descontados a la inversión inicial.
-         
+                            <h1><i class="fas fa-chart-line"></i> Calculadora de VAN y TIR</h1>
+                             El uso de estas criterios de evaluacion financiera le permitira saber si aceptación o rechazo de un proyecto de inversión.         
                       </div>
                 </div>
     </div>
     <div style="padding-top:1rem;">
                  <div class="row">
-                        <div class="col-12" style="padding-bottom:1rem;">  A continuación, usted podrá calcular el Valor Actual Neto (VAN)</div>
+                        <div class="col-12" style="padding-bottom:1rem;">  A continuación, usted podrá hacer uso de la calculador mediante el ingreso de los siguientes datos:</div>
                 </div>                        
                           <div class="form-row" >
                                         <div class="col-md-3 mb-2">
@@ -39,7 +38,7 @@
                                                         </div>
                                                             <input type="text"   class="form-control number" id="Inversion" placeholder="Ingrese la inversion"  autocomplete="off"  style="cursor:pointer" required="required">
                                                         <div class="input-group-append">                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo " ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
                                                         <div id="Inversionval" class="invalid-feedback"> 
                                                             Por favor ingrese la inversion.
@@ -78,7 +77,7 @@
                                                         </div>
                                                             <input type="text"   class="form-control number3" id="VdS" placeholder="Ingrese el valor de salvamento" autocomplete="off" style="cursor:pointer" required="required">
                                                        <div class="input-group-append"  >                                                             
-                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición " ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
                                                        <div id="VdSval"class="invalid-feedback">
                                                           Por favor ingrese el valor de salvamento
@@ -89,12 +88,12 @@
                                                   </div>
                                         </div>
                                           <div class="col-md-3 mb-2">
-                                          <label for="validationCustom04">TMAR</label>
+                                          <label for="validationCustom04">Rentabilidad requerida</label>
                                               <div class="input-group" style="cursor:default">                    
                                                         <input type="text"   class="form-control number4" id="TMAR" placeholder="Ingrese el valor de TMAR" autocomplete="off" style="cursor:pointer" required="required">
                                                        <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
-                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Tasa Mínima Aceptable de Rendimiento: es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content=" TMAR (Tasa Mínima Aceptable de Rendimiento): es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
                                                         <div  id="TMARval"class="invalid-feedback">
                                                           Por favor ingrese el valor de TMAR
@@ -196,8 +195,24 @@
                                                     </div>
                                                     <div class="fondoresultados">
                                                         <div class="card-body text-info">
-
                                                                 <h3><label id="VAN" class="card-text"></label></h3>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                            <div class="preborder" style="margin-top: 15px">
+                                                    <div class="card-header" >
+                                                            <h5><i class="fas fa-dollar-sign"></i> Que es el VAN?</h5>
+                                                    </div>
+                                                    <div class="fondoresultados">
+                                                        <div class="card-body text-info">                                                               
+                                                                El Valor Actual Neto es un procedimiento que permite calcular el valor presente de un determinado número de flujos de caja futuros, originados por una inversión. <br/>
+                                                                La inversión se considera aceptable cuando su VAN es mayor que cero. Si el VAN es menor que cero la inversión es rechazada. Además, se da preferencia a aquellas inversiones cuyo VAN sea más elevado. <br/>
+                                                                Con esta aplicación podemos calcular el Valor Actual Neto de una inversión conociendo la rentabilidad requerida para la misma, su duración, el desembolso inicial de capital y los flujos de caja esperados.  <br/><br/>
+                                                                <i><b>Ejemplo: </b></i>
+                                                                Una inversión supone un desembolso inicial de 8,000 MXN, unos cobros anuales de 4,000 MXN y unos pagos de 2,000 MXN, durante 5 años lo cual resulta a flujos constantes de 2,000 MXN.<br/>
+                                                                Además, le exigimos a la inversión una rentabilidad mínima del 6,4%. <br/>  <br/>                                                              
+                                                                 <i> <b>Resultado: </b></i>
+                                                                 Obteniendo como resultado el VAN de $333.84 y siendo una inverion Aceptable.
                                                         </div>
                                                     </div>
                                              </div>
@@ -214,7 +229,23 @@
                                                         <h3><label id="TIR" class="card-text"></label></h3>
                                                         </div>
                                                     </div>
-                                              </div>
+                                            </div>                                             
+                                            <div class="preborder" style="margin-top: 15px">
+                                                    <div class="card-header" >
+                                                            <h5><i class="fas fa-dollar-sign"></i> Que es el TIR?</h5>
+                                                    </div>
+                                                    <div class="fondoresultados">
+                                                        <div class="card-body text-info">         
+                                                                La Tasa Interna de Rentabilidad de una inversión es el tipo de interés con el cual el Valor Actual Neto de esa inversión es igual a cero (ver calculadora VAN).<br/>
+                                                                Se utiliza para decidir sobre la aceptación o rechazo de un proyecto de inversión. Para ello, la TIR se compara con un tipo mínimo. Si el tipo TIR supera al tipo mínimo, se acepta la inversión; en caso contrario, se rechaza. Además, se da preferencia a aquellas inversiones cuyo TIR sea más elevado.<br/>
+                                                                Con esta aplicación podemos calcular la TIR de una inversión, es decir la rentabilidad efectiva anual que obtendríamos. Para calcular la TIR de una operación de inversión tenemos que introducir la duración, el desembolso inicial y los cobros y pagos de la operación. <br/><br/>
+                                                                <i> <b>Ejemplo: </b></i>
+                                                                Una inversión supone un desembolso inicial de 8,000 MXN, unos cobros anuales de 4,000 MXN y unos pagos de 2,000 MXN, durante 5 años lo cual resulta a flujos constantes de 2,000 MXN.<br/><br/>
+                                                                <i> <b>Resultado: </b></i>
+                                                                 7.93 %. Aceptaremos el proyecto de inversión siempre que la rentabilidad sea inferior a ese 7.93% 
+                                                        </div>
+                                                    </div>
+                                             </div>
                                         </div>
                                 </div>
                                <div role="tabpanel" class="tab-pane fade" id="Resultado3">

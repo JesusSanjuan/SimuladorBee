@@ -42,18 +42,22 @@ public partial class User_van : System.Web.UI.Page
          else
          {
             ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
-            ResultadoTIR.Add("No aplicable");
             RCalcuTIR = CalcularTIR(TMAR / 100, 2, inversion, FNE, VdS, n);
-         }
+            ResultadoTIR.Add((RCalcuTIR * 100).ToString("0,0.00") + " %");
+        }
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
 
         TMAR = RCalcuTIR * 10;
+        decimal TMAR2 = Math.Round(RCalcuTIR * 100,4);
+        int contador=0;
+        int pos = 0;
         do
-        {
+        {           
             ListaX.Add(Math.Round(TMAR,4));
             ListaY.Add(Math.Round(CalcularVPN(inversion, FNE, VdS, TMAR/100, n),4));
             negativos = 0;
+            
             foreach (var item in ListaY)
             {
                 num = Convert.ToDecimal(item);
@@ -62,7 +66,12 @@ public partial class User_van : System.Web.UI.Page
                     negativos++;
                 }
             }
+            if(TMAR2== Math.Round(TMAR,4))
+            {
+                pos = contador;
+            }
             TMAR = TMAR + (RCalcuTIR * 10);// Cantidad de saltos de los puntos en el eje X
+            contador++;
         } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
 
         ListaFinal.Add(ListaX);
@@ -76,6 +85,7 @@ public partial class User_van : System.Web.UI.Page
             PeriodoSelect.Add("Año");
         }
         ListaFinal.Add(PeriodoSelect);
+        ListaFinal.Add(pos);
         String json = JsonConvert.SerializeObject(ListaFinal);
         return json;
     }
@@ -109,13 +119,12 @@ public partial class User_van : System.Web.UI.Page
         decimal Resultado;
         Boolean MenosCero = false;
         decimal ValorTIRR =ValorTIR + TasaIncDec;
-        int iteraciones = 0;
         switch (caso)
         {
             case 1:
                     do
                     {
-                        Resultado = Math.Round(CalcularVPN(inversion, FNE, VdS, ValorTIRR, n), 10);
+                        Resultado = CalcularVPN(inversion, FNE, VdS, ValorTIRR, n);//Cabie aqui tenia hasta 10
                         if (MenosCero == true)
                         {
                             TasaIncDec = TasaIncDec / 2;
@@ -130,8 +139,6 @@ public partial class User_van : System.Web.UI.Page
                             ValorTIRR = Math.Round(ValorTIRR - TasaIncDec,10);
                             MenosCero = true;
                         }
-                        iteraciones++;
-                       // System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+ " \tResultado condicion: "+Resultado+ " \tTIR: " + ValorTIRR);
                         
                     } while (Math.Abs(Resultado) >= 0.01M);
                     break;
@@ -154,8 +161,6 @@ public partial class User_van : System.Web.UI.Page
                             ValorTIRR = ValorTIRR - TasaIncDec;
 
                         }
-                        iteraciones++;
-                       //System.Diagnostics.Debug.WriteLine("Iteracion: " + iteraciones + " Resultado condicion: " + Resultado + " TIR: " + ValorTIRR);
                     } while (Math.Abs(Resultado) >= 0.01M);
                     break;
         }

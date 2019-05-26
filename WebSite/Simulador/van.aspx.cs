@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web.Services;
 using Newtonsoft.Json;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -27,7 +28,6 @@ public partial class User_van : System.Web.UI.Page
          System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
          System.Collections.ArrayList PeriodoSelect = new System.Collections.ArrayList();
          decimal ResultadoVPN, RCalcuTIR;
-         Boolean Ceros = false;
 
         /* System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas */
         ResultadoVPN = CalcularVPN( inversion, FNE,VdS, TMAR / 100, n);
@@ -51,8 +51,8 @@ public partial class User_van : System.Web.UI.Page
         TMAR = RCalcuTIR * 10;
         do
         {
-            ListaX.Add(Math.Round(TMAR,2));
-            ListaY.Add(Math.Round(CalcularVPN(inversion, FNE, VdS, TMAR/100, n),1));
+            ListaX.Add(Math.Round(TMAR,4));
+            ListaY.Add(Math.Round(CalcularVPN(inversion, FNE, VdS, TMAR/100, n),4));
             negativos = 0;
             foreach (var item in ListaY)
             {
@@ -130,23 +130,10 @@ public partial class User_van : System.Web.UI.Page
                             ValorTIRR = Math.Round(ValorTIRR - TasaIncDec,10);
                             MenosCero = true;
                         }
-                            iteraciones++;
-                            System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+ " \tResultado condicion: "+Resultado+ " \tTIR: " + ValorTIRR);
-                        if(Math.Abs(Resultado) >= 0.01M)
-                        {
-                            // System.Diagnostics.Debug.WriteLine("Entro ");
-                        }
-                        else
-                        {
-
-                            // System.Diagnostics.Debug.WriteLine("No entro ");
-                        }
-
-                        if(49990==iteraciones)
-                {
-                    System.Diagnostics.Debug.WriteLine("Entrox ");
-                }
-            } while (Math.Abs(Resultado) >= 0.01M);
+                        iteraciones++;
+                       // System.Diagnostics.Debug.WriteLine("Iteracion: "+iteraciones+ " \tResultado condicion: "+Resultado+ " \tTIR: " + ValorTIRR);
+                        
+                    } while (Math.Abs(Resultado) >= 0.01M);
                     break;
             case 2:
                     do
@@ -167,11 +154,12 @@ public partial class User_van : System.Web.UI.Page
                             ValorTIRR = ValorTIRR - TasaIncDec;
 
                         }
-                iteraciones++;
-                System.Diagnostics.Debug.WriteLine("Iteracion: " + iteraciones + " Resultado condicion: " + Resultado + " TIR: " + ValorTIRR);
-            } while (Math.Abs(Resultado) >= 0.01M);
+                        iteraciones++;
+                       //System.Diagnostics.Debug.WriteLine("Iteracion: " + iteraciones + " Resultado condicion: " + Resultado + " TIR: " + ValorTIRR);
+                    } while (Math.Abs(Resultado) >= 0.01M);
                     break;
-        }       
+        }
+        Thread.Sleep(450);
         return ValorTIRR;
     }
     [WebMethod]

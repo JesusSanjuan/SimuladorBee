@@ -391,13 +391,18 @@ $("#calcular").click(function () {
     }
     
     if (Inversion === true && Inversion === true && FNEV === true && FNEV1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
-       // $('#exampleModal').modal('show');
-        $('#Cargando_Modal').modal('show');
         inversion = inversion.replace(/,/g, '');
         FNE = FNE.replace(/,/g, '');
         VdS = VdS.replace(/,/g, '');
         TMAR = TMAR.replace(/,/g, '');
         $.ajax({
+            beforeSend: function () {
+                $("#Cargando_Modal").css({ 'position': 'fixed', 'top': '40%'});
+                $("#Cargando_Modal_Dialog").css({ 'margin': '3.75rem auto' });
+                $('#Cargando_Modal').modal({ backdrop: 'static', keyboard: false });
+                $('#Cargando_Modal').modal('show');
+            },
+            cache: false,
             type: "POST",
             url: "van.aspx/Graficar",
             contentType: "application/json; charset=utf-8",
@@ -406,20 +411,21 @@ $("#calcular").click(function () {
             data: JSON.stringify({ inversion: inversion, FNE: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
-                //$('#Cargando_Modal').hide();
-               // $('#exampleModal').modal('hide');
                 $('#Cargando_Modal').modal('hide');
-                //$('#Cargando_Modal').modal({ hide: true });
                 Modal(valores[0]);
                 $("#VAN").text(valores[1]);
                 $("#TIR").text(valores[2]);
                 Graficar(valores[3], valores[4], valores[5]);
+                console.log("data", data);
             },
             error: function (err) {
                 console.log(err);
                 console.log(err.responseText);
+            },
+            ajaxComplete: function (data) {
+            }, then: function () {
             }
-        }).done(function (data) {   
+        }).done(function (data) { 
             $('#content').html('');
                     $.ajax({
                         type: "POST",
@@ -429,6 +435,7 @@ $("#calcular").click(function () {
                         async: false,
                         data: JSON.stringify({ inversion: inversion, FNE: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
                         success: function (data) {
+                            $('#Cargando_Modal').modal('hide');
                             var valores = JSON.parse(data.d);
                             RellenarTabla(valores[0]);
                             $("#PeridoRec").text(valores[1]);
@@ -446,6 +453,8 @@ $("#calcular").click(function () {
             //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
+        }).always(function () {
+        }).then(function (data) {
         });
     }
 });
@@ -453,6 +462,7 @@ $("#calcular").click(function () {
 
 /* Funcion de modal de resultados de van*/
 function Modal(Resultado) {
+    $('#Cargando_Modal').modal('hide');
     ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
     $(document).ready(function () {
         var Texto, TextoEfecto, Textovelocidad, TextoRepticiones, Imagen, audio, audioP;
@@ -530,6 +540,7 @@ function Graficar(x, y, Periodo) {
     var pointStyle = new Array(repArray.length);
     // var tooltipsbackgroundColor = new Array(repArray.length);
 
+    
     for (var i = 0; i < repArray.length; i++) {
         pointBackgroundColor[i] = "rgba(2,117,216,1)";
         pointRadius[i] = 3;
@@ -540,7 +551,13 @@ function Graficar(x, y, Periodo) {
 
     for (var j = 1; j < repArray.length; j++) {
         var tem = repArray[j];
-        if (tem <= 0.2 && tem >= -0.2) {
+        var redondeo = Math.round(tem);
+        var tem1 = repArray[j - 1];
+        var tem2 = repArray[j + 1];
+        var numPos = Math.sign(tem1);
+        var numCentral = Math.sign(redondeo );
+        var numNeg= Math.sign(tem2);
+        if (numPos === 1 && numNeg === -1 && (numCentral === -0 || numCentral=== 0)){
             pointBackgroundColor[j] = "rgba(255, 87, 51,1)";
             pointRadius[j] = 8;
             pointHoverRadius[j] = 10;

@@ -28,8 +28,6 @@
                 </div>                        
                           <div class="form-row" >
                                         <div class="col-md-3 mb-2">
-
-
                                           <label for="validationCustom01">Inversión</label>
                                                 <div class="input-group" style="cursor:default" >
                                                         <div class="input-group-append"  >
@@ -48,10 +46,9 @@
                                                   </div> 
 
                                         </div>
-
                                         <div class="col-md-3 mb-2">
                                           <label for="validationCustom02">Flujo Neto de Efectivo</label>
-                                            <div class="input-group" style="cursor:default">
+                                                  <div class="input-group" style="cursor:default">
                                                         <div class="input-group-prepend">
                                                           <span class="input-group-text" id="inputGroupPrepend1">$</span>
                                                              <span class="input-group-text">0.00</span>

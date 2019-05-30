@@ -2,8 +2,7 @@
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">  
-    <link href="../Content/bootstrap-select.css" rel="stylesheet" />
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server"> 
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
@@ -45,7 +44,7 @@
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <div class="checkbox">
-                                        <input type="checkbox" name="RememberMe" value="1"> ¿Recordar cuenta?<br>
+                                        <input type="checkbox" id="Remember" name="RememberMe" value="1"> ¿Recordar cuenta?<br>
                                     </div>
                                 </div>
                             </div>
@@ -68,6 +67,31 @@
                 </div>
             </div>
    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="modalLogin" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+    <div class="modal-dialog">
+        <div class="modal-content">      
+            <!-- Modal Header -->
+            <div class="modal-header">
+                    <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Verifica tus credenciales</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>        
+            <!-- Modal body -->
+            <div class="modal-body" id="modal-text-body" >    
+                <div class="row">
+                        <div class="col-3" id="imgmodal"><img src="../multimedia/alerta.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
+                        <div class="col-9" id="texmodal"><strong style='vertical-align: middle;'>Usuario  invalido o contraseña incorrecta.</strong></div>                                                                        
+                </div>
+                <audio id="audio" style="display:none" controls> </audio > 
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Aceptar</button>   
+            </div>
+        </div>
+        </div>
+    </div> 
+    <!-- Logout Modal-->
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">     
     <script src="../Scripts/Account/Login.js"></script>

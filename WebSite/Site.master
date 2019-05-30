@@ -174,13 +174,14 @@
                             
          </div>
     </form>
-
+   
         <!-- Efectos visuales--> 
             <!-- Archivo principal de AniJS --> 
             <script  src="../Scripts/anijs-master/anijs.js" > </script>
             <!-- ScrollReveal Helper -->
             <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
-         <!-- Efectos visuales-->  
+         <!-- Efectos visuales--> 
+            
          <!-- Ejecuta y oculta preloader--> 
             <script>
                 $(document).ready(function () {

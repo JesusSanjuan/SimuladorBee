@@ -20,7 +20,7 @@ $('#NombreUsuario').keyup(function (event) {
         $("#Nombval").addClass("invalid-feedback");
         $("#NombreUsuario").removeClass("is-valid");
         $("#NombreUsuario").addClass("is-invalid");
-        $('#Nombval').text('Por favor igrese el nombre de usuario.');
+        $('#Nombval').text('Por favor igrese su usuario');
         $('#Nombval').show();
         User = false;
     }
@@ -82,7 +82,7 @@ $("#login").click(function () {
         $("#Nombval").addClass("invalid-feedback");
         $("#NombreUsuario").removeClass("is-valid");
         $("#NombreUsuario").addClass("is-invalid");
-        $('#Nombval').text('Por favor igrese el nombre de usuarios.');
+        $('#Nombval').text('Por favor igrese su usuario');
         $('#Nombval').show();
         User1 = false;
     }

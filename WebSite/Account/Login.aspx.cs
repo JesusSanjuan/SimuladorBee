@@ -19,7 +19,7 @@ public partial class Account_Login : Page
         }
 
         protected void LogIn(object sender, EventArgs e)
-        {
+        {/*
             if (IsValid)
             {
                 // Validacion del usario
@@ -35,6 +35,6 @@ public partial class Account_Login : Page
                     FailureText.Text = "Usuario  invalido o contraseña incorrecta.";
                     ErrorMessage.Visible = true;
                 }
-            }
+            }*/
         }
 }

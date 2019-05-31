@@ -18,6 +18,7 @@ public partial class Account_Register : Page
         }
         else
         {
+
             ErrorMessage.Text = result.Errors.FirstOrDefault();
         }
     }

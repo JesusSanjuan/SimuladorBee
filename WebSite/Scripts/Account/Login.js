@@ -25,7 +25,7 @@ $('#NombreUsuario').keyup(function (event) {
         User = false;
     }
     else {
-        if (user.length >= 6) {
+        if (user.length >= 4) {
             $("#NombreUsuario").removeClass("is-invalid");
             $("#NombreUsuario").addClass("is-valid");
             $('#Nombval').hide();
@@ -87,7 +87,7 @@ $("#login").click(function () {
         User1 = false;
     }
     else {
-        if (userValor.length >= 6) {
+        if (userValor.length >= 4) {
             $("#NombreUsuario").removeClass("is-invalid");
             $("#NombreUsuario").addClass("is-valid");
             $('#Nombval').hide();
@@ -144,7 +144,8 @@ $("#login").click(function () {
                 var valores = JSON.parse(data.d);   
                 if (valores[0] === "NO") {
                     $('#modalLogin').modal({ show: true });
-                } else {           
+                } else { 
+                    alert("Exepcion de: "+valores[2]);
                     if (valores[1] === null) {
                         location.href = "../";
                     }

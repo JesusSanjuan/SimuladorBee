@@ -1,49 +1,91 @@
 ﻿<%@ Page Title="Registrarse" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+    <link href="../Content/Register/checkout.css" rel="stylesheet" />    
+    <link href="../Content/Register/checkout_responsive.css" rel="stylesheet" />
+    <link href="../Content/Register/util.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <div style="margin-top: 20px;">
-        <h2><%: Title %></h2>
-        <p class="text-danger">
-            <asp:Literal runat="server" ID="ErrorMessage" />
-        </p>
-            <div class="row">
-                        <div class="col-md-8">
-                            <h4>Cree una cuenta nueva.</h4>
+    <div style="margin-top: 30px;">    
+        <div class="row">
+            <div class="col-md-12">
+        <h2><i class="fas fa-user-edit"></i> Trabaja en SimuladorBee.xyz</h2>
+                </div>
+            </div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9" style="padding-right: 1px; padding-left: 1px;">
+					       <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crea tu cuenta personal</h4>
                             <hr />
-                            <asp:ValidationSummary runat="server" CssClass="text-danger" />
-                            <div class="form-group">
-                                <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-6 control-label">Nombre de usuario</asp:Label>
-                                <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                                        CssClass="text-danger" ErrorMessage="El campo de nombre de usuario es obligatorio." />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-6 control-label">Contraseña</asp:Label>
-                                <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                                        CssClass="text-danger" ErrorMessage="El campo de contraseña es obligatorio." />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-6 control-label">Confirmar contraseña</asp:Label>
-                                <div class="col-md-10">
-                                    <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                                        CssClass="text-danger" Display="Dynamic" ErrorMessage="El campo de confirmación de contraseña es obligatorio." />
-                                    <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                                        CssClass="text-danger" Display="Dynamic" ErrorMessage="La contraseña y la contraseña de confirmación no coinciden." />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <asp:Button runat="server" OnClick="CreateUser_Click" Text="Registrarse" CssClass="btn btn-primary btn-lg" />
-                                </div>
-                            </div>
+						        <div class="billing">
+							        <div class="checkout_title">Ingresa la siguiente informacion</div>
+							        <div class="checkout_form_container checkout_form">
+									        <div class="row" >
+										        <div class="col-lg-6">
+											        <!-- Name -->
+											        <input type="text" id="checkout_name" class="checkout_input" placeholder="Nombre" required="required">
+										        </div>
+										        <div class="col-lg-6">
+											        <!-- Last Name -->
+											        <input type="text" id="checkout_last_name" class="checkout_input" placeholder="Apellido" required="required">
+										        </div>
+									        </div>		
+                                            <div class="row">
+										        <!-- Company -->
+                                                <div class="col-lg-12">
+										            <input type="text" id="checkout_company" placeholder="Compañia" class="checkout_input">
+                                                </div>
+									        </div>	
+                                            <div class="row">
+                                                <div class="col-lg-12">
+										            <!-- Country -->
+										            <select name="checkout_country" id="checkout_country" class="dropdown_item_select checkout_input" require="required">
+											            <option>Pais</option>
+                                                        <option>Mexico</option>
+											            <option>Lithuania</option>
+											            <option>Sweden</option>
+											            <option>UK</option>
+											            <option>Italy</option>
+										            </select>
+                                                </div>
+									        </div>	
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!-- Phone no -->
+										           <input type="phone" id="checkout_phone" class="checkout_input" placeholder="Numero Telefonico" required="required">
+                                                    </div>
+									        </div>	
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!-- Email -->
+										            <input type="phone" id="checkout_email" class="checkout_input" placeholder="Correo Electronico" required="required">
+                                                </div>
+									        </div>	
+                                        <div class="row">
+                                                <div class="col-lg-12">
+                                                    <!-- Email -->
+										            <input type="phone" id="checkout_email" class="checkout_input" placeholder="Correo Electronico" required="required">
+                                                </div>
+									        </div>	
+                                                   <div class="checkout_extra">
+											                <li class="billing_info d-flex flex-row align-items-center justify-content-start">
+												                <label class="checkbox_container">
+													                <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox">
+													                <span class="checkbox_mark"></span>
+													                <span class="checkbox_text">Terminos y Condiciones</span>
+												                </label>
+											                </li>
+									                </div>
+                                        <div class="row">
+                                                <div class="col-lg-12">
+										             <div class="checkout_button trans_200"><a>Registrarse</a></div>
+                                                </div>
+									        </div>	
+							        </div>
+						        </div>
                         </div>
-                     <div class="col-md-4">
+                    <div class="col-md-3">
                          <h4>¿Qué estás esperando?</h4>
                             <hr/>
                          <p align="justify">
@@ -53,9 +95,19 @@
                          <h5>Aumenta la productividad</h5>
                          <h5>Reduce los costos</h5>
                      </div>
-                </div>
+					
+				</div>
+			</div>
 
-
-        </div>
+   </div>
 </asp:Content>
-
+<asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
+    <script src="../Scripts/Register/animation.gsap.min.js"></script>
+    <script src="../Scripts/Register/checkout.js"></script>
+    <script src="../Scripts/Register/easing.js"></script>
+    <script src="../Scripts/Register/parallax.min.js"></script>
+    <script src="../Scripts/Register/ScrollMagic.min.js"></script>
+    <script src="../Scripts/Register/ScrollToPlugin.min.js"></script>
+    <script src="../Scripts/Register/TimelineMax.min.js"></script>
+    <script src="../Scripts/Register/TweenMax.min.js"></script>
+</asp:Content>

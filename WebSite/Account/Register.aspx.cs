@@ -6,7 +6,7 @@ using WebSite;
 
 public partial class Account_Register : Page
 {
-    protected void CreateUser_Click(object sender, EventArgs e)
+    /*protected void CreateUser_Click(object sender, EventArgs e)
     {
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };
@@ -21,5 +21,5 @@ public partial class Account_Register : Page
 
             ErrorMessage.Text = result.Errors.FirstOrDefault();
         }
-    }
+    }*/
 }

@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
- <div style="margin-top: 20px;">
+    <div style="margin-top: 20px;">
      <h2><%: Title %></h2>
             <div class="form-row">
                 <div class="col-md-8">

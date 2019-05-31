@@ -625,8 +625,12 @@
     /****************************************/
 
     /*********** SCRIPTS PARA EL CONTENT PUNTO DE EQUILIBRIO ********/
+    var pathname = window.location.pathname;
+    console.log(pathname);
 
-    if (id_proyecto !== "false") {
+
+    if (id_proyecto !== "false" && pathname =="/Simulador/puntoequilibrio") {
+        
         $.ajax({
             type: "POST",
             url: "puntoequilibrio.aspx/get_costos_fijosT",
@@ -672,18 +676,23 @@
             data: JSON.stringify({ idProyecto: id_proyecto }),
             success: function (result) {
                 var resultado = JSON.parse(result.d);
-                var precio_VU = resultado[0];
-                var costo_VU = resultado[1];
-                var PE_unidades = resultado[2];
-                var precio_V = resultado[3];
-                var costo_V = resultado[4];
-                var PE_pesos = resultado[5];
-                $("#precioVU").val(precio_VU);
-                $("#costoVU").val(costo_VU);
-                $("#PEU").val(PE_unidades);
-                $("#precioV").val(precio_V);
-                $("#costoV").val(costo_V);
-                $("#PEP").val(PE_pesos);
+
+                if (resultado.length > 0)
+                {
+                    var precio_VU = resultado[0];
+                    var costo_VU = resultado[1];
+                    var PE_unidades = resultado[2];
+                    var precio_V = resultado[3];
+                    var costo_V = resultado[4];
+                    var PE_pesos = resultado[5];
+                    $("#precioVU").val(create_format_coin(precio_VU));
+                    $("#costoVU").val(create_format_coin(costo_VU));
+                    $("#PEU").val(create_format_coin(PE_unidades));
+                    $("#precioV").val(create_format_coin(precio_V));
+                    $("#costoV").val(create_format_coin(costo_V));
+                    $("#PEP").val(create_format_coin(PE_pesos));
+                }
+                
 
             },
             error: function (result) {
@@ -805,7 +814,8 @@
         return parseFloat(cifra.replace(',', ""));
     }
     function create_format_coin(cifra) {
-        return cifra.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        var c = parseFloat(cifra);
+        return c.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
     }
 
 });

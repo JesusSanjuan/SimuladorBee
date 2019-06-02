@@ -22,7 +22,7 @@
                                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                                             </div>
                                             <input type="text"   class="form-control validacion" id="NombreUsuario" placeholder="Ingrese su usuario" autocomplete="off" style="cursor:pointer" required="required">
-                                            <div id="Nombval" class="invalid-feedback">
+                                            <div id="Nombval" class="invalid-tooltip">
                                                 Por favor ingrese su Usuario.
                                             </div>
                                             <div class="valid-feedback">                       
@@ -44,7 +44,7 @@
                                                 <span class="input-group-text"><i class="fas fa-unlock"></i></span>
                                             </div>
                                             <input type="Password"   class="form-control" id="Contrasena" placeholder="Ingrese su contraseña" autocomplete="off" style="cursor:pointer" required="required">
-                                            <div id="ContrVal" class="invalid-feedback">
+                                            <div id="ContrVal" class="invalid-tooltip">
                                                 Por favor ingrese su contraseña.
                                             </div>
                                             <div class="valid-feedback">                       

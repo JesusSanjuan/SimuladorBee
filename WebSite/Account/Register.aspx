@@ -29,33 +29,33 @@
 							        <div class="checkout_form_container checkout_form">
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="text" id="nick_name"  style="cursor:pointer" placeholder="Ingrese su Nick Name" class="checkout_input">
-                                                    <div id="nick_nameVal" class="invalid-feedback">
-                                                            Por favor ingrese su Usuario.
+										            <input type="text" id="nick_name"  style="cursor:pointer" placeholder="Ingrese su Nick Name" class="checkout_input validacion">
+                                                    <div id="nick_nameVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>
 									        </div>	
                                             <div class="row">
-										        <!-- Company -->
                                                 <div class="col-lg-12">
-										            <input type="text" id="name"  style="cursor:pointer" placeholder="Nombre" class="checkout_input">
+										            <input type="text" id="name"  style="cursor:pointer" placeholder="Nombre" class="checkout_input validacion2">
+                                                    <div id="nameVal" class="invalid-tooltip">
+                                                    </div>
                                                 </div>
 									        </div>	
 									        <div class="row" style="margin-bottom: 0px;">
 										        <div class="col-lg-6" style="margin-bottom: 20px;">
-											            <input type="text" id="AppPaterno" class="checkout_input" autocomplete="off" style="cursor:pointer" placeholder="Apellido Paterno" required="required">
-                                                        <div id="AppPatVal" class="invalid-feedback">
-                                                            Por favor ingrese su Usuario.
+											            <input type="text" id="AppPaterno" class="checkout_input validacion3" autocomplete="off" style="cursor:pointer" placeholder="Apellido Paterno" required="required">
+                                                        <div id="AppPatVal" class="invalid-tooltip">
                                                         </div>
 										        </div>
 										        <div class="col-lg-6" style="margin-bottom: 20px;">									        
-											            <input type="text" id="AppMaterno" class="checkout_input" autocomplete="off"  style="cursor:pointer" placeholder="Apellido Materno" required="required">
+											            <input type="text" id="AppMaterno" class="checkout_input validacion4" autocomplete="off"  style="cursor:pointer" placeholder="Apellido Materno" required="required">
+                                                        <div id="AppMatVal" class="invalid-tooltip">
+                                                        </div>
                                                 </div>
 									        </div>		
                                             <div class="row">
-										        <!-- Company -->
                                                 <div class="col-lg-12"> <!--https://www.ses.sep.gob.mx/instituciones.html-->
-										           <select name="checkout_country" id="Institucion" class="dropdown_item_select checkout_input"  style="cursor:pointer" require="required">
+										           <select name="checkout_country" id="Institucion" class="dropdown_item_select checkout_input"  style="cursor:pointer" required>
                                                     <option selected value="">Seleccione Institucion Educativa</option>
                                                     <optgroup label="Universidades Públicas Federales">
                                                         <option value="Universidad Nacional Autónoma de México (UNAM)">Universidad Nacional Autónoma de México (UNAM)</option>
@@ -104,12 +104,13 @@
                                                      </optgroup>  
                                                      <option value="Otro">Otro</option>
                                                    </select>
-                                                 </div>
+                                                    <div id="InstitucionVal" class="invalid-tooltip">
+                                                    </div>
+                                                </div>
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <!-- Country -->
-										            <select name="checkout_country" id="checkout_country" class="dropdown_item_select checkout_input"  style="cursor:pointer" require="required">
+										            <select name="checkout_country" id="country" class="dropdown_item_select checkout_input"  style="cursor:pointer" required>
 											            <option selected value="">Seleccione su pais</option>
                                                         <option value="AF">Afganistán</option>
                                                         <option value="AL">Albania</option>
@@ -346,36 +347,43 @@
                                                         <option value="ZM">Zambia</option>
                                                         <option value="ZW">Zimbabue</option>
 										            </select>
+                                                    <div id="countryVal" class="invalid-tooltip">
+                                                    </div>
                                                 </div>
 									        </div>	
                                              <div class="row" style="margin-bottom: 0px;">
 										        <div class="col-lg-6" style="margin-bottom: 20px;">
-											        <!-- Name -->
 											        <input type="password" id="password" class="checkout_input" autocomplete="off" style="cursor:pointer" placeholder="Ingrese su contraseña" required="required">
-                                                    <div id="passwVal" class="invalid-feedback">
-                                                        Por favor ingrese su Usuario.
+                                                    <div id="passwVal" class="invalid-tooltip">
+                                                    </div>
+                                                    <div id="passwValMod" class="invalid-tooltip">
                                                     </div>
 										        </div>
 										        <div class="col-lg-6" style="margin-bottom: 20px;">
-											        <!-- Last Name -->
-											        <input type="password" id="password_repit" class="checkout_input" autocomplete="off" style="cursor:pointer" placeholder="Repita su contraseña" required="required">
-										        </div>
-									        </div>	
-                                            <div class="row">
-                                                <div class="col-lg-12">
-										           <input type="phone" id="checkout_phone" class="checkout_input"  style="cursor:pointer" placeholder="Numero Telefonico" required="required">
+											        <input type="password" id="password_repit" class="checkout_input" autocomplete="off" style="cursor:pointer" placeholder="Repita su contraseña" required="required" readonly>
+										            <div id="password_repitVal" class="invalid-tooltip">
+                                                    </div>
                                                 </div>
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="phone" id="checkout_email" class="checkout_input"  style="cursor:pointer" placeholder="Correo Electronico" required="required">
+										           <input type="phone" id="phone" class="checkout_input validacion5"  style="cursor:pointer" placeholder="Numero Telefonico" required="required">
+                                                    <div id="phoneVal" class="invalid-tooltip">
+                                                    </div>
+                                                </div>
+									        </div>	
+                                            <div class="row">
+                                                <div class="col-lg-12">
+										            <input type="phone" id="email" class="checkout_input"  style="cursor:pointer" placeholder="Correo Electronico" required="required">
+                                                    <div id="emailVal" class="invalid-tooltip">
+                                                    </div>
                                                 </div>
 									        </div>		
                                             <div class="checkout_extra">
 											        <li class="billing_info d-flex flex-row align-items-center justify-content-start">
 												        <label class="checkbox_container">
 													        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox">
-													        <span class="checkbox_mark"></span>
+													        <span class="checkbox_mark" id="cb_2"></span>
 													        <span class="checkbox_text">Terminos y Condiciones</span>
 												        </label>
 											        </li>

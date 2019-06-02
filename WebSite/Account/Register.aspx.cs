@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.UI;
 using WebSite;
 using System.Web.Services;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 public partial class Account_Register : Page
@@ -30,10 +31,20 @@ public partial class Account_Register : Page
     {
         // Validacion del usario
         var db = new Entidades();   /* Crear la instancia a las tablas de la BD */
+        var consulta = db.AspNetUsers
+                          .Where(s => s.UserName == NickName);
+
+        List<string> result_nick = new List<string>();
+
+        foreach (AspNetUsers Nick in consulta)
+        {
+            result_nick.Add(Nick.UserName);
+        }
+
 
         //var consulta1 = db.AspNetUsers.OrderByDescending(indice => indice.);
 
-        String json = null; //= JsonConvert.SerializeObject(veredicto);
+        String json = JsonConvert.SerializeObject(result_nick);
         return json;
     }
 

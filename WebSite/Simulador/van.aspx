@@ -38,10 +38,10 @@
                                                         <div class="input-group-append">                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Es aquel gasto monetario realizado para la compra de los activos fijos y diferidos necesarios para comenzar el proyecto, pero que no incluyen el capital de trabajo." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
-                                                        <div id="Inversionval" class="invalid-feedback"> 
+                                                        <div id="Inversionval" class="invalid-tooltip"> 
                                                             Por favor ingrese la inversion.
                                                         </div>
-                                                        <div class="valid-feedback">
+                                                        <div class="valid-tooltip">
                                                         </div>                   
                                                   </div> 
 
@@ -57,10 +57,10 @@
                                                         <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Describe los movimientos de efectivo (ingresos y gastos) en un periodo determinado." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                                         </div>
-                                                       <div id="FNEval" class="invalid-feedback">
+                                                       <div id="FNEval" class="invalid-tooltip">
                                                           Por favor ingrese el FNE.
                                                         </div>
-                                                        <div class="valid-feedback">                       
+                                                        <div class="valid-tooltip">                       
                                                         </div>
                                                   </div>  
                                         </div>
@@ -76,10 +76,10 @@
                                                        <div class="input-group-append"  >                                                             
                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div> 
-                                                       <div id="VdSval"class="invalid-feedback">
+                                                       <div id="VdSval"class="invalid-tooltip">
                                                           Por favor ingrese el valor de salvamento
                                                        </div>
-                                                       <div class="valid-feedback">
+                                                       <div class="valid-tooltip">
                        
                                                        </div>
                                                   </div>
@@ -92,10 +92,10 @@
                                                           <span class="input-group-text" id="inputGroupPrepend3">%</span>
                                                           <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content=" TMAR (Tasa Mínima Aceptable de Rendimiento): es la tasa de ganancia anual que solicita ganar el inversionista para llevar a cabo la instalación y operación de la empresa." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                        </div>
-                                                        <div  id="TMARval"class="invalid-feedback">
+                                                        <div  id="TMARval"class="invalid-tooltip">
                                                           Por favor ingrese el valor de TMAR
                                                         </div>
-                                                        <div class="valid-feedback">                       
+                                                        <div class="valid-tooltip">                       
                                                         </div>
                                               </div> 
                                           </div> 
@@ -119,9 +119,9 @@
                                                                      <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el períodos de tiempo que se adecue mas a tu proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                       </div>                                                       
                                                     </div>
-                                                    <div id="selectval" class="invalid-feedback">                                                               
+                                                    <div id="selectval" class="invalid-tooltip">                                                               
                                                     </div>
-                                                    <div class="valid-feedback">
+                                                    <div class="valid-tooltip">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 mb-2"> 
@@ -131,9 +131,9 @@
                                                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="1,2...n: Numero de periodos de vida util del proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                                                            </div>                                                         
                                                       </div>
-                                                      <div id="nval" class="invalid-feedback">                                                               
+                                                      <div id="nval" class="invalid-tooltip">                                                               
                                                       </div>
-                                                      <div class="valid-feedback">
+                                                      <div class="valid-tooltip">
                                                       </div>
                                                 </div>
                                             </div>

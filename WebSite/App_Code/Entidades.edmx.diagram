@@ -29,6 +29,13 @@
         <EntityTypeShape EntityType="Model.Punto_Equilibrio" Width="1.5" PointX="3.375" PointY="0.625" />
         <AssociationConnector Association="Model.FK_Inflacion_Proyecto" />
         <AssociationConnector Association="Model.FK_Punto_Equilibrio_Proyecto" />
+        <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Model.AspNetRoles" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaims" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogins" Width="1.5" PointX="3" PointY="15.875" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Model.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

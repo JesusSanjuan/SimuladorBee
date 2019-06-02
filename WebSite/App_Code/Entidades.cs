@@ -28,12 +28,49 @@ public partial class Amortizacion_pro
     public virtual Proyecto Proyecto { get; set; }
 }
 
+public partial class AspNetRoles
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public AspNetRoles()
+    {
+        this.AspNetUsers = new HashSet<AspNetUsers>();
+    }
+
+    public string Id { get; set; }
+    public string Name { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
+}
+
+public partial class AspNetUserClaims
+{
+    public int Id { get; set; }
+    public string UserId { get; set; }
+    public string ClaimType { get; set; }
+    public string ClaimValue { get; set; }
+
+    public virtual AspNetUsers AspNetUsers { get; set; }
+}
+
+public partial class AspNetUserLogins
+{
+    public string LoginProvider { get; set; }
+    public string ProviderKey { get; set; }
+    public string UserId { get; set; }
+
+    public virtual AspNetUsers AspNetUsers { get; set; }
+}
+
 public partial class AspNetUsers
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public AspNetUsers()
     {
         this.Proyecto = new HashSet<Proyecto>();
+        this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
+        this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
+        this.AspNetRoles = new HashSet<AspNetRoles>();
     }
 
     public string Id { get; set; }
@@ -48,9 +85,28 @@ public partial class AspNetUsers
     public bool LockoutEnabled { get; set; }
     public int AccessFailedCount { get; set; }
     public string UserName { get; set; }
+    public string Name { get; set; }
+    public string Apellido_Pat { get; set; }
+    public string Apellido_Mat { get; set; }
+    public string Institucion { get; set; }
+    public string Pais { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Proyecto> Proyecto { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
+}
+
+public partial class C__MigrationHistory
+{
+    public string MigrationId { get; set; }
+    public string ContextKey { get; set; }
+    public byte[] Model { get; set; }
+    public string ProductVersion { get; set; }
 }
 
 public partial class Costos_cat

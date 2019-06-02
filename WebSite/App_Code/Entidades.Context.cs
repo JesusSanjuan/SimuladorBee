@@ -10,6 +10,8 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
+using System.Linq;
 
 public partial class Entidades : DbContext
 {
@@ -37,4 +39,25 @@ public partial class Entidades : DbContext
     public virtual DbSet<Indicadores> Indicadores { get; set; }
     public virtual DbSet<Inflacion> Inflacion { get; set; }
     public virtual DbSet<Punto_Equilibrio> Punto_Equilibrio { get; set; }
+    public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+    public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+    public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+    public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+
+    public virtual int InsertarCosto(string concepto, Nullable<decimal> costo, string tipo)
+    {
+        var conceptoParameter = concepto != null ?
+            new ObjectParameter("Concepto", concepto) :
+            new ObjectParameter("Concepto", typeof(string));
+
+        var costoParameter = costo.HasValue ?
+            new ObjectParameter("Costo", costo) :
+            new ObjectParameter("Costo", typeof(decimal));
+
+        var tipoParameter = tipo != null ?
+            new ObjectParameter("Tipo", tipo) :
+            new ObjectParameter("Tipo", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertarCosto", conceptoParameter, costoParameter, tipoParameter);
+    }
 }

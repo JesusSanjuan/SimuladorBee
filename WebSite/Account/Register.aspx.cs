@@ -8,44 +8,72 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 public partial class Account_Register : Page
-{
-    /*protected void CreateUser_Click(object sender, EventArgs e)
-    {
-        var manager = new UserManager();
-        var user = new ApplicationUser() { UserName = UserName.Text };
-        IdentityResult result = manager.Create(user, Password.Text);
-        if (result.Succeeded)
-        {
-            IdentityHelper.SignIn(manager, user, isPersistent: false);
-            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-        }
-        else
-        {
-
-            ErrorMessage.Text = result.Errors.FirstOrDefault();
-        }
-    }*/
-
+{  
     [WebMethod]
     public static string Nick(string NickName)
     {
-        // Validacion del usario
-        var db = new Entidades();   /* Crear la instancia a las tablas de la BD */
-        var consulta = db.AspNetUsers
-                          .Where(s => s.UserName == NickName);
-
+        var db = new Entidades();
+        var consulta = db.AspNetUsers.Where(s => s.UserName == NickName);
         List<string> result_nick = new List<string>();
-
         foreach (AspNetUsers Nick in consulta)
         {
             result_nick.Add(Nick.UserName);
         }
-
-
-        //var consulta1 = db.AspNetUsers.OrderByDescending(indice => indice.);
-
         String json = JsonConvert.SerializeObject(result_nick);
         return json;
     }
 
+    [WebMethod]
+    public static string Email(string Mail)
+    {
+        var db = new Entidades();
+        var consulta = db.AspNetUsers.Where(s => s.Email == Mail);
+        List<string> result_email = new List<string>();
+        foreach (AspNetUsers Email in consulta)
+        {
+            result_email.Add(Email.Email);
+        }
+        String json = JsonConvert.SerializeObject(result_email);
+        return json;
+    }
+
+    [WebMethod]
+    public static string Registro(string NickS, string nameS, string AppPaternS, string AppMaterS, string InstitucS, string countrS, string passwoS, string phoS, string emaiS)
+    {
+        Boolean correcto = false;
+        System.Collections.ArrayList veredicto = new System.Collections.ArrayList();
+        var manager = new UserManager();
+        var user = new ApplicationUser() { UserName = NickS };
+        IdentityResult result = manager.Create(user, passwoS);
+        try
+        {
+            var db = new Entidades();
+            var reg = db.AspNetUsers.FirstOrDefault(x => x.UserName == NickS);
+            reg.Name = nameS;
+            reg.Apellido_Pat = AppPaternS;
+            reg.Apellido_Mat = AppMaterS;
+            reg.Institucion = InstitucS;
+            reg.Pais = countrS;
+            reg.PhoneNumber = phoS;
+            reg.Email = emaiS;
+            db.SaveChanges();
+            correcto = true;
+        }
+        catch(Exception e)
+        {
+            correcto = false;
+        }
+
+        if (result.Succeeded && correcto)
+        {
+            IdentityHelper.SignIn(manager, user, isPersistent: false);
+            veredicto.Add("SI");
+        }
+        else
+        {
+            veredicto.Add("NO");
+        }
+        String json =JsonConvert.SerializeObject(veredicto);
+        return json;
+    }
 }

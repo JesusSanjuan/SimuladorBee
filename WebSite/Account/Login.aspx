@@ -114,7 +114,6 @@
                         <div class="col-3" id="imgmodal"><img src="../multimedia/alerta.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
                         <div class="col-9" id="texmodal"><strong style='vertical-align: middle;'>Usuario  invalido o contraseña incorrecta.</strong></div>                                                                        
                 </div>
-                <audio id="audio" style="display:none" controls> </audio > 
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">

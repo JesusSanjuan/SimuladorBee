@@ -24,9 +24,9 @@ $('#nick_name').keyup(function (event) {
         $("#nick_name").addClass("is-invalidado");
         $('#nick_nameVal').text('Por favor igrese su nick-name');
         $('#nick_nameVal').show();
+        nameNick1 = false;
     } else {
         if (nameNick.length >= 4) {
-
             $.ajax({
                 type: "POST",
                 url: "Register.aspx/Nick",
@@ -40,6 +40,7 @@ $('#nick_name').keyup(function (event) {
                         $("#nick_name").removeClass("is-invalidado");
                         $("#nick_name").addClass("is-validado");
                         $('#nick_nameVal').hide();
+                        nameNick1 = true;
                     }
                     else { 
                         $("#nick_nameVal").addClass("invalid-tooltip");
@@ -47,8 +48,8 @@ $('#nick_name').keyup(function (event) {
                         $("#nick_name").addClass("is-invalidado");
                         $('#nick_nameVal').text('El nick-name ya se encuentra en uso');
                         $('#nick_nameVal').show();
-                    }
-                   
+                        nameNick1 = false;
+                    }                   
                 },
                 error: function (err) {
                     console.log(err);
@@ -68,6 +69,7 @@ $('#nick_name').keyup(function (event) {
             $("#nick_name").addClass("is-invalidado");
             $('#nick_nameVal').text('El nick-name de usuario es muy corto');
             $('#nick_nameVal').show();
+            nameNick1 = false;
         }
     }
 });
@@ -93,18 +95,21 @@ $('#name').keyup(function (event) {
         $("#name").addClass("is-invalidado");
         $('#nameVal').text('Por favor igrese su nombre');
         $('#nameVal').show();
+        name1 = false;
     } else {
         if (name.length >= 4) {
             $("#name").removeClass("is-invalidado");
             $("#name").addClass("is-validado");
             $('#nameVal').hide();
+            name1 = true;
         }
         else {
             $("#nameVal").addClass("invalid-tooltip");
             $("#name").removeClass("is-validado");
             $("#name").addClass("is-invalidado");
             $('#nameVal').text('El nombre de usuario es muy corto');
-            $('#nameVal').show();          
+            $('#nameVal').show();    
+            name1 = false;
         }
     }
 });
@@ -128,13 +133,15 @@ $('#AppPaterno').keyup(function (event) {
         $("#AppPatVal").addClass("invalid-tooltip");
         $("#AppPaterno").removeClass("is-validado");
         $("#AppPaterno").addClass("is-invalidado");
-        $('#AppPatVal').text('Por favor igrese su nombre');
+        $('#AppPatVal').text('Por favor igrese su apellido paterno');
         $('#AppPatVal').show();
+        AppPatern1 = false;
     } else {
         if (AppPatern.length >= 4) {
             $("#AppPaterno").removeClass("is-invalidado");
             $("#AppPaterno").addClass("is-validado");
             $('#AppPatVal').hide();
+            AppPatern1 = true;
         }
         else {
             $("#AppPatVal").addClass("invalid-tooltip");
@@ -142,6 +149,7 @@ $('#AppPaterno').keyup(function (event) {
             $("#AppPaterno").addClass("is-invalidado");
             $('#AppPatVal').text('El apellido es muy corto');
             $('#AppPatVal').show();
+            AppPatern1 = false;
         }
     }
 });
@@ -164,13 +172,15 @@ $('#AppMaterno').keyup(function (event) {
         $("#AppMatVal").addClass("invalid-tooltip");
         $("#AppMaterno").removeClass("is-validado");
         $("#AppMaterno").addClass("is-invalidado");
-        $('#AppMatVal').text('Por favor igrese su nombre');
+        $('#AppMatVal').text('Por favor igrese su apellido materno');
         $('#AppMatVal').show();
+        AppMater1 = false;
     } else {
         if (AppMater.length >= 4) {
             $("#AppMaterno").removeClass("is-invalidado");
             $("#AppMaterno").addClass("is-validado");
             $('#AppMatVal').hide();
+            AppMater1 = true;
         }
         else {
             $("#AppMatVal").addClass("invalid-tooltip");
@@ -178,6 +188,7 @@ $('#AppMaterno').keyup(function (event) {
             $("#AppMaterno").addClass("is-invalidado");
             $('#AppMatVal').text('El apellido es muy corto');
             $('#AppMatVal').show();
+            AppMater1 = false;
         }
     }
 });
@@ -190,13 +201,15 @@ $("#Institucion").change(function () {
         $("#InstitucionVal").addClass("invalid-tooltip");
         $("#Institucion").removeClass("is-validado");
         $("#Institucion").addClass("is-invalidado");
-        $('#InstitucionVal').text('Por seleccione una institucion');
+        $('#InstitucionVal').text('Por favor seleccione una institucion');
         $('#InstitucionVal').show();
+        Instituc1 = false;
     }
     else {
         $("#Institucion").removeClass("is-invalidado");
         $("#Institucion").addClass("is-validado");
         $('#InstitucionVal').hide();
+        Instituc1 = true;
     }
 });
 /*Validacion de Institucion*/
@@ -208,13 +221,15 @@ $("#country").change(function () {
         $("#countryVal").addClass("invalid-tooltip");
         $("#country").removeClass("is-validado");
         $("#country").addClass("is-invalidado");
-        $('#countryVal').text('Por seleccione su pais');
+        $('#countryVal').text('Por favor seleccione su pais');
         $('#countryVal').show();
+        countr1 = false;
     }
     else {
         $("#country").removeClass("is-invalidado");
         $("#country").addClass("is-validado");
         $('#countryVal').hide();
+        countr1 = true;
     }
 });
 /*Validacion de Pais*/
@@ -242,7 +257,7 @@ $('#password').keyup(function (event) {
             $("#password_repit").addClass("is-invalidado");
             $('#password_repitVal').text('Por favor repita su contraseña');
             $('#password_repitVal').show();     
-            $("#password").prop('readonly', true);  
+           // 
         }
         else {
             $("#passwVal").addClass("invalid-tooltip");
@@ -256,11 +271,13 @@ $('#password').keyup(function (event) {
 });
 
 
+
 $('#password').click(function (event) {
     var password_rep = $("#password_repit").val();
     if (password_rep > 0) {
-        $('#passwValMod').text('Para modificar borre completamente la repeticion de contraseña');
+        $('#passwValMod').text('Para modificar borre completamente la confirmacion de contraseña');
         $('#passwValMod').show();
+        password_rep1 = false;
     }
 });
 $('#password_repit').keyup(function (event) {
@@ -270,22 +287,26 @@ $('#password_repit').keyup(function (event) {
         $("#password_repitVal").addClass("invalid-tooltip");
         $("#password_repit").removeClass("is-validado");
         $("#password_repit").addClass("is-invalidado");
-        $('#password_repitVal').text('Por favor igrese su contraseña de nuevo');
+        $('#password_repitVal').text('Por favor repita su contraseña');
         $('#password_repitVal').show();
         $("#password").prop('readonly', false);  
         $('#passwValMod').hide();
+        password_rep1 = false;
     } else {
+        $("#password").prop('readonly', true);  
         if (password_rep.length >= 6) {
             if (passwo === password_rep) {
                 $("#password_repit").removeClass("is-invalidado");
                 $("#password_repit").addClass("is-validado");
                 $('#password_repitVal').hide();
+                password_rep1 = true;
             }
             else {
                 $("#password_repit").removeClass("is-validado");
                 $("#password_repit").addClass("is-invalidado");
                 $('#password_repitVal').text('Las contraseña no coinciden');
                 $('#password_repitVal').show();
+                password_rep1 = false;
             }           
         }
         else {
@@ -294,6 +315,7 @@ $('#password_repit').keyup(function (event) {
             $("#password_repit").addClass("is-invalidado");
             $('#password_repitVal').text('La contraseña es muy corta');
             $('#password_repitVal').show();
+            password_rep1 = false;
         }
     }
 });
@@ -317,11 +339,13 @@ $('#phone').keyup(function (event) {
         $("#phone").addClass("is-invalidado");
         $('#phoneVal').text('Por favor igrese su numero telefonico');
         $('#phoneVal').show();
+        pho1 = false;
     } else {
         if (pho.length >= 10 && pho.length <= 10 ) {
             $("#phone").removeClass("is-invalidado");
             $("#phone").addClass("is-validado");
             $('#phoneVal').hide();
+            pho1 = true;
         }
         else {
             $("#phoneVal").addClass("invalid-tooltip");
@@ -329,6 +353,7 @@ $('#phone').keyup(function (event) {
             $("#phone").addClass("is-invalidado");
             $('#phoneVal').text('Longitud incorrecta');
             $('#phoneVal').show();
+            pho1 = false;
         }
     }
 });
@@ -344,17 +369,51 @@ $('#email').keyup(function (event) {
         $("#email").addClass("is-invalidado");
         $('#emailVal').text('Por favor igrese su correo');
         $('#emailVal').show();
+        emai1 = false;
     } else {
         if (regex.test($('#email').val().trim())) {
-            $("#email").removeClass("is-invalidado");
-            $("#email").addClass("is-validado");
-            $('#emailVal').hide();
+            $.ajax({
+                type: "POST",
+                url: "Register.aspx/Email",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: true,
+                data: JSON.stringify({ Mail: emai }),
+                success: function (data) {
+                    var valores = JSON.parse(data.d);
+                    if (valores.length === 0) {
+                       $("#email").removeClass("is-invalidado");
+                       $("#email").addClass("is-validado");
+                       $('#emailVal').hide();
+                       emai1 = true;
+                    }
+                    else {
+                        $("#emailVal").addClass("invalid-tooltip");
+                        $("#email").removeClass("is-validado");
+                        $("#email").addClass("is-invalidado");
+                        $('#emailVal').text('El correo ya se encuentra en uso');
+                        $('#emailVal').show();
+                        emai1 = false;
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                    console.log(err.responseText);
+                }
+            }).done(function (data) {
+
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            }).always(function () {
+            }).then(function (data) {
+            });
         } else {
             $("#emailVal").addClass("invalid-tooltip");
             $("#email").removeClass("is-validado");
             $("#email").addClass("is-invalidado");
             $('#emailVal').text('Correo Incorrecto');
             $('#emailVal').show();
+            emai1 = false;
         }
     }
 });
@@ -368,8 +427,167 @@ $("#registro").click(function () {
     var AppMater = $("#AppMaterno").val();
     var Instituc = $("#Institucion").val();
     var countr = $("#country").val();
+    var passwo = $("#password").val();
     var password_rep = $("#password_repit").val();
     var pho = $("#phone").val();
     var emai = $("#email").val();
+
+    if (nameNick.length === 0) {
+        $("#nick_nameVal").addClass("invalid-tooltip");
+        $("#nick_name").removeClass("is-validado");
+        $("#nick_name").addClass("is-invalidado");
+        $('#nick_nameVal').text('Por favor igrese su nick-name');
+        $('#nick_nameVal').show();
+        nameNick2 = false;
+    } else {
+        nameNick2 = true;
+    }
+
+    if (name.length === 0) {
+        $("#nameVal").addClass("invalid-tooltip");
+        $("#name").removeClass("is-validado");
+        $("#name").addClass("is-invalidado");
+        $('#nameVal').text('Por favor igrese su nombre');
+        $('#nameVal').show();
+        name2 = false;
+    } else {
+        name2 = true;
+    }
+
+    if (AppPatern.length === 0) {
+        $("#AppPatVal").addClass("invalid-tooltip");
+        $("#AppPaterno").removeClass("is-validado");
+        $("#AppPaterno").addClass("is-invalidado");
+        $('#AppPatVal').text('Por favor igrese su apellido paterno');
+        $('#AppPatVal').show();
+        AppPatern2 = false;
+    } else {
+        AppPatern2 = true;
+    }
+
+    if (AppMater.length === 0) {
+        $("#AppMatVal").addClass("invalid-tooltip");
+        $("#AppMaterno").removeClass("is-validado");
+        $("#AppMaterno").addClass("is-invalidado");
+        $('#AppMatVal').text('Por favor igrese su apellido materno');
+        $('#AppMatVal').show();
+        AppMater2 = false;
+    } else {
+        AppMater2 = true;
+    }
+
+    if (Instituc.length === 0) {
+        $("#InstitucionVal").addClass("invalid-tooltip");
+        $("#Institucion").removeClass("is-validado");
+        $("#Institucion").addClass("is-invalidado");
+        $('#InstitucionVal').text('Por favor seleccione una institucion');
+        $('#InstitucionVal').show();
+        Instituc2 = false;
+    }
+    else {
+        Instituc2 = true;
+    }
+
+    if (countr.length === 0) {
+        $("#countryVal").addClass("invalid-tooltip");
+        $("#country").removeClass("is-validado");
+        $("#country").addClass("is-invalidado");
+        $('#countryVal').text('Por favor seleccione su pais');
+        $('#countryVal').show();
+        countr2 = false;
+    }
+    else {
+        $("#country").removeClass("is-invalidado");
+        $("#country").addClass("is-validado");
+        $('#countryVal').hide();
+        countr2 = true;
+    }
+    
+    if (passwo.length === 0) {
+        $("#passwVal").addClass("invalid-tooltip");
+        $("#password").removeClass("is-validado");
+        $("#password").addClass("is-invalidado");
+        $('#passwVal').text('Por favor igrese su contraseña');
+        $('#passwVal').show();
+        $("#password_repit").prop('readonly', true);
+        $("#password_repit").removeClass("is-invalidado");
+        $('#password_repitVal').hide();
+        password_rep2 = false;
+    } else {
+        password_rep2 = true;
+    }
+
+    if (password_rep.length === 0) {
+        $("#password_repitVal").addClass("invalid-tooltip");
+        $("#password_repit").removeClass("is-validado");
+        $("#password_repit").addClass("is-invalidado");
+        $('#password_repitVal').text('Por favor repita su contraseña');
+        $('#password_repitVal').show();
+        $("#password").prop('readonly', false);
+        $('#passwValMod').hide();
+        password_rep2 = false;
+    } else {
+        password_rep2 = true;
+    }
+
+    if (pho.length === 0) {
+        $("#phoneVal").addClass("invalid-tooltip");
+        $("#phone").removeClass("is-validado");
+        $("#phone").addClass("is-invalidado");
+        $('#phoneVal').text('Por favor igrese su numero telefonico');
+        $('#phoneVal').show();
+        pho2= false;
+    } else {
+        pho2 = true;
+    }
+
+    if (emai.length === 0) {
+        $("#emailVal").addClass("invalid-tooltip");
+        $("#email").removeClass("is-validado");
+        $("#email").addClass("is-invalidado");
+        $('#emailVal').text('Por favor igrese su correo');
+        $('#emailVal').show();
+        emai2 = false;
+    } else {
+        emai2 = true;
+    }
+
+    if (nameNick1 === true && name1 === true && AppPatern1 === true && AppMater1 === true && Instituc1 === true && countr1 === true && password_rep1 === true && pho1 === true && emai1 === true && nameNick2 === true && name2 === true && AppPatern2 === true && AppMater2 === true && Instituc2 === true && countr2 === true && password_rep2 === true && pho2 === true && emai2 === true) 
+    {
+        $.ajax({
+            type: "POST",
+            url: "Register.aspx/Registro",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: true,
+            data: JSON.stringify({ NickS: nameNick, nameS: name, AppPaternS: AppPatern, AppMaterS: AppMater, InstitucS: Instituc, countrS: countr, passwoS: passwo, phoS: pho, emaiS: emai }),
+            success: function (data) {
+                var valores = JSON.parse(data.d); 
+                if (valores[0] === "NO") {
+                    $('#modalRegistro').modal({ show: true });                    
+                } else {
+                    $('#modalRegistrook').modal({ show: true });                   
+                }
+            },
+            error: function (err) {
+                console.log(err);
+                console.log(err.responseText);
+            }
+        }).done(function (data) {
+
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        }).always(function () {
+        }).then(function (data) {
+        });
+    }
+
+
+    $("#modalRegistrook").on('hide.bs.modal', function () {
+        location.href = "../";
+    });
+    $("#modalok").click(function () {
+        location.href = "../";
+    });
 });
 /*Accion de boton*/

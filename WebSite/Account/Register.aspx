@@ -29,14 +29,14 @@
 							        <div class="checkout_form_container checkout_form">
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="text" id="nick_name"  style="cursor:pointer" placeholder="Ingrese su Nick Name" class="checkout_input validacion">
+										            <input type="text" id="nick_name"  style="cursor:pointer" autocomplete="off" placeholder="Ingrese su Nick Name" class="checkout_input validacion">
                                                     <div id="nick_nameVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="text" id="name"  style="cursor:pointer" placeholder="Nombre" class="checkout_input validacion2">
+										            <input type="text" id="name"  style="cursor:pointer" autocomplete="off" placeholder="Nombre" class="checkout_input validacion2">
                                                     <div id="nameVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>
@@ -367,14 +367,14 @@
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										           <input type="phone" id="phone" class="checkout_input validacion5"  style="cursor:pointer" placeholder="Numero Telefonico" required="required">
+										           <input type="text" id="phone" class="checkout_input validacion5" autocomplete="off" style="cursor:pointer" placeholder="Numero Telefonico" required="required">
                                                     <div id="phoneVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="phone" id="email" class="checkout_input"  style="cursor:pointer" placeholder="Correo Electronico" required="required">
+										            <input type="text" id="email" class="checkout_input" autocomplete="off"  style="cursor:pointer" placeholder="Correo Electronico" required="required">
                                                     <div id="emailVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>
@@ -382,7 +382,7 @@
                                             <div class="checkout_extra">
 											        <li class="billing_info d-flex flex-row align-items-center justify-content-start">
 												        <label class="checkbox_container">
-													        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox">
+													        <input type="checkbox" id="cb_1" name="billing_checkbox" class="billing_checkbox" required>
 													        <span class="checkbox_mark" id="cb_2"></span>
 													        <span class="checkbox_text">Terminos y Condiciones</span>
 												        </label>
@@ -408,7 +408,55 @@
                     </div>					
 				</div>
 			</div>
-   </div>   
+   </div> 
+    <!-- Registro Modal ok-->
+    <div class="modal fade" id="modalRegistrook" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+    <div class="modal-dialog">
+        <div class="modal-content">      
+            <!-- Modal Header -->
+            <div class="modal-header">
+                    <h4 class="modal-title bounce animated" id="modalheaderok" > <i class="fa fa-check-square-o"></i>Existo</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>        
+            <!-- Modal body -->
+            <div class="modal-body" id="modal-text-bodyok" >    
+                <div class="row">
+                        <div class="col-3" id="imgmodalok"><img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
+                        <div class="col-9" id="texmodalok"><strong style='vertical-align: middle;'>El registro se a realizado con exito.</strong></div>                                                                        
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="modalok">Aceptar</button>   
+            </div>
+        </div>
+        </div>
+    </div> 
+    <!-- Registro Modal ok-->
+    <!-- Registro Modal-->
+    <div class="modal fade" id="modalRegistro" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+    <div class="modal-dialog">
+        <div class="modal-content">      
+            <!-- Modal Header -->
+            <div class="modal-header">
+                    <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i>Error</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>        
+            <!-- Modal body -->
+            <div class="modal-body" id="modal-text-body" >    
+                <div class="row">
+                        <div class="col-3" id="imgmodal"><img src="../multimedia/alerta.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
+                        <div class="col-9" id="texmodal"><strong style='vertical-align: middle;'>El registro fallo, intente mas tarde.</strong></div>                                                                        
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Aceptar</button>   
+            </div>
+        </div>
+        </div>
+    </div> 
+    <!-- Registro Modal -->
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">

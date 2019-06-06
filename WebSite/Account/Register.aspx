@@ -6,7 +6,7 @@
     <div class="home">
 			<div class="home_container d-flex flex-column align-items-center justify-content-end">
 				<div class="home_content text-center">
-					<div class="home_title"><i class="fas fa-user-edit"></i>Registro de Usuario en SimuladorBee.xyz</div>
+					<div class="home_title"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Registro de Usuario en SimuladorBee.xyz</div>
 					<div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
 						<ul class="d-flex flex-row align-items-start justify-content-start text-center">
 							<li><a href="../Default">Inicio</a></li>
@@ -22,7 +22,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9" style="padding-right: 1px; padding-left: 1px;">
-					       <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crea tu cuenta personal</h4>
+					       <h4>Crea tu cuenta personal</h4>
                             <hr />
 						        <div class="billing">
 							        <div class="checkout_title">Ingresa la siguiente informacion</div>

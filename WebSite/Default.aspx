@@ -19,7 +19,7 @@
                                             Un proyecto es la búsqueda de una solución inteligente, al planteamiento de un problema tendente a resolver una necesidad humana.
                                         </p>
                                         <p>
-                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://nodo.ugto.mx/course/unidad-de-aprendizaje-administracion-de-negocios">Aprende mas »</a>
+                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="https://nodo.ugto.mx/course/unidad-de-aprendizaje-administracion-de-negocios" target="_blank">Aprende mas »</a>
                                         </p>
                                     </div>
                                     <div class="col-md-4">
@@ -28,7 +28,7 @@
                                             Al contar con una herramienta se nos permite numéricamente y con precisión, determinar qué tan rentable es un proyecto en relación con un parámetro o de referencia ya conocida.
                                         </p>
                                         <p>
-                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://localhost:52712/About">Aprende mas »</a>
+                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://localhost:52712/About" target="_blank">Aprende mas »</a>
                                         </p>
                                     </div>
                                     <div class="col-md-4">
@@ -39,7 +39,7 @@
                                             ― Larry Page</p> 
                                         </p> 
                                         <p>
-                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://www.fondos.guanajuato.gob.mx/fondosgto/">Aprende mas »</a>
+                                            <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://www.fondos.guanajuato.gob.mx/fondosgto/" target="_blank">Aprende mas »</a>
                                         </p>
                                     </div>
                     </div>

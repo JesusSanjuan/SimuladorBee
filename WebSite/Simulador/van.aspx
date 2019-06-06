@@ -1,6 +1,6 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="van.aspx.cs" Inherits="User_van" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-        <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
          <link href="../Content/bootstrap-select.css" rel="stylesheet" />
          <link href="../Content/Precarga/load-van.css" rel="stylesheet" />
 </asp:Content>
@@ -40,11 +40,8 @@
                                                         </div>
                                                         <div id="Inversionval" class="invalid-tooltip"> 
                                                             Por favor ingrese la inversion.
-                                                        </div>
-                                                        <div class="valid-tooltip">
-                                                        </div>                   
+                                                        </div>                 
                                                   </div> 
-
                                         </div>
                                         <div class="col-md-3 mb-2">
                                           <label for="validationCustom02">Flujo Neto de Efectivo</label>
@@ -59,8 +56,6 @@
                                                         </div>
                                                        <div id="FNEval" class="invalid-tooltip">
                                                           Por favor ingrese el FNE.
-                                                        </div>
-                                                        <div class="valid-tooltip">                       
                                                         </div>
                                                   </div>  
                                         </div>
@@ -79,9 +74,6 @@
                                                        <div id="VdSval"class="invalid-tooltip">
                                                           Por favor ingrese el valor de salvamento
                                                        </div>
-                                                       <div class="valid-tooltip">
-                       
-                                                       </div>
                                                   </div>
                                         </div>
                                           <div class="col-md-3 mb-2">
@@ -94,8 +86,6 @@
                                                        </div>
                                                         <div  id="TMARval"class="invalid-tooltip">
                                                           Por favor ingrese el valor de TMAR
-                                                        </div>
-                                                        <div class="valid-tooltip">                       
                                                         </div>
                                               </div> 
                                           </div> 
@@ -121,8 +111,6 @@
                                                     </div>
                                                     <div id="selectval" class="invalid-tooltip">                                                               
                                                     </div>
-                                                    <div class="valid-tooltip">
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 mb-2"> 
                                                       <div class="input-group" style="cursor:default">                                                            
@@ -133,17 +121,12 @@
                                                       </div>
                                                       <div id="nval" class="invalid-tooltip">                                                               
                                                       </div>
-                                                      <div class="valid-tooltip">
-                                                      </div>
                                                 </div>
                                             </div>
                                            </div>     
                                           <div class="col-md-6 mb-2">                                              
                                           </div>
-                          </div>
-
-     
-
+                         </div>
                         <div class="form-row">  
                             <div class="col-md-4 mb-2">
                             </div>  

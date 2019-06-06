@@ -96,24 +96,26 @@
              </div>        
        </div>
         <!--Footer-->
-        <footer class="footer" data-anijs="if:load, on:window, do: fadeInRightBig animated, before: scrollReveal, after: removeAnim">
+        <footer class="footer" data-anijs="if:load, on:window, do: fadeInRightBig animated, before: scrollReveal, after: removeAnim" >            
 			<div class="footer_content">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-4 footer_col">
-							<div class="footer_about">
-								<div class="footer_logo">
-									<a href="Default">
-										<div class="d-flex flex-row align-items-center justify-content-start">
-											<div class="footer_logo_icon"> <img src="favicon.ico" width="90" height="90"  class="img-fluid" alt="Responsive image" /></div>
-											<div>Simulador Bee</div>
-										</div>
-									</a>		
-								</div>
-								<div class="footer_about_text">
-									<p>Aplicacion desarrollada para el aprendizaje de Negocios, Tecnologia .NET.</p>
-								</div>
-							</div>
+                            <div style="margin-left:40px;margin-right:0px">
+							    <div class="footer_about">
+								    <div class="footer_logo">
+									    <a href="Default">
+										    <div class="d-flex flex-row align-items-center justify-content-start">
+											    <div class="footer_logo_icon"> <img src="favicon.ico" width="90" height="90"  class="img-fluid" alt="Responsive image" /></div>
+											    <div>Simulador Bee</div>
+										    </div>
+									    </a>		
+								    </div>
+								    <div class="footer_about_text">
+									    <p>Aplicacion desarrollada para el aprendizaje de Negocios, Tecnologia .NET.</p>
+								    </div>
+							    </div>
+                            </div>
 						</div>
 						<div class="col-lg-4 footer_col">
 							<div class="footer_menu">
@@ -166,7 +168,7 @@
 						<div class="col">
 							<div class="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
 								<div class="copyright order-md-1 order-2">
-                                            Copyright &copy; Simuladorbee.xyz <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Este diseño fue desarrollado <i class="far fa-file-code"></i> por <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                            Copyright &copy; Simuladorbee.xyz <script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Este diseño fue desarrollado <i class="far fa-file-code"></i> por <a href="https://colorlib.com" target="_blank"></a>
                                 </div>
 								<nav class="footer_nav ml-md-auto order-md-2 order-1">
 									<ul class="d-flex flex-row align-items-center justify-content-start">

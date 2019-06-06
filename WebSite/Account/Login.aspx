@@ -14,7 +14,7 @@
                             <h4>Ingrese sus datos para iniciar sesión</h4>
                             <hr />
                             <div class="form-row">  
-                                <div class="col-md-4 mb-2">
+                                <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                         <h5>Nombre de Usuario:</h5>                                 
                                         <div class="input-group" style="cursor:default">
@@ -30,13 +30,13 @@
                                         </div>  
                                        </div>
                                 </div>  
-                                <div class="col-md-4 mb-2">                                
+                                <div class="col-md-2 mb-2">                                
                                 </div>   
                                 <div class="col-md-4 mb-2">
                                 </div>   
                             </div> 
                             <div class="form-row">  
-                                <div class="col-md-4 mb-2">
+                                <div class="col-md-6 mb-2">
                                     <div class="form-group">
                                         <h5>Contraseña:</h5>                                 
                                         <div class="input-group" style="cursor:default">
@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                 </div>  
-                                <div class="col-md-4 mb-2">
+                                <div class="col-md-2 mb-2">
                                 </div>   
                                 <div class="col-md-4 mb-2">
                                 </div>   

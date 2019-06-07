@@ -1,5 +1,6 @@
 ﻿var Inversion = false, Inversion1 = false, VS = false, VS1 = false, TMARv = false, TMARv1 = false, Selectv = false, Selectv1 = false, N = false, N1 = false;
-
+var DTabla = [];
+var t;
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
 function formatNumber(n) {
@@ -275,7 +276,6 @@ $("#n").blur(function () {
 $("#continuar").click(function () {
     $("#n").popover("hide");
     var inversion = $("#Inversion").val();
-    var FNE = $("#FNE").val();
     var VdS = $("#VdS").val();
     var TMAR = $("#TMAR").val();
     var Select = $("#select").val();
@@ -335,8 +335,62 @@ $("#continuar").click(function () {
         N1 = true;
     }
 
-    if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
-        alert("Correcto");
-    }
+    //if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
+       t = $('#vanManual').DataTable({
+           // destroy: true,
+            language: {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+           },
+           keys: true//,
+            //createdRow: function (row, data, dataIndex) {
+           // }//,
+           // data: DTabla
+        });
+        var renglon = 1;
+        for (var i = 0; i < 10; i++) {  
+            t.row.add([
+                renglon,
+                '0',
+                '0',
+                '0'
+            ]).draw(false);
+            renglon++;
+        }        
+        $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
+        $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
+        $('#vanManual').find('td:nth-child(3)').attr("data-editable", "true");
+        $('#vanManual').find('td:nth-child(4)').attr("data-editable", "false");
+        $('#vanManual').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample();      
+});
 
+$("body").on("change", "#myTabContent table td", function (evt, newValue) {
+    var t2 = $('#vanManual').DataTable();
+    t2.cell(this).data(newValue).draw();
+    var rowIdx = t2.cell(this).index().row;
+    var data = t2.row(rowIdx).data();
+    if (data[1].length!==0 && data[2].length!==0) {
+        var costoTotal = (data[1]-data[2]);
+        t2.cell(rowIdx, 3).data(costoTotal).draw();
+    }
 });

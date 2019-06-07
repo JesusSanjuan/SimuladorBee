@@ -1,8 +1,8 @@
 ﻿<%@ Page  Title="" Async="true" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="vanM.aspx.cs" Inherits="User_vanM" %>
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-         <link href="../Content/bootstrap-select.css" rel="stylesheet" />
-         <link href="../Content/Precarga/load-van.css" rel="stylesheet" />
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">        
+        <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
+        <link href="../Content/bootstrap-select.css" rel="stylesheet" />
+        <link href="../Content/Precarga/load-van.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
@@ -126,7 +126,7 @@
                     <div class="card-header">
                       <h4><i class="fas fa-pencil-alt"></i> Ingreso de flujos netos</h4>
                     </div>              
-              <div class="tab-content">
+              <div class="tab-content" id="myTabContent">
                         <!--Temporal -->
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -141,21 +141,19 @@
                                                         <h5><i class="fa fa-table"></i>  Tabla</h5>
                                                         </div>
                                                         <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                                                <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVAN"  >
+                                                                <Table class="table table-striped table-bordered" style="width:100%;"  id="vanManual"  >
                                                                     <thead>
                                                                     <tr>
-                                                                        <th></th>
                                                                         <th>Año/Mes</th>
                                                                         <th>Cobros</th>                                                                                            
                                                                         <th>Pagos</th>
                                                                         <th>Flujo Neto de Efectivo</th>
                                                                     </tr>
                                                                     </thead>
-                                                                    <tbody  id="dataTableVANBody">                                                                                                                                                                           
+                                                                    <tbody  id="dataTable">                                                                                                                                                                           
                                                                     </tbody>
                                                                     <tfoot>
                                                                     <tr>
-                                                                        <th></th>
                                                                         <th>Año/Mes</th>
                                                                         <th>Cobros</th>                                                                                            
                                                                         <th>Pagos</th>
@@ -173,19 +171,22 @@
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
-
-<!-- Manejo de funcion de tabla en VAN-->
+<!-- plugin editable-->
+    <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>  
+    <script src="../Scripts/Simulador/vanm_Numeric_Input.js"></script>
+<!-- plugin editable-->
+<!-- Manejo de funcion de tabla-->
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>        
-<!-- Manejo de funcion de tabla en VAN-->   
+    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>  
+    <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
+<!-- Manejo de funcion de tabla-->   
+<!-- plugin rangeslide-->
+    <script type="text/javascript" src="../Scripts/rangeslider/rangeslider.min.js"></script>
+<!-- plugin rangeslide-->
 <!-- plugin selectpicker-->
     <script src="../Scripts/bootstrap-select.min.js"></script>
 <!-- plugin selectpicker-->
 <!-- Para validacion de campos-->   
     <script src="../Scripts/Simulador/vanm.js"></script>  
 <!-- Para validacion de campos-->
-<!-- plugin editable-->
-    <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
-    <script src="../Scripts/editable-table/numeric-input-example.js"></script>
-<!-- plugin editable-->
  </asp:Content>

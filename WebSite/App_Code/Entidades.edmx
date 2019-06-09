@@ -21,7 +21,7 @@
           </Key>
           <Property Name="ID_Amortizacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Concepto" Type="text" Nullable="false" />
-          <Property Name="Porcentaje" Type="int" Nullable="false" />
+          <Property Name="Porcentaje" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Amortizacion_pro">
           <Key>
@@ -120,7 +120,7 @@
           <Property Name="Ingreso" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total_Costo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="UAI" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Impuesto" Type="float" Nullable="false" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="UDI" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Amortizacion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Total_FNE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -162,7 +162,7 @@
           </Key>
           <Property Name="ID_Inflacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Proyecto" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Valor_Inflacion" Type="float" />
+          <Property Name="Valor_Inflacion" Type="decimal" Precision="25" Scale="20" />
           <Property Name="Tipo" Type="text" />
           <Property Name="Periodo" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -206,7 +206,7 @@
           <Property Name="Costos_Fijos_Unidad" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Precio_Venta_Unidad" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Costo_Variable_Unidad" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="PE_Unidades" Type="float" />
+          <Property Name="PE_Unidades" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Costos_Fijos_Pesos" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Precio_Venta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Costo_Venta" Type="decimal" Precision="18" Scale="2" />
@@ -483,12 +483,10 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entidades" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Amortizacion_cat" EntityType="Model.Amortizacion_cat" />
           <EntitySet Name="Amortizacion_pro" EntityType="Model.Amortizacion_pro" />
           <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUsers" />
           <EntitySet Name="Costos_cat" EntityType="Model.Costos_cat" />
           <EntitySet Name="Costos_Pro" EntityType="Model.Costos_Pro" />
-          <EntitySet Name="FNE" EntityType="Model.FNE" />
           <EntitySet Name="Gastos_Pro" EntityType="Model.Gastos_Pro" />
           <EntitySet Name="indice_INPC" EntityType="Model.indice_INPC" />
           <EntitySet Name="INPC" EntityType="Model.INPC" />
@@ -506,10 +504,6 @@
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Costos_Pro" EntitySet="Costos_Pro" />
           </AssociationSet>
-          <AssociationSet Name="FK_FNE_Proyecto" Association="Model.FK_FNE_Proyecto">
-            <End Role="Proyecto" EntitySet="Proyecto" />
-            <End Role="FNE" EntitySet="FNE" />
-          </AssociationSet>
           <AssociationSet Name="FK_Gastos_Pro_Proyecto" Association="Model.FK_Gastos_Pro_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Gastos_Pro" EntitySet="Gastos_Pro" />
@@ -526,16 +520,6 @@
           <AssociationSet Name="FK_Indicadores_Proyecto" Association="Model.FK_Indicadores_Proyecto">
             <End Role="Proyecto" EntitySet="Proyecto" />
             <End Role="Indicadores" EntitySet="Indicadores" />
-          </AssociationSet>
-          <EntitySet Name="Inflacion" EntityType="Model.Inflacion" />
-          <EntitySet Name="Punto_Equilibrio" EntityType="Model.Punto_Equilibrio" />
-          <AssociationSet Name="FK_Inflacion_Proyecto" Association="Model.FK_Inflacion_Proyecto">
-            <End Role="Proyecto" EntitySet="Proyecto" />
-            <End Role="Inflacion" EntitySet="Inflacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Punto_Equilibrio_Proyecto" Association="Model.FK_Punto_Equilibrio_Proyecto">
-            <End Role="Proyecto" EntitySet="Proyecto" />
-            <End Role="Punto_Equilibrio" EntitySet="Punto_Equilibrio" />
           </AssociationSet>
           <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRoles" />
@@ -558,15 +542,23 @@
             <Parameter Name="Costo" Mode="In" Type="Decimal" />
             <Parameter Name="Tipo" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="FNE" EntityType="Model.FNE" />
+          <EntitySet Name="Inflacion" EntityType="Model.Inflacion" />
+          <EntitySet Name="Punto_Equilibrio" EntityType="Model.Punto_Equilibrio" />
+          <AssociationSet Name="FK_FNE_Proyecto" Association="Model.FK_FNE_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="FNE" EntitySet="FNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inflacion_Proyecto" Association="Model.FK_Inflacion_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Inflacion" EntitySet="Inflacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Punto_Equilibrio_Proyecto" Association="Model.FK_Punto_Equilibrio_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="Punto_Equilibrio" EntitySet="Punto_Equilibrio" />
+          </AssociationSet>
+          <EntitySet Name="Amortizacion_cat" EntityType="Model.Amortizacion_cat" />
         </EntityContainer>
-        <EntityType Name="Amortizacion_cat">
-          <Key>
-            <PropertyRef Name="ID_Amortizacion" />
-          </Key>
-          <Property Name="ID_Amortizacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Porcentaje" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Amortizacion_pro">
           <Key>
             <PropertyRef Name="ID_Amortizacion_pro" />
@@ -626,22 +618,6 @@
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Proyecto" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Costos_Pro" ToRole="Proyecto" />
         </EntityType>
-        <EntityType Name="FNE">
-          <Key>
-            <PropertyRef Name="ID_FNE" />
-          </Key>
-          <Property Name="ID_FNE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="Ingreso" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total_Costo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="UAI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Impuesto" Type="Double" Nullable="false" />
-          <Property Name="UDI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Amortizacion" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total_FNE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <NavigationProperty Name="Proyecto" Relationship="Model.FK_FNE_Proyecto" FromRole="FNE" ToRole="Proyecto" />
-        </EntityType>
         <EntityType Name="Gastos_Pro">
           <Key>
             <PropertyRef Name="ID_Gastos_pro" />
@@ -699,9 +675,9 @@
           <NavigationProperty Name="Amortizacion_pro" Relationship="Model.FK_Amortizacion_pro_Proyecto" FromRole="Proyecto" ToRole="Amortizacion_pro" />
           <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Proyecto_AspNetUsers" FromRole="Proyecto" ToRole="AspNetUsers" />
           <NavigationProperty Name="Costos_Pro" Relationship="Model.FK_Costos_Pro_Proyecto" FromRole="Proyecto" ToRole="Costos_Pro" />
-          <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
           <NavigationProperty Name="Gastos_Pro" Relationship="Model.FK_Gastos_Pro_Proyecto" FromRole="Proyecto" ToRole="Gastos_Pro" />
           <NavigationProperty Name="Indicadores" Relationship="Model.FK_Indicadores_Proyecto" FromRole="Proyecto" ToRole="Indicadores" />
+          <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
           <NavigationProperty Name="Inflacion" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Proyecto" ToRole="Inflacion" />
           <NavigationProperty Name="Punto_Equilibrio" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Proyecto" ToRole="Punto_Equilibrio" />
         </EntityType>
@@ -745,18 +721,6 @@
               <PropertyRef Name="ID_Proyecto" />
             </Principal>
             <Dependent Role="Costos_Pro">
-              <PropertyRef Name="ID_Proyecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FNE_Proyecto">
-          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
-          <End Type="Model.FNE" Role="FNE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proyecto">
-              <PropertyRef Name="ID_Proyecto" />
-            </Principal>
-            <Dependent Role="FNE">
               <PropertyRef Name="ID_Proyecto" />
             </Dependent>
           </ReferentialConstraint>
@@ -817,58 +781,6 @@
               <PropertyRef Name="ID_Proyecto" />
             </Principal>
             <Dependent Role="Indicadores">
-              <PropertyRef Name="ID_Proyecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Inflacion">
-          <Key>
-            <PropertyRef Name="ID_Inflacion" />
-          </Key>
-          <Property Name="ID_Inflacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Valor_Inflacion" Type="Double" />
-          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Inflacion" ToRole="Proyecto" />
-        </EntityType>
-        <EntityType Name="Punto_Equilibrio">
-          <Key>
-            <PropertyRef Name="ID_PE" />
-          </Key>
-          <Property Name="ID_PE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PE_Unidades" Type="Double" />
-          <Property Name="PE_Pesos" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Punto_Equilibrio" ToRole="Proyecto" />
-          <Property Name="Precio_Venta_Unidad" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Costo_Variable_Unidad" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Precio_Venta" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Costo_Venta" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Costos_Fijos_Unidad" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Costos_Fijos_Pesos" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-        </EntityType>
-        <Association Name="FK_Inflacion_Proyecto">
-          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
-          <End Type="Model.Inflacion" Role="Inflacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proyecto">
-              <PropertyRef Name="ID_Proyecto" />
-            </Principal>
-            <Dependent Role="Inflacion">
-              <PropertyRef Name="ID_Proyecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Punto_Equilibrio_Proyecto">
-          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
-          <End Type="Model.Punto_Equilibrio" Role="Punto_Equilibrio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proyecto">
-              <PropertyRef Name="ID_Proyecto" />
-            </Principal>
-            <Dependent Role="Punto_Equilibrio">
               <PropertyRef Name="ID_Proyecto" />
             </Dependent>
           </ReferentialConstraint>
@@ -944,21 +856,100 @@
           <End Type="Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
           <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
+        <EntityType Name="FNE">
+          <Key>
+            <PropertyRef Name="ID_FNE" />
+          </Key>
+          <Property Name="ID_FNE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Periodo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Ingreso" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total_Costo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UAI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UDI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Amortizacion" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total_FNE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_FNE_Proyecto" FromRole="FNE" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Inflacion">
+          <Key>
+            <PropertyRef Name="ID_Inflacion" />
+          </Key>
+          <Property Name="ID_Inflacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_Inflacion" Type="Decimal" Precision="25" Scale="20" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Inflacion" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Punto_Equilibrio">
+          <Key>
+            <PropertyRef Name="ID_PE" />
+          </Key>
+          <Property Name="ID_PE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Proyecto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Costos_Fijos_Unidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Precio_Venta_Unidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Costo_Variable_Unidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PE_Unidades" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Costos_Fijos_Pesos" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Precio_Venta" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Costo_Venta" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PE_Pesos" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Proyecto" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Punto_Equilibrio" ToRole="Proyecto" />
+        </EntityType>
+        <Association Name="FK_FNE_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.FNE" Role="FNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="FNE">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inflacion_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Inflacion" Role="Inflacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Inflacion">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Punto_Equilibrio_Proyecto">
+          <End Type="Model.Proyecto" Role="Proyecto" Multiplicity="1" />
+          <End Type="Model.Punto_Equilibrio" Role="Punto_Equilibrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="ID_Proyecto" />
+            </Principal>
+            <Dependent Role="Punto_Equilibrio">
+              <PropertyRef Name="ID_Proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Amortizacion_cat">
+          <Key>
+            <PropertyRef Name="ID_Amortizacion" />
+          </Key>
+          <Property Name="ID_Amortizacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Porcentaje" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entidades">
-          <EntitySetMapping Name="Amortizacion_cat">
-            <EntityTypeMapping TypeName="Model.Amortizacion_cat">
-              <MappingFragment StoreEntitySet="Amortizacion_cat">
-                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
-                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-                <ScalarProperty Name="ID_Amortizacion" ColumnName="ID_Amortizacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Amortizacion_pro">
             <EntityTypeMapping TypeName="Model.Amortizacion_pro">
               <MappingFragment StoreEntitySet="Amortizacion_pro">
@@ -1013,22 +1004,6 @@
                 <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
                 <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
                 <ScalarProperty Name="ID_Costos_pro" ColumnName="ID_Costos_pro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FNE">
-            <EntityTypeMapping TypeName="Model.FNE">
-              <MappingFragment StoreEntitySet="FNE">
-                <ScalarProperty Name="Total_FNE" ColumnName="Total_FNE" />
-                <ScalarProperty Name="Amortizacion" ColumnName="Amortizacion" />
-                <ScalarProperty Name="UDI" ColumnName="UDI" />
-                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
-                <ScalarProperty Name="UAI" ColumnName="UAI" />
-                <ScalarProperty Name="Total_Costo" ColumnName="Total_Costo" />
-                <ScalarProperty Name="Ingreso" ColumnName="Ingreso" />
-                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
-                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
-                <ScalarProperty Name="ID_FNE" ColumnName="ID_FNE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1107,34 +1082,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Inflacion">
-            <EntityTypeMapping TypeName="Model.Inflacion">
-              <MappingFragment StoreEntitySet="Inflacion">
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Valor_Inflacion" ColumnName="Valor_Inflacion" />
-                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
-                <ScalarProperty Name="ID_Inflacion" ColumnName="ID_Inflacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Punto_Equilibrio">
-            <EntityTypeMapping TypeName="Model.Punto_Equilibrio">
-              <MappingFragment StoreEntitySet="Punto_Equilibrio">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Costos_Fijos_Pesos" ColumnName="Costos_Fijos_Pesos" />
-                <ScalarProperty Name="Costos_Fijos_Unidad" ColumnName="Costos_Fijos_Unidad" />
-                <ScalarProperty Name="Costo_Venta" ColumnName="Costo_Venta" />
-                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
-                <ScalarProperty Name="Costo_Variable_Unidad" ColumnName="Costo_Variable_Unidad" />
-                <ScalarProperty Name="Precio_Venta_Unidad" ColumnName="Precio_Venta_Unidad" />
-                <ScalarProperty Name="PE_Pesos" ColumnName="PE_Pesos" />
-                <ScalarProperty Name="PE_Unidades" ColumnName="PE_Unidades" />
-                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
-                <ScalarProperty Name="ID_PE" ColumnName="ID_PE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -1181,6 +1128,59 @@
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="InsertarCosto" FunctionName="Model.Store.InsertarCosto" />
+          <EntitySetMapping Name="FNE">
+            <EntityTypeMapping TypeName="Model.FNE">
+              <MappingFragment StoreEntitySet="FNE">
+                <ScalarProperty Name="Total_FNE" ColumnName="Total_FNE" />
+                <ScalarProperty Name="Amortizacion" ColumnName="Amortizacion" />
+                <ScalarProperty Name="UDI" ColumnName="UDI" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="UAI" ColumnName="UAI" />
+                <ScalarProperty Name="Total_Costo" ColumnName="Total_Costo" />
+                <ScalarProperty Name="Ingreso" ColumnName="Ingreso" />
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_FNE" ColumnName="ID_FNE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inflacion">
+            <EntityTypeMapping TypeName="Model.Inflacion">
+              <MappingFragment StoreEntitySet="Inflacion">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Valor_Inflacion" ColumnName="Valor_Inflacion" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_Inflacion" ColumnName="ID_Inflacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Punto_Equilibrio">
+            <EntityTypeMapping TypeName="Model.Punto_Equilibrio">
+              <MappingFragment StoreEntitySet="Punto_Equilibrio">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="PE_Pesos" ColumnName="PE_Pesos" />
+                <ScalarProperty Name="Costo_Venta" ColumnName="Costo_Venta" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Costos_Fijos_Pesos" ColumnName="Costos_Fijos_Pesos" />
+                <ScalarProperty Name="PE_Unidades" ColumnName="PE_Unidades" />
+                <ScalarProperty Name="Costo_Variable_Unidad" ColumnName="Costo_Variable_Unidad" />
+                <ScalarProperty Name="Precio_Venta_Unidad" ColumnName="Precio_Venta_Unidad" />
+                <ScalarProperty Name="Costos_Fijos_Unidad" ColumnName="Costos_Fijos_Unidad" />
+                <ScalarProperty Name="ID_Proyecto" ColumnName="ID_Proyecto" />
+                <ScalarProperty Name="ID_PE" ColumnName="ID_PE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Amortizacion_cat">
+            <EntityTypeMapping TypeName="Model.Amortizacion_cat">
+              <MappingFragment StoreEntitySet="Amortizacion_cat">
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="ID_Amortizacion" ColumnName="ID_Amortizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

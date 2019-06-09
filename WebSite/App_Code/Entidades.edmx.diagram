@@ -5,12 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7428e58daa9f4424b8a98374c714c929" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Amortizacion_cat" Width="1.5" PointX="0.75" PointY="2" />
         <EntityTypeShape EntityType="Model.Amortizacion_pro" Width="1.5" PointX="5.25" PointY="10.125" />
         <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="7.5" />
         <EntityTypeShape EntityType="Model.Costos_cat" Width="1.5" PointX="0.75" PointY="5" />
         <EntityTypeShape EntityType="Model.Costos_Pro" Width="1.5" PointX="5.25" PointY="6.625" />
-        <EntityTypeShape EntityType="Model.FNE" Width="1.5" PointX="5.25" PointY="2.75" />
         <EntityTypeShape EntityType="Model.Gastos_Pro" Width="1.5" PointX="5.25" PointY="13" />
         <EntityTypeShape EntityType="Model.indice_INPC" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="Model.INPC" Width="1.5" PointX="10" PointY="2.25" />
@@ -19,16 +17,11 @@
         <AssociationConnector Association="Model.FK_Amortizacion_pro_Proyecto" />
         <AssociationConnector Association="Model.FK_Proyecto_AspNetUsers" />
         <AssociationConnector Association="Model.FK_Costos_Pro_Proyecto" />
-        <AssociationConnector Association="Model.FK_FNE_Proyecto" />
         <AssociationConnector Association="Model.FK_Gastos_Pro_Proyecto" />
         <AssociationConnector Association="Model.FK_INPC_indice_INPC" />
         <AssociationConnector Association="Model.FK_INPC_tipo_anio_base_INPC" />
         <EntityTypeShape EntityType="Model.Indicadores" Width="1.5" PointX="1.125" PointY="11.625" />
         <AssociationConnector Association="Model.FK_Indicadores_Proyecto" />
-        <EntityTypeShape EntityType="Model.Inflacion" Width="1.5" PointX="5.25" PointY="18.5" />
-        <EntityTypeShape EntityType="Model.Punto_Equilibrio" Width="1.5" PointX="3.375" PointY="0.625" />
-        <AssociationConnector Association="Model.FK_Inflacion_Proyecto" />
-        <AssociationConnector Association="Model.FK_Punto_Equilibrio_Proyecto" />
         <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="8.75" />
         <EntityTypeShape EntityType="Model.AspNetRoles" Width="1.5" PointX="0.75" PointY="15.375" />
         <EntityTypeShape EntityType="Model.AspNetUserClaims" Width="1.5" PointX="3" PointY="18.5" />
@@ -36,6 +29,13 @@
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="Model.FNE" Width="1.5" PointX="5.25" PointY="16.5" />
+        <EntityTypeShape EntityType="Model.Inflacion" Width="1.5" PointX="5.25" PointY="20.375" />
+        <EntityTypeShape EntityType="Model.Punto_Equilibrio" Width="1.5" PointX="5.25" PointY="2.5" />
+        <AssociationConnector Association="Model.FK_FNE_Proyecto" />
+        <AssociationConnector Association="Model.FK_Inflacion_Proyecto" />
+        <AssociationConnector Association="Model.FK_Punto_Equilibrio_Proyecto" />
+        <EntityTypeShape EntityType="Model.Amortizacion_cat" Width="1.5" PointX="0.75" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

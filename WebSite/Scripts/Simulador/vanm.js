@@ -402,9 +402,7 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     // var data = t33.row(rowIdx).data();
     var valor_mod = formatNumber33(newValue);
     if (valor_mod.length <= 2) {
-        var iNum = parseInt(valor_mod);
-        iNum = iNum.toFixed(2);
-        table.cell(rowIdx2, column).data(iNum).draw();
+        table.cell(rowIdx2, column).data("0").draw();
     } else {
         table.cell(rowIdx2, column).data(valor_mod).draw();
     }

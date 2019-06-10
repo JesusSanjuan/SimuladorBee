@@ -337,7 +337,7 @@ $("#continuar").click(function () {
 
     //if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
        t = $('#vanManual').DataTable({
-           // destroy: true,
+            destroy: true,
             language: {
                 "sProcessing": "Procesando...",
                 "sLengthMenu": "Mostrar _MENU_ registros",
@@ -362,7 +362,9 @@ $("#continuar").click(function () {
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
            },
-           keys: true//,
+           keys: true,
+           paging: false,
+           searching: false//,
             //createdRow: function (row, data, dataIndex) {
            // }//,
            // data: DTabla
@@ -385,12 +387,54 @@ $("#continuar").click(function () {
 });
 
 $("body").on("change", "#myTabContent table td", function (evt, newValue) {
+
+
     var t2 = $('#vanManual').DataTable();
     t2.cell(this).data(newValue).draw();
+    //console.log("change: " + t2);
     var rowIdx = t2.cell(this).index().row;
     var data = t2.row(rowIdx).data();
-    if (data[1].length!==0 && data[2].length!==0) {
-        var costoTotal = (data[1]-data[2]);
-        t2.cell(rowIdx, 3).data(costoTotal).draw();
+
+    var table = $('#vanManual').DataTable();
+    var cell = $(this), column = cell.index();
+    //t33.cell(this).data(value+"u").draw();
+    var rowIdx2 = table.cell(this).index().row;
+    // var data = t33.row(rowIdx).data();
+    var valor_mod = formatNumber33(newValue);
+    if (valor_mod.length <= 2) {
+        var iNum = parseInt(valor_mod);
+        iNum = iNum.toFixed(2);
+        table.cell(rowIdx2, column).data(iNum).draw();
+    } else {
+        table.cell(rowIdx2, column).data(valor_mod).draw();
     }
+   
+    //console.log("Posicion renglon: " + rowIdx2 + " Columna: " + column);
+
+   /* var data2 = table
+        .rows()
+        .data();*/
+    //console.log("Valor 0,1: " + data2[0][1]);
+
+
+    
+    if (data[1].length !== 0 && data[2].length !== 0) {
+        var v1 = data[1].replace(/,/g, '');
+        var v2 = data[2].replace(/,/g, '');
+        console.log("Data 1: " + data[1]+ "Data 2: " + data[2]);
+        var costoTotal = (v1 - v2);
+        costoTotal = costoTotal.toFixed(2); 
+        var n = costoTotal.toString();
+        //var costotoalsinpunto = n.replace(/./g, '');
+        var xxxx = formatNumber33(n);
+        t2.cell(rowIdx, 3).data(xxxx).draw();
+    }
+
+
 });
+
+function formatNumber33(n) {
+    return n.replace(/\D/g, "")
+        .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+}

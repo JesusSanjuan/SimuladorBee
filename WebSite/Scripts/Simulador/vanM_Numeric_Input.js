@@ -15,7 +15,7 @@ $(document).ready(function () {
 					total += parseFloat(row.children().eq(column).text());
 				});
 				footer.children().eq(column).text(total);
-			};
+			}
 		};
 	element.find('td').on('change', function (evt) {
 		var cell = $(this),
@@ -38,8 +38,8 @@ $(document).ready(function () {
 			footer.children().eq(column).text(total);
 		}
 	}).on('validate', function (evt, value) {
-		var cell = $(this),
-			column = cell.index();
+        var cell = $(this), column = cell.index(); 
+
 		if (column === 0) {
 			return !!value && value.trim().length > 0;
 		} else {
@@ -48,5 +48,8 @@ $(document).ready(function () {
 	});
 	initialTotal();
 	return this;
-};
+    };
+
+
+
 });

@@ -315,6 +315,43 @@
         </div>
     </div> 
     <!-- The Modal -->
+
+    <!-- The Modal -->
+    <div class="modal fade" id="selectInflacion" >
+        <div class="modal-dialog">
+            <div class="modal-content"> 
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"> <i class="fa fa-arrow-right"></i> Proyección</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>        
+                <!-- Modal body -->
+                <div class="modal-body" >
+                    Selecciona la inflación para la proyección de los costos
+                    <div class="row">
+                        <div class="col">
+                            <select class="selectpicker show-tick" id="select_inflacion">
+                                <option value="" >Seleccione..</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <span id="span_tipo"></span>
+                            <span id="span_periodo"></span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-danger " data-dismiss="modal">Cancelar</button>
+                    <button  id="select_infla_costo" type="button" class="btn btn-primary" data-dismiss="modal">Proyectar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- The Modal -->
+
+
 </asp:Content>
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
      <!-- plugin editable-->

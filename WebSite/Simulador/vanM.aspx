@@ -144,7 +144,7 @@
                                                                 <Table class="table table-striped table-bordered" style="width:100%;"  id="vanManual"  >
                                                                     <thead>
                                                                     <tr>
-                                                                        <th>Año/Mes</th>
+                                                                        <th id="tipo"></th>
                                                                         <th>Cobros</th>                                                                                            
                                                                         <th>Pagos</th>
                                                                         <th>Flujo Neto de Efectivo</th>

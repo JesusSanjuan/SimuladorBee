@@ -336,7 +336,13 @@ $("#continuar").click(function () {
     }
 
     //if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
-       t = $('#vanManual').DataTable({
+    var valor = $("#select").val();
+    var tipofecha = "Año";
+    if (valor === "1") {
+        tipofecha = "Mes";
+    }
+    $('#tipo').html(tipofecha);
+    t = $('#vanManual').DataTable({
             destroy: true,
             language: {
                 "sProcessing": "Procesando...",

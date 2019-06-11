@@ -1,6 +1,6 @@
 ﻿var Inversion = false, Inversion1 = false, VS = false, VS1 = false, TMARv = false, TMARv1 = false, Selectv = false, Selectv1 = false, N = false, N1 = false;
-var DTabla = [];
 var t;
+var points = [];
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
 function formatNumber(n) {
@@ -342,7 +342,14 @@ $("#continuar").click(function () {
         tipofecha = "Mes";
     }
     $('#tipo').html(tipofecha);
+    $('#tipo2').html(tipofecha);
     t = $('#vanManual').DataTable({
+        "columnDefs": [
+            { "width": "4%", "targets": 0 },
+            { "width": "24%", "targets": 1 },
+            { "width": "24%", "targets": 2 },
+            { "width": "24%", "targets": 3 }
+        ],
             destroy: true,
             language: {
                 "sProcessing": "Procesando...",
@@ -370,18 +377,20 @@ $("#continuar").click(function () {
            },
            keys: true,
            paging: false,
-           searching: false//,
+        searching: false//,
             //createdRow: function (row, data, dataIndex) {
            // }//,
            // data: DTabla
-        });
+    });
+    t.columns.adjust().draw();
+
         var renglon = 1;
         for (var i = 0; i < 10; i++) {  
             t.row.add([
                 renglon,
-                '0',
-                '0',
-                '0'
+                '0.00',
+                '0.00',
+                '0.00'
             ]).draw(false);
             renglon++;
         }        
@@ -389,55 +398,70 @@ $("#continuar").click(function () {
         $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
         $('#vanManual').find('td:nth-child(3)').attr("data-editable", "true");
         $('#vanManual').find('td:nth-child(4)').attr("data-editable", "false");
-        $('#vanManual').editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample();      
+        $('#vanManual').editableTableWidget({ editor: $('<textarea>') });        
 });
 
 $("body").on("change", "#myTabContent table td", function (evt, newValue) {
-
-
-    var t2 = $('#vanManual').DataTable();
-    t2.cell(this).data(newValue).draw();
-    //console.log("change: " + t2);
-    var rowIdx = t2.cell(this).index().row;
-    var data = t2.row(rowIdx).data();
-
     var table = $('#vanManual').DataTable();
+    table.cell(this).data(newValue).draw();
+    var rowIdx = table.cell(this).index().row;
+    var data = table.row(rowIdx).data();
+    
     var cell = $(this), column = cell.index();
-    //t33.cell(this).data(value+"u").draw();
     var rowIdx2 = table.cell(this).index().row;
-    // var data = t33.row(rowIdx).data();
-    var valor_mod = formatNumber33(newValue);
+    var valor_mod = FormatoNumero(newValue);
     if (valor_mod.length <= 2) {
-        table.cell(rowIdx2, column).data("0").draw();
+        table.cell(rowIdx2, column).data("0.00").draw();
+        $('#Texto_alert').html("<strong>Atencion!!!</strong> Es necesario ingresar <strong>solo digitos</strong>, longitud minima de <strong>3</strong>.");
+        $("#Alert").css("display", "block");
     } else {
         table.cell(rowIdx2, column).data(valor_mod).draw();
+        $("#Alert").css("display", "none");
     }
    
-    //console.log("Posicion renglon: " + rowIdx2 + " Columna: " + column);
-
-   /* var data2 = table
-        .rows()
-        .data();*/
-    //console.log("Valor 0,1: " + data2[0][1]);
-
-
-    
     if (data[1].length !== 0 && data[2].length !== 0) {
         var v1 = data[1].replace(/,/g, '');
         var v2 = data[2].replace(/,/g, '');
-        console.log("Data 1: " + data[1]+ "Data 2: " + data[2]);
         var costoTotal = (v1 - v2);
         costoTotal = costoTotal.toFixed(2); 
         var n = costoTotal.toString();
-        //var costotoalsinpunto = n.replace(/./g, '');
-        var xxxx = formatNumber33(n);
-        t2.cell(rowIdx, 3).data(xxxx).draw();
+        var numForm = FormatoNumero(n);
+        table.cell(rowIdx, 3).data(numForm).draw();
     }
 
+    var column2 = table.column(1); 
+    var column3 = table.column(2);
+    var column4 = table.column(3);    
+    $(column2.footer()).html(//Para sumar columna 2
+        column2.data().map(parseFloat).reduce(function (a, b) { 
+            return a + b;
+        })
+    );
 
-});
+    $(column3.footer()).html(//Para sumar columna 3
+        column3.data().map(parseFloat).reduce(function (a, b) {
+            return a + b;
+        })
+    );
 
-function formatNumber33(n) {
+    $(column4.footer()).html(//Para sumar columna 4
+        column4.data().map(parseFloat).reduce(function (a, b) {
+            return a + b;
+        })
+    );
+    var FNE = column4.data();    
+    for (var x = 0; x < FNE.length; x++) {       
+         points[x] = FNE[x].replace(/,/g, '');
+    }
+    console.log(points);
+
+
+})/*.on('validate', "#myTabContent table td", function (evt, newValue) {
+    if (newValue.length<=2) {
+         return false; // mark cell as invalid 
+    }
+})*/;
+function FormatoNumero(n) {
     return n.replace(/\D/g, "")
         .replace(/([0-9])([0-9]{2})$/, '$1.$2')
         .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");

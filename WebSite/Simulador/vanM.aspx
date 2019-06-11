@@ -128,20 +128,16 @@
                     </div>              
               <div class="tab-content" id="myTabContent">
                         <!--Temporal -->
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show" id="Alert" style="display:none;" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
-                            <strong>Atencion!!!</strong> Este sitio se <strong>encuentra en construccion</strong>.
+                            <div id="Texto_alert">                                
+                            </div>
                         </div>
                         <!--Temporal -->
-                            <div  class="container-fluid card-body">
-                                            <div class="preborder">
-                                                        <div class="card-header">
-                                                        <h5><i class="fa fa-table"></i>  Tabla</h5>
-                                                        </div>
-                                                        <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                                                <Table class="table table-striped table-bordered" style="width:100%;"  id="vanManual"  >
+                                                        <div class="table-responsive" style="margin-top: 15px; padding-bottom:0px; ">
+                                                                <Table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"   id="vanManual"   >
                                                                     <thead>
                                                                     <tr>
                                                                         <th id="tipo"></th>
@@ -154,26 +150,22 @@
                                                                     </tbody>
                                                                     <tfoot>
                                                                     <tr>
-                                                                        <th>Año/Mes</th>
+                                                                        <th id="tipo2"></th>
                                                                         <th>Cobros</th>                                                                                            
                                                                         <th>Pagos</th>
                                                                         <th>Flujo Neto de Efectivo</th>
                                                                     </tr>
                                                                     </tfoot>                                                                                                     
                                                             </Table>
-                                                        </div>
-                                            </div>
+                                                        </div>                                           
                             </div>
-
-              </div>
               </div>
     </div>
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
 <!-- plugin editable-->
-    <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>  
-    <script src="../Scripts/Simulador/vanm_Numeric_Input.js"></script>
+    <script src="../Scripts/editable-table/mindmup-editabletable.js"></script> 
 <!-- plugin editable-->
 <!-- Manejo de funcion de tabla-->
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>

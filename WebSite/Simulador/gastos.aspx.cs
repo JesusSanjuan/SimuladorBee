@@ -18,7 +18,7 @@ public partial class Simulador_gastos : System.Web.UI.Page
     }
    
     [WebMethod]
-    public static object  sendTable(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total, string pestania)
+    public static object  sendTable(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total, string pestania, float inflacion)
     {
         //Here I want to iterate the  objects 
         int a = dataTabla.Count();
@@ -82,8 +82,8 @@ public partial class Simulador_gastos : System.Web.UI.Page
                             {
                                 gasto.Financiamiento = tabl_json;
                                 gasto.Total = gasto.Total + tabl_total;
-
-                                Proyeccion(db, id_proyect, id_periodo, gasto.Total);
+                                float val_inflacion = inflacion;
+                                Proyeccion(db, id_proyect, id_periodo, gasto.Total, val_inflacion);
                             }
                             
                         }
@@ -105,9 +105,10 @@ public partial class Simulador_gastos : System.Web.UI.Page
 
     }
 
-    private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total)
+    private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total, float infla)
     {
-        var inflacion = 1.5;
+        //var inflacion = 1.5;
+        var inflacion = infla / 100;
 
         //BUSCAMOS CUANTOS PERIODOS TIENE
         var httpContext = HttpContext.Current;
@@ -149,14 +150,14 @@ public partial class Simulador_gastos : System.Web.UI.Page
                     decimal gastoU = decimal.Parse(lst["$ Gasto Unitario"]) * (decimal)(inflacion);
                     decimal gastoT = decimal.Parse(lst["$ Gasto Total"]) * (decimal)(inflacion);
                     lst["$ Gasto Unitario"] = gastoU.ToString();
-                    lst["$ Gasto Total"] = gastoT.ToString();
+                    lst["$ Gasto Total"]    = gastoT.ToString();
 
 
                 }
                 campos.Add(JsonConvert.SerializeObject(obj));
             }
 
-            total = total * (decimal)1.5;
+            total = total * (decimal)inflacion;
             //GUARDAMOS
             string id_costos = System.Guid.NewGuid().ToString("D");
             var NuevoGasto = new Gastos_Pro();
@@ -379,6 +380,44 @@ public partial class Simulador_gastos : System.Web.UI.Page
             Console.WriteLine("{0} First exception caught.", e);
             return e;
         }
+
+    }
+    [WebMethod]
+    public static object getInflacion()
+    {
+        string id_proyect = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
+
+        try
+        {
+            //Realizamos la consula
+            var db = new Entidades();
+            var query = db.Inflacion.Where(infla => infla.ID_Proyecto == id_proyect);
+
+            List<List<string>> result_query = new List<List<string>>();
+
+
+
+            foreach (var Result in query)
+            {
+                List<string> item = new List<string>();
+
+                item.Add(Result.ID_Inflacion);
+                item.Add(Result.Valor_Inflacion.ToString());
+                item.Add(Result.Tipo);
+                item.Add(Result.Periodo);
+                result_query.Add(item);
+            }
+
+            var json = JsonConvert.SerializeObject(result_query);
+            return json;
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
 
     }
 

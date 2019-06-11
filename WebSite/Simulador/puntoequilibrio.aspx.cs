@@ -90,7 +90,7 @@ public partial class Simulador_PE : System.Web.UI.Page
                 PE.Costos_Fijos_Unidad = Convert.ToDecimal(costosFijos);
                 PE.Precio_Venta_Unidad = Convert.ToDecimal(precio_VU);
                 PE.Costo_Variable_Unidad = Convert.ToDecimal(costo_variable_unidad);
-                PE.PE_Unidades = punto_equilibrio_U;
+                PE.PE_Unidades = Convert.ToDecimal(punto_equilibrio_U);
 
                 PE.Costos_Fijos_Pesos = Convert.ToDecimal(costosFijos);
                 PE.Precio_Venta = Convert.ToDecimal(precio_V);
@@ -126,17 +126,24 @@ public partial class Simulador_PE : System.Web.UI.Page
             //Realizamos la consula del ultimo insertado
             var db = new Entidades();
             var query = db.Punto_Equilibrio.Where(PE => PE.ID_Proyecto == idProyecto)
-                                            .OrderByDescending(PE => PE.Fecha).First();
-
+                                            .OrderByDescending(PE => PE.Fecha);
             List<string> result_query = new List<string>();
-            result_query.Add(query.Precio_Venta_Unidad.ToString());
-            result_query.Add(query.Costo_Variable_Unidad.ToString());
-            result_query.Add(query.PE_Unidades.ToString());
-            result_query.Add(query.Precio_Venta.ToString());
-            result_query.Add(query.Costo_Venta.ToString());
-            result_query.Add(query.PE_Pesos.ToString());
+
+            foreach (var Result in query)
+            {
+
+                result_query.Add(Result.Precio_Venta_Unidad.ToString());
+                result_query.Add(Result.Costo_Variable_Unidad.ToString());
+                result_query.Add(Result.PE_Unidades.ToString());
+                result_query.Add(Result.Precio_Venta.ToString());
+                result_query.Add(Result.Costo_Venta.ToString());
+                result_query.Add(Result.PE_Pesos.ToString());
+                
+
+            }
             var json = JsonConvert.SerializeObject(result_query);
             System.Diagnostics.Debug.WriteLine(json);
+
             return json;
         }
         // Most specific:

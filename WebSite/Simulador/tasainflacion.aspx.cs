@@ -1120,7 +1120,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string guardar_inflacion(string Periodo, string[] Proyectos, float[] Inflaciones)
+    public static string guardar_inflacion(string Periodo, string[] Proyectos, decimal[] Inflaciones)
     {
         var db = new Entidades();
         var retur = "FAIL";
@@ -1155,6 +1155,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                     inflacion.Valor_Inflacion = Inflaciones[x];
                     inflacion.Tipo = Tipo;
                     inflacion.Periodo = Periodo;
+
+                    System.Diagnostics.Debug.WriteLine("Inflaciones[x]->" + inflacion.Valor_Inflacion);
                     db.Inflacion.Add(inflacion);
 
                 }

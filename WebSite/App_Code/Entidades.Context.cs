@@ -25,24 +25,24 @@ public partial class Entidades : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
-    public virtual DbSet<Amortizacion_cat> Amortizacion_cat { get; set; }
     public virtual DbSet<Amortizacion_pro> Amortizacion_pro { get; set; }
     public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
     public virtual DbSet<Costos_cat> Costos_cat { get; set; }
     public virtual DbSet<Costos_Pro> Costos_Pro { get; set; }
-    public virtual DbSet<FNE> FNE { get; set; }
     public virtual DbSet<Gastos_Pro> Gastos_Pro { get; set; }
     public virtual DbSet<indice_INPC> indice_INPC { get; set; }
     public virtual DbSet<INPC> INPC { get; set; }
     public virtual DbSet<Proyecto> Proyecto { get; set; }
     public virtual DbSet<tipo_anio_base_INPC> tipo_anio_base_INPC { get; set; }
     public virtual DbSet<Indicadores> Indicadores { get; set; }
-    public virtual DbSet<Inflacion> Inflacion { get; set; }
-    public virtual DbSet<Punto_Equilibrio> Punto_Equilibrio { get; set; }
     public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
     public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
     public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
     public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+    public virtual DbSet<FNE> FNE { get; set; }
+    public virtual DbSet<Inflacion> Inflacion { get; set; }
+    public virtual DbSet<Punto_Equilibrio> Punto_Equilibrio { get; set; }
+    public virtual DbSet<Amortizacion_cat> Amortizacion_cat { get; set; }
 
     public virtual int InsertarCosto(string concepto, Nullable<decimal> costo, string tipo)
     {

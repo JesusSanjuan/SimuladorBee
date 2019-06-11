@@ -125,12 +125,133 @@
 
     //funcion para GUARDAR DATOS de COSTOS
     $("body").on("click", "#costo_continuar", function () {
-        guardar_datos("cnperiod_c", "myTab", "costos.aspx", "myTabContent");
+        var nav = $('#myTab li a.active').attr('id');
+        if (nav == "NCostos4") {
+            //llenamos el select de inflacion
+            $.ajax({
+                type: "POST",
+                url: "costos.aspx/getInflacion",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    var resultado = JSON.parse(result.d);
+                    var row;
+                    var options = [];
+                    for (var i = 0; i < resultado.length; i++) {
+                        row = resultado[i];
+                        var option;
+                        var tipo = row[2];
+                        switch (tipo)
+                        {
+                            case "Inf_acumulada":
+                                tipo = "Inflación acumulada";
+                                break;
+                            case "Inf_prom_mensual":
+                                tipo = "Inflación mensual";
+                                break;
+                        }
+                        var value = parseFloat((parseFloat(row[1])).toFixed(15));
+                        option = "<option data-tipo='" + tipo + "' data-id=" + row[0] + " data-periodo='" + row[3] + "' value=" + value + ">" + value + "</option>";
+                        options.push(option);
+                    }
+                    $('#select_inflacion').html(options);
+                    $('#select_inflacion').selectpicker('refresh');
+                    $('#select_inflacion.selectpicker').change();
+                    //location.reload();
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+
+            $("#selectInflacion").modal({ show: true });
+        }
+        else {
+            guardar_datos("cnperiod_c", "myTab", "costos.aspx", "myTabContent", 0);
+        }
     });
     $("body").on("click", "#gasto_continuar", function () {
-        guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx", "myTabContent3");
+        var nav = $('#myTab_g li a.active').attr('id');
+        console.log("nav" + nav);
+        if (nav == "NGastos4") {
+            //llenamos el select de inflacion
+            $.ajax({
+                type: "POST",
+                url: "gastos.aspx/getInflacion",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    var resultado = JSON.parse(result.d);
+                    var row;
+                    var options = [];
+                    for (var i = 0; i < resultado.length; i++) {
+                        row = resultado[i];
+                        var option;
+                        var tipo = row[2];
+                        switch (tipo) {
+                            case "Inf_acumulada":
+                                tipo = "Inflación acumulada";
+                                break;
+                            case "Inf_prom_mensual":
+                                tipo = "Inflación mensual";
+                                break;
+                        }
+                        var value = parseFloat((parseFloat(row[1])).toFixed(15));
+                        option = "<option data-tipo='" + tipo + "' data-id=" + row[0] + " data-periodo='" + row[3] + "' value=" + value + ">" + value + "</option>";
+                        options.push(option);
+                    }
+                    $('#select_inflacion').html(options);
+                    $('#select_inflacion').selectpicker('refresh');
+                    $('#select_inflacion.selectpicker').change();
+                    //location.reload();
+                },
+                error: function (result) {
+                    console.log(result.responseText);
+                }
+
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+
+            $("#selectInflacion").modal({ show: true });
+        }
+        else {
+            guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx", "myTabContent3", 0);
+        }
+        
     });
-    function guardar_datos(select, Tab, controller, content) {
+
+    $("body").on("click", "#select_infla_costo", function () {
+        //var id_inflacion = $('#select_inflacion').find(':selected').data('id');
+        var valor_inflacion = $('#select_inflacion').val();
+
+        guardar_datos("cnperiod_c", "myTab", "costos.aspx", "myTabContent", valor_inflacion);
+    });
+
+    $("body").on("click", "#select_infla_gasto", function () {
+        var valor_inflacion = $('#select_inflacion').val();
+        guardar_datos("cnperiod_g", "myTab_g", "gastos.aspx", "myTabContent3", valor_inflacion);
+    });
+
+    $('#select_inflacion.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+        //$(this).find(':selected').attr('data-id')
+        var periodo = $(this).find(':selected').data('periodo');
+        var tipo = $(this).find(':selected').data('tipo');
+        $("#span_tipo").html(tipo+":");
+        $("#span_periodo").html(periodo);
+    });
+
+
+    function guardar_datos(select, Tab, controller, content, valInflacion) {
        
         /*OBTENIENDO DATOS DE LAS FUNCIONES DE Table To JSON*/
         var selector = $('input#selector').val();
@@ -140,8 +261,8 @@
         var tot = $('#' + selector).find('table').find('.total').text();
         var nav = $('#' + Tab + ' li a.active').attr('id');
 
-        console.log("DATAA: " + data);
-
+        console.log("valInflacion->" + valInflacion);
+        
         //Validamos que no existan celdas vacias
         var table = $('#'+ content).find('#' + selector).find('table').DataTable();
         table.column(0).data().each(function (value, index) {
@@ -159,7 +280,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
-                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav }),
+                    data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav, inflacion: valInflacion }),
                     success: function (result) {
                         console.log(result);
                         location.reload();
@@ -187,14 +308,13 @@
             $('#success').modal({ show: true });
 
         }
-
+        
     }
 
     //EVENTO PARA ACTUALIZAR DATOS COSTOS y GASTOS
 
     $("body").on("click", ".actualizar", function () {
         var selector = $(this).parents('.tab-pane').attr("id");
-        console.log(selector);
         $(".modal-content #selector").val(selector);
 
         $("#Continuacion#modal-text-body ").html("¿Desea actualizar los Datos?");
@@ -245,7 +365,6 @@
                     async: false,
                     data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, total_a: tot_ant, pestania: nav }),
                     success: function (result) {
-                        console.log(result);
                         location.reload();
                     },
                     error: function (result) {

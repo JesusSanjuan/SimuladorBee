@@ -72,6 +72,7 @@ public partial class User_MasterPage : System.Web.UI.MasterPage
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
+        Session.Abandon();
         Context.GetOwinContext().Authentication.SignOut();
     }
 }

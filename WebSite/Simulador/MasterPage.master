@@ -341,7 +341,7 @@
                   <div class="modal-content">      
                         <!-- Modal Header -->
                         <div class="modal-header">
-                             <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Te vas tan rapido?</h4>
+                             <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Te vas tan rápido?</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>        
                         <!-- Modal body -->

@@ -1,0 +1,10 @@
+﻿Archivo de modelo generado: Entidades.edmx.
+La carga de los metadatos desde la base de datos tardó 00:00:01.7990490.
+La generación del modelo tardó 00:00:02.0721470.
+El proveedor de compilación se registró correctamente en el archivo Web.Config.
+El ensamblado 'System.Data.Entity.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089' se registró correctamente en el archivo Web.Config.
+Archivo de modelo generado: Entidades.edmx.
+La carga de los metadatos desde la base de datos tardó 00:00:00.7541356.
+La generación del modelo tardó 00:00:01.6480632.
+El proveedor de compilación se registró correctamente en el archivo Web.Config.
+El ensamblado 'System.Data.Entity.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089' se registró correctamente en el archivo Web.Config.

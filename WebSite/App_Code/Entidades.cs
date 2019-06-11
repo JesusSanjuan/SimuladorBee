@@ -14,7 +14,7 @@ public partial class Amortizacion_cat
 {
     public string ID_Amortizacion { get; set; }
     public string Concepto { get; set; }
-    public int Porcentaje { get; set; }
+    public decimal Porcentaje { get; set; }
 }
 
 public partial class Amortizacion_pro
@@ -138,7 +138,7 @@ public partial class FNE
     public decimal Ingreso { get; set; }
     public decimal Total_Costo { get; set; }
     public decimal UAI { get; set; }
-    public double Impuesto { get; set; }
+    public decimal Impuesto { get; set; }
     public decimal UDI { get; set; }
     public decimal Amortizacion { get; set; }
     public decimal Total_FNE { get; set; }
@@ -191,7 +191,7 @@ public partial class Inflacion
 {
     public string ID_Inflacion { get; set; }
     public string ID_Proyecto { get; set; }
-    public Nullable<double> Valor_Inflacion { get; set; }
+    public Nullable<decimal> Valor_Inflacion { get; set; }
     public string Tipo { get; set; }
     public string Periodo { get; set; }
 
@@ -228,9 +228,9 @@ public partial class Proyecto
     {
         this.Amortizacion_pro = new HashSet<Amortizacion_pro>();
         this.Costos_Pro = new HashSet<Costos_Pro>();
-        this.FNE = new HashSet<FNE>();
         this.Gastos_Pro = new HashSet<Gastos_Pro>();
         this.Indicadores = new HashSet<Indicadores>();
+        this.FNE = new HashSet<FNE>();
         this.Inflacion = new HashSet<Inflacion>();
         this.Punto_Equilibrio = new HashSet<Punto_Equilibrio>();
     }
@@ -247,11 +247,11 @@ public partial class Proyecto
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Costos_Pro> Costos_Pro { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<FNE> FNE { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Gastos_Pro> Gastos_Pro { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Indicadores> Indicadores { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<FNE> FNE { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Inflacion> Inflacion { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -262,14 +262,14 @@ public partial class Punto_Equilibrio
 {
     public string ID_PE { get; set; }
     public string ID_Proyecto { get; set; }
-    public Nullable<double> PE_Unidades { get; set; }
-    public Nullable<decimal> PE_Pesos { get; set; }
+    public Nullable<decimal> Costos_Fijos_Unidad { get; set; }
     public Nullable<decimal> Precio_Venta_Unidad { get; set; }
     public Nullable<decimal> Costo_Variable_Unidad { get; set; }
+    public Nullable<decimal> PE_Unidades { get; set; }
+    public Nullable<decimal> Costos_Fijos_Pesos { get; set; }
     public Nullable<decimal> Precio_Venta { get; set; }
     public Nullable<decimal> Costo_Venta { get; set; }
-    public Nullable<decimal> Costos_Fijos_Unidad { get; set; }
-    public Nullable<decimal> Costos_Fijos_Pesos { get; set; }
+    public Nullable<decimal> PE_Pesos { get; set; }
     public Nullable<System.DateTime> Fecha { get; set; }
 
     public virtual Proyecto Proyecto { get; set; }

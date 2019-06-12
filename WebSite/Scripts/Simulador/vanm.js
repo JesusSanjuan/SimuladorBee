@@ -353,9 +353,10 @@ $("#continuar").click(function () {
     t = $('#vanManual').DataTable({
             "columnDefs": [
                 { "width": "4%", "targets": 0 },
-                { "width": "24%", "targets": 1 },
-                { "width": "24%", "targets": 2 },
-                { "width": "24%", "targets": 3 }
+                { "width": "31%", "targets": 1 },
+                { "width": "1%", "targets": 2 },
+                { "width": "32%", "targets": 3 },
+                { "width": "32%", "targets": 4 }
             ],
             destroy: true,
             language: {
@@ -383,7 +384,7 @@ $("#continuar").click(function () {
                 }
            },
            keys: true,
-           paging: true,
+           paging: false,
            searching: true,
            pageLength: 10//,
             //createdRow: function (row, data, dataIndex) {
@@ -396,15 +397,18 @@ $("#continuar").click(function () {
         t.row.add([
             renglon,
             '0.00',
+            '<i class="fas fa-window-minimize" aria-hidden="true"></i>',
             '0.00',
             '0.00'
+            
         ]).draw(false);
         renglon++;
     }        
     $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
     $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
-    $('#vanManual').find('td:nth-child(3)').attr("data-editable", "true");
-    $('#vanManual').find('td:nth-child(4)').attr("data-editable", "false");
+    $('#vanManual').find('td:nth-child(3)').attr("data-editable", "false");
+    $('#vanManual').find('td:nth-child(4)').attr("data-editable", "true");
+    $('#vanManual').find('td:nth-child(5)').attr("data-editable", "false");
     $('#vanManual').editableTableWidget({ editor: $('<textarea>') });        
 });
 
@@ -426,19 +430,19 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
         $("#Alert").css("display", "none");
     }
    
-    if (data[1].length !== 0 && data[2].length !== 0) {
+    if (data[1].length !== 0 && data[3].length !== 0) {
         var v1 = data[1].replace(/,/g, '');
-        var v2 = data[2].replace(/,/g, '');
+        var v2 = data[3].replace(/,/g, '');
         var costoTotal = (v1 - v2);
         costoTotal = costoTotal.toFixed(2); 
         var n = costoTotal.toString();
         var numForm = FormatoNumero(n);
-        table.cell(rowIdx, 3).data(numForm).draw();
+        table.cell(rowIdx, 4).data(numForm).draw();
     }
 
     var column2 = table.column(1); 
-    var column3 = table.column(2);
-    var column4 = table.column(3);
+    var column3 = table.column(3);
+    var column4 = table.column(4);
 
     var column2Data = column2.data(); 
     var column3Data = column3.data(); 

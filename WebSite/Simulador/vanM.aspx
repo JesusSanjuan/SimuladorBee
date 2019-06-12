@@ -139,9 +139,10 @@
                                         <thead>
                                             <tr>
                                                 <th id="tipo"></th>
-                                                <th>Cobros</th>                                                                                            
+                                                <th>Cobros</th>     
+                                                <th></th>
                                                 <th>Pagos</th>
-                                                <th>Flujo Neto de Efectivo</th>
+                                                <th>Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
                                             </tr>
                                         </thead>
                                         <tbody  id="dataTable">                                                                                                                                                                           
@@ -149,9 +150,10 @@
                                         <tfoot>
                                             <tr>
                                                 <th id="tipo2"></th>
-                                                <th id="thcobros">Cobros</th>                                                                                            
+                                                <th id="thcobros">Cobros</th>  
+                                                <th></th>
                                                 <th id="thpagos">Pagos</th>
-                                                <th id="thFNE">Flujo Neto de Efectivo</th>
+                                                <th id="thFNE">Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
                                             </tr>
                                         </tfoot>                                                                                                     
                                 </Table>

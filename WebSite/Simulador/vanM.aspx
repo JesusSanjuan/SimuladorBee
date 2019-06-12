@@ -126,8 +126,7 @@
                     <div class="card-header">
                       <h4><i class="fas fa-pencil-alt"></i> Ingreso de flujos netos</h4>
                     </div>              
-              <div class="tab-content" id="myTabContent">
-                        <!--Temporal -->
+                    <div class="tab-content" id="myTabContent">
                         <div class="alert alert-danger alert-dismissible fade show" id="Alert" style="display:none;" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -135,31 +134,39 @@
                             <div id="Texto_alert">                                
                             </div>
                         </div>
-                        <!--Temporal -->
-                                                        <div class="table-responsive" style="margin-top: 15px; padding-bottom:0px; ">
-                                                                <Table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"   id="vanManual"   >
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th id="tipo"></th>
-                                                                        <th>Cobros</th>                                                                                            
-                                                                        <th>Pagos</th>
-                                                                        <th>Flujo Neto de Efectivo</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody  id="dataTable">                                                                                                                                                                           
-                                                                    </tbody>
-                                                                    <tfoot>
-                                                                    <tr>
-                                                                        <th id="tipo2"></th>
-                                                                        <th>Cobros</th>                                                                                            
-                                                                        <th>Pagos</th>
-                                                                        <th>Flujo Neto de Efectivo</th>
-                                                                    </tr>
-                                                                    </tfoot>                                                                                                     
-                                                            </Table>
-                                                        </div>                                           
-                            </div>
+                            <div class="table-responsive" style="margin-top: 15px; padding-bottom:0px;">
+                                <Table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"   id="vanManual"   >
+                                        <thead>
+                                            <tr>
+                                                <th id="tipo"></th>
+                                                <th>Cobros</th>                                                                                            
+                                                <th>Pagos</th>
+                                                <th>Flujo Neto de Efectivo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody  id="dataTable">                                                                                                                                                                           
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th id="tipo2"></th>
+                                                <th id="thcobros">Cobros</th>                                                                                            
+                                                <th id="thpagos">Pagos</th>
+                                                <th id="thFNE">Flujo Neto de Efectivo</th>
+                                            </tr>
+                                        </tfoot>                                                                                                     
+                                </Table>
+                            </div>                                           
+                        </div>
               </div>
+    </div>
+    <div class="form-row" style="margin-top: 15px; padding-bottom:0px;">  
+            <div class="col-md-4 mb-2">
+            </div>  
+            <div class="col-md-4 mb-2">
+                <button id="calcular" class="btn btn-primary btn-lg btn-block" type="button">Calcular</button>
+            </div>  
+            <div class="col-md-4 mb-2">
+            </div>   
     </div>
 </asp:Content>
 

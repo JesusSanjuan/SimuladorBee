@@ -396,6 +396,14 @@ $("#calcular").click(function () {
             myLineChart.destroy();
         }
 
+        var valor = $("#select").val();
+        var tipofecha = "Año";
+        if (valor === "1") {
+            tipofecha = "Mes";
+        }
+        $('#tipo').html(tipofecha);
+        $('#tipo2').html(tipofecha);
+
         $("#ResultadosVAN").css("display", "none");
         inversion = inversion.replace(/,/g, '');
         FNE = FNE.replace(/,/g, '');
@@ -691,6 +699,15 @@ function RellenarTabla(Datos) {
         }
     }
     var table = $('#dataTableVAN').DataTable({
+        "columnDefs": [
+            { "width": "3%", "targets": 0 },
+            { "width": "3%", "targets": 1 },
+            { "width": "19%", "targets": 2 },
+            { "width": "19%", "targets": 3 },
+            { "width": "19%", "targets": 4 },
+            { "width": "19%", "targets": 5 },
+            { "width": "18%", "targets": 6 }
+        ],
         destroy: true,
         language: {
             "sProcessing": "Procesando...",
@@ -723,6 +740,7 @@ function RellenarTabla(Datos) {
         },
         data: DTabla
     });
+    table.columns.adjust().draw();
 }
 
 function number_format(amount, decimals) {

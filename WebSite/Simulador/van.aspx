@@ -283,11 +283,11 @@
                                                                     <h5><i class="fa fa-table"></i>  Tabla</h5>
                                                                  </div>
                                                                                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                                                                                 <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVAN"  >
+                                                                                                 <Table class="table table-striped"  style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"  id="dataTableVAN"  >
                                                                                                       <thead>
                                                                                                         <tr>
                                                                                                           <th></th>
-                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th id="tipo"></th>
                                                                                                           <th>Costos</th>                                                                                            
                                                                                                           <th>Ingresos</th>
                                                                                                           <th>Flujo Neto de Efectivo</th>
@@ -300,7 +300,7 @@
                                                                                                       <tfoot>
                                                                                                         <tr>
                                                                                                           <th></th>
-                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th id="tipo2"></th>
                                                                                                           <th>Costos</th>                                                                                            
                                                                                                           <th>Ingresos</th>
                                                                                                           <th>Flujo Neto de Efectivo</th>

@@ -336,6 +336,14 @@ $("#continuar").click(function () {
     }
 
     //if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
+    if (t) {//Limpieza tabla
+        t.clear();
+        t.destroy();
+        $('#thcobros').html("Cobros");
+        $('#thpagos').html("Pagos");
+        $('#thFNE').html("Flujo Neto de Efectivo");
+    }
+
     var valor = $("#select").val();
     var tipofecha = "Año";
     if (valor === "1") {
@@ -344,12 +352,12 @@ $("#continuar").click(function () {
     $('#tipo').html(tipofecha);
     $('#tipo2').html(tipofecha);
     t = $('#vanManual').DataTable({
-        "columnDefs": [
-            { "width": "4%", "targets": 0 },
-            { "width": "24%", "targets": 1 },
-            { "width": "24%", "targets": 2 },
-            { "width": "24%", "targets": 3 }
-        ],
+            "columnDefs": [
+                { "width": "4%", "targets": 0 },
+                { "width": "24%", "targets": 1 },
+                { "width": "24%", "targets": 2 },
+                { "width": "24%", "targets": 3 }
+            ],
             destroy: true,
             language: {
                 "sProcessing": "Procesando...",
@@ -376,8 +384,9 @@ $("#continuar").click(function () {
                 }
            },
            keys: true,
-           paging: false,
-        searching: false//,
+           paging: true,
+           searching: true,
+           "pageLength": 5//,
             //createdRow: function (row, data, dataIndex) {
            // }//,
            // data: DTabla
@@ -385,7 +394,7 @@ $("#continuar").click(function () {
     t.columns.adjust().draw();
 
         var renglon = 1;
-        for (var i = 0; i < 10; i++) {  
+        for (var i = 0; i < n; i++) {  
             t.row.add([
                 renglon,
                 '0.00',

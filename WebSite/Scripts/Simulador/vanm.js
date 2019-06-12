@@ -1,6 +1,6 @@
 ﻿var Inversion = false, Inversion1 = false, VS = false, VS1 = false, TMARv = false, TMARv1 = false, Selectv = false, Selectv1 = false, N = false, N1 = false;
 var t;
-var points = [];
+var FNEs = [];
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
 function formatNumber(n) {
@@ -272,7 +272,6 @@ $("#n").blur(function () {
 });
 
 /* Validacion del campo PLAZO*/
-
 $("#continuar").click(function () {
     $("#n").popover("hide");
     var inversion = $("#Inversion").val();
@@ -386,28 +385,27 @@ $("#continuar").click(function () {
            keys: true,
            paging: true,
            searching: true,
-           "pageLength": 5//,
+           pageLength: 10//,
             //createdRow: function (row, data, dataIndex) {
            // }//,
            // data: DTabla
     });
     t.columns.adjust().draw();
-
-        var renglon = 1;
-        for (var i = 0; i < n; i++) {  
-            t.row.add([
-                renglon,
-                '0.00',
-                '0.00',
-                '0.00'
-            ]).draw(false);
-            renglon++;
-        }        
-        $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
-        $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
-        $('#vanManual').find('td:nth-child(3)').attr("data-editable", "true");
-        $('#vanManual').find('td:nth-child(4)').attr("data-editable", "false");
-        $('#vanManual').editableTableWidget({ editor: $('<textarea>') });        
+    var renglon = 1;
+    for (var i = 0; i < n; i++) {  
+        t.row.add([
+            renglon,
+            '0.00',
+            '0.00',
+            '0.00'
+        ]).draw(false);
+        renglon++;
+    }        
+    $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
+    $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
+    $('#vanManual').find('td:nth-child(3)').attr("data-editable", "true");
+    $('#vanManual').find('td:nth-child(4)').attr("data-editable", "false");
+    $('#vanManual').editableTableWidget({ editor: $('<textarea>') });        
 });
 
 $("body").on("change", "#myTabContent table td", function (evt, newValue) {
@@ -440,36 +438,92 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
 
     var column2 = table.column(1); 
     var column3 = table.column(2);
-    var column4 = table.column(3);    
-    $(column2.footer()).html(//Para sumar columna 2
-        column2.data().map(parseFloat).reduce(function (a, b) { 
-            return a + b;
-        })
-    );
+    var column4 = table.column(3);
 
-    $(column3.footer()).html(//Para sumar columna 3
-        column3.data().map(parseFloat).reduce(function (a, b) {
-            return a + b;
-        })
-    );
+    var column2Data = column2.data(); 
+    var column3Data = column3.data(); 
+    var column4Data = column4.data(); 
 
-    $(column4.footer()).html(//Para sumar columna 4
-        column4.data().map(parseFloat).reduce(function (a, b) {
-            return a + b;
-        })
-    );
+    /*Para sumar columna 2*/
+    var sumacolumn2 = 0;
+    for (var x0 = 0; x0 < column2Data.length; x0++) {
+        var aT = column2Data[x0].toString();
+        aT = aT.replace(/,/g, '');
+        var a = parseFloat(aT);
+        sumacolumn2 = sumacolumn2 + a; 
+    }
+    sumacolumn2 = sumacolumn2.toFixed(2); 
+    var temSum1 = sumacolumn2.toString();
+    $(column2.footer()).html(FormatoNumero(temSum1));
+    /*Para sumar columna 3*/
+    var sumacolumn3 = 0;
+    for (var x1 = 0; x1 < column3Data.length; x1++) {
+        var aT1 = column3Data[x1].toString();
+        aT1 = aT1.replace(/,/g, '');
+        var a1 = parseFloat(aT1);
+        sumacolumn3 = sumacolumn3 + a1;
+    }
+    sumacolumn3 = sumacolumn3.toFixed(2);
+    var temSum2 = sumacolumn3.toString();
+    $(column3.footer()).html(FormatoNumero(temSum2));
+    /*Para sumar columna 4*/
+    var sumacolumn4 = 0;
+    for (var x2 = 0; x2 < column4Data.length; x2++) {
+        var aT2 = column4Data[x2].toString();
+        aT2 = aT2.replace(/,/g, '');
+        var a2 = parseFloat(aT2);
+        sumacolumn4 = sumacolumn4 + a2;
+    }
+    sumacolumn4 = sumacolumn4.toFixed(2);
+    var temSum3 = sumacolumn4.toString();
+    $(column4.footer()).html(FormatoNumero(temSum3));
+    /*Para Obtener vector de FNE FINAL*/
     var FNE = column4.data();    
     for (var x = 0; x < FNE.length; x++) {       
-         points[x] = FNE[x].replace(/,/g, '');
+        FNEs[x] = FNE[x].replace(/,/g, '');
     }
-    console.log(points);
-
-
+    console.log(FNEs);
 })/*.on('validate', "#myTabContent table td", function (evt, newValue) {
     if (newValue.length<=2) {
          return false; // mark cell as invalid 
     }
 })*/;
+
+$("#calcular").click(function () {
+    var inversion = $("#Inversion").val();
+    var VdS = $("#VdS").val();
+    var TMAR = $("#TMAR").val();
+    var Select = $("#select").val();
+    var n = $("#n").val();
+
+    inversion = inversion.replace(/,/g, '');
+    VdS = VdS.replace(/,/g, '');
+    TMAR = TMAR.replace(/,/g, '');
+
+    $.ajax({
+        type: "POST",
+        url: "vanM.aspx/MiCalculo",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: true,
+        data: JSON.stringify({ inversion: inversion, FNE: FNEs, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+        success: function (data) {
+           // var valores = JSON.parse(data.d);
+            
+        },
+        error: function (err) {
+            console.log(err);
+            console.log(err.responseText);
+        }
+    }).done(function (data) {
+
+    }).fail(function (data) {
+        console.log("Error: " + data);
+    }).always(function () {
+    }).then(function (data) {
+    });
+});
+
 function FormatoNumero(n) {
     return n.replace(/\D/g, "")
         .replace(/([0-9])([0-9]{2})$/, '$1.$2')

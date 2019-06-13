@@ -183,11 +183,27 @@ public partial class User_vanM : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string CreacionTabla(decimal inversion, decimal[] FNE, decimal VdS, decimal TMAR, int Select, int n)
+    public static string CreacionTabla(decimal inversion, decimal[] FNE, int[] AnioV, decimal VdS, decimal TMAR, int Select, int n)
     {
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
         System.Collections.ArrayList PeridoRec = new System.Collections.ArrayList();
         System.Collections.ArrayList BenCosto = new System.Collections.ArrayList();
+
+        decimal[] valores = new decimal[AnioV.Length];
+
+        for (int a = 1; a <= AnioV.Length; a++)
+        {
+            for (int b = 0; b < AnioV.Length; b++)
+            {
+                if (a == AnioV[b])
+                {
+                    valores[a - 1] = FNE[b];
+                    break;
+                }
+            }
+        }
+        FNE = valores;
+
         String PeriodoSelect;
         String PeridoRec2 = "";
         if (1 == Select)

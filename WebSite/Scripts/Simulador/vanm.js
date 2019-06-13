@@ -539,8 +539,8 @@ $("#calcular").click(function () {
         FNEs[x] = FNE[x].replace(/,/g, '');
         Anios[x] = Anio[x];
     }
-    console.log(Anios);
-    console.log(FNEs);
+    //console.log(Anios);
+    //console.log(FNEs);
 
     inversion = inversion.replace(/,/g, '');
     VdS = VdS.replace(/,/g, '');
@@ -580,7 +580,7 @@ $("#calcular").click(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
-            data: JSON.stringify({ inversion: inversion, FNE: FNEs, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+            data: JSON.stringify({ inversion: inversion, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 $('#Cargando_Modal').modal('hide');
                 var valores = JSON.parse(data.d);
@@ -840,8 +840,8 @@ function RellenarTabla(Datos) {
     var table = $('#dataTableVAN').DataTable({
         "columnDefs": [
             { "width": "3%", "targets": 0 },
-            { "width": "6%", "targets": 1 },
-            { "width": "19%", "targets": 2 },
+            { "width": "7%", "targets": 1 },
+            { "width": "18%", "targets": 2 },
             { "width": "18%", "targets": 3 },
             { "width": "18%", "targets": 4 },
             { "width": "18%", "targets": 5 },

@@ -167,6 +167,7 @@ public partial class User_van : System.Web.UI.Page
         Thread.Sleep(450);
         return ValorTIRR;
     }
+
     [WebMethod]
     public static string CreacionTabla(decimal inversion, decimal FNE, decimal VdS, decimal TMAR, int Select, int n)
     {

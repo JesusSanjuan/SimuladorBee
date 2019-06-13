@@ -1,6 +1,5 @@
 ﻿var Inversion = false, Inversion1 = false, VS = false, VS1 = false, TMARv = false, TMARv1 = false, Selectv = false, Selectv1 = false, N = false, N1 = false;
 var t;
-var FNEs = [];
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
 function formatNumber(n) {
@@ -354,12 +353,12 @@ $("#continuar").click(function () {
         $('#tipo').html(tipofecha);
         $('#tipo2').html(tipofecha);
         t = $('#vanManual').DataTable({
-            "columnDefs": [
+            columnDefs: [
                 { "width": "4%", "targets": 0 },
                 { "width": "31%", "targets": 1 },
                 { "width": "1%", "targets": 2 },
                 { "width": "32%", "targets": 3 },
-                { "width": "32%", "targets": 4 }
+                { "width": "31%", "targets": 4 }
             ],
             destroy: true,
             language: {
@@ -394,7 +393,7 @@ $("#continuar").click(function () {
             // }//,
             // data: DTabla
         });
-        t.columns.adjust().draw();
+
         var renglon = 1;
         for (var i = 0; i < n; i++) {
             t.row.add([
@@ -403,8 +402,7 @@ $("#continuar").click(function () {
                 '<i class="fas fa-window-minimize" aria-hidden="true"></i>',
                 '0.00',
                 '0.00'
-
-            ]).draw(false);
+            ]).draw(true);
             renglon++;
         }
         $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
@@ -413,6 +411,8 @@ $("#continuar").click(function () {
         $('#vanManual').find('td:nth-child(4)').attr("data-editable", "true");
         $('#vanManual').find('td:nth-child(5)').attr("data-editable", "false");
         $('#vanManual').editableTableWidget({ editor: $('<textarea>') });
+
+       // t.columns.adjust().draw(); 
 
         if ($('#PreCalculoVAN').css('display') === 'none' && contaclickbien<=1) {
             $("#PreCalculoVAN").css("display", "block");
@@ -423,42 +423,26 @@ $("#continuar").click(function () {
             });
         }
         if ($('#PreCalculoVAN').css('display') === 'block' && contaclickbien >= 2) {
-            $('#PreCalculoVAN').addClass("bounceOutRight animated");
+            if (contaclickbien >= 3) {
+                const element = document.querySelector('#PreCalculoVAN');
+                element.classList.add('animated', 'pulse');//Bug
+            } else {
+                $('#PreCalculoVAN').removeClass("bounceInLeft animated");
+            }            
+            
+            $('#PreCalculoVAN').addClass("pulse animated");
             $("#PreCalculoVAN").css({
-                "animation-duration": "4s",
+                "animation-duration": "0.5s",
                 "animation-delay": "0s"
             });            
         }
-
-        const element = document.querySelector('#PreCalculoVAN');
-        element.addEventListener('animationend', function () {           
-            if ($('#PreCalculoVAN').css('display') === 'block' && contaclickbien >= 2) {
-                $("#PreCalculoVAN").css("display", "none");
-                animateCSS("#PreCalculoVAN", "bounceOutRight", "bounceOutRight");
-                $("#PreCalculoVAN").css("display", "block");
-                $('#PreCalculoVAN').addClass("bounceInLeft animated");
-                $("#PreCalculoVAN").css({
-                    "animation-duration": "4s",
-                    "animation-delay": "0s"
-                });
+       // const element = document.querySelector('#PreCalculoVAN');
+       /* element.addEventListener('animationend', function () {           
+            en espera de terminar efecto visual
             }
-        });
+        });*/
     }
 });
-
-function animateCSS(element, animationName, callback) {
-    const node = document.querySelector(element);
-    node.classList.add('animated', animationName);
-
-    function handleAnimationEnd() {
-        node.classList.remove('animated', animationName);
-        node.removeEventListener('animationend', handleAnimationEnd);
-
-        if (typeof callback === 'function') callback();
-    }
-
-    node.addEventListener('animationend', handleAnimationEnd);
-}
 
 $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     var table = $('#vanManual').DataTable();
@@ -489,7 +473,7 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     }
 
     var column2 = table.column(1); 
-    var column3 = table.column(3);
+    var column3 = table.column(3);    
     var column4 = table.column(4);
 
     var column2Data = column2.data(); 
@@ -529,12 +513,7 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     sumacolumn4 = sumacolumn4.toFixed(2);
     var temSum3 = sumacolumn4.toString();
     $(column4.footer()).html(FormatoNumero(temSum3));
-    /*Para Obtener vector de FNE FINAL*/
-    var FNE = column4.data();    
-    for (var x = 0; x < FNE.length; x++) {       
-        FNEs[x] = FNE[x].replace(/,/g, '');
-    }
-    console.log(FNEs);
+   
 })/*.on('validate', "#myTabContent table td", function (evt, newValue) {
     if (newValue.length<=2) {
          return false; // mark cell as invalid 
@@ -547,6 +526,21 @@ $("#calcular").click(function () {
     var TMAR = $("#TMAR").val();
     var Select = $("#select").val();
     var n = $("#n").val();
+
+/*Para Obtener vector de FNE FINAL*/
+    var FNEs = [];
+    var Anios = [];
+    var table = $('#vanManual').DataTable();
+    var column0 = table.column(0);
+    var column4 = table.column(4);
+    var Anio = column0.data();
+    var FNE = column4.data();    
+    for (var x = 0; x < FNE.length; x++) {
+        FNEs[x] = FNE[x].replace(/,/g, '');
+        Anios[x] = Anio[x];
+    }
+    console.log(Anios);
+    console.log(FNEs);
 
     inversion = inversion.replace(/,/g, '');
     VdS = VdS.replace(/,/g, '');
@@ -565,7 +559,7 @@ $("#calcular").click(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         async: true,
-        data: JSON.stringify({ inversion: inversion, FNE: FNEs, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+        data: JSON.stringify({ inversion: inversion, FNE: FNEs, Anio:Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
         success: function (data) {
             var valores = JSON.parse(data.d);
             $('#Cargando_Modal').modal('hide');
@@ -579,7 +573,31 @@ $("#calcular").click(function () {
             console.log(err.responseText);
         }
     }).done(function (data) {
-
+        $('#content').html('');
+        $.ajax({
+            type: "POST",
+            url: "vanM.aspx/CreacionTabla",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ inversion: inversion, FNE: FNEs, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+            success: function (data) {
+                $('#Cargando_Modal').modal('hide');
+                var valores = JSON.parse(data.d);
+                RellenarTabla(valores[0]);
+                $("#PeridoRec").text(valores[1]);
+                $("#BenCosto").text(valores[2]);
+            },
+            error: function (err) {
+                console.log(err);
+                console.log(err.responseText);
+            }
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+            //console.log(data);
     }).fail(function (data) {
         console.log("Error: " + data);
     }).always(function () {
@@ -797,3 +815,92 @@ function Graficar(x, y, Periodo, posRojo) {
     });
 }
 /* Funcion de graficacion de resultados de van*/
+
+/* Funcion de creacion de tabla*/
+function RellenarTabla(Datos) {
+    var DTabla = JSON.parse(JSON.stringify(Datos));
+    for (var i = 0; i < DTabla.length; i++) {
+        for (var j = 2; j < DTabla[i].length; j++) {
+            var Dato = DTabla[i][j];
+            var resultadoFormato = number_format(Dato, 2);
+            var res;
+            if (Dato !== '') {
+                if (Dato < 0) {
+                    var str1 = "$-";
+                    res = str1.concat(resultadoFormato);
+                }
+                else {
+                    var str2 = "$";
+                    res = str2.concat(resultadoFormato);
+                }
+                DTabla[i][j] = res;
+            }
+        }
+    }
+    var table = $('#dataTableVAN').DataTable({
+        "columnDefs": [
+            { "width": "3%", "targets": 0 },
+            { "width": "6%", "targets": 1 },
+            { "width": "19%", "targets": 2 },
+            { "width": "18%", "targets": 3 },
+            { "width": "18%", "targets": 4 },
+            { "width": "18%", "targets": 5 },
+            { "width": "18%", "targets": 6 }
+        ],
+        destroy: true,
+        language: {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        createdRow: function (row, data, dataIndex) {
+            if (data[6].replace(/[\$,]/g, '') * 1 > 1) {
+                $(row).find('td:eq(6)').css("color", "red");
+            }
+        },
+        data: DTabla
+    });
+    table.columns.adjust().draw();
+}
+
+function number_format(amount, decimals) {
+    amount += ''; // por si pasan un numero en vez de un string
+    amount = parseFloat(amount.replace(/[^0-9\.]/g, '')); // elimino cualquier cosa que no sea numero o punto
+
+    decimals = decimals || 0; // por si la variable no fue fue pasada
+
+    // si no es un numero o es igual a cero retorno el mismo cero
+    if (isNaN(amount) || amount === 0)
+        return parseFloat(0).toFixed(decimals);
+
+    // si es mayor o menor que cero retorno el valor formateado como numero
+    amount = '' + amount.toFixed(decimals);
+
+    var amount_parts = amount.split('.'),
+        regexp = /(\d+)(\d{3})/;
+
+    while (regexp.test(amount_parts[0]))
+        amount_parts[0] = amount_parts[0].replace(regexp, '$1' + ',' + '$2');
+
+    return amount_parts.join('.');
+}
+/* Funcion de creacion de tabla*/

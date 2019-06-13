@@ -277,7 +277,7 @@
                                       <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Flujo Neto de Efectivo y Periodo de recuperacion</strong>.
                                     </div>
                                     <!--Temporal -->
-                                        <div  class="container-fluid card-body">
+                                    <div  class="container-fluid card-body">
                                                         <div class="preborder">
                                                                  <div class="card-header">
                                                                     <h5><i class="fa fa-table"></i>  Tabla</h5>
@@ -364,30 +364,30 @@
                     <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>   
             </div>
     </div>
-    <!-- The Modal --> 
-              <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
-                <div class="modal-dialog">
-                  <div class="modal-content">      
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                             <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>        
-                        <!-- Modal body -->
-                        <div class="modal-body" id="modal-text-body" >    
-                            <div class="row">
-                                    <div class="col-3" id="imgmodal"></div>
-                                    <div class="col-9" id="texmodal"></div>                                                                        
-                            </div>
-                            <audio id="audio" style="display:none" controls> </audio > 
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        </div>
+<!-- The Modal --> 
+    <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+        <div class="modal-dialog">
+            <div class="modal-content">      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                        <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>        
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-text-body" >    
+                    <div class="row">
+                            <div class="col-3" id="imgmodal"></div>
+                            <div class="col-9" id="texmodal"></div>                                                                        
                     </div>
-                  </div>
-                </div> 
+                    <audio id="audio" style="display:none" controls> </audio > 
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
 <!-- The Modal -->
 <div class="modal fade" id="Cargando_Modal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal">
     <div id="Cargando_Modal_Dialog" class="modal-dialog">

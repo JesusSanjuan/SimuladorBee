@@ -121,55 +121,104 @@
             </div>   
         </div>  
    </div>
-    <div style="padding-bottom:1rem;">
-              <div class="card align-middle"> 
-                    <div class="card-header">
-                      <h4><i class="fas fa-pencil-alt"></i> Ingreso de flujos netos</h4>
-                    </div>              
-                    <div class="tab-content" id="myTabContent">
-                        <div class="alert alert-danger alert-dismissible fade show" id="Alert" style="display:none;" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div id="Texto_alert">                                
+    <div id="PreCalculoVAN" style="display:none;">
+        <div style="padding-bottom:1rem;">
+                  <div class="card align-middle"> 
+                        <div class="card-header">
+                          <h4><i class="fas fa-pencil-alt"></i> Ingreso de flujos netos</h4>
+                        </div>              
+                        <div class="tab-content" id="myTabContent">
+                            <div class="alert alert-danger alert-dismissible fade show" id="Alert" style="display:none;" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div id="Texto_alert">                                
+                                </div>
                             </div>
-                        </div>
-                            <div class="table-responsive" style="margin-top: 15px; padding-bottom:0px;">
-                                <Table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"   id="vanManual"   >
-                                        <thead>
-                                            <tr>
-                                                <th id="tipo"></th>
-                                                <th>Cobros</th>     
-                                                <th></th>
-                                                <th>Pagos</th>
-                                                <th>Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody  id="dataTable">                                                                                                                                                                           
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th id="tipo2"></th>
-                                                <th id="thcobros">Cobros</th>  
-                                                <th></th>
-                                                <th id="thpagos">Pagos</th>
-                                                <th id="thFNE">Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
-                                            </tr>
-                                        </tfoot>                                                                                                     
-                                </Table>
-                            </div>                                           
-                        </div>
-              </div>
+                                <div class="table-responsive" style="margin-top: 15px; padding-bottom:0px;">
+                                    <Table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"   id="vanManual"   >
+                                            <thead>
+                                                <tr>
+                                                    <th id="tipo"></th>
+                                                    <th>Cobros</th>     
+                                                    <th></th>
+                                                    <th>Pagos</th>
+                                                    <th>Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody  id="dataTable">                                                                                                                                                                           
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th id="tipo2"></th>
+                                                    <th id="thcobros">Cobros</th>  
+                                                    <th></th>
+                                                    <th id="thpagos">Pagos</th>
+                                                    <th id="thFNE">Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
+                                                </tr>
+                                            </tfoot>                                                                                                     
+                                    </Table>
+                                </div>                                           
+                            </div>
+                  </div>
+        </div>
+        <div class="form-row" style="margin-top: 15px; padding-bottom:0px;">  
+                <div class="col-md-4 mb-2">
+                </div>  
+                <div class="col-md-4 mb-2">
+                    <button id="calcular" class="btn btn-primary btn-lg btn-block" type="button">Calcular</button>
+                </div>  
+                <div class="col-md-4 mb-2">
+                </div>   
+        </div>
     </div>
-    <div class="form-row" style="margin-top: 15px; padding-bottom:0px;">  
-            <div class="col-md-4 mb-2">
-            </div>  
-            <div class="col-md-4 mb-2">
-                <button id="calcular" class="btn btn-primary btn-lg btn-block" type="button">Calcular</button>
-            </div>  
-            <div class="col-md-4 mb-2">
-            </div>   
+<!-- The Modal --> 
+    <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+        <div class="modal-dialog">
+            <div class="modal-content">      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                        <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>        
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-text-body" >    
+                    <div class="row">
+                            <div class="col-3" id="imgmodal"></div>
+                            <div class="col-9" id="texmodal"></div>                                                                        
+                    </div>
+                    <audio id="audio" style="display:none" controls> </audio > 
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+<!-- The Modal -->
+<div class="modal fade" id="Cargando_Modal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal">
+    <div id="Cargando_Modal_Dialog" class="modal-dialog">
+        <div class="modal-content2">                    
+                <centerior>
+                    <svg>
+                        <g>
+                            <path d="M 50,100 A 1,1 0 0 1 50,0"/>
+                        </g>
+                        <g>
+                            <path d="M 50,75 A 1,1 0 0 0 50,-25"/>
+                        </g>
+                        <defs>
+                             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF56A1;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF9350;stop-opacity:1" />
+                             </linearGradient>
+                        </defs>
+                    </svg>
+                </centerior>
+        </div>
     </div>
+</div>
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
@@ -187,6 +236,9 @@
 <!-- plugin selectpicker-->
     <script src="../Scripts/bootstrap-select.min.js"></script>
 <!-- plugin selectpicker-->
+ <!-- Libreria de graficas-->
+        <script src="../Scripts/Chart.js"></script>
+ <!-- Libreria de graficas-->
 <!-- Para validacion de campos-->   
     <script src="../Scripts/Simulador/vanm.js"></script>  
 <!-- Para validacion de campos-->

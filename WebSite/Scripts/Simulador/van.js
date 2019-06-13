@@ -537,8 +537,9 @@ function Modal(Resultado) {
     });
 }
 /* Funcion de modal de resultados de van*/
-var myLineChart;
+
 /* Funcion de graficacion de resultados de van*/
+var myLineChart;
 function Graficar(x, y, Periodo,posRojo) {
 
     // Chart.js scripts

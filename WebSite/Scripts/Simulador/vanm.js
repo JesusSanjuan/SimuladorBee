@@ -271,6 +271,8 @@ $("#n").blur(function () {
     $("#n").popover("hide");
 });
 
+var contaclickbien = 0;
+
 /* Validacion del campo PLAZO*/
 $("#continuar").click(function () {
     $("#n").popover("hide");
@@ -289,7 +291,7 @@ $("#continuar").click(function () {
         Inversion1 = false;
     } else {
         Inversion1 = true;
-    }    
+    }
 
     if (VdS.length === 0) {
         $("#VdSval").addClass("invalid-feedback");
@@ -332,25 +334,26 @@ $("#continuar").click(function () {
         N1 = false;
     } else {
         N1 = true;
-    }
+    }   
 
-    //if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
-    if (t) {//Limpieza tabla
-        t.clear();
-        t.destroy();
-        $('#thcobros').html("Cobros");
-        $('#thpagos').html("Pagos");
-        $('#thFNE').html("Flujo Neto de Efectivo");
-    }
+    if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
+        contaclickbien = contaclickbien+1;
+        if (t) {//Limpieza tabla
+            t.clear();
+            t.destroy();
+            $('#thcobros').html("Cobros");
+            $('#thpagos').html("Pagos");
+            $('#thFNE').html("Flujo Neto de Efectivo");
+        }
 
-    var valor = $("#select").val();
-    var tipofecha = "Año";
-    if (valor === "1") {
-        tipofecha = "Mes";
-    }
-    $('#tipo').html(tipofecha);
-    $('#tipo2').html(tipofecha);
-    t = $('#vanManual').DataTable({
+        var valor = $("#select").val();
+        var tipofecha = "Año";
+        if (valor === "1") {
+            tipofecha = "Mes";
+        }
+        $('#tipo').html(tipofecha);
+        $('#tipo2').html(tipofecha);
+        t = $('#vanManual').DataTable({
             "columnDefs": [
                 { "width": "4%", "targets": 0 },
                 { "width": "31%", "targets": 1 },
@@ -382,35 +385,80 @@ $("#continuar").click(function () {
                     "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
-           },
-           keys: true,
-           paging: false,
-           searching: true,
-           pageLength: 10//,
+            },
+            keys: true,
+            paging: false,
+            searching: true,
+            pageLength: 10//,
             //createdRow: function (row, data, dataIndex) {
-           // }//,
-           // data: DTabla
-    });
-    t.columns.adjust().draw();
-    var renglon = 1;
-    for (var i = 0; i < n; i++) {  
-        t.row.add([
-            renglon,
-            '0.00',
-            '<i class="fas fa-window-minimize" aria-hidden="true"></i>',
-            '0.00',
-            '0.00'
-            
-        ]).draw(false);
-        renglon++;
-    }        
-    $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
-    $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
-    $('#vanManual').find('td:nth-child(3)').attr("data-editable", "false");
-    $('#vanManual').find('td:nth-child(4)').attr("data-editable", "true");
-    $('#vanManual').find('td:nth-child(5)').attr("data-editable", "false");
-    $('#vanManual').editableTableWidget({ editor: $('<textarea>') });        
+            // }//,
+            // data: DTabla
+        });
+        t.columns.adjust().draw();
+        var renglon = 1;
+        for (var i = 0; i < n; i++) {
+            t.row.add([
+                renglon,
+                '0.00',
+                '<i class="fas fa-window-minimize" aria-hidden="true"></i>',
+                '0.00',
+                '0.00'
+
+            ]).draw(false);
+            renglon++;
+        }
+        $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
+        $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
+        $('#vanManual').find('td:nth-child(3)').attr("data-editable", "false");
+        $('#vanManual').find('td:nth-child(4)').attr("data-editable", "true");
+        $('#vanManual').find('td:nth-child(5)').attr("data-editable", "false");
+        $('#vanManual').editableTableWidget({ editor: $('<textarea>') });
+
+        if ($('#PreCalculoVAN').css('display') === 'none' && contaclickbien<=1) {
+            $("#PreCalculoVAN").css("display", "block");
+            $('#PreCalculoVAN').addClass("bounceInLeft animated");
+            $("#PreCalculoVAN").css({
+                "animation-duration": "2s",
+                "animation-delay": "0s"
+            });
+        }
+        if ($('#PreCalculoVAN').css('display') === 'block' && contaclickbien >= 2) {
+            $('#PreCalculoVAN').addClass("bounceOutRight animated");
+            $("#PreCalculoVAN").css({
+                "animation-duration": "4s",
+                "animation-delay": "0s"
+            });            
+        }
+
+        const element = document.querySelector('#PreCalculoVAN');
+        element.addEventListener('animationend', function () {           
+            if ($('#PreCalculoVAN').css('display') === 'block' && contaclickbien >= 2) {
+                $("#PreCalculoVAN").css("display", "none");
+                animateCSS("#PreCalculoVAN", "bounceOutRight", "bounceOutRight");
+                $("#PreCalculoVAN").css("display", "block");
+                $('#PreCalculoVAN').addClass("bounceInLeft animated");
+                $("#PreCalculoVAN").css({
+                    "animation-duration": "4s",
+                    "animation-delay": "0s"
+                });
+            }
+        });
+    }
 });
+
+function animateCSS(element, animationName, callback) {
+    const node = document.querySelector(element);
+    node.classList.add('animated', animationName);
+
+    function handleAnimationEnd() {
+        node.classList.remove('animated', animationName);
+        node.removeEventListener('animationend', handleAnimationEnd);
+
+        if (typeof callback === 'function') callback();
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd);
+}
 
 $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     var table = $('#vanManual').DataTable();
@@ -505,6 +553,13 @@ $("#calcular").click(function () {
     TMAR = TMAR.replace(/,/g, '');
 
     $.ajax({
+        beforeSend: function () {
+            $("#Cargando_Modal").css({ 'position': 'fixed', 'top': '40%' });
+            $("#Cargando_Modal_Dialog").css({ 'margin': '3.75rem auto' });
+            $('#Cargando_Modal').modal({ backdrop: 'static', keyboard: false });
+            $('#Cargando_Modal').modal('show');
+        },
+        cache: false,
         type: "POST",
         url: "vanM.aspx/MiCalculo",
         contentType: "application/json; charset=utf-8",
@@ -512,8 +567,12 @@ $("#calcular").click(function () {
         async: true,
         data: JSON.stringify({ inversion: inversion, FNE: FNEs, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
         success: function (data) {
-           // var valores = JSON.parse(data.d);
-            
+            var valores = JSON.parse(data.d);
+            $('#Cargando_Modal').modal('hide');
+            Modal(valores[0]);
+            $("#VAN").text(valores[1]);
+            $("#TIR").text(valores[2]);
+            Graficar(valores[3], valores[4], valores[5], valores[6]);            
         },
         error: function (err) {
             console.log(err);
@@ -533,3 +592,208 @@ function FormatoNumero(n) {
         .replace(/([0-9])([0-9]{2})$/, '$1.$2')
         .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
 }
+
+/* Funcion de modal de resultados de van*/
+function Modal(Resultado) {
+    $('#Cargando_Modal').modal('hide');
+    ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
+    $(document).ready(function () {
+        var Texto, TextoEfecto, Textovelocidad, TextoRepticiones, Imagen, audio, audioP;
+        if (ResultadoVPN > 0) {
+            Texto = "<strong style='vertical - align: middle;'>Se recomienda aceptar la inversion</strong>";
+            TextoEfecto = "pulse animated"; Textovelocidad = '2s'; TextoRepticiones = '5';
+            Imagen = '<img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/>';
+            audio = '<source type = "audio/mp3" src = "../multimedia/Aplausos.mp3" >';
+        }
+        else {
+            Texto = "<strong style='vertical - align: middle;'>Se recomienda rechazar la inversion</strong>";
+            TextoEfecto = "tada animated"; Textovelocidad = '4s'; TextoRepticiones = 'infinite';
+            Imagen = '<img src="../multimedia/alerta.gif" class="img-fluid bounce animated infinite" width="100" height="100" alt="Responsive image"/>';
+            audio = '<source type = "audio/mp3" src = "../multimedia/error.mp3" >';
+        }
+        $('#myModal').modal({ show: true });
+        $("#modalheader").css({
+            "-webkit-animation-delay": "1s"
+        });
+        $('#imgmodal').html(Imagen);
+        $('#texmodal').html(Texto);
+        $('#texmodal').addClass(TextoEfecto); //otra manera de aplicar efectos
+        $("#texmodal").css({
+            "-webkit-animation-duration": Textovelocidad, //velocidad de efecto
+            "-webkit-animation-delay": "2s", // Tiempo a esperar antes de empezar a  ejecutar animacion
+            "-webkit-animation-iteration-count": TextoRepticiones,// Veces de repeticion de efecto
+            "animation-iteration-count": TextoRepticiones//, // Veces de repeticion de efecto
+            // "-webkit-animation": "mymove 1s; ", //Velocidad de la animacion
+            // "animation": "mymove 1s;"//Velocidad de la animacion
+        });
+        $('#audio').html(audio);
+        audioP = document.getElementById("audio");
+        audioP.play();
+
+        $('#cerrar').click(function () {
+            audioP.pause();
+            audioP.currentTime = 0;
+
+            $("#ResultadosVAN").css("display", "block");
+            $('#ResultadosVAN').addClass("bounceInLeft animated");
+            $("#ResultadosVAN").css({
+                "-webkit-animation-delay": ".5s"
+            });
+            //$("#ResultadosVAN").load(" #ResultadosVAN");
+            location.href = "#ResultadosFinales";
+        });
+        $("#myModal").on('hide.bs.modal', function () {
+            audioP.pause();
+            audioP.currentTime = 0;
+            $("#ResultadosVAN").css("display", "block");
+            $('#ResultadosVAN').addClass("bounceInLeft animated");
+            $("#ResultadosVAN").css({
+                "-webkit-animation-delay": ".5s"
+            });
+            //$("#ResultadosVAN").load(" #ResultadosVAN");
+            location.href = "#ResultadosFinales";
+        });
+
+    });
+}
+/* Funcion de modal de resultados de van*/
+
+/* Funcion de graficacion de resultados de van*/
+var myLineChart;
+function Graficar(x, y, Periodo, posRojo) {
+
+    // Chart.js scripts
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
+
+    //convertimos el array en json
+    var time = JSON.parse(JSON.stringify(x));
+    var repArray = JSON.parse(JSON.stringify(y));
+    var PeriodoSelect = JSON.parse(JSON.stringify(Periodo));
+    var posRojo1 = JSON.parse(JSON.stringify(posRojo));
+
+    var pointBackgroundColor = new Array(repArray.length);
+    var pointRadius = new Array(repArray.length);
+    var pointHoverRadius = new Array(repArray.length);
+    var pointStyle = new Array(repArray.length);
+    // var tooltipsbackgroundColor = new Array(repArray.length);
+
+
+    for (var i = 0; i < repArray.length; i++) {
+        pointBackgroundColor[i] = "rgba(2,117,216,1)";
+        pointRadius[i] = 3;
+        pointHoverRadius[i] = 6;
+        pointStyle[i] = 'circle';
+        //  tooltipsbackgroundColor[i] = 'rgba(0, 0, 0, 0.7)';
+    }
+
+    pointBackgroundColor[posRojo1] = "rgba(255, 87, 51,1)";
+    pointRadius[posRojo1] = 8;
+    pointHoverRadius[posRojo1] = 10;
+    pointStyle[posRojo1] = 'rectRounded';
+
+    var ctx = document.getElementById("myAreaChart");
+    myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: time,
+            datasets: [{
+                label: "VPN",
+                lineTension: 0.2,
+                backgroundColor: "rgba(2,117,216,0.2)",// Para lo de bajo o arriba de la lineas y el decimal para la intencidad
+                borderColor: "rgba(2,117,216,0.9)",// El color de las lineas que unen los puntos y la intencidad
+                borderWidth: 3,
+                pointRadius: pointRadius, // Radio
+                pointBackgroundColor: pointBackgroundColor,// Interior del boton e intensidad del interior
+                pointBorderColor: "rgba(255,255,255,1)",// Color de los bordes del punto e intensidad del borde
+                pointHoverRadius: pointHoverRadius,// Agrandar al pasar el raton sobre el punto
+                pointHoverBackgroundColor: pointBackgroundColor,// Color del interior del punto al pasar el cursor y agrandarse
+                pointHitRadius: 4,//determina la distancia a la cuál los puntos trazados comenzarán a interactuar con el ratón.
+                pointBorderWidth: 2, //Distancia del punto de su borde al centro
+                pointStyle: pointStyle,
+                data: repArray
+
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: "Calculo del VPN"
+            },
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'date'
+                    },
+                    gridLines: {
+                        display: true
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: "TMAR en ".concat(PeriodoSelect)
+                    },
+                    ticks: {
+                        min: time[0],
+                        max: time[repArray.length - 1],
+                        callback: function (value, index, values) {
+                            return value + '%';
+                        }
+                        // maxTicksLimit: 40
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'VPN'
+                    },
+                    ticks: {
+                        //min: repArray[repArray.length - 1],
+                        //max: repArray[0],
+                        callback: function (value, index, values) {
+                            return '$' + value;
+                        }
+                        // maxTicksLimit: 40
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            },
+            tooltips: {
+                xPadding: 16,
+                yPadding: 10,
+                backgroundColor: 'rgba(0,5,109, 0.5)',
+                titleFontStyle: 'normal',
+                titleMarginBottom: 15/*,
+                callbacks: {
+                    labelColor: function (tooltipItem, chart) {
+                        console.log(tooltipItem);
+                    return {
+                       
+                        borderColor: 'rgb(255, 0, 0)',
+                        backgroundColor: 'rgb(255, 0, 0)'
+                    }
+                },
+                labelTextColor:function(tooltipItem, chart){
+                    return '#543453';
+                }
+            }*/
+            },
+            animation: {
+                duration: 10 // general animation time
+            },
+            hover: {
+                animationDuration: 10 // duration of animations when hovering an item
+            },
+            responsiveAnimationDuration: 10, // animation duration after a resize
+            legend: {
+                display: true,
+                labels: {
+                    fontColor: 'rgb(0, 0, 0)'// Color de los labels del titulo
+                }
+            }
+        }
+    });
+}
+/* Funcion de graficacion de resultados de van*/

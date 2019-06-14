@@ -107,8 +107,7 @@ public partial class Simulador_gastos : System.Web.UI.Page
 
     private static object Proyeccion(Entidades db, string id_proyect, string id_periodo, decimal tabl_total, float infla)
     {
-        //var inflacion = 1.5;
-        var inflacion = infla / 100;
+        var inflacion = (infla / 100) + 1;
 
         //BUSCAMOS CUANTOS PERIODOS TIENE
         var httpContext = HttpContext.Current;
@@ -302,7 +301,8 @@ public partial class Simulador_gastos : System.Web.UI.Page
 
             }
             /*****se hace la cosulta de la inflacion********/
-            var inflacion = (1.5).ToString();
+            //var inflacion = (1.5).ToString();
+            var inflacion = "X";
             result_query.Add(inflacion);
             /*****se hace la cosulta de la inflacion********/
 

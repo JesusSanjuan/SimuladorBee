@@ -113,7 +113,7 @@ public partial class Simulador_costos : System.Web.UI.Page
     {
         //var inflacion = 1.5/100;
 
-        var inflacion = infla / 100;
+        var inflacion = (infla / 100)+1;
 
         //BUSCAMOS CUANTOS PERIODOS TIENE
         var httpContext = HttpContext.Current;
@@ -312,7 +312,8 @@ public partial class Simulador_costos : System.Web.UI.Page
 
             }
             /*****se hace la cosulta de la inflacion********/
-            var inflacion = (1.5).ToString();
+            //var inflacion = (1.5).ToString();
+            var inflacion = "X";
             result_query.Add(inflacion);
             /*****se hace la cosulta de la inflacion********/
 

@@ -277,17 +277,17 @@
                                       <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Flujo Neto de Efectivo y Periodo de recuperacion</strong>.
                                     </div>
                                     <!--Temporal -->
-                                        <div  class="container-fluid card-body">
+                                    <div  class="container-fluid card-body">
                                                         <div class="preborder">
                                                                  <div class="card-header">
                                                                     <h5><i class="fa fa-table"></i>  Tabla</h5>
                                                                  </div>
                                                                                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                                                                                 <Table class="table table-striped table-bordered" style="width:100%;"  id="dataTableVAN"  >
+                                                                                                 <Table class="table table-striped"  style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"  id="dataTableVAN"  >
                                                                                                       <thead>
                                                                                                         <tr>
                                                                                                           <th></th>
-                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th id="tipo"></th>
                                                                                                           <th>Costos</th>                                                                                            
                                                                                                           <th>Ingresos</th>
                                                                                                           <th>Flujo Neto de Efectivo</th>
@@ -300,7 +300,7 @@
                                                                                                       <tfoot>
                                                                                                         <tr>
                                                                                                           <th></th>
-                                                                                                          <th>Año/Mes</th>
+                                                                                                          <th id="tipo2"></th>
                                                                                                           <th>Costos</th>                                                                                            
                                                                                                           <th>Ingresos</th>
                                                                                                           <th>Flujo Neto de Efectivo</th>
@@ -364,30 +364,30 @@
                     <div class="card-footer small text-muted"> Actualizado el  <%: DateTime.Today %></div>   
             </div>
     </div>
-    <!-- The Modal --> 
-              <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
-                <div class="modal-dialog">
-                  <div class="modal-content">      
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                             <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>        
-                        <!-- Modal body -->
-                        <div class="modal-body" id="modal-text-body" >    
-                            <div class="row">
-                                    <div class="col-3" id="imgmodal"></div>
-                                    <div class="col-9" id="texmodal"></div>                                                                        
-                            </div>
-                            <audio id="audio" style="display:none" controls> </audio > 
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                           <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        </div>
+<!-- The Modal --> 
+    <div class="modal fade" id="myModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+        <div class="modal-dialog">
+            <div class="modal-content">      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                        <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Diagnóstico de Inversión</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>        
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-text-body" >    
+                    <div class="row">
+                            <div class="col-3" id="imgmodal"></div>
+                            <div class="col-9" id="texmodal"></div>                                                                        
                     </div>
-                  </div>
-                </div> 
+                    <audio id="audio" style="display:none" controls> </audio > 
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" id="cerrar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
 <!-- The Modal -->
 <div class="modal fade" id="Cargando_Modal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal">
     <div id="Cargando_Modal_Dialog" class="modal-dialog">

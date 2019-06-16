@@ -352,6 +352,8 @@ $("#continuar").click(function () {
         }
         $('#tipo').html(tipofecha);
         $('#tipo2').html(tipofecha);
+        $('#tipo3').html(tipofecha);
+        $('#tipo4').html(tipofecha);
         t = $('#vanManual').DataTable({
             columnDefs: [
                 { "width": "4%", "targets": 0 },
@@ -590,7 +592,8 @@ $("#calcular").click(function () {
                 var valores = JSON.parse(data.d);
                 RellenarTabla(valores[0]);
                 $("#PeridoRec").text(valores[1]);
-                $("#BenCosto").text(valores[2]);
+                $("#PeridoRec2").text(valores[2]+"  Hola");
+                $("#BenCosto").text(valores[3]);
             },
             error: function (err) {
                 console.log(err);
@@ -699,7 +702,6 @@ function Graficar(x, y, Periodo, posRojo) {
     var pointHoverRadius = new Array(repArray.length);
     var pointStyle = new Array(repArray.length);
     // var tooltipsbackgroundColor = new Array(repArray.length);
-
 
     for (var i = 0; i < repArray.length; i++) {
         pointBackgroundColor[i] = "rgba(2,117,216,1)";
@@ -845,11 +847,12 @@ function RellenarTabla(Datos) {
         "columnDefs": [
             { "width": "3%", "targets": 0 },
             { "width": "7%", "targets": 1 },
-            { "width": "18%", "targets": 2 },
-            { "width": "18%", "targets": 3 },
-            { "width": "18%", "targets": 4 },
-            { "width": "18%", "targets": 5 },
-            { "width": "18%", "targets": 6 }
+            { "width": "15%", "targets": 2 },
+            { "width": "15%", "targets": 3 },
+            { "width": "15%", "targets": 4 },
+            { "width": "15%", "targets": 5 },
+            { "width": "15%", "targets": 6 },
+            { "width": "15%", "targets": 7 }
         ],
         destroy: true,
         language: {
@@ -879,6 +882,9 @@ function RellenarTabla(Datos) {
         createdRow: function (row, data, dataIndex) {
             if (data[6].replace(/[\$,]/g, '') * 1 > 1) {
                 $(row).find('td:eq(6)').css("color", "red");
+            }
+            if (data[7].replace(/[\$,]/g, '') * 1 > 1) {
+                $(row).find('td:eq(7)').css("color", "red");
             }
         },
         data: DTabla

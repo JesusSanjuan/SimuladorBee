@@ -300,14 +300,6 @@
                                             </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="Tabla">
-                                        <!--Temporal -->
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                          <strong>Atencion!!!</strong> Las unicas columnas con resultados fiables son <strong>Flujo Neto de Efectivo y Periodo de recuperacion</strong>.
-                                        </div>
-                                        <!--Temporal -->
                                         <div  class="container-fluid card-body">
                                                             <div class="preborder">
                                                                      <div class="card-header">
@@ -318,12 +310,13 @@
                                                                                                           <thead>
                                                                                                             <tr>
                                                                                                               <th></th>
-                                                                                                              <th id="tipo"></th>
+                                                                                                              <th id="tipo3"></th>
                                                                                                               <th>Costos</th>                                                                                            
                                                                                                               <th>Ingresos</th>
                                                                                                               <th>Flujo Neto de Efectivo</th>
                                                                                                               <th>Ingreso Actualizado</th>
                                                                                                               <th>Periodo de Recuperación</th>
+                                                                                                              <th>Periodo de Recuperación en funcion del ingreso actualizado</th>
                                                                                                             </tr>
                                                                                                           </thead>
                                                                                                           <tbody  id="dataTableVANBody">                                                                                                                                                                           
@@ -331,12 +324,13 @@
                                                                                                           <tfoot>
                                                                                                             <tr>
                                                                                                               <th></th>
-                                                                                                              <th id="tipo2"></th>
+                                                                                                              <th id="tipo4"></th>
                                                                                                               <th>Costos</th>                                                                                            
                                                                                                               <th>Ingresos</th>
                                                                                                               <th>Flujo Neto de Efectivo</th>
                                                                                                               <th>Ingreso Actualizado</th>
                                                                                                               <th>Periodo de Recuperación</th>
+                                                                                                              <th>Periodo de Recuperación en funcion del ingreso actualizad</th>
                                                                                                             </tr>
                                                                                                           </tfoot>                                                                                                     
                                                                                                     </Table>

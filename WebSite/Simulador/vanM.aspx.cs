@@ -186,6 +186,7 @@ public partial class User_vanM : System.Web.UI.Page
     {
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
         System.Collections.ArrayList PeridoRec = new System.Collections.ArrayList();
+        System.Collections.ArrayList PeridoRecP2 = new System.Collections.ArrayList();
         System.Collections.ArrayList BenCosto = new System.Collections.ArrayList();
 
         decimal[] valores = new decimal[AnioV.Length];
@@ -211,6 +212,7 @@ public partial class User_vanM : System.Web.UI.Page
 
         String PeriodoSelect;
         String PeridoRec2 = "";
+        String PeridoRec3 = "";
         if (1 == Select)
         {
             PeriodoSelect = "Mes";
@@ -222,9 +224,10 @@ public partial class User_vanM : System.Web.UI.Page
 
         TMAR = TMAR / 100;
         int Periodo = n;
-        String[,] ArregloDatos = new String[Periodo + 1, 7];
+        String[,] ArregloDatos = new String[Periodo + 1, 8];
         ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
         ArregloDatos[0, 2] = "-" + inversion.ToString();
+        ArregloDatos[0, 7] = "-" + inversion.ToString();
         for (int j = 0; j <= Periodo; j++)
         {
             ArregloDatos[j, 0] = Convert.ToString(j + 1);
@@ -250,6 +253,17 @@ public partial class User_vanM : System.Web.UI.Page
                 decimal IngresoActual = (Convert.ToDecimal(ArregloDatos[j, 3])) / Convert.ToDecimal(Math.Pow((double)(1 + TMAR), j));
                 ArregloDatos[j, 5] = Convert.ToString(Math.Round(IngresoActual, 3));
         }
+
+        /*Calculo de periodo de recuperacion en funcion del ingreso actualizado en tabla*/
+        for (int i = 1; i <= Periodo; i++)
+        {
+            decimal x = Convert.ToDecimal(ArregloDatos[i - 1, 7]);
+            decimal ingresactualiza = Convert.ToDecimal(ArregloDatos[i, 5]);
+            ArregloDatos[i, 7] = Convert.ToString(x + ingresactualiza);
+        }
+        /*Calculo de periodo de recuperacion en funcion del ingreso actualizado en tabla*/
+
+        /*Calculo de periodo de recuperacion en tabla*/
         ArregloDatos[0, 6] = ArregloDatos[0, 2];
         for (int i = 1; i <= Periodo; i++)
         {
@@ -258,6 +272,8 @@ public partial class User_vanM : System.Web.UI.Page
             ArregloDatos[i, 6] = Convert.ToString(x + Flujoneto);
         }
         ListaFinal.Add(ArregloDatos);
+        /*Calculo de periodo de recuperacion en tabla*/
+
         /*Calculo de periodo de recuperacion*/
         decimal P = inversion;
         for (int i = 1; i <= Periodo; i++)
@@ -275,24 +291,35 @@ public partial class User_vanM : System.Web.UI.Page
 
                         if (T1 > 1)
                         {
-                            PeridoRec2 = Convert.ToString(T1) + " " + PeriodoSelect + "es";
+                            double valorConDecimal = (double)T1;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec2 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + "es con " + decimales + " dia(s)" ;
                         }
                         else
                         {
-                            PeridoRec2 = Convert.ToString(T1) + " " + PeriodoSelect;
+                            double valorConDecimal = (double)T1;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec2 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + " " + decimales + " dia(s)";
                         }
-
                     }
                     else
                     {
                         decimal T2 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
                         if (T2 > 1)
-                        {
-                            PeridoRec2 = Convert.ToString(T2) + " " + PeriodoSelect + "s";
+                        {      
+                            double valorConDecimal = (double)T2;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal)*12,1);
+                            PeridoRec2 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + "s con " + decimales + " mes(es)";
                         }
                         else
                         {
-                            PeridoRec2 = Convert.ToString(T2) + " " + PeriodoSelect;
+                            double valorConDecimal = (double)T2;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec2 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + " " + decimales + " mes(es)";
                         }
                     }
                     break;
@@ -302,11 +329,69 @@ public partial class User_vanM : System.Web.UI.Page
             {
                 PeridoRec2 = "No es posible calcular";
             }
-
         }
+
         PeridoRec.Add(PeridoRec2);
         ListaFinal.Add(PeridoRec);
+
+        for (int i = 1; i <= Periodo; i++)
+        {
+            decimal x1 = Convert.ToDecimal(ArregloDatos[i, 7]);
+            if (x1 >= 0)
+            {
+                decimal x2 = Convert.ToDecimal(ArregloDatos[i - 1, 7]);
+                if (x2 < 0)
+                {
+                    decimal Anio = Convert.ToDecimal(ArregloDatos[i - 1, 0]);
+                    if (PeriodoSelect == "Mes")
+                    {
+                        decimal T1 = Math.Round(((P / ((x2 * -1M) + x1)) + (Anio - 1)), 3);
+
+                        if (T1 > 1)
+                        {
+                            double valorConDecimal = (double)T1;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec3 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + "es con " + decimales + " dia(s)";
+                        }
+                        else
+                        {
+                            double valorConDecimal = (double)T1;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec3 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + " " + decimales + " dia(s)";
+                        }
+                    }
+                    else
+                    {
+                        decimal T2 = Math.Round(((P / ((x2 * -1) + x1)) + (Anio - 1)), 3);
+                        if (T2 > 1)
+                        {
+                            double valorConDecimal = (double)T2;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec3 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + "s con " + decimales + " mes(es)";
+                        }
+                        else
+                        {
+                            double valorConDecimal = (double)T2;
+                            long valorSinDecimal = (long)valorConDecimal;
+                            double decimales = Math.Round((valorConDecimal - (double)valorSinDecimal) * 12, 1);
+                            PeridoRec3 = Convert.ToString(valorSinDecimal) + " " + PeriodoSelect + " " + decimales + " mes(es)";
+                        }
+                    }
+                    break;
+                }
+            }
+            else
+            {
+                PeridoRec3 = "No es posible calcular";
+            }
+        }
+        PeridoRecP2.Add(PeridoRec3);
+        ListaFinal.Add(PeridoRecP2);
         /*Calculo de periodo de recuperacion*/
+
         /*Calculo de beneficio-costo*/
         decimal SumIngresos_actualizados = 0;
         for (int i = 1; i <= Periodo; i++)

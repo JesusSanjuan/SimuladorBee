@@ -592,7 +592,7 @@ $("#calcular").click(function () {
                 var valores = JSON.parse(data.d);
                 RellenarTabla(valores[0]);
                 $("#PeridoRec").text(valores[1]);
-                $("#PeridoRec2").text(valores[2]+"  Hola");
+                $("#PeridoRec2").text(valores[2]);
                 $("#BenCosto").text(valores[3]);
             },
             error: function (err) {

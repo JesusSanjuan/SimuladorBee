@@ -355,10 +355,9 @@ $("#continuar").click(function () {
         t = $('#vanManual').DataTable({
             columnDefs: [
                 { "width": "4%", "targets": 0 },
-                { "width": "31%", "targets": 1 },
-                { "width": "1%", "targets": 2 },
-                { "width": "32%", "targets": 3 },
-                { "width": "31%", "targets": 4 }
+                { "width": "32%", "targets": 1 },
+                { "width": "32%", "targets": 2 },
+                { "width": "32%", "targets": 3 }
             ],
             destroy: true,
             language: {
@@ -399,7 +398,6 @@ $("#continuar").click(function () {
             t.row.add([
                 renglon,
                 '0.00',
-                '<i class="fas fa-window-minimize" aria-hidden="true"></i>',
                 '0.00',
                 '0.00'
             ]).draw(true);
@@ -407,9 +405,8 @@ $("#continuar").click(function () {
         }
         $('#vanManual').find('td:nth-child(1)').attr("data-editable", "false");
         $('#vanManual').find('td:nth-child(2)').attr("data-editable", "true");
-        $('#vanManual').find('td:nth-child(3)').attr("data-editable", "false");
+        $('#vanManual').find('td:nth-child(3)').attr("data-editable", "true");
         $('#vanManual').find('td:nth-child(4)').attr("data-editable", "true");
-        $('#vanManual').find('td:nth-child(5)').attr("data-editable", "false");
         $('#vanManual').editableTableWidget({ editor: $('<textarea>') });
 
        // t.columns.adjust().draw(); 
@@ -462,7 +459,7 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
         $("#Alert").css("display", "none");
     }
    
-    if (data[1].length !== 0 && data[3].length !== 0) {
+   /* if (data[1].length !== 0 && data[3].length !== 0) {
         var v1 = data[1].replace(/,/g, '');
         var v2 = data[3].replace(/,/g, '');
         var costoTotal = (v1 - v2);
@@ -470,49 +467,49 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
         var n = costoTotal.toString();
         var numForm = FormatoNumero(n);
         table.cell(rowIdx, 4).data(numForm).draw();
-    }
+    }*/
 
-    var column2 = table.column(1); 
-    var column3 = table.column(3);    
-    var column4 = table.column(4);
+    var column1 = table.column(1); 
+    var column2 = table.column(2);    
+    var column3 = table.column(3);
 
+    var column1Data = column1.data(); 
     var column2Data = column2.data(); 
     var column3Data = column3.data(); 
-    var column4Data = column4.data(); 
 
     /*Para sumar columna 2*/
-    var sumacolumn2 = 0;
-    for (var x0 = 0; x0 < column2Data.length; x0++) {
-        var aT = column2Data[x0].toString();
+    var sumacolumn1 = 0;
+    for (var x0 = 0; x0 < column1Data.length; x0++) {
+        var aT = column1Data[x0].toString();
         aT = aT.replace(/,/g, '');
         var a = parseFloat(aT);
-        sumacolumn2 = sumacolumn2 + a; 
+        sumacolumn1 = sumacolumn1 + a; 
     }
-    sumacolumn2 = sumacolumn2.toFixed(2); 
-    var temSum1 = sumacolumn2.toString();
-    $(column2.footer()).html(FormatoNumero(temSum1));
+    sumacolumn1 = sumacolumn1.toFixed(2); 
+    var temSum1 = sumacolumn1.toString();
+    $(column1.footer()).html(FormatoNumero(temSum1));
     /*Para sumar columna 3*/
-    var sumacolumn3 = 0;
-    for (var x1 = 0; x1 < column3Data.length; x1++) {
-        var aT1 = column3Data[x1].toString();
+    var sumacolumn2 = 0;
+    for (var x1 = 0; x1 < column2Data.length; x1++) {
+        var aT1 = column2Data[x1].toString();
         aT1 = aT1.replace(/,/g, '');
         var a1 = parseFloat(aT1);
-        sumacolumn3 = sumacolumn3 + a1;
+        sumacolumn2 = sumacolumn2 + a1;
     }
-    sumacolumn3 = sumacolumn3.toFixed(2);
-    var temSum2 = sumacolumn3.toString();
-    $(column3.footer()).html(FormatoNumero(temSum2));
+    sumacolumn2 = sumacolumn2.toFixed(2);
+    var temSum2 = sumacolumn2.toString();
+    $(column2.footer()).html(FormatoNumero(temSum2));
     /*Para sumar columna 4*/
-    var sumacolumn4 = 0;
-    for (var x2 = 0; x2 < column4Data.length; x2++) {
-        var aT2 = column4Data[x2].toString();
+    var sumacolumn3 = 0;
+    for (var x2 = 0; x2 < column3Data.length; x2++) {
+        var aT2 = column3Data[x2].toString();
         aT2 = aT2.replace(/,/g, '');
         var a2 = parseFloat(aT2);
-        sumacolumn4 = sumacolumn4 + a2;
+        sumacolumn3 = sumacolumn3 + a2;
     }
-    sumacolumn4 = sumacolumn4.toFixed(2);
-    var temSum3 = sumacolumn4.toString();
-    $(column4.footer()).html(FormatoNumero(temSum3));
+    sumacolumn3 = sumacolumn3.toFixed(2);
+    var temSum3 = sumacolumn3.toString();
+    $(column3.footer()).html(FormatoNumero(temSum3));
    
 })/*.on('validate', "#myTabContent table td", function (evt, newValue) {
     if (newValue.length<=2) {
@@ -528,20 +525,27 @@ $("#calcular").click(function () {
     var n = $("#n").val();
 
 /*Para Obtener vector de FNE FINAL*/
+    var Costoss = [];
+    var Ingresoss = [];
     var FNEs = [];
     var Anios = [];
     var table = $('#vanManual').DataTable();
     var column0 = table.column(0);
-    var column4 = table.column(4);
+    var column1 = table.column(1);
+    var column2 = table.column(2);
+    var column3 = table.column(3);
     var Anio = column0.data();
-    var FNE = column4.data();    
+    var Costos = column1.data();
+    var Ingresos = column2.data();
+    var FNE = column3.data();    
     for (var x = 0; x < FNE.length; x++) {
+        Costoss[x] = Costos[x].replace(/,/g, '');
+        Ingresoss[x] = Ingresos[x].replace(/,/g, '');
         FNEs[x] = FNE[x].replace(/,/g, '');
         Anios[x] = Anio[x];
     }
     //console.log(Anios);
     //console.log(FNEs);
-
     inversion = inversion.replace(/,/g, '');
     VdS = VdS.replace(/,/g, '');
     TMAR = TMAR.replace(/,/g, '');
@@ -580,7 +584,7 @@ $("#calcular").click(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
-            data: JSON.stringify({ inversion: inversion, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+            data: JSON.stringify({ inversion: inversion, Costos: Costoss, Ingresos: Ingresoss, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 $('#Cargando_Modal').modal('hide');
                 var valores = JSON.parse(data.d);

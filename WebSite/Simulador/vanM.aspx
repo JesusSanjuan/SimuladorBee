@@ -125,7 +125,7 @@
         <div style="padding-bottom:1rem;">
                   <div class="card align-middle"> 
                         <div class="card-header">
-                          <h4><i class="fas fa-pencil-alt"></i> Ingreso de flujos netos</h4>
+                          <h4><i class="fas fa-pencil-alt"></i> Ingreso de costos, ingresos y flujos netos de efectivo</h4>
                         </div>              
                         <div class="tab-content" id="myTabContent">
                             <div class="alert alert-danger alert-dismissible fade show" id="Alert" style="display:none;" role="alert">
@@ -140,10 +140,9 @@
                                             <thead>
                                                 <tr>
                                                     <th id="tipo"></th>
-                                                    <th>Cobros</th>     
-                                                    <th></th>
-                                                    <th>Pagos</th>
-                                                    <th>Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
+                                                    <th>Costos</th>  
+                                                    <th>Ingresos</th>
+                                                    <th>Flujo Neto de Efectivo</th>                                                
                                                 </tr>
                                             </thead>
                                             <tbody  id="dataTable">                                                                                                                                                                           
@@ -151,10 +150,9 @@
                                             <tfoot>
                                                 <tr>
                                                     <th id="tipo2"></th>
-                                                    <th id="thcobros">Cobros</th>  
-                                                    <th></th>
-                                                    <th id="thpagos">Pagos</th>
-                                                    <th id="thFNE">Flujo Neto de Efectivo (Cobros-Pagos)</th>                                                
+                                                    <th id="thcobros">Costos</th> 
+                                                    <th id="thpagos">Ingresos</th>
+                                                    <th id="thFNE">Flujo Neto de Efectivo</th>                                                
                                                 </tr>
                                             </tfoot>                                                                                                     
                                     </Table>

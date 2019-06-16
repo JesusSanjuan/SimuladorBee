@@ -30,7 +30,6 @@ public partial class User_vanM : System.Web.UI.Page
         decimal ResultadoVPN, RCalcuTIR;
 
         decimal[] valores = new decimal[Anio.Length];
-
         for (int a=1;a<=Anio.Length;a++)
         {
             for (int b = 0; b < Anio.Length; b++)
@@ -183,13 +182,15 @@ public partial class User_vanM : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string CreacionTabla(decimal inversion, decimal[] FNE, int[] AnioV, decimal VdS, decimal TMAR, int Select, int n)
+    public static string CreacionTabla(decimal inversion, decimal[] Costos, decimal[] Ingresos, decimal[] FNE, int[] AnioV, decimal VdS, decimal TMAR, int Select, int n)
     {
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
         System.Collections.ArrayList PeridoRec = new System.Collections.ArrayList();
         System.Collections.ArrayList BenCosto = new System.Collections.ArrayList();
 
         decimal[] valores = new decimal[AnioV.Length];
+        decimal[] valores1 = new decimal[AnioV.Length];
+        decimal[] valores2 = new decimal[AnioV.Length];
 
         for (int a = 1; a <= AnioV.Length; a++)
         {
@@ -197,12 +198,16 @@ public partial class User_vanM : System.Web.UI.Page
             {
                 if (a == AnioV[b])
                 {
-                    valores[a - 1] = FNE[b];
+                    valores[a - 1] = Costos[b];
+                    valores1[a - 1] = Ingresos[b];
+                    valores2[a - 1] = FNE[b];
                     break;
                 }
             }
         }
-        FNE = valores;
+        Costos = valores;
+        Ingresos = valores1;
+        FNE = valores2;
 
         String PeriodoSelect;
         String PeridoRec2 = "";
@@ -214,18 +219,12 @@ public partial class User_vanM : System.Web.UI.Page
         {
             PeriodoSelect = "Año";
         }
-        Random r = new Random();
-        int Costos = r.Next(200000, 2500000);
 
-        Random r2 = new Random();
-        int Ingresos = r2.Next(500000, 2500000);
-
+        TMAR = TMAR / 100;
         int Periodo = n;
         String[,] ArregloDatos = new String[Periodo + 1, 7];
         ArregloDatos[0, 3] = ArregloDatos[0, 4] = ArregloDatos[0, 5] = "";
-        /*Cambiar cuado aya valores verdaderos de costos*/
         ArregloDatos[0, 2] = "-" + inversion.ToString();
-        /*Cambiar cuado aya valores verdaderos de costos*/
         for (int j = 0; j <= Periodo; j++)
         {
             ArregloDatos[j, 0] = Convert.ToString(j + 1);
@@ -236,11 +235,11 @@ public partial class User_vanM : System.Web.UI.Page
         }
         for (int j = 1; j <= Periodo; j++)
         {
-            ArregloDatos[j, 2] = Convert.ToString(Costos);
+            ArregloDatos[j, 2] = Convert.ToString(Costos[j-1]);
         }
         for (int j = 1; j <= Periodo; j++)
         {
-            ArregloDatos[j, 3] = Convert.ToString(Ingresos);
+            ArregloDatos[j, 3] = Convert.ToString(Ingresos[j - 1]);
         }
         for (int j = 1; j <= Periodo; j++)
         {
@@ -248,11 +247,8 @@ public partial class User_vanM : System.Web.UI.Page
         }
         for (int j = 1; j <= Periodo; j++)
         {
-            for (int i = 1; i <= Periodo; i++)
-            {
-                decimal IngresoActual = (Convert.ToDecimal(ArregloDatos[i, 3])) / Convert.ToDecimal(Math.Pow(1 + .1, i));
+                decimal IngresoActual = (Convert.ToDecimal(ArregloDatos[j, 3])) / Convert.ToDecimal(Math.Pow((double)(1 + TMAR), j));
                 ArregloDatos[j, 5] = Convert.ToString(Math.Round(IngresoActual, 3));
-            }
         }
         ArregloDatos[0, 6] = ArregloDatos[0, 2];
         for (int i = 1; i <= Periodo; i++)
@@ -262,7 +258,7 @@ public partial class User_vanM : System.Web.UI.Page
             ArregloDatos[i, 6] = Convert.ToString(x + Flujoneto);
         }
         ListaFinal.Add(ArregloDatos);
-
+        /*Calculo de periodo de recuperacion*/
         decimal P = inversion;
         for (int i = 1; i <= Periodo; i++)
         {
@@ -310,20 +306,24 @@ public partial class User_vanM : System.Web.UI.Page
         }
         PeridoRec.Add(PeridoRec2);
         ListaFinal.Add(PeridoRec);
+        /*Calculo de periodo de recuperacion*/
+        /*Calculo de beneficio-costo*/
         decimal SumIngresos_actualizados = 0;
         for (int i = 1; i <= Periodo; i++)
         {
-            SumIngresos_actualizados = SumIngresos_actualizados + Convert.ToDecimal(ArregloDatos[i, 4]);
+            SumIngresos_actualizados = SumIngresos_actualizados + Convert.ToDecimal(ArregloDatos[i, 5]);
         }
 
         decimal Sum_costos = 0;
         for (int i = 1; i <= Periodo; i++)
         {
-            Sum_costos = Sum_costos + Convert.ToDecimal(ArregloDatos[i, 5]);
+            Sum_costos = Sum_costos + Convert.ToDecimal(ArregloDatos[i, 2]);
         }
+        Sum_costos = Sum_costos + inversion;
         decimal CRBC = SumIngresos_actualizados / Sum_costos;
         BenCosto.Add("Por cada peso invertido usted obtendra una ganancia de: $" + Convert.ToString(Math.Round(CRBC, 3)));
         ListaFinal.Add(BenCosto);
+        /*Calculo de beneficio-costo*/
         String json = JsonConvert.SerializeObject(ListaFinal);
         return json;
     }

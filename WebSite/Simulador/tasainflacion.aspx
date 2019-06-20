@@ -65,7 +65,6 @@
                                                                                 <label for="validationCustom01">Proyecto</label>
                                                                                 <div class="input-group">
                                                                                    <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
-                                                                                                                  <option value="" class="dropdown-item" selected>Seleccione</option>
                                                                                    </select>                                             
                                                                                    <div class="input-group-append ">
                                                                                                  <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el proyecto donde desea ingresar la inflacion calculada." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
@@ -342,10 +341,8 @@
                     <h5>Seleccione los proyectos que utilizaran las inflaciones</h5>
                     <div class="row">
                         <div class="col">
-                            <select class="selectpicker" id="proyectos"  title="Selecciona los proyectos" multiple>
-                              
+                            <select class="selectpicker" id="proyectos"  title="Selecciona los proyectos" multiple>                              
                             </select>
-
                         </div>
                     </div>
 

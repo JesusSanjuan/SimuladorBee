@@ -306,9 +306,8 @@
     $('#alertSucces').hide();
     $('#alertSDanger').hide();
     inicializarProyectos();
-
-    function inicializarProyectos() {
-        //cargamos los proyectos en el select
+   /*Carga de proyectos en select de INEGI*/ 
+    function inicializarProyectos() {       
         $.ajax({
             type: "POST",
             url: "tasainflacion.aspx/cargar_proyectos",
@@ -322,6 +321,7 @@
                     var option;
                     option = resultados[i];
                     options.push(option);
+                    //console.log(option);
                 }
                 $('#proyectos.selectpicker').html(options);
                 $('#proyectos.selectpicker').selectpicker('refresh');
@@ -336,6 +336,7 @@
             console.log("Error: " + data);
         });
     }
+    /*Carga de proyectos en select de INEGI*/
 
     $('#Guardarinflacion').click(function () {
         $('#myModal').modal({ show: true });
@@ -381,11 +382,6 @@
             }).fail(function (data) {
                 console.log("Error: " + data);
             });
-
-
-
-            
-
         }
     });
 
@@ -415,19 +411,23 @@
         } 
     });
 
-    $('#proyectosINEGI').change(function (){
-        var valor = $("#proyectosINEGI").val();
-        if (valor === '0') {
-            $("#proyectosINEGIval").addClass("invalid-feedback");
-            $("#proyectosINEGI").removeClass("is-valid");
-            $("#proyectosINEGI").addClass("is-invalid");
-            $('#proyectosINEGIval').text('Por favor ingrese el periodo.');
-            $('#proyectosINEGIval').show();
-            // Inversion = false;
-        } 
+   $('#proyectosINEGI').change(function (){
+       var valor = $("#proyectosINEGI").val();
+       if (valor === '') {
+           $("#proyectosINEGIval").addClass("invalid-feedback");
+           $("#proyectosINEGI").removeClass("is-valid");
+           $("#proyectosINEGI").addClass("is-invalid");
+           $('#proyectosINEGIval').text('Por favor seleccione el proyecto');
+           $('#proyectosINEGIval').show();
+       }
+       else {
+           $("#proyectosINEGI").addClass("is-invalid");
+           $("#proyectosINEGI").removeClass("is-valid");          
+           $('#proyectosINEGIval').text('Por favor seleccione el proyecto');
+           $('#proyectosINEGIval').hide();
+       }
     });
-
-
+    
     const number4 = document.querySelector('.number4');
 
     function formatNumber4(n) {
@@ -554,12 +554,8 @@
                 arregloDeSubCadenas[3] = mesF;
                 periodo = arregloDeSubCadenas.toString();
                 periodo = periodo.replace(/,/g, ' ');
-
                 //periodo = periodo.trim();
-                
-
                 //GUardamos los datos en la tabla de indices
-
                 $.ajax({
                     type: "POST",
                     url: "tasainflacion.aspx/guardar_inflacion",
@@ -570,7 +566,7 @@
                     success: function (result) {
                         console.log("resul " + resul);
                         var resul = result.d;
-                        console.log("-->" + resul);
+                        //console.log("-->" + resul);
                         if (resul == "OK") {
                             $('#alertSucces').show();
                             setTimeout(
@@ -583,13 +579,11 @@
                     error: function (result) {
                         console.log(result.responseText);
                     }
-
                 }).done(function (data) {
                     //console.log(data);
                 }).fail(function (data) {
                     console.log("Error: " + data);
-                });
-                
+                });                
             }
             else {
                 $('#alertSDanger').show();
@@ -600,7 +594,6 @@
             }
         }
     });
-
     //solo porcentaje
     $("body").on('keyup', ".porcen", function (event) {
         this.value = this.value.match(/\d{0,3}(\.\d{0,2})?/)[0];

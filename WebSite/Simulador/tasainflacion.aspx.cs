@@ -1072,7 +1072,6 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                     break;
             }
         }
-
         double TasaInfla = (((inpcfinal - inpcinicial) / inpcinicial) * 100);
         //resultado de inflacion promedio mensual
         int per = ((anio_final - anio_inicial)*12)+(mesF- mesI);
@@ -1087,7 +1086,6 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     }
 
     /***************/
-
     [WebMethod]
     public static string cargar_proyectos()
     {
@@ -1098,22 +1096,21 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
         var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user);//consulta los proyectos del usuario
 
         List<string> item = new List<string>();
+        string option;
+        option = "<option value='' selected>Seleccione</option>";
+        item.Add(option);
         foreach (Proyecto Proyect in consulta)
-        {
-            string option;
+        {            
             option = "<option value='" + Proyect.ID_Proyecto + "'>" + Proyect.Nombre_Proyecto + "</option>";
             if (System.Web.HttpContext.Current.Session["ID_Proyecto"] != null)
             {
                 string idProyecto = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
                 if (idProyecto == Proyect.ID_Proyecto)
                 {
-                    option = "<option selected value='" + Proyect.ID_Proyecto + "'>" + Proyect.Nombre_Proyecto + "</option>";
+                    option = "<option value='" + Proyect.ID_Proyecto + "'>" + Proyect.Nombre_Proyecto + "</option>";
                 }
             }
-
-            item.Add(option);
-            
-                
+            item.Add(option);    
         }
         var json = JsonConvert.SerializeObject(item);
         return json;
@@ -1124,9 +1121,6 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     {
         var db = new Entidades();
         var retur = "FAIL";
-
-        
-        
         // GUARDAMOS A LA BASE DE DATOS
         for (int i = 0; i < Proyectos.Length; i++)
         {
@@ -1158,20 +1152,12 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
                     System.Diagnostics.Debug.WriteLine("Inflaciones[x]->" + inflacion.Valor_Inflacion);
                     db.Inflacion.Add(inflacion);
-
                 }
-
-
-                
             }
             retur = "OK";
         }
         db.SaveChanges();
         retur = "OK";
-
-        
-
         return retur;
     }
-
 }

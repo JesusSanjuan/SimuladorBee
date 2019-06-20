@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+/*Ejecucion de MI CALCULADORA*/
     $.ajax({
         type: "POST",
         url: "tasainflacion.aspx/extraerindices",
@@ -21,25 +22,20 @@
         console.log("Error: " + data);
     });
 
-
-   function inicializacion(x, y) {
-   
-    var options = [];
-    //convertimos el array en json
-    var result_ids_indice = JSON.parse(JSON.stringify(x));
-    var result_descrip_indice_base = JSON.parse(JSON.stringify(y));
-    var valor1 = "<option value='' class='dropdown-item' selected>Seleccione</option>";
-    options.push(valor1);
-    for (i = 0; i < result_ids_indice.length; i++)
-    {
-        var option;
-        option = "<option value=" + result_ids_indice[i] + ">" + result_descrip_indice_base[i] + "</option>";
-        //console.log(option);
-        options.push(option);
-    }
-
-       $('#select_indice_base').html(options);
-       $('#select_indice_base').selectpicker('refresh');
+   function inicializacion(x, y) {   
+        var options = [];
+        var result_ids_indice = JSON.parse(JSON.stringify(x));
+        var result_descrip_indice_base = JSON.parse(JSON.stringify(y));
+        var valor1 = "<option value='' class='dropdown-item' selected>Seleccione</option>";
+        options.push(valor1);
+        for (i = 0; i < result_ids_indice.length; i++)
+        {
+            var option;
+            option = "<option value=" + result_ids_indice[i] + ">" + result_descrip_indice_base[i] + "</option>";
+            options.push(option);
+        }
+        $('#select_indice_base').html(options);
+        $('#select_indice_base').selectpicker('refresh');
     }
 
     $('#select_indice_base.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
@@ -51,8 +47,7 @@
         {
             $('#pre_datos').css("display", "block");
             consulta_inputs(periodo_select);
-        }
-        
+        }        
         /* Limpia los demas campos posteriores */
         var op1 = [];
         op1.push("<option value='' class='dropdown-item' selected>Seleccione</option>");
@@ -70,8 +65,6 @@
         $('#inf1').val("");
         $('#TPMI1').val("");
        /* Limpia los demas campos posteriores */
-
-     
     });
 
     function consulta_inputs(id_indice_base)
@@ -90,8 +83,7 @@
                         $('#pre_datos2').css("display", "none");
                     }
                     else
-                    {
-                    
+                    {                    
                             var resultado = JSON.parse(result.d);                    
                             var inicio = resultado[0];
                             var fin = resultado[1];
@@ -110,29 +102,18 @@
                             //console.log(option);
                             optionsAnio.push(option);
                         }
-
                         $('#select').html(optionsAnio);
                         $('#select').selectpicker('refresh');
                     }
-
                 },
                 error: function (result) {
                     console.log(result.responseText);
                 }
 
             }).done(function (data) {
-              /*  $('#pre_datos2').smoothscroll({
-                    duration: 4000,
-                    easing: 'easeOutCirc',
-                    offset: 0,
-                    hash: true,
-                });
-                //location.href = "#pre_datos2";*/
-                //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);
-            });
-        
+            });        
     }
 
     $('#select.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
@@ -156,27 +137,22 @@
                 var optionsMeses = [];
                 var valormes = "<option value='' class='dropdown-item' selected>Seleccione</option>";
                 optionsMeses.push(valormes);
-
                 $('#select2').html(optionsMeses);
                 $('#select3').html(optionsMeses);
                 $('#select2').selectpicker('refresh');
                 $('#select3').selectpicker('refresh');
-
                 for (i = 0; i < meses.length; i++) {
                     var option;
                     option = "<option value=" + meses[i].toLowerCase() + ">" + meses[i]+ "</option>";
                     optionsMeses.push(option);
                 }
-
                 $('#select1').html(optionsMeses);
                 $('#select1').selectpicker('refresh');
             },
             error: function (result) {
                 console.log(result.responseText);
             }
-
         }).done(function (data) {
-            //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
         });
@@ -199,9 +175,7 @@
             dataType: "json",
             async: false,
             data: JSON.stringify({ id_periodo_select_anio: id_periodo_select_anio}),
-            success: function (result) {          
-
-
+            success: function (result) {      
                 var resultados = JSON.parse(result.d); 
                 var id_anios = resultados[0];
                 var anios = resultados[1];                
@@ -225,9 +199,7 @@
             error: function (result) {
                 console.log(result.responseText);
             }
-
         }).done(function (data) {
-            //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
         });
@@ -266,29 +238,24 @@
             error: function (result) {
                 console.log(result.responseText);
             }
-
         }).done(function (data) {
-            //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
         });
-
     });
 
-    $('#select3.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
-        
+    $('#select3.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie        
         var v4 = $("#select3.selectpicker").val();
-
         if (v4.length === 0) {
             $("#Calculartasainfla").css('visibility', 'hidden');
         }
-        else {
+        else
+        {
             $("#Calculartasainfla").css('visibility', 'visible');
         }
         $('#Resultados').css("display", "none");
         $('#inf1').val("");
         $('#TPMI1').val("");
-
     });
     var myInput = document.getElementById('inf1');
     var myInput2 = document.getElementById('TPMI1');
@@ -298,10 +265,6 @@
     myInput2.onpaste = function (e) {
         e.preventDefault();
     };
-    /* myInput.oncopy = function (e) {
-         e.preventDefault();
-     };*/
-
     $('#Calculartasainfla').click(function () {
         var v1 = $("#select.selectpicker").val();
         var v2 = $("#select1.selectpicker").val();
@@ -329,7 +292,6 @@
                     error: function (result) {
                         console.log(result.responseText);
                     }
-
                 }).done(function (data) {
                     //console.log(data);
                 }).fail(function (data) {
@@ -337,7 +299,9 @@
                 });
         }
     });
+/*Ejecucion de MI CALCULADORA*/
 
+/*Ejecucion de CALCULADORA INEGI/
     /***************************/
     $('#alertSucces').hide();
     $('#alertSDanger').hide();
@@ -358,25 +322,19 @@
                     var option;
                     option = resultados[i];
                     options.push(option);
-
                 }
                 $('#proyectos.selectpicker').html(options);
                 $('#proyectos.selectpicker').selectpicker('refresh');
-
                 $('#proyectosINEGI.selectpicker').html(options);
                 $('#proyectosINEGI.selectpicker').selectpicker('refresh');
-
             },
             error: function (result) {
                 console.log(result.responseText);
             }
-
         }).done(function (data) {
-            //console.log(data);
         }).fail(function (data) {
             console.log("Error: " + data);
         });
-
     }
 
     $('#Guardarinflacion').click(function () {
@@ -430,12 +388,144 @@
 
         }
     });
+
+/*Validacion de campos en calculadora de INEGI antes de*/
+    const number = document.querySelector('.number');
+    function formatNumber(n) {
+        return n.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+    }
+    number.addEventListener('keyup', (e) => {
+        const element = e.target;
+        const value = element.value;
+        element.value = formatNumber(value);
+    });
+
+
+    $('#periodoINEGI').keyup(function (event) {
+        var periodoIN = $("#periodoINEGI").val();
+        if (periodoIN.length === 0) {
+            $("#Periodoval").addClass("invalid-feedback");
+            $("#periodoINEGI").removeClass("is-valid");
+            $("#periodoINEGI").addClass("is-invalid");
+            $('#Periodoval').text('Por favor ingrese el periodo.');
+            $('#Periodoval').show();
+           // Inversion = false;
+        } 
+    });
+
+    $('#proyectosINEGI').change(function (){
+        var valor = $("#proyectosINEGI").val();
+        if (valor === '0') {
+            $("#proyectosINEGIval").addClass("invalid-feedback");
+            $("#proyectosINEGI").removeClass("is-valid");
+            $("#proyectosINEGI").addClass("is-invalid");
+            $('#proyectosINEGIval').text('Por favor ingrese el periodo.');
+            $('#proyectosINEGIval').show();
+            // Inversion = false;
+        } 
+    });
+
+
+    const number4 = document.querySelector('.number4');
+
+    function formatNumber4(n) {
+        return n.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+    }
+    number4.addEventListener('keyup', (e4) => {
+        const element4 = e4.target;
+        const value4 = element4.value;
+        element4.value = formatNumber4(value4);
+    });
+
+    $('#inflacion').keyup(function (event) {
+        var inflacion = $("#inflacion").val();
+        if (inflacion.length === 0) {
+            $("#inflacionval").addClass("invalid-feedback");
+            $("#inflacion").removeClass("is-valid");
+            $("#inflacion").addClass("is-invalid");
+            $('#inflacionval').text('Por favor ingrese la inflacion.');
+            $('#inflacionval').show();
+        } else {
+            var reg = /^(\d|,)*\.\d{1,2}$/g;
+            if (inflacion.match(reg)) {
+                if (inflacion >= 0.01 && inflacion <= 100.00) {
+                    $("#inflacion").removeClass("is-invalid");
+                    $("#inflacion").addClass("is-valid");
+                    $('#inflacionval').hide();
+                }
+                else {
+                    $("#inflacion").removeClass("is-valid");
+                    $("#inflacion").addClass("is-invalid");
+                    $('#inflacionval').text('Por favor ingrese la inflacion mayor de 0.01 y menor 100.01');
+                    $('#inflacionval').show();
+                    $("#inflacion").val("");
+                }
+            } else {
+                $("#inflacionval").addClass("invalid-feedback");
+                $("#inflacion").removeClass("is-valid");
+                $("#inflacion").addClass("is-invalid");
+                $('#inflacionval').text('Por favor ingrese mas digitos');
+                $('#inflacionval').show();
+            }
+        }
+    });
+
+    const number5 = document.querySelector('.number5');
+    function formatNumber5(n) {
+        return n.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+    }
+    number5.addEventListener('keyup', (e5) => {
+        const element5 = e5.target;
+        const value5 = element5.value;
+        element5.value = formatNumber5(value5);
+    });
+
+    $('#TPMI').keyup(function (event) {
+        var TPMIV = $("#TPMI").val();
+        if (TPMIV.length === 0) {
+            $("#TPMIval").addClass("invalid-feedback");
+            $("#TPMI").removeClass("is-valid");
+            $("#TPMI").addClass("is-invalid");
+            $('#TPMIval').text('Por favor ingrese la Tasa de Promedio Mensual.');
+            $('#TPMIval').show();
+        } else {
+            var reg = /^(\d|,)*\.\d{1,2}$/g;
+            if (TPMIV.match(reg)) {
+                if (TPMIV >= 0.01 && TPMIV <= 100.00) {
+                    $("#TPMI").removeClass("is-invalid");
+                    $("#TPMI").addClass("is-valid");
+                    $('#TPMIval').hide();
+                }
+                else {
+                    $("#TPMI").removeClass("is-valid");
+                    $("#TPMI").addClass("is-invalid");
+                    $('#TPMIval').text('Por favor ingrese la Tasa de Promedio Mensual mayor de 0.01 y menor 100.01');
+                    $('#TPMIval').show();
+                    $("#TPMI").val("");
+                }
+            } else {
+                $("#TPMIval").addClass("invalid-feedback");
+                $("#TPMI").removeClass("is-valid");
+                $("#TPMI").addClass("is-invalid");
+                $('#TPMIval').text('Por favor ingrese mas digitos');
+                $('#TPMIval').show();
+            }
+        }
+    });
+    /*Validacion de campos en calculadora de INEGI antes de*/
+
+
+
     $('#saveINEGI').click(function () {
         var inflacion = $("#inflacion").val();
         var inMensual = $("#TPMI").val();
-
         var proyectos = $('#proyectosINEGI.selectpicker').val();
-
         if (inflacion != "" && inMensual != "" && proyectos.length > 0) {//inflacion != "" && inMensual != ""
             var array_inflacion = [];
             array_inflacion[0] = inflacion;
@@ -508,20 +598,12 @@
                         $("#alertSDanger").hide();
                     }, 3000);
             }
-
-            
-            
-
         }
     });
 
     //solo porcentaje
     $("body").on('keyup', ".porcen", function (event) {
         this.value = this.value.match(/\d{0,3}(\.\d{0,2})?/)[0];
-
     });
-
-    
-    
-
+    /*Ejecucion de CALCULADORA INEGI*/  
 });

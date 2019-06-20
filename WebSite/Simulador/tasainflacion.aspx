@@ -13,7 +13,7 @@
                             <li class="breadcrumb-item">  
                                 <a href="Index">Inicio</a>
                             </li>
-                            <li class="breadcrumb-item active">Valor Actual Neto</li>
+                            <li class="breadcrumb-item active">Calculadira de Inflacion</li>
                           </ol>            
                  </nav>                   
     </div>
@@ -39,71 +39,81 @@
                         <div class="tab-content" id="ResultadosFinales">
                                 <div role="tabpanel" class="tab-pane fade show active" id="R1">
                                           <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">
-                                                                 <div>
-                                                                     <div style="padding-top:15px;padding-bottom:15px; font: cursive;">
-                                                                                Ingrese los datos obtenidos por la calculadora en los campos de la parte inferior.
-                                                                     </div>
-
                                                                         <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
                                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                                 <span aria-hidden="true">&times;</span>
                                                                             </button>
-                                                                            <strong>¡Copie los resultados de la calculadora!</strong>
+                                                                            Ingrese los datos obtenidos por la calculadora en los campos de la parte inferior y despues <strong>¡Copie los resultados de la calculadora!</strong>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-sm">
-                                                                                <div class="form-group">
-                                                                                    <div class="input-group " style="margin:auto;"> 
-                                                                                        <div  style="padding-bottom:5px; padding-top:5px;" >  
-                                                                                        Periodo: 
-                                                                                        </div>
-                                                                                        <input type="text" class="form-control" id="periodoINEGI" placeholder="mes año a mes año">
-                                                                                            <div class="input-group-prepend">
-                                                                                            <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                        <div class="form-row">
+                                                                            <div class="col-md-6 mb-2">
+                                                                              <label for="validationCustom01">Periodo</label>
+                                                                                    <div class="input-group" style="cursor:default" >                                                                                            
+                                                                                                <input type="text"   class="form-control number" id="periodoINEGI" placeholder="Ingrese el periodo por mes año a mes año"  autocomplete="off"  style="cursor:pointer" required="required">
+                                                                                            <div class="input-group-append"  >
+                                                                                                 <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>                                                          
+                                                                                            </div>
+                                                                                            <div class="input-group-append">                                                             
+                                                                                                 <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ingrese el periodo de acuerdo al calculo que realizo con la calculadora de inflacion del INEGI." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                                                            </div>
+                                                                                            <div id="Periodoval" class="invalid-tooltip">      
+                                                                                                Ingrese el periodo
+                                                                                            </div>                 
+                                                                                      </div> 
+                                                                            </div>
+                                                                            <div class="col-md-6 mb-2">  
+                                                                                <label for="validationCustom01">Proyecto</label>
+                                                                                <div class="input-group">
+                                                                                   <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
+                                                                                                                  <option value="" class="dropdown-item" selected>Seleccione</option>
+                                                                                   </select>                                             
+                                                                                   <div class="input-group-append ">
+                                                                                                 <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el proyecto donde desea ingresar la inflacion calculada." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                                                  </div>                                                       
                                                                                 </div>
-                                                                             </div>
-                                                                            <div class="col-sm">
-                                                                                <div class="form-group">
-                                                                                    <select class="selectpicker" id="proyectosINEGI"  title="Selecciona los proyectos" multiple>
-                              
-                                                                                    </select>
+                                                                                <div id="proyectosINEGIval" class="invalid-tooltip">   
+                                                                                    Selecciones un proyecto para guardar
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-  
-                                                                        <div class="row" >
-                                                                            <div class="col-sm">
-                                                                                <div class="form-group">
-                                                                                    <div class="input-group mb-2">                                                                                            
-                                                                                        <input type="text" class="form-control porcen" id="inflacion" placeholder="Inflación">
-                                                                                        <div class="input-group-prepend">
-                                                                                            <div class="input-group-text">%</div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm">
-                                                                                <div class="form-group">
-                                                                                    <div class="input-group mb-2">                                                                                           
-                                                                                        <input type="text" class="form-control porcen" id="TPMI" placeholder="Tasa Promedio Mensual">
-                                                                                            <div class="input-group-prepend">
-                                                                                            <div class="input-group-text">%</div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                        </div>  
+                                                                        <div class="form-row" >
+                                                                            <div class="col-md-6 mb-2">
+                                                                              <label for="validationCustom04">Inflacion</label>
+                                                                                  <div class="input-group" style="cursor:default">                    
+                                                                                            <input type="text"   class="form-control number4" id="inflacion" placeholder="Ingrese la Inflación" autocomplete="off" style="cursor:pointer" required="required">
+                                                                                           <div class="input-group-prepend">
+                                                                                              <span class="input-group-text">%</span>
+                                                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                                                           </div>
+                                                                                            <div  id="inflacionval"class="invalid-tooltip">
+                                                                                              Por favor ingrese la inflacion
+                                                                                            </div>
+                                                                                  </div> 
+                                                                              </div>
+                                                                            <div class="col-md-6 mb-2">
+                                                                              <label for="validationCustom04">Tasa de Promedio Mensual</label>
+                                                                                  <div class="input-group" style="cursor:default">                    
+                                                                                            <input type="text"   class="form-control number5" id="TPMI" placeholder="Tasa de Promedio Mensual" autocomplete="off" style="cursor:pointer" required="required">
+                                                                                           <div class="input-group-prepend">
+                                                                                              <span class="input-group-text">%</span>
+                                                                                              <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="" ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                                                           </div>
+                                                                                            <div  id="TPMIval"class="invalid-tooltip">
+                                                                                              Por favor ingrese la tasa de promedio mensual
+                                                                                            </div>
+                                                                                  </div> 
+                                                                             </div> 
                                                                             
                                                                         </div>
-                                                                         <div class="row" >
-                                                                             <div class="col-sm">
-                                                                                <div class="form-group">
-                                                                                    <button type="button" class="btn btn-primary" id="saveINEGI">Guardar cambios</button>
-                                                                        
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                     <div class="form-row" style="margin-top:30px; margin-bottom:30px">  
+                                                                        <div class="col-md-4 mb-2">
+                                                                        </div>  
+                                                                        <div class="col-md-4 mb-2" >
+                                                                            <button id="saveINEGI" class="btn btn-primary btn-lg btn-block" type="button">Guardar cambios</button>
+                                                                        </div>   
+                                                                        <div class="col-md-4 mb-2">
+                                                                        </div>   
+                                                                    </div> 
                                                                      <div class="row">
                                                                          <div class="alert alert-success" role="alert" id="alertSucces">
                                                                             <strong>Exitoso!</strong> Los datos fueron guardados correctamente.
@@ -112,9 +122,8 @@
                                                                             <strong>Estructura incorrecta!</strong> Escriba correctamente el periodo.
                                                                          </div>
                                                                      </div>
-                                                                     </div>
                                                                 
-                                                                <div class="embed-responsive embed-responsive-21by9">
+                                                                <div class="embed-responsive embed-responsive-21by9 preborder">
                                                                     <iframe width="560" height="315"style="padding-top:15px;padding-bottom:15px" src="https://www.inegi.org.mx/app/indicesdeprecios/CalculadoraInflacion.aspx" frameborder="0" allowfullscreen></iframe>
                                                                 </div>
                                                        

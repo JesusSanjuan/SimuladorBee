@@ -45,38 +45,107 @@
                                                                             </button>
                                                                             Ingrese los datos obtenidos por la calculadora en los campos de la parte inferior y despues <strong>¡Copie los resultados de la calculadora!</strong>
                                                                         </div>
-                                                                        <div class="form-row">
-                                                                            <div class="col-md-6 mb-2">
-                                                                              <label for="validationCustom01">Periodo</label>
-                                                                                    <div class="input-group" style="cursor:default" >                                                                                            
-                                                                                                <input type="text"   class="form-control number" id="periodoINEGI" placeholder="Ingrese el periodo por mes año a mes año"  autocomplete="off"  style="cursor:pointer" required="required">
-                                                                                            <div class="input-group-append"  >
-                                                                                                 <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>                                                          
-                                                                                            </div>
-                                                                                            <div class="input-group-append">                                                             
-                                                                                                 <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ingrese el periodo de acuerdo al calculo que realizo con la calculadora de inflacion del INEGI." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
-                                                                                            </div>
-                                                                                            <div id="Periodoval" class="invalid-tooltip">      
-                                                                                                Ingrese el periodo
-                                                                                            </div>                 
-                                                                                      </div> 
+                                                                        <div class="form-row"> 
+                                                                            <div class="col-md-12 mb-2 preborder" >
+                                                                                <div class="form-row"> 
+                                                                                        <div class="col-md-3 mb-2">
+                                                                                          <label for="validationCustom01">Año</label>
+                                                                                                <div class="input-group" style="cursor:default" >  
+                                                                                                       <select  id="anio" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
+                                                                                                       </select>  
+                                                                                                       <div class="input-group-append"  >
+                                                                                                             <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>                                                          
+                                                                                                        </div>
+                                                                                                        <div class="input-group-append">                                                             
+                                                                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ingrese el periodo de acuerdo al calculo que realizo con la calculadora de inflacion del INEGI." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                                                                        </div>
+                                                                                                        <div id="Anio1Val" class="invalid-tooltip">      
+                                                                                                            Seleccione el año
+                                                                                                        </div>                 
+                                                                                                 </div> 
+                                                                                        </div> 
+                                                                                        <div class="col-md-3 mb-2">
+                                                                                          <label for="validationCustom01">Mes</label>
+                                                                                                <div class="input-group" style="cursor:default" >  
+                                                                                                       <select  id="mes" name="selValue" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" disabled="disabled" >
+                                                                                                            <option value="">Seleccione</option>
+                                                                                                            <option value="Enero">Enero</option>
+                                                                                                            <option value="Febrero">Febrero</option>
+                                                                                                            <option value="Marzo">Marzo</option>
+                                                                                                            <option value="Abril">Abril</option>
+                                                                                                            <option value="Mayo">Mayo</option>
+                                                                                                            <option value="Junio">Junio</option>
+                                                                                                            <option value="Julio">Julio</option>
+                                                                                                            <option value="Agosto">Agosto</option>
+                                                                                                            <option value="Septiembre">Septiembre</option>
+                                                                                                            <option value="Octubre">Octubre</option>
+                                                                                                            <option value="Noviembre">Noviembre</option>
+                                                                                                            <option value="Diciembre">Diciembre</option>
+                                                                                                       </select>  
+                                                                                                       <div class="input-group-append"  >
+                                                                                                             <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>                                                          
+                                                                                                        </div>
+                                                                                                        <div class="input-group-append">                                                             
+                                                                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ingrese el periodo de acuerdo al calculo que realizo con la calculadora de inflacion del INEGI." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                                                                        </div>
+                                                                                                        <div id="Mes1Val" class="invalid-tooltip">      
+                                                                                                            Seleccione el mes
+                                                                                                        </div>                 
+                                                                                                  </div> 
+                                                                                        </div> 
+                                                                                        <div class="col-md-3 mb-2">
+                                                                                          <label for="validationCustom01">Año 2</label>
+                                                                                                <div class="input-group" style="cursor:default" >  
+                                                                                                       <select  id="anio2" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" disabled="disabled">
+                                                                                                       <option value="">Seleccione</option>
+                                                                                                       </select>  
+                                                                                                       <div class="input-group-append"  >
+                                                                                                             <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>                                                          
+                                                                                                        </div>
+                                                                                                        <div class="input-group-append">                                                             
+                                                                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ingrese el periodo de acuerdo al calculo que realizo con la calculadora de inflacion del INEGI." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                                                                        </div>
+                                                                                                        <div id="Anio2Val" class="invalid-tooltip">      
+                                                                                                            Seleccione el año
+                                                                                                        </div>                 
+                                                                                                  </div> 
+                                                                                        </div> 
+                                                                                        <div class="col-md-3 mb-2">
+                                                                                          <label for="validationCustom01">Mes 2</label>
+                                                                                                <div class="input-group" style="cursor:default" >  
+                                                                                                       <select  id="mes2" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required"  disabled="disabled">
+                                                                                                       <option value="">Seleccione</option>
+                                                                                                       </select>  
+                                                                                                       <div class="input-group-append"  >
+                                                                                                             <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>                                                          
+                                                                                                        </div>
+                                                                                                        <div class="input-group-append">                                                             
+                                                                                                             <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ingrese el periodo de acuerdo al calculo que realizo con la calculadora de inflacion del INEGI." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
+                                                                                                        </div>
+                                                                                                        <div id="Mes2Val" class="invalid-tooltip">      
+                                                                                                            Seleccione el mes
+                                                                                                        </div>                 
+                                                                                                  </div> 
+                                                                                        </div> 
+                                                                                    </div>
                                                                             </div>
-                                                                            <div class="col-md-6 mb-2">  
-                                                                                <label for="validationCustom01">Proyecto</label>
-                                                                                <div class="input-group">
-                                                                                   <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
-                                                                                   </select>                                             
-                                                                                   <div class="input-group-append ">
-                                                                                                 <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el proyecto donde desea ingresar la inflacion calculada." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
-                                                                                  </div>                                                       
-                                                                                </div>
-                                                                                <div id="proyectosINEGIval" class="invalid-tooltip">   
-                                                                                    Selecciones un proyecto para guardar
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>  
-                                                                        <div class="form-row" >
-                                                                            <div class="col-md-6 mb-2">
+                                                                        </div>
+                                                                        <div class="form-row" >                                                                            
+                                                                            <div class="col-md-4 mb-2"> 
+                                                                                    <label for="validationCustom01">Proyecto</label>
+                                                                                    <div class="input-group">
+                                                                                        <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
+                                                                                        <option value="">Seleccione</option>
+                                                                                        </select>                                             
+                                                                                        <div class="input-group-append ">
+                                                                                                        <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el proyecto donde desea ingresar la inflacion calculada." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                                                                        </div>                                                       
+                                                                                    </div>
+                                                                                    <div id="proyectosINEGIval" class="invalid-tooltip">   
+                                                                                        Selecciones un proyecto para guardar
+                                                                                    </div>
+                                                                             </div>
+                                                                            <div class="col-md-4 mb-2">
                                                                               <label for="validationCustom04">Inflacion</label>
                                                                                   <div class="input-group" style="cursor:default">                    
                                                                                             <input type="text"   class="form-control number4" id="inflacion" placeholder="Ingrese la Inflación" autocomplete="off" style="cursor:pointer" required="required">
@@ -89,7 +158,7 @@
                                                                                             </div>
                                                                                   </div> 
                                                                               </div>
-                                                                            <div class="col-md-6 mb-2">
+                                                                            <div class="col-md-4 mb-2">
                                                                               <label for="validationCustom04">Tasa de Promedio Mensual</label>
                                                                                   <div class="input-group" style="cursor:default">                    
                                                                                             <input type="text"   class="form-control number5" id="TPMI" placeholder="Tasa de Promedio Mensual" autocomplete="off" style="cursor:pointer" required="required">
@@ -101,8 +170,7 @@
                                                                                               Por favor ingrese la tasa de promedio mensual
                                                                                             </div>
                                                                                   </div> 
-                                                                             </div> 
-                                                                            
+                                                                             </div>                                                                             
                                                                         </div>
                                                                      <div class="form-row" style="margin-top:30px; margin-bottom:30px">  
                                                                         <div class="col-md-4 mb-2">

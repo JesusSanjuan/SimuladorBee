@@ -335,6 +335,21 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
+
+        var fecha = new Date();
+        var anio = fecha.getFullYear();
+
+        var optionsanio1 = [];
+        optionsanio1.push("<option value=''>Seleccione</option>");
+        for (var i = anio; i >= 1969; i--) {
+            var option;
+            option = "<option value='"+i+"'>"+i+"</option>";
+            optionsanio1.push(option);
+            //console.log(option);
+        }
+        $('#anio.selectpicker').html(optionsanio1);
+        $('#anio.selectpicker').selectpicker('refresh');
+
     }
     /*Carga de proyectos en select de INEGI*/
 
@@ -386,16 +401,163 @@
     });
 
 /*Validacion de campos en calculadora de INEGI antes de*/
-    const number = document.querySelector('.number');
-    function formatNumber(n) {
-        return n.replace(/\D/g, "")
-            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
-            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
-    }
-    number.addEventListener('keyup', (e) => {
-        const element = e.target;
-        const value = element.value;
-        element.value = formatNumber(value);
+    $('#anio').change(function () {
+        var anio = $("#anio").val();
+       ///No funciona en los selectpicker el removeclass por eso los erreores visuales
+       
+        if (anio === '') {
+            $("#Anio1Val").addClass("invalid-feedback");
+            $("#anio").removeClass("is-valid");
+            $("#anio").addClass("is-invalid");
+            $('#anio').selectpicker('refresh');    
+            $('#Anio1Val').text('Por favor seleccione el año');
+            $('#Anio1Val').show();
+
+            $('#mes').selectpicker('val', '');
+            $('#mes').change(); 
+            var mes = $("#mes").val();
+            $('#mes').selectpicker('refresh');
+            $('#anio2').selectpicker('val', '');
+            $('#anio2').change();
+            $('#anio2').selectpicker('refresh');
+            $('#mes2').selectpicker('val', '');
+            $('#mes2').change();
+            $('#mes2').selectpicker('refresh');
+            $('#mes').prop("disabled", true);
+            $('#mes').selectpicker('refresh');
+            $('#anio2').prop("disabled", true);
+            $('#anio2').selectpicker('refresh');   
+            $('#mes2').prop("disabled", true);
+            $('#mes2').selectpicker('refresh'); 
+        }
+        else {
+            $("#anio").removeClass("is-invalid");
+            $("#anio").addClass("is-valid");
+            $('#anio').selectpicker('refresh');  
+            $('#Anio1Val').hide();
+            $('#mes').prop("disabled", false);
+            $('#mes').selectpicker('refresh');
+        }
+    });
+
+    $('#mes').change(function () {   
+        if (mes === '') {
+            $("#Mes1Val").addClass("invalid-feedback");
+            $("#mes").removeClass("is-valid");
+            $("#mes").addClass("is-invalid");
+            $('#mes').selectpicker('refresh'); 
+            $('#Mes1Val').text('Por favor seleccione el mes');
+            $('#Mes1Val').show();
+
+
+            $('#anio2').selectpicker('val', '');
+            $('#anio2').change();
+            $('#anio2').selectpicker('refresh');
+            $('#mes2').selectpicker('val', '');
+            $('#mes2').change();
+            $('#mes2').selectpicker('refresh');
+            $('#anio2').prop("disabled", true);
+            $('#anio2').selectpicker('refresh');
+            $('#mes2').prop("disabled", true);
+            $('#mes2').selectpicker('refresh');  
+        }
+        else {
+            $("#mes").removeClass("is-invalid");
+            $("#mes").addClass("is-valid");
+            $('#mes').selectpicker('refresh'); 
+            $('#Mes1Val').hide();            
+            var anio = $("#anio").val();
+            var fecha = new Date();
+            var anioAct = fecha.getFullYear();
+            var optionsanio1 = [];
+            optionsanio1.push("<option value=''>Seleccione</option>");
+            for (var i = anioAct; i >= anio; i--) {
+                var option;
+                option = "<option value='" + i + "'>" + i + "</option>";
+                optionsanio1.push(option);
+            }
+            $('#anio2.selectpicker').html(optionsanio1);
+            $('#anio2.selectpicker').selectpicker('refresh');
+            $('#anio2').prop("disabled", false);
+            $('#anio2').selectpicker('refresh');
+        }
+    });
+
+
+    $('#anio2').change(function () {
+        var anio2 = $("#anio2").val();
+        if (anio2 === '') {
+            $("#Anio2Val").addClass("invalid-feedback");
+            $("#anio2").removeClass("is-valid");
+            $("#anio2").addClass("is-invalid");
+            $('#anio2').selectpicker('refresh');
+            $('#Anio2Val').text('Por favor seleccione el año');
+            $('#Anio2Val').show();
+
+            $('#mes2').selectpicker('val', '');
+            $('#mes2').change();
+            $('#mes2').selectpicker('refresh');
+            $('#mes2').prop("disabled", true);
+            $('#mes2').selectpicker('refresh');  
+        }
+        else {
+            $("#anio2").removeClass("is-invalid");
+            $("#anio2").addClass("is-valid");
+            $('#anio2').selectpicker('refresh');
+            $('#Anio2Val').hide();
+            $('#mes2').prop("disabled", false);
+            $('#mes2').selectpicker('refresh');
+            var mesesPROPI = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            var anio = $("#anio").val();
+            if (anio === anio2) {
+                var mes = $("#mes").val();
+                var laposicion = 0;
+                for (var i = 0; i < mesesPROPI.length; i++) {
+                    if (mesesPROPI[i] === mes) {
+                        laposicion = i;
+                    }
+                }
+                var optionsanio1 = [];
+                optionsanio1.push("<option value=''>Seleccione</option>");
+                for (var x = laposicion + 1; x < mesesPROPI.length; x++) {
+                    var option;
+                    option = "<option value='" + mesesPROPI[x] + "'>" + mesesPROPI[x] + "</option>";
+                    optionsanio1.push(option);
+                }
+                $('#mes2.selectpicker').html(optionsanio1);
+                $('#mes2.selectpicker').selectpicker('refresh');
+            }
+            else {
+                var optionsanio2 = [];
+                optionsanio2.push("<option value=''>Seleccione</option>");
+                for (var x1 = 0; x1 < mesesPROPI.length; x1++) {
+                    var option1;
+                    option1 = "<option value='" + mesesPROPI[x1] + "'>" + mesesPROPI[x1] + "</option>";
+                    optionsanio2.push(option1);
+                }
+                $('#mes2.selectpicker').html(optionsanio2);
+                $('#mes2.selectpicker').selectpicker('refresh');
+            }
+        }
+        
+    });
+
+    $('#mes2').change(function () {
+        var mes2 = $("#mes2").val();
+        if (mes2 === '') {
+            $("#Mes2Val").addClass("invalid-feedback");
+            $("#mes2").removeClass("is-valid");
+            $("#mes2").addClass("is-invalid");
+            $('#mes2').selectpicker('refresh');
+            $('#Mes2Val').text('Por favor seleccione el mes');
+            $('#Mes2Val').show();
+        }
+        else {
+            $("#mes2").removeClass("is-invalid");
+            $("#mes2").addClass("is-valid");
+            $('#mes2').selectpicker('refresh');
+            $('#Mes2Val').hide();
+        }
     });
 
 
@@ -423,13 +585,11 @@
        else {
            $("#proyectosINEGI").addClass("is-invalid");
            $("#proyectosINEGI").removeClass("is-valid");          
-           $('#proyectosINEGIval').text('Por favor seleccione el proyecto');
            $('#proyectosINEGIval').hide();
        }
     });
     
     const number4 = document.querySelector('.number4');
-
     function formatNumber4(n) {
         return n.replace(/\D/g, "")
             .replace(/([0-9])([0-9]{2})$/, '$1.$2')

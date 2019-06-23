@@ -136,6 +136,10 @@ $('#VdS').keyup(function (event) {
 /* Validacion del campo PLAZO*/
 $("#select").change(function () {  //Estrar datos y del campo de texto y luego aplicar  validacion y mostrar popper en caso de errror
     var valor = $("#select").val();
+    if (t) {//Limpieza y oculta si cambia el periodo
+        $("#PreCalculoVAN").css("display", "none");
+        $("#ResultadosVAN").css("display", "none");
+    }
     switch (valor) {
         case "1":
             $("#n").css("cursor", "pointer");
@@ -188,6 +192,10 @@ $("#select").change(function () {  //Estrar datos y del campo de texto y luego a
 
 var validacion;
 $('#n').keyup(function (event) {
+    if (t) {//Limpieza y oculta si cambia el periodo
+        $("#PreCalculoVAN").css("display", "none"); 
+        $("#ResultadosVAN").css("display", "none");
+    }
     N = false;
     var valor = $("#select").val();
     var n = $("#n").val();
@@ -335,8 +343,8 @@ $("#continuar").click(function () {
         N1 = true;
     }   
 
-    if (Inversion === true && Inversion === true  && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {     
-        contaclickbien = contaclickbien+1;
+    if (Inversion === true && Inversion1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {   
+        Inversion1 = false; VS1 = false; TMARv1 = false; Selectv1 = false; N1 = false;
         if (t) {//Limpieza tabla
             t.clear();
             t.destroy();
@@ -412,29 +420,12 @@ $("#continuar").click(function () {
         $('#vanManual').editableTableWidget({ editor: $('<textarea>') });
 
        // t.columns.adjust().draw(); 
-
-        if ($('#PreCalculoVAN').css('display') === 'none' && contaclickbien<=1) {
-            $("#PreCalculoVAN").css("display", "block");
-            $('#PreCalculoVAN').addClass("bounceInLeft animated");
-            $("#PreCalculoVAN").css({
-                "animation-duration": "2s",
-                "animation-delay": "0s"
-            });
-        }
-        if ($('#PreCalculoVAN').css('display') === 'block' && contaclickbien >= 2) {
-            if (contaclickbien >= 3) {
-                const element = document.querySelector('#PreCalculoVAN');
-                element.classList.add('animated', 'pulse');//Bug
-            } else {
-                $('#PreCalculoVAN').removeClass("bounceInLeft animated");
-            }            
-            
-            $('#PreCalculoVAN').addClass("pulse animated");
-            $("#PreCalculoVAN").css({
-                "animation-duration": "0.5s",
-                "animation-delay": "0s"
-            });            
-        }
+        $("#PreCalculoVAN").css("display", "block");
+        $('#PreCalculoVAN').addClass("pulse animated");
+        $("#PreCalculoVAN").css({
+            "animation-duration": "2s",
+            "animation-delay": "0s"
+        });
        // const element = document.querySelector('#PreCalculoVAN');
        /* element.addEventListener('animationend', function () {           
             en espera de terminar efecto visual
@@ -526,90 +517,147 @@ $("#calcular").click(function () {
     var Select = $("#select").val();
     var n = $("#n").val();
 
-/*Para Obtener vector de FNE FINAL*/
-    var Costoss = [];
-    var Ingresoss = [];
-    var FNEs = [];
-    var Anios = [];
-    var table = $('#vanManual').DataTable();
-    var column0 = table.column(0);
-    var column1 = table.column(1);
-    var column2 = table.column(2);
-    var column3 = table.column(3);
-    var Anio = column0.data();
-    var Costos = column1.data();
-    var Ingresos = column2.data();
-    var FNE = column3.data();    
-    for (var x = 0; x < FNE.length; x++) {
-        Costoss[x] = Costos[x].replace(/,/g, '');
-        Ingresoss[x] = Ingresos[x].replace(/,/g, '');
-        FNEs[x] = FNE[x].replace(/,/g, '');
-        Anios[x] = Anio[x];
-    }
-    //console.log(Anios);
-    //console.log(FNEs);
-    inversion = inversion.replace(/,/g, '');
-    VdS = VdS.replace(/,/g, '');
-    TMAR = TMAR.replace(/,/g, '');
 
-    $.ajax({
-        beforeSend: function () {
-            $("#Cargando_Modal").css({ 'position': 'fixed', 'top': '40%' });
-            $("#Cargando_Modal_Dialog").css({ 'margin': '3.75rem auto' });
-            $('#Cargando_Modal').modal({ backdrop: 'static', keyboard: false });
-            $('#Cargando_Modal').modal('show');
-        },
-        cache: false,
-        type: "POST",
-        url: "vanM.aspx/MiCalculo",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        async: true,
-        data: JSON.stringify({ inversion: inversion, FNE: FNEs, Anio:Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
-        success: function (data) {
-            var valores = JSON.parse(data.d);
-            $('#Cargando_Modal').modal('hide');
-            Modal(valores[0]);
-            $("#VAN").text(valores[1]);
-            $("#TIR").text(valores[2]);
-            Graficar(valores[3], valores[4], valores[5], valores[6]);            
-        },
-        error: function (err) {
-            console.log(err);
-            console.log(err.responseText);
-        }
-    }).done(function (data) {
-        $('#content').html('');
-        $.ajax({
-            type: "POST",
-            url: "vanM.aspx/CreacionTabla",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({ inversion: inversion, Costos: Costoss, Ingresos: Ingresoss, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
-            success: function (data) {
-                $('#Cargando_Modal').modal('hide');
-                var valores = JSON.parse(data.d);
-                RellenarTabla(valores[0]);
-                $("#PeridoRec").text(valores[1]);
-                $("#PeridoRec2").text(valores[2]);
-                $("#BenCosto").text(valores[3]);
-            },
-            error: function (err) {
-                console.log(err);
-                console.log(err.responseText);
+    if (inversion.length === 0) {
+        $("#Inversionval").addClass("invalid-feedback");
+        $("#Inversion").removeClass("is-valid");
+        $("#Inversion").addClass("is-invalid");
+        $('#Inversionval').text('Por favor ingrese la inversion.');
+        $('#Inversionval').show();
+        Inversion1 = false;
+    } else {
+        Inversion1 = true;
+    }
+    
+    if (VdS.length === 0) {
+        $("#VdSval").addClass("invalid-feedback");
+        $("#VdS").removeClass("is-valid");
+        $("#VdS").addClass("is-invalid");
+        $('#VdSval').text('Por favor ingrese el Valor de Salvamento.');
+        $('#VdSval').show();
+        VS1 = false;
+    } else {
+        VS1 = true;
+    }
+    if (TMAR.length === 0) {
+        $("#TMARval").addClass("invalid-feedback");
+        $("#TMAR").removeClass("is-valid");
+        $("#TMAR").addClass("is-invalid");
+        $('#TMARval').text('Por favor ingrese la TMAR.');
+        $('#TMARval').show();
+        TMARv1 = false;
+    }
+    else {
+        TMARv1 = true;
+    }
+    if (Select === "") {
+        $("#selectval").addClass("invalid-feedback");
+        $("#select").removeClass("is-valid");
+        $("#select").addClass("is-invalid");
+        $('#selectval').text('Por favor seleccione un tipo de plazo');
+        $('#selectval').show();
+        Selectv1 = false;
+    } else {
+        Selectv1 = true;
+    }
+
+    if (n.length === 0) {
+        $("#nval").addClass("invalid-feedback");
+        $("#n").removeClass("is-valid");
+        $("#n").addClass("is-invalid");
+        $('#nval').text('Por favor ingrese el plazo');
+        $('#nval').show();
+        N1 = false;
+    } else {
+        N1 = true;
+    }
+
+    if (Inversion === true && Inversion1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
+        /*Para Obtener vector de FNE FINAL*/
+            var Costoss = [];
+            var Ingresoss = [];
+            var FNEs = [];
+            var Anios = [];
+            var table = $('#vanManual').DataTable();
+            var column0 = table.column(0);
+            var column1 = table.column(1);
+            var column2 = table.column(2);
+            var column3 = table.column(3);
+            var Anio = column0.data();
+            var Costos = column1.data();
+            var Ingresos = column2.data();
+            var FNE = column3.data();    
+            for (var x = 0; x < FNE.length; x++) {
+                Costoss[x] = Costos[x].replace(/,/g, '');
+                Ingresoss[x] = Ingresos[x].replace(/,/g, '');
+                FNEs[x] = FNE[x].replace(/,/g, '');
+                Anios[x] = Anio[x];
             }
-        }).done(function (data) {
-            //console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });
-            //console.log(data);
-    }).fail(function (data) {
-        console.log("Error: " + data);
-    }).always(function () {
-    }).then(function (data) {
-    });
+            //console.log(Anios);
+            //console.log(FNEs);
+            inversion = inversion.replace(/,/g, '');
+            VdS = VdS.replace(/,/g, '');
+            TMAR = TMAR.replace(/,/g, '');
+
+            $.ajax({
+                beforeSend: function () {
+                    $("#Cargando_Modal").css({ 'position': 'fixed', 'top': '40%' });
+                    $("#Cargando_Modal_Dialog").css({ 'margin': '3.75rem auto' });
+                    $('#Cargando_Modal').modal({ backdrop: 'static', keyboard: false });
+                    $('#Cargando_Modal').modal('show');
+                },
+                cache: false,
+                type: "POST",
+                url: "vanM.aspx/MiCalculo",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: true,
+                data: JSON.stringify({ inversion: inversion, FNE: FNEs, Anio:Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+                success: function (data) {
+                    var valores = JSON.parse(data.d);
+                    $('#Cargando_Modal').modal('hide');
+                    Modal(valores[0]);
+                    $("#VAN").text(valores[1]);
+                    $("#TIR").text(valores[2]);
+                    Graficar(valores[3], valores[4], valores[5], valores[6]);            
+                },
+                error: function (err) {
+                    console.log(err);
+                    console.log(err.responseText);
+                }
+            }).done(function (data) {
+                $('#content').html('');
+                $.ajax({
+                    type: "POST",
+                    url: "vanM.aspx/CreacionTabla",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({ inversion: inversion, Costos: Costoss, Ingresos: Ingresoss, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+                    success: function (data) {
+                        $('#Cargando_Modal').modal('hide');
+                        var valores = JSON.parse(data.d);
+                        RellenarTabla(valores[0]);
+                        $("#PeridoRec").text(valores[1]);
+                        $("#PeridoRec2").text(valores[2]);
+                        $("#BenCosto").text(valores[3]);
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        console.log(err.responseText);
+                    }
+                }).done(function (data) {
+                    //console.log(data);
+                }).fail(function (data) {
+                    console.log("Error: " + data);
+                });
+                    //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            }).always(function () {
+            }).then(function (data) {
+            });
+    }
 });
 
 function FormatoNumero(n) {

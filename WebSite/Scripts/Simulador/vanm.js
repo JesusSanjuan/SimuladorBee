@@ -134,7 +134,7 @@ $('#VdS').keyup(function (event) {
 /* Validacion del campo Valor de Salvamento*/
 
 /* Validacion del campo PLAZO*/
-$("#select").change(function () {  //Estrar datos y del campo de texto y luego aplicar  validacion y mostrar popper en caso de errror
+$("#select").change(function () { 
     var valor = $("#select").val();
     if (t) {//Limpieza y oculta si cambia el periodo
         $("#PreCalculoVAN").css("display", "none");
@@ -450,17 +450,7 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     } else {
         table.cell(rowIdx2, column).data(valor_mod).draw();
         $("#Alert").css("display", "none");
-    }
-   
-   /* if (data[1].length !== 0 && data[3].length !== 0) {
-        var v1 = data[1].replace(/,/g, '');
-        var v2 = data[3].replace(/,/g, '');
-        var costoTotal = (v1 - v2);
-        costoTotal = costoTotal.toFixed(2); 
-        var n = costoTotal.toString();
-        var numForm = FormatoNumero(n);
-        table.cell(rowIdx, 4).data(numForm).draw();
-    }*/
+    }  
 
     var column1 = table.column(1); 
     var column2 = table.column(2);    

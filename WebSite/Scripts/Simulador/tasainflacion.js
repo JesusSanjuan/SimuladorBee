@@ -548,8 +548,7 @@
                 $('#mes2.selectpicker').selectpicker('refresh');
             }
             anio2val = true;
-        }
-        
+        }        
     });
 
     $('#mes2').change(function () {
@@ -690,7 +689,7 @@
     /*Validacion de campos en calculadora de INEGI antes de*/
 
 
-
+    /*Ejecucion de Guardar*/
     $('#saveINEGI').click(function () {
         var anio = $("#anio").val();
         var mes = $("#mes").val();
@@ -700,7 +699,119 @@
         var inflacion = $("#inflacion").val();
         var inMensual = $("#TPMI").val();
 
+        if (anio === '') {
+            $("#Anio1Val").addClass("invalid-feedback");
+            $("#anio").removeClass("is-valid");
+            $("#anio").addClass("is-invalid");
+            $('#anio').selectpicker('refresh');
+            $('#Anio1Val').text('Por favor seleccione el año');
+            $('#Anio1Val').show();
+            anioval2 = false;
+        }
+        else {
+            $("#anio").removeClass("is-invalid");
+            $("#anio").addClass("is-valid");
+            $('#anio').selectpicker('refresh');
+            $('#Anio1Val').hide();
+            $('#mes').prop("disabled", false);
+            $('#mes').selectpicker('refresh');
+            anioval2 = true;
+        }
+        
+        if (mes === '') {
+            $("#Mes1Val").addClass("invalid-feedback");
+            $("#mes").removeClass("is-valid");
+            $("#mes").addClass("is-invalid");
+            $('#mes').selectpicker('refresh');
+            $('#Mes1Val').text('Por favor seleccione el mes');
+            $('#Mes1Val').show();
+            mesval2 = false;
+        }
+        else {
+            $("#mes").removeClass("is-invalid");
+            $("#mes").addClass("is-valid");
+            $('#mes').selectpicker('refresh');
+            $('#Mes1Val').hide();
+            mesval2 = true;
+        }
 
+        if (anio2 === '') {
+            $("#Anio2Val").addClass("invalid-feedback");
+            $("#anio2").removeClass("is-valid");
+            $("#anio2").addClass("is-invalid");
+            $('#anio2').selectpicker('refresh');
+            $('#Anio2Val').text('Por favor seleccione el año');
+            $('#Anio2Val').show();
+
+            anio2val2 = false;
+        }
+        else {
+            $("#anio2").removeClass("is-invalid");
+            $("#anio2").addClass("is-valid");
+            $('#anio2').selectpicker('refresh');
+            $('#Anio2Val').hide();            
+            anio2val2= true;
+        }
+
+        if (mes2 === '') {
+            $("#Mes2Val").addClass("invalid-feedback");
+            $("#mes2").removeClass("is-valid");
+            $("#mes2").addClass("is-invalid");
+            $('#mes2').selectpicker('refresh');
+            $('#Mes2Val').text('Por favor seleccione el mes');
+            $('#Mes2Val').show();
+            mes2val2 = false;
+        }
+        else {
+            $("#mes2").removeClass("is-invalid");
+            $("#mes2").addClass("is-valid");
+            $('#mes2').selectpicker('refresh');
+            $('#Mes2Val').hide();
+            mes2val2 = true;
+        }
+
+        if (proyectos === '') {
+            $("#proyectosINEGIval").addClass("invalid-feedback");
+            $("#proyectosINEGI").removeClass("is-valid");
+            $("#proyectosINEGI").addClass("is-invalid");
+            $('#proyectosINEGIval').text('Por favor seleccione el proyecto');
+            $('#proyectosINEGIval').show();
+            proyectoval2 = false;
+        }
+        else {
+            $("#proyectosINEGI").addClass("is-invalid");
+            $("#proyectosINEGI").removeClass("is-valid");
+            $('#proyectosINEGIval').hide();
+            proyectoval2 = true;
+        }
+
+        if (inflacion.length === 0) {
+            $("#inflacionval").addClass("invalid-feedback");
+            $("#inflacion").removeClass("is-valid");
+            $("#inflacion").addClass("is-invalid");
+            $('#inflacionval').text('Por favor ingrese la inflacion.');
+            $('#inflacionval').show();
+            inflacionval2 = false;
+        } else {
+            $("#inflacion").removeClass("is-invalid");
+            $("#inflacion").addClass("is-valid");
+            $('#inflacionval').hide();
+            inflacionval2 = true;                
+        }
+
+        if (inMensual.length === 0) {
+            $("#TPMIval").addClass("invalid-feedback");
+            $("#TPMI").removeClass("is-valid");
+            $("#TPMI").addClass("is-invalid");
+            $('#TPMIval').text('Por favor ingrese la Tasa de Promedio Mensual.');
+            $('#TPMIval').show();
+            tasapromediomensual2 = false;
+        } else {
+            $("#TPMI").removeClass("is-invalid");
+            $("#TPMI").addClass("is-valid");
+            $('#TPMIval').hide();
+            tasapromediomensual2 = true;                
+        }
 
         if (inflacion != "" && inMensual != "" && proyectos.length > 0) {//inflacion != "" && inMensual != ""
             var array_inflacion = [];
@@ -768,8 +879,10 @@
                         $("#alertSDanger").hide();
                     }, 3000);
             }
-        }
+        
     });
+    /*Ejecucion de Guardar*/
+
     //solo porcentaje
     $("body").on('keyup', ".porcen", function (event) {
         this.value = this.value.match(/\d{0,3}(\.\d{0,2})?/)[0];

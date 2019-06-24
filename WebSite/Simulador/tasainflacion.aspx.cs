@@ -1097,7 +1097,8 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
 
         List<string> item = new List<string>();
         string option;
-        option = "<option value=''>Seleccione</option>";
+        // option = "<option value=''>Seleccione</option>";
+        option = "";
         item.Add(option);
         foreach (Proyecto Proyect in consulta)
         {            

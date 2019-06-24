@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var anioval = false, anioval2 = false, mesval = false, mesval2 = false, anio2val = false, anio2val2 = false, mes2val = false, mes2val2 = false, proyectoval = false, proyectoval2 = false, inflacionval = false, inflacionval2 = false, tasapromediomensual = false, tasapromediomensual2 = false;
+
+$(document).ready(function () {
 /*Ejecucion de MI CALCULADORA*/
     $.ajax({
         type: "POST",
@@ -400,7 +402,7 @@
         }
     });
 
-    var anioval = false, anioval2 = false, mesval = false, mesval2 = false, anio2val = false, anio2val2 = false, mes2val = false, mes2val2 = false, proyectoval = false, proyectoval2 = false, inflacionval = false, inflacionval2 = false, tasapromediomensual = false, tasapromediomensual2 = false;
+   // var anioval = false, anioval2 = false, mesval = false, mesval2 = false, anio2val = false, anio2val2 = false, mes2val = false, mes2val2 = false, proyectoval = false, proyectoval2 = false, inflacionval = false, inflacionval2 = false, tasapromediomensual = false, tasapromediomensual2 = false;
 
 /*Validacion de campos en calculadora de INEGI antes de*/
     $('#anio').change(function () {
@@ -812,37 +814,14 @@
             $('#TPMIval').hide();
             tasapromediomensual2 = true;                
         }
-
-        if (inflacion != "" && inMensual != "" && proyectos.length > 0) {//inflacion != "" && inMensual != ""
+        if (anioval === true && anioval2 === true && mesval === true && mesval2 === true && anio2val === true && anio2val2 === true && mes2val === true && mes2val2 === true && proyectoval === true && proyectoval2 === true && inflacionval === true && inflacionval2 === true && tasapromediomensual === true && tasapromediomensual2 === true)
+        {
             var array_inflacion = [];
             array_inflacion[0] = inflacion;
             array_inflacion[1] = inMensual;
 
-          /*  var periodo = $("#periodoINEGI").val();
-
-            //Diciembre 2018 a Marzo 2019
-            periodo = periodo.trim();
-
-            periodo = periodo.replace(/\s+/gi, ' ');
-
-            arregloDeSubCadenas = periodo.split(" ");
-            if (arregloDeSubCadenas.length == 5) {
-                var mesI = arregloDeSubCadenas[0];
-                var mesF = arregloDeSubCadenas[3];
-                var mesesINEGI = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
-                var mesesPROPI = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-                for (var x = 0; x < mesesINEGI.length; x++) {
-                    if (mesI == mesesINEGI[x]) 
-                        mesI = mesesPROPI[x];
-                    if (mesF == mesesINEGI[x])
-                        mesF = mesesPROPI[x];
-                }
-                arregloDeSubCadenas[0] = mesI;
-                arregloDeSubCadenas[3] = mesF;
-                periodo = arregloDeSubCadenas.toString();
-                periodo = periodo.replace(/,/g, ' ');*/
-                //periodo = periodo.trim();
-                //GUardamos los datos en la tabla de indices
+           var periodo = mes + " " + anio + " a " + mes2 + " " + anio2;
+           periodo = periodo.toString();
                 $.ajax({
                     type: "POST",
                     url: "tasainflacion.aspx/guardar_inflacion",
@@ -871,14 +850,7 @@
                 }).fail(function (data) {
                     console.log("Error: " + data);
                 });                
-            }
-            else {
-                $('#alertSDanger').show();
-                setTimeout(
-                    function () {
-                        $("#alertSDanger").hide();
-                    }, 3000);
-            }
+         }
         
     });
     /*Ejecucion de Guardar*/

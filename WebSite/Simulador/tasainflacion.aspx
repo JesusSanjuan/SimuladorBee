@@ -134,7 +134,7 @@
                                                                             <div class="col-md-4 mb-2"> 
                                                                                     <label for="validationCustom01">Proyecto</label>
                                                                                     <div class="input-group">
-                                                                                        <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
+                                                                                        <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" multiple>
                                                                                         <option value="">Seleccione</option>
                                                                                         </select>                                             
                                                                                         <div class="input-group-append ">

@@ -146,3 +146,6 @@
     </div>
 </div>
 </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">     
+    <script src="../Scripts/Account/Enlaces.js"></script>
+</asp:Content>

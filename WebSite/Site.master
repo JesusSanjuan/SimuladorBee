@@ -4,10 +4,8 @@
 
 <html lang="en">
 <head runat="server">
-    <link runat="server" rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
-    <link runat="server" rel="icon" href="~/favicon.ico" type="image/ico" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <title><%: Page.Title %> </title>
              <!-- Efectos visuales-->
@@ -108,13 +106,13 @@
 								    <div class="footer_logo">
 									    <a href="Default">
 										    <div class="d-flex flex-row align-items-center justify-content-start">
-											    <div class="footer_logo_icon"> <img src="favicon.ico" width="90" height="90"  class="img-fluid" alt="Responsive image" /></div>
+											    <div class="footer_logo_icon"> <img src="bee.ico" width="90" height="90"  class="img-fluid" alt="Responsive image" /></div>
 											    <div>Simulador Bee</div>
 										    </div>
 									    </a>		
 								    </div>
 								    <div class="footer_about_text">
-									    <p>Aplicacion desarrollada para el aprendizaje de Negocios, Tecnologia .NET.</p>
+									    <p>Aplicacion desarrollada para el el apoyo en la Evaluacion Financiera aplicando Tecnologia .NET.</p>
 								    </div>
 							    </div>
                             </div>
@@ -124,7 +122,7 @@
 								<div class="footer_title">Soporte</div>
 								<ul class="footer_list">
                                     <li>
-										<a href="About"><div>Acerca de..</div></a>
+										<a id="ref1" href="About"><div>Acerca de..</div></a>
 									</li>
 									<li>
 										<a href="#"><div style="position: relative">Servicio al Cliente<div class="footer_tag_1" data-anijs=" if: mouseover, do: pulse animated">En linea ahora</div></div></a>
@@ -136,7 +134,7 @@
 										<a href="#"><div>Terminos y Condiciones</div></a>
 									</li>
 									<li>
-										<a href="Contact"><div style="position: relative">Contacto<div class="footer_tag_2" data-anijs=" if: mouseover, do: pulse animated">Recomendado</div></div></a>
+										<a id="ref2" href="Contact"><div style="position: relative">Contacto<div class="footer_tag_2" data-anijs=" if: mouseover, do: pulse animated">Recomendado</div></div></a>
 									</li>
 								</ul>
 							</div>
@@ -153,10 +151,10 @@
 								<div class="footer_social">
 									<div class="footer_title">Social</div>
 									<ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
-										<li data-anijs=" if: mouseover, do: pulse animated"><a href="http://www.facebook.com" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://www.youtube.com/" target="_blank" ><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://www.google.com/" target="_blank" ><i class="fab fa-google" aria-hidden="true"></i></a></li>
-										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://github.com/github" target="_blank" ><i class="fab fa-github" aria-hidden ="true"></i></a></li>
+										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://www.youtube.com" target="_blank" ><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://www.google.com" target="_blank" ><i class="fab fa-google" aria-hidden="true"></i></a></li>
+										<li data-anijs=" if: mouseover, do: pulse animated"><a href="https://www.github.com" target="_blank" ><i class="fab fa-github" aria-hidden ="true"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -219,8 +217,8 @@
             <!-- Archivo principal de AniJS --> 
             <script  src="../Scripts/anijs-master/anijs.js" > </script>
             <!-- ScrollReveal Helper -->
-            <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
-         <!-- Efectos visuales--> 
+            <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>            
+        <!-- Efectos visuales--> 
          <!-- Ejecuta y oculta preloader--> 
             <script>
                 $(document).ready(function () {

@@ -1,4 +1,5 @@
 ﻿var User = false, User1 = false, Contra = false, Contra1 = false;
+
 /*Validacion de el nombre de usuario*/
 const number = document.querySelector('.validacion');
 function formatNumber(n) {

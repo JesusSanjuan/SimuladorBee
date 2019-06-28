@@ -374,7 +374,7 @@
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="text" id="email" class="checkout_input" autocomplete="off"  style="cursor:pointer" placeholder="Correo Electronico" required="required">
+										            <input type="text" id="email" class="checkout_input" autocomplete="off"  style="cursor:pointer" placeholder="Correo Electronico de la UG" required="required">
                                                     <div id="emailVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>
@@ -467,4 +467,5 @@
     <script src="../Scripts/jquery.easing.1.3.js"></script>
     <script src="../Scripts/Account/Register/parallax-js-master/parallax.min.js"></script>
     <script src="../Scripts/Account/Register/registro.js"></script>
+    <script src="../Scripts/Account/Enlaces.js"></script>
 </asp:Content>

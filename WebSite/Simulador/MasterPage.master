@@ -9,7 +9,7 @@
           <meta name="description" content="">
           <meta name="author" content="">
           <title>Simulador</title>
-                        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+                        <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
                    <!-- Efectos visuales--> 
                         <link href="../Content/AnimateCSS/animate.min.css" rel="stylesheet" />
                         <link href="../Content/CSShake/csshake.min.css" rel="stylesheet" />

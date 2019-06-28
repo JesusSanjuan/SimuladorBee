@@ -13,7 +13,7 @@
                             <li class="breadcrumb-item">  
                                 <a href="Index">Inicio</a>
                             </li>
-                            <li class="breadcrumb-item active">Calculadira de Inflacion</li>
+                            <li class="breadcrumb-item active">Calculadora de Inflacion</li>
                           </ol>            
                  </nav>                   
     </div>

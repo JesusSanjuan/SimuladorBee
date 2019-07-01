@@ -29,7 +29,7 @@
 							        <div class="checkout_form_container checkout_form">
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="text" id="nick_name"  style="cursor:pointer" autocomplete="off" placeholder="Ingrese su Nick Name" class="checkout_input validacion">
+										            <input type="text" id="nick_name"  style="cursor:pointer" autocomplete="off" placeholder="Ingrese su Nombre de Usuario" class="checkout_input validacion">
                                                     <div id="nick_nameVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>

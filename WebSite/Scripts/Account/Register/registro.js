@@ -22,7 +22,7 @@ $('#nick_name').keyup(function (event) {
         $("#nick_nameVal").addClass("invalid-tooltip");
         $("#nick_name").removeClass("is-validado");
         $("#nick_name").addClass("is-invalidado");
-        $('#nick_nameVal').text('Por favor igrese su nick-name');
+        $('#nick_nameVal').text('Por favor igrese su nombre de usuario');
         $('#nick_nameVal').show();
         nameNick1 = false;
     } else {
@@ -46,7 +46,7 @@ $('#nick_name').keyup(function (event) {
                         $("#nick_nameVal").addClass("invalid-tooltip");
                         $("#nick_name").removeClass("is-validado");
                         $("#nick_name").addClass("is-invalidado");
-                        $('#nick_nameVal').text('El nick-name ya se encuentra en uso');
+                        $('#nick_nameVal').text('El nombre de usuario ya se encuentra en uso');
                         $('#nick_nameVal').show();
                         nameNick1 = false;
                     }                   
@@ -67,7 +67,7 @@ $('#nick_name').keyup(function (event) {
             $("#nick_nameVal").addClass("invalid-tooltip");
             $("#nick_name").removeClass("is-validado");
             $("#nick_name").addClass("is-invalidado");
-            $('#nick_nameVal').text('El nick-name de usuario es muy corto');
+            $('#nick_nameVal').text('El nombre de usuario es muy corto');
             $('#nick_nameVal').show();
             nameNick1 = false;
         }
@@ -437,7 +437,7 @@ $("#registro").click(function () {
         $("#nick_nameVal").addClass("invalid-tooltip");
         $("#nick_name").removeClass("is-validado");
         $("#nick_name").addClass("is-invalidado");
-        $('#nick_nameVal').text('Por favor igrese su nick-name');
+        $('#nick_nameVal').text('Por favor igrese su nombre de usuario');
         $('#nick_nameVal').show();
         nameNick2 = false;
     } else {

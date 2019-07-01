@@ -353,14 +353,14 @@
 									        </div>	
                                              <div class="row" style="margin-bottom: 0px;">
 										        <div class="col-lg-6" style="margin-bottom: 20px;">
-											        <input type="password" id="password" class="checkout_input" autocomplete="off" style="cursor:pointer" placeholder="Ingrese su contraseña" required="required">
+											        <input type="password" id="password" class="checkout_input"  autocomplete="new-password" style="cursor:pointer" placeholder="Ingrese su contraseña" required="required">
                                                     <div id="passwVal" class="invalid-tooltip">
                                                     </div>
                                                     <div id="passwValMod" class="invalid-tooltip">
                                                     </div>
 										        </div>
 										        <div class="col-lg-6" style="margin-bottom: 20px;">
-											        <input type="password" id="password_repit" class="checkout_input" autocomplete="off" style="cursor:pointer" placeholder="Repita su contraseña" required="required" readonly>
+											        <input type="password" id="password_repit" class="checkout_input" autocomplete="new-password" style="cursor:pointer" placeholder="Repita su contraseña" required="required" readonly>
 										            <div id="password_repitVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>

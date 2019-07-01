@@ -43,7 +43,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-unlock"></i></span>
                                             </div>
-                                            <input type="Password"   class="form-control" id="Contrasena" placeholder="Ingrese su contraseña" autocomplete="off" style="cursor:pointer" required="required">
+                                            <input type="Password"   class="form-control" id="Contrasena" placeholder="Ingrese su contraseña" autocomplete="new-password" style="cursor:pointer" required="required">
                                             <div id="ContrVal" class="invalid-tooltip">
                                                 Por favor ingrese su contraseña.
                                             </div>

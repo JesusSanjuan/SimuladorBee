@@ -189,7 +189,7 @@
                                         <select  id="select" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
                                                                         <option value="" class="dropdown-item" selected>Seleccione</option>
                                                                         <option value="1" class="dropdown-item">Mes</option>
-                                                                        <option value="2" class="dropdown-item">Año</option>
+                                                                        <option value="2" class="dropdown-item">Años</option>
                                         </select>                                             
                                         <div class="input-group-append ">
                                                         <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el períodos de tiempo que se adecue mas a tu proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            

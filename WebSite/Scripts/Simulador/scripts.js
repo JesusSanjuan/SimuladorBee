@@ -122,22 +122,12 @@
             $("#valid1").addClass("invalid-feedback");
             $("#Nombre_Proyecto").removeClass("is-valid");
             $("#Nombre_Proyecto").addClass("is-invalid");
-            $('#valid1').text('Por favor ingrese un formato valido de nombre de proyecto');
+            $('#valid1').text('Por favor ingrese un formato valido para el nombre del proyecto');
             $('#valid1').show();
             $("#Nombre_Proyecto").val("");
             Nombre = false;
         }
     });
-   /* const number = document.querySelector('.number');
-    function formatNumber(n) {
-        return n.replace(/^[A-Za-z0-9\s]+$/g, "");
-    }
-    number.addEventListener('keyup', (e) => {
-        const element = e.target;
-        const value = element.value;
-        element.value = formatNumber(value);
-    });*/
-
 /*Primer campo*/
 /*Segundo y Tercer campo*/
     $("#select").change(function () {
@@ -185,7 +175,6 @@
                 Selectv = false;
                 break;
         }
-
         $('#nval').hide();
         $("#n").focus();
         $("#n").removeClass("is-invalid");
@@ -276,7 +265,6 @@
         $("#n").popover("hide");
     });
 /*Segundo y Tercer campo*/
-
     $("#Guardar_Proyecto").on('click', function () {
         var nproyecto = $("#Nombre_Proyecto").val();
         var lapso = $("#select").val();
@@ -303,7 +291,7 @@
             Selectv1 = true;
         }
 
-        if (n.length === 0) {
+        if (nperiodo.length === 0) {
             $("#nval").addClass("invalid-feedback");
             $("#n").removeClass("is-valid");
             $("#n").addClass("is-invalid");
@@ -313,9 +301,7 @@
         } else {
             N1 = true;
         } 
-
-        if (nproyecto != "" && nperiodo != "") {
-
+        if (Nombre === true && Nombre1 === true && N === true && N1 === true && Selectv === true && Selectv1 === true) {
             $.ajax({
                 type: "POST",
                 url: "Index.aspx/Guardar_ProyectoBtn",
@@ -329,18 +315,12 @@
                 error: function (result) {
                     console.log(result.responseText);
                 }
-
             }).done(function (data) {
                 //console.log(data);
             }).fail(function (data) {
                 console.log("Error: " + data);
             });
         }
-        else {
-            $("#valid1").show();
-        }
-
-
     });
     /*******SCRIPTS PARA CONTENT INDEX***********************/
 

@@ -57,8 +57,7 @@
                                                 <th >$ Costo</th>
                                                 <th class="porcentaje">%</th>
                                                 <th >Total</th>
-                                                <th class="elim"></th>
-                
+                                                <th class="elim"></th>                
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -37,16 +37,12 @@ public partial class User_Index : System.Web.UI.Page
             System.Web.HttpContext.Current.Session["name_Proyecto"] = nombre_proyecto;
             System.Diagnostics.Debug.WriteLine(nombre_proyecto + "--"+ id_periodo +"--"+ id_user);
             return "succes";
-
         }
-        // Most specific:
         catch (ArgumentNullException e)
         {
             Console.WriteLine("{0} First exception caught.", e);
             return e;
-        }
-
-        
+        }        
     }
     [WebMethod]
     public static string getsource()
@@ -64,22 +60,24 @@ public partial class User_Index : System.Web.UI.Page
         foreach (Proyecto Proyect in consulta)
         {
             //para visualizar en el debug
-            System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
-                Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));
-
+            //System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
+           // Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));
             List<string> item = new List<string>();
             item.Add(Proyect.Nombre_Proyecto);
             item.Add(String.Format("{0:dd/MM/yyyy HH:mm:ss}", Proyect.Fecha_Hora));
             item.Add("<i class='fas fa-check' aria-hidden='true'>");
             item.Add("<a href='#' class='nav-link cargar' data-id="+ Proyect.ID_Proyecto+ "  data-name=' " + Proyect.Nombre_Proyecto +" '><i class='fa fa-redo fa-lg'></i></a>");
+            item.Add("<a href='#' class='nav-link eliminar' data-id=" + Proyect.ID_Proyecto + "  data-name=' " + Proyect.Nombre_Proyecto + " '><i class='fas fa-trash'></i></a>");
             result_query.Add(item);
-            System.Diagnostics.Debug.WriteLine(" -----------------------------------------\n");
         }
-
-        var json = JsonConvert.SerializeObject(result_query);
-
-       
+        var json = JsonConvert.SerializeObject(result_query);       
         return json;
+    }
+
+    [WebMethod]
+    public static string Borrarproyecto(string id_proyect, string nam_proyect)
+    {
+        return "succes";
     }
 
     [WebMethod]
@@ -91,14 +89,11 @@ public partial class User_Index : System.Web.UI.Page
             System.Web.HttpContext.Current.Session["name_Proyecto"] = nam_proyect;
             return "succes";
         }
-        // Most specific:
         catch (ArgumentNullException e)
         {
             Console.WriteLine("{0} First exception caught.", e);
             return e;
         }
-
-
     }
 
     [WebMethod]
@@ -108,29 +103,24 @@ public partial class User_Index : System.Web.UI.Page
         {
             if (System.Web.HttpContext.Current.Session["ID_Proyecto"] != null)
             {
-                System.Diagnostics.Debug.WriteLine("existe");
+                //System.Diagnostics.Debug.WriteLine("existe");
                 return System.Web.HttpContext.Current.Session["name_Proyecto"];
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine("No existe");
+                //System.Diagnostics.Debug.WriteLine("No existe");
                 return "false";
-            }
-            
+            }            
         }
-        // Most specific:
         catch (ArgumentNullException e)
         {
             Console.WriteLine("{0} First exception caught.", e);
             return e;
         }
-
-
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (Page.IsPostBack)
         {
             Page.Validate("periodo");
@@ -139,6 +129,5 @@ public partial class User_Index : System.Web.UI.Page
                 //Continue
             }
         }
-
     }
 }

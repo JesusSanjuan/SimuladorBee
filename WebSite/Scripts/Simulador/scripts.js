@@ -38,6 +38,13 @@
             var registros = JSON.parse(data.d);
             $('#nproyect').text(registros.length);
             $('#tableProyect').DataTable({
+                columnDefs: [
+                    { "width": "50%", "targets": 0 },
+                    { "width": "47%", "targets": 1 },
+                    { "width": "1%", "targets": 2 },
+                    { "width": "1%", "targets": 3 },
+                    { "width": "1%", "targets": 4 }
+                ],
                 "aaData": registros,
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
@@ -59,7 +66,6 @@
     $("body").on("click", ".cargar", function () {
         //obtenemos los datas
         var id = $(this).attr("data-id");
-
         var name = $(this).attr("data-name");
         $("#nameProject").text(name);
         //visualizamos el mensaje
@@ -74,7 +80,6 @@
             data: JSON.stringify({ id_proyect: id, nam_proyect: name }),
             success: function (data) {
                 if (typeof ID_Proyecto !== 'undefined') {
-
                     //console.log("existee session --->" + ID_Proyecto);
                 }
             },
@@ -87,15 +92,50 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
+    });
 
+    /****Eliminar proyecto****/
+    $("body").on("click", ".eliminar", function () {
+        //obtenemos los datas
+        var id = $(this).attr("data-id");
+        var name = $(this).attr("data-name");
+        $.ajax({
+            type: "POST",
+            url: "Index.aspx/Borrarproyecto",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ id_proyect: id, nam_proyect: name }),
+            success: function (data) {
+                $('#eliminarproyecto').modal({ show: true });
+                if (data.d === "succes") {
+                    $('#imgmodal').html('<img src="../multimedia/correcto.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>');
+                    $('#txtmodatitle').html("<strong style='vertical - align: middle;'> Borrado exitoso</strong>");
+                    $('#texmodal').html("<strong style='vertical - align: middle;'> El proyecto se borro exitosamente (Aun no realiza)</strong>");
+                } else {
+                    $('#imgmodal').html('<img src="../multimedia/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>');
+                    $('#txtmodatitle').html("<strong style='vertical - align: middle;'>Error al borrar </strong>");
+                    $('#texmodal').html("<strong style='vertical - align: middle;'> El proyecto no se pudo borrar, intente nuevamente </strong>");
+                 }
+            },
+            error: function (err) {
+                console.log(err);
+                console.log(err.responseText);
+            }
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
     });
 
     $("body").on('blur', "#Nombre_Proyecto", function () {
-        if ($(this).val() === "")
+        if ($(this).val() === "") {
             $("#valid1").show();
-        else
+        }
+        else {
             $("#valid1").hide();
-
+        }
     });
 
     var Nombre = false, Nombre1 = false, N = false, N1 = false, Selectv = false, Selectv1 = false;
@@ -419,7 +459,7 @@
                         //Buscar que periodos ya estan ingresados
                         for (j = 0; j < resultado[0].length - 1; j++) {
 
-                            if (i == resultado[0][j]) {
+                            if (i === resultado[0][j]) {
                                 ban = 1;
                                 break;
                             }
@@ -453,7 +493,6 @@
             console.log("Error: " + data);
         });
     }
-
 
     function cargar_data_amort() {
         if (id_proyecto !== "false") {
@@ -585,7 +624,7 @@
 
                             }
                             var option;
-                            if (ban == 1) {
+                            if (ban === 1) {
                                 option = "<option value=" + i + " disabled>" + i + "</option>";
                             }
                             else {
@@ -766,8 +805,6 @@
 
         var selector = $('#' + table + '').parents('.tab-pane').attr("id");
         $('#' + selector).find('.total_ant').val($('#' + table + '').find('.total').text());
-
-
     }
     /****************************************/
 
@@ -775,7 +812,7 @@
     var controller2 = "gastos.aspx";
     var completeG = false;
     $('#cnperiod_g.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
-        if (completeG == false)
+        if (completeG === false)
             cargar_cont_c_g(controller2, "cnperiod_g", "myTab_g");
         else
             get_data_c_g("3", controller2, "cnperiod_g", "myTab_g");
@@ -933,7 +970,7 @@
                 }),
                 success: function (result) {
                     var resultado = (result.d);
-                    if (resultado == "OK") {
+                    if (resultado === "OK") {
                         $("#project").html($("#message").find("strong").html());
                         $('#succesModal').modal('show');
                     } 

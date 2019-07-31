@@ -134,7 +134,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-layer-group"></i></div>
                                     </div>
-                                    <input type="text" class="form-control moneda" id="PEU" readonly>
+                                    <input type="text" class="form-control" id="PEU" readonly>
                                 </div>
                             </div>
                             <div class="col-md-1 mb-2">
@@ -160,7 +160,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text"  class="form-control moneda" style="cursor:pointer" id="costosFijos2" >
+                                    <input type="text"  class="form-control number4"  placeholder="Ingrese el costo fijo"  autocomplete="off" style="cursor:pointer" id="costosFijos2" >
                                     <div class="input-group-append">                                                             
                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ayuda." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                     </div>
@@ -183,7 +183,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text"  class="form-control moneda" style="cursor:pointer" id="precioV" >
+                                    <input type="text"  class="form-control number5a"  placeholder="Ingrese el precio de venta"  autocomplete="off" style="cursor:pointer" id="precioV" >
                                     <div class="input-group-append">                                                             
                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ayuda." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                     </div>
@@ -206,7 +206,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control moneda" style="cursor:pointer" id="costoV">
+                                    <input type="text" class="form-control number6"  placeholder="Ingrese el costo de venta"  autocomplete="off" style="cursor:pointer" id="costoV">
                                     <div class="input-group-append">                                                             
                                          <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="Ayuda." ><i class="fa fa-question-circle" style="color:#007bff"></i></span>                                                            
                                     </div>
@@ -242,7 +242,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                     </div>
-                                    <input type="text" class="form-control moneda"  id="PEP" readonly>
+                                    <input type="text" class="form-control"  id="PEP" readonly>
                                 </div>
                             </div>
                             <div class="col-md-1 mb-2">

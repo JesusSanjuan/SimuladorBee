@@ -1070,6 +1070,7 @@
             costoV1 = true;
         }
     /**********Validacion Costo variable por unidad */
+    /********Calculo**********/
         if (costos_fijos0 === true && costos_fijos1 === true && precio0 === true && precio1 === true && costoV0 === true && costoV1 === true) {
             costos_fijos = remove_format_coin(costos_fijos);
             precio = remove_format_coin(precio);
@@ -1078,9 +1079,133 @@
             var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
             $('#PEU').val(create_format_coin(punto_equilibrio));
         }
+    /********Calculo**********/
     });
+
+
+    var costoV2 = false, costoV3 = false, precio2 = false, precio3 = false, costos_fijos2 = false, costos_fijos3 = false;
+    /**********Validacion del Costo fijo */
+    const number4 = document.querySelector('.number4');
+    function formatNumber4(n) {
+        return n.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+    }
+    number4.addEventListener('keyup', (e) => {
+        const element = e.target;
+        const value = element.value;
+        element.value = formatNumber4(value);
+    });
+    $('#costosFijos2').keyup(function (event) {
+        var costosFijos2 = $("#costosFijos2").val();
+        if (costosFijos2.length === 0) {
+            $("#costosFijos2val").addClass("invalid-feedback");
+            $("#costosFijos2").removeClass("is-valid");
+            $("#costosFijos2").addClass("is-invalid");
+            $('#costosFijos2val').text('Por favor ingrese el costo fijo.');
+            $('#costosFijos2val').show();
+            costos_fijos2 = false;
+        } else {
+            var reg = /^(\d|,)*\.\d{1,2}$/g;
+            if (costosFijos2.match(reg)) {
+                $("#costosFijos2").removeClass("is-invalid");
+                $("#costosFijos2").addClass("is-valid");
+                $('#costosFijos2val').hide();
+                costos_fijos2 = true;
+            } else {
+                $("#costosFijos2val").addClass("invalid-feedback");
+                $("#costosFijos2").removeClass("is-valid");
+                $("#costosFijos2").addClass("is-invalid");
+                $('#costosFijos2val').text('Por favor ingrese mas digitos');
+                $('#costosFijos2val').show();
+                costos_fijos2 = false;
+            }
+        }
+    });
+    /**********Validacion del Costo fijo */
+
+    /**********Validacion del precio de venta */
+    const number5 = document.querySelector('.number5a');
+    function formatNumber5a(n) {
+        return n.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+    }
+    number5.addEventListener('keyup', (e) => {
+        const element = e.target;
+        const value = element.value;
+        element.value = formatNumber5a(value);
+    });
+    $('#precioV').keyup(function (event) {
+        var precioV = $("#precioV").val();
+        if (precioV.length === 0) {
+            $("#precioVval").addClass("invalid-feedback");
+            $("#precioV").removeClass("is-valid");
+            $("#precioV").addClass("is-invalid");
+            $('#precioVval').text('Por favor ingrese el precio de venta.');
+            $('#precioVval').show();
+            precio2 = false;
+        } else {
+            var reg = /^(\d|,)*\.\d{1,2}$/g;
+            if (precioV.match(reg)) {
+                $("#precioV").removeClass("is-invalid");
+                $("#precioV").addClass("is-valid");
+                $('#precioVval').hide();
+                precio2 = true;
+            } else {
+                $("#precioVval").addClass("invalid-feedback");
+                $("#precioV").removeClass("is-valid");
+                $("#precioV").addClass("is-invalid");
+                $('#precioVval').text('Por favor ingrese mas digitos');
+                $('#precioVval').show();
+                precio2 = false;
+            }
+        }
+    });
+    /**********Validacion del precio de venta */
+
+    /**********Validacion del costo de venta */
+    const number6 = document.querySelector('.number6');
+    function formatNumber6(n) {
+        return n.replace(/\D/g, "")
+            .replace(/([0-9])([0-9]{2})$/, '$1.$2')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
+    }
+    number6.addEventListener('keyup', (e) => {
+        const element = e.target;
+        const value = element.value;
+        element.value = formatNumber6(value);
+    });
+    $('#costoV').keyup(function (event) {
+        var costoV = $("#costoV").val();
+        if (costoV.length === 0) {
+            $("#costoVval").addClass("invalid-feedback");
+            $("#costoV").removeClass("is-valid");
+            $("#costoV").addClass("is-invalid");
+            $('#costoVval').text('Por favor ingrese el costo de venta.');
+            $('#costoVval').show();
+            costoV2 = false;
+        } else {
+            var reg = /^(\d|,)*\.\d{1,2}$/g;
+            if (costoV.match(reg)) {
+                $("#costoV").removeClass("is-invalid");
+                $("#costoV").addClass("is-valid");
+                $('#costoVval').hide();
+                costoV2 = true;
+            } else {
+                $("#costoVval").addClass("invalid-feedback");
+                $("#costoV").removeClass("is-valid");
+                $("#costoV").addClass("is-invalid");
+                $('#costoVval').text('Por favor ingrese mas digitos.');
+                $('#costoVval').show();
+                costoV2 = false;
+            }
+        }
+    });
+    /**********Validacion del costo de venta */
+
     $("#calc_PEP").on('click', function () {
-        var costos_fijos = ($("#costosFijos2").val());
+        var costos_fijos = $("#costosFijos2").val();
         var precio = $("#precioV").val();
         var costoV = $("#costoV").val();
 
@@ -1116,9 +1241,8 @@
         } else {
             costoV3 = true;
         }
-
-
-        if (costos_fijos != "" && precio != "" && costoV != "") {
+        
+        if (costoV2 === true && costoV3 === true && precio2 === true && precio3 === true && costos_fijos2 === true && costos_fijos3 === true) {
             costos_fijos = remove_format_coin(costos_fijos);
             precio = remove_format_coin(precio);
             costoV = remove_format_coin(costoV);

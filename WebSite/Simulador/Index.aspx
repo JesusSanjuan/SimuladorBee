@@ -188,7 +188,7 @@
                                     <div class="input-group">
                                         <select  id="select" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
                                                                         <option value="" class="dropdown-item" selected>Seleccione</option>
-                                                                        <option value="1" class="dropdown-item">Mes</option>
+                                                                        <option value="1" class="dropdown-item">Meses</option>
                                                                         <option value="2" class="dropdown-item">Años</option>
                                         </select>                                             
                                         <div class="input-group-append ">

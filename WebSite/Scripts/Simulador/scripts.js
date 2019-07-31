@@ -302,6 +302,12 @@
             N1 = true;
         } 
         if (Nombre === true && Nombre1 === true && N === true && N1 === true && Selectv === true && Selectv1 === true) {
+            if (lapso === "1") {
+                lapso = "Meses";
+            }
+            else {
+                lapso = "Años";
+            }
             $.ajax({
                 type: "POST",
                 url: "Index.aspx/Guardar_ProyectoBtn",

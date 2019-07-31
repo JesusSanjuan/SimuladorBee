@@ -279,8 +279,8 @@ $("#n").blur(function () {
 });
 
 var contaclickbien = 0;
-
 /* Validacion del campo PLAZO*/
+
 $("#continuar").click(function () {
     $("#n").popover("hide");
     var inversion = $("#Inversion").val();

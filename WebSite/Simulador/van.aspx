@@ -74,7 +74,7 @@
                                                        <div id="VdSval"class="invalid-tooltip">
                                                           Por favor ingrese el valor de salvamento
                                                        </div>
-                                                  </div>
+                                            </div>
                                         </div>
                                           <div class="col-md-3 mb-2">
                                           <label for="validationCustom04">Rentabilidad requerida</label>

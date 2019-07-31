@@ -12,16 +12,13 @@
             function validateRango(sender, args) {
                  $(document).ready(function () {
                     var perdiodo = "Años";
-
-
                     alert("-->"+perdiodo);
                     if (perdiodo == "Años")
                         args.IsValid = (args.Value.length <= 80);
                     else if (perdiodo == "Meses")
                          args.IsValid = (args.Value.length <= 300);
                   });
-            }
-        
+            }        
     </script>
 
     
@@ -171,38 +168,49 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="titulo" class="col-form-label">Título:</label>
-                        <input ID="Nombre_Proyecto" class="form-control" />
-                        
-                        <span id="valid1"  class="text-danger">Debe asignarle un nombre al proyecto</span>
-                        
-                        
+                        <label for="titulo" class="col-form-label">Título</label>
+                        <div class="input-group">
+                            <input ID="Nombre_Proyecto" class="form-control number" autocomplete="off" style="cursor:pointer" required="required" />     
+                            <div id="valid1"class="invalid-tooltip">
+                                Debe asignarle un nombre al proyecto
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm">
-                            <div class="form-group">
-                                <label for="lapso" class="col-form-label">Lapso por</label>
-                                <select class="selectpicker show-tick" id="lapsoIndx" >
-                                    <option>Años</option>
-                                    <option>Meses</option>
-                                </select>
+                            <div class="form-row"> 
+                                <div class="col-md-12 mb-2">
+                                    <label for="validationCustom05">Plazo (n)</label>    
+                                </div>
                             </div>
+                            <div class="form-row"> 
+                                <div class="col-md-6 mb-2">  
+                                    <div class="input-group">
+                                        <select  id="select" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" >
+                                                                        <option value="" class="dropdown-item" selected>Seleccione</option>
+                                                                        <option value="1" class="dropdown-item">Mes</option>
+                                                                        <option value="2" class="dropdown-item">Año</option>
+                                        </select>                                             
+                                        <div class="input-group-append ">
+                                                        <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el períodos de tiempo que se adecue mas a tu proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                        </div>                                                       
+                                    </div>
+                                    <div id="selectval" class="invalid-tooltip">                                                               
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2"> 
+                                        <div class="input-group" style="cursor:default">                                                            
+                                                <input type="text"   class="form-control" id="n" data-toggle="popover" data-placement="bottom" placeholder="Ingrese el periodo" autocomplete="off" disabled="disabled"  style="cursor:default" required="required">                                                         
+                                            <div class="input-group-append" >
+                                                    <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="1,2...n: Numero de periodos de vida util del proyecto." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
+                                            </div>                                                         
+                                        </div>
+                                        <div id="nval" class="invalid-tooltip">                                                               
+                                        </div>
+                                </div>
+                               </div>
                         </div>
-                        <div class="col-sm">
-                            <div class="form-group">
-                                <label for="periodo" class="col-form-label">Período de evaluación</label>
-                                <input ID="nperiodo" class="form-control">
-                                                               
-                                <span id="valid2" class="text-danger">Debe asignarle un período </span> 
-
-                                <span id="valid3"  class="text-danger"></span> 
-
-                                <span id="valid4"  class="text-danger">Debe asignarle un período válido</span>                                
-
-                            </div>
-                        </div>
-                    </div>
-                    
+                    </div>                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

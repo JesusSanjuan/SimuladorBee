@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    /*******SCRIPTS PARA CONTENT INDEX***************/
+/*******SCRIPTS PARA CONTENT INDEX***********************/
     //verificar si la session id_proyect existe 
     $.ajax({
         type: "POST",
@@ -75,7 +75,7 @@
             success: function (data) {
                 if (typeof ID_Proyecto !== 'undefined') {
 
-                    console.log("existee session --->" + ID_Proyecto);
+                    //console.log("existee session --->" + ID_Proyecto);
                 }
             },
             error: function (err) {
@@ -90,53 +90,230 @@
 
     });
 
-    $("#valid1").hide();
-    $("#valid2").hide();
-    $("#valid3").hide();
-    $("#valid4").hide();
     $("body").on('blur', "#Nombre_Proyecto", function () {
-
-        if ($(this).val() == "")
+        if ($(this).val() === "")
             $("#valid1").show();
         else
             $("#valid1").hide();
 
     });
 
-    $("body").on('input', "#nperiodo", function () {
-        this.value = this.value.replace(/[^0-9]/g, '');
+    var Nombre = false, Nombre1 = false, N = false, N1 = false, Selectv = false, Selectv1 = false;
+/*Primer campo*/
+    $('#Nombre_Proyecto').keyup(function (event) {
+        var NAME = $("#Nombre_Proyecto").val();
+        var reg = /^[A-Za-z0-9\s]+$/g;
+        if (NAME.match(reg)) {
+            if (NAME.length <= 4) {
+                $("#valid1").addClass("invalid-feedback");
+                $("#Nombre_Proyecto").removeClass("is-valid");
+                $("#Nombre_Proyecto").addClass("is-invalid");
+                $('#valid1').text('Debe asignarle un nombre al proyecto de mas de 4 caracteres.');
+                $('#valid1').show();
+                Nombre = false;
+            } else {
+          
+                    $("#Nombre_Proyecto").removeClass("is-invalid");
+                    $("#Nombre_Proyecto").addClass("is-valid");
+                    $('#valid1').hide();
+                    Nombre = true;            
+            }
+        } else {
+            $("#valid1").addClass("invalid-feedback");
+            $("#Nombre_Proyecto").removeClass("is-valid");
+            $("#Nombre_Proyecto").addClass("is-invalid");
+            $('#valid1').text('Por favor ingrese un formato valido de nombre de proyecto');
+            $('#valid1').show();
+            $("#Nombre_Proyecto").val("");
+            Nombre = false;
+        }
     });
-    $("body").on('blur', "#nperiodo", function () {
-        if ($(this).val() == "")
-            $("#valid2").show();
-        else {
-            $("#valid2").hide();
+   /* const number = document.querySelector('.number');
+    function formatNumber(n) {
+        return n.replace(/^[A-Za-z0-9\s]+$/g, "");
+    }
+    number.addEventListener('keyup', (e) => {
+        const element = e.target;
+        const value = element.value;
+        element.value = formatNumber(value);
+    });*/
 
-            if ($("#lapsoIndx").val() == "Años") {
-                if ($(this).val() > 80) {
-                    $("#valid3").html("El periodo debe sér máximo de 80 años");
-                    $("#valid3").show();
-                }
-                else
-                    $("#valid3").hide();
-            }
-            else if ($("#lapsoIndx").val() == "Meses") {
-                if ($(this).val() > 300) {
-                    $("#valid3").html("El periodo debe sér máximo de 300 meses");
-                    $("#valid3").show();
-                }
-                else
-                    $("#valid3").hide();
-            }
-
+/*Primer campo*/
+/*Segundo y Tercer campo*/
+    $("#select").change(function () {
+        var valor = $("#select").val();
+        switch (valor) {
+            case "1":
+                $("#n").css("cursor", "pointer");
+                $("#n").removeAttr('disabled');
+                $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+                $("#n").val('');
+                $('#n').attr('data-original-title', "Toma en cuenta!");
+                $('#n').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
+                $("#n").popover('update');
+                $("#n").popover("show");
+                $('#selectval').hide();
+                $("#select").addClass("is-invalid");
+                $("#select").removeClass("is-valid");
+                Selectv = true;
+                break;
+            case "2":
+                $("#n").css("cursor", "pointer");
+                $("#n").removeAttr('disabled');
+                $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+                $("#n").val('');
+                $('#n').attr('data-original-title', "Toma en cuenta!");
+                $('#n').attr('data-content', "Solo se permitira ingresar la cantidad  de 1 a 99 años");
+                $("#n").popover('update');
+                $("#n").popover("show");
+                $('#selectval').hide();
+                $("#select").addClass("is-invalid");
+                $("#select").removeClass("is-valid");
+                Selectv = true;
+                break;
+            default:
+                $("#n").css("cursor", "default");
+                $("#n").popover("hide");
+                $("#n").attr('disabled', 'disabled');
+                $("#n").attr("placeholder", "Seleccione primero el tipo de plazo");
+                $("#n").val('');
+                $("#selectval").addClass("invalid-feedback");
+                $("#select").removeClass("is-valid");
+                $("#select").addClass("is-invalid");
+                $('#selectval').text('Por favor seleccione un tipo de plazo');
+                $('#selectval').show();
+                Selectv = false;
+                break;
         }
 
+        $('#nval').hide();
+        $("#n").focus();
+        $("#n").removeClass("is-invalid");
+        $("#n").removeClass("is-valid");
     });
+
+    var validacion;
+    $('#n').keyup(function (event) {       
+        N = false;
+        var valor = $("#select").val();
+        var n = $("#n").val();
+        var tipo;
+
+        switch (valor) {
+            case "1":
+                tipo = "meses";
+                break;
+            case "2":
+                tipo = "años";
+                break;
+            default:
+                break;
+        }
+        if (n.length === 0) {
+            $("#nval").addClass("invalid-feedback");
+            $("#n").removeClass("is-valid");
+            $("#n").addClass("is-invalid");
+            $('#nval').text('Por favor ingrese el plazo en ' + tipo);
+            $('#nval').show();
+        } else {
+            $("#n").removeClass("is-invalid");
+            $("#n").addClass("is-valid");
+            $('#nval').hide();
+            N = true;
+        }
+        switch (valor) {
+            case "1":
+                if (n.length === 0) {
+                    $("#n").attr("placeholder", "Ingrese el plazo del proyecto");
+                    $('#n').attr('data-original-title', "Toma en cuenta!");
+                    $('#n').attr('data-content', "Solo se permitira ingresar la cantidad de 1 a 600 meses");
+                    $("#n").popover('update');
+                    $("#n").popover("show");
+                } else {
+                    if (n < 601) {
+                        $('#n').attr('data-original-title', "De meses años");
+                        var anios = n / 12;
+                        $('#n').attr('data-content', "Los meses ingresados son equivalentes en años a: " + anios);
+                        $("#n").popover('update');
+                        $("#n").popover("show");
+                    }
+                    else {
+                        $('#n').attr('data-original-title', "Verifique..");
+                        $('#n').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 600 meses (50 años)");
+                        $("#n").popover('update');
+                        $("#n").popover("show");
+                        $("#n").removeClass("is-valid");
+                        $("#n").addClass("is-invalid");
+                        $('#nval').text('Por favor ingrese el plazo ' + tipo);
+                        $('#nval').show();
+                        $("#n").val("");
+                    }
+                }
+                break;
+            case "2":
+                validacion = /^([0-9]{3,})$/;
+                $("#n").val(formatNumber5(n));
+                if (validacion.test(n) === true) {
+                    $('#n').attr('data-original-title', "Verifique..");
+                    $('#n').attr('data-content', "Unicamente se puede ingresar la cantidad de 1 a 99 años");
+                    $("#n").popover('update');
+                    $("#n").removeClass("is-valid");
+                    $("#n").addClass("is-invalid");
+                    $('#nval').text('Por favor ingrese el plazo ' + tipo);
+                    $('#nval').show();
+                    $("#n").popover("show");
+                }
+                break;
+            default:
+                break;
+        }
+    });
+    function formatNumber5(n) {
+        return n.replace(/\D/g, "")
+            .replace(validacion, "");
+    }
+    $("#n").blur(function () {
+        $("#n").popover("hide");
+    });
+/*Segundo y Tercer campo*/
 
     $("#Guardar_Proyecto").on('click', function () {
         var nproyecto = $("#Nombre_Proyecto").val();
-        var lapso = $("#lapsoIndx").val();
-        var nperiodo = $("#nperiodo").val();
+        var lapso = $("#select").val();
+        var nperiodo = $("#n").val();
+        if (nproyecto.length === 0) {
+            $("#valid1").addClass("invalid-feedback");
+            $("#Nombre_Proyecto").removeClass("is-valid");
+            $("#Nombre_Proyecto").addClass("is-invalid");
+            $('#valid1').text('Debe asignarle un nombre al proyecto de mas de 4 caracteres.');
+            $('#valid1').show();
+            Nombre1 = false;
+        } else {
+            Nombre1 = true;
+        }
+
+        if (lapso === "") {
+            $("#selectval").addClass("invalid-feedback");
+            $("#select").removeClass("is-valid");
+            $("#select").addClass("is-invalid");
+            $('#selectval').text('Por favor seleccione un tipo de plazo');
+            $('#selectval').show();
+            Selectv1 = false;
+        } else {
+            Selectv1 = true;
+        }
+
+        if (n.length === 0) {
+            $("#nval").addClass("invalid-feedback");
+            $("#n").removeClass("is-valid");
+            $("#n").addClass("is-invalid");
+            $('#nval').text('Por favor ingrese el plazo');
+            $('#nval').show();
+            N1 = false;
+        } else {
+            N1 = true;
+        } 
+
         if (nproyecto != "" && nperiodo != "") {
 
             $.ajax({
@@ -159,17 +336,15 @@
                 console.log("Error: " + data);
             });
         }
-
         else {
             $("#valid1").show();
-            $("#valid2").show();
         }
 
 
     });
+    /*******SCRIPTS PARA CONTENT INDEX***********************/
 
 
-    /****************************************/
     /*******SCRIPTS PARA CONTENT AMORTIZACION***************/
     //verificar si la session id_proyect existe 
     var id_proyecto;
@@ -358,7 +533,7 @@
     var complete = false;
     var controller = "costos.aspx";
     $('#cnperiod_c.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
-        if (complete == false)
+        if (complete === false)
             cargar_cont_c_g(controller, "cnperiod_c", "myTab");
         else
             get_data_c_g("", controller, "cnperiod_c", "myTab");
@@ -398,7 +573,7 @@
                             option = "<option value=" + i + ">" + i + "</option>";
                             options.push(option);
                         }
-                        if (Tab == "myTab")
+                        if (Tab === "myTab")
                             complete = true;
                         else
                             completeG = true;
@@ -503,7 +678,7 @@
                     table.clear().draw();
                     //variables dependiendo del content
                     var campo, prefix = "";
-                    if (ncontent == "3") {
+                    if (ncontent === "3") {
                         campo = "$ Gasto";
                         prefix = "gast";
                     }
@@ -626,10 +801,9 @@
 
     /*********** SCRIPTS PARA EL CONTENT PUNTO DE EQUILIBRIO ********/
     var pathname = window.location.pathname;
-    console.log(pathname);
 
 
-    if (id_proyecto !== "false" && pathname =="/Simulador/puntoequilibrio") {
+    if (id_proyecto !== "false" && pathname ==="/Simulador/puntoequilibrio") {
         
         $.ajax({
             type: "POST",
@@ -646,7 +820,7 @@
                         var res = JSON.parse(resultado[i][j]);
                         for (var k = 0; k < res.length; k++) {
                             var obj = res[k];
-                            if (obj["Tipo"] == "Fijo") {
+                            if (obj["Tipo"] === "Fijo") {
                                 sumT = parseFloat(sumT) + parseFloat(obj["$ Costo Total"]);
                             }
                         }
@@ -730,7 +904,7 @@
         var costos_fijos = ($("#costosFijos2").val());
         var precio = $("#precioV").val();
         var costoV = $("#costoV").val();
-        console.log("costos_fijos->" + costos_fijos + " precio->" + precio + " costoV->" + costoV);
+       // console.log("costos_fijos->" + costos_fijos + " precio->" + precio + " costoV->" + costoV);
         if (costos_fijos != "" && precio != "" && costoV != "") {
             costos_fijos = remove_format_coin(costos_fijos);
             precio = remove_format_coin(precio);

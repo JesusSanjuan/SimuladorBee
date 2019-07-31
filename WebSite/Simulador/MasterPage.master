@@ -158,12 +158,6 @@
                                             <span class="nav-link-text">VAN y TIR Variable Manual</span>
                                         </a>
                                     </li> 
-                                    <li>
-                                        <a class="nav-link" href="Construccion">
-                                           <i class="far fa-chart-bar"></i>
-                                            <span class="nav-link-text">TMAR</span>
-                                        </a>
-                                    </li> 
                                 </ul>
                     </li>
                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Configuracion" >

@@ -240,6 +240,8 @@ public partial class Proyecto
     public string Nombre_Proyecto { get; set; }
     public System.DateTime Fecha_Hora { get; set; }
     public string ID_Periodo { get; set; }
+    public Nullable<int> Avance { get; set; }
+    public Nullable<bool> Activo { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Amortizacion_pro> Amortizacion_pro { get; set; }

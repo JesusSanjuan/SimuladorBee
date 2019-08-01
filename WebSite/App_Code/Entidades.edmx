@@ -196,6 +196,8 @@
           <Property Name="Nombre_Proyecto" Type="text" Nullable="false" />
           <Property Name="Fecha_Hora" Type="datetime" Nullable="false" />
           <Property Name="ID_Periodo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Avance" Type="int" />
+          <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="Punto_Equilibrio">
           <Key>
@@ -680,6 +682,8 @@
           <NavigationProperty Name="FNE" Relationship="Model.FK_FNE_Proyecto" FromRole="Proyecto" ToRole="FNE" />
           <NavigationProperty Name="Inflacion" Relationship="Model.FK_Inflacion_Proyecto" FromRole="Proyecto" ToRole="Inflacion" />
           <NavigationProperty Name="Punto_Equilibrio" Relationship="Model.FK_Punto_Equilibrio_Proyecto" FromRole="Proyecto" ToRole="Punto_Equilibrio" />
+          <Property Name="Avance" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
         </EntityType>
         <EntityType Name="tipo_anio_base_INPC">
           <Key>
@@ -1054,6 +1058,8 @@
           <EntitySetMapping Name="Proyecto">
             <EntityTypeMapping TypeName="Model.Proyecto">
               <MappingFragment StoreEntitySet="Proyecto">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Avance" ColumnName="Avance" />
                 <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
                 <ScalarProperty Name="Fecha_Hora" ColumnName="Fecha_Hora" />
                 <ScalarProperty Name="Nombre_Proyecto" ColumnName="Nombre_Proyecto" />

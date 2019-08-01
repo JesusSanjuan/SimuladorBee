@@ -1079,6 +1079,9 @@
             var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
             $('#PEU').val(create_format_coin(punto_equilibrio));
         }
+        else {
+            $('#PEU').val("");
+        }
     /********Calculo**********/
     });
 
@@ -1249,6 +1252,9 @@
 
             var punto_equilibrio = parseFloat(costos_fijos) / (parseFloat(precio) - parseFloat(costoV));
             $('#PEP').val(create_format_coin(punto_equilibrio));
+        }
+        else {
+            $('#PEP').val("");
         }
 
     });

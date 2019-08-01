@@ -92,7 +92,7 @@
                 <div class="form-group">
                     <label for="titulo" class="col-form-label">Título</label>
                     <div class="input-group">
-                        <input ID="Nombre_Proyecto" class="form-control number" autocomplete="off" style="cursor:pointer" required="required" />     
+                        <input ID="Nombre_Proyecto" class="form-control" autocomplete="off" style="cursor:pointer" required="required" />     
                         <div id="valid1"class="invalid-tooltip">
                             Debe asignarle un nombre al proyecto
                         </div>

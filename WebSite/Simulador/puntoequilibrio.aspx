@@ -287,13 +287,13 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Foder" Runat="Server">
     <!-- plugin dataTable-->
-    <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <!-- plugin selectpicker-->
         <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
     <!-- SCRIPT DE LOS CONTENIDOS -->
-     <script src="../Scripts/Simulador/scripts.js"></script>
+        <script src="../Scripts/Simulador/puntoequilibrio.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->
 </asp:Content>
 

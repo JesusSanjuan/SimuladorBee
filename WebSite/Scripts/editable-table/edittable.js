@@ -1,6 +1,14 @@
 ﻿$(document).ready(function () {
 
     $('#myTabContent, #myTabContent2, #myTabContent3').find('table').DataTable({
+        columnDefs: [
+            { "width": "45%", "targets" : 0 },
+            { "width": "21%", "targets" : 1 },
+            { "width": "2%", "targets"  : 2 },
+            { "width": "15%", "targets" : 3 },
+            { "width": "15%", "targets" : 4 },
+            { "width": "2%", "targets"  : 5 }
+        ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         }

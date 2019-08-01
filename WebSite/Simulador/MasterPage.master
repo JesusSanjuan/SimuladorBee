@@ -326,39 +326,62 @@
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top" href="#page-top">
                 <i class="fa fa-angle-up"></i>
-            </a>
-            <!-- Logout Modal-->
-
-            <div class="modal fade" id="exampleModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
-                <div class="modal-dialog">
-                  <div class="modal-content">      
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                             <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Te vas tan rápido?</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>        
-                        <!-- Modal body -->
-                        <div class="modal-body" id="modal-text-body" >    
-                            <div class="row">
-                                    <div class="col-3" id="imgmodal"><img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
-                                    <div class="col-9" id="texmodal"><strong style='vertical-align:middle;'>Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</strong></div>                                                                        
-                            </div>
-                            <audio id="audio" style="display:none" controls> </audio > 
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>            
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
-                                        <LoggedInTemplate>
-                                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  Cssclass="btn btn-primary" />
-                                        </LoggedInTemplate>
-                            </asp:LoginView>
+            </a>            
+        </div>
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+        <div class="modal-dialog">
+            <div class="modal-content">      
+                <!-- Modal Header -->
+                <div class="modal-header">
+                        <h4 class="modal-title bounce animated" id="modalheader" > <i class="fa fa-check-square-o"></i> Te vas tan rápido?</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>        
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-text-body" >    
+                    <div class="row">
+                            <div class="col-3" id="imgmodal"><img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/></div>
+                            <div class="col-9" id="texmodal"><strong style='vertical-align:middle;'>Seleccione "Cerrar sesión" a continuación, si está listo para finalizar su sesión actual.</strong></div>                                                                        
+                    </div>
+                    <audio id="audio" style="display:none" controls> </audio > 
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>            
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                                <LoggedInTemplate>
+                                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"  Cssclass="btn btn-primary" />
+                                </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+            </div>
+        </div> 
+    </form>     
+    <!--Modal dinamico-->
+    <div class="modal fade" id="modaldinamico" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
+            <div class="modal-dialog">
+                <div class="modal-content">      
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                            <h4 class="modal-title bounce animated" id="txtmodatitle_master"> </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>                    
+                    </div>        
+                    <!-- Modal body -->
+                    <div class="modal-body" id="modal-text-body_master" >    
+                        <div class="row">
+                                <div class="col-3" id="imgmodal_master"></div>
+                                <div class="col-9" id="texmodal_master"></div>                                                                        
                         </div>
                     </div>
-                  </div>
-             </div> 
-        </div>
-    </form>  
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="cerrar"  type="button" data-dismiss="modal">Cerrar</button> 
+                    </div>
+                </div>
+            </div>
+    </div> 
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR--> 
             <!-- jquery-->  
                  <script src="../Scripts/jquery-3.4.1.js"></script>

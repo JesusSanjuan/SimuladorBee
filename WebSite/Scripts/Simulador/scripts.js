@@ -391,6 +391,11 @@
                 $("#message").addClass("alert-success");
             }
             else {
+                $('#modaldinamico').modal({ show: true });                              
+                $('#txtmodatitle_master').html("<strong style='vertical - align: middle;'>Cargue su proyecto </strong>");
+                $('#imgmodal_master').html('<img src="../multimedia/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>');
+                $('#texmodal_master').html("<strong style='vertical - align: middle;'> Le recomendamos cargar un proyecto para guardar su informacion.</strong>");
+               
                 //visualizamos el mensaje de error
                 $("#message").html("<strong>¡No hay proyecto cargado!</strong>");
                 $("#message").removeClass("d-none").addClass("d-block");

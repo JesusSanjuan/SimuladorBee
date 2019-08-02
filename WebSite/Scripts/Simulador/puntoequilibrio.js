@@ -18,7 +18,7 @@
                     text: "Proyecto <strong>¡" + data[1] + "!</strong> cargado...",
                     type: 'success',
                     icon: '../multimedia/favicon.ico',
-                    timeout: 80000
+                    timeout: 25000
                 });
             }
             else {

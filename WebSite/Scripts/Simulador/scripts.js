@@ -82,12 +82,13 @@
                 if (typeof ID_Proyecto !== 'undefined') {
                     //console.log("existee session --->" + ID_Proyecto);
                 }
+                toastr.clear();
                 VanillaToasts.create({
                     title: 'SimuladorBee',
                     text: "Proyecto <strong>¡" + name + "!</strong> cargado...",
                     type: 'success',
                     icon: '../multimedia/favicon.ico',
-                    timeout: 80000
+                    timeout: 25000
                 });
             },
             error: function (err) {
@@ -398,7 +399,7 @@
                     text: "Proyecto <strong>¡" + data[1] + "!</strong> cargado...",
                     type: 'success',
                     icon: '../multimedia/favicon.ico',
-                    timeout: 80000
+                    timeout: 25000
                 });
 
             }

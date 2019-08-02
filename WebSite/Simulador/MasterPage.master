@@ -362,30 +362,7 @@
             </div>
             </div>
         </div> 
-    </form>     
-    <!--Modal dinamico-->
-    <div class="modal fade" id="modaldinamico" data-anijs="if: load, on: window, do: swing animated, before: scrollReveal" >
-            <div class="modal-dialog">
-                <div class="modal-content">      
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                            <h4 class="modal-title bounce animated" id="txtmodatitle_master"> </h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>                    
-                    </div>        
-                    <!-- Modal body -->
-                    <div class="modal-body" id="modal-text-body_master" >    
-                        <div class="row">
-                                <div class="col-3" id="imgmodal_master"></div>
-                                <div class="col-9" id="texmodal_master"></div>                                                                        
-                        </div>
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" id="cerrar"  type="button" data-dismiss="modal">Cerrar</button> 
-                    </div>
-                </div>
-            </div>
-    </div> 
+    </form> 
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR--> 
             <!-- jquery-->  
                  <script src="../Scripts/jquery-3.4.1.js"></script>

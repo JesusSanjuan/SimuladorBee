@@ -8,24 +8,13 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="container">
-			<h1>
-				Tabla editable <span>Impuestos</span>
-			</h1>
+    <div class="container">		
 			
-			<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="Impuestos" width="100%">
-				<thead>
-					<tr>
-						<th>Concepto</th>
-						<th>Costo</th>
-					</tr>
-				</thead>
-			</table>
 	</div>
 </asp:Content>
 
 <asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">
-     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/buttons.bootstrap4.min.js"></script>

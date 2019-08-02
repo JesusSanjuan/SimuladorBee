@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
-
     $('#myTabContent, #myTabContent2, #myTabContent3').find('table').DataTable({
-        columnDefs: [
+        'columnDefs': [
             { "width": "45%", "targets" : 0 },
             { "width": "21%", "targets" : 1 },
             { "width": "2%", "targets"  : 2 },
@@ -13,6 +12,18 @@
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         }
     });
+
+    $('#myTabContent2a').find('table').DataTable({
+        'columnDefs':  [{ "width": "65%", "targets": 0 },
+                        { "width": "15%", "targets": 1 },
+                        { "width": "3%", "targets": 2 },
+                        { "width": "15%", "targets": 3 },
+                        { "width": "2%", "targets": 4 }],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        }
+    });
+
     /****************TABLAS COSTOS Y GASTOS****************/
     // Automatically add a first row of data (Genérico para  las tablas que costos y gastos)
     $('.add_row').on('click', function () {

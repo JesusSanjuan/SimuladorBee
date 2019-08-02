@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="tab-content  tab-pane" id="myTabContent2">
+        <div class="tab-content  tab-pane" id="myTabContent2a">
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
                         <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -48,7 +48,7 @@
                                     <h5><i class="fa fa-table"></i>  Amortización</h5>
                                 </div>      
                                 <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;" >
-                                    <table class="table table-striped table-bordered" id="amortTable" >
+                                    <table class="table table-striped table-bordered" style="width:100%" id="amortTable" >
                                         <thead>
                                             <tr>
                                                 <th >Concepto</th>
@@ -188,13 +188,13 @@
      <!-- plugin editable-->
         <script src="../Scripts/editable-table/mindmup-editabletable.js"></script>
         <script src="../Scripts/editable-table/numeric-input-example.js"></script>
-        <script src="../Scripts/editable-table/edittable.js"></script> 
+        <script src="../Scripts/editable-table/edittable.js"></script>
     <!-- plugin dataTable-->
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="../Scripts/editable-table/jquery.tabletojson.min.js"></script>
      <!-- plugin rangeslide-->
-    <script type="text/javascript" src="../Scripts/rangeslider/rangeslider.min.js"></script>
+    <script src="../Scripts/rangeslider/rangeslider.js"></script>
     <!-- plugin selectpicker-->    
     <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->

@@ -31,8 +31,6 @@
 
         <div class="tab-content  tab-pane" id="myTabContent2">
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
-                        <div id="message" class="alert d-none" role="alert">
-                        </div>
                         <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

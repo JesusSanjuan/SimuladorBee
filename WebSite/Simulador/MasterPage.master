@@ -29,6 +29,10 @@
                            <!-- Estilos personalizados para esta plantilla-->
                                 <link href="../Content/PlantillaMaster/sb-admin.css" rel="stylesheet" />
                     <!--ESENCIALES PARA LA PLANTILLA NO BORRAR O COMENTAR-->
+                  <!-- Cuadros de texto-->
+                        <link href="../Scripts/Highly-Customizable-jQuery-Toast-Message-Plugin-Toastr/toastr.css" rel="stylesheet" />
+                        <link href="../Scripts/vanillatoasts/vanillatoasts.css" rel="stylesheet" />
+                 <!-- Cuadros de texto-->  
         <asp:ContentPlaceHolder ID="HeadContent" runat="server">
         </asp:ContentPlaceHolder>
         <asp:PlaceHolder runat="server">
@@ -198,10 +202,10 @@
                         <div class="dropdown-menu" aria-labelledby="LogdeProyecto">
                             <h6 class="dropdown-header">Estas trabajando con el proyecto:</h6>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="Construccion">
-                                <strong>Noe proy</strong>
-                                <span class="small float-right text-muted">Dato relevante</span>
-                                <div class="dropdown-message small">Comentarios rapidos del proyecto dasdasdasdasdasdas</div>
+                            <a class="dropdown-item" href="#">
+                                <strong id="Nombre_Proyecto_Actual">Noe proy</strong>
+                                <span class="small float-right text-muted" id="Duracion_proyecto">Dato relevante</span>
+                                <div class="dropdown-message small" id="Fecha_proyecto_actual">Comentarios rapidos del proyecto dasdasdasdasdasdas</div>
                             </a>                                                    
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item small" href="Index">Cambiar de Proyecto</a>
@@ -399,7 +403,11 @@
                      <script  src="../Scripts/anijs-master/anijs.js" > </script>
                  <!-- ScrollReveal Helper -->
                      <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>
-            <!-- Efectos visuales--> 
+            <!-- Efectos visuales-->
+            <!-- Cuadros de texto-->
+                    <script src="../Scripts/vanillatoasts/vanillatoasts.js"></script>
+                    <script src="../Scripts/Highly-Customizable-jQuery-Toast-Message-Plugin-Toastr/toastr.js"></script>
+            <!-- Cuadros de texto-->
             <!-- Ejecuta y oculta preloader--> 
                 <script>
                     $(document).ready(function() {	

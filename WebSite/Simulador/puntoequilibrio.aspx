@@ -23,9 +23,7 @@
                     <h6>Nos permite determinar el nivel de ventas necesario para cubrir los costes totales o, en otras palabras, el nivel de ingresos que cubre los costes fijos y los costes variables </h6>
                 </div>
             </div>
-            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">  
-                <div id="message" class="alert d-none" role="alert">
-                </div>
+            <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
                 <div id="messageWarning" class="alert alert-warning d-none" role="alert">
                       This is a warning alert—check it out!
                 </div>

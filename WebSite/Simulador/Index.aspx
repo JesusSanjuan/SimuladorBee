@@ -18,10 +18,6 @@
             <li class="breadcrumb-item active">Inicio</li>
           </ol>
       </nav> 
-     <!-- Mensaje -->
-        <div class="alert alert-primary d-none" role="alert">
-            Proyecto <a href="#" class="alert-link" id="nameProject">x</a> cargado...
-        </div>
       <!-- Icon Cards-->
       <div class="row" >
                 <div class="col-xl-3 col-sm-6 mb-3" data-anijs="if: load, on:window, do: rubberBand animated, before: scrollReveal, after: removeAnim">
@@ -174,5 +170,6 @@
     <script type="text/javascript" src="../Scripts/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../Scripts/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <!-- SCRIPT DE LOS CONTENIDOS -->
+    <script src="../Scripts/Simulador/index.js"></script>
     <script src="../Scripts/Simulador/scripts.js"></script>
 </asp:Content>

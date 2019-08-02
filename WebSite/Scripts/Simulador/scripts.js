@@ -82,6 +82,13 @@
                 if (typeof ID_Proyecto !== 'undefined') {
                     //console.log("existee session --->" + ID_Proyecto);
                 }
+                VanillaToasts.create({
+                    title: 'SimuladorBee',
+                    text: "Proyecto <strong>¡" + name + "!</strong> cargado...",
+                    type: 'success',
+                    icon: '../multimedia/favicon.ico',
+                    timeout: 80000
+                });
             },
             error: function (err) {
                 console.log(err);
@@ -385,21 +392,38 @@
             if (result.d != "false") {
                 var data = JSON.parse(result.d);
                 id_proyecto = data[0];
-                //visualizamos el mensaje de succes
-                $("#message").html("Proyecto <strong>¡" + data[1] + "!</strong> cargado...");
-                $("#message").removeClass("d-none").addClass("d-block");
-                $("#message").addClass("alert-success");
+
+                VanillaToasts.create({
+                    title: 'SimuladorBee',
+                    text: "Proyecto <strong>¡" + data[1] + "!</strong> cargado...",
+                    type: 'success',
+                    icon: '../multimedia/favicon.ico',
+                    timeout: 80000
+                });
+
             }
             else {
-                $('#modaldinamico').modal({ show: true });                              
-                $('#txtmodatitle_master').html("<strong style='vertical - align: middle;'>Cargue su proyecto </strong>");
-                $('#imgmodal_master').html('<img src="../multimedia/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>');
-                $('#texmodal_master').html("<strong style='vertical - align: middle;'> Le recomendamos cargar un proyecto para guardar su informacion.</strong>");
-               
-                //visualizamos el mensaje de error
-                $("#message").html("<strong>¡No hay proyecto cargado!</strong>");
-                $("#message").removeClass("d-none").addClass("d-block");
-                $("#message").addClass("alert-danger");
+                toastr.warning('Le recomendamos cargar un proyecto para guardar su informacion (Dando click en este mensaje sera redirigido)', 'Cargue su proyecto', {
+                    closeButton: false,
+                    debug: false,
+                    newestOnTop: true,
+                    progressBar: true,
+                    positionClass: "toast-bottom-full-width",
+                    preventDuplicates: false,
+                    onclick: saludo(),
+                    showDuration: 1500,
+                    hideDuration: 1500,
+                    timeOut: "15000",
+                    extendedTimeOut: "10000",
+                    showEasing: "swing",
+                    hideEasing: "linear",
+                    showMethod: "slideDown",
+                    hideMethod: "slideUp",
+                    closeMethod: false,
+                    closeDuration: false,
+                    closeEasing: false,
+                    tapToDismiss: false
+                });                
                 id_proyecto = "false";
             }
 
@@ -413,6 +437,11 @@
     }).fail(function (data) {
         console.log("Error: " + data);
     });
+    function saludo() {
+        $(document).on('click', '.toast2', function () {
+            location.href = "Index";
+        });
+    }
 
     var completeC = false;
     $('#cnperiodo.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie

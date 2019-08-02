@@ -18,8 +18,6 @@
                 <h1><i class="fa fa-money"></i>  Evaluación de gastos</h1>
             </div>
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
-                <div id="message" class="alert d-none" role="alert">
-                </div>
                 <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

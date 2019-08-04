@@ -73,92 +73,6 @@
     /*********** SCRIPTS PARA EL CONTENT PUNTO DE EQUILIBRIO ********/
     var pathname = window.location.pathname;
 
-    if (id_proyecto !== "false" && pathname === "/Simulador/puntoequilibrio") {
-
-        $.ajax({
-            type: "POST",
-            url: "puntoequilibrio.aspx/get_costos_fijosT",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({ idProyecto: id_proyecto }),
-            success: function (result) {
-                var resultado = JSON.parse(result.d);
-                var sumT = 0;
-                for (var i = 0; i < resultado.length; i++) {
-                    for (var j = 0; j < resultado[i].length; j++) {
-                        var res = JSON.parse(resultado[i][j]);
-                        for (var k = 0; k < res.length; k++) {
-                            var obj = res[k];
-                            if (obj["Tipo"] === "Fijo") {
-                                sumT = parseFloat(sumT) + parseFloat(obj["$ Costo Total"]);
-                            }
-                        }
-                    }
-                }
-                //truncamos a 2 decimales la suma total
-                var total = trunc(sumT, 2);
-                console.log("total-" + total);
-                $("#costosFijos").val(total);               
-                
-
-                $("#costosFijos2").val(total);
-                $("#costosFijos2").keypress();
-                $("#savePES").removeClass("invisible");
-
-            },
-            error: function (result) {
-                console.log(result.responseText);
-            }
-
-        }).done(function (data) {
-            //console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });
-        $.ajax({
-            type: "POST",
-            url: "puntoequilibrio.aspx/get_punto_equilibrio",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({ idProyecto: id_proyecto }),
-            success: function (result) {
-                var resultado = JSON.parse(result.d);
-
-                if (resultado.length > 0) {
-                    var precio_VU = resultado[0];
-                    var costo_VU = resultado[1];
-                    var PE_unidades = resultado[2];
-                    var precio_V = resultado[3];
-                    var costo_V = resultado[4];
-                    var PE_pesos = resultado[5];
-                    $("#precioVU").val(create_format_coin(precio_VU));
-                    $("#costoVU").val(create_format_coin(costo_VU));
-                    $("#PEU").val(create_format_coin(PE_unidades));
-                    $("#precioV").val(create_format_coin(precio_V));
-                    $("#costoV").val(create_format_coin(costo_V));
-                    $("#PEP").val(create_format_coin(PE_pesos));
-                }
-
-
-            },
-            error: function (result) {
-                console.log(result.responseText);
-            }
-
-        }).done(function (data) {
-            //console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });
-
-
-        $("#messageWarning").html("Datos del último cálculo de Punto Equilibrio registrado");
-        $("#messageWarning").removeClass("d-none").addClass("d-block");
-
-    }
-
     /*** *****************/
 
     function trunc(x, posiciones = 0) {
@@ -187,29 +101,30 @@
     });
 
     $('#costosFijos').keyup(function (event) {
-        alert("keyup");
-        var Costosfijos = $("#costosFijos").val();
-        if (Costosfijos.length === 0) {
-            $("#costosFijosval").addClass("invalid-feedback");
-            $("#costosFijos").removeClass("is-valid");
-            $("#costosFijos").addClass("is-invalid");
-            $('#costosFijosval').text('Por favor ingrese el costo fijo.');
-            $('#costosFijosval').show();
-            costos_fijos0 = false;
-        } else {
-            var reg = /^(\d|,)*\.\d{1,2}$/g;
-            if (Costosfijos.match(reg)) {
-                $("#costosFijos").removeClass("is-invalid");
-                $("#costosFijos").addClass("is-valid");
-                $('#costosFijosval').hide();
-                costos_fijos0 = true;
-            } else {
+        if (event.which == 13 || event.which != 8) {
+            var Costosfijos = $("#costosFijos").val();
+            if (Costosfijos.length === 0) {
                 $("#costosFijosval").addClass("invalid-feedback");
                 $("#costosFijos").removeClass("is-valid");
                 $("#costosFijos").addClass("is-invalid");
-                $('#costosFijosval').text('Por favor ingrese mas digitos');
+                $('#costosFijosval').text('Por favor ingrese el costo fijo.');
                 $('#costosFijosval').show();
                 costos_fijos0 = false;
+            } else {
+                var reg = /^(\d|,)*\.\d{1,2}$/g;
+                if (Costosfijos.match(reg)) {
+                    $("#costosFijos").removeClass("is-invalid");
+                    $("#costosFijos").addClass("is-valid");
+                    $('#costosFijosval').hide();
+                    costos_fijos0 = true;
+                } else {
+                    $("#costosFijosval").addClass("invalid-feedback");
+                    $("#costosFijos").removeClass("is-valid");
+                    $("#costosFijos").addClass("is-invalid");
+                    $('#costosFijosval').text('Por favor ingrese mas digitos');
+                    $('#costosFijosval').show();
+                    costos_fijos0 = false;
+                }
             }
         }
 
@@ -229,28 +144,30 @@
     });
 
     $('#precioVU').keyup(function (event) {
-        var precioVU = $("#precioVU").val();
-        if (precioVU.length === 0) {
-            $("#precioVUval").addClass("invalid-feedback");
-            $("#precioVU").removeClass("is-valid");
-            $("#precioVU").addClass("is-invalid");
-            $('#precioVUval').text('Por favor ingrese el precio de venta por unidad.');
-            $('#precioVUval').show();
-            precio0 = false;
-        } else {
-            var reg = /^(\d|,)*\.\d{1,2}$/g;
-            if (precioVU.match(reg)) {
-                $("#precioVU").removeClass("is-invalid");
-                $("#precioVU").addClass("is-valid");
-                $('#precioVUsval').hide();
-                precio0 = true;
-            } else {
+        if (event.which == 13 || event.which != 8) {
+            var precioVU = $("#precioVU").val();
+            if (precioVU.length === 0) {
                 $("#precioVUval").addClass("invalid-feedback");
                 $("#precioVU").removeClass("is-valid");
                 $("#precioVU").addClass("is-invalid");
-                $('#precioVUval').text('Por favor ingrese mas digitos');
+                $('#precioVUval').text('Por favor ingrese el precio de venta por unidad.');
                 $('#precioVUval').show();
                 precio0 = false;
+            } else {
+                var reg = /^(\d|,)*\.\d{1,2}$/g;
+                if (precioVU.match(reg)) {
+                    $("#precioVU").removeClass("is-invalid");
+                    $("#precioVU").addClass("is-valid");
+                    $('#precioVUsval').hide();
+                    precio0 = true;
+                } else {
+                    $("#precioVUval").addClass("invalid-feedback");
+                    $("#precioVU").removeClass("is-valid");
+                    $("#precioVU").addClass("is-invalid");
+                    $('#precioVUval').text('Por favor ingrese mas digitos');
+                    $('#precioVUval').show();
+                    precio0 = false;
+                }
             }
         }
     });
@@ -269,28 +186,30 @@
     });
 
     $('#costoVU').keyup(function (event) {
-        var costoVU = $("#costoVU").val();
-        if (costoVU.length === 0) {
-            $("#costoVUval").addClass("invalid-feedback");
-            $("#costoVU").removeClass("is-valid");
-            $("#costoVU").addClass("is-invalid");
-            $('#costoVUval').text('Por favor ingrese el costo variable por unidad.');
-            $('#costoVUval').show();
-            costoV0 = false;
-        } else {
-            var reg = /^(\d|,)*\.\d{1,2}$/g;
-            if (costoVU.match(reg)) {
-                $("#costoVU").removeClass("is-invalid");
-                $("#costoVU").addClass("is-valid");
-                $('#costoVval').hide();
-                costoV0 = true;
-            } else {
+        if (event.which == 13 || event.which != 8) {
+            var costoVU = $("#costoVU").val();
+            if (costoVU.length === 0) {
                 $("#costoVUval").addClass("invalid-feedback");
                 $("#costoVU").removeClass("is-valid");
                 $("#costoVU").addClass("is-invalid");
-                $('#costoVUval').text('Por favor ingrese mas digitos');
+                $('#costoVUval').text('Por favor ingrese el costo variable por unidad.');
                 $('#costoVUval').show();
                 costoV0 = false;
+            } else {
+                var reg = /^(\d|,)*\.\d{1,2}$/g;
+                if (costoVU.match(reg)) {
+                    $("#costoVU").removeClass("is-invalid");
+                    $("#costoVU").addClass("is-valid");
+                    $('#costoVval').hide();
+                    costoV0 = true;
+                } else {
+                    $("#costoVUval").addClass("invalid-feedback");
+                    $("#costoVU").removeClass("is-valid");
+                    $("#costoVU").addClass("is-invalid");
+                    $('#costoVUval').text('Por favor ingrese mas digitos');
+                    $('#costoVUval').show();
+                    costoV0 = false;
+                }
             }
         }
     });
@@ -366,28 +285,30 @@
         element.value = formatNumber4(value);
     });
     $('#costosFijos2').keyup(function (event) {
-        var costosFijos2 = $("#costosFijos2").val();
-        if (costosFijos2.length === 0) {
-            $("#costosFijos2val").addClass("invalid-feedback");
-            $("#costosFijos2").removeClass("is-valid");
-            $("#costosFijos2").addClass("is-invalid");
-            $('#costosFijos2val').text('Por favor ingrese el costo fijo.');
-            $('#costosFijos2val').show();
-            costos_fijos2 = false;
-        } else {
-            var reg = /^(\d|,)*\.\d{1,2}$/g;
-            if (costosFijos2.match(reg)) {
-                $("#costosFijos2").removeClass("is-invalid");
-                $("#costosFijos2").addClass("is-valid");
-                $('#costosFijos2val').hide();
-                costos_fijos2 = true;
-            } else {
+        if (event.which == 13 || event.which != 8) {
+            var costosFijos2 = $("#costosFijos2").val();
+            if (costosFijos2.length === 0) {
                 $("#costosFijos2val").addClass("invalid-feedback");
                 $("#costosFijos2").removeClass("is-valid");
                 $("#costosFijos2").addClass("is-invalid");
-                $('#costosFijos2val').text('Por favor ingrese mas digitos');
+                $('#costosFijos2val').text('Por favor ingrese el costo fijo.');
                 $('#costosFijos2val').show();
                 costos_fijos2 = false;
+            } else {
+                var reg = /^(\d|,)*\.\d{1,2}$/g;
+                if (costosFijos2.match(reg)) {
+                    $("#costosFijos2").removeClass("is-invalid");
+                    $("#costosFijos2").addClass("is-valid");
+                    $('#costosFijos2val').hide();
+                    costos_fijos2 = true;
+                } else {
+                    $("#costosFijos2val").addClass("invalid-feedback");
+                    $("#costosFijos2").removeClass("is-valid");
+                    $("#costosFijos2").addClass("is-invalid");
+                    $('#costosFijos2val').text('Por favor ingrese mas digitos');
+                    $('#costosFijos2val').show();
+                    costos_fijos2 = false;
+                }
             }
         }
     });
@@ -406,28 +327,30 @@
         element.value = formatNumber5a(value);
     });
     $('#precioV').keyup(function (event) {
-        var precioV = $("#precioV").val();
-        if (precioV.length === 0) {
-            $("#precioVval").addClass("invalid-feedback");
-            $("#precioV").removeClass("is-valid");
-            $("#precioV").addClass("is-invalid");
-            $('#precioVval').text('Por favor ingrese el precio de venta.');
-            $('#precioVval').show();
-            precio2 = false;
-        } else {
-            var reg = /^(\d|,)*\.\d{1,2}$/g;
-            if (precioV.match(reg)) {
-                $("#precioV").removeClass("is-invalid");
-                $("#precioV").addClass("is-valid");
-                $('#precioVval').hide();
-                precio2 = true;
-            } else {
+        if (event.which == 13 || event.which != 8) {
+            var precioV = $("#precioV").val();
+            if (precioV.length === 0) {
                 $("#precioVval").addClass("invalid-feedback");
                 $("#precioV").removeClass("is-valid");
                 $("#precioV").addClass("is-invalid");
-                $('#precioVval').text('Por favor ingrese mas digitos');
+                $('#precioVval').text('Por favor ingrese el precio de venta.');
                 $('#precioVval').show();
                 precio2 = false;
+            } else {
+                var reg = /^(\d|,)*\.\d{1,2}$/g;
+                if (precioV.match(reg)) {
+                    $("#precioV").removeClass("is-invalid");
+                    $("#precioV").addClass("is-valid");
+                    $('#precioVval').hide();
+                    precio2 = true;
+                } else {
+                    $("#precioVval").addClass("invalid-feedback");
+                    $("#precioV").removeClass("is-valid");
+                    $("#precioV").addClass("is-invalid");
+                    $('#precioVval').text('Por favor ingrese mas digitos');
+                    $('#precioVval').show();
+                    precio2 = false;
+                }
             }
         }
     });
@@ -446,28 +369,30 @@
         element.value = formatNumber6(value);
     });
     $('#costoV').keyup(function (event) {
-        var costoV = $("#costoV").val();
-        if (costoV.length === 0) {
-            $("#costoVval").addClass("invalid-feedback");
-            $("#costoV").removeClass("is-valid");
-            $("#costoV").addClass("is-invalid");
-            $('#costoVval').text('Por favor ingrese el costo de venta.');
-            $('#costoVval').show();
-            costoV2 = false;
-        } else {
-            var reg = /^(\d|,)*\.\d{1,2}$/g;
-            if (costoV.match(reg)) {
-                $("#costoV").removeClass("is-invalid");
-                $("#costoV").addClass("is-valid");
-                $('#costoVval').hide();
-                costoV2 = true;
-            } else {
+        if (event.which == 13 || event.which != 8) {
+            var costoV = $("#costoV").val();
+            if (costoV.length === 0) {
                 $("#costoVval").addClass("invalid-feedback");
                 $("#costoV").removeClass("is-valid");
                 $("#costoV").addClass("is-invalid");
-                $('#costoVval').text('Por favor ingrese mas digitos.');
+                $('#costoVval').text('Por favor ingrese el costo de venta.');
                 $('#costoVval').show();
                 costoV2 = false;
+            } else {
+                var reg = /^(\d|,)*\.\d{1,2}$/g;
+                if (costoV.match(reg)) {
+                    $("#costoV").removeClass("is-invalid");
+                    $("#costoV").addClass("is-valid");
+                    $('#costoVval').hide();
+                    costoV2 = true;
+                } else {
+                    $("#costoVval").addClass("invalid-feedback");
+                    $("#costoV").removeClass("is-valid");
+                    $("#costoV").addClass("is-invalid");
+                    $('#costoVval').text('Por favor ingrese mas digitos.');
+                    $('#costoVval').show();
+                    costoV2 = false;
+                }
             }
         }
     });
@@ -556,7 +481,7 @@
                 success: function (result) {
                     var resultado = (result.d);
                     if (resultado === "OK") {
-                        $("#project").html($("#message").find("strong").html());
+                        $("#project").html($("#toast-1").find("strong").html());
                         $('#succesModal').modal('show');
                     }
 
@@ -577,6 +502,97 @@
     $('#succesModal').on('hidden.bs.modal', function () {
         location.reload();
     });
+
+    if (id_proyecto !== "false" && pathname === "/Simulador/puntoequilibrio") {
+
+        $.ajax({
+            type: "POST",
+            url: "puntoequilibrio.aspx/get_costos_fijosT",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ idProyecto: id_proyecto }),
+            success: function (result) {
+                var resultado = JSON.parse(result.d);
+                var sumT = 0;
+                for (var i = 0; i < resultado.length; i++) {
+                    for (var j = 0; j < resultado[i].length; j++) {
+                        var res = JSON.parse(resultado[i][j]);
+                        for (var k = 0; k < res.length; k++) {
+                            var obj = res[k];
+                            if (obj["Tipo"] === "Fijo") {
+                                sumT = parseFloat(sumT) + parseFloat(obj["$ Costo Total"]);
+                            }
+                        }
+                    }
+                }
+                //truncamos a 2 decimales la suma total
+                var total = trunc(sumT, 2);
+                total = formatNumber(total.toString());
+
+                $("#costosFijos").val(total);
+                $("#costosFijos").trigger($.Event("keyup", { which: 13 }));
+
+
+                $("#costosFijos2").val(total);
+                $("#costosFijos2").trigger($.Event("keyup", { which: 13 }));
+                $("#savePES").removeClass("invisible");
+
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+        $.ajax({
+            type: "POST",
+            url: "puntoequilibrio.aspx/get_punto_equilibrio",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify({ idProyecto: id_proyecto }),
+            success: function (result) {
+                var resultado = JSON.parse(result.d);
+
+                if (resultado.length > 0) {
+                    var precio_VU = resultado[0];
+                    var costo_VU = resultado[1];
+                    var PE_unidades = resultado[2];
+                    var precio_V = resultado[3];
+                    var costo_V = resultado[4];
+                    var PE_pesos = resultado[5];
+                    $("#precioVU").val(formatNumber(precio_VU.toString()));
+                    $("#costoVU").val(formatNumber(costo_VU.toString()));
+                    $("#PEU").val(formatNumber(PE_unidades.toString()));
+                    $("#precioV").val(formatNumber(precio_V.toString()));
+                    $("#costoV").val(formatNumber(costo_V).toString());
+                    $("#PEP").val(formatNumber(PE_pesos).toString());
+
+                    $("#CalculadoraPE :input").trigger($.Event("keyup", { which: 13 }));
+
+                }
+
+
+            },
+            error: function (result) {
+                console.log(result.responseText);
+            }
+
+        }).done(function (data) {
+            //console.log(data);
+        }).fail(function (data) {
+            console.log("Error: " + data);
+        });
+
+
+        $("#messageWarning").html("Datos del último cálculo de Punto Equilibrio registrado");
+        $("#messageWarning").removeClass("d-none").addClass("d-block");
+
+    }
 
     /*********** SCRIPTS PARA EL CONTENT PUNTO DE EQUILIBRIO ********/
 

@@ -451,7 +451,8 @@
     });
 
 
-    /******Obteneer el numero de periodos******/
+/******Obteneer el numero de periodos******/
+
     if (id_proyecto !== "false") {
         $.ajax({
             type: "POST",
@@ -493,8 +494,7 @@
                     for (i = 1; i <= nperiodo; i++) {
                         //Buscar que periodos ya estan ingresados
                         for (j = 0; j < resultado[0].length - 1; j++) {
-
-                            if (i === resultado[0][j]) {
+                            if (i == resultado[0][j]) {//* comparación con mismo tipo de dato (==)
                                 ban = 1;
                                 break;
                             }
@@ -503,6 +503,7 @@
                             }
 
                         }
+
                         var option;
                         if (ban == 1) {
                             option = "<option value=" + i + " disabled>" + i + "</option>";
@@ -552,7 +553,7 @@
                         param2 = obj["$ Costo"];
                         param3 = obj["%"];
                         param4 = obj["Total"];
-                        cargar_datatable_amort(param1, param2, param3, param4);
+                        cargar_datatable_amort(param1, remove_format_coin(param2), param3, remove_format_coin(param4));
                     }
                 },
                 error: function (result) {
@@ -586,8 +587,32 @@
         $("#amortTable").find('td:nth-child(4)').attr("data-editable", "false");
         $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
         $(".na").html("");
-
+        /****/
+        var column = t.column(1);
+        var column2 = t.column(3);
+        var numFormat = $.fn.dataTable.render.number(',', '.', 2).display;
+        $(column.footer()).html(
+            numFormat(
+                column.data().map(parseFloat).reduce(function (a, b) {
+                    return a + b;
+                })
+            )
+        );
+        $(column2.footer()).html(
+            numFormat(
+                column2.data().map(parseFloat).reduce(function (a, b) {
+                    return a + b;
+                })
+            )
+        );
+        /*****/
+        
     }
+
+    $("body").on('blur', "#table_resp_amortTable .moneda", function () {
+        //alert("This input field has lost its focus.:" + $(this).val());
+        $(this).val(remove_format_coin($(this).val()));
+    });
     /****************************************/
     /*******SCRIPTS PARA CONTENT COSTOS***************/
     var complete = false;
@@ -864,4 +889,7 @@
                 .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
         });
     });
+    function remove_format_coin(cifra) {
+        return parseFloat(cifra.replace(',', ""));
+    }
 });

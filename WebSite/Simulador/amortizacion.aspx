@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="tab-content  tab-pane" id="myTabContent2a">
+        <div class="tab-content  tab-pane" id="myTabContent2">
             <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
                         <div class="alert alert-warning alert-dismissible fade show" id="warning" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -47,7 +47,7 @@
                                 <div class="card-header">
                                     <h5><i class="fa fa-table"></i>  Amortización</h5>
                                 </div>      
-                                <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;" >
+                                <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;" id="table_resp_amortTable">
                                     <table class="table table-striped table-bordered" style="width:100%" id="amortTable" >
                                         <thead>
                                             <tr>

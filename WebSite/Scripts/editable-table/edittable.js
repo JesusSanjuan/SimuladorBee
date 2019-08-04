@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('#myTabContent, #myTabContent2, #myTabContent3').find('table').DataTable({
+    $('#myTabContent, #myTabContent3').find('table').DataTable({
         'columnDefs': [
             { "width": "45%", "targets" : 0 },
             { "width": "21%", "targets" : 1 },
@@ -13,11 +13,11 @@
         }
     });
 
-    $('#myTabContent2a').find('table').DataTable({
+    $('#myTabContent2').find('table').DataTable({
         'columnDefs':  [{ "width": "65%", "targets": 0 },
-                        { "width": "15%", "targets": 1 },
+                        { "width": "15%", "targets": 1, "render": $.fn.dataTable.render.number(',', '.', 2) },
                         { "width": "3%", "targets": 2 },
-                        { "width": "15%", "targets": 3 },
+                        { "width": "15%", "targets": 3, "render": $.fn.dataTable.render.number(',', '.', 2) },
                         { "width": "2%", "targets": 4 }],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
@@ -197,7 +197,6 @@
     });
     $("body").on("click", "#gasto_continuar", function () {
         var nav = $('#myTab_g li a.active').attr('id');
-        console.log("nav" + nav);
         if (nav == "NGastos4") {
             //llenamos el select de inflacion
             $.ajax({
@@ -280,12 +279,11 @@
         var tot = $('#' + selector).find('table').find('.total').text();
         var nav = $('#' + Tab + ' li a.active').attr('id');
 
-        console.log("valInflacion->" + valInflacion);
         
         //Validamos que no existan celdas vacias
         var table = $('#'+ content).find('#' + selector).find('table').DataTable();
         table.column(0).data().each(function (value, index) {
-            console.log(value);
+            
             if (value == "") {
                 tot = 0;
                 return false;
@@ -301,7 +299,7 @@
                     async: false,
                     data: JSON.stringify({ dataTabla: data, Nperiod: nperiodo, total: tot, pestania: nav, inflacion: valInflacion }),
                     success: function (result) {
-                        console.log(result);
+                        
                         location.reload();
                     },
                     error: function (result) {
@@ -411,7 +409,7 @@
 
 
     /****************TABLA AMORTIZACION****************/
-    $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
+    $("#amortTable").editableTableWidget({ editor: $('<input class="form-control moneda">') }).find('.previous').focus();
     $(".na").html("");
 
     $("body").on("click", "#MainContent_add_row", function () {
@@ -441,7 +439,7 @@
         var data = $("#amortTable").tableToJSON();
         var nperiodo = $('#cnperiodo').val();
         nperiodo = nperiodo + "" + $("#lapse").val() + "";
-        var tot = $('#total').text();
+        var tot = parseFloat($('#total').text().replace(',', ""));//remover formato moneda
         //Validamos que no existan celdas vacias
         var table = $("#amortTable").DataTable();
         table.column(0).data().each(function (value, index) {
@@ -484,7 +482,7 @@
             }
         }
         else {
-            console.log("no hay seleccion");
+            
             $('#successA').find(".alert").html("Sin seleccion de datos");
             $('#successA').find(".alert").removeClass("alert-primary").addClass("alert-danger");
             $('#successA').modal({ show: true });
@@ -495,7 +493,7 @@
         location.reload();
     });
     //Funcion al cambiar los valores de los costos en amortizacion
-    $("body").on("change", " #myTabContent2 table td", function (evt, newValue) {
+    $("body").on("change", "#amortTable td", function (evt, newValue) {
         var selector = $(this).parents('.tab-pane').attr("id");
         var t = $('#' + selector).find('table').DataTable();
         //console.log(newValue);
@@ -514,21 +512,27 @@
         }
 
         var column = t.column(3);
-
+        /****/
+        var numFormat = $.fn.dataTable.render.number(',', '.', 2).display;
+        /****/
         $(column.footer()).html(
-            column.data().map(parseFloat).reduce(function (a, b) {
-                return a + b;
-            })
+            numFormat(
+                column.data().map(parseFloat).reduce(function (a, b) {
+                    return a + b;
+                })
+            )
         );
 
         $(".na").html("");
 
         var column2 = t.column(1); 
-
+       
         $(column2.footer()).html(//Para poner el total en la ultima celda footer
-            column2.data().map(parseFloat).reduce(function (a, b) {
-                return a + b;
-            })
+            numFormat(
+                column2.data().map(parseFloat).reduce(function (a, b) {
+                    return a + b;
+                })
+            )
         );
 
     });
@@ -550,8 +554,7 @@
     
     //$("body").on("click", ".page-link", function () {
     $('table').on('page.dt', function () {
-        var selector = $(this).parents('.tab-pane').attr("id");
-        console.log("click en siguiente pagina,selecto-->" + selector);
+        
         $('#' + selector).find('table').find('td:last').prev().prev().addClass('previous');
        
 

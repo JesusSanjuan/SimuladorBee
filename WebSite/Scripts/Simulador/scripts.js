@@ -137,6 +137,11 @@
         });
     });
 
+/*****evento de Cerrar modal $('#eliminarproyecto')**/
+    $("body").on("hidden.bs.modal","#eliminarproyecto", function () {
+        location.reload();
+    });
+
     $("body").on('blur', "#Nombre_Proyecto", function () {
         if ($(this).val() === "") {
             $("#valid1").show();

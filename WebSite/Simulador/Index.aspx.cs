@@ -30,6 +30,8 @@ public partial class User_Index : System.Web.UI.Page
             NuevoProyecto.Nombre_Proyecto = nombre_proyecto;
             NuevoProyecto.Fecha_Hora    = DateTime.Now;
             NuevoProyecto.ID_Periodo    = id_periodo;
+            NuevoProyecto.Avance = 0;
+            NuevoProyecto.Activo = true;
             db.Proyecto.Add(NuevoProyecto);
             db.SaveChanges();
             //crear las sessiones 
@@ -53,7 +55,7 @@ public partial class User_Index : System.Web.UI.Page
         var httpContext = HttpContext.Current;
         /***Get the user id**/
         string id_user = httpContext.User.Identity.GetUserId();
-        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user);//consulta los proyectos del usuario
+        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user && Proyect.Activo==true);//consulta los proyectos del usuario
 
         List<List<string>> result_query = new List<List<string>>();
 
@@ -77,7 +79,29 @@ public partial class User_Index : System.Web.UI.Page
     [WebMethod]
     public static string Borrarproyecto(string id_proyect, string nam_proyect)
     {
-        return "succes";
+        try
+        {
+            var db = new Entidades();
+            /****Obtén el contexto actual**/
+            var httpContext = HttpContext.Current;
+            /***Get the user id**/
+            string id_user = httpContext.User.Identity.GetUserId();
+            var projEliminar = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyect).Single();
+            //modificamos el campo Activo
+            projEliminar.Activo = false;
+            db.SaveChanges();
+            System.Web.HttpContext.Current.Session.Remove("ID_Proyecto");
+            System.Web.HttpContext.Current.Session.Remove("name_Proyecto");
+
+            return "succes";
+        }
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return "fail";
+        }
+
+        
     }
 
     [WebMethod]

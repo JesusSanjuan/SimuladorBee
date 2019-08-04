@@ -96,8 +96,14 @@
                         }
                     }
                 }
-                $("#costosFijos").val(sumT);
-                $("#costosFijos2").val(sumT);
+                //truncamos a 2 decimales la suma total
+                var total = trunc(sumT, 2);
+                console.log("total-" + total);
+                $("#costosFijos").val(total);               
+                
+
+                $("#costosFijos2").val(total);
+                $("#costosFijos2").keypress();
                 $("#savePES").removeClass("invisible");
 
             },
@@ -110,7 +116,6 @@
         }).fail(function (data) {
             console.log("Error: " + data);
         });
-
         $.ajax({
             type: "POST",
             url: "puntoequilibrio.aspx/get_punto_equilibrio",
@@ -154,6 +159,19 @@
 
     }
 
+    /*** *****************/
+
+    function trunc(x, posiciones = 0) {
+        var s = x.toString();
+        var l = s.length;
+        var decimalLength = s.indexOf('.') + 1;
+        var numStr = s.substr(0, decimalLength + posiciones);
+        return Number(numStr);
+    }
+
+
+    /************************/
+
     var costos_fijos0 = false, costos_fijos1 = false, precio0 = false, precio1 = false, costoV0 = false, costoV1 = false;
     /**********Validacion Costo fijo */
     const number = document.querySelector('.number');
@@ -169,6 +187,7 @@
     });
 
     $('#costosFijos').keyup(function (event) {
+        alert("keyup");
         var Costosfijos = $("#costosFijos").val();
         if (Costosfijos.length === 0) {
             $("#costosFijosval").addClass("invalid-feedback");
@@ -193,6 +212,7 @@
                 costos_fijos0 = false;
             }
         }
+
     });
     /**********Validacion Costo fijo */
     /**********Validacion precio venta por unidad */

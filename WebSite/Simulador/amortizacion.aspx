@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="amortizacion.aspx.cs" Inherits="Simulador_Default" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
-    <link href="../Scripts/rangeslider/rangeslider.css" rel="stylesheet" />
-    <link href="../Content/bootstrap-select.css" rel="stylesheet" />
     <link href="../Content/bootstrap-select.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -60,7 +58,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="previous">Terrenos</td>
+                                                <td class="previous" data-editable="false">Terrenos</td>
                                                 <td class="costo">0</td>
                                                 <td class="porct">20</td>
                                                 <td data-editable="false">0</td>
@@ -68,7 +66,7 @@
 
                                             </tr>
                                             <tr>
-                                                <td class="previous">Edificios</td>
+                                                <td class="previous" data-editable="false">Edificios</td>
                                                 <td class="costo">0</td>
                                                 <td class="porct">5</td>
                                                 <td data-editable="false">0</td>
@@ -76,7 +74,7 @@
 
                                             </tr>
                                             <tr>
-                                                <td class="previous">Transporte</td>
+                                                <td class="previous" data-editable="false">Transporte</td>
                                                 <td class="costo">0</td>
                                                 <td class="porct">25</td>
                                                 <td data-editable="false">0</td>
@@ -84,7 +82,7 @@
 
                                             </tr>
                                             <tr>
-                                                <td class="previous">Cómputo</td>
+                                                <td class="previous" data-editable="false">Cómputo</td>
                                                 <td class="costo">0</td>
                                                 <td class="porct">30</td>
                                                 <td data-editable="false">0</td>
@@ -92,7 +90,7 @@
 
                                             </tr>
                                                 <tr>
-                                                <td class="previous">Mobiliario</td>
+                                                <td class="previous" data-editable="false">Mobiliario</td>
                                                 <td class="costo">0</td>
                                                 <td class="porct">10</td>
                                                 <td data-editable="false">0</td>
@@ -100,7 +98,7 @@
 
                                             </tr>
                                                 <tr>
-                                                <td class="previous">Equipo de Oficina</td>
+                                                <td class="previous" data-editable="false">Equipo de Oficina</td>
                                                 <td class="costo">0</td>
                                                 <td class="porct">10</td>
                                                 <td data-editable="false">0</td>
@@ -129,6 +127,9 @@
                     <asp:LinkButton runat="server" ID="guardar_amort" OnClientClick="return false;" CssClass="btn btn-primary">
                         <i class='fa fa-save'></i> Guardar
                     </asp:LinkButton>
+                    <a href="#" class="btn btn-success" id="actualizarAmort" style="display:none">
+                        Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
 

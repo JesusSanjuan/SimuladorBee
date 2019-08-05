@@ -162,4 +162,37 @@ public partial class Simulador_Default : System.Web.UI.Page
 
     }
 
+    [WebMethod]
+    public static object updateTableAmort(List<Dictionary<string, string>> dataTabla, string Nperiod, Decimal total)
+    {
+        try
+        {
+            //Here I want to iterate the  objects 
+            string json = JsonConvert.SerializeObject(dataTabla);// selializamos las List de la tabla
+            // OBTENEMOS LOS DATOS DE LA AMORTIZACION DEL PERIODO SELECCIONADO
+            string id_amortizac = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+            string id_proyect = (string)System.Web.HttpContext.Current.Session["ID_Proyecto"];
+            string id_periodo = Nperiod;
+            string tabl_json = json;
+            Decimal tabl_total = total;
+
+            // consultamos A LA BASE DE DATOS
+            var db = new Entidades();
+            var updateAmortizacion = db.Amortizacion_pro.Where(Amortizacion => Amortizacion.ID_Proyecto == id_proyect && Amortizacion.ID_Periodo== id_periodo).Single();
+            //modificamos el campo Amortizacion
+            updateAmortizacion.Amortizacion = tabl_json;
+            db.SaveChanges();
+
+            return "succes";
+
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return e;
+        }
+
+    }
+ 
 }

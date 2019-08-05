@@ -423,7 +423,7 @@
         ]).draw(false);
         t.order([3, 'desc']).draw();
 
-        $("#amortTable").find('td:nth-child(1)').addClass('previous');
+        $("#amortTable").find('td:nth-child(1)').addClass('previous ').attr("data-editable", "false");
         $("#amortTable").find('td:nth-child(2)').addClass('costo');
 
         $("#amortTable").find('td:nth-child(3)').addClass('porct');
@@ -434,7 +434,13 @@
 
     });
 
-    $("body").on("click", "#MainContent_guardar_amort", function () {
+    $("body").on("click", "#MainContent_guardar_amort, #actualizarAmort", function () {
+        
+        var idElement = $(this).attr('id');
+        var funcion = "amortizacion.aspx/sendTableAmort";
+        if (idElement === "actualizarAmort")
+            funcion = "amortizacion.aspx/updateTableAmort";
+
         /*OBTENIENDO DATOS DE LAS FUNCOINES DE Table To JSON*/
         var data = $("#amortTable").tableToJSON();
         var nperiodo = $('#cnperiodo').val();
@@ -452,7 +458,7 @@
             if (tot > 0) {
                 $.ajax({
                     type: "POST",
-                    url: "amortizacion.aspx/sendTableAmort",
+                    url: funcion,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
@@ -493,9 +499,9 @@
         location.reload();
     });
     //Funcion al cambiar los valores de los costos en amortizacion
-    $("body").on("change", "#amortTable td", function (evt, newValue) {
-        var selector = $(this).parents('.tab-pane').attr("id");
-        var t = $('#' + selector).find('table').DataTable();
+    $("body").on("change", "#amortTable td:not(:first-child)", function (evt, newValue) {
+        
+        var t = $("#amortTable").DataTable();
         //console.log(newValue);
         t.cell(this).data(newValue).draw();
         t.order([3, 'desc']).draw();
@@ -537,6 +543,42 @@
 
     });
 
+   
+
+/***********evento de click en td concepto Amortizacion*/
+    //function tdClicksConcept() {
+    $("body").on("click", "#amortTable .previous", function () {
+        /**Agregamos la clase previous a todos los td(1), acciones para el edit <input>******/
+        $("#amortTable table tbody tr td:nth-child(1), #myTabContent3 table tbody tr td:nth-child(1)").addClass('previous');
+    /**Agregamos la clase tipo a todos los td(2), acciones para el edit <select>******/
+
+        $('input[name=input_concept]').focusout();
+
+        $(this).removeClass('previous');
+        var OriginalContent = $(this).text();
+        //console.log('OriginalContent-->' + OriginalContent);
+        $(this).html('<input class="form-control" name="input_concept">');
+        //refrescamos libreria selectpicker
+        $('input[name=input_concept]').val(OriginalContent);
+        $('input[name=input_concept]').focus();
+
+
+            
+
+    });
+    $("body").on('focusout', "input[name=input_concept]", function (event) {
+        //buscamos el selector tabla
+        var selector = $(this).parents('.tab-pane').attr("id");
+        var t = $('#' + selector).find('table').DataTable();
+
+        var selectorTD = $(this).parents('td');
+        t.cell(selectorTD).data(this.value).draw();
+        selectorTD.addClass("previous");
+
+    });
+        
+    //}
+    //tdClicksConcept();
     /********************REMOVER FILAS**************************/
     $("body").on("click", ".remove", function () {
 

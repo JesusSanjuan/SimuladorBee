@@ -451,8 +451,12 @@
 
     var completeC = false;
     $('#cnperiodo.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
-        if (completeC == true)
+        if (completeC == true) {
+            $("#MainContent_guardar_amort").hide();
+            $("#actualizarAmort").show();
             cargar_data_amort();
+        }
+            
     });
 
 
@@ -558,8 +562,29 @@
                         param2 = obj["$ Costo"];
                         param3 = obj["%"];
                         param4 = obj["Total"];
-                        cargar_datatable_amort(param1, remove_format_coin(param2), param3, remove_format_coin(param4));
+                        cargar_datatable_amort(param1, remove_format_coin(param2), param3, remove_format_coin(param4));                       
                     }
+                    $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).find('.previous').focus();
+                    $(".na").html("");
+                    /*******************/
+                    var column = table.column(1);
+                    var column2 = table.column(3);
+                    var numFormat = $.fn.dataTable.render.number(',', '.', 2).display;
+                    $(column.footer()).html(
+                        numFormat(
+                            column.data().map(parseFloat).reduce(function (a, b) {
+                                return a + b;
+                            })
+                        )
+                    );
+                    $(column2.footer()).html(
+                        numFormat(
+                            column2.data().map(parseFloat).reduce(function (a, b) {
+                                return a + b;
+                            })
+                        )
+                    );
+                    /*********************/
                 },
                 error: function (result) {
                     console.log(result.responseText);
@@ -582,35 +607,15 @@
             camp4,
             '<i  class="fa fa-times fa-3 remove" aria-hidden="true"></i>'
         ]).draw(false);
-        t.order([1, 'desc']).draw();
+        t.order([3, 'desc']).draw();
         //aplicamos lasa propiedades editable de las celdas
-        $("#amortTable").find('td:nth-child(1)').addClass('previous');
+        $("#amortTable").find('td:nth-child(1)').addClass('previous').attr("data-editable", "false");
         $("#amortTable").find('td:nth-child(2)').addClass('costo');
         $("#amortTable").find('td:nth-child(3)').addClass('porct');
         $("#amortTable").find('td:last').attr("data-editable", "false");
         $("#amortTable").find('td:nth-child(5)').attr("data-editable", "false");
         $("#amortTable").find('td:nth-child(4)').attr("data-editable", "false");
-        $("#amortTable").editableTableWidget({ editor: $('<input class="form-control">') }).numericInputExample().find('.previous').focus();
-        $(".na").html("");
-        /****/
-        var column = t.column(1);
-        var column2 = t.column(3);
-        var numFormat = $.fn.dataTable.render.number(',', '.', 2).display;
-        $(column.footer()).html(
-            numFormat(
-                column.data().map(parseFloat).reduce(function (a, b) {
-                    return a + b;
-                })
-            )
-        );
-        $(column2.footer()).html(
-            numFormat(
-                column2.data().map(parseFloat).reduce(function (a, b) {
-                    return a + b;
-                })
-            )
-        );
-        /*****/
+
         
     }
 

@@ -67,10 +67,13 @@ public partial class User_Index : System.Web.UI.Page
             List<string> item = new List<string>();
             item.Add(Proyect.Nombre_Proyecto);
             item.Add(String.Format("{0:dd/MM/yyyy HH:mm:ss}", Proyect.Fecha_Hora));
-            item.Add("<i class='fas fa-check' aria-hidden='true'>");
+            //item.Add("<i class='fas fa-check' aria-hidden='true'>");
+            item.Add("<div class='progress'><div role = 'progressbar' style='width: 25%;' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100' class='progress-bar progress-bar-striped progress-bar-animated'>25%</div></div>");
             item.Add("<a href='#' class='nav-link cargar' data-id="+ Proyect.ID_Proyecto+ "  data-name=' " + Proyect.Nombre_Proyecto +" '><i class='fa fa-redo fa-lg'></i></a>");
             item.Add("<a href='#' class='nav-link eliminar' data-id=" + Proyect.ID_Proyecto + "  data-name=' " + Proyect.Nombre_Proyecto + " '><i class='fas fa-trash'></i></a>");
             result_query.Add(item);
+
+            
         }
         var json = JsonConvert.SerializeObject(result_query);       
         return json;

@@ -51,7 +51,7 @@
                         <tr>
                           <th>Nombre</th>
                           <th>Fecha de Creación</th>
-                          <th>Terminado</th>
+                          <th>Avance</th>
                           <th>Cargar</th>
                           <th>Eliminar</th>
                         </tr>
@@ -60,7 +60,7 @@
                         <tr>
                           <th>Nombre</th>
                           <th>Fecha de Creación</th>
-                          <th>Terminado</th>
+                          <th>Avance</th>
                           <th>Cargar</th>
                           <th>Eliminar</th>
                         </tr>

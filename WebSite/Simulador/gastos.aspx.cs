@@ -84,6 +84,7 @@ public partial class Simulador_gastos : System.Web.UI.Page
                                 gasto.Total = gasto.Total + tabl_total;
                                 float val_inflacion = inflacion;
                                 Proyeccion(db, id_proyect, id_periodo, gasto.Total, val_inflacion);
+                                agregar_avance(id_proyect);
                             }
                             
                         }
@@ -175,6 +176,26 @@ public partial class Simulador_gastos : System.Web.UI.Page
         return "succes";
     }
 
+    public static string agregar_avance(string id_proyecto)
+    {
+        try
+        {
+            var db = new Entidades();
+
+            var projAvance = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyecto).Single();
+            //modificamos el campo Activo
+            projAvance.Avance = projAvance.Avance + 1;
+            db.SaveChanges();
+
+            return "succes";
+
+        }
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return "fail";
+        }
+    }
     [WebMethod]
     public static string getPeriodo(string idProyecto)
     {

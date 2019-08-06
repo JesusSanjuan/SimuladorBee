@@ -450,95 +450,98 @@
     }
 
     var completeC = false;
-    $('#cnperiodo.selectpicker').on('change', function () {//obtener datos cuando el periodo cambie
+    $("body").on('change', "#cnperiodo.selectpicker", function () {
         if (completeC == true) {
             $("#MainContent_guardar_amort").hide();
             $("#actualizarAmort").show();
             cargar_data_amort();
         }
+        else
+            getPeriodoAmort();
             
     });
 
 
 /******Obteneer el numero de periodos******/
+    function getPeriodoAmort() {
+        if (id_proyecto !== "false") {
+            $.ajax({
+                type: "POST",
+                url: "amortizacion.aspx/getPeriodo",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                data: JSON.stringify({ idProyecto: id_proyecto }),
+                success: function (result) {
+                    var resultado = JSON.parse(result.d);
+                    var res_period = resultado[0][(resultado[0].length - 1)];
+                    var nperiodo = (res_period).substring(0, (res_period).length - 1);
+                    // si es mensual o anual
+                    var periodo = (res_period).charAt((res_period).length - 1);
 
-    if (id_proyecto !== "false") {
-        $.ajax({
-            type: "POST",
-            url: "amortizacion.aspx/getPeriodo",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            data: JSON.stringify({ idProyecto: id_proyecto }),
-            success: function (result) {
-                var resultado = JSON.parse(result.d);
-                var res_period = resultado[0][(resultado[0].length - 1)];
-                var nperiodo = (res_period).substring(0, (res_period).length - 1);
-                // si es mensual o anual
-                var periodo = (res_period).charAt((res_period).length - 1);
-
-                $("#lapse").val(periodo);
-                if (periodo === "M") {
-                    $("#lapso").html("Mes");
-                }
-                else {
-                    $("#lapso").html("Año");
-                }
-
-                var options = [];
-
-                if ((resultado[0].length - 1) == nperiodo) {
-                    for (i = 1; i <= nperiodo; i++) {
-                        var option;
-                        option = "<option value=" + i + ">" + i + "</option>";
-                        options.push(option);
+                    $("#lapse").val(periodo);
+                    if (periodo === "M") {
+                        $("#lapso").html("Mes");
                     }
-                    $('#cnperiodo').html(options);
-                    $('#cnperiodo').selectpicker('refresh');
-                    completeC = true;
-                    $('#cnperiodo.selectpicker').change();
-                }
-                else {
-                    var ban = 0;
-                    for (i = 1; i <= nperiodo; i++) {
-                        //Buscar que periodos ya estan ingresados
-                        for (j = 0; j < resultado[0].length - 1; j++) {
-                            if (i == resultado[0][j]) {//* comparación con mismo tipo de dato (==)
-                                ban = 1;
-                                break;
+                    else {
+                        $("#lapso").html("Año");
+                    }
+
+                    var options = [];
+
+                    if ((resultado[0].length - 1) == nperiodo) {
+                        for (i = 1; i <= nperiodo; i++) {
+                            var option;
+                            option = "<option value=" + i + ">" + i + "</option>";
+                            options.push(option);
+                        }
+                        $('#cnperiodo').html(options);
+                        $('#cnperiodo').selectpicker('refresh');
+                        completeC = true;
+                        $('#cnperiodo.selectpicker').change();
+                    }
+                    else {
+                        var ban = 0;
+                        for (i = 1; i <= nperiodo; i++) {
+                            //Buscar que periodos ya estan ingresados
+                            for (j = 0; j < resultado[0].length - 1; j++) {
+                                if (i == resultado[0][j]) {//* comparación con mismo tipo de dato (==)
+                                    ban = 1;
+                                    break;
+                                }
+                                else {
+                                    ban = 0;
+                                }
+
+                            }
+
+                            var option;
+                            if (ban == 1) {
+                                option = "<option value=" + i + " disabled>" + i + "</option>";
                             }
                             else {
-                                ban = 0;
+                                option = "<option value=" + i + ">" + i + "</option>";
                             }
 
+                            options.push(option);
                         }
+                        $('#cnperiodo').html(options);
+                        $('#cnperiodo').selectpicker('refresh');
 
-                        var option;
-                        if (ban == 1) {
-                            option = "<option value=" + i + " disabled>" + i + "</option>";
-                        }
-                        else {
-                            option = "<option value=" + i + ">" + i + "</option>";
-                        }
-
-                        options.push(option);
                     }
-                    $('#cnperiodo').html(options);
-                    $('#cnperiodo').selectpicker('refresh');
-
+                },
+                error: function (result) {
+                    console.log(result.responseText);
                 }
-            },
-            error: function (result) {
-                console.log(result.responseText);
-            }
 
-        }).done(function (data) {
-            //console.log(data);
-        }).fail(function (data) {
-            console.log("Error: " + data);
-        });
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+        }
     }
-
+    getPeriodoAmort();
     function cargar_data_amort() {
         if (id_proyecto !== "false") {
             var periodo_select = $("#cnperiodo").val();

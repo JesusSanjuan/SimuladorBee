@@ -58,9 +58,11 @@ public partial class User_Index : System.Web.UI.Page
         var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user && Proyect.Activo==true);//consulta los proyectos del usuario
 
         List<List<string>> result_query = new List<List<string>>();
+        //avance definido en 5
 
         foreach (Proyecto Proyect in consulta)
         {
+            string porcentaje = (decimal.Parse((Proyect.Avance).ToString()) * 100 / 5).ToString();
             //para visualizar en el debug
             //System.Diagnostics.Debug.WriteLine(string.Format("ID_proyecto: {0}\tid_usuario: {1}\tnombre_proyecto: {2}\tfecha: {3}\tclave_periodo: {4}",
            // Proyect.ID_Proyecto, Proyect.ID_Usuario, Proyect.Nombre_Proyecto, Proyect.Fecha_Hora, Proyect.ID_Periodo));
@@ -68,7 +70,7 @@ public partial class User_Index : System.Web.UI.Page
             item.Add(Proyect.Nombre_Proyecto);
             item.Add(String.Format("{0:dd/MM/yyyy HH:mm:ss}", Proyect.Fecha_Hora));
             //item.Add("<i class='fas fa-check' aria-hidden='true'>");
-            item.Add("<div class='progress'><div role = 'progressbar' style='width: 25%;' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100' class='progress-bar progress-bar-striped progress-bar-animated'>25%</div></div>");
+            item.Add("<div class='progress'><div role = 'progressbar' style='width:"+ porcentaje+"%;' aria-valuenow='"+porcentaje+ "' aria-valuemin='0' aria-valuemax='100' class='progress-bar progress-bar-striped progress-bar-animated'>"+porcentaje+ "%</div></div>");
             item.Add("<a href='#' class='nav-link cargar' data-id="+ Proyect.ID_Proyecto+ "  data-name=' " + Proyect.Nombre_Proyecto +" '><i class='fa fa-redo fa-lg'></i></a>");
             item.Add("<a href='#' class='nav-link eliminar' data-id=" + Proyect.ID_Proyecto + "  data-name=' " + Proyect.Nombre_Proyecto + " '><i class='fas fa-trash'></i></a>");
             result_query.Add(item);

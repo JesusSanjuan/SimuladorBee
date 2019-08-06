@@ -41,6 +41,18 @@ public partial class Simulador_Default : System.Web.UI.Page
             db.Amortizacion_pro.Add(NuevaAmortizacion);
             db.SaveChanges();
 
+            //revisamos si se han guardado todos los periodos
+            bool ban = false;
+            db = new Entidades();
+            var query = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyect).Single();
+            if (query.ID_Periodo == id_periodo)
+                ban = true;
+
+            db.SaveChanges();
+            if(ban == true)
+                agregar_avance(id_proyect);
+
+
             return "succes";
 
         }
@@ -52,6 +64,28 @@ public partial class Simulador_Default : System.Web.UI.Page
         }
 
     }
+
+    public static string agregar_avance(string id_proyecto)
+    {
+        try
+        {
+            var db = new Entidades();
+
+            var projAvance = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyecto).Single();
+            //modificamos el campo Activo
+            projAvance.Avance = projAvance.Avance + 1;
+            db.SaveChanges();
+
+            return "succes";
+
+        }
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return "fail";
+        }
+    }
+
     [WebMethod]
     public static object buscarID_proyect()
     {

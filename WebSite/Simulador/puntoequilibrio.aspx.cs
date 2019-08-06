@@ -66,6 +66,7 @@ public partial class Simulador_PE : System.Web.UI.Page
         {
             var res = "";
             var db = new Entidades();
+            bool ban = false;
             //Verificamos que los datos no se repitan
             decimal var1 = Convert.ToDecimal(precio_VU);
             decimal var2 = Convert.ToDecimal(costo_variable_unidad);
@@ -78,6 +79,7 @@ public partial class Simulador_PE : System.Web.UI.Page
                                                                         && PE.PE_Pesos == var6);
             if (query.Count() > 0)
             {
+                ban = true;
                 res = "OK";
             }
             else
@@ -100,8 +102,14 @@ public partial class Simulador_PE : System.Web.UI.Page
                 db.Punto_Equilibrio.Add(PE);
 
                 db.SaveChanges();
+
+
                 res = "OK";
             }
+            //verificamos si ya hay punto equilibrio en la tabla
+            var query2= db.Punto_Equilibrio.Where(PE => PE.ID_Proyecto == idProyecto );
+            if (query2.Count() == 1 && ban == false)
+                agregar_avance(idProyecto);
 
             return res; 
                 
@@ -116,6 +124,27 @@ public partial class Simulador_PE : System.Web.UI.Page
         }
 
 
+    }
+
+    public static string agregar_avance(string id_proyecto)
+    {
+        try
+        {
+            var db = new Entidades();
+
+            var projAvance = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyecto).Single();
+            //modificamos el campo Activo
+            projAvance.Avance = projAvance.Avance + 1;
+            db.SaveChanges();
+
+            return "succes";
+
+        }
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return "fail";
+        }
     }
 
     [WebMethod]

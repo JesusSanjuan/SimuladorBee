@@ -1120,14 +1120,29 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
     [WebMethod]
     public static string guardar_inflacion(string Periodo, string[] Proyectos, decimal[] Inflaciones)
     {
-        var db = new Entidades();
+        
         var retur = "FAIL";
+        bool ban = false;
         // GUARDAMOS A LA BASE DE DATOS
         for (int i = 0; i < Proyectos.Length; i++)
         {
+            string id_proyecto = Proyectos[i];
+            var db = new Entidades();
+            //verificamos si el proyecto ya existe en la tabbla inflacion
+            var projINflacion = db.Inflacion.Where(Inflacion => Inflacion.ID_Proyecto == id_proyecto);
+            if (projINflacion.Count() > 0)
+            {
+                ban = true;
+            }
+            else
+            {
+                ban = false;
+            }
+            db.SaveChanges();
+
+            db = new Entidades();
             for (int x = 0; x < Inflaciones.Length; x++)
             {
-                string id_proyecto = Proyectos[i];
 
                 //Verificamos que el Periodo no este calculado      
                 var query = db.Inflacion.Where(Infla => Infla.ID_Proyecto == id_proyecto &&  Infla.Periodo == Periodo );
@@ -1144,7 +1159,7 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                         Tipo = "Inf_prom_mensual";
 
                     Inflacion inflacion = new Inflacion();
-                    string id_inflacion = System.Guid.NewGuid().ToString("D");/**** crear los id en random formato string***/
+                    string id_inflacion = System.Guid.NewGuid().ToString("D");
                     inflacion.ID_Inflacion = id_inflacion;
                     inflacion.ID_Proyecto = id_proyecto;
                     inflacion.Valor_Inflacion = Inflaciones[x];
@@ -1154,11 +1169,42 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
                     System.Diagnostics.Debug.WriteLine("Inflaciones[x]->" + inflacion.Valor_Inflacion);
                     db.Inflacion.Add(inflacion);
                 }
+
             }
+            db.SaveChanges();
+            if (ban == false)
+            {
+                agregar_avance(id_proyecto);
+
+            }
+
             retur = "OK";
         }
-        db.SaveChanges();
+
+
+        
         retur = "OK";
         return retur;
+    }
+
+    public static string agregar_avance(string id_proyecto)
+    {
+        try
+        {
+            var db = new Entidades();
+         
+            var projAvance = db.Proyecto.Where(Proyect => Proyect.ID_Proyecto == id_proyecto).Single();
+            //modificamos el campo Activo
+            projAvance.Avance = projAvance.Avance + 1;
+            db.SaveChanges();
+
+            return "succes";
+
+        }
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+            return "fail";
+        }
     }
 }

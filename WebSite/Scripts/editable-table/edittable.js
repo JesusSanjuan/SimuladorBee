@@ -171,7 +171,8 @@
                                 break;
                         }
                         var value = parseFloat((parseFloat(row[1])).toFixed(15));
-                        option = "<option data-tipo='" + tipo + "' data-id=" + row[0] + " data-periodo='" + row[3] + "' value=" + value + ">" + value + "</option>";
+                        var valuM = value.toFixed(2);
+                        option = "<option data-tipo='" + tipo + "' data-id=" + row[0] + " data-periodo='" + row[3] + "' value=" + value + ">" + valuM + "</option>";
                         options.push(option);
                     }
                     $('#select_inflacion').html(options);

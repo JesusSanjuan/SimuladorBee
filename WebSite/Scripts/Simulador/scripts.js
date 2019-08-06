@@ -437,8 +437,11 @@
                     closeMethod: false,
                     closeDuration: false,
                     closeEasing: false,
-                    tapToDismiss: false
-                });                
+                    tapToDismiss: false,
+                    onHidden: h()
+
+                });    
+                
                 id_proyecto = "false";
             }
 
@@ -456,6 +459,10 @@
         $(document).on('click', '.toast2', function () {
             location.href = "Index";
         });
+    }
+
+    function h() {
+        //alert("pruena");
     }
 
     var completeC = false;

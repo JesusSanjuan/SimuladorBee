@@ -120,11 +120,20 @@
                     $('#imgmodal').html('<img src="../multimedia/correcto.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>');
                     $('#txtmodatitle').html("<strong style='vertical - align: middle;'> Borrado exitoso</strong>");
                     $('#texmodal').html("<strong style='vertical - align: middle;'> El proyecto se borro exitosamente (Aun no realiza)</strong>");
+                   /* $('#cerrar').click(function () {
+                        alert("d");
+                    });
+                    $("#myModal").on('hide.bs.modal', function () {
+                        alert("");
+                    });*/
+
                 } else {
                     $('#imgmodal').html('<img src="../multimedia/alerta.gif" class="img-fluid" width="100" height="100" alt="Responsive image"/>');
                     $('#txtmodatitle').html("<strong style='vertical - align: middle;'>Error al borrar </strong>");
                     $('#texmodal').html("<strong style='vertical - align: middle;'> El proyecto no se pudo borrar, intente nuevamente </strong>");
-                 }
+
+
+                }
             },
             error: function (err) {
                 console.log(err);

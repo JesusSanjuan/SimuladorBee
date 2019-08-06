@@ -1,10 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Simulador/MasterPage.master" AutoEventWireup="true" CodeFile="tasainflacion.aspx.cs" Inherits="Simulador_tasainflacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-     <link href="../Content/bootstrap-select.css" rel="stylesheet" />
-    
- 
-    
+     <link href="../Content/bootstrap-select.css" rel="stylesheet" />  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
     <div >
@@ -23,8 +20,7 @@
                       <div class="card-header">
                             <h1><i class="fas fa-calculator"></i> Calculadora de inflacion</h1>
                            <h6> La calculadora de inflacion le permite conocer cual ha sido la inflacion en el periodo que usted defina. </h6>
-                        A continuacion elija la calculadora que desea usar:
-         
+                        A continuacion elija la calculadora que desea usar:         
                       </div>
                 </div>
                        <ul class="nav nav-tabs">
@@ -135,7 +131,7 @@
                                                                                     <label for="validationCustom01">Proyecto</label>
                                                                                     <div class="input-group">
                                                                                         <select  id="proyectosINEGI" class="selectpicker show-tick form-control"  runat="server" ClientIDMode="Static"  required="required" multiple>
-                                                                                        <option value="">Seleccione</option>
+                                                                                        <option value="" selected="">Seleccione</option>
                                                                                         </select>                                             
                                                                                         <div class="input-group-append ">
                                                                                                         <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover"  data-trigger="hover" title="¿Necesitas ayuda?" data-content="Selecciona el proyecto donde desea ingresar la inflacion calculada." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
@@ -180,16 +176,7 @@
                                                                         </div>   
                                                                         <div class="col-md-4 mb-2">
                                                                         </div>   
-                                                                    </div> 
-                                                                     <div class="row">
-                                                                         <div class="alert alert-success" role="alert" id="alertSucces">
-                                                                            <strong>Exitoso!</strong> Los datos fueron guardados correctamente.
-                                                                         </div>
-                                                                         <div class="alert alert-danger" role="alert" id="alertSDanger">
-                                                                            <strong>Estructura incorrecta!</strong> Escriba correctamente el periodo.
-                                                                         </div>
-                                                                     </div>
-                                                                
+                                                                    </div>                                                                 
                                                                 <div class="embed-responsive embed-responsive-21by9 preborder">
                                                                     <iframe width="560" height="315"style="padding-top:15px;padding-bottom:15px" src="https://www.inegi.org.mx/app/indicesdeprecios/CalculadoraInflacion.aspx" frameborder="0" allowfullscreen></iframe>
                                                                 </div>
@@ -400,18 +387,27 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Guardar inflación</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-save"></i> Guardar inflación</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Cancelar">
                             <span aria-hidden="true">×</span>
                         </button>
                 </div>
                 <div class="modal-body">
-                    <h5>Seleccione los proyectos que utilizaran las inflaciones</h5>
+                    <h5>Seleccione los proyectos a los cuales se le aplicara la inflacion</h5>
                     <div class="row">
-                        <div class="col">
-                            <select class="selectpicker" id="proyectos"  title="Selecciona los proyectos" multiple>                              
-                            </select>
+                        <div class="col-3" id="imgmodal">
+                            <img src="../multimedia/bee.png" class="img-fluid" width="100" height="100" alt="Responsive image" />
                         </div>
+                        <div class="col-9" id="texmodal">
+                             <div class="input-group" style="cursor:default">
+                                <div class="input-group-append">
+                                        <select class="selectpicker" id="proyectos"  data-width="100%"  title="Selecciona los proyectos" multiple>                              
+                                        </select>
+                                </div>
+                                <div id="ProyectoCargaVal" class="invalid-tooltip">
+                                </div>
+                            </div>
+                        </div>  
                     </div>
 
                 </div>
@@ -428,21 +424,6 @@
     <!-- plugin selectpicker-->
         <script src="../Scripts/bootstrap-select.min.js"></script>
     <!-- plugin selectpicker-->
-    <script src="../Scripts/Simulador/tasainflacion.js"></script>
-     <!-- Deslizamiento suave
-    <script src="../Scripts/smoothscroll/jquery.smoothscroll.js"></script>
-    No funciona como deseo, borrar la libreria si no se usa
-    <script>
-        $(function () {
-            $('a[href*="#"]').smoothscroll({
-                duration: 1000,
-                easing: 'swing',
-                offset: 0,
-                hash: true,
-                focus: true
-            });
-        });
-</script>-->
-
+    <script src="../Scripts/Simulador/tasainflacion.js"></script>  
 </asp:Content>
 

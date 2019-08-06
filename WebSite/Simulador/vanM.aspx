@@ -59,19 +59,19 @@
             </div>  
             <div class="col-md-4 mb-2">
                 <label for="validationCustom03">Valor de Salvamento</label>
-                <div class="input-group" style="cursor:default">
+                  <div class="input-group" style="cursor:default">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend2">$</span>
                                     <span class="input-group-text">0.00</span>
                             </div>
                                 <input type="text"   class="form-control number3" id="VdS" placeholder="Ingrese el valor de salvamento" autocomplete="off" style="cursor:pointer" required="required">
-                            <div class="input-group-append"  >                                                             
+                            <div class="input-group-append">                                                             
                                     <span class="input-group-text btn btn-lg" role="button" tabindex="0" style="float:!important; cursor:pointer" data-toggle="popover" data-trigger="hover" title="¿Necesitas ayuda?" data-content="El valor de rescate o salvamento se calcula restando la depreciación acumulada hasta ese periodo al valor de adquisición." ><i class="fa fa-question-circle" style="color:#007bff;"></i></span>                                                            
                             </div> 
                             <div id="VdSval"class="invalid-tooltip">
                                 Por favor ingrese el valor de salvamento
                             </div>
-                        </div>
+                </div>
             </div>
         </div>
         <div class="form-row">     

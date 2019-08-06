@@ -1093,13 +1093,12 @@ public partial class Simulador_tasainflacion : System.Web.UI.Page
         var httpContext = HttpContext.Current;
         /***Get the user id**/
         string id_user = httpContext.User.Identity.GetUserId();
-        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user);//consulta los proyectos del usuario
+        var consulta = db.Proyecto.Where(Proyect => Proyect.ID_Usuario == id_user && Proyect.Activo == true);//consulta los proyectos del usuario
 
         List<string> item = new List<string>();
         string option;
-        // option = "<option value=''>Seleccione</option>";
-        option = "";
-        item.Add(option);
+        //option = "<option value='0'>Seleccione</option>";
+        //item.Add(option);
         foreach (Proyecto Proyect in consulta)
         {            
             option = "<option value='" + Proyect.ID_Proyecto + "'>" + Proyect.Nombre_Proyecto + "</option>";

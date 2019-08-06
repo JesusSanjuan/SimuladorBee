@@ -305,8 +305,6 @@ $(document).ready(function () {
 
 /*Ejecucion de CALCULADORA INEGI/
     /***************************/
-    $('#alertSucces').hide();
-    $('#alertSDanger').hide();
     inicializarProyectos();
    /*Carga de proyectos en select de INEGI*/ 
     function inicializarProyectos() {       
@@ -353,10 +351,27 @@ $(document).ready(function () {
         $('#anio.selectpicker').selectpicker('refresh');
 
     }
+
+
     /*Carga de proyectos en select de INEGI*/
 
     $('#Guardarinflacion').click(function () {
         $('#myModal').modal({ show: true });
+    });
+
+    $("#proyectos.selectpicker").change(function () { 
+        var proyectos = $('#proyectos.selectpicker').val();
+        if (proyectos.length > 0) {
+            $("#proyectos").removeClass("is-invalid");
+            $("#proyectos").addClass("is-valid");
+            $('#ProyectoCargaVal').hide();
+        } else {
+            $("#ProyectoCargaVal").addClass("invalid-feedback");
+            $("#proyectos").removeClass("is-valid");
+            $("#proyectos").addClass("is-invalid");
+            $('#ProyectoCargaVal').text('Por seleccione al menos un proyecto');
+            $('#ProyectoCargaVal').show();
+        }
     });
 
     $('#saveI').click(function () {
@@ -367,14 +382,14 @@ $(document).ready(function () {
 
 
         if (inflacion != "" && inMensual != "" && proyectos.length > 0) {//inflacion != "" && inMensual != ""
+            
             var array_inflacion = [];
             array_inflacion[0] = inflacion;
             array_inflacion[1] = inMensual;
 
             var periodo = $("#P1").find("h6").find("strong").html();
 
-            
-           //GUardamos los datos en la tabla de indices
+            //GUardamos los datos en la tabla de indices
             $.ajax({
                 type: "POST",
                 url: "tasainflacion.aspx/guardar_inflacion",
@@ -399,6 +414,13 @@ $(document).ready(function () {
             }).fail(function (data) {
                 console.log("Error: " + data);
             });
+        }
+        else {
+            $("#ProyectoCargaVal").addClass("invalid-feedback");
+            $("#proyectos").removeClass("is-valid");
+            $("#proyectos").addClass("is-invalid");
+            $('#ProyectoCargaVal').text('Por seleccione al menos un proyecto');
+            $('#ProyectoCargaVal').show();
         }
     });
 
@@ -487,7 +509,6 @@ $(document).ready(function () {
             $('#anio2.selectpicker').selectpicker('refresh');
             $('#anio2').prop("disabled", false);
             $('#anio2').selectpicker('refresh');
-
             $('#mes2').selectpicker('val', '');
             mesval = true;
         }
@@ -572,20 +593,21 @@ $(document).ready(function () {
             mes2val = true;
         }
     });
-
    $('#proyectosINEGI').change(function (){
-       var proyecto = $("#proyectosINEGI").val();
-       if (proyecto === '') {
-           $("#proyectosINEGIval").addClass("invalid-feedback");
+       var proyecto = $("#proyectosINEGI").val();        
+       if (proyecto == '') {
+           $("#proyectosINEGIval").addClass("invalid-feedback");           
            $("#proyectosINEGI").removeClass("is-valid");
            $("#proyectosINEGI").addClass("is-invalid");
            $('#proyectosINEGIval').text('Por favor seleccione el proyecto');
            $('#proyectosINEGIval').show();
+           $('#proyectosINEGI').selectpicker('refresh');
            proyectoval = false;
        }
-       else {
-           $("#proyectosINEGI").addClass("is-invalid");
-           $("#proyectosINEGI").removeClass("is-valid");          
+       else {          
+           $("#proyectosINEGI").removeClass("is-invalid");
+           $("#proyectosINEGI").addClass("is-valid");     
+           $('#proyectosINEGI').selectpicker('refresh');
            $('#proyectosINEGIval').hide();
            proyectoval = true;
        }
@@ -772,7 +794,7 @@ $(document).ready(function () {
             mes2val2 = true;
         }
 
-        if (proyectos === '') {
+        if (proyectos.length === 0) {
             $("#proyectosINEGIval").addClass("invalid-feedback");
             $("#proyectosINEGI").removeClass("is-valid");
             $("#proyectosINEGI").addClass("is-invalid");
@@ -834,12 +856,49 @@ $(document).ready(function () {
                         var resul = result.d;
                         //console.log("-->" + resul);
                         if (resul == "OK") {
-                            $('#alertSucces').show();
-                            setTimeout(
-                                function () {
-                                    $("#alertSucces").hide();
-                                }, 3000);
-                            location.reload();
+                            toastr.success('Se han guardado correctamente la inflacion', 'Exitoso', {
+                                closeButton: false,
+                                debug: false,
+                                newestOnTop: true,
+                                progressBar: true,
+                                positionClass: "toast-bottom-center",
+                                preventDuplicates: false,
+                                onclick: false,
+                                showDuration: 1500,
+                                hideDuration: 1500,
+                                timeOut: "15000",
+                                extendedTimeOut: "10000",
+                                showEasing: "swing",
+                                hideEasing: "linear",
+                                showMethod: "slideDown",
+                                hideMethod: "slideUp",
+                                closeMethod: false,
+                                closeDuration: false,
+                                closeEasing: false,
+                                tapToDismiss: false
+                            });
+                        } else {
+                            toastr.error('No es posible guardar la inflacion, intente mas tarde', 'Error', {
+                                closeButton: false,
+                                debug: false,
+                                newestOnTop: true,
+                                progressBar: true,
+                                positionClass: "toast-bottom-center",
+                                preventDuplicates: false,
+                                onclick: false,
+                                showDuration: 1500,
+                                hideDuration: 1500,
+                                timeOut: "15000",
+                                extendedTimeOut: "10000",
+                                showEasing: "swing",
+                                hideEasing: "linear",
+                                showMethod: "slideDown",
+                                hideMethod: "slideUp",
+                                closeMethod: false,
+                                closeDuration: false,
+                                closeEasing: false,
+                                tapToDismiss: false
+                            });
                         }
                     },
                     error: function (result) {

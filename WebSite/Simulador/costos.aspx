@@ -103,7 +103,7 @@
                             <div class="fondoresultados card-body text-info" style="border-bottom: 1px solid #dee2e6;">
                               <i><b>Los costos de ventas:</b></i>  Son determinados por el departamento de ventas, también llamado de mercadotecnia.
                             </div>
-                                <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
+                                <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px; width:100%;">
                                     <table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" id="costTable2"  >
                                         <thead>
                                             <tr>

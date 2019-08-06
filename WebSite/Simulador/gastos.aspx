@@ -33,7 +33,6 @@
             </div>
             <ul class="nav nav-tabs" id="myTab_g" role="tablist">
                 <li class="nav-item">
-                    <!--<a class="nav-link active" id="home-tab" data-toggle="tab" href="#Costos1" role="tab" aria-controls="home" aria-selected="true">Home</a>-->
                     <a href="#Gastos1" id="NGastos1" class="nav-link" role="tab" data-toggle="tab"> Gastos de Producción</a>                                   
                 </li>
                 <li class="nav-item">
@@ -47,17 +46,12 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent3">
-                <div class="tab-pane fade show active" id="Gastos1" role="tabpanel" aria-labelledby="producción">
-                    <div class="container-fluid" style="padding-top:15px;padding-bottom:15px"> 
-                        <div class="preborder">    
-                            <div class="card-header">
-                                <h5><i class="fa fa-table"></i>  Gastos de Producción</h5>                          
-                                <p align="justify">
-                                    Son los gastos que ...
-                                </p>    
+                <div class="tab-pane fade show active" id="Gastos1" role="tabpanel" aria-labelledby="producción"> 
+                           <div class="fondoresultados card-body text-info" style="border-bottom: 1px solid #dee2e6;">
+                              <i><b>Gastos de Produccion:</b></i> Son los gastos que ...
                             </div>
-                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="gastTable" >
+                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px; width:100%;">
+                                <table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" id="gastTable" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
@@ -82,91 +76,91 @@
                                     </tfoot>
                                 </table>
                             </div>
-                        </div>
-                        <div class="form-row" style="margin-top: 20px;"> 
-                            <div class="col text-center">
-                                <asp:Button id="add_row" 	CssClass="btn btn-primary add_row "  Text="Agregar"  OnClientClick="return false;" runat="server"/>
-                            </div>                                
-                            <div class="col text-center">
-                                <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                        Siguiente <i class='fa fa-angle-double-right'></i>
-                                </asp:LinkButton>
-                                <a href="#" class="btn btn-success actualizar float-right" style="display:none">
-                                    Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
-                                </a>
-                                <input type="hidden" class="total_ant" />
-                            </div>                    
-                        </div>
-                   
-                </div>
-                </div>
-                <div class="tab-pane fade" id="Gastos2" role="tabpanel" aria-labelledby="Ventas">
-                    <div class="preborder">
-                        <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
-                            <div class="preborder">    
-                                <div class="card-header">
-                                    <h5><i class="fa fa-table"></i> Gastos de Ventas</h5>
-                                    <p align="justify">
-                                        Son determinados por el ...
-                                    </p>  
-                                </div>
-                                <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                    <table class="table table-striped table-bordered" id="gastTable2"  >
-                                        <thead>
-                                            <tr>
-                                                <th >Concepto</th>
-                                                <th >Tipo</th>
-                                                <th >Cantidad</th>
-                                                <th >$ Gasto Unitario</th>
-                                                <th >$ Gasto Total</th>
-                                                <th ></th>                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th><strong>TOTAL</strong></th>
-                                                <th class="na"></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th class="total"></th>
-                                                <th class="na"></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="form-row" style="margin-top: 20px;">
+                        <div class="form-row" style="margin-top: 10px; border-top: 1px solid #dee2e6;"> 
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
                                 <div class="col text-center">
-                                    <asp:Button id="Button1" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
+                                    <asp:Button id="add_row" 	CssClass="btn btn-primary btn-block add_row "  Text="Agregar Fila"  OnClientClick="return false;" runat="server"/>
                                 </div>
+                            </div>  
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">                                  
+                            </div>  
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                            </div> 
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
                                 <div class="col text-center">
-                                    <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                        Siguiente <i class='fa fa-angle-double-right'></i>
+                                    <asp:LinkButton runat="server" ID="guardar"  CssClass="btn btn-primary btn-block continuar float-right" OnClientClick="return false;">
+                                            Siguiente <i class='fa fa-angle-double-right'></i>
                                     </asp:LinkButton>
-                                    <a href="#" class="btn btn-success actualizar float-right" style="display:none">
+                                    <a href="#" class="btn btn-success actualizar btn-block float-right" style="display:none">
                                         Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
                                     </a>
                                     <input type="hidden" class="total_ant" />
-                                </div>
-                            <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
-                            </div>
-                    
+                                </div> 
+                            </div>            
                         </div>
-                    </div>
+                </div>
+                <div class="tab-pane fade" id="Gastos2" role="tabpanel" aria-labelledby="Ventas">
+                            <div class="fondoresultados card-body text-info" style="border-bottom: 1px solid #dee2e6;">
+                              <i><b>Gastos de Ventas:</b></i>  Son determinados por el ...
+                            </div>  
+                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px; width:100%;">
+                                <table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" id="gastTable2"  >
+                                    <thead>
+                                        <tr>
+                                            <th >Concepto</th>
+                                            <th >Tipo</th>
+                                            <th >Cantidad</th>
+                                            <th >$ Gasto Unitario</th>
+                                            <th >$ Gasto Total</th>
+                                            <th ></th>                
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th><strong>TOTAL</strong></th>
+                                            <th class="na"></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th class="total"></th>
+                                            <th class="na"></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="form-row" style="margin-top: 10px; border-top: 1px solid #dee2e6;"> 
+                                <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                    <div class="col text-center">
+                                        <asp:Button id="Button1" 	CssClass="btn btn-primary btn-block add_row "  Text="Agregar Fila"  OnClientClick="return false;" runat="server"/>
+                                    </div>
+                                </div>  
+                                <div class="col-md-3 mb-2" style="margin-top: 10px;">                                  
+                                </div>  
+                                <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                </div> 
+                                <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                    <div class="col text-center">
+                                        <asp:LinkButton runat="server" ID="LinkButton1"  CssClass="btn btn-primary btn-block continuar float-right" OnClientClick="return false;">
+                                                Siguiente <i class='fa fa-angle-double-right'></i>
+                                        </asp:LinkButton>
+                                        <a href="#" class="btn btn-success actualizar btn-block float-right" style="display:none">
+                                            Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
+                                        </a>
+                                        <input type="hidden" class="total_ant" />
+                                    </div> 
+                                </div>            
+                            </div>
                 </div>
                 <div class="tab-pane fade" id="Gastos3" role="tabpanel" aria-labelledby="Administración">
-                    <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">   
-                        <div class="preborder">    
                             <div class="card-header">
                                 <h5><i class="fa fa-table"></i> Gastos de Administración: </h5>
                                 <p align="justify">
                                     Son los gastos que ...
                                 </p> 
                             </div>
-                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="gastTable3" >
+                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px; width:100%;">
+                                <table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" id="gastTable3" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
@@ -191,35 +185,36 @@
                                     </tfoot>
                                 </table>
                             </div>
-                        </div>
-                        <div class="form-row" style="margin-top: 20px;">
-                            <div class="col text-center">
-                                <asp:Button id="Button2" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
-                            </div>
-                            <div class="col text-center">
-                                <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                    Siguiente <i class='fa fa-angle-double-right'></i>
-                                </asp:LinkButton>
-                                <a href="#" class="btn btn-success actualizar float-right" style="display:none">
-                                    Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
-                                </a>
-                                <input type="hidden" class="total_ant" />
-                            </div>
-                            <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
-                        </div>                      
-                    </div>
+                        <div class="form-row" style="margin-top: 10px; border-top: 1px solid #dee2e6;"> 
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                <div class="col text-center">
+                                    <asp:Button id="Button2" 	CssClass="btn btn-primary btn-block add_row "  Text="Agregar Fila"  OnClientClick="return false;" runat="server"/>
+                                </div>
+                            </div>  
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">                                  
+                            </div>  
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                            </div> 
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                <div class="col text-center">
+                                    <asp:LinkButton runat="server" ID="LinkButton2"  CssClass="btn btn-primary btn-block continuar float-right" OnClientClick="return false;">
+                                            Siguiente <i class='fa fa-angle-double-right'></i>
+                                    </asp:LinkButton>
+                                    <a href="#" class="btn btn-success actualizar btn-block float-right" style="display:none">
+                                        Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
+                                    </a>
+                                    <input type="hidden" class="total_ant" />
+                                </div> 
+                            </div>            
+                        </div>    
                 </div>
-                <div class="tab-pane fade" id="Gastos4" role="tabpanel" aria-labelledby="financiamiento: ">
-                    <div class="container-fluid" style="padding-top:15px;padding-bottom:15px">       
-                        <div class="preborder">    
-                            <div class="card-header">
-                                <h5><i class="fa fa-table"></i> Gastos de Financiamiento </h5>
-                                <p align="justify">
-                                    Son los ...
-                                </p> 
+                <div class="tab-pane fade" id="Gastos4" role="tabpanel" aria-labelledby="financiamiento: "> 
+                            <div class="fondoresultados card-body text-info" style="border-bottom: 1px solid #dee2e6;">
+                              <i><b>Gastos de Financiamiento:</b></i> 
+                                    Son los ....
                             </div>
-                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
-                                <table class="table table-striped table-bordered" id="gastTable4" >
+                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px; width:100%;">
+                                <table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;" id="gastTable4" >
                                     <thead>
                                         <tr>
                                             <th >Concepto</th>
@@ -244,26 +239,30 @@
                                     </tfoot>
                                 </table>
                             </div>
-                        </div>
-                        <div class="form-row" style="margin-top: 20px;">
-                            <div class="col text-center">
-                                    <asp:Button id="Button3" 	CssClass="btn btn-primary add_row"  Text="Agregar"  OnClientClick="return false;" runat="server"/>
-                            </div>
-                            <div class="col text-center">
-                                <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary continuar float-right" OnClientClick="return false;"><!--onclick="setDataTable"-->
-                                    Siguiente <i class='fa fa-angle-double-right'></i>
-                                </asp:LinkButton>
-                                <a href="#" class="btn btn-success actualizar float-right" style="display:none">
-                                    Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
-                                </a>
-                                <input type="hidden" class="total_ant" />
-                            </div>
-                            <!-- InvalidOperationException: Sólo se puede agregar una instancia de ScriptManager a la página-->
-                        </div>                     
-                    </div>
+                        <div class="form-row" style="margin-top: 10px; border-top: 1px solid #dee2e6;"> 
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                <div class="col text-center">
+                                    <asp:Button id="Button3" 	CssClass="btn btn-primary btn-block add_row "  Text="Agregar Fila"  OnClientClick="return false;" runat="server"/>
+                                </div>
+                            </div>  
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">                                  
+                            </div>  
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                            </div> 
+                            <div class="col-md-3 mb-2" style="margin-top: 10px;">
+                                <div class="col text-center">
+                                    <asp:LinkButton runat="server" ID="LinkButton3"  CssClass="btn btn-primary btn-block continuar float-right" OnClientClick="return false;">
+                                            Siguiente <i class='fa fa-angle-double-right'></i>
+                                    </asp:LinkButton>
+                                    <a href="#" class="btn btn-success actualizar btn-block float-right" style="display:none">
+                                        Actualizar <i class='fa fa-refresh' aria-hidden="true"></i>
+                                    </a>
+                                    <input type="hidden" class="total_ant" />
+                                </div> 
+                            </div>            
+                        </div>          
                 </div>
             </div>
-
         </div>
     </div>
 

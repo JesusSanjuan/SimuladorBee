@@ -1,5 +1,5 @@
-﻿var nameNick1 = false, name1 = false, AppPatern1 = false, AppMater1 = false, Instituc1 = false, countr1 = false, password_rep1 = false, pho1 = false, emai1 = false;
-var nameNick2 = false, name2 = false, AppPatern2 = false, AppMater2 = false, Instituc2 = false, countr2 = false, password_rep2 = false, pho2 = false, emai2 = false;
+﻿var nameNick1 = false, name1 = false, AppPatern1 = false, AppMater1 = false, Instituc1 = false, countr1 = false, password_rep1 = false, pho1 = false, emai1 = false; term1 = false;
+var nameNick2 = false, name2 = false, AppPatern2 = false, AppMater2 = false, Instituc2 = false, countr2 = false, password_rep2 = false, pho2 = false, emai2 = false; term2 = false;
 
 /*Validacion de el nickname*/
 const number = document.querySelector('.validacion');
@@ -420,6 +420,31 @@ $('#email').keyup(function (event) {
 });
 /*Validacion de correo*/
 
+/*Validacion de terminos y condiciones*/
+$('#cb_TeryCond').click(function (event) {
+    if ($("#cb_TeryCond").is(':checked')) {
+        $("#cb_TeryCond").removeClass("is-invalidado");
+        $("#cb_TeryCond").addClass("is-validado");
+        $('#cb_TeryCondVal').hide();
+        term1 = true;
+    } else {
+        $("#cb_TeryCondVal").addClass("invalid-tooltip");
+        $("#cb_TeryCond").removeClass("is-validado");
+        $("#cb_TeryCond").addClass("is-invalidado");
+        $('#cb_TeryCondVal').text('Tiene que aceptar nuestros terminos y condiciones');
+        $('#cb_TeryCondVal').show();
+        term1 = false;
+    }
+});
+/*Validacion de terminos y condiciones*/
+
+$('#Tex').click(function (event) {   
+    $("#cb_TeryCond").attr('checked', true); 
+    if ($("#cb_TeryCond").is(':checked')) {
+        $("#cb_TeryCond").attr('checked', false); 
+    }
+});
+
 /*Accion de boton*/
 $("#registro").click(function () {
     var nameNick = $("#nick_name").val();
@@ -553,7 +578,21 @@ $("#registro").click(function () {
         emai2 = true;
     }
 
-    if (nameNick1 === true && name1 === true && AppPatern1 === true && AppMater1 === true && Instituc1 === true && countr1 === true && password_rep1 === true && pho1 === true && emai1 === true && nameNick2 === true && name2 === true && AppPatern2 === true && AppMater2 === true && Instituc2 === true && countr2 === true && password_rep2 === true && pho2 === true && emai2 === true) 
+    if ($("#cb_TeryCond").is(':checked')) {
+        $("#cb_TeryCond").removeClass("is-invalidado");
+        $("#cb_TeryCond").addClass("is-validado");
+        $('#cb_TeryCondVal').hide();
+        term2 = true;
+    } else {
+        $("#cb_TeryCondVal").addClass("invalid-tooltip");
+        $("#cb_TeryCond").removeClass("is-validado");
+        $("#cb_TeryCond").addClass("is-invalidado");
+        $('#cb_TeryCondVal').text('Tiene que aceptar nuestros terminos y condiciones');
+        $('#cb_TeryCondVal').show();
+        term2 = false;
+    }
+
+    if (nameNick1 === true && name1 === true && AppPatern1 === true && AppMater1 === true && Instituc1 === true && countr1 === true && password_rep1 === true && pho1 === true && emai1 === true && term1 === true && nameNick2 === true && name2 === true && AppPatern2 === true && AppMater2 === true && Instituc2 === true && countr2 === true && password_rep2 === true && pho2 === true && emai2 === true  && term2 === true) 
     {
         $.ajax({
             type: "POST",

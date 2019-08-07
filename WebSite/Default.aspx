@@ -25,7 +25,7 @@
                                     <div class="col-md-4">
                                         <h2 align="left">¿Por qué es vital una herramienta de evaluación financiera?</h2>
                                         <p align="justify">
-                                            Al contar con una herramienta se nos permite numéricamente y con precisión, determinar qué tan rentable es un proyecto en relación con un parámetro o de referencia ya conocida.
+                                            Al contar con una herramienta de evaluacion financiera se nos permite obtener numéricamente y con precisión, qué tan rentable es un proyecto en relación con un parámetro o referencia ya conocida.
                                         </p>
                                         <p>
                                             <a class="btn btn-default" data-anijs=" if: mouseover, do: rubberBand animated" href="http://localhost:52712/About" target="_blank">Aprende mas »</a>

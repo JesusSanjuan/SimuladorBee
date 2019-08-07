@@ -58,18 +58,14 @@
                                 </div>   
                             </div> 
                             <div class="form-row">  
-                                <div class="col-md-4 mb-2">
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <div class="checkbox">
-                                                <input type="checkbox" id="Remember" name="RememberMe" value="1"> ¿Recordar cuenta?<br>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-1.5">
+                                    <label class="switch switch-label switch-dark">                                           
+                                            <input type="checkbox"  id="Remember" name="RememberMe"  class="switch-input" value="1">
+                                            <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;" ></span>
+                                    </label>                                    
                                 </div>  
-                                <div class="col-md-4 mb-2">
-                                </div>   
-                                <div class="col-md-4 mb-2">
+                                <div class="col">
+                                             ¿Recordar cuenta?   
                                 </div>   
                             </div>  
                             <div class="form-row">  

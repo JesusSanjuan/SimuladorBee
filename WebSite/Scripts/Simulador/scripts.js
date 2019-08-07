@@ -418,30 +418,39 @@
 
             }
             else {
-                toastr.warning('Le recomendamos cargar un proyecto para guardar su informacion (Dando click en este mensaje sera redirigido)', 'Cargue su proyecto', {
-                    closeButton: false,
-                    debug: false,
-                    newestOnTop: true,
-                    progressBar: true,
-                    positionClass: "toast-bottom-full-width",
-                    preventDuplicates: false,
-                    onclick: saludo(),
-                    showDuration: 1500,
-                    hideDuration: 1500,
-                    timeOut: "15000",
-                    extendedTimeOut: "10000",
-                    showEasing: "swing",
-                    hideEasing: "linear",
-                    showMethod: "slideDown",
-                    hideMethod: "slideUp",
-                    closeMethod: false,
-                    closeDuration: false,
-                    closeEasing: false,
-                    tapToDismiss: false,
-                    onHidden: h()
+                var URLdomain = window.location;
+                var url = String(URLdomain);
 
-                });    
-                
+                if (url.indexOf("Index") < 0) {
+                    toastr.warning('<div class="form-row">Le recomendamos cargar un proyecto para guardar su informacion<div class="pulse animated infinite"> &nbsp;&nbsp;Redirigiendo</div></div>', 'Cargue su proyecto', {
+                        closeButton: false,
+                        debug: false,
+                        newestOnTop: true,
+                        progressBar: true,
+                        positionClass: "toast-bottom-full-width",
+                        preventDuplicates: false,
+                        onclick: saludo(),
+                        showDuration: 1500,
+                        hideDuration: 1500,
+                        timeOut: 15000,
+                        fadeOut: 5000,
+                        onHidden: function () {
+                            
+                            window.location.href = "Index";
+                        },
+                        extendedTimeOut: "10000",
+                        showEasing: "swing",
+                        hideEasing: "linear",
+                        showMethod: "slideDown",
+                        hideMethod: "slideUp",
+                        closeMethod: false,
+                        closeDuration: false,
+                        closeEasing: false,
+                        tapToDismiss: false
+
+
+                    });
+                }
                 id_proyecto = "false";
             }
 
@@ -457,13 +466,9 @@
     });
     function saludo() {
         $(document).on('click', '.toast2', function () {
-            location.href = "Index";
+           location.href = "Index";
         });
-    }
-
-    function h() {
-        //alert("pruena");
-    }
+    }    
 
     var completeC = false;
     $("body").on('change', "#cnperiodo.selectpicker", function () {

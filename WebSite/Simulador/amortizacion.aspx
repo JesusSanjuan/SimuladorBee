@@ -19,7 +19,7 @@
                     <h1><i class="fa fa-money"></i>Amortización</h1>
                     <div class="row">
                         <div class="col col-10">
-                           La amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
+                            amortización, hacen referencia al desgaste o agotamiento que sufre un activo en la medida que con su utilización contribuye a generar ingresos a la empresa.  
                         </div>
                         <div class="col col-2">
                             <a tabindex="0" class="btn btn-lg" role="button" style="float: right !important" data-toggle="popover"  data-trigger="focus" title="¿Necesitas ayuda?" data-content="Teclea el costo de cada equipo y automaticamente genereza su depreciación o amortización."><i class="fa fa-question-circle"></i></a>

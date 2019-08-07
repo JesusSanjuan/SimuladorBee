@@ -445,11 +445,29 @@ $("body").on("change", "#myTabContent table td", function (evt, newValue) {
     var valor_mod = FormatoNumero(newValue);
     if (valor_mod.length <= 2) {
         table.cell(rowIdx2, column).data("0.00").draw();
-        $('#Texto_alert').html("<strong>Atencion!!!</strong> Es necesario ingresar <strong>solo digitos</strong>, longitud minima de <strong>3</strong>.");
-        $("#Alert").css("display", "block");
+        toastr.warning('<div class="form-row">Es necesario ingresar&nbsp;<strong>solo digitos</strong>,<div class="pulse animated infinite"> &nbsp;&nbsp;longitud minima de <strong>3</strong>.</div></div>', '<strong>Atencion!!!</strong>', {
+            closeButton: false,
+            debug: false,
+            newestOnTop: true,
+            progressBar: true,
+            positionClass: "toast-bottom-center",
+            preventDuplicates: false,
+            showDuration: 1500,
+            hideDuration: 1500,
+            timeOut: 5000,
+            fadeOut: 3000,
+            extendedTimeOut: 5000,
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "slideDown",
+            hideMethod: "slideUp",
+            closeMethod: false,
+            closeDuration: false,
+            closeEasing: false,
+            tapToDismiss: false
+        });
     } else {
         table.cell(rowIdx2, column).data(valor_mod).draw();
-        $("#Alert").css("display", "none");
     }  
 
     var column1 = table.column(1); 

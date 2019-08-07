@@ -447,8 +447,6 @@
                         closeDuration: false,
                         closeEasing: false,
                         tapToDismiss: false
-
-
                     });
                 }
                 id_proyecto = "false";

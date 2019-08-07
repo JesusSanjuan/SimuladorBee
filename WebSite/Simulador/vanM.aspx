@@ -128,13 +128,6 @@
                           <h4><i class="fas fa-pencil-alt"></i> Ingreso de costos, ingresos y flujos netos de efectivo</h4>
                         </div>              
                         <div class="tab-content" id="myTabContent">
-                            <div class="alert alert-danger alert-dismissible fade show" id="Alert" style="display:none;" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                <div id="Texto_alert">                                
-                                </div>
-                            </div>
                                 <div class="table-responsive" style="margin-top: 15px; padding-bottom:0px;">
                                     <Table class="table table-striped" style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"   id="vanManual"   >
                                             <thead>

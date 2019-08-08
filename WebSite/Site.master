@@ -44,7 +44,7 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg" data-anijs="if: load, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim">
+        <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg"> <!-- data-anijs="if: load, on:window, do: bounceInRight animated, before: scrollReveal, after: removeAnim"-->
             <div class="container">               
                 <a class="navbar-brand" runat="server" href="~/">Evaluación de proyectos</a>
                 <button type="button" class="navbar-toggler " data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></button> 
@@ -83,7 +83,7 @@
     </asp:contentplaceholder> 
     <div class="content-wrapper" style="padding-bottom: 45px;">  
             <div class="container body-content">
-                <div class="row">
+                  <div class="row">
                          <div class="col-12">
                                 <div id="loader-wrapper"> 
                                     <div id="loader"></div>        
@@ -95,11 +95,11 @@
                                         </asp:contentplaceholder>       
                                  </div>
                           </div>
-                    </div>
+                   </div>
              </div>        
        </div>
         <!--Footer-->
-        <footer class="footer" data-anijs="if:load, on:window, do: fadeInRightBig animated, before: scrollReveal, after: removeAnim" >            
+        <footer class="footer">       <!-- data-anijs="if:load, on:window, do: fadeInRightBig animated, before: scrollReveal, after: removeAnim" -->      
 			<div class="footer_content">
 				<div class="container">
 					<div class="row">
@@ -227,12 +227,32 @@
         <!-- Ejecuta y oculta preloader--> 
             <script>
                 $(document).ready(function () {
-                    $('body').addClass('loaded');
-                    $('h1').css('color', '#222222');
+                    window.onload = function () {                       
+                        $('body').addClass('loaded');
+                       /* var tmrReady = setInterval(isPageFullyLoaded, 100);
+                        function isPageFullyLoaded() {
+                            if (document.readyState == "loaded") {
+                               // alert(document.readyState);
+                               // doWhatYouWant();
+                                clearInterval(tmrReady);
+                            }
+                            if (document.readyState == "interactive") {
+                               // alert(document.readyState);                                
+                                //doWhatYouWant();
+                                clearInterval(tmrReady);
+                            }
+                            if (document.readyState == "complete") {
+                                //alert(document.readyState);
+                                $('body').addClass('loaded');
+                                //doWhatYouWant();
+                                clearInterval(tmrReady);
+                            }*/
+                       // }
+                    }                    
                 });
-                </script>
-         <!-- Ejecuta y oculta preloader--> 
-         <asp:ContentPlaceHolder ID="Foder" runat="server">
-         </asp:ContentPlaceHolder>
+             </script>
+        <!-- Ejecuta y oculta preloader--> 
+        <asp:ContentPlaceHolder ID="Foder" runat="server">
+        </asp:ContentPlaceHolder>
 </body>
 </html>

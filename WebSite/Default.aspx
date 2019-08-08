@@ -4,7 +4,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">       
        
-                <div style="margin-top: 20px; " data-anijs="if: load, on:window, do: fadeInLeft animated, before: scrollReveal, after: removeAnim">
+                <div style="margin-top: 20px;"> <!--data-anijs="if: load, on:window, do: fadeInLeft animated, before: scrollReveal, after: removeAnim"-->
                     <div class="jumbotron">
                         <h1>Simulador de Negocios</h1>
                         <p class="lead">Objetivo: Reproducir el comportamiento de una realidad que ayuda a conocer la rentabilidad económica de un proyecto.</p>

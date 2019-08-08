@@ -360,8 +360,8 @@ $('#phone').keyup(function (event) {
 /*Validacion de telefono*/
 
 /*Validacion de correo*/
-//var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/; //para todo tipo de correo
-var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*(ugto.mx)/;
+var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/; //para todo tipo de correo
+//var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*(ugto.mx)/;
 $('#email').keyup(function (event) {
     var emai = $("#email").val();
     if (emai.length === 0) {
@@ -412,7 +412,7 @@ $('#email').keyup(function (event) {
             $("#emailVal").addClass("invalid-tooltip");
             $("#email").removeClass("is-validado");
             $("#email").addClass("is-invalidado");
-            $('#emailVal').text('Correo Incorrecto, estructura valida: xxxx.@ugto.mx');
+            $('#emailVal').text('Correo Incorrecto, estructura valida: xxxx.@xxxx.xx');
             $('#emailVal').show();
             emai1 = false;
         }

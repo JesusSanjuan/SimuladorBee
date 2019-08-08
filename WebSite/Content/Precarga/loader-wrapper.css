@@ -178,7 +178,7 @@ h1 {
     -webkit-animation-name: animatebottom;
     -webkit-animation-duration: 3s;
     animation-name: animatebottom;
-    animation-duration: 3s
+    animation-duration: 8s
 }
 
 @-webkit-keyframes animatebottom {

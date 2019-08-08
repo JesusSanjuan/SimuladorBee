@@ -374,7 +374,7 @@
 									        </div>	
                                             <div class="row">
                                                 <div class="col-lg-12">
-										            <input type="text" id="email" class="checkout_input" autocomplete="off"  style="cursor:pointer" placeholder="Correo Electronico de la UG" required="required">
+										            <input type="text" id="email" class="checkout_input" autocomplete="off"  style="cursor:pointer" placeholder="Correo Electronico" required="required">
                                                     <div id="emailVal" class="invalid-tooltip">
                                                     </div>
                                                 </div>

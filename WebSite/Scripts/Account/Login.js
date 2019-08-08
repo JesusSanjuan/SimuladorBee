@@ -146,7 +146,7 @@ $("#login").click(function () {
                 if (valores[0] === "NO") {
                     $('#modalLogin').modal({ show: true });
                 } else { 
-                    alert("Exepcion de: "+valores[2]);
+                    //alert("Exepcion de: "+valores[2]); leer error de cuando no inicia sesion de varios usuarios
                     if (valores[1] === null) {
                         location.href = "../";
                     }

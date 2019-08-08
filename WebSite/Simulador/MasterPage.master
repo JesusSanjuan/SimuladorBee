@@ -373,7 +373,7 @@
             <!-- Custom scripts for all pages-->
                 <script src="../Scripts/PlatillaMaster/sb-admin.js"></script>
             <!-- pooper para efecto de ayuda -->
-                <script src="../Scripts/popper.js"></script>
+                <script type="module" src="../Scripts/popper.js"></script>
     <!-- ESENCIALES PARA LA PLANTILLA NO BORRAR-->  
             <!-- Efectos visuales--> 
                  <!-- Archivo principal de AniJS --> 
@@ -387,9 +387,11 @@
             <!-- Cuadros de texto-->
             <!-- Ejecuta y oculta preloader--> 
                 <script>
-                    $(document).ready(function() {	
-	                   $('body').addClass('loaded');
-                    });
+                   // $(document).ready(function () {	
+                       window.onload = function () {  
+                            $('body').addClass('loaded');
+                       }
+                   // });
                  </script>
             <!-- Ejecuta y oculta preloader--> 
                 <asp:ContentPlaceHolder ID="Foder" runat="server">

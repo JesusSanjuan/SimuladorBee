@@ -39,7 +39,7 @@
                                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                                 <span aria-hidden="true">&times;</span>
                                                                             </button>
-                                                                            Ingrese los datos obtenidos por la calculadora en los campos de la parte inferior y despues <strong>¡Copie los resultados de la calculadora!</strong>
+                                                                            Ingrese los datos obtenidos por la calculadora del INEGI en los campos de la parte inferior y despues de<strong> ¡click en Guardar Cambios!</strong>
                                                                         </div>
                                                                         <div class="form-row"> 
                                                                             <div class="col-md-12 mb-2 preborder" >

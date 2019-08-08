@@ -387,11 +387,11 @@
             <!-- Cuadros de texto-->
             <!-- Ejecuta y oculta preloader--> 
                 <script>
-                   // $(document).ready(function () {	
+                    $(document).ready(function () {	
                        window.onload = function () {  
                             $('body').addClass('loaded');
                        }
-                   // });
+                    });
                  </script>
             <!-- Ejecuta y oculta preloader--> 
                 <asp:ContentPlaceHolder ID="Foder" runat="server">

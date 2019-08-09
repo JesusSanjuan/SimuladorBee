@@ -148,9 +148,9 @@ $("#login").click(function () {
                 } else { 
                     //alert("Exepcion de: "+valores[2]); leer error de cuando no inicia sesion de varios usuarios
                     if (valores[1] === null) {
+                        //sessionStorage.setItem("nombre de usuario", "John");
                         location.href = "../";
-                    }
-                    else {
+                    }else {
                         valores[1] = valores[1].replace(".aspx", "");
                         location.href = ".." + valores[1];
                     }

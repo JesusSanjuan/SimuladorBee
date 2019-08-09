@@ -37,10 +37,12 @@ public partial class Account_Login : System.Web.UI.Page
             if (user != null)
             {
                 IdentityHelper.SignIn(manager, user, Checked);
+                System.Web.HttpContext.Current.Session["ID_Login"] = user;
                 veredicto.Add("SI");
             }
             else
             {
+                System.Web.HttpContext.Current.Session["ID_Login"] = "null";
                 veredicto.Add("NO");
             }
             veredicto.Add(referencia);

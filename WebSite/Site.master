@@ -225,32 +225,7 @@
             <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
         <!-- Efectos visuales--> 
         <!-- Ejecuta y oculta preloader--> 
-            <script>
-                $(document).ready(function () {
-                    window.onload = function () {                       
-                        $('body').addClass('loaded');
-                       /* var tmrReady = setInterval(isPageFullyLoaded, 100);
-                        function isPageFullyLoaded() {
-                            if (document.readyState == "loaded") {
-                               // alert(document.readyState);
-                               // doWhatYouWant();
-                                clearInterval(tmrReady);
-                            }
-                            if (document.readyState == "interactive") {
-                               // alert(document.readyState);                                
-                                //doWhatYouWant();
-                                clearInterval(tmrReady);
-                            }
-                            if (document.readyState == "complete") {
-                                //alert(document.readyState);
-                                $('body').addClass('loaded');
-                                //doWhatYouWant();
-                                clearInterval(tmrReady);
-                            }*/
-                       // }
-                    }                    
-                });
-             </script>
+            <script src="Scripts/Account/site-master.js"></script>
         <!-- Ejecuta y oculta preloader--> 
         <asp:ContentPlaceHolder ID="Foder" runat="server">
         </asp:ContentPlaceHolder>

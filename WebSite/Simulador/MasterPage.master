@@ -387,10 +387,15 @@
             <!-- Cuadros de texto-->
             <!-- Ejecuta y oculta preloader--> 
                 <script>
-                    $(document).ready(function () {	
-                       window.onload = function () {  
-                            $('body').addClass('loaded');
-                       }
+                  /*  $(window).load(function () {//NO FUNCIONA CREO EN LA VERSION DE JQUERY ACTUAL
+                        // se ejecuta cuando la página completa está completamente cargada, incluidos todos los marcos, objetos e imágenes
+                        $('body').addClass('loaded');
+                    });*/
+
+                    $(document).ready(function () {
+                       // se ejecuta cuando se carga el documento HTML y DOM está listo
+                           $('body').addClass('loaded');
+                       //
                     });
                  </script>
             <!-- Ejecuta y oculta preloader--> 

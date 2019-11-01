@@ -65,7 +65,7 @@ $('#TMAR').keyup(function (event) {
     } else {
         var reg = /^(\d|,)*\.\d{1,2}$/g;
         if (TMAR.match(reg)) {
-            if (TMAR >= 1.00 && TMAR <= 100.00) {
+            if (TMAR >= 1.00 && TMAR <= 500.00) {
                 $("#TMAR").removeClass("is-invalid");
                 $("#TMAR").addClass("is-valid");
                 $('#TMARval').hide();
@@ -74,7 +74,7 @@ $('#TMAR').keyup(function (event) {
             else {
                 $("#TMAR").removeClass("is-valid");
                 $("#TMAR").addClass("is-invalid");
-                $('#TMARval').text('Por favor ingrese la TMAR mayor de 0.99 y menor 100.01');
+                $('#TMARval').text('Por favor ingrese la TMAR mayor de 0.99 y menor 500.01');
                 $('#TMARval').show();
                 $("#TMAR").val("");
                 TMARv = false;

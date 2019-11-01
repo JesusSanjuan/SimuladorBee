@@ -29,17 +29,6 @@
                 <link href="Content/Register/checkout_responsive.css" rel="stylesheet" />
                 <link href="Content/Register/util.css" rel="stylesheet" />
              <!--Footer-->
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149937700-1"></script>
-                <script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag() { dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'UA-149937700-1');
-                </script>
-            <!-- Global site tag (gtag.js) - Google Analytics -->  
-
-
             <asp:ContentPlaceHolder ID="HeadContent" runat="server">
             </asp:ContentPlaceHolder>
             <webopt:bundlereference runat="server" path="~/Content/css" />  

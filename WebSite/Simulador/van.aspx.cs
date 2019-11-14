@@ -15,82 +15,8 @@ public partial class User_van : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-
+    
     [WebMethod]
-   /* public static string Graficar(decimal inversion, decimal FNE, decimal VdS, decimal TMAR, int Select, int n)
-    {
-         int negativos, Periodo = n;
-         decimal num;
-         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
-         System.Collections.ArrayList ResultadoVPNArray= new System.Collections.ArrayList();
-         System.Collections.ArrayList ResultadoVAN = new System.Collections.ArrayList();
-         System.Collections.ArrayList ResultadoTIR = new System.Collections.ArrayList();
-         System.Collections.ArrayList ListaX = new System.Collections.ArrayList();
-         System.Collections.ArrayList ListaY = new System.Collections.ArrayList();
-         System.Collections.ArrayList PeriodoSelect = new System.Collections.ArrayList();
-         decimal ResultadoVPN, RCalcuTIR;
-
-        // System.Diagnostics.Debug.WriteLine(PeriodoSelect);   Linea de codigo para ver en consola las cosas 
-        ResultadoVPN = CalcularVPN( inversion, FNE,VdS, TMAR / 100, n);
-        ResultadoVPNArray.Add(ResultadoVPN);
-        ListaFinal.Add(ResultadoVPNArray);
-        if (ResultadoVPN > 0)
-         {
-             ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
-             RCalcuTIR = CalcularTIR(TMAR / 100, 1, inversion, FNE, VdS, n);
-             ResultadoTIR.Add((RCalcuTIR * 100).ToString("0,0.00") + " %");
-         }
-         else
-         {
-            ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
-            RCalcuTIR = CalcularTIR(TMAR / 100, 2, inversion, FNE, VdS, n);
-            ResultadoTIR.Add((RCalcuTIR * 100).ToString("0,0.00") + " %");
-        }
-        ListaFinal.Add(ResultadoVAN);
-        ListaFinal.Add(ResultadoTIR);
-
-        TMAR = RCalcuTIR * 10;
-        decimal TMAR2 = Math.Round(RCalcuTIR * 100,4);
-        int contador=0;
-        int pos = 0;
-        do
-        {           
-            ListaX.Add(Math.Round(TMAR,4));
-            ListaY.Add(Math.Round(CalcularVPN(inversion, FNE, VdS, TMAR/100, n),4));
-            negativos = 0;
-            
-            foreach (var item in ListaY)
-            {
-                num = Convert.ToDecimal(item);
-                if (num < 0)
-                {
-                    negativos++;
-                }
-            }
-            if(TMAR2== Math.Round(TMAR,4))
-            {
-                pos = contador;
-            }
-            TMAR = TMAR + (RCalcuTIR * 10);// Cantidad de saltos de los puntos en el eje X
-            contador++;
-        } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
-
-        ListaFinal.Add(ListaX);
-        ListaFinal.Add(ListaY);        
-        if (1 == Select)
-        {
-            PeriodoSelect.Add("Mes");
-        }
-        else
-        {
-            PeriodoSelect.Add("Año");
-        }
-        ListaFinal.Add(PeriodoSelect);
-        ListaFinal.Add(pos);
-        String json = JsonConvert.SerializeObject(ListaFinal);
-        return json;
-    }*/
-
     public static string Graficar(double inversion, double FNEt, double VdS, double TMAR, int Select, int n)
     {
         int negativos, Periodo = n;
@@ -115,12 +41,12 @@ public partial class User_van : System.Web.UI.Page
         ListaFinal.Add(ResultadoVPNArray);
         ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
         RCalcuTIR = CalcularTIR( inversion, FNE, VdS, n);
-        ResultadoTIR.Add((RCalcuTIR).ToString("0,0.00") + " %");        
+        ResultadoTIR.Add((RCalcuTIR).ToString("0,0.0000") + " %");        
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
 
         TMAR = RCalcuTIR * 10;
-        decimal TMAR2 = Math.Round(RCalcuTIR * 100, 4);
+        double TMAR2 = Math.Round(RCalcuTIR * 100, 4);
         int contador = 0;
         int pos = 0;
         do
@@ -131,7 +57,7 @@ public partial class User_van : System.Web.UI.Page
 
             foreach (var item in ListaY)
             {
-                num = Convert.ToDecimal(item);
+                num = Convert.ToDouble(item);
                 if (num < 0)
                 {
                     negativos++;

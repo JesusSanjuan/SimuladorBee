@@ -422,7 +422,7 @@ $("#calcular").click(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: true,
-            data: JSON.stringify({ inversion: inversion, FNE: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+            data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
                 $('#Cargando_Modal').modal('hide');

@@ -1,5 +1,16 @@
 var Inversion = false, Inversion1 = false, FNEV =false, FNEV1=false, VS=false,VS1=false,TMARv=false,TMARv1=false,Selectv=false,Selectv1=false, N=false,N1=false;
 
+$(document).ready(function () {
+    VanillaToasts.create({
+        title: 'Bienvenido al calculo del VAN y TIR',
+        text: 'Actualmente este modulo trabaja con Algoritmo Genetico para el calculo de la TIR',
+        type: 'warning',
+        icon: '../multimedia/favicon.ico',
+        timeout: 10000
+    });
+});
+
+
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
 function formatNumber (n) {
@@ -483,14 +494,16 @@ function Modal(Resultado) {
             Texto = "<strong style='vertical - align: middle;'>Se recomienda aceptar la inversion</strong>";
             TextoEfecto = "pulse animated"; Textovelocidad = '2s'; TextoRepticiones = '5';
             Imagen = '<img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/>';
-            audio = '<source type = "audio/mp3" src = "../multimedia/Aplausos.mp3" >';
+            audio = '<source src="../multimedia/Aplausos.mp3">';
         }
         else {
             Texto = "<strong style='vertical - align: middle;'>Se recomienda rechazar la inversion</strong>";
             TextoEfecto = "tada animated"; Textovelocidad = '4s'; TextoRepticiones = 'infinite';
             Imagen = '<img src="../multimedia/alerta.gif" class="img-fluid bounce animated infinite" width="100" height="100" alt="Responsive image"/>';
-            audio = '<source type = "audio/mp3" src = "../multimedia/error.mp3" >';
+            audio = '<source  src="../multimedia/error.mp3" >';
         }
+
+        
         $('#myModal').modal({ show: true });
         $("#modalheader").css({
             "-webkit-animation-delay": "1s"
@@ -507,6 +520,7 @@ function Modal(Resultado) {
             // "animation": "mymove 1s;"//Velocidad de la animacion
         });
         $('#audio').html(audio);
+        
         audioP = document.getElementById("audio");
         audioP.play();
 
@@ -533,7 +547,6 @@ function Modal(Resultado) {
             //$("#ResultadosVAN").load(" #ResultadosVAN");
             location.href = "#ResultadosFinales";
         });
-
     });
 }
 /* Funcion de modal de resultados de van*/

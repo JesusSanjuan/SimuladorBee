@@ -379,7 +379,7 @@
                             <div class="col-3" id="imgmodal"></div>
                             <div class="col-9" id="texmodal"></div>                                                                        
                     </div>
-                    <audio id="audio" style="display:none" controls> </audio > 
+                    <audio id="audio" style="display:none"> </audio > 
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">

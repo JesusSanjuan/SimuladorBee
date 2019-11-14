@@ -41,7 +41,7 @@ public partial class User_van : System.Web.UI.Page
         ListaFinal.Add(ResultadoVPNArray);
         ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
         RCalcuTIR = CalcularTIR( inversion, FNE, VdS, n);
-        ResultadoTIR.Add((RCalcuTIR).ToString("0,0.0000") + " %");        
+        ResultadoTIR.Add((RCalcuTIR).ToString("0,0.00000000") + " %");        
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
 
@@ -67,7 +67,7 @@ public partial class User_van : System.Web.UI.Page
             {
                 pos = contador;
             }
-            TMAR = TMAR + (RCalcuTIR * 10);// Cantidad de saltos de los puntos en el eje X
+            TMAR = TMAR + (RCalcuTIR / 10);// Cantidad de saltos de los puntos en el eje X
             contador++;
         } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
 
@@ -180,85 +180,7 @@ public partial class User_van : System.Web.UI.Page
         System.Diagnostics.Debug.WriteLine("********RESULTADOS DE LA BUSQUEDA DE LA TIR*************");
         Thread.Sleep(450);
         return resultTIR[0].Text;
-    }
-
-
-   /* public static decimal CalcularVPN(decimal Inversion, decimal FNE, decimal VS, decimal TMAR, int Periodo)
-    {                       
-        decimal FNEAcumulado = 0, fVPN = 0;
-        int i = 0;
-        try
-        {
-            decimal DivTMAR = 1M + TMAR;
-            for (i = 1; i < Periodo; i++)
-            {
-                decimal valorinferior = (decimal) Math.Pow((double)DivTMAR, i);
-                FNEAcumulado = FNEAcumulado + FNE /valorinferior;
-            }
-            decimal valorinferiorF = (decimal)Math.Pow((double)DivTMAR, i);
-            FNEAcumulado = FNEAcumulado + ((FNE + VS) / valorinferiorF);
-            fVPN = FNEAcumulado - Inversion;
-        }
-        catch (OverflowException e)
-        {
-            Console.WriteLine("Exception: {0} > {1}.", e, decimal.MaxValue);
-        }
-        return fVPN;
-    }*/
-   /* public static decimal CalcularTIR(decimal ValorTIR, int caso, decimal inversion, decimal FNE, decimal VdS,int n)
-    {
-        decimal TasaIncDec = 0.01M;
-        decimal Resultado;
-        Boolean MenosCero = false;
-        decimal ValorTIRR =ValorTIR + TasaIncDec;
-        switch (caso)
-        {
-            case 1:
-                    do
-                    {
-                        Resultado = CalcularVPN(inversion, FNE, VdS, ValorTIRR, n);//Cabie aqui tenia hasta 10
-                        if (MenosCero == true)
-                        {
-                            TasaIncDec = TasaIncDec / 2;
-                            MenosCero = false;
-                        }
-                        if (Resultado > 0)
-                        {
-                            ValorTIRR = Math.Round(ValorTIRR + TasaIncDec,10);
-                        }
-                        else
-                        {
-                            ValorTIRR = Math.Round(ValorTIRR - TasaIncDec,10);
-                            MenosCero = true;
-                        }
-                        
-                    } while (Math.Abs(Resultado) >= 0.01M);
-                    break;
-            case 2:
-                    do
-                    {
-                        Resultado = CalcularVPN( inversion, FNE, VdS, ValorTIRR, n);
-                        if (MenosCero == true)
-                        {
-                            TasaIncDec = TasaIncDec / 2;
-                            MenosCero = false;
-                        }
-                        if (Resultado > 0)
-                        {
-                            ValorTIRR = ValorTIRR + TasaIncDec;
-                            MenosCero = true;
-                        }
-                        else
-                        {
-                            ValorTIRR = ValorTIRR - TasaIncDec;
-
-                        }
-                    } while (Math.Abs(Resultado) >= 0.01M);
-                    break;
-        }
-        Thread.Sleep(450);
-        return ValorTIRR;
-    }*/
+    }  
 
     [WebMethod]
     public static string CreacionTabla(decimal inversion, decimal FNE, decimal VdS, decimal TMAR, int Select, int n)

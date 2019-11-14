@@ -45,8 +45,8 @@ public partial class User_van : System.Web.UI.Page
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
 
-        TMAR = RCalcuTIR * 10;
-        double TMAR2 = Math.Round(RCalcuTIR * 100, 4);
+        TMAR = RCalcuTIR / 10;
+        double TMAR2 = RCalcuTIR;
         int contador = 0;
         int pos = 0;
         do

@@ -420,6 +420,7 @@ $("#calcular").click(function () {
         FNE = FNE.replace(/,/g, '');
         VdS = VdS.replace(/,/g, '');
         TMAR = TMAR.replace(/,/g, '');
+
         $.ajax({
             beforeSend: function () {
                 $("#Cargando_Modal").css({ 'position': 'fixed', 'top': '40%'});
@@ -436,7 +437,11 @@ $("#calcular").click(function () {
             data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
-                $('#Cargando_Modal').modal('hide');
+                if ($('#optimizacion').prop('checked')) {
+                    OptimizacionFNE(inversion, FNE, VdS, n, valores[7]);
+                } else {
+                    $("#OptimizacionArea").css("display", "none");
+                }
                 Modal(valores[0]);
                 $("#VAN").text(valores[1]);
                 $("#TIR").text(valores[2]);
@@ -459,18 +464,17 @@ $("#calcular").click(function () {
                         async: false,
                         data: JSON.stringify({ inversion: inversion, FNE: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
                         success: function (data) {
-                            $('#Cargando_Modal').modal('hide');
                             var valores = JSON.parse(data.d);
                             RellenarTabla(valores[0]);
                             $("#PeridoRec").text(valores[1]);
-                            $("#BenCosto").text(valores[2]);
+                            $("#BenCosto").text(valores[2]);                            
                         },
                         error: function (err) {
                             console.log(err);
                             console.log(err.responseText);
                         }
                     }).done(function (data) {
-                        //console.log(data);
+                        $('#Cargando_Modal').modal('hide');/// deveria desactivar efecto de carga aqui, no con el modela de aceptado o rechazado
                     }).fail(function (data) {
                         console.log("Error: " + data);
                     });
@@ -479,40 +483,61 @@ $("#calcular").click(function () {
             console.log("Error: " + data);
         }).always(function () {
         }).then(function (data) {
-        });
+        });         
+    }
+});
+/* Ejecucion de boton*/
 
-
-        if ($('#optimizacion').prop('checked')) {
-            $("#OptimizacionArea").css("display", "block");
-            $.ajax({
+/* Optimizacion FNE */
+function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
+    $("#OptimizacionArea").css("display", "block");
+    $.ajax({
                 type: "POST",
                 url: "van.aspx/optimizacionFNE",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                async: false,
+                async: true,
+                data: JSON.stringify({ inversion: inversion, FNEt: FNE, VS: VdS, periodo: n, tir:tir}),
                 success: function (data) {
-                    //var valores = JSON.parse(data.d);
-                    // alert(data.d);
+                    var valores = JSON.parse(data.d);
+                    var matrix = [];
+                    for (var i = 0; i < valores.length; i++) {
+                        matrix[i] = new Array(filas);
+                    }
+                    /*var DTabla = JSON.parse(JSON.stringify(Datos));
+                    for (var i = 0; i < DTabla.length; i++) {
+                        for (var j = 2; j < DTabla[i].length; j++) {
+                            var Dato = DTabla[i][j];
+                            var resultadoFormato = number_format(Dato, 2);
+                            var res;
+                            if (Dato !== '') {
+                                if (Dato < 0) {
+                                    var str1 = "$-";
+                                    res = str1.concat(resultadoFormato);
+                                }
+                                else {
+                                    var str2 = "$";
+                                    res = str2.concat(resultadoFormato);
+                                }
+                                DTabla[i][j] = res;
+                            }
+                        }
+                    }*/
                 },
                 error: function (err) {
                     console.log(err);
                     console.log(err.responseText);
                 }
             }).done(function (data) {
-                //console.log(data);
+                //$('#Cargando_Modal').modal('hide');
             }).fail(function (data) {
                 console.log("Error: " + data);
             });
-        } else {
-            $("#OptimizacionArea").css("display", "none");
-        }
-    }
-});
-/* Ejecucion de boton*/
+}
+/* Optimizacion FNE */
 
 /* Funcion de modal de resultados de van*/
 function Modal(Resultado) {
-    $('#Cargando_Modal').modal('hide');
     ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
     $(document).ready(function () {
         var Texto, TextoEfecto, Textovelocidad, TextoRepticiones, Imagen, audio, audioP;
@@ -530,7 +555,6 @@ function Modal(Resultado) {
             audio = '<source  src="../multimedia/error.mp3" >';
             $('#audio').html(audio);
         }
-
         
         $('#myModal').modal({ show: true });
         $("#modalheader").css({
@@ -546,8 +570,7 @@ function Modal(Resultado) {
             "animation-iteration-count": TextoRepticiones//, // Veces de repeticion de efecto
             // "-webkit-animation": "mymove 1s; ", //Velocidad de la animacion
             // "animation": "mymove 1s;"//Velocidad de la animacion
-        });
-        
+        });       
         
         audioP = document.getElementById("audio");
         audioP.play();

@@ -187,7 +187,7 @@
         			            <a href="#Grafica" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
         		            </li>
                             <li class="nav-item" id="OptimizacionArea" style="display:none;">
-        			            <a href="#Optimizacion" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Optimizacion</a>
+        			            <a href="#Optimizacion" data-anijs=" if: mouseover, do: pulse animated" onclick="location.href='#ResultadosFinales'" class="nav-link pulse animated infinite" role="tab" data-toggle="tab">Optimizacion</a>
         		            </li>
 				            <li class="nav-item">
         			            <a href="#Descargas" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
@@ -380,7 +380,28 @@
                                                                 </Table>
                                                             </div>
                                             </div>
+                                        <div class="preborder" style="margin-top: 15px">
+                                            <div class="card-header" >
+                                                    <h5> <i class="fa fa-percent"></i> Tasa Interna de Rendimiento</h5>
+                                            </div>
+                                            <div class="fondoresultados" >
+                                                <div class="card-body text-info">
+                                                <h3><label id="TIROptimi" class="card-text"></label></h3>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="preborder" style="margin-top: 15px">
+                                            <div class="card-header" >
+                                                    <h5> <i class="fas fa-dollar-sign"></i> TMAR Despues de la optimizacion</h5>
+                                            </div>
+                                            <div class="fondoresultados" >
+                                                <div class="card-body text-info">
+                                                <h3><label id="TMAROptimizada" class="card-text"></label></h3>
+                                                </div>
+                                            </div>
+                                        </div> 
                                     </div>
+                                    
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Descargas">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">

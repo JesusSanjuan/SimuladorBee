@@ -502,7 +502,7 @@ function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
                     var valores = JSON.parse(data.d);
                     var matrix = [];
                     for (var i = 0; i < valores.length; i++) {
-                        matrix[i] = new Array(filas);
+                        matrix[i] = new Array(valores.length);
                     }
                     /*var DTabla = JSON.parse(JSON.stringify(Datos));
                     for (var i = 0; i < DTabla.length; i++) {

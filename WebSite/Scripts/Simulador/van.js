@@ -433,7 +433,7 @@ $("#calcular").click(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: true,
-            data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n, optimizar: $('#optimizacion').prop('checked') }),
+            data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
                 $('#Cargando_Modal').modal('hide');
@@ -480,6 +480,32 @@ $("#calcular").click(function () {
         }).always(function () {
         }).then(function (data) {
         });
+
+
+        if ($('#optimizacion').prop('checked')) {
+            $("#OptimizacionArea").css("display", "block");
+            $.ajax({
+                type: "POST",
+                url: "van.aspx/optimizacionFNE",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    //var valores = JSON.parse(data.d);
+                    // alert(data.d);
+                },
+                error: function (err) {
+                    console.log(err);
+                    console.log(err.responseText);
+                }
+            }).done(function (data) {
+                //console.log(data);
+            }).fail(function (data) {
+                console.log("Error: " + data);
+            });
+        } else {
+            $("#OptimizacionArea").css("display", "none");
+        }
     }
 });
 /* Ejecucion de boton*/

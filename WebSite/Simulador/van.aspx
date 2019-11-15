@@ -186,9 +186,12 @@
         		            <li class="nav-item">
         			            <a href="#Grafica" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
         		            </li>
+                            <li class="nav-item" id="OptimizacionArea" style="display:none; color: #D35400;">
+        			            <a href="#Optimizacion" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Optimizacion</a>
+        		            </li>
 				            <li class="nav-item">
         			            <a href="#Descargas" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
-        		            </li>
+        		            </li>                            
         	            </ul>
 
                         <div class="tab-content" id="ResultadosFinales">
@@ -305,7 +308,7 @@
                                     <div  class="container-fluid card-body">
                                                         <div class="preborder">
                                                                  <div class="card-header">
-                                                                    <h5><i class="fa fa-table"></i>  Tabla</h5>
+                                                                    <h5><i class="fa fa-table"></i>  Tabla de resultados</h5>
                                                                  </div>
                                                                                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
                                                                                                  <Table class="table table-striped"  style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"  id="dataTableVAN"  >
@@ -349,6 +352,35 @@
                                                     </div>
                                              </div>
                                         </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="Optimizacion">
+                                    <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
+                                            <div class="preborder">
+                                                <div class="card-header">
+                                                    <h5><i class="fa fa-table"></i>  Tabla de Flujos Netos Optimizados</h5>
+                                                </div>
+                                                            <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
+                                                                    <Table class="table table-striped"  style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"  id="dataTableFNEOpti"  >
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th></th>                                                                            
+                                                                            <th>Flujo Neto de Efectivo</th>
+                                                                            <th>Flujo Neto de Efectivo Optimizado</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody  id="dataTableFNEoptimizado">                                                                                                                                                                           
+                                                                        </tbody>
+                                                                        <tfoot>
+                                                                        <tr>
+                                                                            <th></th>                                                                            
+                                                                            <th>Flujo Neto de Efectivo</th>
+                                                                            <th>Flujo Neto de Efectivo Optimizado</th>
+                                                                        </tr>
+                                                                        </tfoot>                                                                                                     
+                                                                </Table>
+                                                            </div>
+                                            </div>
+                                    </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Descargas">
                                         <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">

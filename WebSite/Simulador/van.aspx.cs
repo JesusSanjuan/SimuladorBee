@@ -17,9 +17,8 @@ public partial class User_van : System.Web.UI.Page
     }
     
     [WebMethod]
-    public static string Graficar(double inversion, double FNEt, double VdS, double TMAR, int Select, int n, Boolean optimizar)
+    public static string Graficar(double inversion, double FNEt, double VdS, double TMAR, int Select, int n)
     {
-        System.Diagnostics.Debug.WriteLine(optimizar.ToString());
         int negativos, Periodo = n;
         double num;
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
@@ -88,7 +87,14 @@ public partial class User_van : System.Web.UI.Page
         return json;
     }
 
-    public static double CalcularTIR( double inversion, double[] FNE, double VS, int periodo)
+    [WebMethod]
+    public static string optimizacionFNE()
+    {
+        String json = "Hola";
+        return json;
+    }
+
+        public static double CalcularTIR( double inversion, double[] FNE, double VS, int periodo)
     {
         int poblacionNumero = 960;
        

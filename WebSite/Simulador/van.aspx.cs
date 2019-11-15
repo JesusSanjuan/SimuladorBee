@@ -17,8 +17,9 @@ public partial class User_van : System.Web.UI.Page
     }
     
     [WebMethod]
-    public static string Graficar(double inversion, double FNEt, double VdS, double TMAR, int Select, int n)
+    public static string Graficar(double inversion, double FNEt, double VdS, double TMAR, int Select, int n, Boolean optimizar)
     {
+        System.Diagnostics.Debug.WriteLine(optimizar.ToString());
         int negativos, Periodo = n;
         double num;
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
@@ -89,12 +90,12 @@ public partial class User_van : System.Web.UI.Page
 
     public static double CalcularTIR( double inversion, double[] FNE, double VS, int periodo)
     {
-        int poblacionNumero = 480;
-
-       // System.Diagnostics.Debug.WriteLine("\nAproximacion inicial encontrada");
+        int poblacionNumero = 960;
+       
+        // System.Diagnostics.Debug.WriteLine("\nAproximacion inicial encontrada");
         //System.Diagnostics.Debug.WriteLine("\n\n******************INICIO DE LA BUSQUEDA DE LA TIR.*****************\n\n");
 
-        Stopwatch tiempo = Stopwatch.StartNew();
+        //Stopwatch tiempo = Stopwatch.StartNew();
         double aproxInicial = aproximacioninicial(inversion, FNE, periodo);
 
         Random random = new Random();
@@ -163,7 +164,7 @@ public partial class User_van : System.Web.UI.Page
           //  System.Diagnostics.Debug.WriteLine("\tGeneracion: {0} , Convergencia del: {1}\n", i, porcentajeconvergencia);
             i = i + 1;
         } while (porcentajeconvergencia < (double)99.9);
-        tiempo.Stop();
+        //tiempo.Stop();
         //System.Diagnostics.Debug.WriteLine("\n******************CONCLUIDA LA BUSQUEDA DE LA TIR.*****************");
         var resultTIR = poblacion.GroupBy(x => x).Select(g => new { Text = g.Key, Count = g.Count() }).ToList();
         resultTIR = resultTIR.OrderByDescending(o => o.Count).ToList();
@@ -171,13 +172,13 @@ public partial class User_van : System.Web.UI.Page
         var resultTMAR = ResultadosFX.GroupBy(x => x).Select(g => new { Text = g.Key, Count = g.Count() }).ToList();
         resultTMAR = resultTMAR.OrderByDescending(o => o.Count).ToList();
 
-        System.Diagnostics.Debug.WriteLine("********RESULTADOS DE LA BUSQUEDA DE LA TIR*************");
+        /*System.Diagnostics.Debug.WriteLine("********RESULTADOS DE LA BUSQUEDA DE LA TIR*************");
         System.Diagnostics.Debug.WriteLine("\tAproximacion inicial es: {0}\n", aproxInicial);
         System.Diagnostics.Debug.WriteLine("\n\tTotal de Generaciones del calculo de la TIR: {0} , Convergencia del: {1}", i, porcentajeconvergencia);
         System.Diagnostics.Debug.WriteLine("\n\t\t RESULTADO TMAR: {0}", resultTMAR[0].Text);
         System.Diagnostics.Debug.WriteLine("\n\t\t RESULTADO TIR: {0}", resultTIR[0].Text);
         System.Diagnostics.Debug.WriteLine($"\n\t\t\tTiempo para la busqueda de la TIR y TMAR: {tiempo.Elapsed.TotalSeconds} segundos");
-        System.Diagnostics.Debug.WriteLine("********RESULTADOS DE LA BUSQUEDA DE LA TIR*************");
+        System.Diagnostics.Debug.WriteLine("********RESULTADOS DE LA BUSQUEDA DE LA TIR*************");*/
         Thread.Sleep(450);
         return resultTIR[0].Text;
     }  
@@ -502,7 +503,6 @@ public partial class User_van : System.Web.UI.Page
                 double desviasion = desviasionstandar(poblacion1, mediageometrica);
                 double z = (poblacion1[i] - mediageometrica) / desviasion;
                 poblacion1[i] = poblacion1[i] + z;
-                //Console.WriteLine("\n\t\t\t\tMUTACION");
             }
             else
             {

@@ -3,7 +3,7 @@ var Inversion = false, Inversion1 = false, FNEV =false, FNEV1=false, VS=false,VS
 $(document).ready(function () {
     VanillaToasts.create({
         title: 'Bienvenido al calculo del VAN y TIR',
-        text: 'Actualmente este modulo trabaja con Algoritmo Genetico para el calculo de la TIR',
+        text: 'Actualmente este modulo trabaja con Algoritmo Genetico',
         type: 'warning',
         icon: '../multimedia/favicon.ico',
         timeout: 10000
@@ -433,7 +433,7 @@ $("#calcular").click(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: true,
-            data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
+            data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n, optimizar: $('#optimizacion').prop('checked') }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
                 $('#Cargando_Modal').modal('hide');
@@ -495,12 +495,14 @@ function Modal(Resultado) {
             TextoEfecto = "pulse animated"; Textovelocidad = '2s'; TextoRepticiones = '5';
             Imagen = '<img src="../multimedia/correcto.gif" class="img-fluid tada animated infinite" width="100" height="100" alt="Responsive image"/>';
             audio = '<source src="../multimedia/Aplausos.mp3">';
+            $('#audio').html(audio);
         }
         else {
             Texto = "<strong style='vertical - align: middle;'>Se recomienda rechazar la inversion</strong>";
             TextoEfecto = "tada animated"; Textovelocidad = '4s'; TextoRepticiones = 'infinite';
             Imagen = '<img src="../multimedia/alerta.gif" class="img-fluid bounce animated infinite" width="100" height="100" alt="Responsive image"/>';
             audio = '<source  src="../multimedia/error.mp3" >';
+            $('#audio').html(audio);
         }
 
         
@@ -519,7 +521,7 @@ function Modal(Resultado) {
             // "-webkit-animation": "mymove 1s; ", //Velocidad de la animacion
             // "animation": "mymove 1s;"//Velocidad de la animacion
         });
-        $('#audio').html(audio);
+        
         
         audioP = document.getElementById("audio");
         audioP.play();

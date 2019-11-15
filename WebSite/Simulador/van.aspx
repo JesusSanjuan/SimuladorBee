@@ -2,7 +2,10 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
          <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
          <link href="../Content/bootstrap-select.css" rel="stylesheet" />
-         <link href="../Content/Precarga/load-van.css" rel="stylesheet" />
+         <link href="../Content/Precarga/load-van.css" rel="stylesheet" />    
+         <!-- Diseños visuales-- https://coreui.io CoreUIFree-->
+                <link href="../Content/CoreUIFree/coreuiswitch.css" rel="stylesheet" />
+         <!-- Diseños visuales-- https://coreui.io  CoreUIFree-->
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
     
@@ -123,9 +126,31 @@
                                                       </div>
                                                 </div>
                                             </div>
-                                           </div>     
-                                          <div class="col-md-6 mb-2">                                              
-                                          </div>
+                                           </div>  
+                                         <div class="col-md-1 mb-2">
+                                         </div>
+                                         <div class="col-md-4 mb-2 preborder">  
+                                              <div class="form-row"> 
+                                                <div class="col-md-12 mb-2" >  
+                                                    <label style="display: flex;justify-content: center;align-items: center;">Desea optimizar los Flujos Netos de Efectivo?</label>    
+                                                </div>
+                                               </div>
+                                              <div class="form-row">  
+                                                  <div class="col-md-5 mb-2">
+                                                      
+                                                  </div>
+                                                  <div class="col-md-2 mb-2">    
+                                                        <label class="switch switch-label switch-dark">                                           
+                                                                        <input type="checkbox"  id="optimizacion"  class="switch-input" value="1">
+                                                                        <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;" ></span>
+                                                         </label>
+                                                  </div>
+                                                  <div class="col-md-5 mb-2"> 
+                                                  </div>  
+                                             </div>
+                                        </div>
+                                        <div class="col-md-1 mb-2">
+                                        </div>
                          </div>
                         <div class="form-row">  
                             <div class="col-md-4 mb-2">

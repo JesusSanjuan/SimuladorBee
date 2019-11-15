@@ -186,7 +186,7 @@
         		            <li class="nav-item">
         			            <a href="#Grafica" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
         		            </li>
-                            <li class="nav-item" id="OptimizacionArea" style="display:none; color: #D35400;">
+                            <li class="nav-item" id="OptimizacionArea" style="display:none;">
         			            <a href="#Optimizacion" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Optimizacion</a>
         		            </li>
 				            <li class="nav-item">

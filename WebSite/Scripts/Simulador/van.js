@@ -503,11 +503,11 @@ function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
             var vec1 = valores[0];
             var vec2 = valores[1];
             var matrix = [];
-            for (var i = 0; i < 3; i++) {
-                matrix[i] = new Array(vec1.length);
+            for (var i = 0; i < vec1.length; i++) {
+                matrix[i] = new Array(3);
             }
             var contador = 1;
-            for (var i2 = 0; i2 < 3; i2++) {
+            for (var i2 = 0; i2 < vec1.length; i2++) {
                 matrix[i2][0] = "Flujo Neto de Efectivo " + contador;
                 matrix[i2][2] = "$ " + number_format(vec1[i2], 11);
                 matrix[i2][1] = "$ " + number_format(vec2[i2], 2);

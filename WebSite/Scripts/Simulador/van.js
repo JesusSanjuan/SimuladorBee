@@ -492,37 +492,64 @@ $("#calcular").click(function () {
 function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
     $("#OptimizacionArea").css("display", "block");
     $.ajax({
-                type: "POST",
-                url: "van.aspx/optimizacionFNE",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: true,
-                data: JSON.stringify({ inversion: inversion, FNEt: FNE, VS: VdS, periodo: n, tir:tir}),
-                success: function (data) {
-                    var valores = JSON.parse(data.d);
-                    var matrix = [];
-                    for (var i = 0; i < valores.length; i++) {
-                        matrix[i] = new Array(valores.length);
-                    }
-                    /*var DTabla = JSON.parse(JSON.stringify(Datos));
-                    for (var i = 0; i < DTabla.length; i++) {
-                        for (var j = 2; j < DTabla[i].length; j++) {
-                            var Dato = DTabla[i][j];
-                            var resultadoFormato = number_format(Dato, 2);
-                            var res;
-                            if (Dato !== '') {
-                                if (Dato < 0) {
-                                    var str1 = "$-";
-                                    res = str1.concat(resultadoFormato);
-                                }
-                                else {
-                                    var str2 = "$";
-                                    res = str2.concat(resultadoFormato);
-                                }
-                                DTabla[i][j] = res;
+        type: "POST",
+        url: "van.aspx/optimizacionFNE",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: true,
+        data: JSON.stringify({ inversion: inversion, FNEt: FNE, VS: VdS, periodo: n, tir: tir }),
+        success: function (data) {
+            var valores = JSON.parse(data.d);
+            var vec1 = valores[0];
+            var vec2 = valores[1];
+            var matrix = [];
+            for (var i = 0; i < 3; i++) {
+                matrix[i] = new Array(vec1.length);
+            }
+            var contador = 1;
+            for (var i2 = 0; i2 < 3; i2++) {
+                matrix[i2][0] = "Flujo Neto de Efectivo " + contador;
+                matrix[i2][2] = "$ " + number_format(vec1[i2], 11);
+                matrix[i2][1] = "$ " + number_format(vec2[i2], 2);
+                contador = contador + 1;
+            }
+
+            var table = $('#dataTableFNEOpti').DataTable({
+                "columnDefs": [
+                    { "width": "20%", "targets": 0 },
+                    { "width": "40%", "targets": 1 },
+                    { "width": "40%", "targets": 2 }
+                ],
+                destroy: true,
+                language: {
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                             }
-                        }
-                    }*/
+                        },
+                        data: matrix
+                    });
+                    table.columns.adjust().draw();
+                    $("#TIRdeOpti").text("$ " + number_format(valores[3],11)); 
+                    $("#TMAROptimizada").text("$ " + number_format(valores[2],11)); 
                 },
                 error: function (err) {
                     console.log(err);

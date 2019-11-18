@@ -386,7 +386,7 @@
                                             </div>
                                             <div class="fondoresultados" >
                                                 <div class="card-body text-info">
-                                                <h3><label id="TIROptimi" class="card-text"></label></h3>
+                                                <h3><label id="TIRdeOpti" class="card-text"></label></h3>
                                                 </div>
                                             </div>
                                         </div> 

@@ -181,6 +181,7 @@ public partial class User_van : System.Web.UI.Page
         ListaFinal.Add(tir);
 
         String json = JsonConvert.SerializeObject(ListaFinal);
+        Thread.Sleep(450);
         return json;
     }
 

@@ -1,5 +1,16 @@
 ﻿var Inversion = false, Inversion1 = false, VS = false, VS1 = false, TMARv = false, TMARv1 = false, Selectv = false, Selectv1 = false, N = false, N1 = false;
 var t;
+
+$(document).ready(function () {
+    VanillaToasts.create({
+        title: 'Bienvenido al calculo del VAN y TIR',
+        text: 'Actualmente este modulo trabaja con Algoritmo Genetico',
+        type: 'warning',
+        icon: '../multimedia/favicon.ico',
+        timeout: 10000
+    });
+});
+
 /* Validacion del campo Inversion */
 const number = document.querySelector('.number');
 function formatNumber(n) {
@@ -581,7 +592,7 @@ $("#calcular").click(function () {
     }
 
     if (Inversion === true && Inversion1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
-        /*Para Obtener vector de FNE FINAL*/
+            /*Para Obtener vector de FNE FINAL*/
             var Costoss = [];
             var Ingresoss = [];
             var FNEs = [];
@@ -623,10 +634,15 @@ $("#calcular").click(function () {
                 data: JSON.stringify({ inversion: inversion, FNE: FNEs, Anio:Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
                 success: function (data) {
                     var valores = JSON.parse(data.d);
-                    $('#Cargando_Modal').modal('hide');
+                    if ($('#optimizacion').prop('checked')) {
+                        OptimizacionFNE(inversion, FNEs, VdS, n, valores[7]);
+                    } else {
+                        $("#OptimizacionArea").css("display", "none");
+                    }
                     Modal(valores[0]);
                     $("#VAN").text(valores[1]);
                     $("#TIR").text(valores[2]);
+                    $("#TMARTIR").text(valores[8]);
                     Graficar(valores[3], valores[4], valores[5], valores[6]);            
                 },
                 error: function (err) {
@@ -640,7 +656,7 @@ $("#calcular").click(function () {
                     url: "vanM.aspx/CreacionTabla",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    async: false,
+                    async: true,
                     data: JSON.stringify({ inversion: inversion, Costos: Costoss, Ingresos: Ingresoss, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
                     success: function (data) {
                         $('#Cargando_Modal').modal('hide');
@@ -655,7 +671,7 @@ $("#calcular").click(function () {
                         console.log(err.responseText);
                     }
                 }).done(function (data) {
-                    //console.log(data);
+                    $('#Cargando_Modal').modal('hide');
                 }).fail(function (data) {
                     console.log("Error: " + data);
                 });
@@ -674,9 +690,83 @@ function FormatoNumero(n) {
         .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",");
 }
 
+/* Optimizacion FNE */
+function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
+    $("#OptimizacionArea").css("display", "block");
+    $.ajax({
+        type: "POST",
+        url: "vanM.aspx/optimizacionFNE",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: true,
+        data: JSON.stringify({ inversion: inversion, FNE: FNE, VS: VdS, periodo: n, tir: tir }),
+        success: function (data) {
+            var valores = JSON.parse(data.d);
+            var vec1 = valores[0];
+            var vec2 = valores[1];
+            var matrix = [];
+            for (var i = 0; i < vec1.length; i++) {
+                matrix[i] = new Array(3);
+            }
+            var contador = 1;
+            for (var i2 = 0; i2 < vec1.length; i2++) {
+                matrix[i2][0] = "Flujo Neto de Efectivo " + contador;
+                matrix[i2][2] = "$ " + number_format(vec1[i2], 11);
+                matrix[i2][1] = "$ " + number_format(vec2[i2], 2);
+                contador = contador + 1;
+            }
+
+            var table = $('#dataTableFNEOpti').DataTable({
+                "columnDefs": [
+                    { "width": "20%", "targets": 0 },
+                    { "width": "40%", "targets": 1 },
+                    { "width": "40%", "targets": 2 }
+                ],
+                destroy: true,
+                language: {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+                data: matrix
+            });
+            table.columns.adjust().draw();
+            $("#TIRdeOpti").text("$ " + number_format(valores[3], 11));
+            $("#TMAROptimizada").text("$ " + number_format(valores[2], 11));
+        },
+        error: function (err) {
+            console.log(err);
+            console.log(err.responseText);
+        }
+    }).done(function (data) {
+        //$('#Cargando_Modal').modal('hide');
+    }).fail(function (data) {
+        console.log("Error: " + data);
+    });
+}
+/* Optimizacion FNE */
+
 /* Funcion de modal de resultados de van*/
 function Modal(Resultado) {
-    $('#Cargando_Modal').modal('hide');
     ResultadoVPN = JSON.parse(JSON.stringify(Resultado));
     $(document).ready(function () {
         var Texto, TextoEfecto, Textovelocidad, TextoRepticiones, Imagen, audio, audioP;

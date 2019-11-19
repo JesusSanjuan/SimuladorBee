@@ -40,7 +40,8 @@ public partial class User_van : System.Web.UI.Page
         ResultadoVPNArray.Add(ResultadoVPN);
         ListaFinal.Add(ResultadoVPNArray);
         ResultadoVAN.Add("$" + ResultadoVPN.ToString("0,0.0000"));
-        RCalcuTIR = CalcularTIR( inversion, FNE, VdS, n);
+        List<double> resultados = CalcularTIR( inversion, FNE, VdS, n);
+        RCalcuTIR = resultados[0];
         ResultadoTIR.Add((RCalcuTIR).ToString("0,0.00000000") + " %");        
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
@@ -84,6 +85,7 @@ public partial class User_van : System.Web.UI.Page
         ListaFinal.Add(PeriodoSelect);
         ListaFinal.Add(pos);
         ListaFinal.Add(RCalcuTIR);
+        ListaFinal.Add(resultados[1]);
         String json = JsonConvert.SerializeObject(ListaFinal);
         return json;
     }
@@ -185,7 +187,7 @@ public partial class User_van : System.Web.UI.Page
         return json;
     }
 
-    public static double CalcularTIR( double inversion, double[] FNE, double VS, int periodo)
+    public static List<double> CalcularTIR( double inversion, double[] FNE, double VS, int periodo)
     {
         int poblacionNumero = 960;
        
@@ -276,9 +278,13 @@ public partial class User_van : System.Web.UI.Page
         System.Diagnostics.Debug.WriteLine("\n\t\t RESULTADO TIR: {0}", resultTIR[0].Text);
         System.Diagnostics.Debug.WriteLine($"\n\t\t\tTiempo para la busqueda de la TIR y TMAR: {tiempo.Elapsed.TotalSeconds} segundos");
         System.Diagnostics.Debug.WriteLine("********RESULTADOS DE LA BUSQUEDA DE LA TIR*************");*/
+        List<double> resultados = new List<double>();
+        resultados.Add(resultTIR[0].Text);
+        resultados.Add(resultTMAR[0].Text);
+
         Thread.Sleep(450);
-       
-        return resultTIR[0].Text;
+
+        return resultados;
     }  
 
     [WebMethod]
@@ -389,7 +395,6 @@ public partial class User_van : System.Web.UI.Page
               {
                 PeridoRec2 = "No es posible calcular";
               }
-
           }
           PeridoRec.Add(PeridoRec2);
           ListaFinal.Add(PeridoRec);

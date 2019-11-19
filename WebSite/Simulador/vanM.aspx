@@ -3,6 +3,9 @@
         <link href="../Scripts/DataTables/datatables.min.css" rel="stylesheet" />
         <link href="../Content/bootstrap-select.css" rel="stylesheet" />
         <link href="../Content/Precarga/load-van.css" rel="stylesheet" />
+        <!-- Diseños visuales-- https://coreui.io CoreUIFree-->
+        <link href="../Content/CoreUIFree/coreuiswitch.css" rel="stylesheet" />
+         <!-- Diseños visuales-- https://coreui.io  CoreUIFree-->
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server"  >    
@@ -45,7 +48,7 @@
                         </div> 
             </div>
             <div class="col-md-4 mb-2">
-            <label for="validationCustom04">Rentabilidad requerida</label>
+            <label for="validationCustom04">Rentabilidad requerida (TMAR)</label>
                 <div class="input-group" style="cursor:default">                    
                         <input type="text"   class="form-control number4" id="TMAR" placeholder="Ingrese el valor de TMAR" autocomplete="off" style="cursor:pointer" required="required">
                         <div class="input-group-prepend">
@@ -108,7 +111,25 @@
                                 </div>
                                </div>
                             </div>     
-                            <div class="col-md-6 mb-2">                                              
+                            <div class="col-md-3.9 mb-2 preborder" style="margin-left:5px">     
+                                    <div class="form-row"> 
+                                        <div class="col-md-12 mb-2" >  
+                                            <label style="display: flex;justify-content: center;align-items: center;">Desea optimizar los Flujos Netos de Efectivo?</label>    
+                                        </div>
+                                    </div>
+                                    <div class="form-row">  
+                                        <div class="col-md-5 mb-2">
+                                                      
+                                        </div>
+                                        <div class="col-md-2 mb-2">    
+                                            <label class="switch switch-label switch-dark">                                           
+                                                            <input type="checkbox"  id="optimizacion"  class="switch-input" value="1">
+                                                            <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;" ></span>
+                                                </label>
+                                        </div>
+                                        <div class="col-md-5 mb-2"> 
+                                        </div>  
+                                    </div>
                             </div>
         </div>
         <div class="form-row">  
@@ -186,6 +207,9 @@
         		                <li class="nav-item">
         			                <a href="#Grafica" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Gráfica</a>
         		                </li>
+                                <li class="nav-item" id="OptimizacionArea" style="display:none;">
+        			                <a href="#Optimizacion" data-anijs=" if: mouseover, do: pulse animated" onclick="location.href='#ResultadosFinales'" class="nav-link pulse animated infinite" role="tab" data-toggle="tab">Optimizacion</a>
+        		                </li>
 				                <li class="nav-item">
         			                <a href="#Descargas" onclick="location.href='#ResultadosFinales'" class="nav-link" role="tab" data-toggle="tab">Descargas</a>
         		                </li>
@@ -205,11 +229,11 @@
                                                  </div>
                                                 <div class="preborder" style="margin-top: 15px">
                                                         <div class="card-header" >
-                                                                <h5><i class="fas fa-dollar-sign"></i> Que es el VAN?</h5>
+                                                                <h5><i class="fas fa-dollar-sign"></i> Que es el VAN, VNA o VPN?</h5>
                                                         </div>
                                                         <div class="fondoresultados">
                                                             <div class="card-body text-info">                                                               
-                                                                    El Valor Actual Neto es un procedimiento que permite calcular el valor presente de un determinado número de flujos de caja futuros, originados por una inversión. <br/>
+                                                                    El Valor Actual Neto, Valor Neto Actual o Valor Presente Neto es un procedimiento que permite calcular el valor presente de un determinado número de flujos de caja futuros, originados por una inversión. <br/>
                                                                     La inversión se considera aceptable cuando su VAN es mayor que cero. Si el VAN es menor que cero la inversión es rechazada. Además, se da preferencia a aquellas inversiones cuyo VAN sea más elevado. <br/>
                                                                     Con esta aplicación podemos calcular el Valor Actual Neto de una inversión conociendo la rentabilidad requerida para la misma, su duración, el desembolso inicial de capital y los flujos de caja esperados.  <br/><br/>
                                                                     <i><b>Ejemplo: </b></i>
@@ -233,20 +257,38 @@
                                                             <h3><label id="TIR" class="card-text"></label></h3>
                                                             </div>
                                                         </div>
-                                                </div>                                             
+                                                </div>  
+                                                <div class="preborder" style="margin-top: 15px">
+                                                    <div class="card-header" >
+                                                            <h5> <i class="fa fa-dollar-sign"></i> TMAR de la TIR</h5>
+                                                    </div>
+                                                    <div class="fondoresultados" >
+                                                        <div class="card-body text-info">
+                                                        <h3><label id="TMARTIR" class="card-text"></label></h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="preborder" style="margin-top: 15px">
                                                         <div class="card-header" >
-                                                                <h5><i class="fas fa-dollar-sign"></i> Que es el TIR?</h5>
+                                                                <h5><i class="fas fa-dollar-sign"></i> Que es la TIR o TMAR?</h5>
                                                         </div>
                                                         <div class="fondoresultados">
                                                             <div class="card-body text-info">         
-                                                                    La Tasa Interna de Rentabilidad de una inversión es el tipo de interés con el cual el Valor Actual Neto de esa inversión es igual a cero (ver calculadora VAN).<br/>
-                                                                    Se utiliza para decidir sobre la aceptación o rechazo de un proyecto de inversión. Para ello, la TIR se compara con un tipo mínimo. Si el tipo TIR supera al tipo mínimo, se acepta la inversión; en caso contrario, se rechaza. Además, se da preferencia a aquellas inversiones cuyo TIR sea más elevado.<br/>
-                                                                    Con esta aplicación podemos calcular la TIR de una inversión, es decir la rentabilidad efectiva anual que obtendríamos. Para calcular la TIR de una operación de inversión tenemos que introducir la duración, el desembolso inicial y los cobros y pagos de la operación. <br/><br/>
-                                                                    <i> <b>Ejemplo: </b></i>
-                                                                    Una inversión supone un desembolso inicial de 8,000 MXN, unos cobros anuales de 4,000 MXN y unos pagos de 2,000 MXN, durante 5 años lo cual resulta a flujos constantes de 2,000 MXN.<br/><br/>
-                                                                    <i> <b>Resultado: </b></i>
-                                                                     7.93 %. Aceptaremos el proyecto de inversión siempre que la rentabilidad sea inferior a ese 7.93% 
+                                                                La Tasa Interna de Rentabilidad de una inversión es el tipo de interés con el cual el Valor Actual Neto de esa inversión es igual a cero (ver apartado VAN).<br/>
+                                                                La TIR  es la<i><b> i </b></i>que hace el VPN = <i><b>0</b></i><br/>
+                                                                El calculo de una TIR en la evaluacion ecomica de culaquier proyecto de inversion, en realidad implica la obtencion de una o varias raices reales positivas en un polinomio de grado n, la cual se rige por la regla de los signos de descartes que dice: <br/><br/>
+
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;<i> Un polinomio de grado n puede tener tantas raices como cambios de signos tenga el polinomio.</i><br/><br/>
+
+                                                                Tambien la TIR se puede definir como la tasa de interés o rentabilidad que ofrece una inversión. Es decir, es el porcentaje de beneficio o pérdida que tendrá una inversión para las cantidades que no se han retirado del proyecto.<br/>
+                                                                
+                                                                La Tasa Minima Aceptable de Rendimiento (TMAR) de igual manera es un porcentaje que por lo regular determina una persona que va invertir en un proyecto.<br/><br/>                                                                
+                                                                Se utiliza para decidir sobre la aceptación o rechazo de un proyecto de inversión. Para ello, la TIR se compara con un tipo mínimo. Si el tipo TIR supera al tipo mínimo, se acepta la inversión; en caso contrario, se rechaza. Además, se da preferencia a aquellas inversiones cuyo TIR sea más elevado.<br/>
+                                                                Con esta aplicación podemos calcular la TIR de una inversión, es decir la rentabilidad efectiva anual que obtendríamos. Para calcular la TIR de una operación de inversión tenemos que introducir la duración, el desembolso inicial y los cobros y pagos de la operación. <br/><br/>
+                                                                <i> <b>Ejemplo: </b></i>
+                                                                Una inversión supone un desembolso inicial de 8,000 MXN, unos cobros anuales de 4,000 MXN y unos pagos de 2,000 MXN, durante 5 años lo cual resulta a flujos constantes de 2,000 MXN.<br/><br/>
+                                                                <i> <b>Resultado: </b></i>
+                                                                 7.93 %. Aceptaremos el proyecto de inversión siempre que la rentabilidad sea inferior a ese 7.93% 
                                                             </div>
                                                         </div>
                                                  </div>
@@ -343,6 +385,55 @@
                                                  </div>
                                             </div>
                                     </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="Optimizacion">
+                                        <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
+                                                <div class="preborder">
+                                                    <div class="card-header">
+                                                        <h5><i class="fa fa-table"></i>  Tabla de Flujos Netos Optimizados</h5>
+                                                    </div>
+                                                                <div class="table-responsive" style="margin-top: 20px; padding-bottom:20px;">
+                                                                        <Table class="table table-striped"  style="width:100%; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;"  id="dataTableFNEOpti"  >
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th></th>                                                                            
+                                                                                <th>Flujo Neto de Efectivo</th>
+                                                                                <th>Flujo Neto de Efectivo Optimizado</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody  id="dataTableFNEoptimizado">                                                                                                                                                                           
+                                                                            </tbody>
+                                                                            <tfoot>
+                                                                            <tr>
+                                                                                <th></th>                                                                            
+                                                                                <th>Flujo Neto de Efectivo</th>
+                                                                                <th>Flujo Neto de Efectivo Optimizado</th>
+                                                                            </tr>
+                                                                            </tfoot>                                                                                                     
+                                                                    </Table>
+                                                                </div>
+                                                </div>
+                                            <div class="preborder" style="margin-top: 15px">
+                                                <div class="card-header" >
+                                                        <h5> <i class="fa fa-percent"></i> Tasa Interna de Rendimiento</h5>
+                                                </div>
+                                                <div class="fondoresultados" >
+                                                    <div class="card-body text-info">
+                                                    <h3><label id="TIRdeOpti" class="card-text"></label></h3>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <div class="preborder" style="margin-top: 15px">
+                                                <div class="card-header" >
+                                                        <h5> <i class="fas fa-dollar-sign"></i> TMAR Despues de la optimizacion</h5>
+                                                </div>
+                                                <div class="fondoresultados" >
+                                                    <div class="card-body text-info">
+                                                    <h3><label id="TMAROptimizada" class="card-text"></label></h3>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>                                    
+                                   </div>
                                     <div role="tabpanel" class="tab-pane fade" id="Descargas">
                                             <div  class="container-fluid " style="padding-top:15px;padding-bottom:15px">
                                                   <div class="preborder">

@@ -401,7 +401,7 @@ $("#calcular").click(function () {
         N1 = true;
     }
     
-    if (Inversion === true && Inversion === true && FNEV === true && FNEV1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
+    if (Inversion === true && Inversion1 === true && FNEV === true && FNEV1 === true && VS === true && VS1 === true && TMARv === true && TMARv1 === true && Selectv === true && Selectv1 === true && N === true && N1 === true) {
         if (myLineChart) {//Limpieza si se vuelve a realizar otro calculo de la grafica
             myLineChart.clear();
             myLineChart.destroy();
@@ -443,8 +443,9 @@ $("#calcular").click(function () {
                     $("#OptimizacionArea").css("display", "none");
                 }
                 Modal(valores[0]);
-                $("#VAN").text(valores[1]);
+                $("#VAN").text(valores[1]); 
                 $("#TIR").text(valores[2]);
+                $("#TMARTIR").text(valores[8]);
                 Graficar(valores[3], valores[4], valores[5],valores[6]);
             },
             error: function (err) {

@@ -53,7 +53,7 @@ public partial class User_vanM : System.Web.UI.Page
         ListaFinal.Add(ResultadoVAN);
         ListaFinal.Add(ResultadoTIR);
 
-        TMAR = RCalcuTIR / 10;
+        TMAR = RCalcuTIR / 20;
         double TMAR2 = Math.Round(RCalcuTIR,4);
         int contador = 0;
         int pos = 0;
@@ -75,7 +75,7 @@ public partial class User_vanM : System.Web.UI.Page
             {
                 pos = contador;
             }
-            TMAR = TMAR + (RCalcuTIR / 10);// Cantidad de saltos de los puntos en el eje X
+            TMAR = TMAR + (RCalcuTIR / 20);// Cantidad de saltos de los puntos en el eje X
             contador++;
         } while (negativos < 5);// Solo 5 numeros negativos despues del cruce con 0 en el eje x
 
@@ -92,7 +92,15 @@ public partial class User_vanM : System.Web.UI.Page
         ListaFinal.Add(PeriodoSelect);
         ListaFinal.Add(pos);
         ListaFinal.Add(RCalcuTIR);
-        ListaFinal.Add(resultados[1]);
+        if (resultados[1] == 0)
+        {
+            ListaFinal.Add("$ " + resultados[1]);
+        }
+        else
+        {
+            string formattedString = "$ " + String.Format("{0:N35}", resultados[1]);
+            ListaFinal.Add(formattedString);
+        }
         String json = JsonConvert.SerializeObject(ListaFinal);
         return json;
     }
@@ -102,7 +110,7 @@ public partial class User_vanM : System.Web.UI.Page
     {
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
 
-        int poblacionNumero = 960;
+        int poblacionNumero = 1920;
         List<double> FNEList = FNE.ToList();
         double FNEMax = FNEList.Max();
         double FNEMin = FNEList.Min();

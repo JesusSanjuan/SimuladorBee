@@ -410,7 +410,7 @@
                                         </div> 
                                         <div class="preborder" style="margin-top: 15px">
                                             <div class="card-header" >
-                                                    <h5> <i class="fas fa-dollar-sign"></i> TMAR Despues de la optimizacion</h5>
+                                                    <h5> <i class="fas fa-dollar-sign"></i> TMAR de la TIR despues de la optimizacion</h5>
                                             </div>
                                             <div class="fondoresultados" >
                                                 <div class="card-body text-info">

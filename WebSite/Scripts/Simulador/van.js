@@ -445,6 +445,7 @@ $("#calcular").click(function () {
                     OptimizacionFNE(inversion, FNE, VdS, n, valores[7],valores[0]);
                 } else {
                     $("#OptimizacionArea").css("display", "none");
+                    $('#myTab a[href="#Resultado"]').tab('show');
                     Graficar(valores[3], valores[4], valores[5], valores[6]);
                     Modal(valores[0]);
                 }
@@ -501,7 +502,7 @@ function OptimizacionFNE(inversion, FNE, VdS, n, tir, valores) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         async: true,
-        data: JSON.stringify({ inversion: inversion, FNEt: FNE, VS: VdS, periodo: n, tir: tir }),
+        data: JSON.stringify({ inversion: inversion, FNEt: FNE, VS: VdS, periodo: n, tir: tir, porcentajeextraganancia: 10}),
         success: function (data) {
             var valores = JSON.parse(data.d);
             var vec1 = valores[0];

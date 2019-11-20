@@ -100,7 +100,7 @@ public partial class User_van : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string optimizacionFNE(double inversion, double FNEt, double VS, int periodo, double tir)
+    public static string optimizacionFNE(double inversion, double FNEt, double VS, int periodo, double tir, double porcentajeextraganancia)
     {
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
 
@@ -110,16 +110,16 @@ public partial class User_van : System.Web.UI.Page
             FNE[a] = FNEt;
         }       
 
-        int poblacionNumero = 1920;
+        int poblacionNumero = 1200;
         List<double> FNEList = FNE.ToList();
         double FNEMax = FNEList.Max();
         double FNEMin = FNEList.Min();
 
-        if(FNEMax==FNEMin)
-        {
-            FNEMax = FNEMax + 1000;
-            FNEMin = FNEMin - 1000;
-        }
+        double porcentajeFNEMax = FNEMax / 100;
+        double porcentajeFNEMin = FNEMin / 100;
+
+        FNEMax = FNEMax + (porcentajeFNEMax * porcentajeextraganancia);
+        FNEMin = FNEMin - (porcentajeFNEMin * porcentajeextraganancia);
 
         List<List<double>> poblacion2 = new List<List<double>>();
         Random random = new Random();
@@ -197,7 +197,7 @@ public partial class User_van : System.Web.UI.Page
 
     public static List<double> CalcularTIR( double inversion, double[] FNE, double VS, int periodo)
     {
-        int poblacionNumero = 960;
+        int poblacionNumero = 1200;
        
         // System.Diagnostics.Debug.WriteLine("\nAproximacion inicial encontrada");
         //System.Diagnostics.Debug.WriteLine("\n\n******************INICIO DE LA BUSQUEDA DE LA TIR.*****************\n\n");

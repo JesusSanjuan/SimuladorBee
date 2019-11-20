@@ -165,9 +165,9 @@
     <div style="padding-bottom:1rem;">
               <div class="card align-middle" id="ResultadosVAN" style="display:none;">    
                     <div class="card-header">
-                      <h4> <i class="fas fa-chart-pie"></i> Resultados del cálculo del Valor Actual Neto (VAN)</h4>
+                      <h4> <i class="fas fa-chart-pie"></i> Resultados de los calculos</h4>
                     </div>
-                       <ul class="nav nav-tabs">
+                       <ul class="nav nav-tabs" id="myTab">
         		            <li class="nav-item">
         			            <a href="#Resultado" onclick="location.href='#ResultadosFinales'" class="nav-link active" role="tab" data-toggle="tab">VAN</a>
         		            </li>

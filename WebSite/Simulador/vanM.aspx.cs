@@ -106,20 +106,20 @@ public partial class User_vanM : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string optimizacionFNE(double inversion, double[] FNE, double VS, int periodo, double tir)
+    public static string optimizacionFNE(double inversion, double[] FNE, double VS, int periodo, double tir, double porcentajeextraganancia)
     {
         System.Collections.ArrayList ListaFinal = new System.Collections.ArrayList();
 
-        int poblacionNumero = 1920;
+        int poblacionNumero = 1200;
         List<double> FNEList = FNE.ToList();
         double FNEMax = FNEList.Max();
         double FNEMin = FNEList.Min();
 
-        if (FNEMax == FNEMin)
-        {
-            FNEMax = FNEMax + 1000;
-            FNEMin = FNEMin - 1000;
-        }
+        double porcentajeFNEMax = FNEMax / 100;
+        double porcentajeFNEMin = FNEMin / 100;
+       
+        FNEMax = FNEMax + (porcentajeFNEMax * porcentajeextraganancia);
+        FNEMin = FNEMin - (porcentajeFNEMin * porcentajeextraganancia);        
 
         List<List<double>> poblacion2 = new List<List<double>>();
         Random random = new Random();
@@ -147,7 +147,7 @@ public partial class User_vanM : System.Web.UI.Page
 
             List<int> torneo1b = posTorneo(0, poblacion2.Count / 2);
             List<int> torneo2b = posTorneo(poblacion2.Count / 2, poblacion2.Count);
-            List<List<double>> padre2 = SeleccionFNE(torneo1b, torneo2b, ResultadosFX2, poblacion2,FNEMax,FNEMin);
+            List<List<double>> padre2 = SeleccionFNE(torneo1b, torneo2b, ResultadosFX2, poblacion2,FNEMax);
 
             List<int> cruce1b = posTorneo(0, padre2.Count / 2);
             List<int> cruce2b = posTorneo(padre2.Count / 2, padre2.Count);
@@ -198,7 +198,7 @@ public partial class User_vanM : System.Web.UI.Page
 
     public static List<double> CalcularTIR(double inversion, double[] FNE, double VS, int periodo)
     {
-        int poblacionNumero = 960;
+        int poblacionNumero = 1200;
 
         // System.Diagnostics.Debug.WriteLine("\nAproximacion inicial encontrada");
         //System.Diagnostics.Debug.WriteLine("\n\n******************INICIO DE LA BUSQUEDA DE LA TIR.*****************\n\n");
@@ -783,7 +783,7 @@ public partial class User_vanM : System.Web.UI.Page
         return ResultadosFX;
     }
 
-    static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion, double FNEMax, double FNEMin)
+    static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion, double FNEMax)
     {
         List<List<double>> padre = new List<List<double>>();
         List<double> padrefx = new List<double>();

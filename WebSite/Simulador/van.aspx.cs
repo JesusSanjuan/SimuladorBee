@@ -146,7 +146,7 @@ public partial class User_van : System.Web.UI.Page
             ResultadosFX2 = fxFNE(inversion, poblacion2, VS, tir, periodo);
             List<int> torneo1b = posTorneo(0, poblacion2.Count / 2);
             List<int> torneo2b = posTorneo(poblacion2.Count / 2, poblacion2.Count);
-            List<List<double>> padre2 = SeleccionFNE(torneo1b, torneo2b, ResultadosFX2, poblacion2, FNEMax,FNEMin);
+            List<List<double>> padre2 = SeleccionFNE(torneo1b, torneo2b, ResultadosFX2, poblacion2, FNEMax);
 
             List<int> cruce1b = posTorneo(0, padre2.Count / 2);
             List<int> cruce2b = posTorneo(padre2.Count / 2, padre2.Count);
@@ -679,7 +679,7 @@ public partial class User_van : System.Web.UI.Page
         return ResultadosFX;
     }
 
-    static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion, double FNEMax, double FNEMin)
+    static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion, double FNEMax)
     {
         List<List<double>> padre = new List<List<double>>();
         List<double> padrefx = new List<double>();

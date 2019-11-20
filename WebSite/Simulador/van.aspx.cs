@@ -92,7 +92,7 @@ public partial class User_van : System.Web.UI.Page
         }
         else
         {
-            string formattedString = "$ " + String.Format("{0:N35}", resultados[1]);
+            string formattedString = "$" + String.Format("{0:N35}", resultados[1]);
             ListaFinal.Add(formattedString);
         }
         String json = JsonConvert.SerializeObject(ListaFinal);
@@ -110,7 +110,7 @@ public partial class User_van : System.Web.UI.Page
             FNE[a] = FNEt;
         }       
 
-        int poblacionNumero = 960;
+        int poblacionNumero = 1920;
         List<double> FNEList = FNE.ToList();
         double FNEMax = FNEList.Max();
         double FNEMin = FNEList.Min();

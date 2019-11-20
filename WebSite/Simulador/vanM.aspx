@@ -260,11 +260,11 @@
                                                 </div>  
                                                 <div class="preborder" style="margin-top: 15px">
                                                     <div class="card-header" >
-                                                            <h5> <i class="fa fa-dollar-sign"></i> TMAR de la TIR</h5>
+                                                            <h5> <i class="fa fa-dollar-sign"></i> VAN</h5>
                                                     </div>
                                                     <div class="fondoresultados" >
                                                         <div class="card-body text-info">
-                                                        <h3><label id="TMARTIR" class="card-text"></label></h3>
+                                                        <h3> <p id="TMARTIR" class="card-text" style="color:#17a2b8!important;"></p></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -424,7 +424,7 @@
                                             </div> 
                                             <div class="preborder" style="margin-top: 15px">
                                                 <div class="card-header" >
-                                                        <h5> <i class="fas fa-dollar-sign"></i> TMAR de la TIR despues de la optimizacion</h5>
+                                                        <h5> <i class="fas fa-dollar-sign"></i> VAN despues de la optimizacion</h5>
                                                 </div>
                                                 <div class="fondoresultados" >
                                                     <div class="card-body text-info">

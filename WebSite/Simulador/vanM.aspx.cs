@@ -98,7 +98,7 @@ public partial class User_vanM : System.Web.UI.Page
         }
         else
         {
-            string formattedString = "$ " + String.Format("{0:N35}", resultados[1]);
+            string formattedString = "$" + String.Format("{0:N35}", resultados[1]);
             ListaFinal.Add(formattedString);
         }
         String json = JsonConvert.SerializeObject(ListaFinal);

@@ -139,15 +139,14 @@ public partial class User_van : System.Web.UI.Page
         int j = 1;
         double porcentajeconvergencia2 = 0;
         double porcentaje2 = (((double)100) / poblacionNumero);
-        List<double> ResultadosFX2;
+        List<double> ResultadosFX2 = new List<double>();
         Random random2b = new Random();
         do
         {
             ResultadosFX2 = fxFNE(inversion, poblacion2, VS, tir, periodo);
-
             List<int> torneo1b = posTorneo(0, poblacion2.Count / 2);
             List<int> torneo2b = posTorneo(poblacion2.Count / 2, poblacion2.Count);
-            List<List<double>> padre2 = SeleccionFNE(torneo1b, torneo2b, ResultadosFX2, poblacion2);
+            List<List<double>> padre2 = SeleccionFNE(torneo1b, torneo2b, ResultadosFX2, poblacion2, FNEMax,FNEMin);
 
             List<int> cruce1b = posTorneo(0, padre2.Count / 2);
             List<int> cruce2b = posTorneo(padre2.Count / 2, padre2.Count);
@@ -680,7 +679,7 @@ public partial class User_van : System.Web.UI.Page
         return ResultadosFX;
     }
 
-    static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion)
+    static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion, double FNEMax, double FNEMin)
     {
         List<List<double>> padre = new List<List<double>>();
         List<double> padrefx = new List<double>();
@@ -698,12 +697,43 @@ public partial class User_van : System.Web.UI.Page
             tem.Add(fx2);
 
             double ganador = 0;
-            int indexganadorPob = 0;
+           
+            int indexganadorPob = 0;            
 
             ganador = tem.Max(x => x);
+            
             indexganadorPob = ResultadosFX.FindIndex(x => x == ganador);
-            padrefx.Add(ganador);
-            padre.Add(poblacion[indexganadorPob]);
+            
+            List<double> pobganador = poblacion[indexganadorPob];
+
+            Boolean t1=false;
+            for(int j=0; j< pobganador.Count;j++)
+            {
+                if (pobganador[j] <= (FNEMax+100))
+                {
+                    t1 = true;
+                }
+                else
+                {
+                    t1 = false;
+                    break;
+                }
+
+            }
+            if(t1)
+            {
+                padrefx.Add(ganador);
+                padre.Add(poblacion[indexganadorPob]);
+            }
+            else
+            {
+                double perdedor = 0;
+                int indexperdedorPob = 0;
+                perdedor = tem.Min(x => x);
+                indexperdedorPob = ResultadosFX.FindIndex(x => x == perdedor);
+                padrefx.Add(perdedor);
+                padre.Add(poblacion[indexperdedorPob]);
+            }
         }
         return padre;
     }

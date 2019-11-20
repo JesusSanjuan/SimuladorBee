@@ -437,16 +437,17 @@ $("#calcular").click(function () {
             data: JSON.stringify({ inversion: inversion, FNEt: FNE, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
             success: function (data) {
                 var valores = JSON.parse(data.d);
-                if ($('#optimizacion').prop('checked')) {
-                    OptimizacionFNE(inversion, FNE, VdS, n, valores[7]);
-                } else {
-                    $("#OptimizacionArea").css("display", "none");
-                }
-                Modal(valores[0]);
-                $("#VAN").text(valores[1]); 
+                $("#VAN").text(valores[1]);
                 $("#TIR").text(valores[2]);
                 $("#TMARTIR").text(valores[8]);
-                Graficar(valores[3], valores[4], valores[5],valores[6]);
+                if ($('#optimizacion').prop('checked')) {
+                    Graficar(valores[3], valores[4], valores[5], valores[6]);
+                    OptimizacionFNE(inversion, FNE, VdS, n, valores[7],valores[0]);
+                } else {
+                    $("#OptimizacionArea").css("display", "none");
+                    Graficar(valores[3], valores[4], valores[5], valores[6]);
+                    Modal(valores[0]);
+                }
             },
             error: function (err) {
                 console.log(err);
@@ -475,7 +476,9 @@ $("#calcular").click(function () {
                             console.log(err.responseText);
                         }
                     }).done(function (data) {
-                        $('#Cargando_Modal').modal('hide');/// deveria desactivar efecto de carga aqui, no con el modela de aceptado o rechazado
+                        if (!$('#optimizacion').prop('checked')) {
+                            $('#Cargando_Modal').modal('hide');/// deveria desactivar efecto de carga aqui, no con el modela de aceptado o rechazado
+                        }                        
                     }).fail(function (data) {
                         console.log("Error: " + data);
                     });
@@ -490,7 +493,7 @@ $("#calcular").click(function () {
 /* Ejecucion de boton*/
 
 /* Optimizacion FNE */
-function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
+function OptimizacionFNE(inversion, FNE, VdS, n, tir, valores) {
     $("#OptimizacionArea").css("display", "block");
     $.ajax({
         type: "POST",
@@ -556,8 +559,9 @@ function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
                     console.log(err);
                     console.log(err.responseText);
                 }
-            }).done(function (data) {
-                //$('#Cargando_Modal').modal('hide');
+            }).done(function (data) {               
+                $('#Cargando_Modal').modal('hide');
+                Modal(valores);
             }).fail(function (data) {
                 console.log("Error: " + data);
             });

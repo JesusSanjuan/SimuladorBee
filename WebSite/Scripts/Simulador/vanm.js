@@ -644,16 +644,17 @@ $("#calcular").click(function () {
                 data: JSON.stringify({ inversion: inversion, FNE: FNEs, Anio:Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
                 success: function (data) {
                     var valores = JSON.parse(data.d);
-                    if ($('#optimizacion').prop('checked')) {
-                        OptimizacionFNE(inversion, FNEs, VdS, n, valores[7]);
-                    } else {
-                        $("#OptimizacionArea").css("display", "none");
-                    }
-                    Modal(valores[0]);
                     $("#VAN").text(valores[1]);
                     $("#TIR").text(valores[2]);
                     $("#TMARTIR").text(valores[8]);
-                    Graficar(valores[3], valores[4], valores[5], valores[6]);            
+                    if ($('#optimizacion').prop('checked')) {
+                        Graficar(valores[3], valores[4], valores[5], valores[6]); 
+                        OptimizacionFNE(inversion, FNEs, VdS, n, valores[7],valores[0]);
+                    } else {                        
+                        $("#OptimizacionArea").css("display", "none");
+                        Graficar(valores[3], valores[4], valores[5], valores[6],valores[0]);                   
+                        Modal(valores[0]);
+                    }         
                 },
                 error: function (err) {
                     console.log(err);
@@ -669,7 +670,6 @@ $("#calcular").click(function () {
                     async: true,
                     data: JSON.stringify({ inversion: inversion, Costos: Costoss, Ingresos: Ingresoss, FNE: FNEs, AnioV: Anios, VdS: VdS, TMAR: TMAR, Select: Select, n: n }),
                     success: function (data) {
-                        $('#Cargando_Modal').modal('hide');
                         var valores = JSON.parse(data.d);
                         RellenarTabla(valores[0]);
                         $("#PeridoRec").text(valores[1]);
@@ -681,7 +681,9 @@ $("#calcular").click(function () {
                         console.log(err.responseText);
                     }
                 }).done(function (data) {
-                    $('#Cargando_Modal').modal('hide');
+                    if (!$('#optimizacion').prop('checked')) {
+                        $('#Cargando_Modal').modal('hide');/// deveria desactivar efecto de carga aqui, no con el modela de aceptado o rechazado
+                    } 
                 }).fail(function (data) {
                     console.log("Error: " + data);
                 });
@@ -701,7 +703,7 @@ function FormatoNumero(n) {
 }
 
 /* Optimizacion FNE */
-function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
+function OptimizacionFNE(inversion, FNE, VdS, n, tir, valores) {
     $("#OptimizacionArea").css("display", "block");
     $.ajax({
         type: "POST",
@@ -768,7 +770,8 @@ function OptimizacionFNE(inversion, FNE, VdS, n, tir) {
             console.log(err.responseText);
         }
     }).done(function (data) {
-        //$('#Cargando_Modal').modal('hide');
+        $('#Cargando_Modal').modal('hide');
+        Modal(valores);
     }).fail(function (data) {
         console.log("Error: " + data);
     });

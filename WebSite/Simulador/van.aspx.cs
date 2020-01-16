@@ -182,7 +182,10 @@ public partial class User_van : System.Web.UI.Page
                 }
                 break;
             }
-            j = j + 1;
+            if (porcentajeconvergencia2 < (double)99.9)
+            {
+                j = j + 1;
+            }
         } while (porcentajeconvergencia2 < (double)99.9);
        
         ListaFinal.Add(poblacion2[0]);
@@ -203,7 +206,7 @@ public partial class User_van : System.Web.UI.Page
         //System.Diagnostics.Debug.WriteLine("\n\n******************INICIO DE LA BUSQUEDA DE LA TIR.*****************\n\n");
 
         //Stopwatch tiempo = Stopwatch.StartNew();
-        double aproxInicial = aproximacioninicial(inversion, FNE, periodo);
+        double aproxInicial = aproximacioninicial(inversion, FNE);
 
         Random random = new Random();
         double minimo = aproxInicial - 1000;
@@ -268,8 +271,11 @@ public partial class User_van : System.Web.UI.Page
                 }
                 break;
             }
-          //  System.Diagnostics.Debug.WriteLine("\tGeneracion: {0} , Convergencia del: {1}\n", i, porcentajeconvergencia);
-            i = i + 1;
+            //  System.Diagnostics.Debug.WriteLine("\tGeneracion: {0} , Convergencia del: {1}\n", i, porcentajeconvergencia);
+            if (porcentajeconvergencia < (double)99.9)
+            {
+                i = i + 1;
+            }
         } while (porcentajeconvergencia < (double)99.9);
         //tiempo.Stop();
         //System.Diagnostics.Debug.WriteLine("\n******************CONCLUIDA LA BUSQUEDA DE LA TIR.*****************");
@@ -426,7 +432,7 @@ public partial class User_van : System.Web.UI.Page
 
 
     /*************************************************ALGORITMO GENETICO***************************************************/
-    public static double aproximacioninicial(double Inversion, double[] FNE, int Periodo)
+    public static double aproximacioninicial(double Inversion, double[] FNE)
     {
         double resultado, sumasuperior = 0, sumainferior = 0;
         for (int i = 0; i < FNE.Length; i++)
@@ -573,13 +579,13 @@ public partial class User_van : System.Web.UI.Page
 
     static List<double> CruceTotal(List<double> padre, List<int> cruce1, List<int> cruce2, int iteracion)
     {
-        Random random = new Random();
         List<double> poblacionnueva1a = Cruce(cruce1, cruce2, padre);
-        List<double> poblacionnueva1 = mutacion(poblacionnueva1a, iteracion, random);
+        List<double> poblacionnueva1 = mutacion(poblacionnueva1a, iteracion);
+        double p = Math.Pow(2 + (((15 - 2) / (80 - 1)) * iteracion), -1);
         cruce1 = DesordenarLista(cruce1);
         cruce2 = DesordenarLista(cruce2);
         List<double> poblacionnueva2a = Cruce(cruce1, cruce2, padre);
-        List<double> poblacionnueva2 = mutacion(poblacionnueva2a, iteracion, random);
+        List<double> poblacionnueva2 = mutacion(poblacionnueva2a, iteracion);
         return poblacionnueva1.Concat(poblacionnueva2).ToList();
     }
 
@@ -598,15 +604,15 @@ public partial class User_van : System.Web.UI.Page
         }
         return hijos;
     }
-
-    static List<double> mutacion(List<double> poblacion1, int iteracion, Random random)
+    static List<double> mutacion(List<double> poblacion1, int iteracion)
     {
         ////List<double> mutacionResultado = new List<double>();
+        double p = 0;
         for (int i = 0; i < poblacion1.Count; i++)
         {
             // double numeroAleatorio = random.NextDouble();
             double longitud = Convert.ToString(poblacion1[i]).Length - 1;
-            double p = Math.Pow(2 + (((longitud - 2) / (70 - 1)) * iteracion), -1);
+            p = Math.Pow(2 + (((longitud - 2) / (80 - 1)) * iteracion), -1);
             // Console.WriteLine("\n\t\t\t\t\tMUTACION {0}", numeroAleatorio);
             if (p > .1)//AQUI PERMITE LA MUTACION lgo invertido
             {
@@ -614,6 +620,7 @@ public partial class User_van : System.Web.UI.Page
                 double desviasion = desviasionstandar(poblacion1, mediageometrica);
                 double z = (poblacion1[i] - mediageometrica) / desviasion;
                 poblacion1[i] = poblacion1[i] + z;
+                //Console.WriteLine("\n\t\t\t\tMUTACION");
             }
             else
             {
@@ -622,7 +629,6 @@ public partial class User_van : System.Web.UI.Page
         }
         return poblacion1;
     }
-
     static double desviasionstandar(List<double> poblacion1, double mediageometrica)
     {
         double sumatoria = 0;
@@ -631,6 +637,13 @@ public partial class User_van : System.Web.UI.Page
             sumatoria = sumatoria + Math.Pow((poblacion1[0] - mediageometrica), 2);
         }
         return Math.Sqrt(sumatoria / (poblacion1.Count - 1));
+    }
+    static List<double> CruceImpar(double padre1, double padre2)
+    {
+        List<double> hijos = new List<double>();
+        double media = (padre1 + padre2) / 2;
+        hijos.Add(media);
+        return hijos;
     }
     public static double CalcularVPN(double Inversion, double[] FNE, double VS, double TMAR, int Periodo)
     {
@@ -678,7 +691,6 @@ public partial class User_van : System.Web.UI.Page
         }
         return ResultadosFX;
     }
-
     static List<List<double>> SeleccionFNE(List<int> p1, List<int> p2, List<double> ResultadosFX, List<List<double>> poblacion, double FNEMax)
     {
         List<List<double>> padre = new List<List<double>>();
@@ -697,19 +709,19 @@ public partial class User_van : System.Web.UI.Page
             tem.Add(fx2);
 
             double ganador = 0;
-           
-            int indexganadorPob = 0;            
+
+            int indexganadorPob = 0;
 
             ganador = tem.Max(x => x);
-            
+
             indexganadorPob = ResultadosFX.FindIndex(x => x == ganador);
-            
+
             List<double> pobganador = poblacion[indexganadorPob];
 
-            Boolean t1=false;
-            for(int j=0; j< pobganador.Count;j++)
+            Boolean t1 = false;
+            for (int j = 0; j < pobganador.Count; j++)
             {
-                if (pobganador[j] <= (FNEMax+100))
+                if (pobganador[j] <= (FNEMax + 100))
                 {
                     t1 = true;
                 }
@@ -720,7 +732,7 @@ public partial class User_van : System.Web.UI.Page
                 }
 
             }
-            if(t1)
+            if (t1)
             {
                 padrefx.Add(ganador);
                 padre.Add(poblacion[indexganadorPob]);

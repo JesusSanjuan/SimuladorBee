@@ -184,7 +184,7 @@
                                 </div>
 								<nav class="footer_nav ml-md-auto order-md-2 order-1">
 									<ul class="d-flex flex-row align-items-center justify-content-start">
-										<li><a href="Contact">Contacto</a></li>
+										<li><a id="contactopag">Contacto</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -242,7 +242,8 @@
 
                 $(document).ready(function () {
                    // se ejecuta cuando se carga el documento HTML y DOM está listo
-                       $('body').addClass('loaded');
+                    $('body').addClass('loaded');
+
                    //
                 });
             </script>

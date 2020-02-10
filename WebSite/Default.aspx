@@ -46,5 +46,6 @@
                 </div>
 </asp:Content>
 
-<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">   
+<asp:Content ID="ContenPie" runat="server" ContentPlaceHolderID="Foder">  
+    <script src="Scripts/Account/Enlaces.js"></script>
  </asp:Content>

@@ -17,7 +17,8 @@
     $("body").removeClass("sidenav-toggled");
   });
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
-  $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function(e) {
+    $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function (e) {
+        alert();
     var e0 = e.originalEvent,
       delta = e0.wheelDelta || -e0.detail;
     this.scrollTop += (delta < 0 ? 1 : -1) * 30;

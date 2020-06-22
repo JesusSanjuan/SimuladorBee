@@ -499,7 +499,7 @@ footer.sticky-footer {
     background: #222222 !important;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover, .navbar-collapse .navbar-sidenav > .nav-item:hover,
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-sidenav > .nav-item:hover,
 .sidenav-second-level in collapse show > li > a:hover,
 .navbar-dark .navbar-brand:hover, .nav-item dropdown:hover {
     color: white !important;

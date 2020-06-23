@@ -381,10 +381,10 @@
 									        </div>		
                                            <div class="row">  
                                                         <div class="col-1.5" style="margin-left: 30px;">
-                                                            <label class="switch switch-label switch-outline-success-alt">                                           
-                                                                    <input type="checkbox"  id="cb_TeryCond" name="RememberMe"  class="switch-input checkout_input" value="1">
-                                                                    <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;" ></span>
-                                                            </label>                                    
+                                                            <label class="c-switch c-switch-dark">
+                                                              <input type="checkbox" id="cb_TeryCond" name="RememberMe" class="c-switch-input" value="1">
+                                                              <span class="c-switch-slider"></span>
+                                                            </label>                                   
                                                         </div>  
                                                         <div class="col" id="cb_TeryCondTex"><div id="Tex">Terminos y Condiciones</div>
                                                             <div id="cb_TeryCondVal" class="invalid-tooltip">

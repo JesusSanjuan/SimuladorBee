@@ -231,7 +231,9 @@
             <!-- ScrollReveal Helper -->
             <script  src="../Scripts/anijs-master/helpers/scrollreveal/anijs-helper-scrollreveal.js" > </script>  
             <!-- Diseños visuales-- https://coreui.io  CoreUIFree-->
+            <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+            <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
         <!-- Efectos visuales--> 
         <!-- Ejecuta y oculta preloader--> 
             <script>

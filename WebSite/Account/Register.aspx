@@ -382,8 +382,9 @@
                                            <div class="row">  
                                                         <div class="col-1.5" style="margin-left: 30px;">
                                                             <label class="c-switch c-switch-dark">
-                                                              <input type="checkbox" id="cb_TeryCond" name="RememberMe" class="c-switch-input" value="1>
+                                                              <input type="checkbox" id="cb_TeryCond" name="RememberMe" class="c-switch-input" value="1">
                                                               <span class="c-switch-slider"></span>
+                                                               
                                                             </label>                                   
                                                         </div>  
                                                         <div class="col" id="cb_TeryCondTex"><div id="Tex">Terminos y Condiciones</div>
